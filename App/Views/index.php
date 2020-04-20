@@ -1,20 +1,12 @@
 <!doctype html>
 <html lang="en" class="h-100">
-  <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DLUX</title>
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-  <!-- Bootstrap -->
-  <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
-  <link href="css/dlux.scss" rel="stylesheet">
-  <script type="text/javascript" src="dmxAppConnect/dmxAppConnect.js"></script>
-  <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-	  <script type="text/javascript" src="../js/popper.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap-4.4.1.js"></script> <script src="https://kit.fontawesome.com/0f693ffc58.js" crossorigin="anonymous"></script>
-  <script src="js/session.js"></script>
-	  <script src="https://cdn.jsdelivr.net/npm/steem/dist/steem.min.js"></script>
+<head>
+<title>DLUX</title>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/dlux-io/App/Views/mod/header.php";
+   include_once($path);
+?>
 <!-- Initialization -->
 <script>
 	steem.api.setOptions({url:"https://anyx.io"})
@@ -24,7 +16,11 @@
 </script>
 </head>
 <body class="d-flex flex-column h-100">
- <?php include 'mod/nav.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/dlux-io/App/Views/mod/nav.php";
+   include_once($path);
+?>
 <main class="flex-shrink-0">
   <div class="container-fluid padme-t70">
     <div class="jumbotron jumbotron-fluid text-center text-white mt-5 bg-win">
@@ -75,7 +71,11 @@
   </div>
 	</div>
 	</main>
-<?php include 'mod/footer.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/dlux-io/App/Views/mod/footer.php";
+   include_once($path);
+?>
 <script type="text/javascript">
 	checkCookie()
     </script>
