@@ -2,17 +2,25 @@
 <html lang="en" class="h-100">
 <head>
 <title>DLUX - Apps</title>
-<?php include '../mod/header.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/dlux-io/App/Views/mod/header.php";
+   include_once($path);
+?>
 <!--dmxAppConnect-->
-<script type="text/javascript" src="../dmxAppConnect/dmxAppConnect.js"></script>
-<script type="text/javascript" src="../dmxAppConnect/dmxMoment.js"></script>
-<script type="text/javascript" src="../dmxAppConnect/dmxFormatter.js"></script>
-<script type="text/javascript" src="../dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
+<script src="/dlux-io/public/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/dlux-io/public/dmxAppConnect/dmxAppConnect/dmxMoment.js"></script>
+<script src="/dlux-io/public/dmxAppConnect/dmxAppConnect/dmxFormatter.js"></script>
+<script src="/dlux-io/public/dmxAppConnect/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
 
 <body class="d-flex flex-column h-100" id="index" is="dmx-app">
 <dmx-api-datasource id="dluxGetBlog" is="dmx-fetch" url="https://token.dlux.io/getwrap?" dmx-param:method="'condenser_api.get_blog'" dmx-param:params="'[%22robotolux%22,0,10]'"></dmx-api-datasource>
-<?php include '../mod/nav.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/dlux-io/App/Views/mod/nav.php";
+   include_once($path);
+?>
 <main role="main" class="flex-shrink-0">
   <div class="container-fluid padme-t70">
     <div class="row mt-3">
