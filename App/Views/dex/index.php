@@ -85,7 +85,11 @@
 </head>
 
 <body class="d-flex flex-column h-100 text-white">
-<?php include '../mod/nav.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/dlux-io/App/Views/mod/nav.php";
+   include_once($path);
+?>
 <main role="main" class="flex-shrink-0 padme-t70">
 <div class="container">
 	
