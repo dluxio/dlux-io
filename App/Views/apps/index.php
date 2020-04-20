@@ -126,7 +126,11 @@
 	</div>
 	</div>
 </main>
-<?php include '../mod/footer.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/dlux-io/App/Views/mod/footer.php";
+   include_once($path);
+?>
 <script>
 	function updateVoteSubmit(id,val) {
           document.getElementById(id).innerHTML = document.getElementById(val).value + '%'; 
