@@ -19,10 +19,9 @@ class Dlux extends \Core\Controller
      */
     public function indexAction()
     {
-        View::render('dlux/index.php');
-    }
-    public function dluxarAction()
-    {
-        View::render('dlux/dluxar.php')
+        View::render('dlux/index.php', [
+            author -> $author,
+            permlink -> $permlink
+        ]);
     }
 }
