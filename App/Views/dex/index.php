@@ -52,37 +52,36 @@
 					</div>
 						</div>
 						
-						<div class="row">
-							
+						<div class="row align-items-center pb-5">
 					<div class="col-6">
 						<p class="lead">What to expect when using the exchange</p>
-				<p> Exchanges are atomic swaps, which means these are smart contracts with crypto that you can buy for exactly the listed price. This exchange will over collateralize escrow transactions and pay for these transactions upon completion from an inflationary source.</p>
+				<p>Trades are atomic swaps, meaning these are smart contracts holding crypto that you can buy for exactly the listed price. This exchange will over collateralize escrow transactions and pay for these transactions upon completion from an inflationary source.</p>
 						<div class="text-center">	
 						<a class="btn btn-outline-light m-3" href="#">Start Trading</a>
 							</div>
 							</div>
-							<div class="col-6">graphic here</div>
+							<div class="col-6"><img src="/img/dex1.jpeg" class="img-fluid rounded"></div>
 						</div>
 						
-						<div class="row">
-							<div class="col-6">graphic here</div>
+						<div class="row align-items-center py-5">
+							<div class="col-6"><img src="/img/dex2.jpeg" class="img-fluid rounded"></div>
 							<div class="col-6">
 								<p class="lead">Preventing double spend on the network</p>
-				<p>The last irreversible block is used to verify transactions. What this means is your account may not be credited with the hive amount until about 2-3 minutes from purchase time. Trust metrics will be maintained, fees and minimums may be enforced by some nodes depending on volume conditions. Our visionaries will get to choose which accounts are entrusted with their escrow transactions.</p>
+				<p>The last irreversible block is used to verify transactions. That means your account may not be credited with Hive until 2-3 minutes from purchase time. Trust metrics will be maintained, fees and minimums may be enforced by some nodes depending on volume conditions. Choose which accounts you entrust with your escrow transactions.</p>
 								<div class="text-center">	
 						<a class="btn btn-outline-light m-3" href="#">Read FAQ</a>
 							</div>
 							</div></div>
 						
-							<div class="row">
+							<div class="row align-items-center py-5">
 								<div class="col-6">
 									<p class="lead">Introducing the DLUX node network</p>
-				<p>In addition to maintaining consensus about the dlux token balances, it maintains consensus about external data using nodes as oracles. The most trusted nodes are elected to hold a portion of the owner authority of a community controlled account to provide for escrow services for markets such as Account Creation Tokens and IPFS content pinning.</p>
+				<p>Achieve consensus for more than just dlux token balances. Using nodes as oracles, concensus is maintained for any outside data as well. The most trusted nodes are elected to hold some owner authority over community controlled accounts, allowing them to provide services like Account Creation Tokens, or IPFS content pinning.</p>
 				<div class="text-center">	
 						<a class="btn btn-outline-light m-3" href="#">Run A Node</a>
 							</div>
 								</div>
-								<div class="col-6">graphic here</div>
+								<div class="col-6"><img src="/img/dex3.jpeg" class="img-fluid rounded"></div>
 								</div>
 						
 			    
@@ -96,8 +95,6 @@
   				<div class="dropdown-menu">
     				<a class="dropdown-item" href="#">DLUX:HIVE</a>
     				<a class="dropdown-item" href="#">DLUX:HBD</a>
-					<a class="dropdown-item" href="#">DLUX:BTC</a>
-					<a class="dropdown-item" href="#">DLUX:ETH</a>
 				</div>
 				
 	      <div class="row">
@@ -107,19 +104,19 @@
 		<div class="d-flex justify-content-center">
 		  <div class="btn-group btn-group-toggle set-timescale" data-toggle="buttons">
   				<label class="btn btn-primary active">
-    				<input type="radio" name="options" id="hoursteem" autocomplete="off" checked> 1H
+    				<input type="radio" name="options" id="hourBtn" autocomplete="off" checked> 1H
   				</label>
   				<label class="btn btn-primary">
-    				<input type="radio" name="options" id="daysteem" autocomplete="off"> 1D
+    				<input type="radio" name="options" id="dayBtn" autocomplete="off"> 1D
   				</label>
   				<label class="btn btn-primary">
-    			<input type="radio" name="options" id="weeksteem" autocomplete="off"> 1W
+    			<input type="radio" name="options" id="weekBtn" autocomplete="off"> 1W
   				</label>
 			  	<label class="btn btn-primary">
-    			<input type="radio" name="options" id="monthsteem" autocomplete="off"> 1M
+    			<input type="radio" name="options" id="monthBtn" autocomplete="off"> 1M
   				</label>
 			  	<label class="btn btn-primary">
-    			<input type="radio" name="options" id="yearsteem" autocomplete="off"> 1Y
+    			<input type="radio" name="options" id="yearBtn" autocomplete="off"> 1Y
   				</label>
 			</div>
 			</div>
@@ -147,52 +144,7 @@
 		  </div>
 			<div class="balance"><h4>BAL: 62382 DLUX</h4></div>
 		  </div>
-			
-	</div>
-	  <div class="col-lg-4">
-		  <div>
-			  <div class="widget">
-			<ul id="orderwidget" class="nav nav-pills justify-content-center" role="tablist">
-			  <li class="nav-item"> <a class="nav-link active" href="#" id="buyTab" role="tab" data-toggle="tab" aria-controls="buytab" aria-expanded="true">Buy DLUX</a></li>
-			  <li class="nav-item"> <a class="nav-link" href="#" role="tab" id="sellTab" data-toggle="tab" aria-controls="selltab">Sell DLUX</a></li>
-			</ul>
-			  <!-- Content Panel -->
-		    <div id="orderForm" class="tab-content">
-			   
-			      <form>
-	    	<div class="form-group" style="padding-top: 10px">
-	    	  <label for="inputbuypricesteem">Bid Price</label>
-	    	  <input type="number" class="form-control" id="buypricesteem" placeholder="Amount in STEEM">
-			<div class="text-center" style="padding-top: 10px">
-				<button type="button" class="btn btn-outline-primary btn-sm">Lowest Ask</button>
-			</div>
-        	</div>
-		    <div class="form-group">
-		      <label for="inputbuyqtysteem">Qty.</label>
-		      <input type="number" class="form-control" id="buyqtysteem" placeholder="How many">
-				<div class="text-center" style="padding-top: 10px">
-				<button type="button" class="btn btn-outline-primary btn-sm">Max</button>
-				<button type="button" class="btn btn-outline-primary btn-sm">1/2</button>
-				<button type="button" class="btn btn-outline-primary btn-sm">1/4</button>
-				</div>
-	        </div>
-			<div class="form-group">
-		      <label for="inputbuytotalsteem">Total</label>
-		      <input type="number" class="form-control" id="buytotalsteem" placeholder="Order total">
-			  <div class="text-center text-secondary" style="padding-top: 10px">STEEM BALANCE</div>
-	        </div>
-			<div class="text-center">
-		    <button type="submit" class="btn btn-outline-success">Place Buy Order</button>
-			</div>
-	      </form>
-		    </div>
-		  </div>
-			
-        </div>  
-  </div>
-	</div>
-	<div class="row">
-	<div class="col-lg-8">
+	
 	<canvas id="marketOrdersChart" height="125" class="orderbook-chart"></canvas>
 	<div class="container orderbook-table">
 	  <div class="row text-center">
@@ -249,8 +201,158 @@
 		</div>
 		  </div>
 	    </div>
-		  <div class="col-lg-4 text-center">
-			  <h5 style="padding-top: 40px">TRADE HISTORY</h5>
+			  
+	  <div class="col-lg-4">
+		  <div>
+			  <div class="widget">
+			<ul id="orderwidget" class="nav nav-pills justify-content-center" role="tablist">
+			  <li class="nav-item"> <a class="nav-link active" href="#" id="buyTab" role="tab" data-toggle="tab" aria-controls="buytab" aria-expanded="true">Buy DLUX</a></li>
+			  <li class="nav-item"> <a class="nav-link" href="#" role="tab" id="sellTab" data-toggle="tab" aria-controls="selltab">Sell DLUX</a></li>
+			</ul>
+			  <!-- Order Form -->
+		    <form>
+
+	  <div class="form-group">
+	   <label for="buydluxfrom">Buyer:</label>
+		<div class="input-group">
+			<div class="input-group-prepend">
+      		  <div class="input-group-text">@</div>
+    		</div>
+        	<input class="form-control" id="senddluxfrom" type="text" dmx-bind:placeholder="{{dluxGetBlog.data.result[0].blog}}" readonly>
+		  </div>
+			 </div>
+		  
+		  <div class="form-group">
+	   <label id="menudluxlab" for="buydluxquantity">Desired Quantity:</label>
+		<div class="input-group">
+			<input class="form-control" id="menudlux" type="number" step="0.001" min="0.001" placeholder="1.000">
+			<div class="input-group-append">
+      		  <div class="input-group-text">DLUX</div>
+    		</div>
+		  </div>
+			 </div>
+        <div class="form-group">
+	   <label id="menupricelab" for="buydluxprice">Desired Price (<a href="#" onClick="insertBal(User.dex.markets[User.opts.type].tick, 'menuprice')">MP: 0.22 HIVE</a>):</label>
+		<div class="input-group">
+			<input class="form-control" id="menuprice" type="number" placeholder="1.000">
+			<div class="input-group-append">
+      		  <div class="input-group-text" id="menupairdiv">HIVE</div>
+    		</div>
+		  </div>
+			 </div>
+		  <div class="form-group">
+	   <label id="menupairlab" for="buydluxtotal">Order Total (<a href="#" onClick="insertBal(parseFloat(User[User.opts.type].balance), 'menupair')">Balance: 486 HIVE</a>):</label>
+		<div class="input-group">
+			<input class="form-control" id="menupair" type="number" step="0.001" min="0.001" placeholder="1.000">
+			<div class="input-group-append">
+      		  <div class="input-group-text" id="paycoin">HIVE</div>
+    		</div>
+		  </div>
+			 </div>
+		 <p><a data-toggle="collapse" href="#buydluxadvanced" role="button" aria-expanded="false" aria-controls="collapseExample">Advanced Options<i class="fas fa-angle-double-down ml-2"></i></a></p>
+	   <div class="collapse" id="buydluxadvanced">
+	
+
+ <div class="form-group">
+	 <label for="custodialAgent">Custodial Agent:</label>
+	 <div class="input-group">
+	 	<div class="input-group-prepend">
+      		  <label class="input-group-text">@</label>
+    	</div>	
+    	<button class="btn btn-light dropdown-toggle form-control text-left" type="button" id="custodialAgent" data-toggle="dropdown">Custodial Agent</button>
+    	<ul class="dropdown-menu custodial-drop form-control agent-input-ul" id="custodialAgentUl">
+      		<input class="form-control agent-input" id="custodialAgentSearch" type="text" placeholder="Search..">
+      		<li><a href="#">disregardfiat - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+      		<li><a href="#">markegiles - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+      		<li><a href="#">dlux-io - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+      		<li><a href="#">heyhey - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+      		<li><a href="#">inconcievable - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+      		<li><a href="#">robotolux - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+		</ul>
+	 	<div class="input-group-append">
+			<button id="custodialAgentSort" type="button" class="btn btn-light append-radius" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sort-amount-down"></i></button>
+			<div class="dropdown-menu dropdown-menu-right text-white">
+    			<a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd mr-2"></i>Sort By Fee</a>
+				<a class="dropdown-item" href="#"><i class="fas fa-award fa-fw mr-2"></i>Sort By Trust</a>
+				<a class="dropdown-item" href="#"><i class="fas fa-fish fa-fw mr-2"></i>Sort By Liquidity</a>
+    		</div>
+  		</div>
+	</div>
+</div>
+		
+ <div class="form-group">
+	 <label for="escrowAgent">Escrow Agent:</label>
+	 <div class="input-group">
+	 	<div class="input-group-prepend">
+      		  <label class="input-group-text">@</label>
+    	</div>	
+    	<button class="btn btn-light dropdown-toggle form-control text-left" type="button" id="escrowAgent" data-toggle="dropdown">Escrow Agent</button>
+    	<ul class="dropdown-menu escrow-drop form-control agent-input-ul mx-auto" id="escrowAgentUl">
+      		<input class="form-control agent-input" id="escrowAgentSearch" type="text" placeholder="Search..">
+      		<li><a href="#">disregardfiat - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+      		<li><a href="#">markegiles - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+      		<li><a href="#">dlux-io - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+      		<li><a href="#">heyhey - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+      		<li><a href="#">inconcievable - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+      		<li><a href="#">robotolux - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+    	</ul>
+	 	<div class="input-group-append">
+			<button type="button" id="escrowAgentSort" class="btn btn-light append-radius" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sort-amount-down"></i></button>
+			<div class="dropdown-menu dropdown-menu-right text-white">
+    			<a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd mr-2"></i>Sort By Fee</a>
+				<a class="dropdown-item" href="#"><i class="fas fa-award fa-fw mr-2"></i>Sort By Trust</a>
+				<a class="dropdown-item" href="#"><i class="fas fa-fish fa-fw mr-2"></i>Sort By Liquidity</a>
+    		</div>
+  		</div>
+	</div>
+</div>
+		   
+<script>
+$(document).ready(function(){
+  $("#custodialAgentSearch").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".custodial-drop li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+$(document).ready(function(){
+  $("#escrowAgentSearch").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".escrow-drop li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script> 
+
+<div class="form-group">
+    <label for="escrowExpire">Expiration:</label>
+    <select class="form-control" id="escrowExpire">
+      <option value=1>1 hour</option>
+      <option value=3>3 hours</option>
+      <option value=6>6 hours</option>
+      <option value=12>12 hours</option>
+      <option value=24>1 day</option>
+	  <option value=72>3 days</option>
+	  <option value=120 selected>5 days</option>
+	  <option value=336>14 days</option>
+	  <option value=720>30 days</option>
+    </select>
+</div>
+		  
+      </div>
+		<div class="text-center">
+        <button type="button" class="btn btn-outline-success btn-75" onClick="dexsend(document.getElementById('buyDluxTitle').innerText.split(' ')[0], User.opts.pair)">Buy</button>
+				</div>
+		  </div>
+	  </form>
+			  
+		 
+		  </div>
+  
+	<div class="text-center pt-5">
+		<h5>TRADE HISTORY</h5></div>
 			  <div class="history">
 			  
 		    <table width="100%" class="history-table">
@@ -277,7 +379,7 @@
 </table>
 	</div>
 	</div>
-	  </div>
+			</div>
 </div>
 		  </div>
 <div role="tabpanel" class="tab-pane fade" id="ticker" aria-labelledby="tickertab">
@@ -304,11 +406,12 @@
       <td>370534d95d25a223eee8080c12487fc32c7dc502</td>
       <td>32086802</td>
       <td>@chrismgiles</td>
-      <td>bought 45.454 DLUX with 0.010 STEEM</td>
+      <td>bought 45.454 DLUX with 0.010 HIVE</td>
     </tr>
   </tbody>
 </table>
 	</div>
+
 	</div>
 			   </div>
 			   </div>
@@ -324,14 +427,14 @@
 	
 <script>
 // populate the price chart	
-    var historicPriceSteem = document.getElementById('historicPriceChart').getContext('2d');
+    var historicPrice = document.getElementById('historicPriceChart').getContext('2d');
 	
     // Global Options
     Chart.defaults.global.defaultFontFamily = 'Helvetica';
     Chart.defaults.global.defaultFontSize = 18;
     Chart.defaults.global.defaultFontColor = '#FFF';
 
-    var priceChartSteem = new Chart(historicPriceSteem, {
+    var priceChart = new Chart(historicPrice, {
 		
       type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
       data:{
@@ -357,7 +460,7 @@
 		responsive: true,
         title:{
           display:true,
-          text:'DLUX: 0.22 STEEM',
+          text:'DLUX: 0.22 HIVE',
           fontSize:40,
 		  fontColor:'#000',
         },
@@ -400,16 +503,16 @@
       }
     });
 // populate the orders chart	
-    var marketOrdersSteem = document.getElementById('marketOrdersChart').getContext('2d');
-	var gradientGrnSteem = marketOrdersSteem.createLinearGradient(0, 0, 0, 400);
-	gradientGrnSteem.addColorStop(0, 'rgba(90, 216, 154, 1)');   
-	gradientGrnSteem.addColorStop(1, 'rgba(90, 216, 154, 0)');
+    var marketOrders = document.getElementById('marketOrdersChart').getContext('2d');
+	var gradientGrn = marketOrders.createLinearGradient(0, 0, 0, 400);
+	gradientGrn.addColorStop(0, 'rgba(90, 216, 154, 1)');   
+	gradientGrn.addColorStop(1, 'rgba(90, 216, 154, 0)');
 	
-	var gradientRedSteem = marketOrdersSteem.createLinearGradient(0, 0, 0, 400);
-	gradientRedSteem.addColorStop(0, 'rgba(226, 94, 94, 1)');   
-	gradientRedSteem.addColorStop(1, 'rgba(226, 94, 94, 0)');
+	var gradientRed = marketOrders.createLinearGradient(0, 0, 0, 400);
+	gradientRed.addColorStop(0, 'rgba(226, 94, 94, 1)');   
+	gradientRed.addColorStop(1, 'rgba(226, 94, 94, 0)');
 	
-    var buySellChartSteem = new Chart(marketOrdersSteem, {
+    var buySellChart = new Chart(marketOrders, {
       type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
       data:{
         labels:['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
@@ -423,8 +526,8 @@
             22.35,
             22.36
           ],
-          backgroundColor:[gradientGrnSteem, gradientGrnSteem, gradientGrnSteem, gradientRedSteem, gradientRedSteem, gradientRedSteem],
-		  hoverBackgroundColor:[gradientGrnSteem, gradientGrnSteem, gradientGrnSteem, gradientRedSteem, gradientRedSteem, gradientRedSteem],
+          backgroundColor:[gradientGrn, gradientGrn, gradientGrn, gradientRed, gradientRed, gradientRed],
+		  hoverBackgroundColor:[gradientGrn, gradientGrn, gradientGrn, gradientRed, gradientRed, gradientRed],
           hoverBorderWidth:2,
           hoverBorderColor:'#FFCE00'
         }]
@@ -433,7 +536,7 @@
 		responsive: true,
         title:{
           display:true,
-          text:'DLUX-STEEM ORDER BOOK',
+          text:'DLUX-HIVE ORDER BOOK',
           fontSize:25
         },
         legend:{
