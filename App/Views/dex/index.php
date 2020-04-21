@@ -7,9 +7,9 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-
-  <title>dlux DEX</title>
+<!--page specific-->
+<script src="/js/dex.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 </head>
 <body class="d-flex flex-column h-100 text-white">
 <?php 
@@ -19,13 +19,13 @@
 ?>
 <main role="main" class="flex-shrink-0 padme-t70">
 <div class="container">
-	<div class="alert alert-danger alert-dismissible text-center">
+	<div class="alert alert-danger alert-dismissible">
   		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   		<a href="#" class="alert-link">The dlux DEX is under construction. Have a look around and let us know what you think!</a>
 	</div>
 	<div class="alert alert-success alert-dismissible">
   		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  		<a href="#" class="alert-link"><strong>Buy DLUX from @robotolux!</strong></a> The current price is 0.22 STEEM.
+  		<a href="#" class="alert-link"><strong>Buy DLUX from @robotolux!</strong></a> The current price is 0.22 HIVE.
 	</div>
   <div class="container-fluid" style="padding: 0">
 	  <ul id="pagenav" class="nav nav-pills justify-content-center" role="tablist">
@@ -89,18 +89,7 @@
                         </div>
                     </div>
 		<div role="tabpanel" class="tab-pane fade show active" id="trade" aria-labelledby="tradetab">
-			<div class="container-fluid p-0">
-		<ul class="nav nav-pills ml-3" role="tablist"><span class="p-2">Trade Pairs:</span>
-		  	<li class="nav-item">
-				<a href="javascript:dexmodal('hive', User.opts.type)" class="nav-link active" id="buywithhivetab" onClick="toggleActive()">DLUX:HIVE</a></li>
-			<li class="nav-item">
-				<a href="javascript:dexmodal('hbd', User.opts.type)" class="nav-link" id="buywithhbdtab" onClick="toggleActive()">DLUX:HBD</a></li>
-			<li class="nav-item">
-				<a href="javascript:dexmodal('hbd', User.opts.type)" class="nav-link" id="buywithhbdtab" onClick="toggleActive()">DLUX:BTC</a></li>
-			<li class="nav-item">
-				<a href="javascript:dexmodal('hbd', User.opts.type)" class="nav-link" id="buywithhbdtab" onClick="toggleActive()">DLUX:ETH</a></li>
-		  </ul>
-				
+			<div class="container-fluid px-0 py-4">
 				<a class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DLUX:HIVE
     			<span class="sr-only">Toggle Dropdown</span>
   				</a>
@@ -164,12 +153,12 @@
 		  <div>
 			  <div class="widget">
 			<ul id="orderwidget" class="nav nav-pills justify-content-center" role="tablist">
-			  <li class="nav-item"> <a class="nav-link active" href="#buysteem" id="buytabsteem" role="tab" data-toggle="tab" aria-controls="buysteem" aria-expanded="true">Buy DLUX</a></li>
-			  <li class="nav-item"> <a class="nav-link" href="#sellsteem" role="tab" id="selltabsteem" data-toggle="tab" aria-controls="sellsteem">Sell DLUX</a></li>
+			  <li class="nav-item"> <a class="nav-link active" href="#" id="buyTab" role="tab" data-toggle="tab" aria-controls="buytab" aria-expanded="true">Buy DLUX</a></li>
+			  <li class="nav-item"> <a class="nav-link" href="#" role="tab" id="sellTab" data-toggle="tab" aria-controls="selltab">Sell DLUX</a></li>
 			</ul>
 			  <!-- Content Panel -->
-		    <div id="orderformsteem" class="tab-content">
-			    <div role="tabpanel" class="tab-pane fade show active" id="buysteem" aria-labelledby="buytabsteem">
+		    <div id="orderForm" class="tab-content">
+			   
 			      <form>
 	    	<div class="form-group" style="padding-top: 10px">
 	    	  <label for="inputbuypricesteem">Bid Price</label>
@@ -196,36 +185,6 @@
 		    <button type="submit" class="btn btn-outline-success">Place Buy Order</button>
 			</div>
 	      </form>
-		        </div>
-			    <div role="tabpanel" class="tab-pane fade" id="sellsteem" aria-labelledby="selltabsteem">
-			      <form>
-	    <div class="form-group" style="padding-top: 10px">
-	      <label for="inputsellpricesteem">Ask Price</label>
-	      <input type="number" class="form-control" id="sellpricesteem" placeholder="Amount in STEEM">
-			<div class="text-center" style="padding-top: 10px">
-				<button type="button" class="btn btn-outline-primary btn-sm">Highest Bid</button>
-			</div>
-        </div>
-		    <div class="form-group">
-		      <label for="inputsellqtysteem">Qty.</label>
-		      <input type="number" class="form-control" id="sellqtysteem" placeholder="How many">
-			  <div class="text-center" style="padding-top: 10px">
-				<button type="button" class="btn btn-outline-primary btn-sm">Max</button>
-				<button type="button" class="btn btn-outline-primary btn-sm">1/2</button>
-				<button type="button" class="btn btn-outline-primary btn-sm">1/4</button>
-				</div>
-	        </div>
-					  <div class="form-group">
-		      <label for="inputselltotalsteem">Total</label>
-		      <input type="number" class="form-control" id="selltotalsteem" placeholder="Order total">
-			  <div class="text-center text-secondary" style="padding-top: 10px">STEEM BALANCE</div>
-	        </div>
-		    <div class="text-center">
-		    <button type="submit" class="btn btn-outline-danger">Place Sell Order</button>
-			</div>
-	      </form>
-		        </div>
-			   
 		    </div>
 		  </div>
 			

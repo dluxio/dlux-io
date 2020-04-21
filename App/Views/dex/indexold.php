@@ -2,7 +2,11 @@
 <html lang="en" class="h-100">
 <head>
 <title>DLUX - DEX</title>
-<?php include '../mod/header.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/header.php";
+   include_once($path);
+?>
 <!--page specific-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>	
 <script type="text/javascript">
