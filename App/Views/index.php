@@ -27,7 +27,7 @@
        <div class="container">
 		<div class="row">
          <div class="col-xl-6"><h1 class="display-4">dlux</h1>
-		   <h6>DECENTRALIZED LIMITLESS USER EXPERIENCES</h6>
+		   <h6>DECENTRALIZED LIMITLESS USER EXPERIENCES </h6>
 		   <hr class="my-4">
        <p class="lead">The easiest way to build and distribute dApps on HIVE</p>
        
