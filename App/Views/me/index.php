@@ -2,7 +2,11 @@
 <html lang="en" class="h-100">
 <head>
 <title>DLUX - Username</title>
-<?php include '../mod/header.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/header.php";
+   include_once($path);
+?>
 <!--dmxAppConnect-->
 <script src="../dmxAppConnect/dmxAppConnect.js"></script>
 <script src="../dmxAppConnect/dmxMoment.js"></script>
@@ -28,7 +32,11 @@
         echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/getwrap?\" dmx-param:method=\"'condenser_api.get_blog'\" dmx-param:params=\"'[%22robotolux%22,0,10]'\"></dmx-api-datasource>";
         }
 ;?>
-<?php include '../mod/nav.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/nav.php";
+   include_once($path);
+?>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 ">
 	  <div class="container-fluid bg-darker border-bottom">
@@ -1018,7 +1026,11 @@ $(document).ready(function(){
 </div>
 	
 </div>
-<?php include '../mod/footer.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/footer.php";
+   include_once($path);
+?>
 
 	<script>
 // Set active tab
