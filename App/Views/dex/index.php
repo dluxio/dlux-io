@@ -4,7 +4,7 @@
 <title>DLUX - DEX</title>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
-   $path .= "/dlux-io/App/Views/mod/header.php";
+   $path .= "/mod/header.php";
    include_once($path);
 ?>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
@@ -14,7 +14,7 @@
 <body class="d-flex flex-column h-100 text-white">
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
-   $path .= "/dlux-io/App/Views/mod/nav.php";
+   $path .= "/mod/nav.php";
    include_once($path);
 ?>
 <main role="main" class="flex-shrink-0 padme-t70">
@@ -359,7 +359,7 @@
 	</main>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
-   $path .= "/dlux-io/App/Views/mod/footer.php";
+   $path .= "/mod/footer.php";
    include_once($path);
 ?>
 	

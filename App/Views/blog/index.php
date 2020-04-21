@@ -2,7 +2,11 @@
 <html lang="en" class="h-100">
 <head>
 <title>DLUX - Apps</title>
-<?php include '../mod/header.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/header.php";
+   include_once($path);
+?>
 <!--dmxAppConnect-->
 <script type="text/javascript" src="../dmxAppConnect/dmxAppConnect.js"></script>
 <script type="text/javascript" src="../dmxAppConnect/dmxMoment.js"></script>
@@ -33,7 +37,11 @@
       dmx-param:params="'[%22dlux-io%22,%22testing-dlux-vr%22]'"
     ></dmx-api-datasource>
 
-    <?php include '../mod/nav.php';?>
+    <?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/nav.php";
+   include_once($path);
+?>
 
     <main role="main" class="flex-shrink-0 ">
       <div class="container bg-dark text-white padme-t70 pb-2 mb-3">
@@ -284,7 +292,11 @@
         </div>
       </div>
     </main>
-    <?php include '../mod/footer.php';?>
+    <?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/footer.php";
+   include_once($path);
+?>
     <script>
       function updateVoteSubmit(id, val) {
         document.getElementById(id).innerHTML =
