@@ -9,7 +9,7 @@ use \Core\View;
  *
  * PHP version 7.0
  */
-class Home extends \Core\Controller
+class Login extends \Core\Controller
 {
 
     /**
