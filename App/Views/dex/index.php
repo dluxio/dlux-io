@@ -56,7 +56,7 @@
 								<img src="/img/dex1.jpeg" class="img-fluid rounded">
 							</div>
 							<div class="col-lg-6 order-lg-1">
-						<p class="lead">What to expect when using the exchange</p>
+						<p class="lead pt-3 text-uppercase">What to expect</p>
 						<p>Trades are atomic swaps, meaning these are smart contracts holding crypto that you can buy for exactly the listed price. This exchange will over collateralize escrow transactions and pay for these transactions upon completion from an inflationary source.</p>
 						<div class="text-center">	
 						<a class="btn btn-outline-light m-3" href="#">Start Trading</a>
@@ -68,7 +68,7 @@
 						<div class="row align-items-center py-5">
 							<div class="col-lg-6 order-lg-1"><img src="/img/dex2.jpeg" class="img-fluid rounded"></div>
 							<div class="col-lg-6 order-lg-2">
-								<p class="lead">Preventing double spend on the network</p>
+								<p class="lead pt-3 text-uppercase">Preventing double spend</p>
 				<p>The last irreversible block is used to verify transactions. That means your account may not be credited with Hive until 2-3 minutes from purchase time. Trust metrics will be maintained, fees and minimums may be enforced by some nodes depending on volume conditions. Choose which accounts you entrust with your escrow transactions.</p>
 								<div class="text-center">	
 						<a class="btn btn-outline-light m-3" href="#">Read FAQ</a>
@@ -78,7 +78,7 @@
 							<div class="row align-items-center py-5">
 								<div class="col-lg-6 order-lg-2"><img src="/img/dex3.jpeg" class="img-fluid rounded"></div>
 								<div class="col-lg-6 order-lg-1">
-									<p class="lead">Introducing the DLUX node network</p>
+									<p class="lead pt-3 text-uppercase">The DLUX node network</p>
 				<p>Achieve consensus for more than just dlux token balances. Using nodes as oracles, concensus is maintained for any outside data as well. The most trusted nodes are elected to hold some owner authority over community controlled accounts, allowing them to provide services like Account Creation Tokens, or IPFS content pinning.</p>
 				<div class="text-center">	
 						<a class="btn btn-outline-light m-3" href="#">Run A Node</a>
