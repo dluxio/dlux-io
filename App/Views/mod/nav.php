@@ -1,11 +1,11 @@
 <header>
 <nav class="navbar navbar-default navbar-expand-lg navbar-dark bg-dark fixed-top flex-md-nowrap">
-	<a class="navbar-brand" href="/"><img src="../img/dluxcolorlogo.png" alt="dlux-logo" width="32" height="32" class="rounded"></a>
+	<a class="navbar-brand" href="/dlux-io/App/Views/"><img src="/dlux-io/public/img/dluxcolorlogo.png" alt="dlux-logo" width="32" height="32" class="rounded"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"> <a class="nav-link" href="../apps/">Apps</a></li>
-        <li class="nav-item"> <a class="nav-link" href="../dex/">Exchange</a></li>
+        <li class="nav-item"> <a class="nav-link" href="/dlux-io/App/Views/apps/">Apps</a></li>
+        <li class="nav-item"> <a class="nav-link" href="/dlux-io/App/Views/apps/">Exchange</a></li>
 		<li class="nav-item"> <a class="nav-link" href="https://peakd.com/@dlux-io/" target="_blank">Updates</a></li>
         <li class="nav-item"> <a class="nav-link" href="https://github.com/dluxio/dluxio/wiki" target="_blank">Documentation</a></li>
       </ul>

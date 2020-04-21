@@ -2,17 +2,25 @@
 <html lang="en" class="h-100">
 <head>
 <title>DLUX - Apps</title>
-<?php include '../mod/header.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/dlux-io/App/Views/mod/header.php";
+   include_once($path);
+?>
 <!--dmxAppConnect-->
-<script type="text/javascript" src="../dmxAppConnect/dmxAppConnect.js"></script>
-<script type="text/javascript" src="../dmxAppConnect/dmxMoment.js"></script>
-<script type="text/javascript" src="../dmxAppConnect/dmxFormatter.js"></script>
-<script type="text/javascript" src="../dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
+<script src="/dlux-io/public/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/dlux-io/public/dmxAppConnect/dmxMoment.js"></script>
+<script src="/dlux-io/public/dmxAppConnect/dmxFormatter.js"></script>
+<script src="/dlux-io/public/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
 
 <body class="d-flex flex-column h-100" id="index" is="dmx-app">
 <dmx-api-datasource id="dluxGetBlog" is="dmx-fetch" url="https://token.dlux.io/getwrap?" dmx-param:method="'condenser_api.get_blog'" dmx-param:params="'[%22robotolux%22,0,10]'"></dmx-api-datasource>
-<?php include '../mod/nav.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/dlux-io/App/Views/mod/nav.php";
+   include_once($path);
+?>
 <main role="main" class="flex-shrink-0">
   <div class="container-fluid padme-t70">
     <div class="row mt-3">
@@ -21,7 +29,7 @@
         <p class="lead">Responsive WebXR across mobile, desktop, and headset.<br>
           <a href="/vr" class="lead" target="_blank"><i class="fas fa-vr-cardboard mr-2"></i>Enter Metaverse</a></p>
       </div>
-      <div class="col-md-4 text-center m-auto"> <a class="btn btn-primary btn-lg m-1 btn-1" href="#" role="button">Learn<i class="fas fa-shapes ml-2"></i></a><a class="btn btn-primary btn-lg m-1 btn-1" href="../new/" role="button">Create<i class="fas fa-plus-circle ml-2"></i></a></div>
+      <div class="col-md-4 text-center m-auto"> <a class="btn btn-primary btn-lg m-1 btn-1" href="#" role="button">Learn<i class="fas fa-shapes ml-2"></i></a><a class="btn btn-primary btn-lg m-1 btn-1" href="/dlux-io/App/Views/new/" role="button">Create<i class="fas fa-plus-circle ml-2"></i></a></div>
     </div>
   </div>
  <div class="card-columns p-3" id="blogResult" is="dmx-repeat" dmx-bind:repeat="dluxGetBlog.data.result">
@@ -54,7 +62,7 @@
 			<li class="float-left px-1"><button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{entry_id}}"><span class="close text-white">×</span></button></li>
 		</ul>
 		<ul class="float-right list-unstyled">
-			<li>###.###  <img src="../img/hextacular.svg" alt="" width="17"/></li>
+			<li>###.###  <img src="/dlux-io/public/img/hextacular.svg" alt="" width="17"/></li>
 		</ul>
 			<div class="">
     	<div style="display: flex; flex-grow: 1" class="px-3"><input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{entry_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{entry_id}}','slider{{entry_id}}');"></div>
@@ -65,7 +73,7 @@
       <div class="d-inline-block">
         <div class="float-left"><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{entry_id}}"><i class="fas fa-heart mr-1"></i></a>{{comment.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{comment.children}}</div>
       </div>
-      <div class="float-right">{{comment.total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
+      <div class="float-right">{{comment.total_payout_value}} <img src="/dlux-io/public/img/hextacular.svg" alt="" width="17"/></div>
     </div>
   </div>
 </div>
@@ -118,7 +126,11 @@
 	</div>
 	</div>
 </main>
-<?php include '../mod/footer.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/dlux-io/App/Views/mod/footer.php";
+   include_once($path);
+?>
 <script>
 	function updateVoteSubmit(id,val) {
           document.getElementById(id).innerHTML = document.getElementById(val).value + '%'; 
