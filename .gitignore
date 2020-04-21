@@ -102,3 +102,21 @@ dist
 
 # TernJS port file
 .tern-port
+vendor/symfony/polyfill-ctype/bootstrap.php
+vendor/symfony/polyfill-ctype/composer.json
+vendor/symfony/polyfill-ctype/Ctype.php
+vendor/symfony/polyfill-ctype/LICENSE
+vendor/symfony/polyfill-ctype/README.md
+vendor/symfony/polyfill-mbstring/bootstrap.php
+vendor/symfony/polyfill-mbstring/composer.json
+vendor/symfony/polyfill-mbstring/LICENSE
+vendor/symfony/polyfill-mbstring/Mbstring.php
+vendor/symfony/polyfill-mbstring/README.md
+vendor/symfony/polyfill-mbstring/Resources/unidata/lowerCase.php
+vendor/symfony/polyfill-mbstring/Resources/unidata/titleCaseRegexp.php
+vendor/symfony/polyfill-mbstring/Resources/unidata/upperCase.php
+composer.lock
+vendor/composer/autoload_real.php
+vendor/composer/ClassLoader.php
+vendor/composer/installed.json
+vendor/composer/LICENSE
