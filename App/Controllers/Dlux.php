@@ -19,9 +19,10 @@ class Dlux extends \Core\Controller
      */
     public function indexAction()
     {
-        preg_match('/\/@(.*)\//', $_REQUEST['url'], $_GET['author']);
-        View::render('dlux/index.php', [
-            'permlink' => 'a-test-post'
-         ]);
+        View::render('dlux/index.php');
+        // , [
+        //    'author' => 'disregardfiat',
+        //    'permlink' => 'a-test-post'
+        // ]);
     }
 }
