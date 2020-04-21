@@ -20,8 +20,8 @@ class Dlux extends \Core\Controller
     public function indexAction()
     {
         View::render('dlux/index.php', [
-            author => $author,
-            permlink => $permlink
+            author => 'disregardfiat',
+            permlink => 'a-test-post'
         ]);
     }
 }
