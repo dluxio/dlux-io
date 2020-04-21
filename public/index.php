@@ -34,6 +34,7 @@ $router->add('dlux', ['controller' => 'Dlux', 'action' => 'index']);
 $router->add('blog', ['controller' => 'Blog', 'action' => 'index']);
 $router->add('dex', ['controller' => 'Dex', 'action' => 'index']);
 $router->add('me', ['controller' => 'Me', 'action' => 'index']);
+$router->add('me/', ['controller' => 'Me', 'action' => 'index']);
 $router->add('login', ['controller' => 'Login', 'action' => 'index']);
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
     
