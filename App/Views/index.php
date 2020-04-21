@@ -4,7 +4,7 @@
 <title>DLUX</title>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
-   $path .= "/dlux-io/App/Views/mod/header.php";
+   $path .= "/mod/header.php";
    include_once($path);
 ?>
 <!-- Initialization -->
@@ -18,7 +18,7 @@
 <body class="d-flex flex-column h-100">
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
-   $path .= "/dlux-io/App/Views/mod/nav.php";
+   $path .= "/mod/nav.php";
    include_once($path);
 ?>
 <main class="flex-shrink-0">
@@ -73,7 +73,7 @@
 	</main>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
-   $path .= "/dlux-io/App/Views/mod/footer.php";
+   $path .= "/mod/footer.php";
    include_once($path);
 ?>
 <script type="text/javascript">
