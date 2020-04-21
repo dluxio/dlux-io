@@ -21,4 +21,8 @@ class Dlux extends \Core\Controller
     {
         View::render('dlux/index.php');
     }
+    public function dluxarAction()
+    {
+        View::render('dlux/dluxar.php')
+    }
 }
