@@ -31,7 +31,8 @@ $router->add('apps', ['controller' => 'Apps', 'action' => 'index']);
 //$router->add('{:username}/{:permlink}', ['controller' => 'Dlux', 'action' => 'index']);
 $router->add('api', ['controller' => 'Api', 'action' => 'index']);
 $router->add('dlux', ['controller' => 'Dlux', 'action' => 'index']);
-$router->add('dluxar/{:author}/{:permlink}', ['controller' => 'Dlux', 'action' => 'index']);
+$router->add('dluxar/@{username}/{permlink}')
+$router->add('dluxar/', ['controller' => 'Dlux', 'action' => 'index']);
 $router->add('blog', ['controller' => 'Blog', 'action' => 'index']);
 $router->add('dex', ['controller' => 'Dex', 'action' => 'index']);
 $router->add('me', ['controller' => 'Me', 'action' => 'index']);
