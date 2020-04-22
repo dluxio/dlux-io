@@ -7884,12 +7884,9 @@ body {
   margin: 0px !important; }
 
 .agent-input-ul li {
-  background-color: #fff; }
+  background-color: #fff;
+  overflow-x: scroll; }
 
-/*.agent-dropdown ul li {
-	padding: 5px 20px;
-	margin: 5px 0px;
-}*/
 .agent-input-ul li a {
   display: block;
   clear: both;

@@ -8,13 +8,13 @@
    include_once($path);
 ?>
 <!--dmxAppConnect-->
-<script src="../dmxAppConnect/dmxAppConnect.js"></script>
-<script src="../dmxAppConnect/dmxMoment.js"></script>
-<script src="../dmxAppConnect/dmxFormatter.js"></script>
-<script src="../dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
+<script src="/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/dmxAppConnect/dmxMoment.js"></script>
+<script src="/dmxAppConnect/dmxFormatter.js"></script>
+<script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 <!--page specific-->
-<script src="../js/dex.js"></script>
-<script src="../js/me.js"></script>
+<script src="/js/dex.js"></script>
+<script src="/js/me.js"></script>
 <script>
 	let type
 	function changeTab(url){

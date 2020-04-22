@@ -4,7 +4,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"> <a class="nav-link" href="https://ipfs.dlux.io/apps">Apps</a></li>
+        <li class="nav-item"> <a class="nav-link" href="/apps">Apps</a></li>
         <li class="nav-item"> <a class="nav-link" href="https://ipfs.dlux.io/dex">Exchange</a></li>
 		<li class="nav-item"> <a class="nav-link" href="https://ipfs.dlux.io/@dlux-io/" target="_blank">Updates</a></li>
         <li class="nav-item"> <a class="nav-link" href="https://github.com/dluxio/dluxio/wiki" target="_blank">Documentation</a></li>
