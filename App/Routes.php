@@ -13,7 +13,7 @@ $router->respondWithController('GET', '/dex/', 'Dex@index');
 //$router->respondWithController('GET', '/dex/', 'Dex@index');
 $router->respondWithController('GET', '/apps/', 'Apps@index');
 $router->respondWithController('GET', '/login/', 'Login@index');
-$router->respondWithController('GET', '/blog/', 'Blog@index');
+$router->respondWithController('GET', '/blog/@[:name]/[:permlink]', 'Blog@index');
 $router->respondWithController('GET', '/dlux/', 'Dlux@index');
 $router->respondWithController('GET', '/api/', 'Api@index');
 $router->respondWithController('GET', '/dlux/@[:name]/[:permlink]', 'Dlux@index');

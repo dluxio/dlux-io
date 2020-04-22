@@ -19,6 +19,9 @@ class Blog extends \Core\Controller
      */
     public function index($request, $response, $service)
     {
-        View::render('blog/index.php');
+        View::render('blog/index.php', [
+            'author'    => $request->name,
+            'permlink'  => $request->permlink
+        ]);
     }
 }
