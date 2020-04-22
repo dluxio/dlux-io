@@ -17,7 +17,7 @@ class Dex extends \Core\Controller
      *
      * @return void
      */
-    public function indexAction()
+    public function index($request, $response, $service)
     {
         View::render('dex/index.php');
     }

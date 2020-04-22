@@ -17,7 +17,7 @@ class Dlux extends \Core\Controller
      *
      * @return void
      */
-    public function indexAction()
+    public function index($request, $response, $service)
     {
         View::render('dlux/index.php', [
             'author'    => $request->name,
