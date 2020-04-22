@@ -29,7 +29,7 @@
             echo "const author = '".$author."',";
             echo " permlink = '".$permlink."',";
             ;?>
-        const steemKey = `${author}/${permlink}`
+         steemKey = `${author}/${permlink}`
         steem.api.setOptions({ url: 'https://anyx.io'})
         steem.api.getContent(author, permlink, (err, result) => {
             document.title = `DLUX | ${result.title}`
