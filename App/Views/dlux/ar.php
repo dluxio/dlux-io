@@ -49,8 +49,8 @@
 ;?>
             stateObj, host, hostRep, postDate, user, userImg, userRep, userBal, userVoteVal, postVal, postVotes, postBody, postTitle, author = 'dlux-io',
             <?php 
-            echo "author = '".$_SERVER['author']."',";
-            echo "permlink = '".$_SERVER['permlink']."',";
+            echo "author = '".$author."',";
+            echo "permlink = '".$permlink."',";
             ;?>
             postKey = `${author}/${permlink}`,
             stateKey = '/dluxar/@' + postKey

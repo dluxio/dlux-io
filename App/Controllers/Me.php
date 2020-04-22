@@ -21,4 +21,10 @@ class Me extends \Core\Controller
     {
         View::render('me/index.php');
     }
+    public function blog($request, $response, $service)
+    {
+        View::render('me/index.php',[
+            'author' => $request->name
+        ]);
+    }
 }

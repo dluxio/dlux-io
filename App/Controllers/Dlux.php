@@ -24,4 +24,11 @@ class Dlux extends \Core\Controller
             'permlink'  => $request->permlink
         ]);
     }
+    public function ar($request, $response, $service)
+    {
+        View::render('dlux/ar.php', [
+            'author'    => $request->name,
+            'permlink'  => $request->permlink
+        ]);
+    }
 }

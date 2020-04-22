@@ -25,10 +25,18 @@
 </head>
 <body class="d-flex flex-column h-100" id="apps" is="dmx-app">
 <?php 
-	if(isset($_COOKIE['user'])){
+            echo "const author = '".$author."',";
+            echo "const permlink = '".$permlink."',";
+            ;?>
+
+<?php 
+	if(isset($author)){
+    	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/getwrap?\" dmx-param:method=\"'condenser_api.get_blog'\" dmx-param:params=\"'[%22" . $author . "%22,0,20]'\"></dmx-api-datasource>";
+        }
+	else if(isset($_COOKIE['user'])){
     	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/getwrap?\" dmx-param:method=\"'condenser_api.get_blog'\" dmx-param:params=\"'[%22" . $_COOKIE['user'] . "%22,0,20]'\"></dmx-api-datasource>";
         }
-    else{
+		else{
         echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/getwrap?\" dmx-param:method=\"'condenser_api.get_blog'\" dmx-param:params=\"'[%22robotolux%22,0,10]'\"></dmx-api-datasource>";
         }
 ;?>
