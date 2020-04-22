@@ -15,22 +15,22 @@ require dirname(__DIR__) . '/vendor/autoload.php';
  * Enviroment setup
  */
 
-//use Dotenv\Dotenv;
+use Dotenv\Dotenv;
 // Import .env variables and add them the enviroment
-//$dotenv = new Dotenv(__DIR__."/../");
-//$dotenv->load();
+$dotenv = new Dotenv(__DIR__."/../");
+$dotenv->load();
 
 /**
  * Loging
  */
 
-//use Monolog\Logger;
-//use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
-//$stream = new StreamHandler('logs/main.log', Logger::DEBUG);
+$stream = new StreamHandler('logs/main.log', Logger::DEBUG);
 // Create a logger for the debugging-related stuff
-//$logger = new Logger('debug');
-//$logger->pushHandler($stream);
+$logger = new Logger('debug');
+$logger->pushHandler($stream);
 
 /**
  * Error and Exception handling
