@@ -15,10 +15,10 @@ require dirname(__DIR__) . '/vendor/autoload.php';
  * Enviroment setup
  */
 
-use Dotenv\Dotenv;
+//use Dotenv\Dotenv;
 // Import .env variables and add them the enviroment
-$dotenv = new Dotenv(__DIR__."/../");
-$dotenv->load();
+//$dotenv = new Dotenv(__DIR__."/../");
+//$dotenv->load();
 
 /**
  * Loging
