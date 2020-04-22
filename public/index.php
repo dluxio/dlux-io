@@ -11,33 +11,35 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+/**
+ * Enviroment setup
+ */
+
+use Dotenv\Dotenv;
+// Import .env variables and add them the enviroment
+$dotenv = new Dotenv(__DIR__."/../");
+$dotenv->load();
+
+/**
+ * Loging
+ */
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+$stream = new StreamHandler('logs/main.log', Logger::DEBUG);
+// Create a logger for the debugging-related stuff
+$logger = new Logger('debug');
+$logger->pushHandler($stream);
 
 /**
  * Error and Exception handling
  */
-error_reporting(E_ALL);
-set_error_handler('Core\Error::errorHandler');
-set_exception_handler('Core\Error::exceptionHandler');
 
+// Whoops error handling
+$whoops = new Whoops\Run();
+// Set Whoops as the default error and exception handler used by PHP:
+$whoops->register();
+$whoops->pushHandler(new Whoops\Handler\PrettyPageHandler());
 
-/**
- * Routing
- */
-$router = new Core\Router();
-
-// Add the routes
-$router->add('apps', ['controller' => 'Apps', 'action' => 'index']);
-//$router->add('{:username}', ['controller' => 'Me', 'action' => 'index']);
-//$router->add('{:username}/{:permlink}', ['controller' => 'Dlux', 'action' => 'index']);
-$router->add('api', ['controller' => 'Api', 'action' => 'index']);
-$router->add('dlux', ['controller' => 'Dlux', 'action' => 'index']);
-//$router->add('dluxar/@{username}/{permlink}')
-$router->add('dluxar/', ['controller' => 'Dlux', 'action' => 'index']);
-$router->add('blog', ['controller' => 'Blog', 'action' => 'index']);
-$router->add('dex', ['controller' => 'Dex', 'action' => 'index']);
-$router->add('me', ['controller' => 'Me', 'action' => 'index']);
-$router->add('me/', ['controller' => 'Me', 'action' => 'index']);
-$router->add('login', ['controller' => 'Login', 'action' => 'index']);
-$router->add('', ['controller' => 'Home', 'action' => 'index']);
-    
-$router->dispatch($_SERVER['QUERY_STRING']);
+require_once('../App/Routes.php');

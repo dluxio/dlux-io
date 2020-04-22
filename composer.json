@@ -1,11 +1,16 @@
 {
     "require": {
-        "twig/twig": "~2.0"
+        "twig/twig": "~2.0",
+        "nochso/html-compress-twig": "^2.0",
+        "klein/klein": "^2.1",
+        "vlucas/phpdotenv": "^2.4",
+        "monolog/monolog": "^1.23",
+        "filp/whoops": "2.*"
     },
     "autoload": {
         "psr-4": {
-             "Core\\": "Core/",
-             "App\\": "App/"
+            "Core\\": "Core/",
+            "App\\": "App/"
         }
     }
 }

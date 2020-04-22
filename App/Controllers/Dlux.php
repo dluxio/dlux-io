@@ -19,9 +19,9 @@ class Dlux extends \Core\Controller
      */
     public function indexAction()
     {
-        View::render('dlux/index.php', [
-            'author' => 'disregardfiat',
-            'permlink' => 'a-test-post'
+        View::render('dlux/index.php', , [
+            'author'    => $request->name,
+            'permlink'  => $request->permlink
         ]);
     }
 }
