@@ -24,13 +24,13 @@ require dirname(__DIR__) . '/vendor/autoload.php';
  * Loging
  */
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+//use Monolog\Logger;
+//use Monolog\Handler\StreamHandler;
 
-$stream = new StreamHandler('logs/main.log', Logger::DEBUG);
+//$stream = new StreamHandler('logs/main.log', Logger::DEBUG);
 // Create a logger for the debugging-related stuff
-$logger = new Logger('debug');
-$logger->pushHandler($stream);
+//$logger = new Logger('debug');
+//$logger->pushHandler($stream);
 
 /**
  * Error and Exception handling
