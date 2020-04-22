@@ -6,20 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'nochso\\HtmlCompressTwig\\' => array($vendorDir . '/nochso/html-compress-twig/src'),
-    'WyriHaximus\\HtmlCompress\\' => array($vendorDir . '/wyrihaximus/html-compress/src'),
-    'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
-    'WebSharks\\CssMinifier\\' => array($vendorDir . '/websharks/css-minifier/src/includes/classes'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
-    'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
-    'Patchwork\\' => array($vendorDir . '/patchwork/jsqueeze/src'),
-    'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
-    'MatthiasMullie\\PathConverter\\' => array($vendorDir . '/matthiasmullie/path-converter/src'),
-    'MatthiasMullie\\Minify\\' => array($vendorDir . '/matthiasmullie/minify/src'),
-    'Klein\\' => array($vendorDir . '/klein/klein/src/Klein'),
-    'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Core\\' => array($baseDir . '/Core'),
     'App\\' => array($baseDir . '/App'),
 );
