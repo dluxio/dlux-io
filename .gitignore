@@ -1,3 +1,14 @@
+#composer
+composer.lock
+vendor/composer/autoload_classmap.php
+vendor/composer/autoload_files.php
+vendor/composer/autoload_namespaces.php
+vendor/composer/autoload_psr4.php
+vendor/composer/autoload_real.php
+vendor/composer/autoload_static.php
+vendor/composer/ClassLoader.php
+vendor/composer/installed.json
+vendor/composer/LICENSE
 # Logs
 logs
 *.log
@@ -134,3 +145,13 @@ App/Views/dex/_notes/dwsync.xml
 App/Views/dex/.DS_Store
 public/img/.DS_Store
 public/css/_notes/dwsync.xml
+composer.lock
+vendor/composer/autoload_classmap.php
+vendor/composer/autoload_files.php
+vendor/composer/autoload_namespaces.php
+vendor/composer/autoload_psr4.php
+vendor/composer/autoload_real.php
+vendor/composer/autoload_static.php
+vendor/composer/ClassLoader.php
+vendor/composer/installed.json
+vendor/composer/LICENSE
