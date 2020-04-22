@@ -27,7 +27,7 @@
         var ipfsdomain
         <?php 
             echo "const author = '".$author."',";
-            echo "const permlink = '".$permlink."',";
+            echo " permlink = '".$permlink."',";
             ;?>
         const steemKey = `${author}/${permlink}`
         steem.api.setOptions({ url: 'https://anyx.io'})
