@@ -30,7 +30,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright bg-darker text-center text-white py-3">© 2020 Copyright: 
-    <a href="https://dlux.io/" class="">dlux.io</a>
+    <a href="https://www.dlux.io/" class="">dlux.io</a>
   </div>
   <!-- Copyright -->
 
