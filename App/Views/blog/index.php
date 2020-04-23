@@ -8,10 +8,10 @@
    include_once($path);
 ?>
 <!--dmxAppConnect-->
-<script type="text/javascript" src="../dmxAppConnect/dmxAppConnect.js"></script>
-<script type="text/javascript" src="../dmxAppConnect/dmxMoment.js"></script>
-<script type="text/javascript" src="../dmxAppConnect/dmxFormatter.js"></script>
-<script type="text/javascript" src="../dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
+<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script>
+<script type="text/javascript" src="/dmxAppConnect/dmxMoment.js"></script>
+<script type="text/javascript" src="/dmxAppConnect/dmxFormatter.js"></script>
+<script type="text/javascript" src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 <!--page specific-->
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 </head>
