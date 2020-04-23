@@ -19,6 +19,7 @@ $router->respondWithController('GET', '/api/', 'Api@index');
 $router->respondWithController('GET', '/dlux/@[:name]/[:permlink]', 'Dlux@index');
 $router->respondWithController('GET', '/@[:name]/[:permlink]', 'Dlux@index');
 $router->respondWithController('GET', '/dluxar/@[:name]/[:permlink]', 'Dlux@ar');
+$router->respondWithController('GET', '/qr', 'Qr@index');
 $router->respondWithController('GET', '/', 'Home@index');
 // Dispatch the router
 $router->dispatch();
