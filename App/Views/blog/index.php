@@ -22,7 +22,13 @@
     is="dmx-app"
     class="text-white"
   >
-
+<?php echo '<dmx-api-datasource
+      id="dluxGetContent"
+      is="dmx-fetch"
+      url="https://token.dlux.io/getwrap?"
+      dmx-param:method="\'condenser_api.get_content\'"
+      dmx-param:params="\'[%22'.$author.'%22,%22'.$permlink.'%22]\'"
+    ></dmx-api-datasource>';?>
   <?php echo '<dmx-api-datasource
       id="dluxGetReplies"
       is="dmx-fetch"
