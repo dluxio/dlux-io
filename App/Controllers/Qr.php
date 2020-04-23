@@ -19,12 +19,11 @@ class Qr extends \Core\Controller
      */
     public function index($request, $response, $service)
     {
-        $options = new QROptions([
+        $qrcode = new QRCode([
             'version'    => 5,
             'outputType' => QRCode::OUTPUT_IMAGE_PNG,
             'eccLevel'   => QRCode::ECC_L,
         ]);
-        $qrcode = new QRCode($options);
         $parts = parse_url($request['url']);
         parse_str($parts['query'], $data);
         $qrcode->render($data['link']);
