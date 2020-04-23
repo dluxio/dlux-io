@@ -370,7 +370,7 @@
           false
         );
       })();
-      onpageloaded();
+      //onpageloaded();
     </script>
     <script>
       checkCookie();
