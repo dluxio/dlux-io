@@ -22,21 +22,14 @@
     is="dmx-app"
     class="text-white"
   >
-    <dmx-api-datasource
-      id="dluxGetContent"
-      is="dmx-fetch"
-      url="https://token.dlux.io/getwrap?"
-      dmx-param:method="'condenser_api.get_content'"
-      dmx-param:params="'[%22dlux-io%22,%22testing-dlux-vr%22]'"
-    ></dmx-api-datasource>
-    <dmx-api-datasource
+
+  <?php echo '<dmx-api-datasource
       id="dluxGetReplies"
       is="dmx-fetch"
       url="https://token.dlux.io/getwrap?"
       dmx-param:method="'condenser_api.get_content_replies'"
-      dmx-param:params="'[%22dlux-io%22,%22testing-dlux-vr%22]'"
-    ></dmx-api-datasource>
-
+      dmx-param:params="'[%22".$author."%22,%22".$permlink."%22]'"
+    ></dmx-api-datasource>'?>
     <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
