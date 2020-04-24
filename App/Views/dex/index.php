@@ -145,7 +145,7 @@
 				</div>
 			</div>
 		  </div>
-			<div id="jumbobal" class="balance"><h4>BAL: 62382 DLUX</h4></div>
+			<div id="jumbobal" class="balance"><h4>BAL: LOADING... DLUX</h4></div>
 		  </div>
 	
 	<canvas id="marketOrdersChart" height="125" class="orderbook-chart"></canvas>
@@ -154,24 +154,12 @@
 		  <div class="col-lg-6">
 			  <h5 style="padding-top: 10px">BUY ORDERS</h5>
 		  <table width="100%">
-  <tbody>
+  <tbody id="buyorderstable">
     <tr>
-      <th scope="col">TOTAL</th>
-      <th scope="col">QTY</th>
-      <th scope="col">BID</th>
+      <th scope="col">DLUX</th>
+      <th scope="col" id="pair1">HIVE</th>
+      <th scope="col">Price</th>
       <th scope="col">&nbsp;</th>
-    </tr>
-    <tr>
-      <td>34513</td>
-      <td>34513</td>
-      <td>.22</td>
-      <td><button class="btn btn-outline-danger btn-sm" type="submit">Sell</button></td>
-    </tr>
-    <tr>
-      <td>6826</td>
-      <td>6826</td>
-      <td>.21</td>
-      <td><button class="btn btn-outline-danger btn-sm" type="submit">Sell</button></td>
     </tr>
   </tbody>
 </table>
@@ -179,24 +167,12 @@
 		  <div class="col-lg-6">
 			  <h5 style="padding-top: 10px">SELL ORDERS</h5>
 		    <table width="100%">
-  <tbody>
+  <tbody id="sellorderstable">
     <tr>
-      <th scope="col">TOTAL</th>
-      <th scope="col">QTY</th>
-      <th scope="col">ASK</th>
+      <th scope="col">DLUX</th>
+      <th scope="col" id="pair2">HIVE</th>
+      <th scope="col">Price</th>
       <th scope="col">&nbsp;</th>
-    </tr>
-    <tr>
-      <td>7657</td>
-      <td>7657 </td>
-      <td>.23</td>
-      <td><button class="btn btn-outline-success btn-sm" type="submit">Buy</button></td>
-    </tr>
-    <tr>
-      <td>5632</td>
-      <td>5632 </td>
-      <td>.24</td>
-      <td><button class="btn btn-outline-success btn-sm" type="submit">Buy</button></td>
     </tr>
   </tbody>
 </table>
