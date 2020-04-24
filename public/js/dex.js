@@ -18,7 +18,7 @@ function dex(usr, pair, type) {
     document.getElementById('hivepairselect').addEventListener("click", function() {
         dexview("hive", User.opts.type);
     })
-    document.getElementById('hivepairselect').addEventListener("click", function() {
+    document.getElementById('hbdpairselect').addEventListener("click", function() {
         dexview("hbd", User.opts.type);
     })
     let buyOrdersTable = document.getElementById('buyorderstable')
