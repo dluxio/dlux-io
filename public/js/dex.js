@@ -23,54 +23,7 @@ function dex(usr, pair, type) {
     document.getElementById('hbdpairselect').addEventListener("click", function() {
         dexview("hbd", User.opts.type);
     })
-    var info = document.getElementsByClassName('text-center market-info-item')
-    console.log(info)
-    var ip1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.markets.hive.tick).toFixed(1),
-        m = 'K'
-    var is1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.markets.hbd.tick).toFixed(1),
-        n = 'K'
-    if (ip1 > 1000) {
-        ip1 = parseFloat(ip1 / 1000).toFixed(1)
-        m = 'M'
-    }
-    if (ip1 > 1000) {
-        ip1 = parseFloat(ip1 / 1000).toFixed(1)
-        m = 'B'
-    }
-    console.log({ ip1 })
-    info[0].innerHTML = `<h3><span>${ip1}${m} HIVE</span></h3>
-				<div>
-					<label>Market Cap</label>
-				</div>`
-    if (is1 > 1000) {
-        is1 = parseFloat(is1 / 1000).toFixed(1)
-        n = 'M'
-    }
-    if (is1 > 1000) {
-        is1 = parseFloat(is1 / 1000).toFixed(1)
-        n = 'B'
-    }
-    console.log({ is1 })
-    info[5].innerHTML = `<h3><span>${is1}${n} HBD</span></h3>
-				<div>
-					<label>Market Cap</label>
-				</div>`
-    var ip2 = parseFloat(User.stats.tokenSupply / 1000000000).toFixed(1),
-        l = 'M'
-
-    if (ip2 > 1000) {
-        ip3 = parseFloat(ip3 / 1000).toFixed(1);
-        l = 'B'
-    }
-    console.log(ip2)
-    info[2].innerHTML = `<h3><span>${ip2}${l} DLUX</span></h3>
-				<div>
-					<label>Supply</label>
-				</div>`
-    info[7].innerHTML = `<h3><span>${ip2}${l} DLUX</span></h3>
-				<div>
-					<label>Supply</label>
-				</div>`
+    popStats()
     fetch('https://token.dlux.io/feed')
         .then(r => {
             return r.json()
@@ -437,9 +390,11 @@ function dexview(pair, type) {
     if (User.opts.type === 'buy') {
         document.getElementById('buyTab').classList.add('active')
         document.getElementById('sellTab').classList.remove('active')
+        document.getElementById('listButton').innerText = 'Buy'
     } else {
         document.getElementById('buyTab').classList.remove('active')
         document.getElementById('sellTab').classList.add('active')
+        document.getElementById('listButton').innerText = 'Sell'
     }
     if (User.opts.pair === 'hive') {
         document.getElementById('pairmenustatus').innerText = 'DLUX:HIVE'
@@ -509,6 +464,61 @@ function dexview(pair, type) {
                 }
             }
         })
+}
+
+function popStats() {
+    var info = document.getElementsByClassName('text-center market-info-item')
+    console.log(info)
+    var ip1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.marketsp[User.opts.pair].tick).toFixed(1),
+        m = 'K'
+    if (ip1 > 1000) {
+        ip1 = parseFloat(ip1 / 1000).toFixed(1)
+        m = 'M'
+    }
+    if (ip1 > 1000) {
+        ip1 = parseFloat(ip1 / 1000).toFixed(1)
+        m = 'B'
+    }
+    console.log({ ip1 })
+    info[0].innerHTML = `<h3><span>${ip1}${m} ${User.opts.pair.toUpperCase()}</span></h3>
+				<div>
+					<label>Market Cap</label>
+				</div>`
+    var ip2 = parseFloat(User.stats.tokenSupply / 1000000000).toFixed(1),
+        l = 'M'
+
+    if (ip2 > 1000) {
+        ip3 = parseFloat(ip3 / 1000).toFixed(1);
+        l = 'B'
+    }
+    console.log(ip2)
+    info[2].innerHTML = `<h3><span>${ip2}${l} DLUX</span></h3>
+				<div>
+					<label>Supply</label>
+                </div>`
+}
+
+function popHist() {
+    for (i in User.dex.markets[User.opts.pair]) {
+        if (User.opts.agent !== User.dex.queue[i]) {
+            var node = document.createElement('li')
+            node.innerHTML = `<a href="#" onclick="User.opts.to='${User.dex.queue[i]}';insertBal('${User.dex.queue[i]}', 'custodialAgent', 'innerText');dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
+            cAgentNode.appendChild(node)
+        }
+    }
+
+    `<tr>
+      <td>2 Hours Ago</td>
+      <td>.224</td>
+      <td>998</td>
+      <td>998</td>
+    </tr>`
+
+    //volume
+    info[4].innerHTML = `<h3><span>${ip2}${l} DLUX</span></h3>
+				<div>
+					<label>Volume</label>
+				</div>`
 }
 
 function popOrderTable(orderstable, type) {

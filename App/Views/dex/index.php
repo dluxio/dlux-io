@@ -318,7 +318,7 @@ $(document).ready(function(){
 		  
       </div>
 		<div class="text-center">
-        <button type="button" class="btn btn-outline-success btn-75" onClick="dexsend(document.getElementById('buyDluxTitle').innerText.split(' ')[0], User.opts.pair)">Buy</button>
+        <button id="listButton" type="button" class="btn btn-outline-success btn-75" onClick="dexsend(document.getElementById(User.opts.type, User.opts.pair)">Buy</button>
 				</div>
 		  </div>
 	  </form>
@@ -331,24 +331,12 @@ $(document).ready(function(){
 			  <div class="history">
 			  
 		    <table width="100%" class="history-table">
-  <tbody>
+  <tbody id="tradeHist">
     <tr>
       <th scope="col">DATE</th>
       <th scope="col">PRICE</th>
       <th scope="col">QTY</th>
       <th scope="col">TOTAL</th>
-    </tr>
-    <tr>
-      <td>1 Hour Ago</td>
-      <td>.225</td>
-      <td>332</td>
-      <td>332</td>
-    </tr>
-    <tr>
-      <td>2 Hours Ago</td>
-      <td>.224</td>
-      <td>998</td>
-      <td>998</td>
     </tr>
   </tbody>
 </table>
