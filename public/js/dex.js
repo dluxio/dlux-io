@@ -9,72 +9,72 @@ function dex(usr, pair, type) {
     document.getElementById('menupricelab').innerHTML = `Calculated Price: (<a href="#" onClick="insertBal('${parseFloat(User.dex.markets[User.opts.pair].tick)}', 'menuprice')">Market Price: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
     document.getElementById('menupairlab').innerHTML = `For: (<a href="#" onClick="insertBal(parseFloat(User[User.opts.pair].balance),'menupair')">Balance: ${User[User.opts.pair].balance}</a>):`
 
-    document.getElementById('buyTab').addEventListener("click", function() {}
+    document.getElementById('buyTab').addEventListener("click", function() {
         dexview(User.opts.pair, "buy");
     })
-document.getElementById('sellTab').addEventListener("click", function() {
-    dexview(User.opts.pair, "sell");
-})
-document.getElementById('hivepairselect').addEventListener("click", function() {
-    dexview("hive", User.opts.type);
-})
-document.getElementById('hivepairselect').addEventListener("click", function() {
-    dexview("hbd", User.opts.type);
-})
-let buyOrdersTable = document.getElementById('buyorderstable')
-for (i in User.dex[User.opts.pair].buyOrders) {
-    let txnode = document.createElement('tr')
-    let whos = `< button class = "btn btn-outline-danger btn-sm"
+    document.getElementById('sellTab').addEventListener("click", function() {
+        dexview(User.opts.pair, "sell");
+    })
+    document.getElementById('hivepairselect').addEventListener("click", function() {
+        dexview("hive", User.opts.type);
+    })
+    document.getElementById('hivepairselect').addEventListener("click", function() {
+        dexview("hbd", User.opts.type);
+    })
+    let buyOrdersTable = document.getElementById('buyorderstable')
+    for (i in User.dex[User.opts.pair].buyOrders) {
+        let txnode = document.createElement('tr')
+        let whos = `< button class = "btn btn-outline-danger btn-sm"
     type = "submit" onclick="getSellID('${User.dex[User.opts.pair].buyOrders[i].txid}')"> Sell < /button>`
-    if (User.dex[User.opts.pair].buyOrders[i].from == user) {
-        whos = `< button class = "btn btn-outline-warning btn-sm"
+        if (User.dex[User.opts.pair].buyOrders[i].from == user) {
+            whos = `< button class = "btn btn-outline-warning btn-sm"
     type = "submit" onclick="cancel('${User.dex[User.opts.pair].buyOrders[i].txid}')"> Cancel < /button>`
-    }
-    txnode.innerHTML = `
+        }
+        txnode.innerHTML = `
     <td>${parseFloat(User.dex[User.opts.pair].buyOrders[i].amount/1000).toFixed(3)}</td> 
     <td>${parseFloat(User.dex[User.opts.pair].buyOrders[i][User.opts.pair]/1000).toFixed(3)}</td> 
     <td>${parseFloat(User.dex[User.opts.pair].buyOrders[i].rate).toFixed(6)}</td> 
     <td> ${whos}</td >`
-    buyOrdersTable.appendChild(txnode)
-}
-let sellOrdersTable = document.getElementById('sellorderstable')
-for (i in User.dex[User.opts.pair].sellOrders) {
-    let txnode = document.createElement('tr')
-    let whos = `< button class = "btn btn-outline-success btn-sm"
-    type = "submit" onclick="getItID('${User.dex[User.opts.pair].sellOrders[i].txid}')"> Buy < /button>`
-    if (User.dex[User.opts.pair].sellOrders[i].from == user) {
-        whos = `< button class = "btn btn-outline-warning btn-sm"
-    type = "submit" onclick="cancel('${User.dex[User.opts.pair].sellOrders[i].txid}')"> Cancel < /button>`
+        buyOrdersTable.appendChild(txnode)
     }
-    txnode.innerHTML = `
+    let sellOrdersTable = document.getElementById('sellorderstable')
+    for (i in User.dex[User.opts.pair].sellOrders) {
+        let txnode = document.createElement('tr')
+        let whos = `< button class = "btn btn-outline-success btn-sm"
+    type = "submit" onclick="getItID('${User.dex[User.opts.pair].sellOrders[i].txid}')"> Buy < /button>`
+        if (User.dex[User.opts.pair].sellOrders[i].from == user) {
+            whos = `< button class = "btn btn-outline-warning btn-sm"
+    type = "submit" onclick="cancel('${User.dex[User.opts.pair].sellOrders[i].txid}')"> Cancel < /button>`
+        }
+        txnode.innerHTML = `
     <td>${parseFloat(User.dex[User.opts.pair].sellOrders[i].amount/1000).toFixed(3)}</td> 
     <td>${parseFloat(User.dex[User.opts.pair].sellOrders[i][User.opts.pair]/1000).toFixed(3)}</td> 
     <td>${parseFloat(User.dex[User.opts.pair].sellOrders[i].rate).toFixed(6)}</td> 
     <td> ${whos}</td >`
-    buyOrdersTable.appendChild(txnode)
-}
-fetch('https://token.dlux.io/feed')
-    .then(r => {
-        return r.json()
-    })
-    .then(result => {
-        let node = document.createElement('h4')
-        node.innerHTML = 'Transactions:<form><input type="checkbox" id="hideReportsCB" name="report" value="No" checked></input></form>'
-        node.class = "mb-3"
-        let txholder = document.getElementById('dluxtxs')
+        buyOrdersTable.appendChild(txnode)
+    }
+    fetch('https://token.dlux.io/feed')
+        .then(r => {
+            return r.json()
+        })
+        .then(result => {
+            let node = document.createElement('h4')
+            node.innerHTML = 'Transactions:<form><input type="checkbox" id="hideReportsCB" name="report" value="No" checked></input></form>'
+            node.class = "mb-3"
+            let txholder = document.getElementById('dluxtxs')
 
-        for (i in result.feed) {
-            if (result.feed[i].match(user) && !result.feed[i].match('Report')) {
-                let txnode = document.createElement('div')
-                txnode.innerHTML = `
+            for (i in result.feed) {
+                if (result.feed[i].match(user) && !result.feed[i].match('Report')) {
+                    let txnode = document.createElement('div')
+                    txnode.innerHTML = `
 					   <p class="my-2">${i}<br>${result.feed[i]}</p>
 					   <hr class="my-3 bg-light">`
-                txholder.insertAdjacentElement('afterbegin', txnode)
+                    txholder.insertAdjacentElement('afterbegin', txnode)
+                }
             }
-        }
-        txholder.insertAdjacentElement('afterbegin', node)
-    })
-    .catch(e => { console.log(e) })
+            txholder.insertAdjacentElement('afterbegin', node)
+        })
+        .catch(e => { console.log(e) })
 }
 
 function cancel(txid) {
