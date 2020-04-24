@@ -585,6 +585,6 @@ $(document).ready(function(){
 
 </script>
 <!--check login-->
-<script>checkCookie();iAm(getCookie("user"));</script>
+<script>checkCookie();function pageSpecfic(user){dex(user)};</script>
 </body>
 </html>
