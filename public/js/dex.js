@@ -522,11 +522,13 @@ function popHist() {
 }
 
 function popOrderTable(orderstable, type) {
-    let func
+    let func, lab
     if (type == 'sellOrders') {
         func = 'getSellId'
+        lab = 'Buy'
     } else if (type == 'buyOrders') {
         func = 'getItId'
+        lab = 'Sell'
     }
     let buyOrdersTable = document.getElementById(orderstable)
     for (i in User.dex.markets[User.opts.pair][type]) {
