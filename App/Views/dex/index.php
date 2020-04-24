@@ -96,8 +96,8 @@
     			<span class="sr-only">Toggle Dropdown</span>
   				</a>
   				<div class="dropdown-menu">
-    				<a class="dropdown-item" href="#">DLUX:HIVE</a>
-    				<a class="dropdown-item" href="#">DLUX:HBD</a>
+    				<a id="hivepairselect" class="dropdown-item">DLUX:HIVE</a>
+    				<a id="hbdpairselect" class="dropdown-item">DLUX:HBD</a>
 				</div>
 				
 	      <div class="row">
@@ -145,7 +145,7 @@
 				</div>
 			</div>
 		  </div>
-			<div class="balance"><h4>BAL: 62382 DLUX</h4></div>
+			<div id="jumbobal" class="balance"><h4>BAL: 62382 DLUX</h4></div>
 		  </div>
 	
 	<canvas id="marketOrdersChart" height="125" class="orderbook-chart"></canvas>
@@ -221,12 +221,12 @@
 			<div class="input-group-prepend">
       		  <div class="input-group-text">@</div>
     		</div>
-        	<input class="form-control" id="senddluxfrom" type="text" dmx-bind:placeholder="{{dluxGetBlog.data.result[0].blog}}" readonly>
+        	<input class="form-control" id="senddluxfrom" type="text" readonly>
 		  </div>
 			 </div>
 		  
 		  <div class="form-group">
-	   <label id="menudluxlab" for="buydluxquantity">Desired Quantity:</label>
+	   <label id="menudluxlab" for="buydluxquantity">DLUX Quantity:</label>
 		<div class="input-group">
 			<input class="form-control" id="menudlux" type="number" step="0.001" min="0.001" placeholder="1.000">
 			<div class="input-group-append">
@@ -235,9 +235,9 @@
 		  </div>
 			 </div>
         <div class="form-group">
-	   <label id="menupricelab" for="buydluxprice">Desired Price (<a href="#" onClick="insertBal(User.dex.markets[User.opts.type].tick, 'menuprice')">MP: 0.22 HIVE</a>):</label>
+	   <label id="menupricelab" for="buydluxprice">Calculated Price (<a href="#" onClick="insertBal(User.dex.markets[User.opts.type].tick, 'menuprice')">MP: 0.22 HIVE</a>):</label>
 		<div class="input-group">
-			<input class="form-control" id="menuprice" type="number" placeholder="1.000">
+			<input class="form-control" id="menuprice" type="number" placeholder="1.000" readonly>
 			<div class="input-group-append">
       		  <div class="input-group-text" id="menupairdiv">HIVE</div>
     		</div>
@@ -389,30 +389,8 @@ $(document).ready(function(){
 		  <div class="container-fluid" style="padding:0">
 		  <div class="col-lg-12 text-center" style="padding: 0">
 			  <h5 style="padding-top: 40px">DLUX TRANSACTION FEED</h5>
-			  <div class="feed">
+			  <div id="dluxtxs" class="feed">
 			  
-		    <table width="100%" class="feed-table">
-  <tbody>
-    <tr>
-      <th scope="col">HASH</th>
-      <th scope="col">BLOCK</th>
-      <th scope="col">USER</th>
-      <th scope="col">ACTION</th>
-    </tr>
-    <tr>
-      <td>f4ef62eaa6dd5498e3b593497fd1eb76b2773d19</td>
-      <td>32100072</td>
-      <td>@disregardfiat</td>
-      <td>report has been processed</td>
-    </tr>
-    <tr>
-      <td>370534d95d25a223eee8080c12487fc32c7dc502</td>
-      <td>32086802</td>
-      <td>@chrismgiles</td>
-      <td>bought 45.454 DLUX with 0.010 HIVE</td>
-    </tr>
-  </tbody>
-</table>
 	</div>
 
 	</div>
