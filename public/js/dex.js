@@ -499,7 +499,7 @@ function popStats() {
 }
 
 function popHist() {
-    for (i in User.dex.markets[User.opts.pair]) {
+    for (i in User.dex.markets[User.opts.pair].hist) {
         if (User.opts.agent !== User.dex.queue[i]) {
             var node = document.createElement('li')
             node.innerHTML = `<a href="#" onclick="User.opts.to='${User.dex.queue[i]}';insertBal('${User.dex.queue[i]}', 'custodialAgent', 'innerText');dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
@@ -533,7 +533,7 @@ function popOrderTable(orderstable, type) {
     let buyOrdersTable = document.getElementById(orderstable)
     for (i in User.dex.markets[User.opts.pair][type]) {
         let txnode = document.createElement('tr')
-        let whos = `<button class ="btn btn-outline-danger btn-sm" type="submit" onclick="${func}('${User.dex.markets[User.opts.pair][type][i].txid}')"> Sell </button>`
+        let whos = `<button class ="btn btn-outline-danger btn-sm" type="submit" onclick="${func}('${User.dex.markets[User.opts.pair][type][i].txid}')"> ${type} </button>`
         if (User.dex.markets[User.opts.pair][type][i].from == user) {
             whos = `<button class ="btn btn-outline-warning btn-sm" type="submit" onclick="cancel('${User.dex.markets[User.opts.pair][type][i].txid}')"> Cancel </button>`
         }
