@@ -516,20 +516,20 @@ function popOrderTable(orderstable, type) {
     console.log({ buyOrdersTable })
     console.log(User.opts.pair)
     console.log(type)
-
-    console.log(User.dex[User.opts.pair][type])
-    for (i in User.dex[User.opts.pair][type]) {
+    console.log(User.dex)
+    console.log(User.dex.markets[User.opts.pair][type])
+    for (i in User.dex.markets[User.opts.pair][type]) {
         let txnode = document.createElement('tr')
         let whos = `< button class = "btn btn-outline-danger btn-sm"
-    type = "submit" onclick="getSellID('${User.dex[User.opts.pair][type][i].txid}')"> Sell < /button>`
-        if (User.dex[User.opts.pair][type][i].from == user) {
+    type = "submit" onclick="getSellID('${User.dex.markets[User.opts.pair][type][i].txid}')"> Sell < /button>`
+        if (User.dex.markets[User.opts.pair][type][i].from == user) {
             whos = `< button class = "btn btn-outline-warning btn-sm"
-    type = "submit" onclick="cancel('${User.dex[User.opts.pair][type][i].txid}')"> Cancel < /button>`
+    type = "submit" onclick="cancel('${User.dex.markets[User.opts.pair][type][i].txid}')"> Cancel < /button>`
         }
         txnode.innerHTML = `
-    <td>${parseFloat(User.dex[User.opts.pair][type][i].amount/1000).toFixed(3)}</td> 
-    <td>${parseFloat(User.dex[User.opts.pair][type][i][User.opts.pair]/1000).toFixed(3)}</td> 
-    <td>${parseFloat(User.dex[User.opts.pair][type][i].rate).toFixed(6)}</td> 
+    <td>${parseFloat(User.dex.markets[User.opts.pair][type][i].amount/1000).toFixed(3)}</td> 
+    <td>${parseFloat(User.dex.markets[User.opts.pair][type][i][User.opts.pair]/1000).toFixed(3)}</td> 
+    <td>${parseFloat(User.dex.markets[User.opts.pair][type][i].rate).toFixed(6)}</td> 
     <td> ${whos}</td >`
         buyOrdersTable.appendChild(txnode)
     }
