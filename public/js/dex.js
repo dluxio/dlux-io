@@ -434,6 +434,7 @@ function dexview(pair, type) {
     if (!User.opts.agent) {
         User.opts.agent = User.dex.queue[1] ? User.dex.queue[1] : User.dex.queue[2]
     }
+    console.log(User.opts)
     document.getElementById('escrowAgent').innerText = User.opts.agent
     document.getElementById('custodialAgent').innerText = User.opts.to
     var balsP = []
