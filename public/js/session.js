@@ -52,7 +52,7 @@
          ).then(jsons => {
              User.dlux = jsons[0]
              User.dex = jsons[1]
-             User.stats = jsons[2]
+             User.stats = jsons[2].stats
              User.price = jsons[3].hive.usd
              User.hstats = jsons[4].result
              User.hive = jsons[5].result[0]

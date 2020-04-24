@@ -24,7 +24,7 @@ function dex(usr, pair, type) {
         dexview("hbd", User.opts.type);
     })
     var info = document.getElementsByClassName('text-center market-info-item')
-    console.log('market info:', info)
+    console.log({ stats: User.stats })
     var ip1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.markets.hive.tick).toFixed(1),
         m = 'K'
     var is1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.markets.hbd.tick).toFixed(1),
