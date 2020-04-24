@@ -54,6 +54,7 @@ function dex(usr, pair, type) {
         buyOrdersTable.appendChild(txnode)
     }
     var info = document.getElementsByClassName('text-center market-info-item')
+    console.log(info)
     var ip1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.markets.hive.tick).toFixed(1),
         m = 'K'
     var is1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.markets.hbd.tick).toFixed(1),
@@ -66,6 +67,7 @@ function dex(usr, pair, type) {
         ip1 = parseFloat(ip1 / 1000).toFixed(1)
         m = 'B'
     }
+    console.log({ ip1 })
     info[0].innerHTML = `<h3><span>${ip1}${m} HIVE</span></h3>
 				<div>
 					<label>Market Cap</label>
@@ -78,6 +80,7 @@ function dex(usr, pair, type) {
         is1 = parseFloat(is1 / 1000).toFixed(1)
         n = 'B'
     }
+    console.log({ is1 })
     info[5].innerHTML = `<h3><span>${is1}${n} HBD</span></h3>
 				<div>
 					<label>Market Cap</label>
@@ -89,6 +92,7 @@ function dex(usr, pair, type) {
         ip3 = parseFloat(ip3 / 1000).toFixed(1);
         l = 'B'
     }
+    console.log(ip2)
     info[2].innerHTML = `<h3><span>${ip2}${l} DLUX</span></h3>
 				<div>
 					<label>Supply</label>
