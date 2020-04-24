@@ -24,6 +24,7 @@ function dex(usr, pair, type) {
         dexview("hbd", User.opts.type);
     })
     popStats()
+    dexview(User.opts.pair, User.opts.type)
     fetch('https://token.dlux.io/feed')
         .then(r => {
             return r.json()
@@ -524,11 +525,11 @@ function popHist() {
 function popOrderTable(orderstable, type) {
     let func, lab, col
     if (type == 'sellOrders') {
-        func = 'getSellID'
+        func = 'getItID'
         lab = 'Buy'
         col = 'success'
     } else if (type == 'buyOrders') {
-        func = 'getItID'
+        func = 'getSellID'
         lab = 'Sell'
         col = 'danger'
     }
