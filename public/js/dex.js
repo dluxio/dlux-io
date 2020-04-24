@@ -1,7 +1,7 @@
 function dex(usr, pair, type) {
     console.log('dex js')
     User.opts.pair = pair || 'hive'
-    User.opts.type = type || 'buy'
+    User.opts.type = type || 'Buy'
     usr.hbd = { balance: usr.hive.sbd_balance }
     User.hbd = { balance: usr.hive.sbd_balance }
     document.getElementById('jumbobal').innerHTML = `<h4>Balances: ${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3)} DLUX & ${usr[User.opts.pair].balance}</h4>`
@@ -12,10 +12,10 @@ function dex(usr, pair, type) {
     popOrderTable('buyorderstable', 'buyOrders')
     popOrderTable('sellorderstable', 'sellOrders')
     document.getElementById('buyTab').addEventListener("click", function() {
-        dexview(User.opts.pair, "buy");
+        dexview(User.opts.pair, "Buy");
     })
     document.getElementById('sellTab').addEventListener("click", function() {
-        dexview(User.opts.pair, "sell");
+        dexview(User.opts.pair, "Sell");
     })
     document.getElementById('hivepairselect').addEventListener("click", function() {
         dexview("hive", User.opts.type);
@@ -387,7 +387,7 @@ function insertBal(data, loc, atr) {
 function dexview(pair, type) {
     User.opts.pair = pair
     User.opts.type = type
-    if (User.opts.type === 'buy') {
+    if (User.opts.type === 'Buy') {
         document.getElementById('buyTab').classList.add('active')
         document.getElementById('sellTab').classList.remove('active')
         document.getElementById('listButton').innerText = 'Buy'
@@ -549,7 +549,7 @@ function popOrderTable(orderstable, type) {
 function dexmodal(pair, type) {
     User.opts.pair = pair
     User.opts.type = type
-    if (User.opts.type === 'buy') {
+    if (User.opts.type === 'Buy') {
         document.getElementById('buyDluxTitle').innerText = 'Buy With:'
         document.getElementById('menutitle').innerText = 'New Buy Order'
     } else {
