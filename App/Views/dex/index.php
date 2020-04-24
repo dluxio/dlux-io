@@ -216,7 +216,7 @@
 		    <form>
 
 	  <div class="form-group">
-	   <label for="buydluxfrom">Buyer:</label>
+	   <label for="buydluxfrom">Trader:</label>
 		<div class="input-group">
 			<div class="input-group-prepend">
       		  <div class="input-group-text">@</div>
@@ -226,7 +226,7 @@
 			 </div>
 		  
 		  <div class="form-group">
-	   <label id="menudluxlab" for="buydluxquantity">DLUX Quantity:</label>
+	   <label id="menudluxlab" for="buydluxquantity">This:</label>
 		<div class="input-group">
 			<input class="form-control" id="menudlux" type="number" step="0.001" min="0.001" placeholder="1.000">
 			<div class="input-group-append">
@@ -235,7 +235,7 @@
 		  </div>
 			 </div>
         <div class="form-group">
-	   <label id="menupricelab" for="buydluxprice">Calculated Price (<a href="#" onClick="insertBal(User.dex.markets[User.opts.type].tick, 'menuprice')">MP: 0.22 HIVE</a>):</label>
+	   <label id="menupricelab" for="buydluxprice">Calculated Price (<a href="#" onClick="insertCalc(User.dex.markets[User.opts.type].tick, 'menuprice')">MP: 0.22 HIVE</a>):</label>
 		<div class="input-group">
 			<input class="form-control" id="menuprice" type="number" placeholder="1.000" readonly>
 			<div class="input-group-append">
@@ -244,7 +244,7 @@
 		  </div>
 			 </div>
 		  <div class="form-group">
-	   <label id="menupairlab" for="buydluxtotal">Order Total (<a href="#" onClick="insertBal(parseFloat(User[User.opts.type].balance), 'menupair')">Balance: 486 HIVE</a>):</label>
+	   <label id="menupairlab" for="buydluxtotal">For: (<a href="#" onClick="insertBal(parseFloat(User[User.opts.type].balance), 'menupair')">Balance: 486 HIVE</a>):</label>
 		<div class="input-group">
 			<input class="form-control" id="menupair" type="number" step="0.001" min="0.001" placeholder="1.000">
 			<div class="input-group-append">

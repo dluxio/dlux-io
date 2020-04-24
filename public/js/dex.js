@@ -11,16 +11,16 @@ function dex(usr, pair, type) {
 
     document.getElementById('buyTab').addEventListener("click", function() {
         User.opts.type = 'buy'
-        dexmodal("hive", "buy");
+        dexview("hive", "buy");
     })
     document.getElementById('buyDluxTitle').innerText = 'Buy With:'
     document.getElementById('sellTab').addEventListener("click", function() {
         User.opts.type = 'sell'
-        dexmodal("hive", "sell");
+        dexview("hive", "sell");
     })
     document.getElementById('hivepairselect').addEventListener("click", function() {
         User.opts.pair = 'sell'
-        dexmodal("hive", "sell");
+        dexview("hive", "sell");
     })
 
     fetch('https://token.dlux.io/feed')
@@ -421,6 +421,78 @@ function insertBal(data, loc, atr) {
     } else {
         document.getElementById(loc)[atr] = data
     }
+}
+
+function dexview(pair, type) {
+    User.opts.pair = pair
+    User.opts.type = type
+    if (User.opts.type === 'buy') {
+        document.getElementById('buyTab').classList.add('active')
+        document.getElementById('sellTab').classList.remove('active')
+    } else {
+        document.getElementById('buyTab').classList.remove('active')
+        document.getElementById('sellTab').classList.add('active')
+    }
+    document.getElementById('menupairdiv').innerText = User.opts.pair.toUpperCase()
+    document.getElementById('paycoin').innerText = User.opts.pair.toUpperCase()
+    document.getElementById('menupairlab').innerHTML = `Order Total (<a href="#" onClick="insertBal(parseFloat(User[User.opts.pair].balance),'menupair')">Balance: ${User[User.opts.pair].balance}</a>):`
+    document.getElementById('menupair').max = parseFloat(User[User.opts.pair].balance)
+    document.getElementById('menupricelab').innerHTML = `Desired Price Each (<a href="#" onClick="insertCalc('${parseFloat(User.dex.markets[User.opts.pair].tick)}', 'menuprice')">Market Price: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
+    let eAgentNode = document.getElementById('escrowAgentUl'),
+        cAgentNode = document.getElementById('custodialAgentUl')
+    lis = eAgentNode.getElementsByTagName('li')
+    lic = cAgentNode.getElementsByTagName('li')
+    while (eAgentNode.getElementsByTagName('li')[0]) {
+        eAgentNode.removeChild(eAgentNode.getElementsByTagName('li')[0]);
+    }
+    while (cAgentNode.getElementsByTagName('li')[0]) {
+        cAgentNode.removeChild(cAgentNode.getElementsByTagName('li')[0]);
+    }
+    for (a in User.dex.queue) {
+        if (User.dex.queue[a] == user) {
+            delete User.dex.queue[a]
+            break
+        }
+    }
+    if (!User.opts.to) {
+        User.opts.to = User.dex.queue[0] ? User.dex.queue[0] : User.dex.queue[2]
+    }
+    if (!User.opts.agent) {
+        User.opts.agent = User.dex.queue[1] ? User.dex.queue[1] : User.dex.queue[2]
+    }
+    document.getElementById('escrowAgent').innerText = User.opts.agent
+    document.getElementById('custodialAgent').innerText = User.opts.to
+    var balsP = []
+    for (i in User.dex.queue) {
+        console.log(User.dex.queue[i])
+        balsP.push(fetch(`https://token.dlux.io/@${User.dex.queue[i]}`))
+    }
+    Promise.all(balsP)
+        .then(res =>
+            Promise.all(res.map(res => res.json()))
+        )
+        .then(b => {
+            a = {}, j = 0
+            for (i in User.dex.queue) {
+                a[i] = b[j]
+                j++
+            }
+            console.log(a)
+            for (i in User.dex.queue) {
+                if (User.opts.agent !== User.dex.queue[i]) {
+                    var node = document.createElement('li')
+                    node.innerHTML = `<a href="#" onclick="User.opts.to='${User.dex.queue[i]}';insertBal('${User.dex.queue[i]}', 'custodialAgent', 'innerText');dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
+                    cAgentNode.appendChild(node)
+                }
+            }
+            for (i in User.dex.queue) {
+                if (User.opts.to !== User.dex.queue[i]) {
+                    var node = document.createElement('li')
+                    node.innerHTML = `<a href="#" onclick="User.opts.agent='${User.dex.queue[i]}';dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
+                    eAgentNode.appendChild(node)
+                }
+            }
+        })
 }
 
 function dexmodal(pair, type) {
