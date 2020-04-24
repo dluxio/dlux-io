@@ -1,7 +1,17 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<title>DLUX - Username</title>
+<?php 
+	if(isset($author)){
+    	echo "<title>DLUX - @" . $author . "</title>";
+        }
+	else if(isset($_COOKIE['user'])){
+    	echo "<title>DLUX - @" . $_COOKIE['user'] . "</title>";
+        }
+		else{
+        echo "<script>window.location='/login/;'</script>";
+        }
+;?>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/header.php";

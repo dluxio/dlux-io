@@ -23,10 +23,6 @@
   		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   		<a href="#" class="alert-link">The dlux DEX is under construction. Have a look around and let us know what you think.</a>
 	</div>
-	<div class="alert alert-success alert-dismissible">
-  		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  		<a href="#" class="alert-link"><strong>Buy DLUX from @robotolux!</strong></a> The current price is 0.22 HIVE.
-	</div>
   <div class="container-fluid" style="padding: 0">
 	  <ul id="pagenav" class="nav nav-pills justify-content-center" role="tablist">
 		  <li class="nav-item"> <a class="nav-link" href="#info" id="infotab" role="tab" data-toggle="tab" aria-controls="info" aria-expanded="true">INFO</a></li>

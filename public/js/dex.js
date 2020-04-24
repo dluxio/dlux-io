@@ -53,6 +53,50 @@ function dex(usr, pair, type) {
     <td> ${whos}</td >`
         buyOrdersTable.appendChild(txnode)
     }
+    var info = document.getElementsByClassName('text-center market-info-item')
+    var ip1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.markets.hive.tick).toFixed(1),
+        m = 'K'
+    var is1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.markets.hbd.tick).toFixed(1),
+        n = 'K'
+    if (ip1 > 1000) {
+        ip1 = parseFloat(ip1 / 1000).toFixed(1)
+        m = 'M'
+    }
+    if (ip1 > 1000) {
+        ip1 = parseFloat(ip1 / 1000).toFixed(1)
+        m = 'B'
+    }
+    info[0].innerHTML = `<h3><span>${ip1}${m} HIVE</span></h3>
+				<div>
+					<label>Market Cap</label>
+				</div>`
+    if (is1 > 1000) {
+        is1 = parseFloat(is1 / 1000).toFixed(1)
+        n = 'M'
+    }
+    if (is1 > 1000) {
+        is1 = parseFloat(is1 / 1000).toFixed(1)
+        n = 'B'
+    }
+    info[5].innerHTML = `<h3><span>${is1}${n} HBD</span></h3>
+				<div>
+					<label>Market Cap</label>
+				</div>`
+    var ip2 = parseFloat(User.stats.tokenSupply / 1000000000).toFixed(1),
+        l = 'M'
+
+    if (ip2 > 1000) {
+        ip3 = parseFloat(ip3 / 1000).toFixed(1);
+        l = 'B'
+    }
+    info[2].innerHTML = `<h3><span>${ip2}${l} DLUX</span></h3>
+				<div>
+					<label>Supply</label>
+				</div>`
+    info[7].innerHTML = `<h3><span>${ip2}${l} DLUX</span></h3>
+				<div>
+					<label>Supply</label>
+				</div>`
     fetch('https://token.dlux.io/feed')
         .then(r => {
             return r.json()
