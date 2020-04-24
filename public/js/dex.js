@@ -21,7 +21,9 @@ function dex(usr, pair, type) {
     document.getElementById('hbdpairselect').addEventListener("click", function() {
         dexview("hbd", User.opts.type);
     })
+    console.log('I know youre getting here')
     let buyOrdersTable = document.getElementById('buyorderstable')
+    console.log({ buyOrdersTable })
     for (i in User.dex[User.opts.pair].buyOrders) {
         let txnode = document.createElement('tr')
         let whos = `< button class = "btn btn-outline-danger btn-sm"
@@ -37,6 +39,7 @@ function dex(usr, pair, type) {
     <td> ${whos}</td >`
         buyOrdersTable.appendChild(txnode)
     }
+    console.log({ buyOrdersTable })
     let sellOrdersTable = document.getElementById('sellorderstable')
     for (i in User.dex[User.opts.pair].sellOrders) {
         let txnode = document.createElement('tr')
