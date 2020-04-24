@@ -524,11 +524,11 @@ function popHist() {
 function popOrderTable(orderstable, type) {
     let func, lab, col
     if (type == 'sellOrders') {
-        func = 'getItId'
+        func = 'getSellID'
         lab = 'Buy'
-        col = 'submit'
+        col = 'success'
     } else if (type == 'buyOrders') {
-        func = 'getSellId'
+        func = 'getItID'
         lab = 'Sell'
         col = 'danger'
     }
