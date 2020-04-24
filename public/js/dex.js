@@ -54,7 +54,7 @@ function dex(usr, pair, type) {
         buyOrdersTable.appendChild(txnode)
     }
     var info = document.getElementsByClassName('text-center market-info-item')
-    console.log(info)
+    console.log('market info:', info)
     var ip1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.markets.hive.tick).toFixed(1),
         m = 'K'
     var is1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.markets.hbd.tick).toFixed(1),
@@ -471,6 +471,12 @@ function dexview(pair, type) {
         document.getElementById('buyTab').classList.remove('active')
         document.getElementById('sellTab').classList.add('active')
     }
+    if (User.opts.pair === 'hive') {
+        document.getElementById('pairmenustatus').innerText = 'DLUX:HIVE'
+    } else if (User.opts.pair === 'hbd') {
+        document.getElementById('pairmenustatus').innerText = 'DLUX:HBD'
+    }
+
     document.getElementById('menupairdiv').innerText = User.opts.pair.toUpperCase()
     document.getElementById('paycoin').innerText = User.opts.pair.toUpperCase()
     document.getElementById('menupairlab').innerHTML = `Order Total (<a href="#" onClick="insertBal(parseFloat(User[User.opts.pair].balance),'menupair')">Balance: ${User[User.opts.pair].balance}</a>):`

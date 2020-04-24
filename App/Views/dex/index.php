@@ -88,7 +88,7 @@
                     </div>
 		<div role="tabpanel" class="tab-pane fade show active" id="trade" aria-labelledby="tradetab">
 			<div class="container-fluid px-0 py-4">
-				<a class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DLUX:HIVE
+				<a id="pairmenustatus"class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DLUX:HIVE
     			<span class="sr-only">Toggle Dropdown</span>
   				</a>
   				<div class="dropdown-menu">
