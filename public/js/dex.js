@@ -514,6 +514,7 @@ function dexview(pair, type) {
 function popOrderTable(orderstable, type) {
     let buyOrdersTable = document.getElementById(orderstable)
     console.log({ buyOrdersTable })
+    console.log(User.opts.pair, type, User.dex[User.opts.pair][type])
     for (i in User.dex[User.opts.pair][type]) {
         let txnode = document.createElement('tr')
         let whos = `< button class = "btn btn-outline-danger btn-sm"
@@ -529,7 +530,7 @@ function popOrderTable(orderstable, type) {
     <td> ${whos}</td >`
         buyOrdersTable.appendChild(txnode)
     }
-
+    console.log('fin')
 }
 
 function dexmodal(pair, type) {
