@@ -446,7 +446,7 @@ function dexview(pair, type) {
     } else if (User.opts.pair === 'hbd') {
         document.getElementById('pairmenustatus').innerText = 'DLUX:HBD'
     }
-    document.getElementById('jumbobal').innerHTML = `<h4>Balances: ${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3)} DLUX & ${usr[User.opts.pair].balance}</h4>`
+    document.getElementById('jumbobal').innerHTML = `<h4>Balances: ${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3)} DLUX & ${User[User.opts.pair].balance}</h4>`
     document.getElementById('menupairdiv').innerText = User.opts.pair.toUpperCase()
     document.getElementById('paycoin').innerText = User.opts.pair.toUpperCase()
     document.getElementById('menupairlab').innerHTML = `For: (<a href="#" onClick="insertBal(parseFloat(User[User.opts.pair].balance),'menupair')">Balance: ${User[User.opts.pair].balance}</a>):`
