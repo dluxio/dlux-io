@@ -452,14 +452,14 @@ function dexview(pair, type) {
             for (i in User.dex.queue) {
                 if (User.opts.agent !== User.dex.queue[i]) {
                     var node = document.createElement('li')
-                    node.innerHTML = `<a href="#" onclick="User.opts.to='${User.dex.queue[i]}';insertBal('${User.dex.queue[i]}', 'custodialAgent', 'innerText');dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
+                    node.innerHTML = `<a href="#" onclick="User.opts.to='${User.dex.queue[i]}';insertBal('${User.dex.queue[i]}', 'custodialAgent', 'innerText');dexview(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
                     cAgentNode.appendChild(node)
                 }
             }
             for (i in User.dex.queue) {
                 if (User.opts.to !== User.dex.queue[i]) {
                     var node = document.createElement('li')
-                    node.innerHTML = `<a href="#" onclick="User.opts.agent='${User.dex.queue[i]}';dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
+                    node.innerHTML = `<a href="#" onclick="User.opts.agent='${User.dex.queue[i]}';dexview(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
                     eAgentNode.appendChild(node)
                 }
             }
