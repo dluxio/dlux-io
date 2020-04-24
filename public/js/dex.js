@@ -522,18 +522,20 @@ function popHist() {
 }
 
 function popOrderTable(orderstable, type) {
-    let func, lab
+    let func, lab, col
     if (type == 'sellOrders') {
-        func = 'getSellId'
-        lab = 'Buy'
-    } else if (type == 'buyOrders') {
         func = 'getItId'
+        lab = 'Buy'
+        col = 'submit'
+    } else if (type == 'buyOrders') {
+        func = 'getSellId'
         lab = 'Sell'
+        col = 'danger'
     }
     let buyOrdersTable = document.getElementById(orderstable)
     for (i in User.dex.markets[User.opts.pair][type]) {
         let txnode = document.createElement('tr')
-        let whos = `<button class ="btn btn-outline-danger btn-sm" type="submit" onclick="${func}('${User.dex.markets[User.opts.pair][type][i].txid}')"> ${type} </button>`
+        let whos = `<button class ="btn btn-outline-${col} btn-sm" type="submit" onclick="${func}('${User.dex.markets[User.opts.pair][type][i].txid}')"> ${lab} </button>`
         if (User.dex.markets[User.opts.pair][type][i].from == user) {
             whos = `<button class ="btn btn-outline-warning btn-sm" type="submit" onclick="cancel('${User.dex.markets[User.opts.pair][type][i].txid}')"> Cancel </button>`
         }
