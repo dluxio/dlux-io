@@ -248,6 +248,7 @@ function placeHbdBuy() {
 }
 
 function getItID(txid) {
+    console.log('getItID:', txid)
     fetch('https://token.dlux.io/dex')
         .then(function(response) {
             return response.json();
@@ -322,6 +323,7 @@ function getItID(txid) {
 }
 
 function getSellID(txid) {
+    console.log('getSellID:', txid)
     fetch('https://token.dlux.io/dex')
         .then(function(response) {
             return response.json();
@@ -536,9 +538,9 @@ function popOrderTable(orderstable, type) {
     let buyOrdersTable = document.getElementById(orderstable)
     for (i in User.dex.markets[User.opts.pair][type]) {
         let txnode = document.createElement('tr')
-        let whos = `<button class ="btn btn-outline-${col} btn-sm" type="submit" onclick="${func}('${User.dex.markets[User.opts.pair][type][i].txid}')"> ${lab} </button>`
+        let whos = `<button class ="btn btn-outline-${col} btn-sm" type="submit" onclick="${func}('${i}')"> ${lab} </button>`
         if (User.dex.markets[User.opts.pair][type][i].from == user) {
-            whos = `<button class ="btn btn-outline-warning btn-sm" type="submit" onclick="cancel('${User.dex.markets[User.opts.pair][type][i].txid}')"> Cancel </button>`
+            whos = `<button class ="btn btn-outline-warning btn-sm" type="submit" onclick="cancel('${i}')"> Cancel </button>`
         }
         txnode.innerHTML = `
     <td>${parseFloat(User.dex.markets[User.opts.pair][type][i].amount/1000).toFixed(3)}</td> 
