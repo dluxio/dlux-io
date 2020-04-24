@@ -318,7 +318,7 @@ $(document).ready(function(){
 		  
       </div>
 		<div class="text-center">
-        <button id="listButton" type="button" class="btn btn-outline-success btn-75" onClick="dexsend(document.getElementById(User.opts.type, User.opts.pair)">Buy</button>
+        <button id="listButton" type="button" class="btn btn-outline-success btn-75" onClick="dexsend(User.opts.type, User.opts.pair)">Buy</button>
 				</div>
 		  </div>
 	  </form>
@@ -392,7 +392,7 @@ $(document).ready(function(){
           ],
 		  pointRadius: 0,
           borderWidth:3,
-          borderColor:'rgba(75, 0, 255, .5',
+          borderColor:'rgba(75, 0, 255, .5)',
           hoverBorderWidth:3,
           hoverBorderColor:'#000'
         }]
