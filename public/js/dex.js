@@ -9,8 +9,6 @@ function dex(usr, pair, type) {
     document.getElementById('menupricelab').innerHTML = `Calculated Price: (<a href="#" onClick="insertBal('${parseFloat(User.dex.markets[User.opts.pair].tick)}', 'menuprice')">Market Price: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
     document.getElementById('menupairlab').innerHTML = `For: (<a href="#" onClick="insertBal(parseFloat(User[User.opts.pair].balance),'menupair')">Balance: ${User[User.opts.pair].balance}</a>):`
     console.log('I know youre getting here')
-    popOrderTable('buyorderstable', 'buyOrders')
-    popOrderTable('sellorderstable', 'sellOrders')
     document.getElementById('buyTab').addEventListener("click", function() {
         dexview(User.opts.pair, "Buy");
     })
@@ -541,6 +539,12 @@ function popOrderTable(orderstable, type) {
         col = 'danger'
     }
     let buyOrdersTable = document.getElementById(orderstable)
+    buyOrdersTable.innerHTML = `<tr>
+      <th scope="col">DLUX</th>
+      <th scope="col" id="pair1">${User.opts.pair.toUpperCase()}</th>
+      <th scope="col">Price</th>
+      <th scope="col">&nbsp;</th>
+    </tr>`
     for (i in User.dex.markets[User.opts.pair][type]) {
         let txnode = document.createElement('tr')
         let whos = `<button class ="btn btn-outline-${col} btn-sm" type="submit" onclick="${func}('${i}')"> ${lab} </button>`

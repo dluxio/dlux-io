@@ -151,12 +151,6 @@
 			  <h5 style="padding-top: 10px">BUY ORDERS</h5>
 		  <table width="100%">
   <tbody id="buyorderstable">
-    <tr>
-      <th scope="col">DLUX</th>
-      <th scope="col" id="pair1">HIVE</th>
-      <th scope="col">Price</th>
-      <th scope="col">&nbsp;</th>
-    </tr>
   </tbody>
 </table>
 		  </div>
@@ -164,12 +158,6 @@
 			  <h5 style="padding-top: 10px">SELL ORDERS</h5>
 		    <table width="100%">
   <tbody id="sellorderstable">
-    <tr>
-      <th scope="col">DLUX</th>
-      <th scope="col" id="pair2">HIVE</th>
-      <th scope="col">Price</th>
-      <th scope="col">&nbsp;</th>
-    </tr>
   </tbody>
 </table>
 		  </div>
