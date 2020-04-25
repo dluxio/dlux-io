@@ -23,8 +23,9 @@ function dex(usr, pair, type) {
     document.getElementById('hbdpairselect').addEventListener("click", function() {
         dexview("hbd", User.opts.type);
     })
-    popStats()
+
     dexview(User.opts.pair, User.opts.type)
+    popStats()
     fetch('https://token.dlux.io/feed')
         .then(r => {
             return r.json()
