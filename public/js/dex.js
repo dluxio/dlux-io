@@ -411,8 +411,6 @@ function dexview(pair, type) {
     document.getElementById('menupairdiv').innerText = User.opts.pair.toUpperCase()
     document.getElementById('paycoin').innerText = User.opts.pair.toUpperCase()
     document.getElementById('menupairlab').innerHTML = `For: (<a href="#" onClick="insertBal(parseFloat(User[User.opts.pair].balance),'menupair')">Balance: ${User[User.opts.pair].balance}</a>):`
-    document.getElementById('pair1').innerText = User.opts.pair.toUpperCase()
-    document.getElementById('pair2').innerText = User.opts.pair.toUpperCase()
     document.getElementById('menupair').max = parseFloat(User[User.opts.pair].balance)
     document.getElementById('menupricelab').innerHTML = `Calculated Price: (<a href="#" onClick="insertCalc('${parseFloat(User.dex.markets[User.opts.pair].tick)}', 'menuprice')">MP: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
     let eAgentNode = document.getElementById('escrowAgentUl'),
