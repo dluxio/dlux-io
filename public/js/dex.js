@@ -474,7 +474,7 @@ function dexview(pair, type) {
 function popStats() {
     var info = document.getElementsByClassName('text-center market-info-item')
     console.log(info)
-    var ip1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.marketsp[User.opts.pair].tick).toFixed(1),
+    var ip1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.markets[User.opts.pair].tick).toFixed(1),
         m = 'K'
     if (ip1 > 1000) {
         ip1 = parseFloat(ip1 / 1000).toFixed(1)
