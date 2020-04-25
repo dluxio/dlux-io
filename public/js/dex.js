@@ -392,6 +392,9 @@ function dexview(pair, type) {
     User.opts.pair = pair
     User.opts.type = type
     popStats()
+    popHist()
+    popOrderTable('buyorderstable', 'buyOrders')
+    popOrderTable('sellorderstable', 'sellOrders')
     if (User.opts.type === 'Buy') {
         document.getElementById('buyTab').classList.add('active')
         document.getElementById('sellTab').classList.remove('active')
@@ -505,12 +508,10 @@ function popStats() {
 }
 
 function popHist() {
+    /*
     for (i in User.dex.markets[User.opts.pair].hist) {
-        if (User.opts.agent !== User.dex.queue[i]) {
             var node = document.createElement('li')
-            node.innerHTML = `<a href="#" onclick="User.opts.to='${User.dex.queue[i]}';insertBal('${User.dex.queue[i]}', 'custodialAgent', 'innerText');dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
-            cAgentNode.appendChild(node)
-        }
+            node.innerHTML = `cAgentNode.appendChild(node)
     }
 
     `<tr>
@@ -524,7 +525,8 @@ function popHist() {
     info[4].innerHTML = `<h3><span>${ip2}${l} DLUX</span></h3>
 				<div>
 					<label>Volume</label>
-				</div>`
+                </div>`
+                */
 }
 
 function popOrderTable(orderstable, type) {
