@@ -391,6 +391,7 @@ function insertBal(data, loc, atr) {
 function dexview(pair, type) {
     User.opts.pair = pair
     User.opts.type = type
+    popStats()
     if (User.opts.type === 'Buy') {
         document.getElementById('buyTab').classList.add('active')
         document.getElementById('sellTab').classList.remove('active')
