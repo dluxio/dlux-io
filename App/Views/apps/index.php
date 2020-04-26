@@ -78,7 +78,7 @@
   </div>
 </div>
 <div class="modal fade" id="detailModal" tabindex="11" role="dialog" aria-hidden="true">
- <div class="modal-dialog modal-full modal-dialog-centered" role="document">
+ <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
    <div class="modal-content bg-dark text-white">
 	<dmx-data-detail id="app_detail" dmx-bind:data="dluxGetBlog.data.result" key="entry_id">
 		<div class="d-inline-block p-2">
