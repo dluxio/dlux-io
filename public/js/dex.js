@@ -397,14 +397,12 @@ function dexview(pair, type) {
         document.getElementById('buyTab').classList.add('active')
         document.getElementById('sellTab').classList.remove('active')
         document.getElementById('listButton').innerText = 'Buy'
-        document.getElementById('listButton').classList.add('btn-outline-success')
-        document.getElementById('listButton').classList.remove('btn-outline-danger')
+        document.getElementById('listButton').toggleClass('btn-outline-danger btn-outline-success')
     } else {
         document.getElementById('buyTab').classList.remove('active')
         document.getElementById('sellTab').classList.add('active')
         document.getElementById('listButton').innerText = 'Sell'
-        document.getElementById('listButton').classList.add('btn-outline-danger')
-        document.getElementById('listButton').classList.remove('btn-outline-success')
+        document.getElementById('listButton').toggleClass('btn-outline-success btn-outline-danger')
     }
     if (User.opts.pair === 'hive') {
         document.getElementById('pairmenustatus').innerText = 'DLUX:HIVE'
