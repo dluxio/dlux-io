@@ -284,10 +284,10 @@ function getItID(txid) {
                     }
                 }
                 let now = new Date();
-                escrowTimer.ratifyIn = now.setHours(now.getHours() + 1);
+                escrowTimer.ratifyIn = now.setHours(now.getHours() + 2);
                 escrowTimer.ratifyUTC = new Date(escrowTimer.ratifyIn);
                 escrowTimer.ratifyString = escrowTimer.ratifyUTC.toISOString().slice(0, -5);
-                escrowTimer.expiryIn = now.setHours(now.getHours() + 2);
+                escrowTimer.expiryIn = now.setHours(now.getHours() + 4);
                 escrowTimer.expiryUTC = new Date(escrowTimer.expiryIn);
                 escrowTimer.expiryString = escrowTimer.expiryUTC.toISOString().slice(0, -5);
                 var eidi = Math.floor(Math.random() * 4294967296)
