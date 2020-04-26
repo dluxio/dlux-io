@@ -543,7 +543,7 @@ function popOrderTable(orderstable, type) {
         let txnode = document.createElement('tr')
         let whos = `<button class ="btn btn-outline-${col} btn-sm" type="submit" onclick="${func}('${i}')"> ${lab} </button>`
         if (User.dex.markets[User.opts.pair][type][i].from == user) {
-            whos = `<button class ="btn btn-outline-warning btn-sm" type="submit" onclick="cancel('${i}')"> Cancel </button>`
+            whos = `<button class ="btn btn-outline-warning btn-sm" type="submit" onclick="cancel('${i.split(':')[1]}')"> Cancel </button>`
         }
         txnode.innerHTML = `
     <td>${parseFloat(User.dex.markets[User.opts.pair][type][i].amount/1000).toFixed(3)}</td> 
