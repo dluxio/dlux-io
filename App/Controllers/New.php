@@ -9,7 +9,7 @@ use \Core\View;
  *
  * PHP version 7.0
  */
-class New extends \Core\Controller
+class Newpost extends \Core\Controller
 {
 
     /**
