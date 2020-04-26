@@ -499,26 +499,60 @@ function popStats() {
                 </div>`
 }
 
+function blocktimer(num) {
+    let ago = parseInt((User.hstats.head_block_number - num) * 3),
+        unit = 'secs'
+    if (ago > 60) {
+        unit = 'mins'
+        ago = parseFloat(ago / 60).toFixed(1)
+    }
+    if (ago > 60) {
+        unit = 'hours'
+        ago = parseFloat(parseFloat(ago) / 60).toFixed(1)
+    }
+    if (ago > 24) {
+        unit = 'days'
+        ago = parseFloat(parseFloat(ago) / 24).toFixed(1)
+    }
+    return `${ago} ${unit}`
+}
+
 function popHist() {
-    /*
+    var info = document.getElementsByClassName('text-center market-info-item')
+    var vol = 0,
+        m = '',
+        tradeHist = doument.getElementById('tradeHist')
+    tradeHist.innerHTML = `<tr>
+      <th scope="col">DATE</th>
+      <th scope="col">PRICE</th>
+      <th scope="col">DLUX</th>
+      <th scope="col">${User.opts.pair.toUpperCase()}</th>
+    </tr>`
     for (i in User.dex.markets[User.opts.pair].hist) {
-            var node = document.createElement('li')
-            node.innerHTML = `cAgentNode.appendChild(node)
+        if (User.dex.markets[User.opts.pair].hist[i].block > (User.hstats.head_block_number - 28800)) {
+            var node = document.createElement('tr')
+            node.innerHTML = `<td>${blocktimer(User.dex.markets[User.opts.pair].hist[i].block)} Ago</td>
+      <td>${User.dex.markets[User.opts.pair].hist[i].rate}</td>
+      <td>${User.dex.markets[User.opts.pair].hist[i].amount}</td>
+      <td>${parseFloat(parseFloat(User.dex.markets[User.opts.pair].hist[i].rate)*User.dex.markets[User.opts.pair].hist[i].amount).toFixed(1)}</td>`
+            tradeHist.appendChild(node)
+            m += parseInt(User.dex.markets[User.opts.pair].hist[i].amount)
+        }
     }
 
-    `<tr>
-      <td>2 Hours Ago</td>
-      <td>.224</td>
-      <td>998</td>
-      <td>998</td>
-    </tr>`
-
     //volume
-    info[4].innerHTML = `<h3><span>${ip2}${l} DLUX</span></h3>
+    if (vol > 1000) {
+        vol = parseFloat(vol / 1000).toFixed(1)
+        m = 'K'
+    }
+    if (vol > 1000) {
+        vol = parseFloat(vol / 1000).toFixed(1)
+        m = 'M'
+    }
+    info[4].innerHTML = `<h3><span>${vol}${m} DLUX</span></h3>
 				<div>
 					<label>Volume</label>
                 </div>`
-                */
 }
 
 function popOrderTable(orderstable, type) {

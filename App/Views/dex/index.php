@@ -320,12 +320,6 @@ $(document).ready(function(){
 			  
 		    <table width="100%" class="history-table">
   <tbody id="tradeHist">
-    <tr>
-      <th scope="col">DATE</th>
-      <th scope="col">PRICE</th>
-      <th scope="col">QTY</th>
-      <th scope="col">TOTAL</th>
-    </tr>
   </tbody>
 </table>
 	</div>
