@@ -528,15 +528,15 @@ function popHist() {
       <th scope="col">DLUX</th>
       <th scope="col">${User.opts.pair.toUpperCase()}</th>
     </tr>`
-    for (i in User.dex.markets[User.opts.pair].hist) {
-        if (User.dex.markets[User.opts.pair].hist[i].block > (User.hstats.head_block_number - 28800)) {
+    for (i in User.dex.markets[User.opts.pair].his) {
+        if (User.dex.markets[User.opts.pair].his[i].block > (User.hstats.head_block_number - 28800)) {
             var node = document.createElement('tr')
-            node.innerHTML = `<td>${blocktimer(User.dex.markets[User.opts.pair].hist[i].block)} Ago</td>
-      <td>${User.dex.markets[User.opts.pair].hist[i].rate}</td>
-      <td>${User.dex.markets[User.opts.pair].hist[i].amount}</td>
-      <td>${parseFloat(parseFloat(User.dex.markets[User.opts.pair].hist[i].rate)*User.dex.markets[User.opts.pair].hist[i].amount).toFixed(1)}</td>`
+            node.innerHTML = `<td>${blocktimer(User.dex.markets[User.opts.pair].his[i].block)} Ago</td>
+      <td>${User.dex.markets[User.opts.pair].his[i].rate}</td>
+      <td>${User.dex.markets[User.opts.pair].his[i].amount}</td>
+      <td>${parseFloat(parseFloat(User.dex.markets[User.opts.pair].his[i].rate)*User.dex.markets[User.opts.pair].his[i].amount).toFixed(1)}</td>`
             tradeHist.appendChild(node)
-            vol += parseInt(User.dex.markets[User.opts.pair].hist[i].amount)
+            vol += parseInt(User.dex.markets[User.opts.pair].his[i].amount)
         }
     }
 
