@@ -536,7 +536,7 @@ function popHist() {
       <td>${User.dex.markets[User.opts.pair].hist[i].amount}</td>
       <td>${parseFloat(parseFloat(User.dex.markets[User.opts.pair].hist[i].rate)*User.dex.markets[User.opts.pair].hist[i].amount).toFixed(1)}</td>`
             tradeHist.appendChild(node)
-            m += parseInt(User.dex.markets[User.opts.pair].hist[i].amount)
+            vol += parseInt(User.dex.markets[User.opts.pair].hist[i].amount)
         }
     }
 
