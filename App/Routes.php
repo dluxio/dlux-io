@@ -23,5 +23,9 @@ $router->respondWithController('GET', '/@[:name]/[:permlink]', 'Dlux@index');
 $router->respondWithController('GET', '/dluxar/@[:name]/[:permlink]', 'Dlux@ar');
 $router->respondWithController('GET', '/qr', 'Qr@index');
 $router->respondWithController('GET', '/', 'Home@index');
+$router->respondWithController('GET', '/new', 'New@index');
+$router->respondWithController('GET', '/new/', 'New@index');
+$router->respondWithController('GET', '/new/supercraft', 'New@supercraft');
+$router->respondWithController('GET', '/new/supercraft/', 'New@supercraft');
 // Dispatch the router
 $router->dispatch();
