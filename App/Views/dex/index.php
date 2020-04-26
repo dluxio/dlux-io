@@ -169,8 +169,8 @@
 		  <div>
 			  <div class="widget">
 			<ul id="orderwidget" class="nav nav-pills justify-content-center" role="tablist">
-			  <li class="nav-item"> <a class="nav-link active" href="#" id="buyTab" role="tab" data-toggle="tab" aria-controls="buytab" aria-expanded="true">Buy DLUX</a></li>
-			  <li class="nav-item"> <a class="nav-link" href="#" role="tab" id="sellTab" data-toggle="tab" aria-controls="selltab">Sell DLUX</a></li>
+			  <li class="nav-item"> <a class="nav-link active" href="#" id="buyTab" role="tab" data-toggle="tab" aria-controls="buytab" aria-expanded="true" onClick="toggleListBtn()">Buy DLUX</a></li>
+			  <li class="nav-item"> <a class="nav-link" href="#" role="tab" id="sellTab" data-toggle="tab" aria-controls="selltab" onClick="toggleListBtn()">Sell DLUX</a></li>
 			</ul>
 			  <!-- Order Form -->
 		    <form>
@@ -355,6 +355,10 @@ $(document).ready(function(){
 ?>
 	
 <script>
+// change list button color
+function toggleListBtn(){
+    $("#listButton").toggleClass("btn-outline-success btn-outline-danger");
+  }
 // populate the price chart	
     var historicPrice = document.getElementById('historicPriceChart').getContext('2d');
 	
