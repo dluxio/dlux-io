@@ -45,7 +45,7 @@
 		<li>Difficulty: Easy</li>
 		</ul>
 		</center>
-    	<a href="supercraft" class="btn btn-danger">Get Started</a>
+    	<a href="new/supercraft" class="btn btn-danger">Get Started</a>
   	  </div>
 	</div>
 		
