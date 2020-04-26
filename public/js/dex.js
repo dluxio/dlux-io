@@ -521,7 +521,7 @@ function popHist() {
     var info = document.getElementsByClassName('text-center market-info-item')
     var vol = 0,
         m = '',
-        tradeHist = doument.getElementById('tradeHist')
+        tradeHist = document.getElementById('tradeHist')
     tradeHist.innerHTML = `<tr>
       <th scope="col">DATE</th>
       <th scope="col">PRICE</th>
