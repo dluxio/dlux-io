@@ -394,14 +394,9 @@ function dexview(pair, type) {
     popOrderTable('buyorderstable', 'buyOrders')
     popOrderTable('sellorderstable', 'sellOrders')
     if (User.opts.type === 'Buy') {
-        document.getElementById('listButton').innerText = 'Buy';
-        document.getElementById('listButton').classList.toggle('btn-outline-danger btn-outline-success');
-		$("listButton").toggleClass("btn-outline-success btn-outline-danger");
+        document.getElementById('listButton').innerText = 'Buy'
     } else {
         document.getElementById('listButton').innerText = 'Sell';
-        document.getElementById('listButton').classList.toggle('btn-outline-success btn-outline-danger');
-		$("listButton").addClass("btn-outline-danger");
-		$("listButton").removeClass("btn-outline-success");
     }
     if (User.opts.pair === 'hive') {
         document.getElementById('pairmenustatus').innerText = 'DLUX:HIVE'
