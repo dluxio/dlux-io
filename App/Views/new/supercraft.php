@@ -1,19 +1,12 @@
 <!doctype html>
-<html>
+<html lang="en" class="h-100">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>dlux Supercraft VR publishing</title>
-<link href="../css/bootstrap-4.4.1.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="../js/session.js"></script>
-<script type="text/javascript" src="https://kit.fontawesome.com/0f693ffc58.js" crossorigin="anonymous"></script>
-
-
-  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-
+<title>DLUX - Create</title>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/header.php";
+   include_once($path);
+?>
 <style>
   @charset "UTF-8";
 .form-content {
@@ -132,7 +125,11 @@ document.getElementById('submit-btn').innerHTML = `Post as @${iam}`
 </head>
 
 <body>
-	<?php include '../modules/nav.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/nav.php";
+   include_once($path);
+?>
 <div class="container-fluid header-layer">
 	<div class="container header-content">
 	  <h1 class="text-center">dlux</h1>
@@ -158,7 +155,7 @@ document.getElementById('submit-btn').innerHTML = `Post as @${iam}`
         </div>
 		
         <div class="container">
-          <h2 class="steem-green">HIVE</h2>
+          <h2 class="steem-green">Hive</h2>
           <div class="form-group">
     <label for="validationCustomTitle">Title</label>
     <input type="text" class="form-control" id="validationCustomTitle" placeholder="Give your post a title" required>
@@ -231,11 +228,11 @@ document.getElementById('submit-btn').innerHTML = `Post as @${iam}`
     <p class="text-center">Join our <a href="https://discord.gg/Beeb38j">Discord server</a> to get in touch.</p>
   </div>
 	  </footer>
-</html>
-	
-<?php include '../modules/footer.php';?>
-<script type="text/javascript" src="../js/popper.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap-4.4.1.js"></script>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/footer.php";
+   include_once($path);
+?>
 <script>checkCookie()</script>
 </body>
 </html>
