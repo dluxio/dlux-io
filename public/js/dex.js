@@ -396,9 +396,11 @@ function dexview(pair, type) {
     if (User.opts.type === 'Buy') {
         document.getElementById('listButton').innerText = 'Buy';
         document.getElementById('listButton').classList.toggle('btn-outline-danger btn-outline-success');
+		$("listButton").toggleClass("btn-outline-success btn-outline-danger");
     } else {
         document.getElementById('listButton').innerText = 'Sell';
         document.getElementById('listButton').classList.toggle('btn-outline-success btn-outline-danger');
+		$("listButton").toggleClass("btn-outline-danger btn-outline-success");
     }
     if (User.opts.pair === 'hive') {
         document.getElementById('pairmenustatus').innerText = 'DLUX:HIVE'
