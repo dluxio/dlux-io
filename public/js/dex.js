@@ -533,14 +533,15 @@ function popHist() {
             var node = document.createElement('tr')
             node.innerHTML = `<td>${blocktimer(User.dex.markets[User.opts.pair].his[i].block)} Ago</td>
       <td>${User.dex.markets[User.opts.pair].his[i].rate}</td>
-      <td>${User.dex.markets[User.opts.pair].his[i].amount}</td>
-      <td>${parseFloat(parseFloat(User.dex.markets[User.opts.pair].his[i].rate)*User.dex.markets[User.opts.pair].his[i].amount).toFixed(1)}</td>`
+      <td>${parseFloat(User.dex.markets[User.opts.pair].his[i].amount/1000)}</td>
+      <td>${parseFloat(parseFloat(User.dex.markets[User.opts.pair].his[i].rate)*User.dex.markets[User.opts.pair].his[i].amount/1000).toFixed(1)}</td>`
             tradeHist.appendChild(node)
             vol += parseInt(User.dex.markets[User.opts.pair].his[i].amount)
         }
     }
 
     //volume
+    vol = parseFloat(vol / 1000)
     if (vol > 1000) {
         vol = parseFloat(vol / 1000).toFixed(1)
         m = 'K'
