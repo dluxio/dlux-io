@@ -2,11 +2,19 @@
 <html lang="en" class="h-100">
 <head>
 <title>DLUX - Create</title>
-<?php include '../mod/header.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/header.php";
+   include_once($path);
+?>
 </head>
 
 <body class="d-flex flex-column h-100">
-<?php include '../mod/nav.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/nav.php";
+   include_once($path);
+?>
 <main role="main" class="flex-shrink-0">
 <div class="padme-t70"></div>
   <div class="container">
@@ -43,6 +51,10 @@
 		
 	</div>
 	</main>
-<?php include '../mod/footer.php';?>
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/footer.php";
+   include_once($path);
+?>
 <script>checkCookie()</script>
 </body></html>
