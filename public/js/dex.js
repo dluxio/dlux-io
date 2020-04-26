@@ -400,7 +400,8 @@ function dexview(pair, type) {
     } else {
         document.getElementById('listButton').innerText = 'Sell';
         document.getElementById('listButton').classList.toggle('btn-outline-success btn-outline-danger');
-		$("listButton").toggleClass("btn-outline-danger btn-outline-success");
+		$("listButton").addClass("btn-outline-danger");
+		$("listButton").removeClass("btn-outline-success");
     }
     if (User.opts.pair === 'hive') {
         document.getElementById('pairmenustatus').innerText = 'DLUX:HIVE'
