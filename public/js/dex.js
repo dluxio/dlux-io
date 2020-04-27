@@ -143,8 +143,8 @@ function checkAccount(name) {
 }
 
 function placeHiveBuy() {
-    var dlux = parseInt(parseFloat(document.getElementById('menudlux').value) * 1000),
-        amount = parseInt(parseFloat(document.getElementById('menupair').value) * 1000),
+    var dlux = parseInt(document.getElementById('menudlux').value * 1000),
+        amount = parseInt(document.getElementById('menupair').value * 1000),
         hiveAmount = (amount / 1000).toFixed(3) + ' STEEM',
         hbdAmount = '0.000 SBD'
     fetch('https://token.dlux.io/dex')
