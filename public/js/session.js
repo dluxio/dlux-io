@@ -6,7 +6,7 @@
  }
 
  function feedback(r) {
-     if (r.error) {
+     if (!r.error) {
          let node = document.createElement('div')
          node.classList.add('progress')
          node.innerHTML = `<div id="progressbar${r.result.id}" class="progress-bar" role="progressbar" aria-valuenow="70"
@@ -28,6 +28,14 @@
                  setTimeout(updateprogress(id), 3000)
              }
          }
+     } else {
+         let node = document.createElement('div')
+         node.classList.add('progress')
+         node.innerHTML = `<div id="progressbar${r.result.id}" class="progress-bar" role="progressbar" aria-valuenow="70"
+  				aria-valuemin="0" aria-valuemax="100" style="width:0%">
+    				<span id="progresslabel${r.result.id}" class="sr-only">Something Went Wrong</span>
+  				</div>`
+         document.getElementById('orderform').appendChild
      }
  }
 
