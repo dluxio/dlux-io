@@ -111,9 +111,9 @@ document.getElementById('submit-btn').innerHTML = `Post as @${iam}`
     'message': payload
     }, "*");
     }
-  function iAm(message) { //This is the unsecure identifier that returns logged in hive user
-    console.log({message})
-      iam = message;
+  function pageSpecific(usr) { //This is the unsecure identifier that returns logged in hive user
+    User = usr
+      iam = user;
     }
   function onpageloaded() { //requests hive state
       window.parent.postMessage({
@@ -194,7 +194,7 @@ document.getElementById('submit-btn').innerHTML = `Post as @${iam}`
             tags: otherTags,
             subApp: 'SuperCraftLoader/v0.1',
             xr: false,
-            vrHash: 'QmYbyqtGKg5TYLmpLFs2Aqt3po4qQdhab29Xba7mkwNWYo',
+            vrHash: 'QmTzKnzxEm3ZXcqFMxytt3fnJZvSSvtRnMCZTuzzMxwG7y',
             superCraft: document.getElementById('validationCustomLoader').value
           })
         var postData = {
@@ -202,15 +202,34 @@ document.getElementById('submit-btn').innerHTML = `Post as @${iam}`
           message: document.getElementById('validationCustomDescription').value,
           customJSON: customJSON,
         }
+            const operations = [["comment", 
+                                 {"parent_author": "", 
+                                  "parent_permlink": "dlux", 
+                                  "author": user, 
+                                  "permlink": `${user}-supercraft-${document.getElementById('validationCustomLoader').value}`, 
+                                  "title": document.getElementById('validationCustomTitle').value, 
+                                  "body": document.getElementById('validationCustomDescription').value + `\n***\n#### [View in VR @dlux-io](https://dlux.io/dlux/@${user}/${user}-supercraft-${document.getElementById('validationCustomLoader').value})\n`, 
+                                  "json_metadata": customJSON}], 
+                                ["comment_options", 
+                                 {"author": user, 
+                                  "permlink": `${user}-supercraft-${document.getElementById('validationCustomLoader').value}`, 
+                                  "max_accepted_payout": "1000000.000 SBD", 
+                                  "percent_steem_dollars": 10000, 
+                                  "allow_votes": true, 
+                                  "allow_curation_rewards": true, 
+                                  "extensions": 
+                                  [[0, 
+                                    {"beneficiaries":
+                                     [{"account":"dlux-io",
+                                       "weight":1000}]}]]}]] 
         console.log(postData)
         if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
         } else {
-          window.parent.postMessage({
-            'func': 'advPost',
-            'message': postData
-          }, "*");
+          hive_keychain.requestBroadcast(user, operations, 'active', function(response) {
+              console.log(response);
+            });
         }
         form.classList.add('was-validated');
       }, false);

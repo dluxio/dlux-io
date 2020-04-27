@@ -261,7 +261,7 @@
                     tags: otherTags,
                     subApp: "SuperCraftLoader/v0.1",
                     xr: false,
-                    vrHash: "QmYbyqtGKg5TYLmpLFs2Aqt3po4qQdhab29Xba7mkwNWYo",
+                    vrHash: "QmTzKnzxEm3ZXcqFMxytt3fnJZvSSvtRnMCZTuzzMxwG7y",
                     superCraft: document.getElementById(
                       "validationCustomLoader"
                     ).value

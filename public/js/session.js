@@ -5,6 +5,10 @@
      return response;
  }
 
+ function updateVoteSubmit() {
+
+ }
+
  function updateprogress(id) {
      User[`id-iterator-${id}`]++
          document.getElementById(`progressbar${id}`).style.width = `${parseInt(User[`id-iterator-${id}`]*5)}%`
