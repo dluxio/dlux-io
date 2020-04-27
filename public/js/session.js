@@ -5,36 +5,37 @@
      return response;
  }
 
+ function updateprogress(id) {
+     User[`id-iterator-${id}`]++
+         document.getElementById(`progressbar${id}`).style.width = `${parseInt(User[`id-iterator-${id}`]*5)}%`
+        document.getElementById(`progressbarlabel${id}`).innerText = `${User[`id-iterator-${id}`]} Confirmations. 20 Required`
+        if(User[`id-iterator-${id}`] >= 20 ){
+            delete User[`id-iterator-${id}`]
+            pageSpecfic(User)
+        } else {
+            setTimeout(updateprogress(id), 3000)
+        }
+    }
+
  function feedback(r) {
      console.log(r)
+     let id = r.result.id
      if (!r.error) {
          let node = document.createElement('div')
          node.classList.add('progress')
-         node.innerHTML = `<div id="progressbar${r.result.id}" class="progress-bar" role="progressbar" aria-valuenow="70"
+         node.innerHTML = `<div id="progressbar${id}" class="progress-bar" role="progressbar" aria-valuenow="70"
   				aria-valuemin="0" aria-valuemax="100" style="width:0%">
-    				<span id="progresslabel${r.result.id}" class="sr-only">0 Confirmations</span>
+    				<span id="progresslabel${id}" class="sr-only">0 Confirmations</span>
   				</div>`
          document.getElementById('orderform').appendChild
-         User[`id-iterator-${r.result.id}`] = 0
-         setTimeout(updateprogress(r.result.id), 3000)
-
-         function updateprogress(id) {
-             User[`id-iterator-${id}`]++
-                 document.getElementById(`progressbar${id}`).style.width = `${parseInt(User[`id-iterator-${id}`]*5)}%`
-             document.getElementById(`progressbarlabel${id}`).innerText = `${User[`id-iterator-${id}`]} Confirmations. 20 Required`
-             if(User[`id-iterator-${id}`] >= 20 ){
-                 delete User[`id-iterator-${id}`]
-                 pageSpecfic(User)
-             } else {
-                 setTimeout(updateprogress(id), 3000)
-             }
-         }
+         User[`id-iterator-${id}`] = 0
+         setTimeout(updateprogress(id), 3000)
      } else {
          let node = document.createElement('div')
          node.classList.add('progress')
-         node.innerHTML = `<div id="progressbar${r.result.id}" class="progress-bar" role="progressbar" aria-valuenow="70"
+         node.innerHTML = `<div id="progressbar" class="progress-bar" role="progressbar" aria-valuenow="70"
   				aria-valuemin="0" aria-valuemax="100" style="width:0%">
-    				<span id="progresslabel${r.result.id}" class="sr-only">Something Went Wrong</span>
+    				<span id="progresslabel" class="sr-only">Something Went Wrong</span>
   				</div>`
          document.getElementById('orderform').appendChild
      }
