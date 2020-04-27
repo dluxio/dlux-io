@@ -27,135 +27,72 @@
    include_once($path);
 ?>
 <main role="main" class="flex-shrink-0 ">
-      <div class="container bg-dark text-white padme-t70 pb-2 mb-3">
-        <div class="d-inline-block p-2">
-          <div class="float-left">
-            <a dmx bind:href="/@{{dluxGetContent.data.result.author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{dluxGetContent.data.result.author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"/></a>
-          </div>
-          <div class="float-left">
-            <p class="mt-0 mb-0 text-muted text-semibold">
-              <a
-                dmx-bind:href="/@{{dluxGetContent.data.result.author}}"
-                class="a-1"
-                >{{dluxGetContent.data.result.author}}<span
-                  class="ml-2 badge badge-pill badge-light"
-                  >{{dluxGetContent.data.result.author_reputation.toString().rep()}}</span
-                ></a
-              >
-            </p>
-            <small class="text-muted"
-              >{{dluxGetContent.data.result.created.formatDate("MMM dd,
-              yyyy")}}</small
-            >
-          </div>
-        </div>
-        <div class="float-right p-2">
-          <span class="badge badge-secondary"
-            >{{dluxGetContent.data.result.json_metadata.scat()}}</span
-          >
-        </div>
+    <div class="container bg-dark text-white padme-t70 pb-2 mb-3">
+        <div class="d-flex align-items-center">
+			<div>
+			  <a dmx-bind:href="/@{{dluxGetContent.data.result.author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{dluxGetContent.data.result.author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"/></a>
+			</div>
+			<div>
+			  <p class="mt-0 mb-0 text-muted text-semibold">
+              <a dmx-bind:href="/@{{dluxGetContent.data.result.author}}" class="a-1">{{dluxGetContent.data.result.author}}<span class="ml-2 badge badge-pill badge-light">{{dluxGetContent.data.result.author_reputation.toString().rep()}}</span></a><br>
+			  <small class="text-muted ml-2">{{dluxGetContent.data.result.created.formatDate("MMM dd, yyyy")}}</small>
+              </p>
+			</div>
+            <div class="ml-auto">
+              <span class="badge badge-secondary">{{dluxGetContent.data.result.json_metadata.scat()}}</span>
+            </div>
+		</div>
         <hr class="mt-0" />
-        <h4 class="text-center p-2">{{dluxGetContent.data.result.title}}</h4>
-
-        <img
-          src="..."
-          alt="Card image cap"
-          class="card-img-top"
-          dmx-bind:src="{{dluxGetContent.data.result.json_metadata.parseJSON().image}}"
-        />
-        <p class="p-2">{{dluxGetContent.data.result.body.removeMD()}}</p>
-        <center>
-          <a
-            dmx-bind:href="{{dluxGetContent.data.result.url}}"
-            type="button"
-            class="btn btn-outline-danger mb-4 btn-launch"
-            >Launch App</a
-          >
-        </center>
-        <hr class="mb-0" />
-        <div
-          class="collapse"
-          dmx-bind:id="vote{{dluxGetContent.data.result.id}}"
-        >
+        <div class="d-flex">
+            <h4 class="text-center p-2">{{dluxGetContent.data.result.title}}</h4>
+        </div>
+        <div class="d-flex">
+            <img src="..." alt="Card image cap" class="card-img-top" dmx-bind:src="{{dluxGetContent.data.result.json_metadata.parseJSON().image}}"/>
+            <p class="p-2">{{dluxGetContent.data.result.body.removeMD()}}</p>
+        </div>
+        <div class="d-flex justify-content-center">
+                <a dmx-bind:href="{{dluxGetContent.data.result.url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch">Launch App</a>
+        </div>
+        
+        <div class="collapse" dmx-bind:id="vote{{dluxGetContent.data.result.id}}">
           <form id="voteForm">
-            <div class="form-group text-white-50">
-              <ul class="list-unstyled">
-                <li class="float-left px-1">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    dmx-bind:id="voteBtn{{dluxGetContent.data.result.id}}"
-                    dmx-bind:onclick="vote('{{dluxGetContent.data.result.author}}','{{dluxGetContent.data.result.permlink}}','slider{{dluxGetContent.data.result.id}}')"
-                    style="width:70px"
-                  >
-                    100%
-                  </button>
-                </li>
-                <li class="float-left px-1">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-toggle="collapse"
-                    dmx-bind:data-target='{{"#"}}vote{{dluxGetContent.data.result.id}}'
-                  >
-                    <span class="close text-white">×</span>
-                  </button>
-                </li>
-              </ul>
-              <ul class="float-right list-unstyled">
-                <li>
-                  ###.### <img src="/img/hextacular.svg" alt="" width="17" />
-                </li>
-              </ul>
-              <div class="">
-                <div style="display: flex; flex-grow: 1" class="px-3">
-                  <input
-                    type="range"
-                    class="form-control-range"
-                    value="100"
-                    dmx-bind:id="slider{{dluxGetContent.data.result.id}}"
-                    dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"
-                  />
+              <div class="d-flex align-items-center text-white-50">
+                <div>
+                  <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{dluxGetContent.data.result.id}}" dmx-bind:onclick="vote('{{dluxGetContent.data.result.author}}','{{dluxGetContent.data.result.permlink}}','slider{{dluxGetContent.data.result.id}}')" style="width:70px">100%</button>
+                  <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{dluxGetContent.data.result.id}}'><span class="close text-white">×</span></button>
+                </div>
+                <div class="flex-fill mx-2">
+                    <p class="my-1"><input type="range" class="form-control-range" value="100" dmx-bind:id="dluxSlider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/></p>
+                    <p class="my-1"><input type="range" class="form-control-range" value="100" dmx-bind:id="hiveSlider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/></p>
+                </div>
+                <div class="text-right">
+                <p class="my-0"><span class="mr-1" id="commentDluxVal">0.23</span><img src="/img/dlux-white-icon.png" alt="" width="20" /></p>
+                <p class="my-0"><span class="mr-1"  id="commentHiveVal">0.10</span><img src="/img/hextacular.svg" alt="" width="17"/></p>
                 </div>
               </div>
-            </div>
           </form>
         </div>
-        <div class="d-inline-block p-2">
-          <a
-            data-toggle="collapse"
-            dmx-bind:data-target='{{"#"}}vote{{dluxGetContent.data.result.id}}'
-            ><i class="fas fa-heart mr-1"></i></a
-          >{{dluxGetContent.data.result.active_votes.countUpVotes()}}
-          <i class="fas fa-comment ml-2 mr-1"></i
-          >{{dluxGetContent.data.result.children}}
-        </div>
-
-        <div class="float-right p-2">
-          {{dluxGetContent.data.result.total_payout_value}}
-          <img src="/img/hextacular.svg" alt="" width="17" />
-        </div>
         <hr class="mb-0" />
+        <div class="d-flex align-items-center my-2">
+            <div>
+                <a data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{dluxGetContent.data.result.id}}'><i class="fas fa-heart mr-1"></i></a>{{dluxGetContent.data.result.active_votes.countUpVotes()}}<i class="fas fa-comment ml-2 mr-1"></i>{{dluxGetContent.data.result.children}}
+            </div>
+            <div class="ml-auto">
+                {{dluxGetContent.data.result.total_payout_value}}<img src="/img/hextacular.svg" alt="" width="17" />
+            </div>
+        </div>
+        
         <div>
           <form>
-            <div class="form-group">
-              <textarea
-                class="form-control"
-                rows="2"
-                id="validationCustomDescription"
-                placeholder="Add a comment"
-                required
-              ></textarea>
+            <div class="d-flex">
+                <div class="flex-fill">
+              <textarea class="form-control" rows="2" id="validationCustomDescription" placeholder="Add a comment" required></textarea>
+                    </div>
+              </div>
+              <div class="d-flex justify-content-end">
+              <button class="btn btn-primary float-right" id="submit-btn" type="submit">Reply</button>
             </div>
-            <div class="clearfix">
-              <button
-                class="btn btn-primary float-right"
-                id="submit-btn"
-                type="submit"
-              >
-                Reply
-              </button>
-            </div>
+
           </form>
         </div>
         <hr />
@@ -180,17 +117,16 @@
             <div class="text-white-50">
                 <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{dluxGetContent.data.result.id}}" dmx-bind:onclick="vote('{{dluxGetContent.data.result.author}}','{{dluxGetContent.data.result.permlink}}','slider{{dluxGetContent.data.result.id}}')" style="width:70px">100%</button>
                 <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target='{{&quot;#&quot;}}vote{{id}}'><span class="close text-white">×</span></button>
-                </div>
-                <div class="flex-fill mx-2">
+            </div>
+            <div class="flex-fill mx-2">
                 <p class="my-1"><input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/> </p>
-                <p class="my-1">
-                <input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/>
+                <p class="my-1"><input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/>
                 </p>
-                </div>
-                <div class="text-right">
+            </div>
+            <div class="text-right">
                 <p class="my-0"><span class="mr-1" id="commentDluxVal">0.23</span><img src="/img/dlux-white-icon.png" alt="" width="20" /></p>
                 <p class="my-0"><span class="mr-1"  id="commentHiveVal">0.10</span><img src="/img/hextacular.svg" alt="" width="17"/></p>
-                </div>
+            </div>
             </div>
             </div>
             <div class="d-flex align-items-center">
