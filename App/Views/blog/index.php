@@ -8,50 +8,30 @@
    include_once($path);
 ?>
 <!--dmxAppConnect-->
-<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script>
-<script type="text/javascript" src="/dmxAppConnect/dmxMoment.js"></script>
-<script type="text/javascript" src="/dmxAppConnect/dmxFormatter.js"></script>
-<script type="text/javascript" src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
+<script src="/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/dmxAppConnect/dmxMoment.js"></script>
+<script src="/dmxAppConnect/dmxFormatter.js"></script>
+<script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 <!--page specific-->
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
-
-  <body
-    class="d-flex flex-column h-100"
-    id="blog"
-    is="dmx-app"
-    class="text-white"
-  >
-<?php echo '<dmx-api-datasource
-      id="dluxGetContent"
-      is="dmx-fetch"
-      url="https://token.dlux.io/getwrap?"
-      dmx-param:method="\'condenser_api.get_content\'"
-      dmx-param:params="\'[%22'.$author.'%22,%22'.$permlink.'%22]\'"
-    ></dmx-api-datasource>';?>
-  <?php echo '<dmx-api-datasource
-      id="dluxGetReplies"
-      is="dmx-fetch"
-      url="https://token.dlux.io/getwrap?"
-      dmx-param:method="\'condenser_api.get_content_replies\'"
-      dmx-param:params="\'[%22'.$author.'%22,%22'.$permlink.'%22]\'"
-    ></dmx-api-datasource>';?>
-    <?php 
+<body class="d-flex flex-column h-100" id="blog" is="dmx-app" class="text-white">
+<?php echo '<dmx-api-datasource id="dluxGetContent" is="dmx-fetch" url="https://token.dlux.io/getwrap?" dmx-param:method="\'condenser_api.get_content\'" dmx-param:params="\'[%22'.$author.'%22,%22'.$permlink.'%22]\'"></dmx-api-datasource>';
+?>
+<?php echo '<dmx-api-datasource id="dluxGetReplies" is="dmx-fetch" url="https://token.dlux.io/getwrap?" dmx-param:method="\'condenser_api.get_content_replies\'" dmx-param:params="\'[%22'.$author.'%22,%22'.$permlink.'%22]\'"></dmx-api-datasource>';
+?>
+<?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
-
+<!--<dmx-api-datasource id="dluxGetContent" is="dmx-fetch" url="https://token.dlux.io/getwrap?" dmx-param:method="'condenser_api.get_content'" dmx-param:params="'[%22dlux-io%22,%22testing-dlux-vr%22]'"></dmx-api-datasource>-->
     <main role="main" class="flex-shrink-0 ">
       <div class="container bg-dark text-white padme-t70 pb-2 mb-3">
         <div class="d-inline-block p-2">
           <div class="float-left">
-            <a dmx-bind:href="/@{{dluxGetContent.data.result.author}}"
-              ><img
-                dmx-bind:src="https://token.dlux.io/getauthorpic/{{dluxGetContent.data.result.author}}"
-                alt=""
-                class="rounded-circle bg-light img-fluid mr-2 cover author-img"
-            /></a>
+            <a dmx bind:href="/@{{dluxGetContent.data.result.author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{dluxGetContent.data.result.author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"/></a>
           </div>
           <div class="float-left">
             <p class="mt-0 mb-0 text-muted text-semibold">
@@ -125,7 +105,7 @@
               </ul>
               <ul class="float-right list-unstyled">
                 <li>
-                  ###.### <img src="../img/hextacular.svg" alt="" width="17" />
+                  ###.### <img src="/img/hextacular.svg" alt="" width="17" />
                 </li>
               </ul>
               <div class="">
@@ -154,7 +134,7 @@
 
         <div class="float-right p-2">
           {{dluxGetContent.data.result.total_payout_value}}
-          <img src="../img/hextacular.svg" alt="" width="17" />
+          <img src="/img/hextacular.svg" alt="" width="17" />
         </div>
         <hr class="mb-0" />
         <div>
@@ -180,118 +160,65 @@
           </form>
         </div>
         <hr />
-
-        <div
-          class="container"
-          id="comments"
-          is="dmx-repeat"
-          dmx-bind:repeat="dluxGetReplies.data.result"
-        >
-          <div class="row">
-            <a dmx-bind:href="/@{{author}}"
-              ><img
-                dmx-bind:src="https://token.dlux.io/getauthorpic/{{author}}"
-                alt=""
-                class="rounded-circle bg-light img-fluid mr-2 cover author-img"
-            /></a>
-            <p class="mt-0 mb-0 text-muted text-semibold">
-              <a dmx-bind:href="/@{{author}}" class="a-1"
-                >{{author}}<span class="ml-2 badge badge-pill badge-light"
-                  >{{author_reputation.toString().rep()}}</span
-                ></a
-              ><small class="text-muted"
-                >{{created.formatDate("MMM dd, yyyy")}}</small
-              >
-            </p>
-
-            <div
-              class="collapse"
-              dmx-bind:id="vote{{dluxGetContent.data.result.id}}"
-            >
-              <form id="voteForm">
-                <div class="form-group text-white-50">
-                  <ul class="list-unstyled">
-                    <li class="float-left px-1">
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        dmx-bind:id="voteBtn{{dluxGetContent.data.result.id}}"
-                        dmx-bind:onclick="vote('{{dluxGetContent.data.result.author}}','{{dluxGetContent.data.result.permlink}}','slider{{dluxGetContent.data.result.id}}')"
-                        style="width:70px"
-                      >
-                        100%
-                      </button>
-                    </li>
-                    <li class="float-left px-1">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-toggle="collapse"
-                        dmx-bind:data-target='{{&quot;#&quot;}}vote{{dluxGetContent.data.result.id}}'
-                      >
-                        <span class="close text-white">×</span>
-                      </button>
-                    </li>
-                  </ul>
-                  <ul class="float-right list-unstyled">
-                    <li>
-                      ###.###
-                      <img src="../img/hextacular.svg" alt="" width="17" />
-                    </li>
-                  </ul>
-                  <div class="">
-                    <div style="display: flex; flex-grow: 1" class="px-3">
-                      <input
-                        type="range"
-                        class="form-control-range"
-                        value="100"
-                        dmx-bind:id="slider{{dluxGetContent.data.result.id}}"
-                        dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class="d-inline-block p-2">
-              <a data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{id}}'
-                ><i class="fas fa-heart mr-1"></i></a
-              >{{active_votes.countUpVotes()}}
-              <i class="fas fa-comment ml-2 mr-1"></i>{{children}}
-            </div>
-
-            <div class="float-right p-2">
-              {{total_payout_value}}
-              <img src="../img/hextacular.svg" alt="" width="17" />
-            </div>
-            <hr class="mb-0" />
-            <div>
-              <form>
-                <div class="form-group">
-                  <textarea
-                    class="form-control"
-                    rows="2"
-                    id="validationCustomDescription"
-                    placeholder="Add a comment"
-                    required
-                  ></textarea>
-                </div>
-                <div class="clearfix">
-                  <button
-                    class="btn btn-primary float-right"
-                    id="submit-btn"
-                    type="submit"
-                  >
-                    Reply
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+		  
+    <div class="container" id="comments" is="dmx-repeat" dmx-bind:repeat="dluxGetReplies.data.result">
+		<div class="d-flex align-items-center">
+			<div>
+			  <a dmx-bind:href="/@{{author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"/></a>
+			</div>
+			<div>
+			  <p class="mt-0 mb-0 text-muted text-semibold">
+              <a dmx-bind:href="/@{{author}}" class="a-1">{{author}}<span class="ml-2 badge badge-pill badge-light">{{author_reputation.toString().rep()}}</span></a>
+			  <small class="text-muted ml-2">{{created.formatDate("MMM dd, yyyy")}}</small>
+              </p>
+			</div>
+		</div>
+        <div class="d-flex">
+		  <p class="my-2">{{body}}</p>
       </div>
-    </main>
-    <?php 
+        <div class="collapse" dmx-bind:id="vote{{dluxGetContent.data.result.id}}">
+            <div class="d-flex align-items-center">
+            <div class="text-white-50">
+                <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{dluxGetContent.data.result.id}}" dmx-bind:onclick="vote('{{dluxGetContent.data.result.author}}','{{dluxGetContent.data.result.permlink}}','slider{{dluxGetContent.data.result.id}}')" style="width:70px">100%</button>
+                <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target='{{&quot;#&quot;}}vote{{dluxGetContent.data.result.id}}'><span class="close text-white">×</span></button>
+                </div>
+                <div class="flex-fill mx-2">
+                <p class="my-1"><input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/> </p>
+                <p class="my-1">
+                <input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/>
+                </p>
+                </div>
+                <div>
+                <p class="my-0">0.23 <img src="/img/dlux-white-icon.png" alt="" width="20" /></p>
+                <p class="my-0">0.10 <img src="/img/hextacular.svg" alt="" width="17"/></p>
+                </div>
+            </div>
+            </div>
+            <div class="d-flex align-items-center">
+            <div>
+                <a data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{id}}'><i class="fas fa-heart mr-1"></i></a>{{active_votes.countUpVotes()}}
+            </div>
+          <div class="mx-2">&#8226;</div>
+          <div>
+			  {{total_payout_value}}
+              <img src="/img/hextacular.svg" alt="" width="17" />
+          </div>
+          <div class="mx-2">&#8226;</div>
+          <div><a data-toggle="collapse" dmx-bind:data-target='{{"#"}}reply{{id}}'>Reply</a></div>
+          </div>
+          <div class="collapse" dmx-bind:id="reply{{dluxGetContent.data.result.id}}">
+            <div class="d-flex my-2">
+                <textarea class="form-control" rows="2" id="validationCustomDescription" placeholder="Add a comment" required></textarea>
+            </div>
+            <div class="d-flex justify-content-end my-1">
+                <button class="btn btn-primary" id="submit-btn" type="submit">Reply</button>
+             </div>
+        </div>
+        <hr class="my-2">
+            </div>
+    </div>
+</main>
+<?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/footer.php";
    include_once($path);
