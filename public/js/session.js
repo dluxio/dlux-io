@@ -9,7 +9,7 @@
      User[`id-iterator-${id}`]++
          document.getElementById(`progressbar${id}`).style.width = `${parseInt(User[`id-iterator-${id}`]*5)}%`
         document.getElementById(`progressbarlabel${id}`).innerText = `${User[`id-iterator-${id}`]} Confirmations. 20 Required`
-        if(User[`id-iterator-${id}`] >= 20 ){
+        if(User[`id-iterator-${id}`] >= 21 ){
             delete User[`id-iterator-${id}`]
             pageSpecfic(User)
         } else {
@@ -19,7 +19,7 @@
 
  function feedback(r) {
      console.log(r, r.result, r.message)
-     let id = r.result.id
+     let id = r.result.id || 'bob'
      if (!r.error) {
          let node = document.createElement('div')
          node.classList.add('progress')
