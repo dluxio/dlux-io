@@ -757,7 +757,7 @@ function setCharts() {
         orderlabels.push(`${parseFloat(User.dex.markets[User.opts.pair][type][i].amount/1000).toFixed(3)}@${User.dex.markets[User.opts.pair][type][i].rate}${User.opts.pair.toUpperCase()}`)
         orderdata.push({ x: parseFloat(User.dex.markets[User.opts.pair][type][i].amount / 1000), y: User.dex.markets[User.opts.pair][type][i].rate })
     }
-    let type = 'buyOrders'
+    type = 'buyOrders'
     for (i in User.dex.markets[User.opts.pair][type]) {
         orderlabels.push(`${parseFloat(User.dex.markets[User.opts.pair][type][i].amount/1000).toFixed(3)}@${User.dex.markets[User.opts.pair][type][i].rate}${User.opts.pair.toUpperCase()}`)
         orderdata.push({ x: parseFloat(User.dex.markets[User.opts.pair][type][i].amount / 1000), y: User.dex.markets[User.opts.pair][type][i].rate })
