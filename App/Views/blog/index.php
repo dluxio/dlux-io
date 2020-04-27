@@ -26,8 +26,7 @@
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
-<!--<dmx-api-datasource id="dluxGetContent" is="dmx-fetch" url="https://token.dlux.io/getwrap?" dmx-param:method="'condenser_api.get_content'" dmx-param:params="'[%22dlux-io%22,%22testing-dlux-vr%22]'"></dmx-api-datasource>-->
-    <main role="main" class="flex-shrink-0 ">
+<main role="main" class="flex-shrink-0 ">
       <div class="container bg-dark text-white padme-t70 pb-2 mb-3">
         <div class="d-inline-block p-2">
           <div class="float-left">
@@ -176,11 +175,11 @@
         <div class="d-flex">
 		  <p class="my-2">{{body}}</p>
       </div>
-        <div class="collapse" dmx-bind:id="vote{{dluxGetContent.data.result.id}}">
+        <div class="collapse" dmx-bind:id="vote{{id}}">
             <div class="d-flex align-items-center">
             <div class="text-white-50">
                 <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{dluxGetContent.data.result.id}}" dmx-bind:onclick="vote('{{dluxGetContent.data.result.author}}','{{dluxGetContent.data.result.permlink}}','slider{{dluxGetContent.data.result.id}}')" style="width:70px">100%</button>
-                <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target='{{&quot;#&quot;}}vote{{dluxGetContent.data.result.id}}'><span class="close text-white">×</span></button>
+                <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target='{{&quot;#&quot;}}vote{{id}}'><span class="close text-white">×</span></button>
                 </div>
                 <div class="flex-fill mx-2">
                 <p class="my-1"><input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/> </p>
@@ -196,7 +195,7 @@
             </div>
             <div class="d-flex align-items-center">
             <div>
-                <a data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{id}}' role="button" aria-expanded="false"><i class="fas fa-heart mr-1"></i></a>{{active_votes.countUpVotes()}}
+                <a data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{id}}' role="button" aria-expanded="false" dmx-bind:aria-controls='{{"#"}}vote{{id}}'><i class="fas fa-heart mr-1"></i></a>{{active_votes.countUpVotes()}}
             </div>
           <div class="mx-2">&#8226;</div>
           <div>
@@ -204,9 +203,9 @@
               <img src="/img/hextacular.svg" alt="" width="17" />
           </div>
           <div class="mx-2">&#8226;</div>
-          <div><a data-toggle="collapse" dmx-bind:href='{{"#"}}reply{{id}}' role="button" aria-expanded="false">Reply</a></div>
+          <div><a data-toggle="collapse" dmx-bind:href='{{"#"}}reply{{id}}' role="button" aria-expanded="false" dmx-bind:aria-controls='{{"#"}}reply{{id}}'>Reply</a></div>
           </div>
-          <div class="collapse" dmx-bind:id="reply{{dluxGetContent.data.result.id}}">
+          <div class="collapse" dmx-bind:id="reply{{id}}">
             <div class="d-flex my-2">
                 <textarea class="form-control" rows="2" id="validationCustomDescription" placeholder="Add a comment" required></textarea>
             </div>
