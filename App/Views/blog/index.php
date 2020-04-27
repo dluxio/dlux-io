@@ -196,7 +196,7 @@
             </div>
             <div class="d-flex align-items-center">
             <div>
-                <a data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{id}}'><i class="fas fa-heart mr-1"></i></a>{{active_votes.countUpVotes()}}
+                <a data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{id}}' role="button" aria-expanded="false"><i class="fas fa-heart mr-1"></i></a>{{active_votes.countUpVotes()}}
             </div>
           <div class="mx-2">&#8226;</div>
           <div>
@@ -204,7 +204,7 @@
               <img src="/img/hextacular.svg" alt="" width="17" />
           </div>
           <div class="mx-2">&#8226;</div>
-          <div><a data-toggle="collapse" dmx-bind:data-target='{{"#"}}reply{{id}}'>Reply</a></div>
+          <div><a data-toggle="collapse" dmx-bind:href='{{"#"}}reply{{id}}' role="button" aria-expanded="false">Reply</a></div>
           </div>
           <div class="collapse" dmx-bind:id="reply{{dluxGetContent.data.result.id}}">
             <div class="d-flex my-2">
