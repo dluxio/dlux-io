@@ -586,240 +586,243 @@ function popOrderTable(orderstable, type) {
     <td>${parseFloat(User.dex.markets[User.opts.pair][type][i][User.opts.pair]/1000).toFixed(3)}</td> 
     <td>${parseFloat(User.dex.markets[User.opts.pair][type][i].rate).toFixed(6)}</td> 
     <td> ${whos}</td >`
-        buyOrdersTable.appendChild(txnode)
-    }
-}
-
-function dexmodal(pair, type) {
-    User.opts.pair = pair
-    User.opts.type = type
-    if (User.opts.type === 'Buy') {
-        document.getElementById('buyDluxTitle').innerText = 'Buy With:'
-        document.getElementById('menutitle').innerText = 'New Buy Order'
-    } else {
-        document.getElementById('buyDluxTitle').innerText = 'Sell for:'
-        document.getElementById('menutitle').innerText = 'New Sell Order'
-    }
-    document.getElementById('menupairdiv').innerText = User.opts.pair.toUpperCase()
-    document.getElementById('paycoin').innerText = User.opts.pair.toUpperCase()
-    document.getElementById('menupairlab').innerHTML = `Order Total (<a href="#" onClick="insertBal(parseFloat(User[User.opts.pair].balance),'menupair')">Balance: ${User[User.opts.pair].balance}</a>):`
-    document.getElementById('menupair').max = parseFloat(User[User.opts.pair].balance)
-    document.getElementById('menupricelab').innerHTML = `Desired Price Each (<a href="#" onClick="insertBal('${parseFloat(User.dex.markets[User.opts.pair].tick)}', 'menuprice')">Market Price: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
-    let eAgentNode = document.getElementById('escrowAgentUl'),
-        cAgentNode = document.getElementById('custodialAgentUl')
-    lis = eAgentNode.getElementsByTagName('li')
-    lic = cAgentNode.getElementsByTagName('li')
-    while (eAgentNode.getElementsByTagName('li')[0]) {
-        eAgentNode.removeChild(eAgentNode.getElementsByTagName('li')[0]);
-    }
-    while (cAgentNode.getElementsByTagName('li')[0]) {
-        cAgentNode.removeChild(cAgentNode.getElementsByTagName('li')[0]);
-    }
-    for (a in User.dex.queue) {
-        if (User.dex.queue[a] == user) {
-            delete User.dex.queue[a]
-            break
+        if (type == 'buyOrders') {
+            buyOrdersTable.appendChild(txnode)
+        } else {
+            buyOrdersTable.insertBefore(txnode, buyOrdersTable.childNodes[1]);
         }
     }
-    if (!User.opts.to) {
-        User.opts.to = User.dex.queue[0] ? User.dex.queue[0] : User.dex.queue[2]
-    }
-    if (!User.opts.agent) {
-        User.opts.agent = User.dex.queue[1] ? User.dex.queue[1] : User.dex.queue[2]
-    }
-    document.getElementById('escrowAgent').innerText = User.opts.agent
-    document.getElementById('custodialAgent').innerText = User.opts.to
-    var balsP = []
-    for (i in User.dex.queue) {
-        console.log(User.dex.queue[i])
-        balsP.push(fetch(`https://token.dlux.io/@${User.dex.queue[i]}`))
-    }
-    Promise.all(balsP)
-        .then(res =>
-            Promise.all(res.map(res => res.json()))
-        )
-        .then(b => {
-            a = {}, j = 0
-            for (i in User.dex.queue) {
-                a[i] = b[j]
-                j++
+
+    function dexmodal(pair, type) {
+        User.opts.pair = pair
+        User.opts.type = type
+        if (User.opts.type === 'Buy') {
+            document.getElementById('buyDluxTitle').innerText = 'Buy With:'
+            document.getElementById('menutitle').innerText = 'New Buy Order'
+        } else {
+            document.getElementById('buyDluxTitle').innerText = 'Sell for:'
+            document.getElementById('menutitle').innerText = 'New Sell Order'
+        }
+        document.getElementById('menupairdiv').innerText = User.opts.pair.toUpperCase()
+        document.getElementById('paycoin').innerText = User.opts.pair.toUpperCase()
+        document.getElementById('menupairlab').innerHTML = `Order Total (<a href="#" onClick="insertBal(parseFloat(User[User.opts.pair].balance),'menupair')">Balance: ${User[User.opts.pair].balance}</a>):`
+        document.getElementById('menupair').max = parseFloat(User[User.opts.pair].balance)
+        document.getElementById('menupricelab').innerHTML = `Desired Price Each (<a href="#" onClick="insertBal('${parseFloat(User.dex.markets[User.opts.pair].tick)}', 'menuprice')">Market Price: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
+        let eAgentNode = document.getElementById('escrowAgentUl'),
+            cAgentNode = document.getElementById('custodialAgentUl')
+        lis = eAgentNode.getElementsByTagName('li')
+        lic = cAgentNode.getElementsByTagName('li')
+        while (eAgentNode.getElementsByTagName('li')[0]) {
+            eAgentNode.removeChild(eAgentNode.getElementsByTagName('li')[0]);
+        }
+        while (cAgentNode.getElementsByTagName('li')[0]) {
+            cAgentNode.removeChild(cAgentNode.getElementsByTagName('li')[0]);
+        }
+        for (a in User.dex.queue) {
+            if (User.dex.queue[a] == user) {
+                delete User.dex.queue[a]
+                break
             }
-            console.log(a)
-            for (i in User.dex.queue) {
-                if (User.opts.agent !== User.dex.queue[i]) {
-                    var node = document.createElement('li')
-                    node.innerHTML = `<a href="#" onclick="User.opts.to='${User.dex.queue[i]}';insertBal('${User.dex.queue[i]}', 'custodialAgent', 'innerText');dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
-                    cAgentNode.appendChild(node)
+        }
+        if (!User.opts.to) {
+            User.opts.to = User.dex.queue[0] ? User.dex.queue[0] : User.dex.queue[2]
+        }
+        if (!User.opts.agent) {
+            User.opts.agent = User.dex.queue[1] ? User.dex.queue[1] : User.dex.queue[2]
+        }
+        document.getElementById('escrowAgent').innerText = User.opts.agent
+        document.getElementById('custodialAgent').innerText = User.opts.to
+        var balsP = []
+        for (i in User.dex.queue) {
+            console.log(User.dex.queue[i])
+            balsP.push(fetch(`https://token.dlux.io/@${User.dex.queue[i]}`))
+        }
+        Promise.all(balsP)
+            .then(res =>
+                Promise.all(res.map(res => res.json()))
+            )
+            .then(b => {
+                a = {}, j = 0
+                for (i in User.dex.queue) {
+                    a[i] = b[j]
+                    j++
                 }
-            }
-            for (i in User.dex.queue) {
-                if (User.opts.to !== User.dex.queue[i]) {
-                    var node = document.createElement('li')
-                    node.innerHTML = `<a href="#" onclick="User.opts.agent='${User.dex.queue[i]}';dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
-                    eAgentNode.appendChild(node)
-                }
-            }
-        })
-}
-
-
-function setCharts() {
-    var historicPrice = document.getElementById('historicPriceChart').getContext('2d');
-
-    // Global Options
-    Chart.defaults.global.defaultFontFamily = 'Helvetica';
-    Chart.defaults.global.defaultFontSize = 18;
-    Chart.defaults.global.defaultFontColor = '#FFF';
-    let chartlabels = [],
-        chartdata = []
-    for (i in User.dex.markets[User.opts.pair].his) {
-        chartlabels.push(`${parseFloat(User.dex.markets[User.opts.pair].his[i].amount/1000)}@${User.dex.markets[User.opts.pair].his[i].rate} ${User.opts.pair.toUpperCase()}`)
-        chartdata.push({
-            x: parseInt(User.dex.markets[User.opts.pair].his[i].block),
-            y: parseFloat(User.dex.markets[User.opts.pair].his[i].rate)
-        })
-    }
-    var priceChart = new Chart(historicPrice, {
-
-        type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-        data: {
-            labels: chartlabels,
-            datasets: [{
-                label: 'Price',
-                data: chartdata,
-                pointRadius: 0,
-                borderWidth: 3,
-                borderColor: 'rgba(75, 0, 255, .5)',
-                hoverBorderWidth: 3,
-                hoverBorderColor: '#000'
-            }]
-        },
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: `DLUX: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}`,
-                fontSize: 40,
-                fontColor: '#000',
-            },
-            legend: {
-                display: false,
-                position: 'right',
-                labels: {
-                    fontColor: '#000'
-                }
-            },
-            layout: {
-                padding: {
-                    left: -10,
-                    right: 0,
-                    bottom: -10,
-                    top: 0
-                }
-            },
-            tooltips: {
-                enabled: true
-            },
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        display: false //removes the label
-                    },
-                    gridLines: {
-                        display: false
+                console.log(a)
+                for (i in User.dex.queue) {
+                    if (User.opts.agent !== User.dex.queue[i]) {
+                        var node = document.createElement('li')
+                        node.innerHTML = `<a href="#" onclick="User.opts.to='${User.dex.queue[i]}';insertBal('${User.dex.queue[i]}', 'custodialAgent', 'innerText');dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
+                        cAgentNode.appendChild(node)
                     }
-                }],
-                yAxes: [{
-                    ticks: {
-                        display: false //removes the label
-                    },
-                    gridLines: {
-                        display: false
+                }
+                for (i in User.dex.queue) {
+                    if (User.opts.to !== User.dex.queue[i]) {
+                        var node = document.createElement('li')
+                        node.innerHTML = `<a href="#" onclick="User.opts.agent='${User.dex.queue[i]}';dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
+                        eAgentNode.appendChild(node)
                     }
+                }
+            })
+    }
+
+
+    function setCharts() {
+        var historicPrice = document.getElementById('historicPriceChart').getContext('2d');
+
+        // Global Options
+        Chart.defaults.global.defaultFontFamily = 'Helvetica';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#FFF';
+        let chartlabels = [],
+            chartdata = []
+        for (i in User.dex.markets[User.opts.pair].his) {
+            chartlabels.push(`${parseFloat(User.dex.markets[User.opts.pair].his[i].amount/1000)}@${User.dex.markets[User.opts.pair].his[i].rate} ${User.opts.pair.toUpperCase()}`)
+            chartdata.push({
+                x: parseInt(User.dex.markets[User.opts.pair].his[i].block),
+                y: parseFloat(User.dex.markets[User.opts.pair].his[i].rate)
+            })
+        }
+        var priceChart = new Chart(historicPrice, {
+
+            type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            data: {
+                labels: chartlabels,
+                datasets: [{
+                    label: 'Price',
+                    data: chartdata,
+                    pointRadius: 0,
+                    borderWidth: 3,
+                    borderColor: 'rgba(75, 0, 255, .5)',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: '#000'
                 }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: `DLUX: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}`,
+                    fontSize: 40,
+                    fontColor: '#000',
+                },
+                legend: {
+                    display: false,
+                    position: 'right',
+                    labels: {
+                        fontColor: '#000'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: -10,
+                        right: 0,
+                        bottom: -10,
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            display: false //removes the label
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            display: false //removes the label
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                }
             }
+        });
+        // populate the orders chart	
+        var marketOrders = document.getElementById('marketOrdersChart').getContext('2d');
+        var gradientGrn = marketOrders.createLinearGradient(0, 0, 0, 400);
+        gradientGrn.addColorStop(0, 'rgba(90, 216, 154, 1)');
+        gradientGrn.addColorStop(1, 'rgba(90, 216, 154, 0)');
+
+        var gradientRed = marketOrders.createLinearGradient(0, 0, 0, 400);
+        gradientRed.addColorStop(0, 'rgba(226, 94, 94, 1)');
+        gradientRed.addColorStop(1, 'rgba(226, 94, 94, 0)');
+
+        let orderlabels = []
+        let orderdata = []
+        let type = 'sellOrders'
+        for (i in User.dex.markets[User.opts.pair][type]) {
+            orderlabels.push(`${parseFloat(User.dex.markets[User.opts.pair][type][i].amount/1000).toFixed(3)}@${User.dex.markets[User.opts.pair][type][i].rate}${User.opts.pair.toUpperCase()}`)
+            orderdata.push({ x: parseFloat(User.dex.markets[User.opts.pair][type][i].amount / 1000), y: User.dex.markets[User.opts.pair][type][i].rate })
         }
-    });
-    // populate the orders chart	
-    var marketOrders = document.getElementById('marketOrdersChart').getContext('2d');
-    var gradientGrn = marketOrders.createLinearGradient(0, 0, 0, 400);
-    gradientGrn.addColorStop(0, 'rgba(90, 216, 154, 1)');
-    gradientGrn.addColorStop(1, 'rgba(90, 216, 154, 0)');
-
-    var gradientRed = marketOrders.createLinearGradient(0, 0, 0, 400);
-    gradientRed.addColorStop(0, 'rgba(226, 94, 94, 1)');
-    gradientRed.addColorStop(1, 'rgba(226, 94, 94, 0)');
-
-    let orderlabels = []
-    let orderdata = []
-    let type = 'sellOrders'
-    for (i in User.dex.markets[User.opts.pair][type]) {
-        orderlabels.push(`${parseFloat(User.dex.markets[User.opts.pair][type][i].amount/1000).toFixed(3)}@${User.dex.markets[User.opts.pair][type][i].rate}${User.opts.pair.toUpperCase()}`)
-        orderdata.push({ x: parseFloat(User.dex.markets[User.opts.pair][type][i].amount / 1000), y: User.dex.markets[User.opts.pair][type][i].rate })
-    }
-    type = 'buyOrders'
-    for (i in User.dex.markets[User.opts.pair][type]) {
-        orderlabels.push(`${parseFloat(User.dex.markets[User.opts.pair][type][i].amount/1000).toFixed(3)}@${User.dex.markets[User.opts.pair][type][i].rate}${User.opts.pair.toUpperCase()}`)
-        orderdata.push({ x: parseFloat(User.dex.markets[User.opts.pair][type][i].amount / 1000), y: User.dex.markets[User.opts.pair][type][i].rate })
-    }
-    var buySellChart = new Chart(marketOrders, {
-        type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-        data: {
-            labels: orderlabels,
-            datasets: [{
-                label: 'Price',
-                data: orderdata,
-                backgroundColor: [gradientGrn, gradientGrn, gradientGrn, gradientRed, gradientRed, gradientRed],
-                hoverBackgroundColor: [gradientGrn, gradientGrn, gradientGrn, gradientRed, gradientRed, gradientRed],
-                hoverBorderWidth: 2,
-                hoverBorderColor: '#FFCE00'
-            }]
-        },
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: `DLUX - ${ User.opts.pair.toUpperCase() } ORDER BOOK`,
-                fontSize: 25
-            },
-            legend: {
-                display: false,
-                position: 'right',
-                labels: {
-                    fontColor: '#000'
-                }
-            },
-            layout: {
-                padding: {
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    top: 0
-                }
-            },
-            tooltips: {
-                enabled: true
-            },
-            scales: {
-                xAxes: [{
-                    ticks: {
-                        display: false //removes the label
-                    },
-                    gridLines: {
-                        display: false
-                    }
-                }],
-                yAxes: [{
-                    ticks: {
-                        display: false, //removes the label
-                        beginAtZero: false
-                    },
-                    gridLines: {
-                        display: false
-                    }
+        type = 'buyOrders'
+        for (i in User.dex.markets[User.opts.pair][type]) {
+            orderlabels.push(`${parseFloat(User.dex.markets[User.opts.pair][type][i].amount/1000).toFixed(3)}@${User.dex.markets[User.opts.pair][type][i].rate}${User.opts.pair.toUpperCase()}`)
+            orderdata.push({ x: parseFloat(User.dex.markets[User.opts.pair][type][i].amount / 1000), y: User.dex.markets[User.opts.pair][type][i].rate })
+        }
+        var buySellChart = new Chart(marketOrders, {
+            type: 'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            data: {
+                labels: orderlabels,
+                datasets: [{
+                    label: 'Price',
+                    data: orderdata,
+                    backgroundColor: [gradientGrn, gradientGrn, gradientGrn, gradientRed, gradientRed, gradientRed],
+                    hoverBackgroundColor: [gradientGrn, gradientGrn, gradientGrn, gradientRed, gradientRed, gradientRed],
+                    hoverBorderWidth: 2,
+                    hoverBorderColor: '#FFCE00'
                 }]
-            }
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: `DLUX - ${ User.opts.pair.toUpperCase() } ORDER BOOK`,
+                    fontSize: 25
+                },
+                legend: {
+                    display: false,
+                    position: 'right',
+                    labels: {
+                        fontColor: '#000'
+                    }
+                },
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        top: 0
+                    }
+                },
+                tooltips: {
+                    enabled: true
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            display: false //removes the label
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            display: false, //removes the label
+                            beginAtZero: false
+                        },
+                        gridLines: {
+                            display: false
+                        }
+                    }]
+                }
 
-        }
-    });
-}
+            }
+        });
+    }
