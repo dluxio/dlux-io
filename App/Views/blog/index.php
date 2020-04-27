@@ -48,6 +48,8 @@
         </div>
         <div class="d-flex">
             <img src="..." alt="Card image cap" class="card-img-top" dmx-bind:src="{{dluxGetContent.data.result.json_metadata.parseJSON().image}}"/>
+        </div>
+        <div class="d-flex">
             <p class="p-2">{{dluxGetContent.data.result.body.removeMD()}}</p>
         </div>
         <div class="d-flex justify-content-center">
