@@ -6,6 +6,7 @@
  }
 
  function feedback(r) {
+     console.log(r)
      if (!r.error) {
          let node = document.createElement('div')
          node.classList.add('progress')
