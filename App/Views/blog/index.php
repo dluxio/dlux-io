@@ -187,9 +187,9 @@
                 <input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/>
                 </p>
                 </div>
-                <div>
-                <p class="my-0">0.23 <img src="/img/dlux-white-icon.png" alt="" width="20" /></p>
-                <p class="my-0">0.10 <img src="/img/hextacular.svg" alt="" width="17"/></p>
+                <div class="text-right">
+                <p class="my-0"><span class="mr-1" id="commentDluxVal">0.23</span><img src="/img/dlux-white-icon.png" alt="" width="20" /></p>
+                <p class="my-0"><span class="mr-1"  id="commentHiveVal">0.10</span><img src="/img/hextacular.svg" alt="" width="17"/></p>
                 </div>
             </div>
             </div>
