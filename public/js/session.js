@@ -6,7 +6,29 @@
  }
 
  function feedback(r) {
-     console.log(r)
+     if (r.error) {
+         let node = document.createElement('div')
+         node.classList.add('progress')
+         node.innerHTML = `<div id="progressbar${r.result.id}" class="progress-bar" role="progressbar" aria-valuenow="70"
+  				aria-valuemin="0" aria-valuemax="100" style="width:0%">
+    				<span id="progresslabel${r.result.id}" class="sr-only">0 Confirmations</span>
+  				</div>`
+         document.getElementById('orderform').appendChild
+         let [`id-iterator-${r.result.id}`] = 0
+         setTimeout(updateprogress(r.result.id), 3000)
+
+         function updateprogress(id) {
+             [`id-iterator-${r.result.id}`]++
+             document.getElementById(`progressbar${r.result.id}`).style.width = `${parseInt([`id-iterator-${r.result.id}`]*5)}%`
+             document.getElementById(`progressbarlabel${r.result.id}`).innerText = `${[`id-iterator-${r.result.id}`]} Confirmations. 20 Required`
+             if([`id-iterator-${r.result.id}`] >= 20 ){
+                 delete [`id-iterator-${r.result.id}`]
+                 pageSpecfic(User)
+             } else {
+                 setTimeout(updateprogress(id), 3000)
+             }
+         }
+     }
  }
 
  function readResponseAsBlob(response) {

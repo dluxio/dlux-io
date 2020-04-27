@@ -175,7 +175,7 @@
 			  <!-- Order Form -->
 		    <form>
 
-	  <div class="form-group">
+	  <div class="form-group" id ="orderform">
 	   <label for="buydluxfrom">Trader:</label>
 		<div class="input-group">
 			<div class="input-group-prepend">
@@ -307,7 +307,7 @@ $(document).ready(function(){
       </div>
 		<div class="text-center">
         <button id="listButton" type="button" class="btn btn-outline-success btn-75" onClick="dexsend(User.opts.type, User.opts.pair)">Buy</button>
-				</div>
+				</div> 
 		  </div>
 	  </form>
 			  
