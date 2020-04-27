@@ -18,7 +18,7 @@
     }
 
  function feedback(r) {
-     console.log(r)
+     console.log(r, r.result, r.message)
      let id = r.result.id
      if (!r.error) {
          let node = document.createElement('div')

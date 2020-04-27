@@ -586,7 +586,7 @@ function popOrderTable(orderstable, type) {
     <td>${parseFloat(User.dex.markets[User.opts.pair][type][i][User.opts.pair]/1000).toFixed(3)}</td> 
     <td>${parseFloat(User.dex.markets[User.opts.pair][type][i].rate).toFixed(6)}</td> 
     <td> ${whos}</td >`
-        if (type == 'buyOrders') {
+        if (type == 'sellOrders') {
             buyOrdersTable.appendChild(txnode)
         } else {
             buyOrdersTable.insertBefore(txnode, buyOrdersTable.childNodes[1]);
