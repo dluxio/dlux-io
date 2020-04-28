@@ -45,11 +45,11 @@ function key(message) { //how this post finds itself on blockchain
     Dlux.key = message;
     Dlux.permlink = message.split('/')[1];
     Dlux.author = message.split('/')[0]
-    try { Dlux_connect() } catch () e {
-        console.log(`The Dlux Connect Script is loaded:\n ${DLUX}\n`
+    try { Dlux_connect() } catch (e) {
+        console.log(`The Dlux Connect Script is loaded:\n ${DLUX}\n
             You can eaily write your scripts and avoid this message by defining a
             function\ n
-            function Dlux_connect(above_data) { handle above data })
+            function Dlux_connect(above_data) { handle above data })`)
     }
 }
 
