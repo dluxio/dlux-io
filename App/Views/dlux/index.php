@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/steem/dist/steem.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="/js/session.js"></script>
     <style>
         html,
         body {
@@ -111,87 +111,6 @@
             }
         }
 
-        function vote(message) {
-            $.post({
-                url: '/post/vote/',
-                dataType: 'json',
-                data: {
-                    'permlink': 'addmst758y8ajhiuvigmesxuj1yo4mve',
-                    'author': 'dlux-io',
-                    'weight': message
-                }
-            }, (response) => {
-                steem.api.getState(`/dlux/@dlux-io/addmst758y8ajhiuvigmesxuj1yo4mve`, (err, result) => {
-                    var target = document.getElementById('theIframe').contentWindow
-                    target.postMessage({
-                        'func': 'steemState',
-                        'message': result,
-                    }, "*");
-                })
-            })
-        }
-
-        function comment(message) {
-            confirm(`Confirm posting the ${message.message} with ${message.customJSON} as a steem comment.`)
-            $.post({
-                url: '/post/comment/',
-                dataType: 'json',
-                data: {
-                    'parentPermlink': 'addmst758y8ajhiuvigmesxuj1yo4mve',
-                    'parentAuthor': 'dlux-io',
-                    'message': message.message,
-                    'parentTitle': stateObj.content[steemKey].title,
-                    'customJSON': message.customJSON
-                }
-            }, (response) => {
-                steem.api.getState(`/dlux/@dlux-io/addmst758y8ajhiuvigmesxuj1yo4mve`, (err, result) => {
-                    var target = document.getElementById('theIframe').contentWindow
-                    target.postMessage({
-                        'func': 'steemState',
-                        'message': result,
-                    }, "*");
-                })
-            })
-        }
-
-        function follow(message) {
-            console.log('got ' + message)
-            $.post({
-                url: '/post/follow/',
-                dataType: 'json',
-                data: {
-                    'following': message
-                }
-            }, (response) => {
-                steem.api.getAccounts([`Guest`], (err, result) => {
-                    var target = document.getElementById('theIframe').contentWindow
-                    target.postMessage({
-                        'func': 'accountUpdate',
-                        'message': result,
-                    }, "*");
-                })
-            })
-        }
-
-        function aVote(message) {
-            $.post({
-                url: '/post/vote/',
-                dataType: 'json',
-                data: {
-                    'permlink': message.permlink,
-                    'author': message.author,
-                    'weight': message.weight
-                }
-            }, (response) => {
-                console.log(response)
-                var target = document.getElementById('theIframe').contentWindow
-                target.postMessage({
-                    'func': 'voteMsg',
-                    'message': stateObject
-                }, "*");
-            });
-        }
-
         function sendLink(link) {
             if (link == '/auth') {
                 setCookie('dropOff', `/dlux/@dlux-io/addmst758y8ajhiuvigmesxuj1yo4mve`, 15);
@@ -268,7 +187,7 @@
             }
         }
 
-        function iloaded() {
+        function pageSpecific(usr) {
             if (isIOS()) {
                 window.addEventListener('devicemotion', function(e) {
                     document.getElementById('theIframe').contentWindow.postMessage({
@@ -281,7 +200,7 @@
                 var target = document.getElementById('theIframe').contentWindow
                 target.postMessage({
                     'func': 'iAm',
-                    'message': userLoggedIn,
+                    'message': user,
                 }, "*");
                 target.postMessage({
                     'func': 'key',
@@ -292,10 +211,11 @@
                     'message': result,
                 }, "*");
             });
-            if (window.steem_keychain) {
+            if (window.hive_keychain) {
                 postable = true
             }
         }
+        checkCookie(); 
     </script>
 
     <body></body>
