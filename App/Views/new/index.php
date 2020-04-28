@@ -48,7 +48,21 @@
     	<a href="/new/supercraft" class="btn btn-danger">Get Started</a>
   	  </div>
 	</div>
-		
+	<div class="card w-100 border-danger bg-none my-5">
+      <div class="card-body text-center text-white">
+    	<h5 class="card-title">ADVANCED XR UPLOADER</h5>
+    	<p class="card-text">Remix our boilerplate on Glitch and upload your own images and 3D models</p>
+		<hr class="bg-light">
+		<center>
+		<ul class="text-left">
+		<li>App Type: XR</li>
+		<li>Builder: 2D drag-and-drop asset upload and publishing form</li>
+		<li>Difficulty: Easy</li>
+		</ul>
+		</center>
+    	<a href="advanced.php" class="btn btn-danger">Get Started</a>
+  	  </div>
+	</div>	
 	</div>
 	</main>
 <?php 
