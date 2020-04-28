@@ -7862,6 +7862,17 @@ body {
 .drop-no-arrow::after {
   display: none; }
 
+.theme-icon-holder {
+  display: inline-block;
+  background: #f4fcf6;
+  color: #FB00FF;
+  width: 32px;
+  height: 32px;
+  padding-top: 4px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 50%; }
+
 #buy-main-row {
   /* necessary to hide collapsed sidebar */
   overflow-x: hidden; }

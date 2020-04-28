@@ -7,7 +7,7 @@
         <li class="nav-item"> <a class="nav-link" href="/apps/">Apps</a></li>
         <li class="nav-item"> <a class="nav-link" href="/dex/">Exchange</a></li>
 		<li class="nav-item"> <a class="nav-link" href="/@dlux-io" target="_blank">Updates</a></li>
-        <li class="nav-item"> <a class="nav-link" href="https://github.com/dluxio/dluxio/wiki" target="_blank">Documentation</a></li>
+        <li class="nav-item"> <a class="nav-link" href="/docs/" target="_blank">Documentation</a></li>
       </ul>
 	<ul class="navbar-nav mr-5" id="no-session">
 	<li class="nav-item"><a class="nav-link acct-link" href="/login/">Login</a></li>
