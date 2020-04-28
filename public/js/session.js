@@ -112,6 +112,31 @@
      });
  }
 
+ function dualvote(author, permlink, weightid, dluxweightid){
+     return new Promise((resolve, reject) => {
+    var weight = parseInt(document.getElementById(weightid).value) * 100
+    var dluxweight = parseInt(document.getElementById(dluxweightid).value) * 100
+         var weight = parseInt(document.getElementById(weightid).value) * 100
+         Dluxsession.hive_sign([user, [
+                 ['vote', { voter, author, permlink, weight }],
+                 ['custom_json', {
+                     "required_auths": [],
+                     "required_posting_auths": [user],
+                     "id": "dlux_vote_content",
+                     "json": JSON.stringify({
+                         author,
+                         permlink,
+                         dluxweight
+                     })
+                 }]
+             ], 'posting'])
+             .then(r => {
+                 resolve(r)
+             })
+             .catch(e => { reject(e) })
+     });
+ }
+
  function dluxvote(author, permlink, weightid) {
      return new Promise((resolve, reject) => {
          var weight = parseInt(document.getElementById(weightid).value) * 100
