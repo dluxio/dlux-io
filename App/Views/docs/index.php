@@ -197,5 +197,6 @@
         </div>
     </div>
 </div>
-
+<script>checkCookie();</script>
+</body>
 </html>
