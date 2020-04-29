@@ -174,7 +174,7 @@
                     <div class="card">
                         <div class="card-header" id="headingExchange">
                             <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseExchange" aria-expanded="false" aria-controls="collapseThree"><i class="fas fa-random fa-fw mr-2"></i>Exchange<i class="fas fa-angle-down fa-fw ml-1"></i></button>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseExchange" aria-expanded="false" aria-controls="collapseThree"><i class="fas fa-store fa-fw mr-2"></i>Exchange<i class="fas fa-angle-down fa-fw ml-1"></i></button>
                             </h5>
                         </div>
                         <div id="collapseExchange" class="collapse" aria-labelledby="headingExchange">
