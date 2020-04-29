@@ -88,6 +88,12 @@
 		        </form>
             </div>
             <div class="container px-0">
+                <div class="d-flex">
+                    <div class="btn-group flex-fill my-1" role="group" aria-label="Expand / Collapse">
+                        <button type="button" id="expand" class="btn btn-secondary">Expand</button>
+                        <button type="button" id="collapse" class="btn btn-secondary">Collapse</button>
+                    </div>
+                </div>
                 <div id="accordion">
                     <div class="card">
                         <div class="card-header" id="headingAbout">
@@ -174,15 +180,17 @@
                     <div class="card">
                         <div class="card-header" id="headingExchange">
                             <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseExchange" aria-expanded="false" aria-controls="collapseThree"><i class="fas fa-store fa-fw mr-2"></i>Exchange<i class="fas fa-angle-down fa-fw ml-1"></i></button>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseExchange" aria-expanded="false" aria-controls="collapseThree"><i class="fas fa-store fa-fw mr-2"></i>Market<i class="fas fa-angle-down fa-fw ml-1"></i></button>
                             </h5>
                         </div>
                         <div id="collapseExchange" class="collapse" aria-labelledby="headingExchange">
                             <div class="card-body">
                                 <ul class="nav flex-column">
-                                    <li class="nav-item"><a class="nav-link" href="#token">Token</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#dex">DEX</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#nft">NFT</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#token">DLUX Token</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#dex">Exchange</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#nft-smt">NFT / SMT</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#accounts">Account Creation</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#pinning">Asset Pinning</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -908,7 +916,7 @@ The reward pool is used to incentivize others to run steem-state nodes to verify
                     <article class="docs-article" id="dex">
                         <h3>Decentralized Exchange (DEX)</h3>
                         <p></p>
-                    <article class="docs-article" id="nft">
+                    <article class="docs-article" id="nft-smt">
                         <h3>Non Fungible Tokens (NFTs)</h3>
                         <p>In addition to the dlux Token, we have created a smart contract framework for building Non-fungible Tokens (NFT). They can contain key-pairs for activation, meaning you can ship devices deactivated and require codes for activation, similar to the electric scooter model. Our NFT framework creates a path forward for Internet of Things (IoT) governance.
 
@@ -935,6 +943,14 @@ Each marker seen by the camera signs a checks a box inside the Event NFT
 The Event NFT can be completed, or expire at the end of the event
 At completion, the NFT pays out, and the user recieves DLUX tokens, trophy NFT, or anything else
 At expiration, the NFT pays out according to the table for the quest progress, and returns the remainder to the event</p>
+                    </article>
+                    <article class="docs-article" id="accounts">
+                        <h3>Account Creation Tokens</h3>
+                        <p></p>
+                    </article>
+                    <article class="docs-article" id="pinning">
+                        <h3>Asset Pinning</h3>
+                        <p></p>
                     </article>
                     <article class="docs-article" id="nodes">
                         <h3>DLUX Node Network</h3>
@@ -1131,7 +1147,14 @@ Currently this is part of our roadmap.</p>
         </div>
     </div>
 </div>
-
+<script>
+$('#expand').on('click', function () {
+$('#accordion .collapse').collapse('show');
+});
+$('#collapse').on('click', function () {
+$('#accordion .collapse').collapse('hide');
+});
+</script>
 <script>checkCookie();</script>
 </body>
 </html>
