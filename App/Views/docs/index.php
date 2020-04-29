@@ -7,7 +7,6 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
-<script src="https://raw.githubusercontent.com/showdownjs/showdown/master/dist/showdown.min.js"></script>
 <style>
 .docs-nav {
   overflow-y: auto;
@@ -84,26 +83,100 @@
 		            <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
 		        </form>
             </div>
-        <nav id="docs-nav" class="docs-nav">
-            <ul class="nav flex-column rounded">
-                <li class="nav-item section-title"><a class="nav-link scrollto active" href="#section-0"><span class="theme-icon-holder mr-2"><i class="fas fa-map-signs"></i></span>Introduction</a></li>
-                <li class="nav-item section-title"><a class="nav-link scrollto active" href="#section-1"><span class="theme-icon-holder mr-2"><i class="fas fa-drafting-compass"></i></span>Publish Apps</a></li>
-                <li class="nav-item"><a class="nav-link scrollto" href="#section-1-1">Supercraft</a></li>
-                <li class="nav-item"><a class="nav-link scrollto" href="#section-1-2">VR Builder</a></li>
-                <li class="nav-item"><a class="nav-link scrollto" href="#section-1-3">Uploader</a></li>
-                <li class="nav-item section-title"><a class="nav-link scrollto active" href="#section-2"><span class="theme-icon-holder mr-2"><i class="fas fa-vr-cardboard"></i></span>WebXR</a></li>
-                <li class="nav-item"><a class="nav-link scrollto" href="#section-2-1">Assets</a></li>
-                <li class="nav-item"><a class="nav-link scrollto" href="#section-2-2">Components</a></li>
-                <li class="nav-item"><a class="nav-link scrollto" href="#section-2-3">Workflows</a></li>
-                <li class="nav-item section-title"><a class="nav-link scrollto active" href="#section-3"><span class="theme-icon-holder mr-2"><i class="fab fa-sketch"></i></span>Web2D</a></li>
-                <li class="nav-item"><a class="nav-link scrollto" href="#section-3-1">React</a></li>
-                <li class="nav-item"><a class="nav-link scrollto" href="#section-3-2">Bootstrap</a></li>
-                <li class="nav-item section-title"><a class="nav-link scrollto active" href="#section-4"><span class="theme-icon-holder mr-2"><i class="fas fa-link"></i></span>dlux Chain</a></li>
-                <li class="nav-item"><a class="nav-link scrollto" href="#section-4-1">Token</a></li>
-                <li class="nav-item"><a class="nav-link scrollto" href="#section-4-2">Node</a></li>
-                <li class="nav-item"><a class="nav-link scrollto" href="#section-4-3">Exchange</a></li>
-            </ul>
-        </nav>
+            <div class="container">
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">About</button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul>
+                                    <li>Introduction</li>
+                                    <li>FAQ</li>
+                                    <li>Whitepaper</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingBuild">
+                            <h5 class="mb-0 d-inline">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseBuild" aria-expanded="true" aria-controls="collapseBuild">Create</button>
+                            </h5>
+                        </div>
+                        <div id="collapseBuild" class="collapse" aria-labelledby="headingBuild" data-parent="#accordion">
+                            <div class="card-body" id="buildContainer">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a href="#" data-toggle="collapse" data-target="#collapseBuildInfo">Publishing Apps</a>
+                                    </div>
+                                    <div class="card-body collapse" data-parent="#buildContainer" id="collapseBuildInfo">
+                                        <ul>
+                                            <li>Supercraft VR</li>
+                                            <li>VR Builder</li>
+                                            <li>App Uploader</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a href="#" data-toggle="collapse" data-target="#collapseBuildAssets">Assets</a>
+                                    </div>
+                                    <div class="card-body collapse" data-parent="#buildContainer" id="collapseBuildAssets">
+                                        <ul>
+                                            <li>3D Models</li>
+                                            <li>Images</li>
+                                            <li>Text</li>
+                                            <li>Shapes</li>
+                                            <li>Audio</li>
+                                            <li>Video</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a href="#" data-toggle="collapse" data-target="#collapseBuildComponents">XR Components</a>
+                                    </div>
+                                    <div class="card-body collapse" data-parent="#buildContainer" id="collapseBuildComponents">
+                                        <ul>
+                                            <li>Environment</li>
+                                            <li>Collisions</li>
+                                            <li>Physics</li>
+                                            <li>Navmesh</li>
+                                            <li>Player Rig</li>
+                                            <li>Controls</li>
+                                            <li>AR Marker</li>
+                                            <li>UI Overlay</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">dlux Chain</button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul>
+                                    <li>Token</li>
+                                    <li>NFTs</li>
+                                    <li>Nodes</li>
+                                    <li>Exchange</li>
+                                    <li>API</li>
+                                    <li>Hive</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class='col-lg-10 col-md-9 col-sm-8 mh-100 bg-light overflow-auto'>
             <div class='row flex-grow-1'>
@@ -111,7 +184,7 @@
                     <article class="docs-article" id="introduction">
                         <h3>Welcome to dlux! Start building anything.</h3>
                         <p>The goal of this project is to incentivize XR adoption in the best possible way we can imagine: open-source and on-chain.</p>
-                        <p>The economics of this are possible. By combining WebVR, AR.js, and HIVE, we created a platform free for everyone to use that rewards good content with real cryptocurrency you can spend or transfer.</p>
+                        <p>The economics of this are possible. By combining WebVR, AR.js, and HIVE, we buildd a platform free for everyone to use that rewards good content with real cryptocurrency you can spend or transfer.</p>
                         <p>We recognize that in order for vr to take off, its creation needs to reach a point of enabling everyone to participate, so we lowered the barrier to entry as far as we possibly could.</p>
                         <p>Remix our Glitch projects to immediately begin building experiences that earn you rewards by publishing to Steem. Experiences that run on nearly any device, computer, and head mounted display through the web browser.</p>
                         <p>Deploy your next game, video, or experience at no cost with no programming expertise. We'll show you how.</p>
@@ -125,5 +198,4 @@
     </div>
 </div>
 
-</body>
 </html>
