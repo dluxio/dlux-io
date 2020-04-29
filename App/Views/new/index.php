@@ -60,7 +60,7 @@
 		<li>Difficulty: Easy</li>
 		</ul>
 		</center>
-    	<a href="advanced.php" class="btn btn-danger">Get Started</a>
+    	<a href="/new/advanced" class="btn btn-danger">Get Started</a>
   	  </div>
 	</div>	
 	</div>
