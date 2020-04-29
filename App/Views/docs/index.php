@@ -93,10 +93,10 @@
                         </div>
                         <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
                             <div class="card-body">
-                                <ul>
-                                    <li>Introduction</li>
-                                    <li>FAQ</li>
-                                    <li>Whitepaper</li>
+                                <ul class="nav flex-column">
+                                    <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Introduction</a></li>
+                                    <li class="nav-item scrollto"><a class="nav-link" href="#introduction">FAQ</a></li>
+                                    <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Whitepaper</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -114,10 +114,10 @@
                                         <a href="#" data-toggle="collapse" data-target="#collapseBuildInfo">Publishing Apps</a>
                                     </div>
                                     <div class="card-body collapse" data-parent="#buildContainer" id="collapseBuildInfo">
-                                        <ul>
-                                            <li>Supercraft VR</li>
-                                            <li>VR Builder</li>
-                                            <li>App Uploader</li>
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Supercraft VR</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">VR Builder</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">App Uploader</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -126,13 +126,13 @@
                                         <a href="#" data-toggle="collapse" data-target="#collapseBuildAssets">Assets</a>
                                     </div>
                                     <div class="card-body collapse" data-parent="#buildContainer" id="collapseBuildAssets">
-                                        <ul>
-                                            <li>3D Models</li>
-                                            <li>Images</li>
-                                            <li>Text</li>
-                                            <li>Shapes</li>
-                                            <li>Audio</li>
-                                            <li>Video</li>
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">3D Models</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Images</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Text</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Shapes</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Audio</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Video</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -141,18 +141,44 @@
                                         <a href="#" data-toggle="collapse" data-target="#collapseBuildComponents">XR Components</a>
                                     </div>
                                     <div class="card-body collapse" data-parent="#buildContainer" id="collapseBuildComponents">
-                                        <ul>
-                                            <li>Environment</li>
-                                            <li>Collisions</li>
-                                            <li>Physics</li>
-                                            <li>Navmesh</li>
-                                            <li>Player Rig</li>
-                                            <li>Controls</li>
-                                            <li>AR Marker</li>
-                                            <li>UI Overlay</li>
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Environment</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Collisions</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Physics</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Navmesh</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Player Rig</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Controls</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">AR Marker</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">UI Overlay</a></li>
                                         </ul>
                                     </div>
                                 </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <a href="#" data-toggle="collapse" data-target="#collapseBuildSDK">SDK</a>
+                                    </div>
+                                    <div class="card-body collapse" data-parent="#buildContainer" id="collapseBuildSDK">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Blockchain Operations</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Second Layer</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingExchange">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseExchange" aria-expanded="false" aria-controls="collapseThree">Exchange</button>
+                            </h5>
+                        </div>
+                        <div id="collapseExchange" class="collapse" aria-labelledby="headingExchange" data-parent="#accordion">
+                            <div class="card-body">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Token</a></li>
+                                    <li class="nav-item scrollto"><a class="nav-link" href="#introduction">NFTs</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -164,13 +190,10 @@
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                             <div class="card-body">
-                                <ul>
-                                    <li>Token</li>
-                                    <li>NFTs</li>
-                                    <li>Nodes</li>
-                                    <li>Exchange</li>
-                                    <li>API</li>
-                                    <li>Hive</li>
+                                <ul class="nav flex-column">
+                                    <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Nodes</a></li>
+                                    <li class="nav-item scrollto"><a class="nav-link" href="#introduction">API</a></li>
+                                    <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Hive</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -190,8 +213,14 @@
                         <p>Deploy your next game, video, or experience at no cost with no programming expertise. We'll show you how.</p>
                         <h5>We've made it easy to get up and running by integrating all the technical stuff so you can start creating right away!</h5>
                         <p>To fully utilize our platform, you must have a HIVE account. It can take some time for your account to activate, but you can start building apps immediately.</p>
-					
-			    </article>
+			        </article>
+                    <article class="docs-article" id="faq">
+                        
+                    </article>
+                    <article class="docs-article" id="whitepaper">
+                        <p>The original dlux whitepaper was written by Steven Ettinger and Mark Giles.</p>
+                        <p>It details the philosophy and design principles behind the dlux-io platform.</p>
+                    </article>
                 </div>
             </div>
         </div>
