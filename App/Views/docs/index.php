@@ -198,6 +198,7 @@
                                 <ul class="nav flex-column">
                                     <li class="nav-item"><a class="nav-link" href="#nodes">Nodes</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#api">API</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#ipfs">IPFS</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#hive">Hive</a></li>
                                 </ul>
                             </div>
@@ -904,6 +905,9 @@ Every 100 blocks 1 DLUX token is minted for every 2100.000 DLUX in existence.
 
 The reward pool is used to incentivize others to run steem-state nodes to verify integrity and that we're running our code fairly and correctly, provable through the hash. The 20 fastest verification responses earn rewards.</p>
                     </article>
+                    <article class="docs-article" id="dex">
+                        <h3>Decentralized Exchange (DEX)</h3>
+                        <p></p>
                     <article class="docs-article" id="nft">
                         <h3>Non Fungible Tokens (NFTs)</h3>
                         <p>In addition to the dlux Token, we have created a smart contract framework for building Non-fungible Tokens (NFT). They can contain key-pairs for activation, meaning you can ship devices deactivated and require codes for activation, similar to the electric scooter model. Our NFT framework creates a path forward for Internet of Things (IoT) governance.
