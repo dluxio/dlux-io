@@ -25,4 +25,8 @@ class Newpost extends \Core\Controller
     {
         View::render('new/supercraft.php');
     }
+    public function advanced($request, $response, $service)
+    {
+        View::render('new/advanced.php');
+    }
 }

@@ -13,6 +13,8 @@ $router->respondWithController('GET', '/dex/', 'Dex@index');
 $router->respondWithController('GET', '/dex', 'Dex@index');
 $router->respondWithController('GET', '/apps', 'Apps@index');
 $router->respondWithController('GET', '/apps/', 'Apps@index');
+$router->respondWithController('GET', '/docs', 'Docs@index');
+$router->respondWithController('GET', '/docs/', 'Docs@index');
 $router->respondWithController('GET', '/login/', 'Login@index');
 $router->respondWithController('GET', '/login', 'Login@index');
 $router->respondWithController('GET', '/blog/@[:name]/[:permlink]', 'Blog@index');
@@ -27,5 +29,7 @@ $router->respondWithController('GET', '/new', 'Newpost@index');
 $router->respondWithController('GET', '/new/', 'Newpost@index');
 $router->respondWithController('GET', '/new/supercraft', 'Newpost@supercraft');
 $router->respondWithController('GET', '/new/supercraft/', 'Newpost@supercraft');
+$router->respondWithController('GET', '/new/advanced', 'Newpost@advanced');
+$router->respondWithController('GET', '/new/advanced/', 'Newpost@advanced');
 // Dispatch the router
 $router->dispatch();
