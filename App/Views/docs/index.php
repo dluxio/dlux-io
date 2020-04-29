@@ -90,12 +90,12 @@
             <div class="container px-0">
                 <div id="accordion">
                     <div class="card">
-                        <div class="card-header" id="headingTwo">
+                        <div class="card-header" id="headingAbout">
                             <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">About</button>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAbout" aria-expanded="false" aria-controls="collapseAbout"><i class="fas fa-info-circle fa-fw mr-2"></i>About<i class="fas fa-angle-down fa-fw ml-1"></i></button>
                             </h5>
                         </div>
-                        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div id="collapseAbout" class="collapse show" aria-labelledby="headingAbout">
                             <div class="card-body">
                                 <ul class="nav flex-column">
                                     <li class="nav-item"><a class="nav-link scrollto" href="#introduction">Introduction</a></li>
@@ -106,65 +106,65 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header" id="headingBuild">
+                        <div class="card-header" id="headingCreate">
                             <h5 class="mb-0 d-inline">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseBuild" aria-expanded="true" aria-controls="collapseBuild">Create</button>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseCreate" aria-expanded="true" aria-controls="collapseCreate"><i class="fas fa-drafting-compass fa-fw mr-2"></i>Create<i class="fas fa-angle-down fa-fw ml-1"></i></button>
                             </h5>
                         </div>
-                        <div id="collapseBuild" class="collapse" aria-labelledby="headingBuild" data-parent="#accordion">
-                            <div class="card-body p-1" id="buildContainer">
+                        <div id="collapseCreate" class="collapse" aria-labelledby="headingCreate">
+                            <div class="card-body p-2" id="createContainer">
                                 <div class="card">
                                     <div class="card-header">
-                                        <a href="#" data-toggle="collapse" data-target="#collapseBuildInfo">Publishing Apps</a>
+                                        <a href="#" data-toggle="collapse" data-target="#collapseCreateInfo"><i class="fas fa-plus fa-fw mr-2"></i>Publishing<i class="fas fa-angle-down fa-fw ml-1"></i></a>
                                     </div>
-                                    <div class="card-body collapse" data-parent="#buildContainer" id="collapseBuildInfo">
+                                    <div class="card-body collapse show" id="collapseCreateInfo">
                                         <ul class="nav flex-column">
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#supercraft">Supercraft VR</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#builder">VR Builder</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#uploader">App Uploader</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#supercraft">Supercraft VR</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#builder">VR Builder</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#uploader">App Uploader</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header">
-                                        <a href="#" data-toggle="collapse" data-target="#collapseBuildAssets">Assets</a>
+                                        <a href="#" data-toggle="collapse" data-target="#collapseCreateAssets"><i class="fas fa-shapes fa-fw mr-2"></i>Assets<i class="fas fa-angle-down fa-fw ml-1"></i></a>
                                     </div>
-                                    <div class="card-body collapse" data-parent="#buildContainer" id="collapseBuildAssets">
+                                    <div class="card-body collapse" id="collapseCreateAssets">
                                         <ul class="nav flex-column">
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#3d-models">3D Models</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#images">Images</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#text">Text</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#shapes">Shapes</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#audio">Audio</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#video">Video</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#3d-models">3D Models</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#images">Images</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#text">Text</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#shapes">Shapes</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#audio">Audio</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#video">Video</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header">
-                                        <a href="#" data-toggle="collapse" data-target="#collapseBuildComponents">XR Components</a>
+                                        <a href="#" data-toggle="collapse" data-target="#collapseCreateComponents"><i class="fas fa-cogs fa-fw mr-2"></i>Components<i class="fas fa-angle-down fa-fw ml-1"></i></a>
                                     </div>
-                                    <div class="card-body collapse" data-parent="#buildContainer" id="collapseBuildComponents">
+                                    <div class="card-body collapse" id="collapseCreateComponents">
                                         <ul class="nav flex-column">
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#environment">Environment</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#collisions">Collisions</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#physics">Physics</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#navmesh">Navmesh</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#player-rig">Player Rig</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#controls">Controls</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#ar-marker">AR Marker</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#ui-overlay">UI Overlay</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#environment">Environment</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#collisions">Collisions</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#physics">Physics</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#navmesh">Navmesh</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#player-rig">Player Rig</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#controls">Controls</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#ar-marker">AR Marker</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#ui-overlay">UI Overlay</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header">
-                                        <a href="#" data-toggle="collapse" data-target="#collapseBuildSDK">SDK</a>
+                                        <a href="#" data-toggle="collapse" data-target="#collapseCreateSDK"><i class="fas fa-layer-group fa-fw mr-2"></i>SDK<i class="fas fa-angle-down fa-fw ml-1"></i></a>
                                     </div>
-                                    <div class="card-body collapse" data-parent="#buildContainer" id="collapseBuildSDK">
+                                    <div class="card-body collapse" id="collapseCreateSDK">
                                         <ul class="nav flex-column">
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Blockchain Operations</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#introduction">Second Layer</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#blockchain-ops">Blockchain Operations</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link" href="#second-layer">Second Layer</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -174,30 +174,31 @@
                     <div class="card">
                         <div class="card-header" id="headingExchange">
                             <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseExchange" aria-expanded="false" aria-controls="collapseThree">Exchange</button>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseExchange" aria-expanded="false" aria-controls="collapseThree"><i class="fas fa-random fa-fw mr-2"></i>Exchange<i class="fas fa-angle-down fa-fw ml-1"></i></button>
                             </h5>
                         </div>
-                        <div id="collapseExchange" class="collapse" aria-labelledby="headingExchange" data-parent="#accordion">
+                        <div id="collapseExchange" class="collapse" aria-labelledby="headingExchange">
                             <div class="card-body">
                                 <ul class="nav flex-column">
-                                    <li class="nav-item scrollto"><a class="nav-link" href="#token">Token</a></li>
-                                    <li class="nav-item scrollto"><a class="nav-link" href="#nft">NFT</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#token">Token</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#dex">DEX</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#nft">NFT</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header" id="headingThree">
+                        <div class="card-header" id="headingBlockchain">
                             <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">dlux Chain</button>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseBlockchain" aria-expanded="false" aria-controls="collapseBlockchain"><i class="fas fa-link fa-fw mr-2"></i>Blockchain<i class="fas fa-angle-down fa-fw ml-1"></i></button>
                             </h5>
                         </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div id="collapseBlockchain" class="collapse" aria-labelledby="headingBlockchain">
                             <div class="card-body">
                                 <ul class="nav flex-column">
-                                    <li class="nav-item scrollto"><a class="nav-link scrollto" href="#nodes">Nodes</a></li>
-                                    <li class="nav-item scrollto"><a class="nav-link scrollto" href="#api">API</a></li>
-                                    <li class="nav-item scrollto"><a class="nav-link scrollto" href="#hive">Hive</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#nodes">Nodes</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#api">API</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#hive">Hive</a></li>
                                 </ul>
                             </div>
                         </div>
