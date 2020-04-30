@@ -4,9 +4,9 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"> <a class="nav-link" href="/apps/">Apps</a></li>
-        <li class="nav-item"> <a class="nav-link" href="/dex/">Exchange</a></li>
-        <li class="nav-item"> <a class="nav-link" href="/docs/">Documentation</a></li>
+        <li class="nav-item"> <a class="nav-link" href="/apps/">APPS</a></li>
+        <li class="nav-item"> <a class="nav-link" href="/dex/">EXCHANGE</a></li>
+        <li class="nav-item"> <a class="nav-link" href="/docs/">DOCS</a></li>
       </ul>
 	<ul class="navbar-nav mr-5" id="no-session">
 	<li class="nav-item"><a class="nav-link acct-link" href="/login/">Login</a></li>
@@ -29,7 +29,7 @@
 			 <a class="dropdown-item" href="/me/#node" onClick="changeTab('node')"><i class="fas fa-robot fa-fw mr-2"></i>Node</a>
              <div class="dropdown-divider"></div>
 			 <a class="dropdown-item" href="/me/#settings" onClick="changeTab('settings')"><i class="fas fa-cog fa-fw mr-2"></i>Settings</a>
-			 <a class="dropdown-item" href="#"><i class="fas fa-info-circle fa-fw mr-2"></i>About</a>
+			 <a class="dropdown-item" href="/docs/"><i class="fas fa-info-circle fa-fw mr-2"></i>About</a>
              <div class="dropdown-divider"></div>
              <a class="dropdown-item" href="/login/"><i class="fas fa-user-friends mr-2"></i>Switch User</a>
 			 <a class="dropdown-item" href="javascript:logout()"><i class="fas fa-power-off fa-fw mr-2"></i>Logout</a></div>
