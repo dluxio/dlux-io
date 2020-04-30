@@ -7,71 +7,7 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
- 
-<style>
-.docs-nav {
-  overflow-y: auto;
-  padding: 1rem;
-}
-.docs-nav .section-title {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-}
-.docs-nav .section-title a:hover {
-  text-decoration: none;
-}
-.docs-nav .section-items {
-  font-size: 0.875rem;
-  position: relative;
-}
-.docs-nav .nav-item {
-  margin-left: 2.5rem;
-}
-.docs-nav .nav-item.section-title {
-  margin-left: 0;
-}
-.docs-nav .nav-item.section-title .nav-link {
-  padding: 0;
-}
-.docs-nav .nav-item.section-title .nav-link:before {
-  display: none;
-}
-.docs-nav .nav-link {
-  display: inline-block;
-  position: relative;
-  padding: 0.5rem 1rem;
-  color: #fff;
-}
-.docs-nav .nav-link .theme-icon-holder {
-  font-size: 0.875rem;
-  padding-top: 0.375rem;
-}
-.docs-nav .nav-link.active {
-  color: #FB00FF;
-}
-.docs-nav .nav-link.active:before {
-  background-color: #FB00FF;
-}
-.docs-nav .nav-link.active .theme-icon-holder {
-  color: #fff;
-  background: #FB00FF;
-}
-.docs-nav .nav-link:before {
-  background-color: #f4fcf6;
-  content: " ";
-  display: inline-block;
-  height: inherit;
-  left: 0;
-  margin-top: -0.5rem;
-  position: absolute;
-  width: 3px;
-  height: 100%;
-  border-radius: 1rem;
-}    
-    html {
-  scroll-behavior: smooth;
-}
-</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 </head>
 <body>
 <?php 
@@ -82,9 +18,9 @@
 <div class="container-fluid d-flex flex-column vh-100 overflow-hidden">
     <div class="row flex-grow-1 overflow-hidden" style="margin-top:60px;">
         <div id="docs-sidebar" class="col-lg-2 col-md-3 col-sm-4 mh-100 bg-darker overflow-auto py-2">
-            <div class="top-search-box py-3">
+            <div class="py-3">
                 <form class="search-form">
-		            <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
+		            <input id="search-box" type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
 		        </form>
             </div>
             <div class="container px-0">
@@ -1156,5 +1092,13 @@ $('#accordion .collapse').collapse('hide');
 });
 </script>
 <script>checkCookie();</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: '61a41f1f483bb427deded79575d31c9a',
+indexName: 'dlux',
+inputSelector: '#search-box',
+debug: false // Set debug to true if you want to inspect the dropdown
+});
+</script>
 </body>
 </html>
