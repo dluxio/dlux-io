@@ -16,7 +16,7 @@
           </a>
           <!-- Hive -->
           <a href="https://peakd.com/@dlux-io" target="_blank">
-            <i class="fas fa-rss fa-lg mx-md-3 mx-2 fa-2x"></i>
+            <img src="/img/peakd_logo.svg" class="responsive pb-3" width="40px">
           </a>
           <!--Twitter -->
           <a href="https://twitter.com/dluxxr" target="_blank">

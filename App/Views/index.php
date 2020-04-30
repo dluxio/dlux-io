@@ -35,9 +35,9 @@
        <p>Empower your  project with an open source token  and wallet backed by deterministic concensus on a distributed ledger</p>
        <p>Simple onboarding with magic link emails and HIVE wallet creation</p>
 <p class="lead">
-          <a class="btn btn-lg btn-outline-primary m-3" href="/apps" role="button">Explore<i class="fab fa-wpexplorer ml-2"></i></a>
+          <a class="btn btn-lg btn-primary m-3" href="/apps" role="button">Explore<i class="fab fa-wpexplorer ml-2"></i></a>
 	
-	<a class="btn btn-lg btn-outline-secondary" href="/new" role="button">Create<i class="fas fa-plus-circle ml-2"></i></a>
+	<a class="btn btn-lg btn-secondary" href="/new" role="button">Create<i class="fas fa-plus-circle ml-2"></i></a>
        </p>
 
     </div>
@@ -46,27 +46,45 @@
     </div> 
     </div>
 	  
-    <div class="d-flex align-items-center text-white">
-		  <div class="card bg-dark border-danger m-3 p-3 text-center">
-              <h1>Virtual Reality</h1>
-	    	<p>Digital spaces resoponsive across mobile, desktop, and headset all connected via tags and the Hive social network.</p>
-			<p class="text-center"><a class="btn btn-lg btn-primary" href="/vr/" role="button">Explore The Metaverse</a></p>
+    <div class="card-group text-white">
+		  <div class="card bg-dark border-primary text-center">
+              <div class="card-body d-flex align-items-center">
+                  <div>
+                      <h1>Virtual Reality</h1>
+                      <p>Digital spaces resoponsive across mobile, desktop, and headset all connected via tags and the Hive social network.</p>
+                  </div>
+              </div>
+              <div class="card-footer">
+                  <a class="btn btn-lg btn-outline-primary" href="/vr/" role="button">Enter The Metaverse</a>
+              </div>
 	    </div>
 		  
-	    <div class="card bg-dark border-danger m-3 p-3 text-center">
-			<h1>Decentralized Exchange</h1>
-			<p>Absolutely no data asymetry, only pure atomic swaps via smart contracts preventing any foul play using custodial funds.</p>
-			<p class="text-center"><a class="btn btn-lg btn-primary" href="/dex/" role="button">Start Trading</a></p>
+	    <div class="card bg-dark border-primary text-center">
+             <div class="card-body d-flex align-items-center">
+                 <div>
+                     <h1>Decentralized Exchange</h1>
+			         <p>Absolutely no data asymetry, only pure atomic swaps via smart contracts preventing any foul use of custodial funds.</p>
+                </div>
+            </div>
+            <div class="card-footer">
+			    <a class="btn btn-lg btn-outline-primary" href="/dex/" role="button">Start Trading</a>
+            </div>
 	    </div>
-	    
-	    <div  class="card bg-dark border-danger m-3 p-3 text-center">
-			<h1>Node Network</h1>
-			<p>Dlux nodes enable a much deeper experience with the Hive blockchain, including automated markets for asset pinning and account creation.</p>
-			<p class="text-center"><a class="btn btn-lg btn-primary" href="/docs/#nodes" role="button">Run A Node</a></p>
+	    <div  class="card bg-dark border-primary text-center">
+            <div class="card-body d-flex align-items-center">
+                <div>
+                    <h1>Node Network</h1>
+			        <p>Dlux nodes enable a much deeper experience with the Hive blockchain, including automated markets for asset pinning and account creation.</p>
+                </div>
             </div>
+            <div class="card-footer">
+			    <a class="btn btn-lg btn-outline-primary" href="/docs/#nodes" role="button">Run A Node</a>
             </div>
-	</div>
-	</div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
 	</main>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
