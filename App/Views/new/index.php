@@ -18,7 +18,7 @@
 <main role="main" class="flex-shrink-0">
 <div class="padme-t70"></div>
   <div class="container">
-	<div class="card w-100 border-danger bg-none my-5">
+	<div class="card w-100 border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
     	<h5 class="card-title">DLUX VR BUILDER</h5>
     	<p class="card-text">Remix our boilerplate on Glitch and upload your own images and 3D models</p>
@@ -33,7 +33,7 @@
     	<a href="https://dlux-vr.glitch.me/build.html" target="_blank" class="btn btn-danger">Get Started</a>
   	  </div>
 	</div>
-	<div class="card w-100 border-danger bg-none my-5">
+	<div class="card w-100 border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
     	<h5 class="card-title">SUPERCRAFT</h5>
     	<p class="card-text">Use a VR headset to build scenes with your hands, then publish to DLUX</p>
@@ -48,7 +48,7 @@
     	<a href="/new/supercraft" class="btn btn-danger">Get Started</a>
   	  </div>
 	</div>
-	<div class="card w-100 border-danger bg-none my-5">
+	<div class="card w-100 border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
     	<h5 class="card-title">ADVANCED XR UPLOADER</h5>
     	<p class="card-text">Remix our boilerplate on Glitch and upload your own images and 3D models</p>
