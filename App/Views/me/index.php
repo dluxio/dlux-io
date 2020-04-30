@@ -363,13 +363,19 @@
 		</div>
 		 
 		 <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
-		    <p>inventory</p>
+		    <div class="container">
+             <div class="alert alert-warning mt-5" role="alert">
+              Inventory is under development and coming soon.
+            </div>
 			 </div>
-		 
+		 </div>
 		 <div role="tabpanel" class="tab-pane fade show " id="node" aria-labelledby="nodetab">
-		    <p>node</p>
+              <div class="container">
+		    <div class="alert alert-warning mt-5" role="alert">
+              Node dashboard is under development and coming soon.
+            </div>
 			 </div>
-
+         </div>
        <div role="tabpanel" class="tab-pane fade show" id="settings" aria-labelledby="settingstab">
 	
 	<div class="p-3">
