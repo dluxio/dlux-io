@@ -8,6 +8,7 @@
    include_once($path);
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
 </head>
 <body>
 <?php 
@@ -15,7 +16,7 @@
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
-<div class="container-fluid d-flex flex-column vh-100 overflow-hidden">
+<div class="container-fluid d-flex flex-column vh-100">
     <div class="row flex-grow-1 overflow-hidden" style="margin-top:60px;">
         <div id="docs-sidebar" class="col-lg-2 col-md-3 col-sm-4 mh-100 bg-darker overflow-auto py-2">
             <div class="py-3">
