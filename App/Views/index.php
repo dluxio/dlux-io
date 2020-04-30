@@ -22,7 +22,7 @@
    include_once($path);
 ?>
 <main class="flex-shrink-0">
-  <div class="container-fluid padme-t70">
+  <div class="container-fluid mx-0 px-0 padme-t70">
     <div class="jumbotron jumbotron-fluid text-center text-white mt-5 bg-win">
        <div class="container">
 		<div class="row">
@@ -46,29 +46,26 @@
     </div> 
     </div>
 	  
-    <div class="container-fluid text-white bg-dark">
-	  <div class="row">
-		  <div class="col-xl-4">
-			   <p class="lead">Smart</p>
-			  <p><img src="/img/smart-img.png" class="img-fluid rounded" alt="smart"></p>
-	    	<p>Dlux is turing complete and can handle smart contracts, non fungible tokens, escrow, voting, and any other programming logic.</p>
-			<p class="text-center"><a class="btn btn-lg btn-outline-primary" href="https://github.com/dluxio/dluxio" role="button">Contribute code</a></p>
+    <div class="d-flex align-items-center text-white">
+		  <div class="card bg-dark border-danger m-3 p-3 text-center">
+              <h1>Virtual Reality</h1>
+	    	<p>Digital spaces resoponsive across mobile, desktop, and headset all connected via tags and the Hive social network.</p>
+			<p class="text-center"><a class="btn btn-lg btn-primary" href="/vr/" role="button">Explore The Metaverse</a></p>
 	    </div>
 		  
-	    <div class="col-xl-4">
-			<p class="lead">Secure</p>
-	    	<p><img src="/img/secure-img.png" class="img-fluid rounded" alt="secure"></p>
-			<p>Dlux utilizes the HIVE proof-of-stake blockchain to maintain trustless concensus via node networks for peer-to-peer transactions in a deterministic way.</p>
-			<p class="text-center"><a class="btn btn-lg btn-outline-primary" href="/docs/index.html" role="button">Run a node</a></p>
+	    <div class="card bg-dark border-danger m-3 p-3 text-center">
+			<h1>Decentralized Exchange</h1>
+			<p>Absolutely no data asymetry, only pure atomic swaps via smart contracts preventing any foul play using custodial funds.</p>
+			<p class="text-center"><a class="btn btn-lg btn-primary" href="/dex/" role="button">Start Trading</a></p>
 	    </div>
 	    
-	    <div class="col-xl-4">
-			<p class="lead">Compatible</p>
-	    	<p><img src="/img/compatible-img.png" class="img-fluid rounded" alt="compatible"></p>
-			<p>Dlux works with all HTML5 web technologies, including OpenGL, A-Frame, JavaScript, WebXR, React, Vue, Bootstrap, and others.</p>
-			<p class="text-center"><a class="btn btn-lg btn-outline-primary" href="https://dlux-vr.glitch.me/build.html" target="_blank" role="button">Build VR</a></p></div>
+	    <div  class="card bg-dark border-danger m-3 p-3 text-center">
+			<h1>Node Network</h1>
+			<p>Dlux nodes enable a much deeper experience with the Hive blockchain, including automated markets for asset pinning and account creation.</p>
+			<p class="text-center"><a class="btn btn-lg btn-primary" href="/docs/#nodes" role="button">Run A Node</a></p>
+            </div>
+            </div>
 	</div>
-  </div>
 	</div>
 	</main>
 <?php 
