@@ -15,14 +15,14 @@
 })
 </script>
 </head>
-<body class="d-flex flex-column h-100">
+<body>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
 <main class="flex-shrink-0">
-  <div class="container-fluid mx-0 px-0 padme-t70">
+  <div class="container-fluid mx-0 px-0">
     <div class="jumbotron jumbotron-fluid text-center text-white mt-5 bg-win">
        <div class="container">
 		<div class="row">
@@ -30,10 +30,7 @@
 		   <h6>DECENTRALIZED LIMITLESS USER EXPERIENCES </h6>
 		   <hr class="my-4">
        <p class="lead">The easiest way to build and distribute dApps on HIVE</p>
-       
-		<p></p>
-       <p>Empower your  project with an open source token  and wallet backed by deterministic concensus on a distributed ledger</p>
-       <p>Simple onboarding with magic link emails and HIVE wallet creation</p>
+       <p>Empower your  project with an open source token and wallet backed by deterministic concensus on a distributed ledger</p>
 <p class="lead">
           <a class="btn btn-lg btn-primary m-3" href="/apps" role="button">Explore<i class="fab fa-wpexplorer ml-2"></i></a>
 	
