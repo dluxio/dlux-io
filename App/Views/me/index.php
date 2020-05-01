@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<?php 
+<!--<?php 
 	if(isset($author)){
     	echo "<title>DLUX - @" . $author . "</title>";
         }
@@ -11,7 +11,7 @@
 		else{
         echo "<script>window.location='/login/;'</script>";
         }
-;?>
+;?>-->
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/header.php";
@@ -56,16 +56,17 @@
 			  <div class="float-left"><p class="display-4 mb-0">{{dluxGetBlog.data.result[0].blog}}</p>
         <small class="lead p-2">description</small>
 			  </div></div></div>
-      <div class="col-md-4 text-center m-auto"> <a class="btn btn-outline-primary btn-lg m-1" role="button" dmx-bind:href="/vr/@{{dluxGetBlog.data.result[0].blog}}" target="_blank">VR Page<i class="fas fa-vr-cardboard mx-2 fa-lg"></i></a>
-		 <div class="btn-group">
-             <button type="button" class="btn btn-outline-primary">Follow</button>
-  <button type="button" class="btn btn-outline-primary dropdown-toggle drop-no-arrow btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h ml-2"></i>
+      <div class="col-md-4 text-center m-auto"> 
+          <a class="btn btn-outline-primary btn-lg m-1" role="button" dmx-bind:href="/vr/@{{dluxGetBlog.data.result[0].blog}}" target="_blank">VR Page<i class="fas fa-vr-cardboard mx-2 fa-lg"></i></a>
+		
+  <button type="button" class="btn btn-outline-primary dropdown-toggle drop-no-arrow btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Actions<i class="fas fa-ellipsis-h ml-2"></i>
   </button>
   <div class="dropdown-menu nav-item dropdown-menu-right">
-    <a class="dropdown-item" type="button" href="#settings"><i class="fas fa-cog fa-fw mr-2"></i>Settings</a>
-    <a class="dropdown-item" type="button">Option 2</a>
+    <a class="dropdown-item" type="button">Unfollow</a>
+    <a class="dropdown-item" type="button">Send DLUX</a>
   </div>
-</div>
+ 
 	</div>
     </div>
   <ul class="nav nav-tabs bg-darker mx-0 px-0 mt-5 border-bottom-0" role="tablist">
