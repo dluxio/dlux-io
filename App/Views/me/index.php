@@ -30,7 +30,8 @@
 	function changeTab(url){
  		$(`[href="#${url}"]`).tab('show');
 		window.scrollTo(0, 0);
-}
+    }
+    $('.nav-tabs').stickyTabs();
 </script>
 </head>
 <body class="d-flex flex-column h-100" id="apps" is="dmx-app">
@@ -965,6 +966,16 @@ function toggleOrdersSM() {
 	$("#orders").toggleClass("d-none");
 	$("#order-container").removeClass("pos-abs");
 }				       												      
+
+function updateVoteSubmit(id,val) {
+    document.getElementById(id).innerHTML = document.getElementById(val).value + '%'; 
+        }</script>
+<script>
+checkCookie();
+function pageSpecfic(usr){
+	me(usr);
+}</script>
+</body></html>
 // Javascript to enable link to tab
 var url = document.location.toString();
 if (url.match('#')) {
@@ -976,12 +987,3 @@ $('.nav-tabs a').on('shown.bs.tab', function (e) {
     window.location.hash = e.target.hash;
     window.scrollTo(0, 0);
 })
-function updateVoteSubmit(id,val) {
-    document.getElementById(id).innerHTML = document.getElementById(val).value + '%'; 
-        }</script>
-<script>
-checkCookie();
-function pageSpecfic(usr){
-	me(usr);
-}</script>
-</body></html>
