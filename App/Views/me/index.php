@@ -62,7 +62,7 @@
     Actions<i class="fas fa-ellipsis-h ml-2"></i>
   </button>
   <div class="dropdown-menu nav-item dropdown-menu-right">
-    <button class="dropdown-item" type="button" href="#settings"><i class="fas fa-cog fa-fw mr-2"></i>Settings</button>
+    <button class="dropdown-item" type="button" href="/me/#settings"><i class="fas fa-cog fa-fw mr-2"></i>Settings</button>
     <button class="dropdown-item" type="button">Something else here</button>
   </div>
 </div>
