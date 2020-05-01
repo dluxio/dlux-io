@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<!--<?php 
+<?php 
 	if(isset($author)){
     	echo "<title>DLUX - @" . $author . "</title>";
         }
@@ -11,7 +11,7 @@
 		else{
         echo "<script>window.location='/login/;'</script>";
         }
-;?>-->
+;?>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/header.php";
@@ -54,7 +54,7 @@
 		  <div class="d-inline-block">
         <div class="float-left"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{dluxGetBlog.data.result[0].blog}}" alt="" class="rounded-circle bg-light img-fluid mr-4 cover profile-img"></div>
 			  <div class="float-left"><p class="display-4 mb-0">{{dluxGetBlog.data.result[0].blog}}</p>
-        <small class="lead p-2">description needs an api or helper</small>
+        <small class="lead p-2">description</small>
 			  </div></div></div>
       <div class="col-md-4 text-center m-auto"> <a class="btn btn-outline-primary btn-lg m-1" role="button" dmx-bind:href="../@{{dluxGetBlog.data.result[0].blog}}" target="_blank">VR Page<i class="fas fa-vr-cardboard mx-2 fa-lg"></i></a>
 		 <div class="btn-group">
@@ -371,7 +371,11 @@
 			 </div>
          </div>
        <div role="tabpanel" class="tab-pane fade show" id="settings" aria-labelledby="settingstab">
-	
+	    <div class="container">
+             <div class="alert alert-warning mt-5" role="alert">
+              Settings is under development and coming soon.
+            </div>
+			 
 	<div class="p-3">
 		   <ul class="nav nav-pills justify-content-center" role="tablist">
 	    <li class="nav-item">
@@ -585,6 +589,7 @@
 		   </div>
 		   </div>
 		</div>
+        </div>
 	</div>
   </div>
 </div>
