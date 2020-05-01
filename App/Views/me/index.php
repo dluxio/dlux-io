@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<?php 
+<!--<?php 
 	if(isset($author)){
     	echo "<title>DLUX - @" . $author . "</title>";
         }
@@ -11,7 +11,7 @@
 		else{
         echo "<script>window.location='/login/;'</script>";
         }
-;?>
+;?>-->
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/header.php";
@@ -31,7 +31,7 @@
  		$(`[href="#${url}"]`).tab('show');
 		window.scrollTo(0, 0);
     }
-    $('.nav-tabs').stickyTabs();
+
 </script>
 </head>
 <body class="d-flex flex-column h-100" id="apps" is="dmx-app">
@@ -969,7 +969,10 @@ function toggleOrdersSM() {
 
 function updateVoteSubmit(id,val) {
     document.getElementById(id).innerHTML = document.getElementById(val).value + '%'; 
-        }</script>
+        }
+
+$('.nav-tabs').stickyTabs();    
+    </script>
 <script>
 checkCookie();
 function pageSpecfic(usr){
