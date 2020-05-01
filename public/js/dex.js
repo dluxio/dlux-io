@@ -600,9 +600,11 @@ function dexmodal(pair, type) {
     if (User.opts.type === 'Buy') {
         document.getElementById('buyDluxTitle').innerText = 'Buy With:'
         document.getElementById('menutitle').innerText = 'New Buy Order'
+        popOrderTable('orders', 'buyOrders')
     } else {
         document.getElementById('buyDluxTitle').innerText = 'Sell for:'
         document.getElementById('menutitle').innerText = 'New Sell Order'
+        popOrderTable('orders', 'sellOrders')
     }
     document.getElementById('menupairdiv').innerText = User.opts.pair.toUpperCase()
     document.getElementById('paycoin').innerText = User.opts.pair.toUpperCase()
