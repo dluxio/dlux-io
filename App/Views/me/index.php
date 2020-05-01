@@ -56,13 +56,13 @@
 			  <div class="float-left"><p class="display-4 mb-0">{{dluxGetBlog.data.result[0].blog}}</p>
         <small class="lead p-2">description</small>
 			  </div></div></div>
-      <div class="col-md-4 text-center m-auto"> <a class="btn btn-outline-primary btn-lg m-1" role="button" dmx-bind:href="../@{{dluxGetBlog.data.result[0].blog}}" target="_blank">VR Page<i class="fas fa-vr-cardboard mx-2 fa-lg"></i></a>
+      <div class="col-md-4 text-center m-auto"> <a class="btn btn-outline-primary btn-lg m-1" role="button" dmx-bind:href="/vr/@{{dluxGetBlog.data.result[0].blog}}" target="_blank">VR Page<i class="fas fa-vr-cardboard mx-2 fa-lg"></i></a>
 		 <div class="btn-group">
   <button type="button" class="btn btn-outline-primary dropdown-toggle drop-no-arrow btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Actions<i class="fas fa-ellipsis-h ml-2"></i>
   </button>
   <div class="dropdown-menu nav-item dropdown-menu-right">
-    <button class="dropdown-item" type="button" onClick="changeTab('settings')"><i class="fas fa-cog fa-fw mr-2"></i>Settings</button>
+    <button class="dropdown-item" type="button" href="#settings"><i class="fas fa-cog fa-fw mr-2"></i>Settings</button>
     <button class="dropdown-item" type="button">Something else here</button>
   </div>
 </div>
