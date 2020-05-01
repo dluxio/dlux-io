@@ -15,7 +15,7 @@
 })
 </script>
 </head>
-<body>
+<body class="d-flex flex-column h-100 padme-t70">
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
