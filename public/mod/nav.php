@@ -23,10 +23,10 @@
 			  <span id="userName">username</span></a>
           <div class="dropdown-menu" aria-labelledby="userDropdown">
 			
-			 <a class="dropdown-item" href="/me/#blog" onClick="changeTab('blog')"><i class="fas fa-user fa-fw mr-2"></i>Profile</a>
-			 <a class="dropdown-item" href="/me/#wallet" onClick="changeTab('wallet')"><i class="fas fa-wallet fa-fw mr-2"></i>Wallet</a>
-			 <a class="dropdown-item" href="/me/#inventory" onClick="changeTab('inventory')"><i class="fas fa-boxes fa-fw mr-2"></i>Inventory</a>
-			 <a class="dropdown-item" href="/me/#node" onClick="changeTab('node')"><i class="fas fa-robot fa-fw mr-2"></i>Node</a>
+			 <a class="dropdown-item" href="/me/#blog"><i class="fas fa-user fa-fw mr-2"></i>Profile</a>
+			 <a class="dropdown-item" href="/me/#wallet"><i class="fas fa-wallet fa-fw mr-2"></i>Wallet</a>
+			 <a class="dropdown-item" href="/me/#inventory"><i class="fas fa-boxes fa-fw mr-2"></i>Inventory</a>
+			 <a class="dropdown-item" href="/me/#node"><i class="fas fa-robot fa-fw mr-2"></i>Node</a>
              <div class="dropdown-divider"></div>
 			 <a class="dropdown-item" href="/me/#settings"><i class="fas fa-cog fa-fw mr-2"></i>Settings</a>
 			 <a class="dropdown-item" href="/docs/"><i class="fas fa-info-circle fa-fw mr-2"></i>About</a>

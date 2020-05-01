@@ -25,14 +25,7 @@
 <!--page specific-->
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
-<script>
-	let type
-	function changeTab(url){
- 		$(`[href="#${url}"]`).tab('show');
-		window.scrollTo(0, 0);
-    }
 
-</script>
 </head>
 <body class="d-flex flex-column h-100" id="apps" is="dmx-app">
 <?php 
@@ -979,14 +972,3 @@ function pageSpecfic(usr){
 	me(usr);
 }</script>
 </body></html>
-// Javascript to enable link to tab
-var url = document.location.toString();
-if (url.match('#')) {
-    $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
-} 
-
-// Change hash for page-reload
-$('.nav-tabs a').on('shown.bs.tab', function (e) {
-    window.location.hash = e.target.hash;
-    window.scrollTo(0, 0);
-})
