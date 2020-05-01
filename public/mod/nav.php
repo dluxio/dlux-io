@@ -1,4 +1,5 @@
-<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+<header class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color:rgba(0, 0, 0, 0.8);-webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);">
 	<a class="navbar-brand" href="/"><img src="/img/dluxcolorlogo.png" alt="dlux-logo" width="32" height="32" class="rounded"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
