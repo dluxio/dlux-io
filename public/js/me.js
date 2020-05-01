@@ -12,13 +12,13 @@ function me(usr) {
     document.getElementById('hiveval').firstElementChild.innerText = `$${parseFloat((parseFloat(( parseFloat(usr.hstats.total_vesting_fund_steem) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)) + parseFloat(usr.hive.balance))*usr.price).toFixed(2)}`
     document.getElementById('dluxval').firstElementChild.innerText = `$${parseFloat(((parseInt(usr.dlux.balance) + parseInt(usr.dlux.poweredUp))/1000)*parseFloat(usr.dex.markets.hive.tick)*parseFloat(usr.price)).toFixed(2)}`
     document.getElementById('buylink').addEventListener("click", function() {
-        User.opts.type = 'buy'
-        dexmodal("hive", "buy");
+        User.opts.type = 'Buy'
+        dexmodal("hive", "Buy");
     })
     document.getElementById('buyDluxTitle').innerText = 'Buy With:'
     document.getElementById('selllink').addEventListener("click", function() {
-        User.opts.type = 'sell'
-        dexmodal("hive", "sell");
+        User.opts.type = 'Sell'
+        dexmodal("hive", "Sell");
     })
     document.getElementById('dluxpowerdownModalButton').addEventListener("click", function() {
         document.getElementById('powerdowndluxammount').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.poweredUp)/1000).toFixed(3)} DLUX</a>):`
