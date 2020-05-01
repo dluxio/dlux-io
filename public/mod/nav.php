@@ -1,5 +1,4 @@
-<header>
-<nav class="navbar navbar-default navbar-expand-lg navbar-dark bg-dark fixed-top flex-md-nowrap">
+<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
 	<a class="navbar-brand" href="/"><img src="/img/dluxcolorlogo.png" alt="dlux-logo" width="32" height="32" class="rounded"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -37,5 +36,4 @@
       </ul>
 	</div>
     </div>
-  </nav>
 </header>

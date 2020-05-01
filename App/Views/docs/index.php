@@ -8,7 +8,7 @@
    include_once($path);
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-<link href="/css/docs.css" rel="stylesheet">
+
 </head>
 <body>
 <a class="skippy sr-only sr-only-focusable" href="#content">
@@ -19,7 +19,7 @@
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
-    <div class="container-fluid text-white-50" style="margin-top:70px;">
+    <div class="container-fluid text-white-50">
       <div class="row flex-xl-nowrap">
         <div class="col-md-3 col-xl-2 bd-sidebar">
           <form role="search" class="bd-search d-flex align-items-center">
@@ -30,7 +30,7 @@
                   <div class="ds-dataset-1"></div>
                   </span>
               </span>
-              <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+              <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
         </form>
 
 <nav class="collapse bd-links mx-1" id="bd-docs-nav" aria-label="Main navigation">
