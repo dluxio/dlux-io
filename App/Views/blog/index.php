@@ -16,7 +16,7 @@
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
-<body class="d-flex flex-column h-100" id="blog" is="dmx-app" class="text-white">
+<body class="d-flex flex-column h-100 padme-t70" id="blog" is="dmx-app" class="text-white">
 <?php echo '<dmx-api-datasource id="dluxGetContent" is="dmx-fetch" url="https://token.dlux.io/getwrap?" dmx-param:method="\'condenser_api.get_content\'" dmx-param:params="\'[%22'.$author.'%22,%22'.$permlink.'%22]\'"></dmx-api-datasource>';
 ?>
 <?php echo '<dmx-api-datasource id="dluxGetReplies" is="dmx-fetch" url="https://token.dlux.io/getwrap?" dmx-param:method="\'condenser_api.get_content_replies\'" dmx-param:params="\'[%22'.$author.'%22,%22'.$permlink.'%22]\'"></dmx-api-datasource>';
@@ -27,7 +27,7 @@
    include_once($path);
 ?>
 <main role="main" class="flex-shrink-0 ">
-    <div class="container bg-dark text-white padme-t70 pb-2 mb-3">
+    <div class="container bg-dark text-white pb-2 mb-3">
         <div class="d-flex align-items-center">
 			<div>
 			  <a dmx-bind:href="/@{{dluxGetContent.data.result.author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{dluxGetContent.data.result.author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"/></a>

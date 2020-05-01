@@ -9,16 +9,15 @@
 ?>
 </head>
 
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100 padme-t70">
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
 <main role="main" class="flex-shrink-0">
-<div class="padme-t70"></div>
   <div class="container">
-	<div class="card w-100 border-danger bg-dark my-5">
+	<div class="card w-100 border-danger bg-dark mb-5">
       <div class="card-body text-center text-white">
     	<h5 class="card-title">DLUX VR BUILDER</h5>
     	<p class="card-text">Remix our boilerplate on Glitch and upload your own images and 3D models</p>
@@ -50,12 +49,12 @@
 	</div>
 	<div class="card w-100 border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
-    	<h5 class="card-title">ADVANCED XR UPLOADER</h5>
-    	<p class="card-text">Remix our boilerplate on Glitch and upload your own images and 3D models</p>
+    	<h5 class="card-title">ADVANCED UPLOADER</h5>
+    	<p class="card-text">Upload any HTML5 Single Page App (SPA)</p>
 		<hr class="bg-light">
 		<center>
 		<ul class="text-left">
-		<li>App Type: XR</li>
+		<li>App Type: AR/VR/2D</li>
 		<li>Builder: 2D drag-and-drop asset upload and publishing form</li>
 		<li>Difficulty: Easy</li>
 		</ul>
