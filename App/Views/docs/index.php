@@ -8,23 +8,32 @@
    include_once($path);
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-
+<link href="/css/docs.css" rel="stylesheet">
 </head>
 <body>
+<a class="skippy sr-only sr-only-focusable" href="#content">
+  <span class="skippy-text">Skip to main content</span>
+</a>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
-<div class="container-fluid d-flex flex-column vh-100">
-    <div class="row flex-grow-1 overflow-hidden" style="margin-top:60px;">
-        <div id="docs-sidebar" class="col-lg-2 col-md-3 col-sm-4 mh-100 bg-darker overflow-auto py-2">
-            <div class="py-3">
-                <form class="search-form">
-		            <input id="search-box" type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
-		        </form>
-            </div>
-            <div class="container px-0">
+    <div class="container-fluid text-white-50" style="margin-top:70px;">
+      <div class="row flex-xl-nowrap">
+        <div class="col-md-3 col-xl-2 bd-sidebar">
+          <form role="search" class="bd-search d-flex align-items-center">
+              <span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;">
+                  <input type="search" class="form-control ds-input" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" data-docs-version="4.4" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;">
+                  <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: -apple-system, system-ui, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+                  <span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;">
+                  <div class="ds-dataset-1"></div>
+                  </span>
+              </span>
+              <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+        </form>
+
+<nav class="collapse bd-links mx-1" id="bd-docs-nav" aria-label="Main navigation">
                 <div class="d-flex">
                     <div class="btn-group flex-fill my-1" role="group" aria-label="Expand / Collapse">
                         <button type="button" id="expand" class="btn btn-secondary">Expand</button>
@@ -150,52 +159,46 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class='col-lg-10 col-md-9 col-sm-8 mh-100 bg-light overflow-auto'>
-            <div class='row flex-grow-1'>
-                <div class="col mh-100 overflow-auto py-2">
-                    <article class="docs-article" id="introduction">
-                        <h3>Welcome to dlux! Start building anything.</h3>
-                        <p>The goal of this project is to incentivize XR adoption in the best possible way we can imagine: open-source and on-chain.</p>
-                        <p>The economics of this are possible. By combining WebVR, AR.js, and HIVE, we buildd a platform free for everyone to use that rewards good content with real cryptocurrency you can spend or transfer.</p>
-                        <p>We recognize that in order for vr to take off, its creation needs to reach a point of enabling everyone to participate, so we lowered the barrier to entry as far as we possibly could.</p>
-                        <p>Remix our Glitch projects to immediately begin building experiences that earn you rewards by publishing to Steem. Experiences that run on nearly any device, computer, and head mounted display through the web browser.</p>
-                        <p>Deploy your next game, video, or experience at no cost with no programming expertise. We'll show you how.</p>
-                        <h5>We've made it easy to get up and running by integrating all the technical stuff so you can start creating right away!</h5>
-                        <p>To fully utilize our platform, you must have a HIVE account. It can take some time for your account to activate, but you can start building apps immediately.</p>
-			        </article>
-                    <article class="docs-article" id="faq">
-                        <h3>FAQ</h3>
-                        <p></p>
-                    </article>
-                    <article class="docs-article" id="whitepaper">
-                        <h3>Whitepaper</h3>
-                        <p>The original dlux whitepaper was written by Steven Ettinger and Mark Giles.</p>
-                        <p>It details the philosophy and design principles behind the dlux-io platform.</p>
-                    </article>
-                    <article class="docs-article" id="supercraft">
-                        <h3>Supercraft VR Publishing</h3>
-                        <p></p>
-                    </article>
-                    <article class="docs-article" id="builder">
-                        <h3>DLUX Glitch VR Boilerplate</h3>
-                        <p>dlux Builder is integrated with Glitch for free & easy remixing, prototyping, and publishing.
-Add 3D Model
-Models must be in glTF format (unpacked .gltf, embedded .gltf, binary .glb)
-
-Use https://blackthread.io/gltf-converter/ to convert other formats to glTF.
-
-Click Add 3D Model
-Set your options
-Drag-and-drop all required files
-Add Images
-Max photo resolution is 4096px, and must be in power of 2, such as 512x512px, or 1024x512px (.png or .jpg)
-
-Click Add Images
-Set your options
-Drag and drop photos (no limit)
-If [X] Add to scene is checked, the photos dropped in will be applied to box geometry and inserted into your scene. You can then use the inspector to place the photos in your scene.
+    </nav>
+</div>
+<main class="col-md-9 col-xl-10 py-md-3 pl-md-5 bd-content" role="main">
+<article class="docs-article" id="introduction">
+    <h1 class="bd-title" id="content">Welcome to dlux! Start building anything.</h1>
+    <p class="bd-lead">The goal of this project is to incentivize XR adoption in the best possible way we can imagine: open-source and on-chain.</p>
+    <p>The economics of this are possible. By combining WebVR, AR.js, and HIVE, we buildd a platform free for everyone to use that rewards good content with real cryptocurrency you can spend or transfer.</p>
+    <p>We recognize that in order for vr to take off, its creation needs to reach a point of enabling everyone to participate, so we lowered the barrier to entry as far as we possibly could.</p>
+    <p>Remix our Glitch projects to immediately begin building experiences that earn you rewards by publishing to Steem. Experiences that run on nearly any device, computer, and head mounted display through the web browser.</p>
+    <p>Deploy your next game, video, or experience at no cost with no programming expertise. We'll show you how.</p>
+    <h2>Quickstart</h2>
+    <p class="bd-lead">We've made it easy to get up and running by integrating all the technical stuff so you can start creating right away!</p>
+    <p>To fully utilize our platform, you must have a <a href="https://signup.hive.io/" target="_blank">HIVE account</a>. It can take some time for your account to activate, but you can start building apps immediately.</p>
+</article>
+<article class="docs-article" id="faq">
+    <h1 class="bd-title">FAQ</h1>
+    <p class="bd-lead">Find answers to Frequently Asked Questions</p>
+    <p></p>
+</article>
+<article class="docs-article" id="whitepaper">
+    <h1 class="bd-title">Whitepaper</h1>
+    <p class="bd-lead">The original dlux whitepaper was written by Steven Ettinger and Mark Giles.</p>
+    <h3><a href="https://docs.google.com/document/d/1_jHIJsX0BRa5ujX0s-CQg3UoQC2CBW4wooP2lSSh3n0/" target="_blank">Read it here.</a></h3>
+    <p>It details the philosophy and design principles behind the dlux-io platform. Back then, HIVE was called STEEM.</p>
+    <p>If pictures are more your thing, check out the <a href="https://docs.google.com/presentation/d/1L0ZhqUsetBB2jI8fcHqUIOt7ddDKFtn4VV_C2-Uogcw/" target="_blank">Slide Deck</a> instead.</p>
+</article>
+<article class="docs-article" id="supercraft">
+    <h1 class="bd-title">Supercraft VR Publishing</h1>
+    <p class="bd-lead"></p>
+</article>
+<article class="docs-article" id="builder">
+    <h1 class="bd-title">DLUX Glitch VR Boilerplate</h1>
+    <p class="bd-lead">dlux Builder is integrated with Glitch for free & easy remixing, prototyping, and publishing.</p>
+    <h3>Add 3D Model</h3>
+    <p>Models must be in <code class="highlighter-rouge">glTF</code> format (unpacked .gltf, embedded .gltf, binary .glb), Use <a href="https://blackthread.io/gltf-converter/" target="_blank">blackthread.io/gltf-converter</a> to convert other formats to glTF.</p>
+    <ul><li>Click Add 3D Model</li><li>Set your options</li><li>Drag-and-drop all required files</li></ul>
+    <h3>Add Images</h3>
+    <p>Max photo resolution is 4096px, and must be in power of 2, such as 512x512px, or 1024x512px (.png or .jpg)</p>
+    <ul><li>Click Add Images</li><li>Set your options</li><li>Drag and drop photos (no limit)</li></ul>
+    <p>If [X] Add to scene is checked, the photos dropped in will be applied to box geometry and inserted into your scene. You can then use the inspector to place the photos in your scene.</p>
 
 Description
 Posting to Steem requires a Title, Body, and Tags. This allows your experience to be discovered and enjoyed by others on the network. Get a Steem Account.
@@ -219,24 +222,21 @@ Build URL: dlux-vr.glitch.me/build.html
 Remixing it will produce a new, random project-name. Start by remixing the dlux-vr boilerplate above, or any other project posted to dlux.
 
 Remix a dlux experience on Glitch
-Click Remix to edit 🎤
-Click Show Live 🕶
+Click Remix to edit ðŸŽ¤
+Click Show Live ðŸ•¶
 Click onto the experience to activate it
 Press ctl + alt + i to open the inspector
-Click the rocket button 🚀
+Click the rocket button ðŸš€
 Remix any experience on dlux
 Open an XR post on dlux
 Click onto the experience to activate it
 Press ctl + alt + i to open the inspector
-Click the rocket button 🚀
+Click the rocket button ðŸš€
 Follow 1-5 above to remix
 Setup your Glitch options:
  Change Theme (user preference)
  Refresh App on Changes OFF
  Wrap Text ON
-Screen Shot 2018-07-22 at 3.50.05 PM.png
-
-Screen Shot 2018-07-22 at 4.30.18 PM.png
 
 On the left you have a Glitch instance which is collaborative, auto-saves, and has the ability to rewind your code.
 
@@ -314,7 +314,7 @@ OBJ contains these files
 .jpg, .png (textures)
 .gltf, .obj, and .mtl are all text files that can be created in Glitch by clicking the button + New File, while .bin, .jpg, and .png must be uploaded to assets or somewhere. Note anything in your assets folder won't be uploaded to IPFS, it will instead be served from Glitch CDN.
 
-← assets
+â† assets
 Drag in assets you'd like to use, such as glTF .bin files, .jpg or .png texture photos, music .mp3 files, and whatever else is needed to build your scene.
 
 Steps for glTF .bin and texture .jpg or .png files
@@ -331,7 +331,7 @@ MTL:
 
 Open yourmodel.mtl with a word processor and search for "map"
 Update all instances of map_Kd texture.jpg with the correct URL(s) copied from assets
-← New Files
+â† New Files
 Click the + New File button in the left sidepanel
 
 Create corresponding files on Glitch
@@ -341,10 +341,10 @@ yourmodel.mtl (if using OBJ)
 Open the .gltf, or .obj and .mtl files you downloaded, or created. They can be viewed with any word processor on your desktop
 Copy the contents of each file
 Paste into the corresponding new file on Glitch
-← index.html
+â† index.html
 Now that you have either:
 
-an updated .gltf pointing to the .bin and any .jpg or .png textures in assets
+<p>an updated .gltf pointing to the .bin and any .jpg or .png textures in assets
 an .obj and updated .mtl pointing to any .jpg or .png textures in assets
 you can set it up in index.html
 
@@ -352,19 +352,22 @@ Add Animation
 Animation mixer does not work for OBJs.
 <!--
 <a-entity gltf-model="#object" animation-mixer></a-entity>-->
-If your model wasn't exported with animation, you can still animate it using A-Frame. This works for both OBJ and glTF:
-<!--
-<a-obj-model src="#heart-obj" 
+If your model wasn't exported with animation, you can still animate it using A-Frame. This works for both OBJ and glTF:</p>
+<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+&lt;a-obj-model src="#heart-obj" 
              mtl="#heart-mtl" 
              rotation="0 -135 0" 
-             scale=".1 .1 .1" >
+             scale=".1 .1 .1" &gt;
       <!-- Add A-Frame animation -->
-     <!-- <a-animation attribute="rotation"
+     &lt;a-animation attribute="rotation"
                    dur="10000"
                    fill="forwards"
                    to="0 360 0"
-                   repeat="indefinite"></a-animation></a-obj-model>-->
-Learn more about A-Frame animation: https://aframe.io/docs/0.8.0/core/animations.html A-Frame recommends glTF, and supports the following:
+repeat="indefinite"&gt;&lt;/a-animation&gt;&lt;/a-obj-model&gt;</code></pre></figure>
+                        
+
+                        
+<p>Learn more about A-Frame animation: https://aframe.io/docs/0.8.0/core/animations.html A-Frame recommends glTF, and supports the following:
 
 glTF .gltf or .glb https://aframe.io/docs/0.8.0/components/gltf-model.html
 Object .obj https://aframe.io/docs/0.8.0/components/obj-model.html
@@ -1080,10 +1083,9 @@ STEEM can be powered up, into Steem Power, which gives the Steem Account more st
 Currently this is part of our roadmap.</p>
                     </article>
                 </div>
-            </div>
-        </div>
+        </main>
+      </div>
     </div>
-</div>
 <script>
 $('#expand').on('click', function () {
 $('#accordion .collapse').collapse('show');
@@ -1097,9 +1099,9 @@ $('#accordion .collapse').collapse('hide');
 <script type="text/javascript"> docsearch({
 apiKey: '61a41f1f483bb427deded79575d31c9a',
 indexName: 'dlux',
-inputSelector: '#search-box',
+inputSelector: '#search-input',
 debug: false // Set debug to true if you want to inspect the dropdown
 });
 </script>
-</body>
-</html>
+
+</body></html>
