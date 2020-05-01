@@ -28,7 +28,7 @@
 			 <a class="dropdown-item" href="/me/#inventory" onClick="changeTab('inventory')"><i class="fas fa-boxes fa-fw mr-2"></i>Inventory</a>
 			 <a class="dropdown-item" href="/me/#node" onClick="changeTab('node')"><i class="fas fa-robot fa-fw mr-2"></i>Node</a>
              <div class="dropdown-divider"></div>
-			 <a class="dropdown-item" href="/me/#settings" onClick="changeTab('settings')"><i class="fas fa-cog fa-fw mr-2"></i>Settings</a>
+			 <a class="dropdown-item" href="/me/#settings"><i class="fas fa-cog fa-fw mr-2"></i>Settings</a>
 			 <a class="dropdown-item" href="/docs/"><i class="fas fa-info-circle fa-fw mr-2"></i>About</a>
              <div class="dropdown-divider"></div>
              <a class="dropdown-item" href="/login/"><i class="fas fa-user-friends mr-2"></i>Switch User</a>
