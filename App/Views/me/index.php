@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<!--<?php 
+<?php 
 	if(isset($author)){
     	echo "<title>DLUX - @" . $author . "</title>";
         }
@@ -11,7 +11,7 @@
 		else{
         echo "<script>window.location='/login/;'</script>";
         }
-;?>-->
+;?>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/header.php";
@@ -27,7 +27,7 @@
 <script src="/js/me.js"></script>
 
 </head>
-<body class="d-flex flex-column h-100 padme-t70" id="apps" is="dmx-app">
+<body class="d-flex flex-column bg-darker h-100 padme-t70" id="apps" is="dmx-app">
 <?php 
 	if(isset($author)){
     	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/getwrap?\" dmx-param:method=\"'condenser_api.get_blog'\" dmx-param:params=\"'[%22" . $author . "%22,0,20]'\"></dmx-api-datasource>";
@@ -48,7 +48,7 @@
   <div class="container-fluid px-0 ">
 	  <div class="container-fluid bg-darker border-bottom">
 	  <div class="container">
-		<div class="row mt-3  padme-t70">
+		<div class="row">
       <div class="col-md-8 text-white">
 		  
 		  <div class="d-inline-block">
@@ -63,8 +63,10 @@
     Actions<i class="fas fa-ellipsis-h ml-2"></i>
   </button>
   <div class="dropdown-menu nav-item dropdown-menu-right">
+    <a class="dropdown-item" type="button">Follow</a>
     <a class="dropdown-item" type="button">Unfollow</a>
     <a class="dropdown-item" type="button">Send DLUX</a>
+    <a class="dropdown-item" type="button">Settings</a>
   </div>
  
 	</div>
@@ -82,7 +84,7 @@
 			<a class="nav-link" id="settingstab" role="tab" data-toggle="tab" aria-controls="settings" aria-expanded="true" href="#settings">Settings</a> </li>
     </ul>
 	</div></div>
-	 <div id="pagecontent" class="tab-content">
+	 <div id="pagecontent" class="tab-content bg-color">
        <div role="tabpanel" class="tab-pane fade show active" id="blog" aria-labelledby="blogtab">
  <div class="card-columns p-3" id="blogResult" is="dmx-repeat" dmx-bind:repeat="dluxGetBlog.data.result">
   <div class="card text-white bg-dark mt-2 mb-3">
