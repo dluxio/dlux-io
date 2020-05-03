@@ -1,5 +1,6 @@
-<header class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:rgba(0, 0, 0, 0.7);-webkit-backdrop-filter: blur(10px);
+<header class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:rgba(42, 48, 54, 0.8); -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);">
+  <div class="container-fluid">
 	<a class="navbar-brand" href="/"><img src="/img/dluxcolorlogo.png" alt="dlux-logo" width="32" height="32" class="rounded"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,5 +37,6 @@
         </li>
       </ul>
 	</div>
+    </div>
     </div>
 </header>

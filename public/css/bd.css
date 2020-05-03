@@ -114,37 +114,6 @@
   padding: 0.5rem 0;
   background-color: transparent;
 }
-#carbonads {
-  position: static;
-  display: block;
-  max-width: 400px;
-  padding: 15px 15px 15px 160px;
-  margin: 2rem 0;
-  overflow: hidden;
-  font-size: 0.8125rem;
-  line-height: 1.4;
-  text-align: left;
-  background-color: rgba(0, 0, 0, 0.05);
-}
-#carbonads a {
-  color: #333;
-  text-decoration: none;
-}
-@media (min-width: 576px) {
-  #carbonads {
-    max-width: 330px;
-    border-radius: 4px;
-  }
-}
-.carbon-img {
-  float: left;
-  margin-left: -145px;
-}
-.carbon-poweredby {
-  display: block;
-  margin-top: 0.75rem;
-  color: #777 !important;
-}
 .bd-content {
   -ms-flex-order: 1;
   order: 1;
@@ -1282,7 +1251,7 @@
   min-width: 0 !important;
   max-width: none !important;
   padding: 0.75rem 0 !important;
-  background-color: #fff;
+  background-color: #fff !important;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
@@ -1298,7 +1267,7 @@
 .algolia-autocomplete .ds-dropdown-menu [class^="ds-dataset-"] {
   padding: 0 !important;
   overflow: visible !important;
-  background-color: transparent !important;
+  background-color: #fff !important;
   border: 0 !important;
 }
 .algolia-autocomplete .ds-dropdown-menu .ds-suggestions {
