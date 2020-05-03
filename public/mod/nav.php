@@ -23,18 +23,16 @@
 			  <img src="https://token.dlux.io/getauthorpic/{{author}}" id="userImage" alt="" width="30" height="30" class="img-fluid rounded-circle bg-light mr-1 cover">
 			  <span id="userName">username</span></a>
           <div class="dropdown-menu pt-0" aria-labelledby="userDropdown">
-              <div class="p-2" style="background-color: lightgray; border-radius: 3px 3px 0px 0px">
-			  <div class="border border-secondary">
-			  <div class="progress" style="height: 3px;">
-  				<div class="progress-bar" id="dluxVotePower" role="progressbar" style="width: 70%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="p-2">
+			  <div class="progress border border-secondary" style="height: 12px; margin-bottom: 2px;">
+  				<div class="progress-bar" id="dluxVotePower" role="progressbar" style="width: 70%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">DVP</div>
 			</div>
-			<div class="progress" style="height: 3px;">
-  				<div class="progress-bar bg-danger" id="hiveVotePower" role="progressbar" style="width: 90%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+			<div class="progress border border-secondary" style="height: 12px;  margin-bottom: 2px;">
+  				<div class="progress-bar bg-danger" id="hiveVotePower" role="progressbar" style="width: 90%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">HVP</div>
 			</div>
-			<div class="progress" style="height: 3px;">
-  				<div class="progress-bar bg-info" id="hiveResources" role="progressbar" style="width: 80%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+			<div class="progress border border-secondary" style="height: 12px;  margin-bottom: 2px;">
+  				<div class="progress-bar bg-info" id="hiveResources" role="progressbar" style="width: 80%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">HR</div>
 			</div>
-				  </div>
 				  </div>
 			 <a class="dropdown-item" href="/me/#blog"><i class="fas fa-user fa-fw mr-2"></i>Profile</a>
 			 <a class="dropdown-item" href="/me/#wallet"><i class="fas fa-wallet fa-fw mr-2"></i>Wallet</a>

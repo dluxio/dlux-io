@@ -7781,6 +7781,20 @@ body {
   padding-top: 70px;
   background-color: #222222; }
 
+/* Dropdown menu background color*/
+.navbar-nav > li > .dropdown-menu {
+  background-color: #212529; }
+
+.navbar-nav > li > .dropdown-menu a:hover {
+  background-color: #007bff; }
+
+/* Dropdown menu font color*/
+.navbar-nav > li > .dropdown-menu a {
+  color: rgba(255, 255, 255, 0.5); }
+
+.navbar-nav > li > .dropdown-menu a:hover {
+  color: #fff; }
+
 .bg-color {
   background-color: #222222; }
 
