@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<!--<?php 
+<?php 
 	if(isset($author)){
     	echo "<title>DLUX - @" . $author . "</title>";
         }
@@ -11,7 +11,7 @@
 		else{
         echo "<script>window.location='/login/;'</script>";
         }
-;?>-->
+;?>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/header.php";
