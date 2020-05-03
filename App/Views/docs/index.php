@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 
 </head>
-<body class="d-flex flex-column h-100 padme-t70">
+<body class="d-flex flex-column h-100">
 <a class="skippy sr-only sr-only-focusable" href="#content">
   <span class="skippy-text">Skip to main content</span>
 </a>

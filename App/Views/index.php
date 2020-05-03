@@ -15,20 +15,20 @@
 })
 </script>
 </head>
-<body class="d-flex flex-column h-100 padme-t70">
+<body class="d-flex flex-column h-100">
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
 <main class="flex-shrink-0">
-  <div class="container-fluid mx-0 px-0">
-    <div class="jumbotron jumbotron-fluid text-center text-white mt-5 bg-win">
+  <div class="container-fluid m-0 p-0">
+    <div class="jumbotron jumbotron-fluid text-center text-white bg-color">
        <div class="container">
 		<div class="row">
          <div class="col-xl-6"><h1 class="display-4">dlux</h1>
 		   <h6>DECENTRALIZED LIMITLESS USER EXPERIENCES </h6>
-		   <hr class="my-4">
+		   <hr class="my-4 bg-light">
        <p class="lead">The easiest way to build and distribute dApps on HIVE</p>
        <p>Empower your  project with an open source token and wallet backed by deterministic concensus on a distributed ledger</p>
 <p class="lead">

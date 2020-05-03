@@ -7778,6 +7778,7 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 /* Scss Document */
 body {
+  padding-top: 70px;
   background-color: #222222; }
 
 .bg-color {
@@ -7832,9 +7833,6 @@ body {
 
 .padme-t70 {
   padding-top: 70px; }
-
-.bg-win {
-  background-color: #222222; }
 
 .acct-link {
   color: cornflowerblue;

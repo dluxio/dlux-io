@@ -17,7 +17,7 @@
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
-<main role="main" class="flex-shrink-0 padme-t70">
+<main role="main" class="flex-shrink-0">
 <div class="container">
 	<div class="alert alert-danger alert-dismissible">
   		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
