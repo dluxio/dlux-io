@@ -218,9 +218,9 @@ The dlux vr boilerplate is accessible on Glitch here:
 
 App URL: dlux-vr.glitch.me
 
-Build URL: dlux-vr.glitch.me/build.html
-Remixing it will produce a new, random project-name. Start by remixing the dlux-vr boilerplate above, or any other project posted to dlux.
-
+Remix URL: glitch.com/remix/#!/dlux-vr
+Your very own web based development environment at one click.
+   
 Remix a dlux experience on Glitch
 Click Remix to edit ðŸŽ¤
 Click Show Live ðŸ•¶
@@ -817,16 +817,17 @@ Documentation and integration in progress(50%)</p>
                     </article>
                     <article class="docs-article" id="exchange">
                         <h3>Decentralized Exchange</h3>
-                        <p>steem-state is also capable of escrow transactions and virtual operations (things implied), enabling it to directly integrate with Ethereum, EOS, and any other smart contract or API that also allows escrow and.
+                        <p>The Hive accounts running DLUX software in consensus are able to facilitate token swaps utilizing the following protocol.
 
-dlux exchange with escrow
+Alice has 10 Hive, and wants to buy  10 DLUX. There are no buyers yet, so Alice checks the network to see which nodes are active(fills out escrow fields in advanced area of form), and selects Charlie as an escrow agent, and David to forward the transaction to a buyer, A collateralized escrow agent as well.
 
-Alice has 10 STEEM, and wants to buy 50 DLUX (the current market price). There are no buyers yet, so Alice checks the network to see which nodes are active, and selects Charlie as an agent, and David to forward the transaction to a buyer.
-
-Now the 10 STEEM is in escrow between Charlie and David. Bob sees the contract: 10 STEEM for 50 DLUX, and buys it. The 50 DLUX is sent to Alice, and the 10 STEEM is released from escrow to David. DLUX holds 50 DLUX of David's as collateral until David sends the 10 STEEM to Bob.
-
-Charlie reports the transaction earning DLUX for using his STEEM Resource Credits (RC) David reports the transaction and forwards the STEEM, using twice the Resource Credits, earning twice the DLUX
-
+Alice signs an 'escrow_transaction' to Charlie and David. The Hive blockchain will ensure all the security around accepting this transaction. The DLUX network will read the transaction, verify it's acceptable, and let all nodes know that Charlie and David both have enough collateral to hold this trade. 
+Charlie and David will autonomously sign and broadcast the expected 'escrow_approve' transactions. Hive is in escrow between Charlie and David, each of whom have collateralized 10 DLUX. Bob sees the contract: 10 Hive for 10 DLUX, and buys it, That is sends a 'custom_json' transaction on hive with dlux header information. 
+The dlux network sees this transaction and the 10 DLUX is sent to Alice, and the 10 Hive is released from escrow to David, (David autonomously signs 'escrow_dispute', and charlie autonomously signs 'escrow_release'). The Dlux network withholds 10 more DLUX from each as the custody changes. Once David recieves the Hive Charlie has his dlux retruned plus a fee. David sends the 10 Hive to Bob and then has his dlux returned plus his fee.
+At any time the trade will be upto 150% garanteed by the network. Since any one actor can hold any number of accounts some of the held escrow would be burned(sent to null) to prevent attacks that could withdraw dlux voting power early. On inflow trades like this holding a trade will be more costly as the escrow must be held longer. 
+While nearly the same chain of custody happens in the reverse direction, the order sits on the dlux side with out the need to collateralize the trade until execution.
+Because collateralizing these trades requires liquidity, these trades can not be free. Especially inflow  and time based fees are being implemented(the listing fee is 1/2 of the execution fee, and would need to be paid incrementally to keep an order open).
+Collateralization is also a finite resource, as such the network itself must regulate acceptable trades and autonomously cancel orders that fall out of acceptable bands to free liquidity at market prices.
 No information asymmetry either way, all transactions on the DX are open.</p>
                     </article>
                     <article class="docs-article" id="token">
