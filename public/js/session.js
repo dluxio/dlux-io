@@ -75,7 +75,7 @@
              try { pageSpecfic(User); } catch (e) {}
          })
      } else {
-         document.getElementById('active-session').style.display = 'none';
+         console.log('not logged in')
      }
  }
 
@@ -208,7 +208,8 @@
      $('#active-session').removeClass('d-none');
      $('#no-session').addClass('d-none');
      $('#loginModal').modal('hide')
-     checkCookie()
+     
+     ()
  }
 
  function showProfileImage(responseAsBlob) {
