@@ -43,7 +43,7 @@
          } else {
              dlux = new Dluxsession(steem, { steemidip: user });
          }
-         
+         $('#no-session').addClass('d-none');
          document.getElementById('userImage').src = 'https://token.dlux.io/getauthorpic/' + user
          document.getElementById('userName').innerText = '@' + user;
          let dex, stats, hive, feed
