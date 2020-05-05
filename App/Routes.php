@@ -7,9 +7,9 @@ $router = new Core\Router();
 
 // Add the routes
 $router->respondWithController('GET', '/@[:name]', 'Me@blog');
-$router->respondWithController('GET', 'vr/@[:name]', 'Vr@author');
-$router->respondWithController('GET', 'vr/', 'Vr@index');
-$router->respondWithController('GET', 'vr', 'Vr@index');
+$router->respondWithController('GET', '/vr/@[:name]', 'Vr@author');
+$router->respondWithController('GET', '/vr/', 'Vr@index');
+$router->respondWithController('GET', '/vr', 'Vr@index');
 $router->respondWithController('GET', '/me/', 'Me@index');
 $router->respondWithController('GET', '/me', 'Me@index');
 $router->respondWithController('GET', '/dex/', 'Dex@index');
