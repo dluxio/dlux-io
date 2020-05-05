@@ -88,8 +88,6 @@
    $path .= "/mod/footer.php";
    include_once($path);
 ?>
-<script type="text/javascript">
-	checkCookie()
-    </script>
+<script type="text/javascript">checkCookie()</script>
   </body>
 </html>

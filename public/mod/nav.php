@@ -10,7 +10,7 @@
         <li class="nav-item"> <a class="nav-link" href="/docs/">DOCS</a></li>
       </ul>
 	<ul class="navbar-nav mr-5" id="no-session">
-	<li class="nav-item"><a class="nav-link acct-link" href="/login/">Login</a></li>
+	<li class="nav-item"><a class="nav-link acct-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
 	<li class="nav-item"><a class="nav-link acct-link" href="https://signup.hive.io/">Sign up</a></li>
 	</ul>
     <div class="mr-5" id="active-session">
@@ -24,14 +24,14 @@
 			  <span id="userName">username</span></a>
           <div class="dropdown-menu pt-0" aria-labelledby="userDropdown">
               <div class="p-2">
-			  <div class="progress border border-secondary" style="height: 12px; margin-bottom: 2px;">
-  				<div class="progress-bar" id="dluxVotePower" role="progressbar" style="width: 70%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">DVP</div>
+			  <div class="progress border border-secondary" data-toggle="tooltip"  title="DLUX VOTE POWER" style="height: 10px; margin-bottom: 2px;">
+  				<div class="progress-bar" id="dluxVotePower" role="progressbar" style="width: 30%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><span class="small">DVP</span></div>
 			</div>
-			<div class="progress border border-secondary" style="height: 12px;  margin-bottom: 2px;">
-  				<div class="progress-bar bg-danger" id="hiveVotePower" role="progressbar" style="width: 90%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">HVP</div>
+			<div class="progress border border-secondary" data-toggle="tooltip"  title="HIVE VOTE POWER" style="height: 10px;  margin-bottom: 2px;">
+  				<div class="progress-bar bg-danger" id="hiveVotePower" role="progressbar" style="width: 90%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="small">HVP</span></div>
 			</div>
-			<div class="progress border border-secondary" style="height: 12px;  margin-bottom: 2px;">
-  				<div class="progress-bar bg-info" id="hiveResources" role="progressbar" style="width: 80%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">HR</div>
+			<div class="progress border border-secondary" data-toggle="tooltip"  title="HIVE RESOURCES" style="height: 10px;  margin-bottom: 2px;">
+  				<div class="progress-bar bg-info" id="hiveResources" role="progressbar" style="width: 80%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="small">HR</span></div>
 			</div>
 				  </div>
 			 <a class="dropdown-item" href="/me/#blog"><i class="fas fa-user fa-fw mr-2"></i>Profile</a>
@@ -42,7 +42,7 @@
 			 <a class="dropdown-item" href="/me/#settings"><i class="fas fa-cog fa-fw mr-2"></i>Settings</a>
 			 <a class="dropdown-item" href="/docs/"><i class="fas fa-info-circle fa-fw mr-2"></i>About</a>
              <div class="dropdown-divider"></div>
-             <a class="dropdown-item" href="/login/"><i class="fas fa-user-friends mr-2"></i>Switch User</a>
+             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#loginModal"><i class="fas fa-user-friends mr-2"></i>Switch User</a>
 			 <a class="dropdown-item" href="javascript:logout()"><i class="fas fa-power-off fa-fw mr-2"></i>Logout</a></div>
         </li>
       </ul>
@@ -50,3 +50,62 @@
     </div>
     </div>
 </header>
+<!-- Login Modal -->       
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content text-white bg-darker">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalTitle">Login to DLUX</h5>
+        <button type="button" class="close" style="color: #fff !important;" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div id="hiveKeychain">
+              <p class="text-center">Using Hive Keychain</p>
+              <div class="input-group mb-3 ">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="text" autocorrect="off" autocapitalize="none" class="form-control" id="hk-username" placeholder="username" aria-label="Username" aria-describedby="addon">
+                  <div class="input-group-append">
+                      <button type="" class="btn btn-form btn-danger" onclick="hiveKeychain()">Login<i class="fas fa-key mx-2"></i></button>
+                  </div>
+              </div>
+          </div>
+          <div id="getKeychain">
+              <p class="text-center">Get Hive Keychain<i class="fas fa-key mx-2"></i></p>
+              <div class="d-flex justify-content-center">
+                  <a href="https://chrome.google.com/webstore/detail/hive-keychain/jcacnejopjdphbnjgfaaobbfafkihpep" target="_blank" class="btn btn-outline-danger mx-2"><i class="fab fa-chrome mr-2"></i>Chrome Extension</a>
+                  <a href="https://addons.mozilla.org/firefox/addon/hive-keychain/" target="_blank" class="btn btn-outline-danger mx-2"><i class="fab fa-firefox mr-2"></i>Firefox Extension</a>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <p class="small">By logging in you agree to our <a href="#">Terms of Service</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    function hiveKeychain () {
+	console.log('clicked')
+      let username = document.getElementById('hk-username').value
+      console.log('value: ' + username)
+      steem.api.setOptions({ url: "https://anyx.io" })
+	sessionStorage.setItem("user", username);
+	console.log('session set')
+      let session = new Dluxsession(steem, {steemidip:username})
+      	console.log(session)
+    } 
+      
+    setTimeout(function(){
+     let use = document.getElementById("hiveKeychain");
+		 let get = document.getElementById("getKeychain");
+		 if(window.hive_keychain) {
+			 get.style.display = "none";
+		 } else {
+			use.style.display = "none";
+		 }
+    }, 1000);
+</script>
