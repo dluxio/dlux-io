@@ -21,28 +21,9 @@
         }
     }
 
- function feedback(r) {
-     console.log(r, r.result, r.message)
-     let id = r.result.id || 'bob'
-     if (!r.error) {
-         let node = document.createElement('div')
-         node.classList.add('progress')
-         node.innerHTML = `<div id="progressbar${id}" class="progress-bar" role="progressbar" aria-valuenow="70"
-  				aria-valuemin="0" aria-valuemax="100" style="width:0%">
-    				<span id="progresslabel${id}" class="sr-only">0 Confirmations</span>
-  				</div>`
-         document.getElementById('orderform').appendChild
-         User[`id-iterator-${id}`] = 0
-         setTimeout(updateprogress(id), 3000)
-     } else {
-         let node = document.createElement('div')
-         node.classList.add('progress')
-         node.innerHTML = `<div id="progressbar" class="progress-bar" role="progressbar" aria-valuenow="70"
-  				aria-valuemin="0" aria-valuemax="100" style="width:0%">
-    				<span id="progresslabel" class="sr-only">Something Went Wrong</span>
-  				</div>`
-         document.getElementById('orderform').appendChild
-     }
+ function feedback(r, cb) {
+     console.log(r)
+     cb(r)
  }
 
  function readResponseAsBlob(response) {
@@ -224,6 +205,12 @@
      user = ''
  }
 
+ function loginDismiss() {
+     document.getElementById('active-session').style.display = 'block';
+     document.getElementById('no-session').style.display = 'none';
+     $('#loginModal').modal('hide')
+ }
+
  function showProfileImage(responseAsBlob) {
      try {
          var container = document.getElementById('user-name');
@@ -304,11 +291,8 @@
                                      console.log(itr[storables[i]])
                                      window.sessionStorage.setItem(storables[i], JSON.stringify(itr[storables[i]]))
                                  }
+                                 loginDismiss()
                                  setCookie('user', itr.steemid, 5)
-                                 if (window.location.pathname.substr(0, 6) === '/login') {
-                                     // url param for return to url
-                                     window.location = 'https://' + window.location.host
-                                 }
                                  resolve(this.jwt)
                              })
                      })
