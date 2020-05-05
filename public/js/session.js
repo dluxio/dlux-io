@@ -221,6 +221,7 @@
      sessionStorage.clear()
      document.getElementById('active-session').style.display = 'none';
      document.getElementById('no-session').style.display = 'block';
+     user = ''
  }
 
  function showProfileImage(responseAsBlob) {
@@ -283,7 +284,7 @@
          var account = {},
              itr = {}
          return new Promise((resolve, reject) => {
-             if (window.location.pathname.substr(0, 6) === '/login') {
+             if (!user) {
                  console.log('why')
                  let idPromises = [Dluxsession.handshake(id)]
                  Promise.all(idPromises)
