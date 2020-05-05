@@ -43,8 +43,7 @@
          } else {
              dlux = new Dluxsession(steem, { steemidip: user });
          }
-         document.getElementById('no-session').style.display = 'none';
-         document.getElementById('active-session').style.display = 'block';
+         
          document.getElementById('userImage').src = 'https://token.dlux.io/getauthorpic/' + user
          document.getElementById('userName').innerText = '@' + user;
          let dex, stats, hive, feed
@@ -200,14 +199,14 @@
 
  function logout() {
      sessionStorage.clear()
-     document.getElementById('active-session').style.display = 'none';
-     document.getElementById('no-session').style.display = 'block';
+     $('#active-session').addClass('d-none');
+     $('#no-session').removeClass('d-none');
      user = ''
  }
 
  function loginDismiss() {
-     document.getElementById('active-session').style.display = 'block';
-     document.getElementById('no-session').style.display = 'none';
+     $('#active-session').removeClass('d-none');
+     $('#no-session').addClass('d-none');
      $('#loginModal').modal('hide')
      checkCookie()
  }
