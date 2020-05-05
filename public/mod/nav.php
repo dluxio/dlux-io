@@ -13,7 +13,7 @@
 	<li class="nav-item"><a class="nav-link acct-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
 	<li class="nav-item"><a class="nav-link acct-link" href="https://signup.hive.io/">Sign up</a></li>
 	</ul>
-    <div class="mr-5 d-none" id="active-session">
+    <div class="mr-5" id="active-session">
 	  <ul class="nav navbar-nav">
 		<li class="nav-item my-auto">
 			<a class="nav-link" href="/new/" data-toggle="tooltip"  title="Create a new app">
