@@ -209,6 +209,7 @@
      document.getElementById('active-session').style.display = 'block';
      document.getElementById('no-session').style.display = 'none';
      $('#loginModal').modal('hide')
+     checkCookie()
  }
 
  function showProfileImage(responseAsBlob) {
