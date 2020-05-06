@@ -148,24 +148,16 @@
    $path .= "/mod/footer.php";
    include_once($path);
 ?>
-<script>checkCookie()</script>
-<script>
-      function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-      }
-      function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-      }
-</script>
 <script>
       var simplemde = new SimpleMDE({
         element: document.getElementById("validationCustomDescription")
       });
       simplemde.codemirror.on("keyup", function() {
         currentJson();
-      });</script
-    ><script src="/jquery.json-editor.min.js" crossorigin="anonymous"></script
-    ><script>
+      });
+</script>
+<script src="/jquery.json-editor.min.js" crossorigin="anonymous"></script>
+<script>
       var postData,
         pass = localStorage.getItem("pass");
       getData();

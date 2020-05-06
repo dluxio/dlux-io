@@ -240,18 +240,10 @@ document.getElementById('submit-btn').innerHTML = `Post as @${iam}`
 </script>
 	</div>
 </div>
-	
-</body>
-<footer class="footer">
-  <div class="container footer-content">
-    <p class="text-center">Join our <a href="https://discord.gg/Beeb38j">Discord server</a> to get in touch.</p>
-  </div>
-	  </footer>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/footer.php";
    include_once($path);
 ?>
-<script>checkCookie()</script>
 </body>
 </html>

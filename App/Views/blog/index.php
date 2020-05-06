@@ -77,7 +77,8 @@
         <hr class="mb-0" />
         <div class="d-flex align-items-center my-2">
             <div>
-                <a data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{dluxGetContent.data.result.id}}'><i class="fas fa-heart mr-1"></i></a>{{dluxGetContent.data.result.active_votes.countUpVotes()}}<i class="fas fa-comment ml-2 mr-1"></i>{{dluxGetContent.data.result.children}}
+                <a data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{dluxGetContent.data.result.id}}'><i class="fas fa-heart fa-fw mr-1"></i></a>{{dluxGetContent.data.result.active_votes.countUpVotes()}}<i class="fas fa-comment fa-fw ml-2 mr-1"></i>{{dluxGetContent.data.result.children}}
+                <i class="fas fa-gift fa-fw ml-2"></i>
             </div>
             <div class="ml-auto">
                 {{dluxGetContent.data.result.total_payout_value}}<img src="/img/hextacular.svg" alt="" width="17" />
@@ -160,13 +161,12 @@
    $path .= "/mod/footer.php";
    include_once($path);
 ?>
-    <script>
+<script>
       function updateVoteSubmit(id, val) {
         document.getElementById(id).innerHTML =
           document.getElementById(val).value + "%";
       }
-    </script>
-    <script>
+
       var simplemde = new SimpleMDE({
         element: document.getElementById("validationCustomDescription")
       });
@@ -235,9 +235,6 @@
         );
       })();
       //onpageloaded();
-    </script>
-    <script>
-      checkCookie();
     </script>
   </body>
 </html>

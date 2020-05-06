@@ -17,7 +17,7 @@
 ?>
 <main role="main" class="flex-shrink-0">
   <div class="container">
-	<div class="card w-100 border-danger bg-dark mb-5">
+	<div class="card w-100 border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
     	<h5 class="card-title">DLUX VR BUILDER</h5>
     	<p class="card-text">Remix our boilerplate on Glitch and upload your own images and 3D models</p>
@@ -69,5 +69,4 @@
    $path .= "/mod/footer.php";
    include_once($path);
 ?>
-<script>checkCookie()</script>
 </body></html>

@@ -353,8 +353,7 @@ $(document).ready(function(){
 function toggleListBtn(){
     $("#listButton").toggleClass("btn-outline-success btn-outline-danger");
   }
+function pageSpecfic(user){dex(user)};
 </script>
-<!--check login-->
-<script>checkCookie();function pageSpecfic(user){dex(user)};</script>
 </body>
 </html>

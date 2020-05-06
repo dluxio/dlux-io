@@ -970,11 +970,10 @@ function toggleOrdersSM() {
 
 function updateVoteSubmit(id,val) {
     document.getElementById(id).innerHTML = document.getElementById(val).value + '%'; 
-        }
+}
 
 $('.nav-tabs').stickyTabs();    
-</script>
-<script>
+
 function pageSpecfic(usr){
 	me(usr);
 }

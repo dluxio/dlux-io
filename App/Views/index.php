@@ -7,13 +7,6 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
-<!-- Initialization -->
-<script>
-	steem.api.setOptions({url:"https://anyx.io"})
-	$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-</script>
 </head>
 <body class="d-flex flex-column h-100">
 <?php 
