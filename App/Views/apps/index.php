@@ -132,8 +132,8 @@
    include_once($path);
 ?>
 <script>
-	function updateVoteSubmit(id,val) {
-          document.getElementById(id).innerHTML = document.getElementById(val).value + '%'; 
-        }</script>
-<script>checkCookie()</script>
+function updateVoteSubmit(id,val) {
+    document.getElementById(id).innerHTML = document.getElementById(val).value + '%'; 
+}
+</script>
 </body></html>

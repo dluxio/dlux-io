@@ -949,7 +949,7 @@ $(document).ready(function(){
    include_once($path);
 ?>
 
-	<script>
+<script>
 // Set active tab
 function toggleActive(){
     $("#buywithhivetab").toggleClass("active");
@@ -973,10 +973,10 @@ function updateVoteSubmit(id,val) {
         }
 
 $('.nav-tabs').stickyTabs();    
-    </script>
+</script>
 <script>
-checkCookie();
 function pageSpecfic(usr){
 	me(usr);
-}</script>
+}
+</script>
 </body></html>

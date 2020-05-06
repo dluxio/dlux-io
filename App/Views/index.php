@@ -82,12 +82,10 @@
 </div>
 </div>
 </div>
-	</main>
+</main>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/footer.php";
    include_once($path);
 ?>
-<script type="text/javascript">checkCookie()</script>
-  </body>
-</html>
+</body></html>
