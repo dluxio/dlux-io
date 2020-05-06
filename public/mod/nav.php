@@ -87,25 +87,3 @@
     </div>
   </div>
 </div>
-<script>
-    function hiveKeychain () {
-	console.log('clicked')
-      let username = document.getElementById('hk-username').value
-      console.log('value: ' + username)
-      steem.api.setOptions({ url: "https://anyx.io" })
-	sessionStorage.setItem("user", username);
-	console.log('session set')
-      let session = new Dluxsession(steem, {steemidip:username})
-      	console.log(session)
-    } 
-      
-    setTimeout(function(){
-     let use = document.getElementById("hiveKeychain");
-		 let get = document.getElementById("getKeychain");
-		 if(window.hive_keychain) {
-			 get.style.display = "none";
-		 } else {
-			use.style.display = "none";
-		 }
-    }, 1000);
-</script>
