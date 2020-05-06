@@ -1094,6 +1094,7 @@ $('#accordion .collapse').collapse('show');
 $('#collapse').on('click', function () {
 $('#accordion .collapse').collapse('hide');
 });
+checkCookie()
 </script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script type="text/javascript"> docsearch({
