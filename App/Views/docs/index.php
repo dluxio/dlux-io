@@ -192,14 +192,14 @@
 <article class="docs-article" id="builder">
     <h1 class="bd-title">DLUX Glitch VR Boilerplate</h1>
     <p class="bd-lead">dlux Builder is integrated with Glitch for free & easy remixing, prototyping, and publishing.</p>
-    <h3>Add 3D Model</h3>
+    <h2 class="bd-content-title">Add 3D Model</h2>
     <p>Models must be in <code class="highlighter-rouge">glTF</code> format (unpacked .gltf, embedded .gltf, binary .glb), Use <a href="https://blackthread.io/gltf-converter/" target="_blank">blackthread.io/gltf-converter</a> to convert other formats to glTF.</p>
     <ul>
-    <li>Click Add 3D Model</li>
-    <li>Set your options</li>
-    <li>Drag-and-drop all required files</li>
+        <li>Click Add 3D Model</li>
+        <li>Set your options</li>
+        <li>Drag-and-drop all required files</li>
     </ul>
-    <h3>Add Images</h3>
+    <h2 class="bd-content-title">Add Images</h2>
     <p>Max photo resolution is 4096px, and must be in power of 2, such as 512x512px, or 1024x512px (.png or .jpg)</p>
     <ul>
     <li>Click Add Images</li>
@@ -208,11 +208,11 @@
     </ul>
     <p>If [X] Add to scene is checked, the photos dropped in will be applied to box geometry and inserted into your scene. You can then use the inspector to place the photos in your scene.</p>
 
-    <h3>Description</h3>
+    <h2 class="bd-content-title">Description</h2>
     <p>Posting to Hive requires a Title, Body, and Tags. This allows your experience to be discovered and enjoyed by others on the network.</p>
     <p>Get a Hive Account.</p>
 
-    <h3>Views</h3>
+    <h2 class="bd-content-title">Views</h2>
     <ul>In our Glitch boilerplate you have access to the following views:
         <li>Glitch: modify the code in each file of your experience</li>
         <li>dlux Builder: adds a toolbar to the Glitch view</li>
@@ -223,44 +223,42 @@
     <p>We recommend creating a Glitch account so you can keep track of all your apps and collaborate easily.</p>
     <p>The dlux vr boilerplate is accessible on Glitch here:</p>
     <p>App URL: <a href="dlux-vr.glitch.me" target="_blank">dlux-vr.glitch.me</a></p>
-    <p>Remix URL: <a href="glitch.com/remix/#!/dlux-vr" target="_blank">glitch.com/remix/#!/dlux-vr</a></p>
-    <p>Your very own web based development environment at one click.</p>
-   
-Remix a dlux experience on Glitch
-Click Remix to edit ðŸŽ¤
-Click Show Live ðŸ•¶
-Click onto the experience to activate it
-Press ctl + alt + i to open the inspector
-Click the rocket button ðŸš€
-Remix any experience on dlux
-Open an XR post on dlux
-Click onto the experience to activate it
-Press ctl + alt + i to open the inspector
-Click the rocket button ðŸš€
-Follow 1-5 above to remix
-Setup your Glitch options:
- Change Theme (user preference)
- Refresh App on Changes OFF
- Wrap Text ON
-
-On the left you have a Glitch instance which is collaborative, auto-saves, and has the ability to rewind your code.
-
-On the right you have a running version of your app. Changes made to the code on the left are not shown on the right until you click the Refresh App button at the top.
-
-At the bottom is the browsers web inspector.
-
-If you need to edit the Steem post that contains your dApp, such as update the preview images or html, follow these steps:
-Ensure you are logged in as the owner of the dApp(the username that posted it)
-Navigate to your dapp on dlux.io or localhost
-/dlux/@username/permLink in the address bar needs to be changed to /post/edit/@username/permLink
-Now you have the screen to change the metadata that is the ipfs reference to your app. As well as the title and blog post.
-Press Submit at the bottom and your steempost will be updated. This action takes Resource Credits. Once you're happy with how your app is working, you need to generate the preview so others know what they're clicking on.
-
-For the blog, you need a traditional preview image, and for the portal inside dlux that goes to your experience, you need a 360 preview image.
-
-Take a 16x9 traditional photo for the Steem blog entry by pressing Ctl-Alt-S
-
-Take a 360 photo for the portal preview by pressing Ctl-Alt-Shift-S</p>
+    <p>Remix URL: <a href="glitch.com/remix/#!/dlux-vr" target="_blank">glitch.com/remix/#!/dlux-vr</a></p> 
+    <ul>Remix a dlux experience on Glitch
+        <li>Click <span class="bg-dark p-1">Remix to edit &#127908;</span></li>
+        <li>Click <span class="bg-dark p-1">Show Live &#128374;</span></li>
+        <li>Click onto the experience to activate it</li>
+        <li>Press <span class="bg-dark p-1">ctl + alt + i</span> to open the inspector</li>
+        <li>Click the rocket button <span class="bg-dark p-1">&#128640;</span></li>
+    </ul>
+    <ul>Remix any experience on dlux
+        <li>Open an XR post on dlux</li>
+        <li>Click onto the experience to activate it</li>
+        <li>Press <span class="bg-dark p-1">ctl + alt + i</span> to open the inspector</li>
+        <li>Click the rocket button <span class="bg-dark p-1">&#128640;</span></li>
+        <li>Follow 1-5 above to remix</li>
+    </ul>
+    <ul>Setup your Glitch options:
+        <li>Change Theme (user preference)</li>
+        <li>Refresh App on Changes <span class="bg-dark p-1">OFF</span></li>
+        <li>Wrap Text <span class="bg-dark p-1">ON</span></li>
+    </ul>
+    <p>On the left you have a Glitch instance which is collaborative, auto-saves, and has the ability to rewind your code.</p>
+    <p>On the right you have a running version of your app. Changes made to the code on the left are not shown on the right until you click the Refresh App button at the top.</p>
+    <p>At the bottom is the browsers web inspector.</p>
+    <ul>If you need to edit the Steem post that contains your dApp, such as update the preview images or html, follow these steps:
+        <li>Ensure you are logged in as the owner of the dApp(the username that posted it)</li>
+        <li>Navigate to your dapp on dlux.io or localhost</li>
+        <li>/dlux/@username/permLink in the address bar needs to be changed to /post/edit/@username/permLink</li>
+        <li>Now you have the screen to change the metadata that is the ipfs reference to your app, as well as the title and blog post.</li>
+        <li>Press Submit at the bottom and your Hive post will be updated, this action takes Resource Credits.</li>
+    </ul>
+    <p>Once you're happy with how your app is working, you need to generate the preview so others know what they're clicking on.</p>
+    <p>For the blog, you need a traditional preview image, and for the portal inside dlux that goes to your experience, you need a 360 preview image.</p>
+    <ul>
+        <li>Take a 16x9 traditional photo for the Steem blog entry by pressing <span class="bg-dark p-1">Ctl-Alt-S</span></li>
+        <li>Take a 360 photo for the portal preview by pressing <span class="bg-dark p-1">Ctl-Alt-Shift-S</span></li>
+    </ul>
 </article>
 <article class="docs-article" id="uploader">
     <h1 class="bd-title">Advanced App Uploader</h1>
@@ -546,23 +544,18 @@ Change the environment to any of the predefined ones
 </article>
 <article class="docs-article" id="physics">
     <h1 class="bd-title">Physics</h1>
-    <p>Use
-At this time, dlux does not use aframe-physics-system by Don McCurdy (GitHub Source) by default.
-
-To create collisions with the ground, floor, and walls, we recommend a nav mesh to restrict player movement.
-
-A nav mesh is an invisible floor that the player is allowed to move on. For example, if you do not want a player to walk through a wall, there should be a gap in the nav mesh so they are not permitted to move there.
-
-This approach has better performance, and allows the use of glTF files with shapes more complex than primitive geometries, meaning your ground can be varied terrain, not just flat. Interaction with static and dynamic objects can be achieved with AABB Collider and SuperHands.
-
-If you need physics, keep reading.
-
-To use the physics system, you must attach body components to the entities you want to participate in the physics system:
-
-static-body for the ground, floor, and walls
-dynamic-body for anything that's moveable
-kinematic-body for the camera rig (not required)
-Each body requires a shape Ideally, we would use a model for our world, which would have varied terrain in a glTF format as we do with nav-mesh. Set its body type to static and its shape to mesh.
+    <p>At this time, dlux does not use aframe-physics-system by Don McCurdy (GitHub Source) by default.</p>
+    <p>To create collisions with the ground, floor, and walls, we recommend a nav mesh to restrict player movement.</p>
+    <p>A nav mesh is an invisible floor that the player is allowed to move on. For example, if you do not want a player to walk through a wall, there should be a gap in the nav mesh so they are not permitted to move there.</p>
+    <p>This approach has better performance, and allows the use of glTF files with shapes more complex than primitive geometries, meaning your ground can be varied terrain, not just flat. Interaction with static and dynamic objects can be achieved with AABB Collider and SuperHands.</p>
+    <p>If you need physics, keep reading.</p>
+    <p>To use the physics system, you must attach body components to the entities you want to participate in the physics system:</p>
+    <ul>
+        <li>static-body for the ground, floor, and walls</li>
+        <li>dynamic-body for anything that's moveable</li>
+        <li>kinematic-body for the camera rig (not required)</li>
+    </ul>
+    <p>Each body requires a shape. Ideally, we would use a model for our world, which would have varied terrain in a glTF format as we do with nav-mesh. Set its body type to static and its shape to mesh.</p>
 
 <!-- World -->
 <!--<a-entity gltf-model="navmesh.gltf"
