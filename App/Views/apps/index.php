@@ -15,7 +15,7 @@
 </head>
 
 <body id="index" is="dmx-app" class="d-flex flex-column h-100">
-<dmx-api-datasource id="dluxGetBlog" is="dmx-fetch" url="https://token.dlux.io/getwrap?" dmx-param:method="'condenser_api.get_blog'" dmx-param:params="'[%22robotolux%22,0,10]'"></dmx-api-datasource>
+<dmx-api-datasource id="dluxGetBlog" is="dmx-fetch" url="https://token.dlux.io/getwrap?" dmx-param:method="'tags_api.get_discussions_by_blog'" dmx-param:params="'{%22tag%22:%22robotolux%22}'"></dmx-api-datasource>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
