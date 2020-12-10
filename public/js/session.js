@@ -321,7 +321,7 @@
 
      static handshake(id) {
          return new Promise((resolve, reject) => {
-             fetch(`https://ipfs.dlux.io/api/account/${id}`)
+             fetch(`https://${id}.ipfs.dlux.io/api/account/${id}`)
                  .then((response) => {
                      return response.json();
                  })
