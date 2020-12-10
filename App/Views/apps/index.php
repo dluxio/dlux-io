@@ -82,7 +82,7 @@
    <div class="modal-content bg-dark text-white">
 	<dmx-data-detail id="app_detail" dmx-bind:data="dluxGetBlog.data.result" key="entry_id">
 		<div class="d-inline-block p-2">
-	  <div class="float-left" ><a dmx-bind:href="/@{{author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{data.author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
+	  <div class="float-left" ><a dmx-bind:href="/@{{date.author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{data.author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
         <div class="float-left">
           <p class="mt-0 mb-0 text-muted text-semibold"><a dmx-bind:href="/@{{author}}" class="a-1">{{data.author}}<span class="ml-2 badge badge-pill badge-light">{{data.author_reputation.toString().rep()}}</span></a></p>
           <small class="text-muted">{{data.created.formatDate("MMM dd, yyyy")}}</small></div>
