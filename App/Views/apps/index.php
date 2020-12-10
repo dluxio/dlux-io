@@ -43,12 +43,12 @@
       </div>
       <div class="float-right"><span class="badge badge-secondary">{{json_metadata.scat()}}</span></div>
     </div>
-    <a href="#detailModal" class="a-1" data-toggle="modal" dmx-on:click="app_detail.select(entry_id)" dmx-bind:onclick="window.history.pushState('{{url}}','{{title}}', '/blog/@{{author}}/{{permlink}}');">
+    <a href="#detailModal" class="a-1" data-toggle="modal" dmx-on:click="app_detail.select(data.entry_id)" dmx-bind:onclick="window.history.pushState('{{url}}','{{title}}', '/blog/@{{author}}/{{permlink}}');">
       <h5 class="card-title mt-2 text-center text-capitalize">{{title}}</h5>
-      <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{json_metadata.parseJSON().image}}" /></a>
-    <div class="card-body"><a href="#detailModal" data-toggle="modal" class="a-1">
+      <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{json_metadata.parseJSON().image}}" />
+    <div class="card-body">
       <p class="preview-text">{{body.removeMD().trunc(100,true,"...")}}</p>
-    </a></div>
+    </div></a>
     <center>
       <a dmx-bind:href="{{url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch">Launch App</a>
     </center>
