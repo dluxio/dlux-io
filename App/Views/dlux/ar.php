@@ -8,7 +8,7 @@
     <meta name="generator" content="Google Web Designer 4.2.0.0802">
     <link href="/xr/gwdiframe_style.css" rel="stylesheet" data-version="4" data-exports-type="gwd-iframe">
     <link href="/xr/gwdtaparea_style.css" rel="stylesheet" data-version="6" data-exports-type="gwd-taparea">
-    <script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js""></script>
+    <script src="https://cdn.jsdelivr.net/npm/steem/dist/steem.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.5/showdown.min.js"></script>
     <style id="gwd-text-style" type="text/css">
         p {
@@ -106,10 +106,10 @@
                 <div class="gwd-div-1get gwd-gen-1wxngwdanimation" id="value-votes">
                     <svg class="gwd-rect-1g98 gwd-svg-1l16 gwd-rect-1qif gwd-rect-nasd gwd-rect-1hx4 gwd-gen-1dcfgwdanimation" id="value-oval" data-gwd-shape="rectangle"></svg>
                     <span class="gwd-span-97gt gwd-gen-1cn0gwdanimation" id="value-txt">Calculating...</span></div>
-                <div class="gwd-div-vvu2 gwd-gen-9lu1gwdanimation" id="reblog-btn">
-                    <svg class="gwd-rect-1g98 gwd-svg-1l16 gwd-rect-1qif gwd-gen-v6t5gwdanimation" id="reblog-oval" data-gwd-shape="rectangle"></svg>
-                    <img class="gwd-img-92aa gwd-gen-1wt0gwdanimation" id="reblogIcon" src="https://ipfs.io/ipfs/QmWzwtEcfBwdKC2xaDsdrhpgmLTooxAAQFLqiewzHbHhuw" alt="reblog">
-                    <gwd-taparea class="gwd-taparea-jl2t gwd-gen-1ft8gwdanimation" id="reblog-taparea"></gwd-taparea>
+                <div class="gwd-div-vvu2 gwd-gen-9lu1gwdanimation" id="resteem-btn">
+                    <svg class="gwd-rect-1g98 gwd-svg-1l16 gwd-rect-1qif gwd-gen-v6t5gwdanimation" id="resteem-oval" data-gwd-shape="rectangle"></svg>
+                    <img class="gwd-img-92aa gwd-gen-1wt0gwdanimation" id="resteemIcon" src="https://ipfs.io/ipfs/QmWzwtEcfBwdKC2xaDsdrhpgmLTooxAAQFLqiewzHbHhuw" alt="resteem">
+                    <gwd-taparea class="gwd-taparea-jl2t gwd-gen-1ft8gwdanimation" id="resteem-taparea"></gwd-taparea>
                 </div>
                 <div class="gwd-div-1iou gwd-gen-1tekgwdanimation" id="upvote-btn">
                     <svg class="gwd-rect-1g98 gwd-svg-1l16 gwd-rect-1qif gwd-rect-nasd gwd-gen-1vukgwdanimation gwd-svg-1otk" id="upvote-oval" data-gwd-shape="rectangle"></svg>
@@ -146,8 +146,8 @@
                     <br>
                     <br>
                 </p>
-                <p class="gwd-p-16nt gwd-p-11wt gwd-p-agk9 gwd-p-17az gwd-p-1i7e gwd-p-1yyn" id="send-hive">
-                    Send Hive</p>
+                <p class="gwd-p-16nt gwd-p-11wt gwd-p-agk9 gwd-p-17az gwd-p-1i7e gwd-p-1yyn" id="send-steem">
+                    Send Steem</p>
                 <p class="gwd-p-16nt gwd-p-11wt gwd-p-1cbm gwd-p-11wu gwd-p-377c gwd-p-17jg gwd-p-zzcz" id="about-btn">
                     About dlux</p>
                 <p class="gwd-p-16nt gwd-p-11wt gwd-p-1cbm gwd-p-ms4c" id="logout-btn">
@@ -156,7 +156,7 @@
                 <svg class="gwd-rect-kpm2 gwd-svg-1n2k" data-gwd-shape="rectangle"></svg>
                 <svg class="gwd-rect-kpm2 gwd-svg-vsd8" data-gwd-shape="rectangle"></svg>
                 <gwd-taparea class="gwd-taparea-1p3m gwd-taparea-1nh1" id="home-taparea"></gwd-taparea>
-                <gwd-taparea class="gwd-taparea-1p3m gwd-taparea-55n9" id="sendhive-taparea"></gwd-taparea>
+                <gwd-taparea class="gwd-taparea-1p3m gwd-taparea-55n9" id="sendsteem-taparea"></gwd-taparea>
                 <gwd-taparea class="gwd-taparea-1p3m gwd-taparea-cgtn" id="about-taparea"></gwd-taparea>
                 <gwd-taparea class="gwd-taparea-1p3m gwd-taparea-ni98" id="logout-taparea"></gwd-taparea>
             </div>

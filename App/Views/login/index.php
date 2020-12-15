@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<link href="../css/login.css" rel="stylesheet">  
 	<script src="https://kit.fontawesome.com/0f693ffc58.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js""></script>
+    <script src="https://cdn.jsdelivr.net/npm/steem/dist/steem.min.js"></script>
     <script src="../js/session.js" type="application/javascript"></script>
   </head>
   <body class="text-center">
@@ -57,10 +57,10 @@
 	console.log('clicked')
       let username = document.getElementById('sk-username').value
       console.log('value: ' + username)
-      hive.api.setOptions({ url: "https://anyx.io" })
+      steem.api.setOptions({ url: "https://anyx.io" })
 	sessionStorage.setItem("user", username);
 	console.log('session set')
-      let session = new Dluxsession(hive, {hiveidip:username})
+      let session = new Dluxsession(steem, {steemidip:username})
       	console.log(session)
     } 
       

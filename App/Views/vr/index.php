@@ -16,7 +16,7 @@
     <script src="https://rawgit.com/Ctrl-Alt-Zen/aframe-mobile-controls/master/components/twoway-motion/twoway-motion.js"></script>
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
     <script src="https://unpkg.com/aframe-state-component@3.4.0/dist/aframe-state-component.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/steem/dist/steem.min.js"></script>
     <script src="https://rawgit.com/ngokevin/kframe/master/components/layout/dist/aframe-layout-component.js"></script>
     <script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>
     <script src="/js/nav.js"></script>
@@ -43,7 +43,7 @@
 <body onload="popData()">
     <a-scene antialias="true">
         <!-- Asset Manager-->
-        <a-assets><img id="nav-trending-icon" src="https://cdn.glitch.com/01653acd-2032-42f4-b8a0-e375b4533968%2Fcircle_hive_black.png?v=1608032530206" crossorigin="anonymous" /><img id="nav-profile-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Fmarkegiles.jpg" crossorigin="anonymous" /><img id="greeter-pic-photo" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Frobotolux.png" crossorigin="anonymous" /><img id="voteButtonPic" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Fupvote.png?1528448497979" crossorigin="anonymous" />
+        <a-assets><img id="nav-trending-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2FFire_Emoji.png" crossorigin="anonymous" /><img id="nav-new-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Forange-new-512.gif" crossorigin="anonymous" /><img id="nav-random-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Fwhitedice.png" crossorigin="anonymous" /><img id="nav-browse-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2F29506-200.png" crossorigin="anonymous" /><img id="nav-create-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Fdocument.png" crossorigin="anonymous" /><img id="nav-steem-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Fsteem-coin.png" crossorigin="anonymous" /><img id="nav-profile-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Fmarkegiles.jpg" crossorigin="anonymous" /><img id="greeter-pic-photo" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Frobotolux.png" crossorigin="anonymous" /><img id="voteButtonPic" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Fupvote.png?1528448497979" crossorigin="anonymous" />
             <a-asset-item id="obfont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item><template id="hand-template"><a-entity><a-box scale="0.1 0.1 0.1"></a-box></a-entity></template></a-assets>
         <!-- DLUX-->
         <a-entity id="dlux-container" look-at="[camera]" position="0 1.6 -14">
@@ -78,16 +78,16 @@
                         </a-entity>
                     </a-entity>
                 </a-entity>
-                <a-entity id="nav-hive" show-menu="" geometry="primitive:circle;radius:.5" material="side:double;src:#nav-hive-icon" position="3.2 0 0">
-                    <a-entity class="hiddenMenu" id="nav-hive-items" position="0 -.5 0" visible="false">
+                <a-entity id="nav-steem" show-menu="" geometry="primitive:circle;radius:.5" material="side:double;src:#nav-steem-icon" position="3.2 0 0">
+                    <a-entity class="hiddenMenu" id="nav-steem-items" position="0 -.5 0" visible="false">
                         <a-entity geometry="primitive:plane;height:1;width:3" material="opacity:0;depthWrite:false" position="0 0 0"></a-entity>
-                        <a-entity id="hive-hr" geometry="primitive:plane;height:.1;width:3" material="side:double;color:#1b5199" position="0 -.25 0"></a-entity>
-                        <a-entity id="hive-login" geometry="primitive:plane;height:.6;width:3" material="side:double;color:#4C4C4C;" position="0 -.6 0" url="/auth">
-                            <a-entity id="hive-login-text" text="value:Login;width: 9; lineHeight: 50; letterSpacing: 5; anchor: left; baseline: center; color:;" material="color:#FFF" position="-1.3 0 0.1" scale="1 1 .01"></a-entity>
+                        <a-entity id="steem-hr" geometry="primitive:plane;height:.1;width:3" material="side:double;color:#1b5199" position="0 -.25 0"></a-entity>
+                        <a-entity id="steem-login" geometry="primitive:plane;height:.6;width:3" material="side:double;color:#4C4C4C;" position="0 -.6 0" url="/auth">
+                            <a-entity id="steem-login-text" text="value:Login;width: 9; lineHeight: 50; letterSpacing: 5; anchor: left; baseline: center; color:;" material="color:#FFF" position="-1.3 0 0.1" scale="1 1 .01"></a-entity>
                         </a-entity>
                         <a-entity class="hr" geometry="primitive:plane;height:.05;width:3" material="side:double;color:#7F7F7F;" position="0 -.925 0"></a-entity>
-                        <a-entity id="join-hive" geometry="primitive:plane;height:.6;width:3" material="side:double;color:#4C4C4C;" position="0 -1.25 0" url="https://signup.hiveit.io">
-                            <a-entity id="join-hive-text" text="value:Join Hive;width: 9; lineHeight: 50; letterSpacing: 5; anchor: left; baseline: center; color:;" material="color:#FFF" position="-1.3 0 0.1" scale="1 1 .01"></a-entity>
+                        <a-entity id="join-steem" geometry="primitive:plane;height:.6;width:3" material="side:double;color:#4C4C4C;" position="0 -1.25 0" url="https://signup.steemit.com">
+                            <a-entity id="join-steem-text" text="value:Join Steem;width: 9; lineHeight: 50; letterSpacing: 5; anchor: left; baseline: center; color:;" material="color:#FFF" position="-1.3 0 0.1" scale="1 1 .01"></a-entity>
                         </a-entity>
                     </a-entity>
                 </a-entity>
@@ -95,7 +95,7 @@
             <a-entity id="greeting" geometry="primitive:plane;width:18;height:6.5" material="side:double;color:#4C4C4C;opacity:0.7" position="0 3.5 0" scale=".7 .7 .7" rotation="">
                 <a-entity id="greeter-pic" geometry="primitive:circle" crossorigin="anonymous" material="side:double;src:#greeter-pic-photo" position="-9 3.25 0.1" scale="2 2 2" do-on-asset-load="#user"></a-entity>
                 <a-entity id="greeter-name" text="value:@robotolux; width: 7; wrapCount: 17; lineHeight: 50; letterSpacing: 5; anchor: left; baseline: bottom; color:;" position="-6.47 1.23 0.1" rotation="" scale="2 2 0.01" material=""></a-entity>
-                <a-entity id="greeter-pinned-post" text="value:Welcome to dlux, sign in with Hive to start building.;width: 8.5; wrapCount: 32.5; lineHeight: 60; letterSpacing: 5; anchor: left; baseline: bottom; color:;" position="-7.6 -2.06 0.1" rotation="" scale="2 2 0.01" material=""></a-entity>
+                <a-entity id="greeter-pinned-post" text="value:Welcome to dlux, sign in with Steem to start building.;width: 8.5; wrapCount: 32.5; lineHeight: 60; letterSpacing: 5; anchor: left; baseline: bottom; color:;" position="-7.6 -2.06 0.1" rotation="" scale="2 2 0.01" material=""></a-entity>
             </a-entity>
         </a-entity>
         <!-- DLUX Spotlight-->
@@ -645,4 +645,5 @@
         </a-entity>
     </a-scene>
 </body>
+<script>checkCookie();</script>
 </html>

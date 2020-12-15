@@ -53,7 +53,7 @@ function key(message) { //how this post finds itself on blockchain
     }
 }
 
-function hiveState(message) { //the entirety of the current hive state will be passed in JSON. Utilize this function to initialize current state. Vote and comment also will return a hiveState(message)
+function steemState(message) { //the entirety of the current hive state will be passed in JSON. Utilize this function to initialize current state. Vote and comment also will return a hiveState(message)
     Dlux.state = message
 }
 
