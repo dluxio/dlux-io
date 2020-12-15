@@ -14,10 +14,10 @@
 <!-- DLUX -->
 <script src="/js/session.js"></script>
 <!-- HIVE -->
-<script src="https://cdn.jsdelivr.net/npm/steem/dist/steem.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js""></script>
 <!-- Initialization -->
 <script>
-steem.api.setOptions({url:"https://anyx.io"})
+hive.api.setOptions({url:"https://anyx.io"})
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })

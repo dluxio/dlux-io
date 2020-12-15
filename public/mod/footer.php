@@ -41,10 +41,10 @@ function hiveKeychain () {
     console.log('clicked')
     let username = document.getElementById('hk-username').value
     console.log('value: ' + username)
-    steem.api.setOptions({ url: "https://anyx.io" })
+    hive.api.setOptions({ url: "https://anyx.io" })
 	sessionStorage.setItem("user", username);
 	console.log('session set')
-    let session = new Dluxsession(steem, {steemidip:username})
+    let session = new Dluxsession(hive, {hiveidip:username})
     console.log(session)
 } 
       

@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/steem/dist/steem.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js""></script>
     <script src="/js/session.js"></script>
     <style>
         html,
@@ -29,9 +29,9 @@
             echo "const author = '".$author."',";
             echo " permlink = '".$permlink."',";
             ;?>
-         steemKey = `${author}/${permlink}`
-        steem.api.setOptions({ url: 'https://anyx.io'})
-        steem.api.getContent(author, permlink, (err, result) => {
+         hiveKey = `${author}/${permlink}`
+        hive.api.setOptions({ url: 'https://anyx.io'})
+        hive.api.getContent(author, permlink, (err, result) => {
             document.title = `DLUX | ${result.title}`
             stateObj = result
             var metadata = result.json_metadata
@@ -115,7 +115,7 @@
             if (link == '/auth') {
                 setCookie('dropOff', `/dlux/@dlux-io/addmst758y8ajhiuvigmesxuj1yo4mve`, 15);
                 location.href = '/auth';
-            } else if (link.includes("steemconnect.com")) {
+            } else if (link.includes("hiveconnect.com")) {
                 location.href = link;
             } else if (link.split('/')[0].includes(":")) {
                 if (confirm('The was a request to navigate away from dlux.io | Would you like to navigate to | ' + link)) {
@@ -134,14 +134,14 @@
                 memoRights = confirm('Allow this app to encrypt and decrypt messages')
             }
             if (memoRights == true) {
-                steem.api.getAccounts([message.to], (err, result) => {
+                hive.api.getAccounts([message.to], (err, result) => {
                     if (err) {
                         console.log(err)
                     }
                     if (result.length === 0) {
                         console.log('No Such User')
                     }
-                    var encoded = steem.memo.encode(localStorage.memoKey, result[0].memo_key, `#` + message.memo);
+                    var encoded = hive.memo.encode(localStorage.memoKey, result[0].memo_key, `#` + message.memo);
                     target.postMessage({
                         'func': 'encoded',
                         'message': {
@@ -158,7 +158,7 @@
                 memoRights = confirm('Allow this app to encrypt and decrypt messages')
             }
             if (memoRights == true) {
-                var decoded = steem.memo.decode(localStorage.memoKey, message.encoded);
+                var decoded = hive.memo.decode(localStorage.memoKey, message.encoded);
                 target.postMessage({
                     'func': 'decoded',
                     'message': {
@@ -171,13 +171,13 @@
         userLoggedIn = 'Guest'
         if (userLoggedIn == 'Guest' && localStorage.getItem('skn')) {
             userLoggedIn = localStorage.getItem('skn')
-        } else if (window.steem_keychain) {
-            iAm = prompt('Steem Username for Steem Keychain', 'no @')
+        } else if (window.hive_keychain) {
+            iAm = prompt('Hive Username for Hive Keychain', 'no @')
         }
 
         function reqsign(op) {
-            if (window.steem_keychain) {
-                steem_keychain.requestBroadcast(op[1][1], [op[0]], op[1][0], function(response) {
+            if (window.hive_keychain) {
+                hive_keychain.requestBroadcast(op[1][1], [op[0]], op[1][0], function(response) {
                     console.log(response);
                     target.postMessage({
                         'func': 'keychainResponse',
@@ -196,7 +196,7 @@
                     }, '*');
                 });
             }
-            steem.api.getContent(author, permlink, function(err, result) {
+            hive.api.getContent(author, permlink, function(err, result) {
                 var target = document.getElementById('theIframe').contentWindow
                 target.postMessage({
                     'func': 'iAm',
@@ -207,7 +207,7 @@
                     'message': `${author}/${permlink}`,
                 }, "*");
                 target.postMessage({
-                    'func': 'steemState',
+                    'func': 'hiveState',
                     'message': result,
                 }, "*");
             });

@@ -43,10 +43,10 @@
       <div class="container form-content">
         <form class="needs-validation" novalidate="">
           <div class="form-group">
-            <label for="validationCustomUN">Author (requires a <a href="https://signup.steemit.com/" target="_blank">HIVE account</a> active key signed in to the<a href="https://chrome.google.com/webstore/detail/steem-keychain/lkcjlnjfpbikmcmbachjpdbijejflpcm?hl=en" target="_blank">Chrome</a>
+            <label for="validationCustomUN">Author (requires a <a href="https://signup.hive.io/" target="_blank">HIVE account</a> active key signed in to the<a href="https://chrome.google.com/webstore/detail/hive-keychain/jcacnejopjdphbnjgfaaobbfafkihpep)" target="_blank">Chrome</a>
               or
               <a
-                href="https://addons.mozilla.org/en-US/firefox/addon/steem-keychain/"
+                href="https://addons.mozilla.org/en-US/firefox/addon/hive-keychain/"
                 target="_blank"
                 >Firefox</a
               >

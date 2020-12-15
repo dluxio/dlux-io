@@ -15,7 +15,7 @@
 .super-pink{
     color: #FA5BA7;
 }
-.steem-green {
+.hive-green {
     color: #23D199;
 }
 .form-layer {
@@ -155,7 +155,7 @@ document.getElementById('submit-btn').innerHTML = `Post as @${iam}`
         </div>
 		
         <div class="container">
-          <h2 class="steem-green">Hive</h2>
+          <h2 class="hive-green">Hive</h2>
           <div class="form-group">
     <label for="validationCustomTitle">Title</label>
     <input type="text" class="form-control" id="validationCustomTitle" placeholder="Give your post a title" required>
@@ -214,7 +214,7 @@ document.getElementById('submit-btn').innerHTML = `Post as @${iam}`
                                  {"author": user, 
                                   "permlink": `${user}-supercraft-${document.getElementById('validationCustomLoader').value}`, 
                                   "max_accepted_payout": "1000000.000 HBD", 
-                                  "percent_steem_dollars": 10000, 
+                                  "percent_hive_dollars": 10000, 
                                   "allow_votes": true, 
                                   "allow_curation_rewards": true, 
                                   "extensions": 
