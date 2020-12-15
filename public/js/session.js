@@ -35,7 +35,7 @@
      console.log('Checking for login')
      user = sessionStorage.getItem('user');
      console.log('user=' + user)
-     if (user != null) {
+     if (user != null && !dlux) {
          let account = sessionStorage.getItem('account')
          if (account != 'undefined') {
              console.log(account)
