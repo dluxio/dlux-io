@@ -299,8 +299,6 @@ $(document).ready(function(){
       <option value=24>1 day</option>
 	  <option value=72>3 days</option>
 	  <option value=120 selected>5 days</option>
-	  <option value=336>14 days</option>
-	  <option value=720>30 days</option>
     </select>
 </div>
 		  
