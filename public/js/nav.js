@@ -406,7 +406,7 @@ function getAccountInfo(username) {
                         delegatedSpOut: parseInt(-outgoingSteemPower).toLocaleString(),
                         vp: votePower,
                         steem: user.balance.substring(0, user.balance.length - 5),
-                        sbd: user.sbd_balance.substring(0, user.sbd_balance.length - 3),
+                        hbd: user.hbd_balance.substring(0, user.hbd_balance.length - 3),
                         numOfPosts: user.post_count,
                         followerCount: followerCounter,
                         followingCount: followingCounter,
@@ -524,7 +524,7 @@ AFRAME.registerState({
         effectiveSp: "6",
         vp: "7",
         steem: "8",
-        sbd: "9",
+        hbd: "9",
         numOfPosts: "10",
         followerCount: "55",
         followingCount: "77",
@@ -552,7 +552,7 @@ AFRAME.registerState({
             state.delegatedSpOut = action.val.delegatedSpOut
             state.vp = action.val.vp
             state.steem = action.val.steem
-            state.sbd = action.val.sbd
+            state.hbd = action.val.hbd
             state.numOfPosts = action.val.numOfPosts
             state.followerCount = action.val.followerCount
             state.followingCount = action.val.followingCount
@@ -577,8 +577,8 @@ AFRAME.registerState({
         setnumOfPosts: function(state, action) {
             state.numOfPosts = action.val;
         },
-        setsbd: function(state, action) {
-            state.sbd = action.val;
+        sethbd: function(state, action) {
+            state.hbd = action.val;
         },
         setsteem: function(state, action) {
             state.steem = action.val;
