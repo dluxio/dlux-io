@@ -215,7 +215,6 @@
                 postable = true
             }
         }
-        checkCookie(); 
     </script>
 
     <body></body>
