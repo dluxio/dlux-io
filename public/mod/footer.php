@@ -43,7 +43,7 @@ function hiveKeychain () {
     console.log('value: ' + username)
     hive.api.setOptions({ url: "https://anyx.io" })
 	sessionStorage.setItem("user", username);
-	console.log('session set')
+  console.log('session set')
     let session = new Dluxsession(hive, {hiveidip:username})
     console.log(session)
 } 
@@ -51,12 +51,11 @@ function hiveKeychain () {
 setTimeout(function(){
     let use = document.getElementById("hiveKeychain");
     let get = document.getElementById("getKeychain");
+    checkCookie()
     if(window.hive_keychain) {
         get.style.display = "none";
     } else {
         use.style.display = "none";
     }
-}, 1000);
-    
-checkCookie()
+}, 250);
 </script>
