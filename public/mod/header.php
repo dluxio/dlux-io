@@ -17,7 +17,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js""></script>
 <!-- Initialization -->
 <script>
-hive.api.setOptions({url:"https://anyx.io"})
+checkCookie()
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })

@@ -46,7 +46,7 @@
          $('#no-session').addClass('d-none');
          document.getElementById('userImage').src = 'https://token.dlux.io/getauthorpic/' + user
          document.getElementById('userName').innerText = '@' + user;
-         let dex, stats, hive, feed
+         //let dex, stats, hive, feed
          var urls = [`https://token.dlux.io/@${user}`, 'https://token.dlux.io/dex', 'https://token.dlux.io/stats', 'https://api.coingecko.com/api/v3/simple/price?ids=hive&vs_currencies=usd'] //datasources
          let promises = urls.map(u => fetch(u))
          promises.push(fetch("https://anyx.io", {

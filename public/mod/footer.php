@@ -51,7 +51,6 @@ function hiveKeychain () {
 setTimeout(function(){
     let use = document.getElementById("hiveKeychain");
     let get = document.getElementById("getKeychain");
-    checkCookie()
     if(window.hive_keychain) {
         get.style.display = "none";
     } else {
