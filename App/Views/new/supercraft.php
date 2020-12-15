@@ -213,7 +213,7 @@ document.getElementById('submit-btn').innerHTML = `Post as @${iam}`
                                 ["comment_options", 
                                  {"author": user, 
                                   "permlink": `${user}-supercraft-${document.getElementById('validationCustomLoader').value}`, 
-                                  "max_accepted_payout": "1000000.000 SBD", 
+                                  "max_accepted_payout": "1000000.000 HBD", 
                                   "percent_steem_dollars": 10000, 
                                   "allow_votes": true, 
                                   "allow_curation_rewards": true, 

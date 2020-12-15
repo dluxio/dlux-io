@@ -29,7 +29,7 @@
  function readResponseAsBlob(response) {
      return response.blob();
  }
- var user, dlux, User = { dlux: {}, hive: {}, dex: {}, stats: {}, opts: { to: 0, agent: 0, fee: '0.000 STEEM', dfee: 0, type: 'Buy' } }
+ var user, dlux, User = { dlux: {}, hive: {}, dex: {}, stats: {}, opts: { to: 0, agent: 0, fee: '0.000 HIVE', dfee: 0, type: 'Buy' } }
 
  function checkCookie() {
      console.log('Checking for login')
@@ -39,9 +39,9 @@
          let account = sessionStorage.getItem('account')
          if (account != 'undefined') {
              console.log(account)
-             dlux = new Dluxsession(steem, { steemid: user, account });
+             dlux = new Dluxsession(hive, { hiveid: user, account });
          } else {
-             dlux = new Dluxsession(steem, { steemidip: user });
+             dlux = new Dluxsession(hive, { hiveidip: user });
          }
          $('#no-session').addClass('d-none');
          document.getElementById('userImage').src = 'https://token.dlux.io/getauthorpic/' + user
@@ -233,7 +233,7 @@
  }
 
  class Dluxsession {
-     constructor(steemClient, ip) {
+     constructor(hiveClient, ip) {
          const opts = ip || {}
          this.email = opts.email || ''
          this.keychain = {
@@ -242,10 +242,10 @@
              posting: false,
              memo: false
          }
-         this.steemidip = ip.steemidip
-         this.steem = steemClient
+         this.hiveidip = ip.hiveidip
+         this.hive = hiveClient
          this.account = opts.account
-         this.steemid = opts.steemid || ''
+         this.hiveid = opts.hiveid || ''
          this.jwt = opts.jwt || ''
      }
 
@@ -267,7 +267,7 @@
          });
      }
 
-     set steemidip(id) {
+     set hiveidip(id) {
          var account = {},
              itr = {}
          return new Promise((resolve, reject) => {
@@ -285,14 +285,14 @@
                                  itr.jwt = ret[0]
                                  itr.user = id
                                  itr.challenges = r[0].challenges
-                                 itr.steemid = id
-                                 let storables = ['email', 'steemid', 'jwt', 'account']
+                                 itr.hiveid = id
+                                 let storables = ['email', 'hiveid', 'jwt', 'account']
                                  for (var i = 0; i < storables.length; i++) {
                                      console.log(itr[storables[i]])
                                      window.sessionStorage.setItem(storables[i], JSON.stringify(itr[storables[i]]))
                                  }
                                  loginDismiss()
-                                 setCookie('user', itr.steemid, 5)
+                                 setCookie('user', itr.hiveid, 5)
                                  resolve(this.jwt)
                              })
                      })
@@ -336,7 +336,7 @@
 
      static iam(id) {
          return new Promise((resolve, reject) => {
-             this.steem.api.getAccounts([id], function(err, response) {
+             this.hive.api.getAccounts([id], function(err, response) {
                  if (err) {
                      reject(err)
                  } else {
@@ -348,7 +348,7 @@
 
      static challengeMe(id) {
          return new Promise((resolve, reject) => {
-             this.steem.api.getAccounts([id], function(err, response) {
+             this.hive.api.getAccounts([id], function(err, response) {
                  if (err) {
                      reject(err)
                  } else {
@@ -374,7 +374,7 @@
              } else {
                  let key = prompt(`Enter @${this.name}'s memo private key`, '5blahlblah')
                  try {
-                     jwt = this.steem.memo.decode(key, encoded[0])
+                     jwt = this.hive.memo.decode(key, encoded[0])
                      resolve(jwt)
                  } catch (e) {
                      reject('food')
@@ -385,7 +385,7 @@
 
      static encode(msg, to) {
          return new Promise((resolve, reject) => {
-             let encoded = this.steem.memo.encode(this.account.memoKey, encoded);
+             let encoded = this.hive.memo.encode(this.account.memoKey, encoded);
          })
      }
 
