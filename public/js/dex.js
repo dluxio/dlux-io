@@ -2,8 +2,8 @@ function dex(usr, pair, type) {
     console.log('dex js')
     User.opts.pair = pair || 'hive'
     User.opts.type = type || 'Buy'
-    usr.hbd = { balance: usr.hive.sbd_balance }
-    User.hbd = { balance: usr.hive.sbd_balance }
+    usr.hbd = { balance: usr.hive.hbd_balance }
+    User.hbd = { balance: usr.hive.hbd_balance }
     document.getElementById('jumbobal').innerHTML = `<h4>Balances: ${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3)} DLUX & ${usr[User.opts.pair].balance}</h4>`
     document.getElementById('senddluxfrom').value = user
     document.getElementById('menupricelab').innerHTML = `Calculated Price: (<a href="#" onClick="insertBal('${parseFloat(User.dex.markets[User.opts.pair].tick)}', 'menuprice')">Market Price: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
@@ -145,8 +145,8 @@ function checkAccount(name) {
 function placeHiveBuy() {
     var dlux = parseInt(document.getElementById('menudlux').value * 1000),
         amount = parseInt(document.getElementById('menupair').value * 1000),
-        hiveAmount = (amount / 1000).toFixed(3) + ' STEEM',
-        hbdAmount = '0.000 SBD'
+        hiveAmount = (amount / 1000).toFixed(3) + ' HIVE',
+        hbdAmount = '0.000 HBD'
     fetch('https://token.dlux.io/dex')
         .then(function(response) {
             return response.json();
@@ -172,8 +172,8 @@ function placeHiveBuy() {
                 let params = {
                     from: user,
                     to: User.opts.to,
-                    sbd_amount: hbdAmount,
-                    steem_amount: hiveAmount,
+                    hbd_amount: hbdAmount,
+                    hive_amount: hiveAmount,
                     escrow_id: eidi,
                     agent: User.opts.agent,
                     fee: User.opts.fee,
@@ -199,8 +199,8 @@ function placeHiveBuy() {
 function placeHbdBuy() {
     var dlux = parseInt(parseFloat(document.getElementById('menudlux').value) * 1000),
         amount = parseInt(parseFloat(document.getElementById('menupair').value) * 1000),
-        hiveAmount = '0.000 STEEM',
-        hbdAmount = (amount / 1000).toFixed(3) + ' SBD'
+        hiveAmount = '0.000 HIVE',
+        hbdAmount = (amount / 1000).toFixed(3) + ' HBD'
     fetch('https://token.dlux.io/dex')
         .then(function(response) {
             return response.json();
@@ -224,8 +224,8 @@ function placeHbdBuy() {
                 let params = {
                     from: user,
                     to: User.opts.to,
-                    sbd_amount: hbdAmount,
-                    steem_amount: hiveAmount,
+                    hbd_amount: hbdAmount,
+                    hive_amount: hiveAmount,
                     escrow_id: eid,
                     agent: User.opts.agent,
                     fee: User.opts.fee,
@@ -263,11 +263,11 @@ function getItID(txid) {
                     console.log(updex.hive.sellOrders[txid].txid)
                     addr = updex.hive.sellOrders[txid]
                     reciever = updex.hive.sellOrders[txid].from
-                    type = ' STEEM'
+                    type = ' HIVE'
                 }
             } catch (e) {}
             if (!addr) {
-                type = ' SBD'
+                type = ' HBD'
                 if (updex.hbd.sellOrders[txid]) {
                     console.log(updex.hbd.sellOrders[txid].txid)
                     addr = updex.hbd.sellOrders[txid]
@@ -291,19 +291,19 @@ function getItID(txid) {
                 escrowTimer.expiryUTC = new Date(escrowTimer.expiryIn);
                 escrowTimer.expiryString = escrowTimer.expiryUTC.toISOString().slice(0, -5);
                 var eidi = Math.floor(Math.random() * 4294967296)
-                if (type === ' STEEM') {
-                    hiveAmount = `${parseFloat(addr.hive / 1000).toFixed(3)} STEEM`
-                    hbdAmount = '0.000 SBD'
-                } else if (type === ' SBD') {
-                    hbdAmount = `${parseFloat(addr.hbd / 1000).toFixed(3)} SBD`
-                    hiveAmount = '0.000 STEEM'
+                if (type === ' HIVE') {
+                    hiveAmount = `${parseFloat(addr.hive / 1000).toFixed(3)} HIVE`
+                    hbdAmount = '0.000 HBD'
+                } else if (type === ' HBD') {
+                    hbdAmount = `${parseFloat(addr.hbd / 1000).toFixed(3)} HBD`
+                    hiveAmount = '0.000 HIVE'
                 }
                 let eid = parseInt(Math.random() * 1000000000) //escrow_id from DLUXQmxxxx<this
                 let params = {
                     from: user,
                     to: User.opts.to,
-                    sbd_amount: hbdAmount,
-                    steem_amount: hiveAmount,
+                    hbd_amount: hbdAmount,
+                    hive_amount: hiveAmount,
                     escrow_id: eid,
                     agent: User.opts.agent,
                     fee: User.opts.fee,
@@ -342,7 +342,7 @@ function getSellID(txid) {
                     console.log(updex.hive.buyOrders[i].txid)
                     addr = updex.hive.buyOrders[i]
                     receiver = updex.hive.buyOrders[i].from
-                    type = ' STEEM'
+                    type = ' HIVE'
                     u = `${parseFloat(updex.hive.buyOrders[i].amount / 1000).toFixed(3)} DLUX`
                 }
             }
@@ -353,7 +353,7 @@ function getSellID(txid) {
                         console.log(updex.hbd.buyOrders[i].txid)
                         addr = updex.hbd.buyOrders[i]
                         receiver = updex.hbd.buyOrders[i].from
-                        type = ' SBD'
+                        type = ' HBD'
                         u = `${parseFloat(updex.hbd.buyOrders[i].amount / 1000).toFixed(3)} DLUX`
                     }
                 }
