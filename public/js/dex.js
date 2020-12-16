@@ -81,7 +81,7 @@ function dexsend(type, pair) {
     } else if (type == 'Sell' && pair == 'hive') {
         placeHiveAsk()
     } else if (type == 'Sell' && pair == 'hbd') {
-        placeHibdAsk()
+        placeHbdAsk()
     }
 
 }
