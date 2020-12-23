@@ -167,7 +167,7 @@
     <p class="bd-lead">The goal of this project is to incentivize XR adoption in the best possible way we can imagine: open-source and on-chain.</p>
     <p>The economics of this are possible. By combining WebVR, AR.js, and HIVE, we buildd a platform free for everyone to use that rewards good content with real cryptocurrency you can spend or transfer.</p>
     <p>We recognize that in order for vr to take off, its creation needs to reach a point of enabling everyone to participate, so we lowered the barrier to entry as far as we possibly could.</p>
-    <p>Remix our Glitch projects to immediately begin building experiences that earn you rewards by publishing to Steem. Experiences that run on nearly any device, computer, and head mounted display through the web browser.</p>
+    <p>Remix our Glitch projects to immediately begin building experiences that earn you rewards by publishing to Hive. Experiences that run on nearly any device, computer, and head mounted display through the web browser.</p>
     <p>Deploy your next game, video, or experience at no cost with no programming expertise. We'll show you how.</p>
     <h2>Quickstart</h2>
     <p class="bd-lead">We've made it easy to get up and running by integrating all the technical stuff so you can start creating right away!</p>
@@ -219,7 +219,7 @@
         <li>Asset Upload: Drag-&-Drop asset well</li>
         <li>App View: Live build of your app</li>
     </ul>
-    <p>Glitch is a collaborative development environment that allows users to quickly duplicate and modify apps. We've built on top of this to offer a social XR boilerplate with drag-and-drop asset upload and Steem publishing.</p>
+    <p>Glitch is a collaborative development environment that allows users to quickly duplicate and modify apps. We've built on top of this to offer a social XR boilerplate with drag-and-drop asset upload and Hive publishing.</p>
     <p>We recommend creating a Glitch account so you can keep track of all your apps and collaborate easily.</p>
     <p>The dlux vr boilerplate is accessible on Glitch here:</p>
     <p>App URL: <a href="dlux-vr.glitch.me" target="_blank">dlux-vr.glitch.me</a></p>
@@ -246,7 +246,7 @@
     <p>On the left you have a Glitch instance which is collaborative, auto-saves, and has the ability to rewind your code.</p>
     <p>On the right you have a running version of your app. Changes made to the code on the left are not shown on the right until you click the Refresh App button at the top.</p>
     <p>At the bottom is the browsers web inspector.</p>
-    <ul>If you need to edit the Steem post that contains your dApp, such as update the preview images or html, follow these steps:
+    <ul>If you need to edit the Hive post that contains your dApp, such as update the preview images or html, follow these steps:
         <li>Ensure you are logged in as the owner of the dApp(the username that posted it)</li>
         <li>Navigate to your dapp on dlux.io or localhost</li>
         <li>/dlux/@username/permLink in the address bar needs to be changed to /post/edit/@username/permLink</li>
@@ -256,7 +256,7 @@
     <p>Once you're happy with how your app is working, you need to generate the preview so others know what they're clicking on.</p>
     <p>For the blog, you need a traditional preview image, and for the portal inside dlux that goes to your experience, you need a 360 preview image.</p>
     <ul>
-        <li>Take a 16x9 traditional photo for the Steem blog entry by pressing <span class="bg-dark p-1">Ctl-Alt-S</span></li>
+        <li>Take a 16x9 traditional photo for the Hive blog entry by pressing <span class="bg-dark p-1">Ctl-Alt-S</span></li>
         <li>Take a 360 photo for the portal preview by pressing <span class="bg-dark p-1">Ctl-Alt-Shift-S</span></li>
     </ul>
 </article>
@@ -421,7 +421,7 @@ glTF loader example</p>
 </article>
 <article class="docs-article" id="images">
     <h1 class="bd-title">Working With Images</h1>
-    <p>Images for STEEM and dlux posts.
+    <p>Images for HIVE and dlux posts.
 Posting through dlux includes both traditional 16x9 rectangular images for all front ends, and 360 equirectangular images for portal preview images in VR on dlux.
 
 Capture Images
@@ -747,7 +747,7 @@ AFRAME.registerComponent('nav-pointer', {
 </article>
 <article class="docs-article" id="second-layer">
     <h1 class="bd-title">Second Layer</h1>
-    <p>The dlux side chain is comprised of several nodes running the same token software that determine their state from only signed transactions on the steem blockchain. Together these nodes communicate through steem and perform complex tasks. Forming a distributed trusted third party for open ended transactions, multiparty contracts, and multi step processes. These node will arrive at consensus and maintain sharding information for each node.</p>
+    <p>The dlux side chain is comprised of several nodes running the same token software that determine their state from only signed transactions on the hive blockchain. Together these nodes communicate through hive and perform complex tasks. Forming a distributed trusted third party for open ended transactions, multiparty contracts, and multi step processes. These node will arrive at consensus and maintain sharding information for each node.</p>
     <h2>DLUX Node Framework</h2>
     <ul>
         <li>State Nodes maintain state in RAM</li>
@@ -762,7 +762,7 @@ AFRAME.registerComponent('nav-pointer', {
     <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
     posting posting key
     active active key Can perform escrow transactions for rewards
-    ACCOUNT steem account ie dlux-io
+    ACCOUNT hive account ie dlux-io
     DOMAIN Public / ie https://token.dlux.io
     BIDRATE If elected a runner, used to determine node payouts
     STARTING Hash from a recent block. Find one at https://token.dlux.io
@@ -785,8 +785,8 @@ AFRAME.registerComponent('nav-pointer', {
     node_add | domain(https://token.example.com) bidRate(1-1000) marketingRate(1-2000}
     node_delete
     set_delegation_reward | @dlux-io to set delegation reward rate (0-2000)
-    expire_post | @dlux-io to expire resteem rewards for specified post permlink
-    set_resteem_reward | @dlux-io to set resteem reward rate (0-10000)
+    expire_post | @dlux-io to expire reblog rewards for specified post permlink
+    set_reblog_reward | @dlux-io to set reblog reward rate (0-10000)
     </code></pre></figure>
     <p>Operations</p>
     <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
@@ -813,7 +813,7 @@ AFRAME.registerComponent('nav-pointer', {
 <article class="docs-article" id="token">
     <h1 class="bd-title">DLUX OpenToken</h1>
     <p>The first dlux tokens are being sold at auction in VR right now dlux.io/ico</p>
-    <p>dlux tokens allow us to reward user actions like re-steeming our ads, sharing dlux on other social platforms, and other types of engagement.</p>
+    <p>dlux tokens allow us to reward user actions like re-blogging our ads, sharing dlux on other social platforms, and other types of engagement.</p>
     <ul>
         <li>Incentivize to participate in the dlux p2p economy</li>
         <li>Distribute tokens from the reward pool to token holders, based on Hive rewards</li>
@@ -821,14 +821,14 @@ AFRAME.registerComponent('nav-pointer', {
         <li>Decentralized exchanges with asset transfer</li>
         <li>Issue tokens from our auction pool daily</li>
         <li>New tokens added to the reward pool can be earned by token holders for dlux content based on beneficiary rewards.</li>
-        <li>The first dlux token is built using steem-state</li>
-        <li>dlux maintains a steem-state node to generate the reward pool</li>
+        <li>The first dlux token is built using hive block streamer</li>
+        <li>dlux maintains a node to generate the reward pool</li>
         <li>the reward pool pays for the node and incentivizes other nodes</li>
         <li>the more nodes, the stronger the network gets</li>
         <li>At ~5% APY inflation</li>
         <li>Every 100 blocks 1 DLUX token is minted for every 2100.000 DLUX in existence.</li>
     </ul>
-    <p>The reward pool is used to incentivize others to run steem-state nodes to verify integrity and that we're running our code fairly and correctly, provable through the hash. The 20 fastest verification responses earn rewards.</p>
+    <p>The reward pool is used to incentivize others to run dlux nodes to verify integrity and that we're running our code fairly and correctly, provable through the hash. The 20 fastest verification responses earn rewards.</p>
 </article>
 <article class="docs-article" id="dex">
     <h1 class="bd-title">Decentralized Exchange (DEX)</h1>
@@ -843,9 +843,9 @@ AFRAME.registerComponent('nav-pointer', {
     <h3>Free Physical Security</h3>
     <p>Increase your level safety anytime there's danger by inviting your family and a jury of your peers to watch and listen in. Push a single button to initiate a contract that contacts your next-of-kin (NoK) capable of taking legal action, and your 12 closest friends familiar with your life. Send your location and open a one-way audio call, or activate the camera. Broadcast irrefutable evidence to the people you trust, instantly and automatically.</p>
     <h3>AR Scavenger Hunt (Augmented Reality Location Based Experience)</h3>
-    <p>Cryptographically run a location based experience with side-chain soft and hard consensus (dlux) on a distributed computing platform (STEEM) inside an augmented reality container (WebXR) on the decentralized storage system (IPFS).</p>
+    <p>Cryptographically run a location based experience with side-chain soft and hard consensus (dlux) on a distributed computing platform (HIVE) inside an augmented reality container (WebXR) on the decentralized storage system (IPFS).</p>
     <ul>Flow
-        <li>Attendees are on-boarded to STEEM through dlux</li>
+        <li>Attendees are on-boarded to HIVE through dlux</li>
         <li>Event NFT is transferred to their dlux Wallet</li>
         <li>Attendees physically search the event for AR markers with their mobile using WebXR</li>
         <li>Each marker seen by the camera signs a checks a box inside the Event NFT</li>
@@ -890,10 +890,10 @@ AFRAME.registerComponent('nav-pointer', {
         <li>WebRTC</li>
         <li>Turn Server</li>
     </ul>
-    <p>The dlux token architecture is unique in that it uses web worker nodes listening to every signed Hive Transaction (HTx) via DSTEEM (GitHub Source) to determine state. The can also perform actions on those signed HTx because the nodes have Hive Credentials (HC), which they can use to place the transaction back into the DSTEEM transaction stream.</p>
+    <p>The dlux token architecture is unique in that it uses web worker nodes listening to every signed Hive Transaction (HTx) via hive-js (GitHub Source) to determine state. The can also perform actions on those signed HTx because the nodes have Hive Credentials (HC), which they can use to place the transaction back into the HIVE transaction stream.</p>
     <p>DLUX nodes form a consensus. And can even collectively hold the keys to their HIVE funding accounts using multi-signature account authorities.</p>
     <p>dlux Node listening to HTx</p>
-    <ul>dlux nodes use steem-state, are super easy to run, and can do things like:
+    <ul>dlux nodes use a hive block processor, are super easy to run, and can do things like:
         <li>Content Management System (CMS) to build databases of private, encrypted information</li>
         <li>Internet of Things (IoT) governance such as resource management</li>
         <li>Create and sign Smart Contracts, witness transactions, hold and release escrow</li>
