@@ -55,6 +55,6 @@ setTimeout(function(){
     } else {
         use.style.display = "none";
     }
-}, 1000);
 checkCookie()
+}, 1000);
 </script>

@@ -645,5 +645,4 @@
         </a-entity>
     </a-scene>
 </body>
-<script>checkCookie();</script>
 </html>
