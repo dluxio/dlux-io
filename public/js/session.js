@@ -39,9 +39,9 @@
          let account = sessionStorage.getItem('account')
          if (account != 'undefined') {
              console.log(account)
-             dlux = new Dluxsession(hive, { hiveid: user, account });
+             dlux = new Dluxsession({ hiveid: user, account });
          } else {
-             dlux = new Dluxsession(hive, { hiveidip: user });
+             dlux = new Dluxsession({ hiveidip: user });
          }
          $('#no-session').addClass('d-none');
          document.getElementById('userImage').src = 'https://token.dlux.io/getauthorpic/' + user
@@ -233,7 +233,7 @@
  }
 
  class Dluxsession {
-     constructor(hiveClient, ip) {
+     constructor(ip) {
          const opts = ip || {}
          this.email = opts.email || ''
          this.keychain = {
@@ -243,7 +243,7 @@
              memo: false
          }
          this.hiveidip = ip.hiveidip
-         this.hive = hiveClient
+         this.hive = window.hive
          this.account = opts.account
          this.hiveid = opts.hiveid || ''
          this.jwt = opts.jwt || ''
