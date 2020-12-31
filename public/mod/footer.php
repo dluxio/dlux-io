@@ -46,9 +46,9 @@ function hiveKeychain () {
     let session = new Dluxsession(hive, {hiveidip:username})
     console.log(session)
 } 
-      
-setTimeout(function(){
-    let use = document.getElementById("hiveKeychain");
+hive.api.login('', '', function(err, result) {
+  console.log(err, result);
+  let use = document.getElementById("hiveKeychain");
     let get = document.getElementById("getKeychain");
     if(window.hive_keychain) {
         get.style.display = "none";
@@ -56,5 +56,8 @@ setTimeout(function(){
         use.style.display = "none";
     }
 checkCookie()
+});
+    
+setTimeout(function(){
 }, 1000);
 </script>
