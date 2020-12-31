@@ -244,14 +244,14 @@
          }
          this.hiveidip = ip.hiveidip
          this.hive = window.hive
-         this.account = opts.account
+         //this.account = opts.account
          this.hiveid = opts.hiveid || ''
          this.jwt = opts.jwt || ''
      }
 
      set account(obj) {
          return new Promise((r, e) => {
-             if (obj !== undefined) {
+             if (obj !== null) {
                  setdata(obj.name)
                  this.metadata = JSON.parse(obj.json_metadata)
                  fetch(`/api/proxy?url=${this.metadata.profile.profile_image}`)
