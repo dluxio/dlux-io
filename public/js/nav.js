@@ -1,6 +1,6 @@
 function doOnLoad() {
     isChrome();
-    steem.api.setOptions({ "url": "https://anyx.io" })
+    hive.api.setOptions({ "url": "https://anyx.io" })
 }
 
 function isChrome() {
@@ -235,7 +235,7 @@ function voteMsg(message) {
 function setDiscussionsByBlog(query, initial) {
     var queryI = { tag: 'dlux', limit: 99 }
     if (query) { queryI = { tag: query, limit: 99 } }
-    steem.api.getDiscussionsByBlog(queryI, (err, result) => {
+    hive.api.getDiscussionsByBlog(queryI, (err, result) => {
         var filteredResults = []
         for (i = 0; i < result.length; i++) {
             var vr = JSON.parse(result[i].json_metadata).vrHash
@@ -250,7 +250,7 @@ function setDiscussionsByBlog(query, initial) {
 function getTrending(query, initial) {
     var queryI = { tag: 'dlux', limit: 99 }
     if (query) { queryI = { tag: query, limit: 99 } }
-    steem.api.getDiscussionsByTrending(queryI, (err, result) => {
+    hive.api.getDiscussionsByTrending(queryI, (err, result) => {
         if (err === null) {
             var filteredResults = []
             for (i = 0; i < result.length; i++) {
@@ -269,7 +269,7 @@ function getTrending(query, initial) {
 function getLatest(query, initial) {
     var queryI = { tag: 'dlux', limit: 99 }
     if (query) { queryI = { tag: query, limit: 99 } }
-    steem.api.getDiscussionsByCreated(queryI, (err, result) => {
+    hive.api.getDiscussionsByCreated(queryI, (err, result) => {
         if (err === null) {
             var filteredResults = []
             for (i = 0; i < result.length; i++) {
@@ -302,7 +302,7 @@ function aVote(message) {
 
 function generateProfileData(author) {
     let authorData
-    steem.api.getAccounts([author], (err, result) => {
+    hive.api.getAccounts([author], (err, result) => {
         let user = result[0]
         let jsonData = JSON.parse(user.json_metadata)
         let profileData = jsonData.profile
@@ -334,7 +334,7 @@ function setImage(username) {
     if (c !== '') {
         AFRAME.scenes[0].emit('setLoggedInImage', { val: c });
     } else {
-        steem.api.getAccounts([username], (err, result) => {
+        hive.api.getAccounts([username], (err, result) => {
             let user = result[0]
             let jsonData = JSON.parse(user.json_metadata)
             let profileData = jsonData.profile
@@ -345,25 +345,25 @@ function setImage(username) {
 }
 
 function getAccountInfo(username) {
-    steem.api.getDynamicGlobalProperties((err, result) => {
+    hive.api.getDynamicGlobalProperties((err, result) => {
         let totalVestingShares = result.total_vesting_shares;
-        let totalVestingFundSteem = result.total_vesting_fund_steem;
-        steem.api.getAccounts([username], (err, result) => {
+        let totalVestingFundHive = result.total_vesting_fund_hive;
+        hive.api.getAccounts([username], (err, result) => {
             let user = result[0]
             let jsonData;
-            // steem power calc
+            // hive power calc
             let vestingShares = user.vesting_shares;
             let delegatedVestingShares = user.delegated_vesting_shares;
             let receivedVestingShares = user.received_vesting_shares;
-            let steemPower = steem.formatter.vestToSteem(vestingShares, totalVestingShares, totalVestingFundSteem);
-            let delegatedSteemPower = steem.formatter.vestToSteem((receivedVestingShares.split(' ')[0]) + ' VESTS', totalVestingShares, totalVestingFundSteem);
-            let outgoingSteemPower = steem.formatter.vestToSteem((receivedVestingShares.split(' ')[0] - delegatedVestingShares.split(' ')[0]) + ' VESTS', totalVestingShares, totalVestingFundSteem) - delegatedSteemPower;
+            let hivePower = hive.formatter.vestToHive(vestingShares, totalVestingShares, totalVestingFundHive);
+            let delegatedHivePower = hive.formatter.vestToHive((receivedVestingShares.split(' ')[0]) + ' VESTS', totalVestingShares, totalVestingFundHive);
+            let outgoingHivePower = hive.formatter.vestToHive((receivedVestingShares.split(' ')[0] - delegatedVestingShares.split(' ')[0]) + ' VESTS', totalVestingShares, totalVestingFundHive) - delegatedHivePower;
             // vote power calc
             let lastVoteTime = (new Date - new Date(user.last_vote_time + "Z")) / 1000;
             let votePower = user.voting_power += (10000 * lastVoteTime / 432000);
             votePower = Math.min(votePower / 100, 100).toFixed(2);
 
-            steem.api.getFollowCount(user.name, function(err, result) {
+            hive.api.getFollowCount(user.name, function(err, result) {
                 let followerCounter = result.follower_count
                 let followingCounter = result.following_count
                 var authorData
@@ -372,7 +372,7 @@ function getAccountInfo(username) {
                     //Dolphin = >10 to 100 MVESTS aka Hero " " "
                     //Orca = >100 to 1,000 MVESTS aka SuperHero " "
                     //Whale = >1,000 MVESTS aka Legend " "
-                steem.api.getAccounts([user.name], (err, result) => {
+                hive.api.getAccounts([user.name], (err, result) => {
                     let user = result[0]
                     let jsonData = JSON.parse(user.json_metadata)
                     let profileData = jsonData.profile
@@ -399,18 +399,18 @@ function getAccountInfo(username) {
                         name: authorData.name,
                         userImage: authorData.profile_image,
                         cover: authorData.cover_image,
-                        rep: steem.formatter.reputation(user.reputation),
-                        effectiveSp: parseInt(steemPower + delegatedSteemPower - -outgoingSteemPower),
-                        sp: parseInt(steemPower).toLocaleString(),
-                        delegatedSpIn: parseInt(delegatedSteemPower).toLocaleString(),
-                        delegatedSpOut: parseInt(-outgoingSteemPower).toLocaleString(),
+                        rep: hive.formatter.reputation(user.reputation),
+                        effectiveSp: parseInt(hivePower + delegatedHivePower - -outgoingHivePower),
+                        sp: parseInt(hivePower).toLocaleString(),
+                        delegatedSpIn: parseInt(delegatedHivePower).toLocaleString(),
+                        delegatedSpOut: parseInt(-outgoingHivePower).toLocaleString(),
                         vp: votePower,
-                        steem: user.balance.substring(0, user.balance.length - 5),
+                        hive: user.balance.substring(0, user.balance.length - 5),
                         sbd: user.sbd_balance.substring(0, user.sbd_balance.length - 3),
                         numOfPosts: user.post_count,
                         followerCount: followerCounter,
                         followingCount: followingCounter,
-                        usdValue: steem.formatter.estimateAccountValue(user),
+                        usdValue: hive.formatter.estimateAccountValue(user),
                         username: user.name,
                         createdDate: new Date(user.created)
                     }
@@ -426,7 +426,7 @@ function setPortals(action) {
     for (let i = 0; i < action.length; i++) {
         let post = action[i];
         var authorData
-        steem.api.getAccounts([post.author], (err, result) => {
+        hive.api.getAccounts([post.author], (err, result) => {
             let user = result[0]
             let jsonData = JSON.parse(user.json_metadata)
             let profileData = jsonData.profile
@@ -470,7 +470,7 @@ function setPortals(action) {
                 body: removeMD(post.body).trim().substr(0, 220),
                 Hash360: 'https://ipfs.io/ipfs/' + portalImage,
                 permlink: post.permlink,
-                rep: steem.formatter.reputation(post.author_reputation),
+                rep: hive.formatter.reputation(post.author_reputation),
                 votesNum: post.net_votes,
                 votesVal: '$' + val,
                 category: post.category
@@ -523,7 +523,7 @@ AFRAME.registerState({
         delegatedSpOut: "5",
         effectiveSp: "6",
         vp: "7",
-        steem: "8",
+        hive: "8",
         sbd: "9",
         numOfPosts: "10",
         followerCount: "55",
@@ -551,7 +551,7 @@ AFRAME.registerState({
             state.delegatedSpIn = action.val.delegatedSpIn
             state.delegatedSpOut = action.val.delegatedSpOut
             state.vp = action.val.vp
-            state.steem = action.val.steem
+            state.hive = action.val.hive
             state.sbd = action.val.sbd
             state.numOfPosts = action.val.numOfPosts
             state.followerCount = action.val.followerCount
@@ -580,8 +580,8 @@ AFRAME.registerState({
         setsbd: function(state, action) {
             state.sbd = action.val;
         },
-        setsteem: function(state, action) {
-            state.steem = action.val;
+        sethive: function(state, action) {
+            state.hive = action.val;
         },
         setvp: function(state, action) {
             state.vp = action.val;
