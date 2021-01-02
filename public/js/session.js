@@ -268,11 +268,12 @@
      }
 
      set hiveidip(id) {
+         console.log({id})
          var account = {},
              itr = {}
          return new Promise((resolve, reject) => {
              if (!user) {
-                 console.log('why')
+                 console.log('Fresh login')
                  let idPromises = [Dluxsession.handshake(id)]
                  Promise.all(idPromises)
                      .then(r => {
