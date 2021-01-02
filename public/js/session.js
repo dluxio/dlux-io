@@ -268,18 +268,18 @@
      }
 
      set hiveidip(id) {
-         console.log({id})
          var account = {},
              itr = {}
          return new Promise((resolve, reject) => {
              if (!user) {
                  console.log('Fresh login')
-                 let idPromises = [Dluxsession.handshake(id)]
+                 let ids = sessionStorage.getItem("user")
+                 let idPromises = [Dluxsession.handshake(ids)]
                  Promise.all(idPromises)
                      .then(r => {
                          account = r[0].account
                          console.log(account)
-                         let challengePromises = [Dluxsession.decode(id, r[0].challenges[0])]
+                         let challengePromises = [Dluxsession.decode(ids, r[0].challenges[0])]
                          Promise.all(challengePromises)
                              .then(ret => {
                                  let itr = {}
