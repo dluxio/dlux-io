@@ -267,7 +267,7 @@
          });
      }
 
-     set hiveidip() {
+     set hiveidip(id) {
          var account = {},
              itr = {}
          return new Promise((resolve, reject) => {
