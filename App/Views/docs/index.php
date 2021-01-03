@@ -8,7 +8,8 @@
    include_once($path);
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-
+<script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js"></script>
+    <script src="../js/session.js" type="application/javascript"></script>
 </head>
 <body class="d-flex flex-column h-100">
 <a class="skippy sr-only sr-only-focusable" href="#content">

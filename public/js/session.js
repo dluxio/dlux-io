@@ -284,9 +284,9 @@
                              .then(ret => {
                                  let itr = {}
                                  itr.jwt = ret[0]
-                                 itr.user = id
+                                 itr.user = ids
                                  itr.challenges = r[0].challenges
-                                 itr.hiveid = id
+                                 itr.hiveid = ids
                                  let storables = ['email', 'hiveid', 'jwt', 'account']
                                  for (var i = 0; i < storables.length; i++) {
                                      console.log(itr[storables[i]])
