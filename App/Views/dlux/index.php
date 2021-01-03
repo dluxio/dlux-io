@@ -30,8 +30,10 @@
             echo " permlink = '".$permlink."',";
             ;?>
          hiveKey = `${author}/${permlink}`
-        hive.api.setOptions({ url: 'https://anyx.io'})
+        //hive.api.setOptions({ url: 'https://anyx.io'})
         hive.api.getContent(author, permlink, (err, result) => {
+            if(err)console.log(err)
+            console.log(result)
             document.title = `DLUX | ${result.title}`
             stateObj = result
             var metadata = result.json_metadata
