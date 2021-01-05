@@ -348,10 +348,50 @@
 		 </div>
 		 <div role="tabpanel" class="tab-pane fade show " id="node" aria-labelledby="nodetab">
               <div class="container">
-		    <div class="alert alert-warning mt-5" role="alert">
-              Node dashboard is under development and coming soon.
+		   		<br>
+			    <form>
+					 
+				  <div class="form-row">
+					  <div class="form-group col-lg-6 p-2">
+			        <label for="nodeDomain">Domain</label>
+					<div class="input-group mb-2">
+					  <div class="input-group-prepend">
+      					<div class="input-group-text">https://</div>
+    				  </div>
+			          <input type="text" class="form-control" id="nodeDomain" placeholder="yourname-dluxtoken.herokuapp.com">
+					</div>
+		          </div>
+			      <div class="form-group col-lg-3 p-2">
+			        <label for="nodeBidRate">Bidrate</label>
+			        <div class="input-group mb-2">
+					  <input type="number" class="form-control" id="nodeBidRate" placeholder="00.00 - 20.00">
+					  <div class="input-group-append">
+      					<div class="input-group-text">%</div>
+    				  </div>	
+					</div>
+					</div>
+			      <div class="form-group col-lg-2 p-2">
+					  <br>
+			      <div class="form-check">
+			        <input type="checkbox" class="form-check-input" id="escrowCheck">
+			        <label class="form-check-label" for="escrowCheck">Escrow Agent</label>
+		          </div>
+				  <div class="form-check">
+			        <input type="checkbox" class="form-check-input" id="mirrorCheck">
+			        <label class="form-check-label" for="mirrorCheck">Mirror Tokener</label>
+		          </div>
+					</div>
+					  <div class="form-group col-lg-1 p-2">
+						  <br>
+					  <center><button type="submit" class="btn btn-primary">Save</button></center>
+					</div>
+					</div>
+		        </form>
+				  <br>
+				   <div class="alert alert-warning mt-5" role="alert">
+              Node Dashboard is under development and coming soon.
             </div>
-			 </div>
+             </div>
          </div>
        <div role="tabpanel" class="tab-pane fade show" id="settings" aria-labelledby="settingstab">
 	    <div class="container">
