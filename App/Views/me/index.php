@@ -80,7 +80,7 @@
     </ul>
 	</div></div>
 	 <div id="pagecontent" class="tab-content bg-color">
-       <div role="tabpanel" class="tab-pane fade show " id="blog" aria-labelledby="blogtab">
+       <div role="tabpanel" class="tab-pane fade show active" id="blog" aria-labelledby="blogtab">
          <div class="card-columns p-3" id="blogResult" is="dmx-repeat" dmx-bind:repeat="dluxGetBlog.data.result">
            <div class="card text-white bg-dark mt-2 mb-3">
              <div class="card-header">
@@ -366,11 +366,10 @@
             </div>
 			 </div>
 		 </div>
-		 <div role="tabpanel" class="tab-pane fade show active" id="node" aria-labelledby="nodetab">
+		 <div role="tabpanel" class="tab-pane fade show" id="node" aria-labelledby="nodetab">
               <div class="container">
 		   		<br>
 			    <form>
-					<fieldset disabled>
 				  <div class="form-row">
 					  <div class="form-group col-lg-6 p-2">
 			        <label for="nodeDomain">Domain</label>
@@ -378,13 +377,13 @@
 					  <div class="input-group-prepend">
       					<div class="input-group-text">https://</div>
     				  </div>
-			          <input type="text" class="form-control" id="nodeDomain" placeholder="yourname-dluxtoken.herokuapp.com">
+			          <input type="text" class="form-control" id="nodeDomain" placeholder="yourname-dluxtoken.herokuapp.com" readonly>
 					</div>
 		          </div>
 			      <div class="form-group col-lg-2 p-2">
 			        <label for="nodeBidRate">Node Inflation Vote</label>
 			        <div class="input-group mb-2">
-					  <input type="number" class="form-control" id="nodeBidRate" placeholder="0.0 - 20.0">
+					  <input type="number" class="form-control" id="nodeBidRate" placeholder="0.0 - 20.0" readonly>
 					  <div class="input-group-append">
       					<div class="input-group-text">%</div>
     				  </div>	
@@ -393,7 +392,7 @@
 				<div class="form-group col-lg-2 p-2">
 			        <label for="nodeDaoRate">DAO Inflation Vote</label>
 			        <div class="input-group mb-2">
-					  <input type="number" class="form-control" id="nodeDaoRate" placeholder="0.0 - 20.0">
+					  <input type="number" class="form-control" id="nodeDaoRate" placeholder="0.0 - 20.0" readonly>
 					  <div class="input-group-append">
       					<div class="input-group-text">%</div>
     				  </div>	
@@ -401,17 +400,16 @@
 					</div>
 			      <div class="form-group col-lg-2 p-2">
 					  <br>
-			      <div class="form-check">
-			        <input type="checkbox" class="form-check-input" id="escrowCheck">
-			        <label class="form-check-label" for="escrowCheck">Escrow Agent</label>
-		          </div>
-				  <div class="form-check">
-			        <input type="checkbox" class="form-check-input" id="mirrorCheck">
-			        <label class="form-check-label" for="mirrorCheck">Mirror Leader</label>
-		          </div>
+					  <div class="custom-control custom-switch">
+  							<input type="checkbox" class="custom-control-input" id="escrowCheck" checked disabled>
+  							<label class="custom-control-label" for="escrowCheck">Escrow Agent</label>
+						</div>
+					  <div class="custom-control custom-switch">
+  							<input type="checkbox" class="custom-control-input" id="mirrorCheck" disabled>
+  							<label class="custom-control-label" for="mirrorCheck">Mirror Leader</label>
+						</div>
 					</div>
 				  </div>
-				</fieldset>
 		        </form>
              </div>
          </div>
@@ -640,27 +638,27 @@
 			<form> 
 				  <div class="form-row">
 					  <div class="form-group col-lg-6 p-2">
-			        <label for="nodeDomain">Domain</label>
+			        <label for="nodeDomainSet">Domain</label>
 					<div class="input-group mb-2">
 					  <div class="input-group-prepend">
       					<div class="input-group-text">https://</div>
     				  </div>
-			          <input type="text" class="form-control" id="nodeDomain" placeholder="yourname-dluxtoken.herokuapp.com">
+			          <input type="text" class="form-control" id="nodeDomainSet" placeholder="yourname-dluxtoken.herokuapp.com">
 					</div>
 		          </div>
 			      <div class="form-group col-lg-2 p-2">
-			        <label for="nodeBidRate">Node Inflation Vote</label>
+			        <label for="nodeBidRateSet">Node Inflation Vote</label>
 			        <div class="input-group mb-2">
-					  <input type="number" class="form-control" id="nodeBidRate" placeholder="0.0 - 20.0">
+					  <input type="number" class="form-control" id="nodeBidRateSet" placeholder="0.0 - 20.0">
 					  <div class="input-group-append">
       					<div class="input-group-text">%</div>
     				  </div>	
 					</div>
 					</div>
 				<div class="form-group col-lg-2 p-2">
-			        <label for="nodeDaoRate">DAO Inflation Vote</label>
+			        <label for="nodeDaoRateSet">DAO Inflation Vote</label>
 			        <div class="input-group mb-2">
-					  <input type="number" class="form-control" id="nodeDaoRate" placeholder="0.0 - 20.0">
+					  <input type="number" class="form-control" id="nodeDaoRateSet" placeholder="0.0 - 20.0">
 					  <div class="input-group-append">
       					<div class="input-group-text">%</div>
     				  </div>	
@@ -668,14 +666,14 @@
 					</div>
 			      <div class="form-group col-lg-2 p-2">
 					  <br>
-			      <div class="form-check">
-			        <input type="checkbox" class="form-check-input" id="escrowCheck">
-			        <label class="form-check-label" for="escrowCheck">Escrow Agent</label>
-		          </div>
-				  <div class="form-check">
-			        <input type="checkbox" class="form-check-input" id="mirrorCheck">
-			        <label class="form-check-label" for="mirrorCheck">Mirror Leader</label>
-		          </div>
+					  <div class="custom-control custom-switch">
+  							<input type="checkbox" class="custom-control-input" id="escrowCheckSet" checked>
+  							<label class="custom-control-label" for="escrowCheckSet">Escrow Agent</label>
+						</div>
+					  <div class="custom-control custom-switch">
+  							<input type="checkbox" class="custom-control-input" id="mirrorCheckSet">
+  							<label class="custom-control-label" for="mirrorCheckSet">Mirror Leader</label>
+						</div>
 					</div>
 				  </div>
 				  <div class="form-group">
