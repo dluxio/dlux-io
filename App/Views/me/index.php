@@ -362,7 +362,7 @@
 					</div>
 		          </div>
 			      <div class="form-group col-lg-3 p-2">
-			        <label for="nodeBidRate">Bidrate</label>
+			        <label for="nodeBidRate">Node Inflation Vote</label>
 			        <div class="input-group mb-2">
 					  <input type="number" class="form-control" id="nodeBidRate" placeholder="00.00 - 20.00">
 					  <div class="input-group-append">
@@ -371,7 +371,7 @@
 					</div>
 					</div>
 				<div class="form-group col-lg-3 p-2">
-			        <label for="nodeDaoRate">Bidrate</label>
+			        <label for="nodeDaoRate">DAO Inflation Vote</label>
 			        <div class="input-group mb-2">
 					  <input type="number" class="form-control" id="nodeDaoRate" placeholder="00.00 - 20.00">
 					  <div class="input-group-append">
