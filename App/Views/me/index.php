@@ -52,7 +52,7 @@
         <small class="lead p-2">{{dluxGetAccount.data.result[0].json_metadata.parseJSON().profile.about}}</small>
 			  </div></div></div>
       <div class="col-md-4 text-center m-auto"> 
-          <a class="btn btn-outline-primary btn-lg m-1" role="button" dmx-bind:href="/vr/@{{dluxGetBlog.data.result[0].blog}}" target="_blank">VR Page<i class="fas fa-vr-cardboard mx-2 fa-lg"></i></a>
+          <a class="btn btn-outline-primary btn-lg m-1" role="button" dmx-bind:href="/vr/@{{dluxGetBlog.data.result[0].name}}" target="_blank">VR Page<i class="fas fa-vr-cardboard mx-2 fa-lg"></i></a>
 		
   <button type="button" class="btn btn-outline-primary dropdown-toggle drop-no-arrow btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Actions<i class="fas fa-ellipsis-h ml-2"></i>
