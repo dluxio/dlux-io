@@ -61,7 +61,7 @@
     <a class="dropdown-item" type="button">Follow</a>
     <a class="dropdown-item" type="button">Unfollow</a>
     <a class="dropdown-item" type="button">Send DLUX</a>
-    <a class="dropdown-item" type="button">Settings</a>
+    <a class="dropdown-item" type="button" href="#settings">Settings</a>
   </div>
  
 	</div>
@@ -80,7 +80,7 @@
     </ul>
 	</div></div>
 	 <div id="pagecontent" class="tab-content bg-color">
-       <div role="tabpanel" class="tab-pane fade show active" id="blog" aria-labelledby="blogtab">
+       <div role="tabpanel" class="tab-pane fade show " id="blog" aria-labelledby="blogtab">
          <div class="card-columns p-3" id="blogResult" is="dmx-repeat" dmx-bind:repeat="dluxGetBlog.data.result">
            <div class="card text-white bg-dark mt-2 mb-3">
              <div class="card-header">
@@ -366,11 +366,11 @@
             </div>
 			 </div>
 		 </div>
-		 <div role="tabpanel" class="tab-pane fade show " id="node" aria-labelledby="nodetab">
+		 <div role="tabpanel" class="tab-pane fade show active" id="node" aria-labelledby="nodetab">
               <div class="container">
 		   		<br>
 			    <form>
-					 
+					<fieldset disabled>
 				  <div class="form-row">
 					  <div class="form-group col-lg-6 p-2">
 			        <label for="nodeDomain">Domain</label>
@@ -411,16 +411,8 @@
 		          </div>
 					</div>
 				  </div>
-				  <div class="form-group">
-						  <br>
-					  <center><button id="updateNode" type="submit" class="btn btn-primary">Update Node</button></center>
-					</div>
-					
+				</fieldset>
 		        </form>
-				  <br>
-				   <div class="alert alert-warning mt-5" role="alert">
-              Node Dashboard is under development and coming soon.
-            </div>
              </div>
          </div>
        <div role="tabpanel" class="tab-pane fade show" id="settings" aria-labelledby="settingstab">
@@ -432,13 +424,15 @@
 	<div class="p-3">
 		   <ul class="nav nav-pills justify-content-center" role="tablist">
 	    <li class="nav-item">
-			<a class="nav-link active" href="#general" id="generaltab" role="tab" data-toggle="tab" aria-controls="general" aria-expanded="true">General</a> </li>
+			<a class="nav-link active" id="generalSettingsTab" role="tab" data-toggle="tab" aria-controls="generalsettings" aria-expanded="true" href="#generalsettings">General</a> </li>
 	    <li class="nav-item"> 
-			<a class="nav-link" id="contenttab" role="tab" data-toggle="tab" aria-controls="content" aria-expanded="true" href="#content">Content</a> </li>
+			<a class="nav-link" id="contentSettingsTab" role="tab" data-toggle="tab" aria-controls="contentsettings" aria-expanded="true" href="#contentsettings">Content</a> </li>
+		<li class="nav-item"> 
+			<a class="nav-link" id="nodeSettingsTab" role="tab" data-toggle="tab" aria-controls="nodesettings" aria-expanded="true" href="#nodesettings">Node</a> </li>
     </ul>
 		   </div>
 			   <div id="pagecontent" class="tab-content">
-       <div role="tabpanel" class="tab-pane fade show active" id="general" aria-labelledby="generaltab">
+       <div role="tabpanel" class="tab-pane fade show active" id="generalsettings" aria-labelledby="generalSettingsTab">
 	     <div class="container">
 			 <form>
 		   <div class="jumbotron pt-4 bg-darker">
@@ -588,7 +582,7 @@
 			 </form>
 		   </div>
 		</div>
-		<div role="tabpanel" class="tab-pane fade show" id="content" aria-labelledby="contenttab">		   
+		<div role="tabpanel" class="tab-pane fade show" id="contentsettings" aria-labelledby="contentSettingsTab">		   
 		  <div class="container">
 			 <form>
 		   <div class="jumbotron pt-4 bg-darker">
@@ -641,6 +635,58 @@
 			 </form>
 		   </div>
 		   </div>
+       <div role="tabpanel" class="tab-pane fade show" id="nodesettings" aria-labelledby="nodeSettingsTab">
+	     <div class="container">
+			<form> 
+				  <div class="form-row">
+					  <div class="form-group col-lg-6 p-2">
+			        <label for="nodeDomain">Domain</label>
+					<div class="input-group mb-2">
+					  <div class="input-group-prepend">
+      					<div class="input-group-text">https://</div>
+    				  </div>
+			          <input type="text" class="form-control" id="nodeDomain" placeholder="yourname-dluxtoken.herokuapp.com">
+					</div>
+		          </div>
+			      <div class="form-group col-lg-2 p-2">
+			        <label for="nodeBidRate">Node Inflation Vote</label>
+			        <div class="input-group mb-2">
+					  <input type="number" class="form-control" id="nodeBidRate" placeholder="0.0 - 20.0">
+					  <div class="input-group-append">
+      					<div class="input-group-text">%</div>
+    				  </div>	
+					</div>
+					</div>
+				<div class="form-group col-lg-2 p-2">
+			        <label for="nodeDaoRate">DAO Inflation Vote</label>
+			        <div class="input-group mb-2">
+					  <input type="number" class="form-control" id="nodeDaoRate" placeholder="0.0 - 20.0">
+					  <div class="input-group-append">
+      					<div class="input-group-text">%</div>
+    				  </div>	
+					</div>
+					</div>
+			      <div class="form-group col-lg-2 p-2">
+					  <br>
+			      <div class="form-check">
+			        <input type="checkbox" class="form-check-input" id="escrowCheck">
+			        <label class="form-check-label" for="escrowCheck">Escrow Agent</label>
+		          </div>
+				  <div class="form-check">
+			        <input type="checkbox" class="form-check-input" id="mirrorCheck">
+			        <label class="form-check-label" for="mirrorCheck">Mirror Leader</label>
+		          </div>
+					</div>
+				  </div>
+				  <div class="form-group">
+						  <br>
+					  <center><button id="updateNode" type="submit" class="btn btn-primary">Update Node</button></center>
+					</div>
+					
+		        </form>
+			</div>
+		   </div>
+		 </div>
 		</div>
         </div>
 	</div>
