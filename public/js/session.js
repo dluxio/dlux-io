@@ -15,7 +15,11 @@
         document.getElementById(`progressbarlabel${id}`).innerText = `${User[`id-iterator-${id}`]} Confirmations. 20 Required`
         if(User[`id-iterator-${id}`] >= 21 ){
             delete User[`id-iterator-${id}`]
-            pageSpecfic(User)
+            if (window.location.pathname.split('/')[1] == 'me'){
+                pageSpecfic(User)
+            } else {
+                pageSpecfic(window.location.pathname.split('/')[0].split('@')[1])
+            }
         } else {
             setTimeout(updateprogress(id), 3000)
         }
