@@ -76,7 +76,13 @@
              User.price = jsons[3].hive.usd
              User.hstats = jsons[4].result
              User.hive = jsons[5].result[0]
-             try { pageSpecfic(User); } catch (e) {}
+             try { 
+                if (window.location.pathname.split('/')[1] == 'me'){
+                    pageSpecfic(User)
+                } else {
+                    pageSpecfic(window.location.pathname.split('/')[0].split('@')[1])
+                }
+              } catch (e) {}
          })
      } else {
          $('#active-session').addClass('d-none');
