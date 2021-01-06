@@ -25,14 +25,10 @@
 	</div>
   <div class="container-fluid" style="padding: 0">
 	  <ul id="pagenav" class="nav nav-pills justify-content-center" role="tablist">
-		  <li class="nav-item"> <a class="nav-link" href="#info" id="infotab" role="tab" data-toggle="tab" aria-controls="info" aria-expanded="true">INFO</a></li>
-	      <li class="nav-item">
-			
-  				<a class="nav-link active" href="#trade" id="tradetab" role="tab" data-toggle="tab" aria-controls="trade" aria-expanded="true">TRADE</a>
-
-  				
-		  </li>
+		  <li class="nav-item"><a class="nav-link" href="#info" id="infotab" role="tab" data-toggle="tab" aria-controls="info" aria-expanded="true">INFO</a></li>
+	      <li class="nav-item"><a class="nav-link active" href="#trade" id="tradetab" role="tab" data-toggle="tab" aria-controls="trade" aria-expanded="true">TRADE</a></li>
 		  <li class="nav-item"> <a class="nav-link" href="#ticker" role="tab" id="tickertab" data-toggle="tab" aria-controls="ticker">FEED</a></li>
+		  <li class="nav-item"> <a class="nav-link" href="#ico" role="tab" id="icotab" data-toggle="tab" aria-controls="ico">ICO</a></li>
 	  </ul>
 	  <!-- Content Panel -->
 	  <div id="pagecontent" class="tab-content">
@@ -326,16 +322,165 @@ $(document).ready(function(){
 </div>
 		  </div>
 <div role="tabpanel" class="tab-pane fade" id="ticker" aria-labelledby="tickertab">
-		  <div class="container-fluid" style="padding:0">
+		<div class="container-fluid" style="padding:0">
 		  <div class="col-lg-12 text-center" style="padding: 0">
 			  <h5 style="padding-top: 40px">DLUX TRANSACTION FEED</h5>
-			  <div id="dluxtxs" class="feed">
-			  
-	</div>
+			  <div id="dluxtxs" class="feed"></div>
+		  </div>
+		</div>
+</div>
+		  <div role="tabpanel" class="tab-pane fade show" id="ico" aria-labelledby="icotab">
+               <div class="container my-5">	
+				
+				  <div class="col-12 jumbotron bg-darker">
+              			<h1 class="display-4">DLUX Initial Coin Offering</h1>
+                            <p class="lead ">Donate Hive to @robotolux to bid on the daily DLUX token auction.</p>
+                            <hr class="my-4 bg-light">
+					<p>Every 25 hours 100,000 DLUX Tokens are placed in a pool and priced according to the previous round. Donating funds to the @robotolux account automatically bids on those tokens for you, and at the end of the 25 hour period your tokens will be awarded.</p>
+					  <div class="row py-4">
+					<div class="col-lg-8 mx-auto">
+					  <div class="alert alert-secondary text-center">
+  						<span>Previous Round DLUX Valuation: <b>0.002 HIVE</b></span>
+					  </div>
+					  <h2 class="text-center">ROUND 567</h2>
+						<hr class="bg-light">
+					  <div class="d-flex justify-content-center">
+			<div class="text-center market-info-item">
+				<h3><span>13.2 HRS</span></h3>
+				<div>
+					<label>Time Remaining</label>
+				</div>
+			</div>
+			<div class="text-center market-info-item"><h1>|</h1></div>
+			<div class="text-center market-info-item">
+				<h3><span>45,000 DLUX</span></h3>
+				<div>
+					<label>Tokens Available</label>
+				</div>
+			</div>
+			<div class="text-center market-info-item"><h1>|</h1></div>
+			<div class="text-center market-info-item">
+				<h3><span>0.002 HIVE</span></h3>
+				<div>
+					<label>Current Price</label>
+				</div>
+			</div>
+		  </div>
+					  <hr class="bg-light">
+					  <div class="row py-3">
+					  <div class="mx-auto">
+					<form>
+					<div class="row align-items-center">
+  					<div class="col-xs-4">
+   					 <label for="hiveDonate" class="col-form-label"><h3>Donate:</h3></label>
+ 					 </div>
+ 						 <div class="col-xs-4 px-2">
+   						 <input type="number" id="hiveDonate" class="form-control">
+  						</div>
+ 					 <div class="col-xs-4 px-2">
+ 					   <button type="submit" class="btn btn-primary">Send</button>
+  					</div>
+						
+					</div>
+						<div>
+							<center><small>Balance: <a href="#">12345 DLUX</a></small></center>
+						</div>
+				    </form>
+						  </div>
+						  </div>
 
-	</div>
-			   </div>
-			   </div>
+					  <hr class="bg-light">
+					  <div class="d-flex justify-content-center">
+			<div class="text-center market-info-item">
+				<h3><span>36 HIVE</span></h3>
+				<div>
+					<label>Donated</label>
+				</div>
+			</div>
+			<div class="text-center market-info-item"><h1>|</h1></div>
+			<div class="text-center market-info-item">
+				<h3><span>300 DLUX</span></h3>
+				<div>
+					<label>Pending Tokens</label>
+				</div>
+			</div>
+			<div class="text-center market-info-item"><h1>|</h1></div>
+			<div class="text-center market-info-item">
+				<h3><span>0.002 HIVE</span></h3>
+				<div>
+					<label>Pending Value</label>
+				</div>
+			</div>
+		  </div>
+		<hr class="bg-light">
+				
+						</div>
+				</div>	
+					  <p class="lead ">Delegate Hive Power (HP) to @dlux-io and earn DLUX daily.</p>
+                            <hr class="my-4 bg-light">
+					<p>Some info about delegating.</p>
+					  <div class="row py-3">
+					  <div class="mx-auto">
+					<form>
+					<div class="row align-items-center">
+  					<div class="col-xs-4">
+   					 <label for="hiveDelegate" class="col-form-label"><h3>Delegate:</h3></label>
+ 					 </div>
+ 						 <div class="col-xs-4 px-2">
+   						 <input type="number" id="hiveDelegate" class="form-control">
+  						</div>
+ 					 <div class="col-xs-4 px-2">
+ 					   <button type="submit" class="btn btn-primary">Send</button>
+  					</div>
+					</div>
+						<div>
+							<center><small>Balance: <a href="#">12345 HP</a></small></center>
+						</div>
+				    </form>
+						  </div>
+						  </div>
+                    </div>
+			
+						
+						<div class="row align-items-center pb-5">
+							<div class="col-lg-6 order-lg-2">
+								<img src="/img/dex1.jpeg" class="img-fluid rounded">
+							</div>
+							<div class="col-lg-6 order-lg-1">
+						<p class="lead pt-3 text-uppercase">What to expect</p>
+						<p>Put some info here</p>
+						<div class="text-center">	
+						<a class="btn btn-outline-light m-3" href="#">Start Trading</a>
+							</div>
+							</div>
+							
+						</div>
+						
+						<div class="row align-items-center py-5">
+							<div class="col-lg-6 order-lg-1"><img src="/img/dex2.jpeg" class="img-fluid rounded"></div>
+							<div class="col-lg-6 order-lg-2">
+								<p class="lead pt-3 text-uppercase">Preventing double spend</p>
+				<p>Put some math here</p>
+								<div class="text-center">	
+						<a class="btn btn-outline-light m-3" href="#">Read FAQ</a>
+							</div>
+							</div></div>
+						
+							<div class="row align-items-center py-5">
+								<div class="col-lg-6 order-lg-2"><img src="/img/dex3.jpeg" class="img-fluid rounded"></div>
+								<div class="col-lg-6 order-lg-1">
+									<p class="lead pt-3 text-uppercase">The DLUX node network</p>
+				<p>Something else here</p>
+				<div class="text-center">	
+						<a class="btn btn-outline-light m-3" href="#">Run A Node</a>
+							</div>
+								</div>
+								
+								</div>
+						
+			    
+                        </div>
+                    </div>
 	  </div>
 </div>
 	</div>
