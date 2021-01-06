@@ -18,7 +18,18 @@
 
 </head>
 <body class="d-flex flex-column bg-darker h-100" id="apps" is="dmx-app">
-<dmx-api-datasource id="dluxGetBlog" is="dmx-fetch" url="https://token.dlux.io/getwrap?" dmx-param:method="'tags_api.get_discussions_by_blog'" dmx-param:params="'[%22robotolux%22,0,10]'"></dmx-api-datasource>
+<?php 
+	if(isset($author)){
+    	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/getwrap?\" dmx-param:method=\"'tags_api.get_discussions_by_blog'\" dmx-param:params=\"'[%22" . $author . "%22,0,20]'\"></dmx-api-datasource>";
+        }
+	else if(isset($_COOKIE['user'])){
+    	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/getwrap?\" dmx-param:method=\"'tags_api.get_discussions_by_blog'\" dmx-param:params=\"'[%22" . $_COOKIE['user'] . "%22,0,20]'\"></dmx-api-datasource>";
+        }
+		else{
+        echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/getwrap?\" dmx-param:method=\"'tags_api.get_discussions_by_blog'\" dmx-param:params=\"'[%22robotolux%22,0,10]'\"></dmx-api-datasource>";
+        }
+;?>	
+
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
@@ -361,19 +372,19 @@
 			          <input type="text" class="form-control" id="nodeDomain" placeholder="yourname-dluxtoken.herokuapp.com">
 					</div>
 		          </div>
-			      <div class="form-group col-lg-3 p-2">
+			      <div class="form-group col-lg-2 p-2">
 			        <label for="nodeBidRate">Node Inflation Vote</label>
 			        <div class="input-group mb-2">
-					  <input type="number" class="form-control" id="nodeBidRate" placeholder="00.00 - 20.00">
+					  <input type="number" class="form-control" id="nodeBidRate" placeholder="0.0 - 20.0">
 					  <div class="input-group-append">
       					<div class="input-group-text">%</div>
     				  </div>	
 					</div>
 					</div>
-				<div class="form-group col-lg-3 p-2">
+				<div class="form-group col-lg-2 p-2">
 			        <label for="nodeDaoRate">DAO Inflation Vote</label>
 			        <div class="input-group mb-2">
-					  <input type="number" class="form-control" id="nodeDaoRate" placeholder="00.00 - 20.00">
+					  <input type="number" class="form-control" id="nodeDaoRate" placeholder="0.0 - 20.0">
 					  <div class="input-group-append">
       					<div class="input-group-text">%</div>
     				  </div>	
@@ -390,11 +401,12 @@
 			        <label class="form-check-label" for="mirrorCheck">Mirror Leader</label>
 		          </div>
 					</div>
-					  <div class="form-group col-lg-1 p-2">
+					  </div>
+					  <div class="form-group">
 						  <br>
 					  <center><button id="updateNode" type="submit" class="btn btn-primary">Update Node</button></center>
 					</div>
-					</div>
+					
 		        </form>
 				  <br>
 				   <div class="alert alert-warning mt-5" role="alert">
