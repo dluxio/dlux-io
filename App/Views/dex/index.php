@@ -340,7 +340,7 @@ $(document).ready(function(){
 					  <div class="row py-4">
 					<div class="col-lg-8 mx-auto">
 					  <div class="alert alert-secondary text-center">
-  						<span>Current Round DLUX Offering: <b>1.000DLUX for 1.000 HIVE</b></span>
+  						<span>Current Round DLUX Offering: <b>1.000 DLUX for 1.000 HIVE</b></span>
 					  </div>
 					  <h2 class="text-center">ROUND 0</h2>
 						<hr class="bg-light">
@@ -353,7 +353,7 @@ $(document).ready(function(){
 			</div>
 			<div class="text-center market-info-item"><h1>|</h1></div>
 			<div id="icoTokensRemain" class="text-center market-info-item">
-				<h3><span>45,000 DLUX</span></h3>
+				<h3><span>898,000 DLUX</span></h3>
 				<div>
 					<label>Tokens Available</label>
 				</div>
@@ -394,7 +394,7 @@ $(document).ready(function(){
 			<div id="icoHiveSpent" class="text-center market-info-item">
 				<h3><span>1817.438 HIVE</span></h3>
 				<div>
-					<label>Donated</label>
+					<label>Donated This Round</label>
 				</div>
 			</div>
 			<div class="text-center market-info-item"><h1>|</h1></div>
@@ -408,7 +408,7 @@ $(document).ready(function(){
 			<div id="icoFuturePrice" class="text-center market-info-item">
 				<h3><span>1.000 HIVE</span></h3>
 				<div>
-					<label>Round 1 Price</label>
+					<label>Next Round Price</label>
 				</div>
 			</div>
 		  </div>
@@ -447,10 +447,10 @@ $(document).ready(function(){
 								<img src="/img/dex1.jpeg" class="img-fluid rounded">
 							</div>
 							<div class="col-lg-6 order-lg-1">
-						<p class="lead pt-3 text-uppercase">What to expect</p>
-						<p>Put some info here</p>
+						<p class="lead pt-3 text-uppercase">Why so long?</p>
+						<p>The hardest thing about decentralized systems is properly distributing them. Hive is a large crypto community but a tiny global community. We hope this distribution method will enable many more people to take part.</p>
 						<div class="text-center">	
-						<a class="btn btn-outline-light m-3" href="#">Start Trading</a>
+						<a class="btn btn-outline-light m-3" href="#">Read Documentation</a>
 							</div>
 							</div>
 							
@@ -459,18 +459,18 @@ $(document).ready(function(){
 						<div class="row align-items-center py-5">
 							<div class="col-lg-6 order-lg-1"><img src="/img/dex2.jpeg" class="img-fluid rounded"></div>
 							<div class="col-lg-6 order-lg-2">
-								<p class="lead pt-3 text-uppercase">Preventing double spend</p>
-				<p>Put some math here</p>
+								<p class="lead pt-3 text-uppercase">How does pricing feedback work?</p>
+				<p>If the daily pool sells out: the time it took is used to raise the following days price. If the daily offering fails to sell out: how much remains will be used to calculate the next offerings price. If there isn't enough tokens being purchased here, the price of these tokens have a set floor so you won't have to compete with an out of control inflation mechanism on the DEX.</p>
 								<div class="text-center">	
-						<a class="btn btn-outline-light m-3" href="#">Read FAQ</a>
+						<a class="btn btn-outline-light m-3" href="#">Visit DEX</a>
 							</div>
 							</div></div>
 						
 							<div class="row align-items-center py-5">
 								<div class="col-lg-6 order-lg-2"><img src="/img/dex3.jpeg" class="img-fluid rounded"></div>
 								<div class="col-lg-6 order-lg-1">
-									<p class="lead pt-3 text-uppercase">The DLUX node network</p>
-				<p>Something else here</p>
+									<p class="lead pt-3 text-uppercase">Non ICO inflation</p>
+				<p>The Standard source of inflation remains constant with currently issued tokens. And after 100,000,000 total tokens has been issued by any means will remain the only source of inflation.</p>
 				<div class="text-center">	
 						<a class="btn btn-outline-light m-3" href="#">Run A Node</a>
 							</div>
