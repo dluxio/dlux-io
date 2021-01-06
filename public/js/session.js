@@ -80,8 +80,33 @@
                 if (window.location.pathname.split('/')[1] == 'me'){
                     pageSpecfic(User)
                 } else {
-                    pageSpecfic(window.location.pathname.split('/')[0].split('@')[1])
-                }
+                    console.log(window.location.pathname.split('/')[1].split('@')[1])
+                    const blogger = window.location.pathname.split('/')[1].split('@')[1]
+                    var urls = [`https://token.dlux.io/@${blogger}`]
+                    let promises = urls.map(u => fetch(u))
+                    promises.push(fetch("https://anyx.io", {
+                        body: `{\"jsonrpc\":\"2.0\", \"method\":\"condenser_api.get_accounts\", \"params\":[[\"${blogger}\"]], \"id\":1}`,
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                            method: "POST"
+                        }))
+                    Promise.all(promises).then(res =>
+                        Promise.all(res.map(res => res.json()))
+                        .catch(e=>console.log(e))
+                        ).then(jsons => {
+                            let Blogger = {
+                                dlux: jsons[0],
+                                dex: User.dex,
+                                stats: User.stats,
+                                price: User.price,
+                                hstats: User.hstats,
+                                hive: json[1]
+                            }
+                        pageSpecfic(Blogger)
+                
+                        }).catch(e=>console.log(e))
+                    }
               } catch (e) {}
          })
      } else {
