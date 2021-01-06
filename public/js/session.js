@@ -15,7 +15,11 @@
         document.getElementById(`progressbarlabel${id}`).innerText = `${User[`id-iterator-${id}`]} Confirmations. 20 Required`
         if(User[`id-iterator-${id}`] >= 21 ){
             delete User[`id-iterator-${id}`]
-            pageSpecfic(User)
+            if (window.location.pathname.split('/')[1] == 'me'){
+                pageSpecfic(User)
+            } else {
+                pageSpecfic(window.location.pathname.split('/')[0].split('@')[1])
+            }
         } else {
             setTimeout(updateprogress(id), 3000)
         }
@@ -72,7 +76,38 @@
              User.price = jsons[3].hive.usd
              User.hstats = jsons[4].result
              User.hive = jsons[5].result[0]
-             try { pageSpecfic(User); } catch (e) {}
+             try { 
+                if (window.location.pathname.split('/')[1] == 'me'){
+                    pageSpecfic(User)
+                } else {
+                    console.log(window.location.pathname.split('/')[1].split('@')[1])
+                    const blogger = window.location.pathname.split('/')[1].split('@')[1]
+                    var urls = [`https://token.dlux.io/@${blogger}`]
+                    let promises = urls.map(u => fetch(u))
+                    promises.push(fetch("https://anyx.io", {
+                        body: `{\"jsonrpc\":\"2.0\", \"method\":\"condenser_api.get_accounts\", \"params\":[[\"${blogger}\"]], \"id\":1}`,
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                            method: "POST"
+                        }))
+                    Promise.all(promises).then(res =>
+                        Promise.all(res.map(res => res.json()))
+                        .catch(e=>console.log(e))
+                        ).then(jsons => {
+                            let Blogger = {
+                                dlux: jsons[0],
+                                dex: User.dex,
+                                stats: User.stats,
+                                price: User.price,
+                                hstats: User.hstats,
+                                hive: jsons[1]
+                            }
+                        pageSpecfic(Blogger)
+                
+                        }).catch(e=>console.log(e))
+                    }
+              } catch (e) {}
          })
      } else {
          $('#active-session').addClass('d-none');

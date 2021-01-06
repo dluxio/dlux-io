@@ -94,7 +94,13 @@ function me(usr) {
             return r.json()
         })
         .then(result => {
-            const node = result.markets.node[user]
+            const blogger = window.location.pathname.split('/')[1].split('@')[1]
+            var node
+            if (blogger) {
+                node = result.markets.node[blogger]
+            } else {
+                node = result.markets.node[user]
+            }
             document.getElementById('nodeDomain').value = node.domain.split('//')[1]
             document.getElementById('nodeBidRate').value = parseFloat(node.bidRate / 100).toFixed(1)
             document.getElementById('nodeDaoRate').value = parseFloat(node.marketingRate / 100).toFixed(1)
