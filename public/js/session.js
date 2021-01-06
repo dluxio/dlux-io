@@ -101,7 +101,7 @@
                                 stats: User.stats,
                                 price: User.price,
                                 hstats: User.hstats,
-                                hive: json[1]
+                                hive: jsons[1]
                             }
                         pageSpecfic(Blogger)
                 
