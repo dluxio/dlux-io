@@ -88,7 +88,7 @@
       </div>
       <div class="float-right"><span class="badge badge-secondary">{{json_metadata.scat()}}</span></div>
     </div>
-    <a href="#detailModal" class="a-1" data-toggle="modal" dmx-on:click="app_detail.select(entry_id)" dmx-bind:onclick="window.history.pushState('{{url}}','{{title}}', '/blog/@{{author}}/{{permlink}}');">
+    <a href="#detailModal" class="a-1" data-toggle="modal" dmx-on:click="data_detail.select(url)" dmx-bind:onclick="window.history.pushState('{{url}}','{{title}}', '/blog/@{{author}}/{{permlink}}');">
       <h5 class="card-title mt-2 text-center text-capitalize">{{title}}</h5>
       <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{json_metadata.parseJSON().image}}" /></a>
     <div class="card-body"><a href="#detailModal" data-toggle="modal" class="a-1">
@@ -122,25 +122,25 @@
     </div>
   </div>
 </div>
+<dmx-data-detail id="data_detail" dmx-bind:data="dluxGetBlog.data.result" key="url">
 <div class="modal fade" id="detailModal" tabindex="11" role="dialog" aria-hidden="true">
  <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
    <div class="modal-content bg-dark text-white">
-	<dmx-data-detail id="app_detail" dmx-bind:data="dluxGetBlog.data.result" key="entry_id">
 		<div class="d-inline-block p-2">
-	  <div class="float-left" ><a dmx-bind:href="/@{{author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
+	  <div class="float-left" ><a dmx-bind:href="/@{{data_detail.date.author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{data_detail.date.author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
         <div class="float-left">
-          <p class="mt-0 mb-0 text-muted text-semibold"><a dmx-bind:href="/@{{author}}" class="a-1">{{author}}<span class="ml-2 badge badge-pill badge-light">{{author_reputation.toString().rep()}}</span></a></p>
-          <small class="text-muted">{{created.formatDate("MMM dd, yyyy")}}</small></div>
+          <p class="mt-0 mb-0 text-muted text-semibold"><a dmx-bind:href="/@{{data_detail.date.author}}" class="a-1">{{data_detail.date.author}}<span class="ml-2 badge badge-pill badge-light">{{data_detail.date.author_reputation.toString().rep()}}</span></a></p>
+          <small class="text-muted">{{data_detail.date.created.formatDate("MMM dd, yyyy")}}</small></div>
 		</div>
-      <div class="float-right p-2"><span class="badge badge-secondary">{{json_metadata.scat()}}</span><button type="button" class="close text-white ml-3" data-dismiss="modal" aria-label="Close" onclick="window.history.back();"><span aria-hidden="true">×</span></button></div>
+      <div class="float-right p-2"><span class="badge badge-secondary">{{data_detail.date.json_metadata.scat()}}</span><button type="button" class="close text-white ml-3" data-dismiss="modal" aria-label="Close" onclick="window.history.back();"><span aria-hidden="true">×</span></button></div>
 		<hr class="mt-0">
-    <a dmx-bind:href="/blog/@{{author}}/{{permlink}}"><h4 class="text-center p-2">{{title}}</h4></a>
+    <a dmx-bind:href="/blog/@{{data_detail.date.author}}/{{data_detail.date.permlink}}"><h4 class="text-center p-2">{{title}}</h4></a>
     
 
-	 <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{json_metadata.parseJSON().image}}" />  
-    <p class="p-2">{{body.removeMD()}}</p>
+	 <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{data_detail.date.json_metadata.parseJSON().image}}" />  
+    <p class="p-2">{{data_detail.date.body.removeMD()}}</p>
 		  <center>
-      <a dmx-bind:href="{{url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch">Launch App</a>
+      <a dmx-bind:href="{{data_detail.date.url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch">Launch App</a>
     </center>
 <hr class="mb-0">
 		<div class="collapse" dmx-bind:id="vote{{entry_id}}">
@@ -148,7 +148,7 @@
   		<div class="form-group">
 
     	<ul class="list-unstyled">
-			<li class="float-left px-1"><button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{entry_id}}" dmx-bind:onclick="vote('{{comment.author}}','{{comment.permlink}}','slider{{entry_id}}')" style="width:70px">100%</button></li>
+			<li class="float-left px-1"><button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{entry_id}}" dmx-bind:onclick="vote('{{comment.author}}','{{data_detail.date.comment.permlink}}','slider{{entry_id}}')" style="width:70px">100%</button></li>
 			<li class="float-left px-1"><button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{entry_id}}"><span class="close text-white">×</span></button></li>
 		</ul>
 		<ul class="float-right list-unstyled">
@@ -161,9 +161,9 @@
 </form>
 			</div>
 		<div class="d-inline-block p-2">
-        <a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{entry_id}}"><i class="fas fa-heart mr-1"></i></a>{{active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{children}}</div>
+        <a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{entry_id}}"><i class="fas fa-heart mr-1"></i></a>{{data_detail.date.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{data_detail.date.children}}</div>
       
-      <div class="float-right p-2">{{total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
+      <div class="float-right p-2">{{data_detail.date.total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
 	 
 
 </dmx-data-detail>

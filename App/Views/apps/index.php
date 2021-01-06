@@ -15,7 +15,7 @@
 </head>
 
 <body id="index" is="dmx-app" class="d-flex flex-column h-100">
-<dmx-api-datasource id="dluxGetBlog" is="dmx-fetch" url="https://token.dlux.io/api/condenser_api/get_discussions_by_blog/disregardfiat"></dmx-api-datasource>
+<dmx-api-datasource id="dluxGetBlog" is="dmx-fetch" url="https://token.dlux.io/api/condenser_api/get_discussions_by_blog/robotolux"></dmx-api-datasource>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
@@ -84,10 +84,9 @@
     </div>
   </div>
   <dmx-data-detail id="data_detail" dmx-bind:data="dluxGetBlog.data.result" key="url">
-  <div class="modal fade show block" id="detailModal" tabindex="11" role="dialog" aria-hidden="true">
-    <div class="modal-dialog show block modal-full modal-xl modal-dialog-centered" role="document">
-   <div class="modal-content show block bg-dark text-white">
-	    
+  <div class="modal fade" id="detailModal" tabindex="11" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
+   <div class="modal-content bg-dark text-white">
 		<div class="d-inline-block p-2">
 	  <div class="float-left" ><a dmx-bind:href="/@{{data_detail.date.author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{data_detail.data.author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
         <div class="float-left">
@@ -123,9 +122,9 @@
 </form>
 			</div>
 		<div class="d-inline-block p-2">
-        <a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{entry_id}}"><i class="fas fa-heart mr-1"></i></a>{{data.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{data.children}}</div>
+        <a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{entry_id}}"><i class="fas fa-heart mr-1"></i></a>{{data_detail.date.data.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{data_detail.date.data.children}}</div>
       
-      <div class="float-right p-2">{{data.total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
+      <div class="float-right p-2">{{data_detail.date.data.total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
 </div>
   </div>
 	  </div>
