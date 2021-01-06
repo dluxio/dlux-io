@@ -12,19 +12,19 @@
 <script src="/dmxAppConnect/dmxMoment.js"></script>
 <script src="/dmxAppConnect/dmxFormatter.js"></script>
 <script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
+<script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <!--page specific-->
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
-<script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker h-100" id="apps" is="dmx-app">
 <?php 
 	if(isset($author)){
     	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" 
-		dmx-param:tag=\"'" . $author . "'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
+		dmx-param:tag=\"'".$author."'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
         }
 	else if(isset($_COOKIE['user'])){
-    	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'" . $_COOKIE['user'] . "'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
+    	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'".$_COOKIE['user']."'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
         }
 		else{
 		echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog/\" dmx-param:tag=\"'robotolux'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
