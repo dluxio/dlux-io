@@ -370,6 +370,15 @@
     				  </div>	
 					</div>
 					</div>
+				<div class="form-group col-lg-3 p-2">
+			        <label for="nodeDaoRate">Bidrate</label>
+			        <div class="input-group mb-2">
+					  <input type="number" class="form-control" id="nodeDaoRate" placeholder="00.00 - 20.00">
+					  <div class="input-group-append">
+      					<div class="input-group-text">%</div>
+    				  </div>	
+					</div>
+					</div>
 			      <div class="form-group col-lg-2 p-2">
 					  <br>
 			      <div class="form-check">
@@ -378,12 +387,12 @@
 		          </div>
 				  <div class="form-check">
 			        <input type="checkbox" class="form-check-input" id="mirrorCheck">
-			        <label class="form-check-label" for="mirrorCheck">Mirror Tokener</label>
+			        <label class="form-check-label" for="mirrorCheck">Mirror Leader</label>
 		          </div>
 					</div>
 					  <div class="form-group col-lg-1 p-2">
 						  <br>
-					  <center><button type="submit" class="btn btn-primary">Save</button></center>
+					  <center><button id="updateNode" type="submit" class="btn btn-primary">Update Node</button></center>
 					</div>
 					</div>
 		        </form>
