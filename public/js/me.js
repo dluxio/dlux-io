@@ -62,6 +62,9 @@ function me(usr) {
         document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(usr.hive.hbd_balance),'senddluxamount')">${User.hbd.balance}</a>):`
         document.getElementById('senddluxamount').max = parseFloat(usr.hive.hbd_balance)
     })
+    document.getElementById('updateNode').addEventListener("click", function() {
+        updateNode()
+    })
 
     fetch('https://token.dlux.io/feed')
         .then(r => {
@@ -236,4 +239,37 @@ function powerDown(amt, tol, memol) {
     reqsign(['custom_json', params], ['active', user])
         .then(r => { feedback(r) })
         .catch(e => { feedback(e) })
+}
+
+function updateNode() {
+    return new Promise((resolve, reject) => {
+        var nodeDomain = document.getElementById('nodeDomain').value,
+            nodeBidRate = document.getElementById('nodeBidRate').value,
+            nodeDaoRate = document.getElementById('nodeDaoRate').value,
+            nodeEscrow = document.getElementById('escrowCheck').value,
+            nodeMirror = document.getElementById('mirrorCheck').value
+        if (nodeDomain.split('//')[1]) {
+            nodeDomain = 'https://' + nodeDomain.split('//')[1]
+        } else {
+            nodeDomain = 'https://' + nodeDomain
+        }
+        nodeBidRate = parseInt(nodeBidRate * 100)
+        nodeDaoRate = parseInt(nodeDaoRate * 100)
+        const params = {
+            "required_auths": [user],
+            "required_posting_auths": 0,
+            "id": "dlux_node_add",
+            "json": JSON.stringify({
+                domain: nodeDomain,
+                bidRate: nodeBidRate,
+                marketingRate: nodeDaoRate,
+                escrow: nodeEscrow,
+                mirror: nodeMirror
+            })
+        }
+        console.log(params)
+        reqsign(['custom_json', params], ['active', user])
+            .then(r => { feedback(r) })
+            .catch(e => { feedback(e) })
+    });
 }
