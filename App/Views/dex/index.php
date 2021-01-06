@@ -333,34 +333,34 @@ $(document).ready(function(){
                <div class="container my-5">	
 				
 				  <div class="col-12 jumbotron bg-darker">
-              			<h1 class="display-4">DLUX Initial Coin Offering</h1>
-                            <p class="lead ">Donate Hive to @robotolux to bid on the daily DLUX token auction.</p>
+              			<h1 class="display-4">DLUX Initial Community Offering</h1>
+                            <p class="lead ">Donate Hive to @robotolux. </p>
                             <hr class="my-4 bg-light">
-					<p>Every 25 hours 100,000 DLUX Tokens are placed in a pool and priced according to the previous round. Donating funds to the @robotolux account automatically bids on those tokens for you, and at the end of the 25 hour period your tokens will be awarded.</p>
+					<p>Every 25.2 hours 100,000 DLUX Tokens are placed in a daily offering pool and priced according to the previous round. Donating funds to @robotolux automatically distributes DLUX tokens, if more Hive is recieved than DLUX availible some DLUX from the following days offering is set aside for an auction. Distribution of this pool will occur evenly to all aditional HIVE recieved. This continues until 100,000,000 DLUX has been issued which will take more than 3 years. Round 1 starts when round 0 is gone. </p>
 					  <div class="row py-4">
 					<div class="col-lg-8 mx-auto">
 					  <div class="alert alert-secondary text-center">
-  						<span>Previous Round DLUX Valuation: <b>0.002 HIVE</b></span>
+  						<span>Current Round DLUX Offering: <b>1.000DLUX for 1.000 HIVE</b></span>
 					  </div>
-					  <h2 class="text-center">ROUND 567</h2>
+					  <h2 class="text-center">ROUND 0</h2>
 						<hr class="bg-light">
 					  <div class="d-flex justify-content-center">
-			<div class="text-center market-info-item">
-				<h3><span>13.2 HRS</span></h3>
+			<div id="icoHoursRemain" class="text-center market-info-item">
+				<h3><span>	&#8734; HRS</span></h3>
 				<div>
 					<label>Time Remaining</label>
 				</div>
 			</div>
 			<div class="text-center market-info-item"><h1>|</h1></div>
-			<div class="text-center market-info-item">
+			<div id="icoTokensRemain" class="text-center market-info-item">
 				<h3><span>45,000 DLUX</span></h3>
 				<div>
 					<label>Tokens Available</label>
 				</div>
 			</div>
 			<div class="text-center market-info-item"><h1>|</h1></div>
-			<div class="text-center market-info-item">
-				<h3><span>0.002 HIVE</span></h3>
+			<div id="icoTokensPrice" class="text-center market-info-item">
+				<h3><span>1.000 HIVE</span></h3>
 				<div>
 					<label>Current Price</label>
 				</div>
@@ -382,7 +382,7 @@ $(document).ready(function(){
   					</div>
 						
 					</div>
-						<div>
+						<div id="icoDluxBalance" >
 							<center><small>Balance: <a href="#">12345 DLUX</a></small></center>
 						</div>
 				    </form>
@@ -391,24 +391,24 @@ $(document).ready(function(){
 
 					  <hr class="bg-light">
 					  <div class="d-flex justify-content-center">
-			<div class="text-center market-info-item">
-				<h3><span>36 HIVE</span></h3>
+			<div id="icoHiveSpent" class="text-center market-info-item">
+				<h3><span>1817.438 HIVE</span></h3>
 				<div>
 					<label>Donated</label>
 				</div>
 			</div>
 			<div class="text-center market-info-item"><h1>|</h1></div>
-			<div class="text-center market-info-item">
-				<h3><span>300 DLUX</span></h3>
+			<div id="icoDluxPool" class="text-center market-info-item">
+				<h3><span>0 DLUX</span></h3>
 				<div>
-					<label>Pending Tokens</label>
+					<label>At Auction</label>
 				</div>
 			</div>
 			<div class="text-center market-info-item"><h1>|</h1></div>
-			<div class="text-center market-info-item">
-				<h3><span>0.002 HIVE</span></h3>
+			<div id="icoFuturePrice" class="text-center market-info-item">
+				<h3><span>1.000 HIVE</span></h3>
 				<div>
-					<label>Pending Value</label>
+					<label>Round 1 Price</label>
 				</div>
 			</div>
 		  </div>
@@ -418,7 +418,7 @@ $(document).ready(function(){
 				</div>	
 					  <p class="lead ">Delegate Hive Power (HP) to @dlux-io and earn DLUX daily.</p>
                             <hr class="my-4 bg-light">
-					<p>Some info about delegating.</p>
+					<p>See the latest post from @dlux-io for current information.</p>
 					  <div class="row py-3">
 					  <div class="mx-auto">
 					<form>
@@ -433,7 +433,7 @@ $(document).ready(function(){
  					   <button type="submit" class="btn btn-primary">Send</button>
   					</div>
 					</div>
-						<div>
+						<div id="icoDelegationAvailible" >
 							<center><small>Balance: <a href="#">12345 HP</a></small></center>
 						</div>
 				    </form>
