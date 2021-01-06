@@ -19,7 +19,7 @@
 </head>
 <body class="d-flex flex-column bg-darker h-100" id="apps" is="dmx-app">
 <?php 
-	echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" mx-param:tag=\"'".$author."'\"></dmx-api-datasource>";
+	echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:tag=\"'".$author."'\"></dmx-api-datasource>";
 
 	if(isset($author)){
     	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" 
