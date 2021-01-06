@@ -89,6 +89,20 @@ function me(usr) {
         })
         .catch(e => { console.log(e) })
 
+    fetch('https://token.dlux.io/markets')
+        .then(r => {
+            return r.json()
+        })
+        .then(result => {
+            const node = result.markets.node[user]
+            document.getElementById('nodeDomain').value = node.domain.split('//')[1]
+            document.getElementById('nodeBidRate').value = parseFloat(node.bidRate / 100).toFixed(1)
+            document.getElementById('nodeDaoRate').value = parseFloat(node.marketingRate / 100).toFixed(1)
+            document.getElementById('escrowCheck').checked = node.escrow
+            document.getElementById('mirrorCheck').checked = node.mirror || false
+        })
+        .catch(e => { console.log(e) })
+
     fetch("https://anyx.io", {
             body: `{\"jsonrpc\":\"2.0\", \"method\":\"condenser_api.get_account_history\", \"params\":[\"${user}\", -1, 100], \"id\":1}`,
             headers: {
@@ -246,8 +260,8 @@ function updateNode() {
         var nodeDomain = document.getElementById('nodeDomain').value,
             nodeBidRate = document.getElementById('nodeBidRate').value,
             nodeDaoRate = document.getElementById('nodeDaoRate').value,
-            nodeEscrow = document.getElementById('escrowCheck').value,
-            nodeMirror = document.getElementById('mirrorCheck').value
+            nodeEscrow = document.getElementById('escrowCheck').checked,
+            nodeMirror = document.getElementById('mirrorCheck').checked
         if (nodeDomain.split('//')[1]) {
             nodeDomain = 'https://' + nodeDomain.split('//')[1]
         } else {
@@ -269,7 +283,7 @@ function updateNode() {
         }
         console.log(params)
         reqsign(['custom_json', params], ['active', user])
-            .then(r => { feedback(r) })
-            .catch(e => { feedback(e) })
+            .then(r => { resolve(r) })
+            .catch(e => { reject(e) })
     });
 }
