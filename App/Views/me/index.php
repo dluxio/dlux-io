@@ -19,6 +19,8 @@
 </head>
 <body class="d-flex flex-column bg-darker h-100" id="apps" is="dmx-app">
 <?php 
+	echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" mx-param:tag=\"'".$author."'\"></dmx-api-datasource>";
+
 	if(isset($author)){
     	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" 
 		dmx-param:tag=\"'".$author."'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
@@ -42,10 +44,10 @@
 		<div class="row pt-3">
       <div class="col-md-8 text-white">
 		  
-		  <div class="d-inline-block">
-        <div class="float-left"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{author}}" alt="" class="rounded-circle bg-light img-fluid mr-4 cover profile-img"></div>
-			  <div class="float-left"><p class="display-4 mb-0">{{dluxGetBlog.data.result[0].blog}}</p>
-        <small class="lead p-2">description</small>
+		  <div class="row">
+        <div class="col-2"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{dluxGetAccount.data.result[0].name}}" alt="" class="rounded-circle bg-light img-fluid mr-4 cover profile-img"></div>
+			  <div class="col-10"><p class="display-4 mb-0">{{dluxGetAccount.data.result[0].name}}</p>
+        <small class="lead p-2">{{dluxGetAccount.data.result[0].json_metadata.parseJSON().profile.about}}</small>
 			  </div></div></div>
       <div class="col-md-4 text-center m-auto"> 
           <a class="btn btn-outline-primary btn-lg m-1" role="button" dmx-bind:href="/vr/@{{dluxGetBlog.data.result[0].blog}}" target="_blank">VR Page<i class="fas fa-vr-cardboard mx-2 fa-lg"></i></a>

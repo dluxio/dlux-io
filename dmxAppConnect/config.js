@@ -484,30 +484,406 @@ dmx.config({
         "name": "data",
         "sub": [
           {
-            "type": "object",
-            "name": "error",
+            "type": "text",
+            "name": "jsonrpc"
+          },
+          {
+            "type": "array",
+            "name": "result",
             "sub": [
               {
                 "type": "number",
-                "name": "code"
+                "name": "id"
               },
               {
                 "type": "text",
-                "name": "data"
+                "name": "name"
+              },
+              {
+                "type": "object",
+                "name": "owner",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "weight_threshold"
+                  },
+                  {
+                    "type": "array",
+                    "name": "account_auths"
+                  },
+                  {
+                    "type": "array",
+                    "name": "key_auths",
+                    "sub": [
+                      {
+                        "type": "array",
+                        "name": "$value",
+                        "sub": [
+                          {
+                            "type": "text",
+                            "name": "$value"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "name": "active",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "weight_threshold"
+                  },
+                  {
+                    "type": "array",
+                    "name": "account_auths"
+                  },
+                  {
+                    "type": "array",
+                    "name": "key_auths",
+                    "sub": [
+                      {
+                        "type": "array",
+                        "name": "$value",
+                        "sub": [
+                          {
+                            "type": "text",
+                            "name": "$value"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "name": "posting",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "weight_threshold"
+                  },
+                  {
+                    "type": "array",
+                    "name": "account_auths",
+                    "sub": [
+                      {
+                        "type": "array",
+                        "name": "$value",
+                        "sub": [
+                          {
+                            "type": "text",
+                            "name": "$value"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "array",
+                    "name": "key_auths",
+                    "sub": [
+                      {
+                        "type": "array",
+                        "name": "$value",
+                        "sub": [
+                          {
+                            "type": "text",
+                            "name": "$value"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
               },
               {
                 "type": "text",
-                "name": "message"
+                "name": "memo_key"
+              },
+              {
+                "type": "text",
+                "name": "json_metadata"
+              },
+              {
+                "type": "text",
+                "name": "posting_json_metadata"
+              },
+              {
+                "type": "text",
+                "name": "proxy"
+              },
+              {
+                "type": "text",
+                "name": "last_owner_update"
+              },
+              {
+                "type": "text",
+                "name": "last_account_update"
+              },
+              {
+                "type": "text",
+                "name": "created"
+              },
+              {
+                "type": "boolean",
+                "name": "mined"
+              },
+              {
+                "type": "text",
+                "name": "recovery_account"
+              },
+              {
+                "type": "text",
+                "name": "last_account_recovery"
+              },
+              {
+                "type": "text",
+                "name": "reset_account"
+              },
+              {
+                "type": "number",
+                "name": "comment_count"
+              },
+              {
+                "type": "number",
+                "name": "lifetime_vote_count"
+              },
+              {
+                "type": "number",
+                "name": "post_count"
+              },
+              {
+                "type": "boolean",
+                "name": "can_vote"
+              },
+              {
+                "type": "object",
+                "name": "voting_manabar",
+                "sub": [
+                  {
+                    "type": "text",
+                    "name": "current_mana"
+                  },
+                  {
+                    "type": "number",
+                    "name": "last_update_time"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "name": "downvote_manabar",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "current_mana"
+                  },
+                  {
+                    "type": "number",
+                    "name": "last_update_time"
+                  }
+                ]
+              },
+              {
+                "type": "number",
+                "name": "voting_power"
+              },
+              {
+                "type": "text",
+                "name": "balance"
+              },
+              {
+                "type": "text",
+                "name": "savings_balance"
+              },
+              {
+                "type": "text",
+                "name": "hbd_balance"
+              },
+              {
+                "type": "text",
+                "name": "hbd_seconds"
+              },
+              {
+                "type": "text",
+                "name": "hbd_seconds_last_update"
+              },
+              {
+                "type": "text",
+                "name": "hbd_last_interest_payment"
+              },
+              {
+                "type": "text",
+                "name": "savings_hbd_balance"
+              },
+              {
+                "type": "text",
+                "name": "savings_hbd_seconds"
+              },
+              {
+                "type": "text",
+                "name": "savings_hbd_seconds_last_update"
+              },
+              {
+                "type": "text",
+                "name": "savings_hbd_last_interest_payment"
+              },
+              {
+                "type": "number",
+                "name": "savings_withdraw_requests"
+              },
+              {
+                "type": "text",
+                "name": "reward_hbd_balance"
+              },
+              {
+                "type": "text",
+                "name": "reward_hive_balance"
+              },
+              {
+                "type": "text",
+                "name": "reward_vesting_balance"
+              },
+              {
+                "type": "text",
+                "name": "reward_vesting_hive"
+              },
+              {
+                "type": "text",
+                "name": "vesting_shares"
+              },
+              {
+                "type": "text",
+                "name": "delegated_vesting_shares"
+              },
+              {
+                "type": "text",
+                "name": "received_vesting_shares"
+              },
+              {
+                "type": "text",
+                "name": "vesting_withdraw_rate"
+              },
+              {
+                "type": "text",
+                "name": "post_voting_power"
+              },
+              {
+                "type": "text",
+                "name": "next_vesting_withdrawal"
+              },
+              {
+                "type": "number",
+                "name": "withdrawn"
+              },
+              {
+                "type": "number",
+                "name": "to_withdraw"
+              },
+              {
+                "type": "number",
+                "name": "withdraw_routes"
+              },
+              {
+                "type": "number",
+                "name": "pending_transfers"
+              },
+              {
+                "type": "number",
+                "name": "curation_rewards"
+              },
+              {
+                "type": "number",
+                "name": "posting_rewards"
+              },
+              {
+                "type": "array",
+                "name": "proxied_vsf_votes",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "$value"
+                  }
+                ]
+              },
+              {
+                "type": "number",
+                "name": "witnesses_voted_for"
+              },
+              {
+                "type": "text",
+                "name": "last_post"
+              },
+              {
+                "type": "text",
+                "name": "last_root_post"
+              },
+              {
+                "type": "text",
+                "name": "last_vote_time"
+              },
+              {
+                "type": "number",
+                "name": "post_bandwidth"
+              },
+              {
+                "type": "number",
+                "name": "pending_claimed_accounts"
+              },
+              {
+                "type": "array",
+                "name": "delayed_votes"
+              },
+              {
+                "type": "text",
+                "name": "vesting_balance"
+              },
+              {
+                "type": "number",
+                "name": "reputation"
+              },
+              {
+                "type": "array",
+                "name": "transfer_history"
+              },
+              {
+                "type": "array",
+                "name": "market_history"
+              },
+              {
+                "type": "array",
+                "name": "post_history"
+              },
+              {
+                "type": "array",
+                "name": "vote_history"
+              },
+              {
+                "type": "array",
+                "name": "other_history"
+              },
+              {
+                "type": "array",
+                "name": "witness_votes"
+              },
+              {
+                "type": "array",
+                "name": "tags_usage"
+              },
+              {
+                "type": "array",
+                "name": "guest_bloggers"
               }
             ]
           },
           {
             "type": "number",
             "name": "id"
-          },
-          {
-            "type": "text",
-            "name": "jsonrpc"
           }
         ]
       },
@@ -542,10 +918,6 @@ dmx.config({
           {
             "type": "text",
             "name": "access-control-allow-origin"
-          },
-          {
-            "type": "text",
-            "name": "connection"
           },
           {
             "type": "text",
@@ -1012,6 +1384,454 @@ dmx.config({
         }
       ],
       "outputType": "array"
-    }
+    },
+    "dluxGetAccount": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "text",
+            "name": "jsonrpc"
+          },
+          {
+            "type": "array",
+            "name": "result",
+            "sub": [
+              {
+                "type": "number",
+                "name": "id"
+              },
+              {
+                "type": "text",
+                "name": "name"
+              },
+              {
+                "type": "object",
+                "name": "owner",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "weight_threshold"
+                  },
+                  {
+                    "type": "array",
+                    "name": "account_auths"
+                  },
+                  {
+                    "type": "array",
+                    "name": "key_auths",
+                    "sub": [
+                      {
+                        "type": "array",
+                        "name": "$value",
+                        "sub": [
+                          {
+                            "type": "text",
+                            "name": "$value"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "name": "active",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "weight_threshold"
+                  },
+                  {
+                    "type": "array",
+                    "name": "account_auths"
+                  },
+                  {
+                    "type": "array",
+                    "name": "key_auths",
+                    "sub": [
+                      {
+                        "type": "array",
+                        "name": "$value",
+                        "sub": [
+                          {
+                            "type": "text",
+                            "name": "$value"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "name": "posting",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "weight_threshold"
+                  },
+                  {
+                    "type": "array",
+                    "name": "account_auths",
+                    "sub": [
+                      {
+                        "type": "array",
+                        "name": "$value",
+                        "sub": [
+                          {
+                            "type": "text",
+                            "name": "$value"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "array",
+                    "name": "key_auths",
+                    "sub": [
+                      {
+                        "type": "array",
+                        "name": "$value",
+                        "sub": [
+                          {
+                            "type": "text",
+                            "name": "$value"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "name": "memo_key"
+              },
+              {
+                "type": "text",
+                "name": "json_metadata"
+              },
+              {
+                "type": "text",
+                "name": "posting_json_metadata"
+              },
+              {
+                "type": "text",
+                "name": "proxy"
+              },
+              {
+                "type": "text",
+                "name": "last_owner_update"
+              },
+              {
+                "type": "text",
+                "name": "last_account_update"
+              },
+              {
+                "type": "text",
+                "name": "created"
+              },
+              {
+                "type": "boolean",
+                "name": "mined"
+              },
+              {
+                "type": "text",
+                "name": "recovery_account"
+              },
+              {
+                "type": "text",
+                "name": "last_account_recovery"
+              },
+              {
+                "type": "text",
+                "name": "reset_account"
+              },
+              {
+                "type": "number",
+                "name": "comment_count"
+              },
+              {
+                "type": "number",
+                "name": "lifetime_vote_count"
+              },
+              {
+                "type": "number",
+                "name": "post_count"
+              },
+              {
+                "type": "boolean",
+                "name": "can_vote"
+              },
+              {
+                "type": "object",
+                "name": "voting_manabar",
+                "sub": [
+                  {
+                    "type": "text",
+                    "name": "current_mana"
+                  },
+                  {
+                    "type": "number",
+                    "name": "last_update_time"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "name": "downvote_manabar",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "current_mana"
+                  },
+                  {
+                    "type": "number",
+                    "name": "last_update_time"
+                  }
+                ]
+              },
+              {
+                "type": "number",
+                "name": "voting_power"
+              },
+              {
+                "type": "text",
+                "name": "balance"
+              },
+              {
+                "type": "text",
+                "name": "savings_balance"
+              },
+              {
+                "type": "text",
+                "name": "hbd_balance"
+              },
+              {
+                "type": "text",
+                "name": "hbd_seconds"
+              },
+              {
+                "type": "text",
+                "name": "hbd_seconds_last_update"
+              },
+              {
+                "type": "text",
+                "name": "hbd_last_interest_payment"
+              },
+              {
+                "type": "text",
+                "name": "savings_hbd_balance"
+              },
+              {
+                "type": "text",
+                "name": "savings_hbd_seconds"
+              },
+              {
+                "type": "text",
+                "name": "savings_hbd_seconds_last_update"
+              },
+              {
+                "type": "text",
+                "name": "savings_hbd_last_interest_payment"
+              },
+              {
+                "type": "number",
+                "name": "savings_withdraw_requests"
+              },
+              {
+                "type": "text",
+                "name": "reward_hbd_balance"
+              },
+              {
+                "type": "text",
+                "name": "reward_hive_balance"
+              },
+              {
+                "type": "text",
+                "name": "reward_vesting_balance"
+              },
+              {
+                "type": "text",
+                "name": "reward_vesting_hive"
+              },
+              {
+                "type": "text",
+                "name": "vesting_shares"
+              },
+              {
+                "type": "text",
+                "name": "delegated_vesting_shares"
+              },
+              {
+                "type": "text",
+                "name": "received_vesting_shares"
+              },
+              {
+                "type": "text",
+                "name": "vesting_withdraw_rate"
+              },
+              {
+                "type": "text",
+                "name": "post_voting_power"
+              },
+              {
+                "type": "text",
+                "name": "next_vesting_withdrawal"
+              },
+              {
+                "type": "number",
+                "name": "withdrawn"
+              },
+              {
+                "type": "number",
+                "name": "to_withdraw"
+              },
+              {
+                "type": "number",
+                "name": "withdraw_routes"
+              },
+              {
+                "type": "number",
+                "name": "pending_transfers"
+              },
+              {
+                "type": "number",
+                "name": "curation_rewards"
+              },
+              {
+                "type": "number",
+                "name": "posting_rewards"
+              },
+              {
+                "type": "array",
+                "name": "proxied_vsf_votes",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "$value"
+                  }
+                ]
+              },
+              {
+                "type": "number",
+                "name": "witnesses_voted_for"
+              },
+              {
+                "type": "text",
+                "name": "last_post"
+              },
+              {
+                "type": "text",
+                "name": "last_root_post"
+              },
+              {
+                "type": "text",
+                "name": "last_vote_time"
+              },
+              {
+                "type": "number",
+                "name": "post_bandwidth"
+              },
+              {
+                "type": "number",
+                "name": "pending_claimed_accounts"
+              },
+              {
+                "type": "array",
+                "name": "delayed_votes"
+              },
+              {
+                "type": "text",
+                "name": "vesting_balance"
+              },
+              {
+                "type": "number",
+                "name": "reputation"
+              },
+              {
+                "type": "array",
+                "name": "transfer_history"
+              },
+              {
+                "type": "array",
+                "name": "market_history"
+              },
+              {
+                "type": "array",
+                "name": "post_history"
+              },
+              {
+                "type": "array",
+                "name": "vote_history"
+              },
+              {
+                "type": "array",
+                "name": "other_history"
+              },
+              {
+                "type": "array",
+                "name": "witness_votes"
+              },
+              {
+                "type": "array",
+                "name": "tags_usage"
+              },
+              {
+                "type": "array",
+                "name": "guest_bloggers"
+              }
+            ]
+          },
+          {
+            "type": "number",
+            "name": "id"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "via"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          }
+        ]
+      }
+    ]
   }
 });
