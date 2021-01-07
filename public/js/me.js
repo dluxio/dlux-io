@@ -100,6 +100,11 @@ function me(usr) {
                 node = result.markets.node[blogger]
             } else {
                 node = result.markets.node[user]
+                document.getElementById('nodeDomainSet').value = node.domain.split('//')[1]
+                document.getElementById('nodeBidRateSet').value = parseFloat(node.bidRate / 100).toFixed(1)
+                document.getElementById('nodeDaoRateSet').value = parseFloat(node.marketingRate / 100).toFixed(1)
+                document.getElementById('escrowCheckSet').checked = node.escrow
+                document.getElementById('mirrorCheckSet').checked = node.mirror || false
             }
             document.getElementById('nodeDomain').value = node.domain.split('//')[1]
             document.getElementById('nodeBidRate').value = parseFloat(node.bidRate / 100).toFixed(1)
@@ -263,11 +268,11 @@ function powerDown(amt, tol, memol) {
 
 function updateNode() {
     return new Promise((resolve, reject) => {
-        var nodeDomain = document.getElementById('nodeDomain').value,
-            nodeBidRate = document.getElementById('nodeBidRate').value,
-            nodeDaoRate = document.getElementById('nodeDaoRate').value,
-            nodeEscrow = document.getElementById('escrowCheck').checked,
-            nodeMirror = document.getElementById('mirrorCheck').checked
+        var nodeDomain = document.getElementById('nodeDomainSet').value,
+            nodeBidRate = document.getElementById('nodeBidRateSet').value,
+            nodeDaoRate = document.getElementById('nodeDaoRateSet').value,
+            nodeEscrow = document.getElementById('escrowCheckSet').checked,
+            nodeMirror = document.getElementById('mirrorCheckSet').checked
         if (nodeDomain.split('//')[1]) {
             nodeDomain = 'https://' + nodeDomain.split('//')[1]
         } else {

@@ -470,7 +470,7 @@ $(document).ready(function(){
 								<div class="col-lg-6 order-lg-2"><img src="/img/dex3.jpeg" class="img-fluid rounded"></div>
 								<div class="col-lg-6 order-lg-1">
 									<p class="lead pt-3 text-uppercase">Non ICO inflation</p>
-				<p>The Standard source of inflation remains constant with currently issued tokens. And after 100,000,000 total tokens has been issued by any means will remain the only source of inflation.</p>
+				<p>Soon these tokens will be recieved by a "multi-signature" account that's operated collective by DLUX node runners. Due to the way node security works here, Hive funds held in excess of a safe amount will automatically be used to purchase the lowest Price DEX orders, raising the collateral held and there fore the security margins. The Standard source of inflation remains constant with currently issued tokens. And after 100,000,000 total tokens has been issued by any means will remain the only source of inflation.</p>
 				<div class="text-center">	
 						<a class="btn btn-outline-light m-3" href="#">Run A Node</a>
 							</div>
