@@ -16,8 +16,9 @@ Promise.all(promises).then(res =>
     let availible = jsons[0].balance
     document.getElementById('icoTokensRemain').innerHTML = `<h3><span>${parseFloat(availible/1000).toFixed(3).commafy()} DLUX</span></h3><div><label>Tokens Available</label></div>`
     if (User) {
+        console.log({ User })
         document.getElementById('icoSendButton').addEventListener("click", function() {
-            let hive_val = document.getElementById('hiveDonate')
+            let hive_val = document.getElementById('hiveDonate').value
             Dluxsession.hive_sign([user, [
                     ['transfer', { to: 'robotolux', from: user, amount: `${hive_val.toFixed(3)} HIVE`, memo: '' }]
                 ], 'active']).then(r => {

@@ -376,7 +376,7 @@ $(document).ready(function(){
    					 <label for="hiveDonate" class="col-form-label"><h3>Donate:</h3></label>
  					 </div>
  						 <div class="col-xs-4 px-2">
-   						 <input type="number" id="hiveDonate" class="form-control">
+   						 <input type="number" step="0.001" id="hiveDonate" class="form-control">
   						</div>
  					 <div class="col-xs-4 px-2">
  					   <button id="icoSendButton" type="submit" class="btn btn-primary">Send</button>
