@@ -14,7 +14,7 @@ Promise.all(promises).then(res =>
     Promise.all(res.map(res => res.json()))
 ).then(jsons => {
     let availible = jsons[0].balance
-    document.getElementById('icoTokensRemain').innerHTML = `<h3><span>${parseFloat(availible/100).toFixed(3).commafy()} DLUX</span></h3><div><label>Tokens Available</label></div>`
+    document.getElementById('icoTokensRemain').innerHTML = `<h3><span>${parseFloat(availible/1000).toFixed(3).commafy()} DLUX</span></h3><div><label>Tokens Available</label></div>`
 
     function updateTimer(blockNum) {
         let left = 30240 - ((blockNum - 19980) % 30240)
@@ -73,6 +73,10 @@ Promise.all(promises).then(res =>
         `
     } else {
         document.getElementById('icoAuctionPanel').innerHTML = ``
+        node = document.getElementById('<hr class="bg-light">')
+        if (node.parentNode()) {
+            node.parentNode.removeChild(node);
+        }
     }
 
 }).catch(e => console.log(e))

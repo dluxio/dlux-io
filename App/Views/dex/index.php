@@ -390,7 +390,7 @@ $(document).ready(function(){
 						  </div>
 						  </div>
 
-					  <hr class="bg-light">
+					  <hr id="auctionSpacer" class="bg-light">
 					  <div id="icoAuctionPanel" class="d-flex justify-content-center">
 			<div id="icoHiveSpent" class="text-center market-info-item">
 				<h3><span>1817.438 HIVE</span></h3>
