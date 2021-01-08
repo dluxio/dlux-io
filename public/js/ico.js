@@ -73,7 +73,7 @@ Promise.all(promises).then(res =>
         `
     } else {
         document.getElementById('icoAuctionPanel').innerHTML = ``
-        node = document.getElementById('<hr class="bg-light">')
+        node = document.getElementById('auctionSpacer')
         if (node.parentNode()) {
             node.parentNode.removeChild(node);
         }
