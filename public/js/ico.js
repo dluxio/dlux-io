@@ -18,7 +18,7 @@ function icoPop(usr) {
         document.getElementById('icoTokensRemain').innerHTML = `<h3><span>${parseFloat(availible/1000).toFixed(3).commafy()} DLUX</span></h3><div><label>Tokens Available</label></div>`
         if (user) {
             document.getElementById('icoSendButton').addEventListener("click", function() {
-                let hive_val = document.getElementById('hiveDonate').value
+                let hive_val = parseFloat(document.getElementById('hiveDonate').value).toFixed(3)
                 Dluxsession.hive_sign([user, [
                         ['transfer', { to: 'robotolux', from: user, amount: `${hive_val} HIVE`, memo: '' }]
                     ], 'active']).then(r => {

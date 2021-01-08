@@ -428,7 +428,7 @@ $(document).ready(function(){
    					 <label for="hiveDelegate" class="col-form-label"><h3>Delegate:</h3></label>
  					 </div>
  						 <div class="col-xs-4 px-2">
-   						 <input type="number" id="hiveDelegate" class="form-control">
+   						 <input type="number" id="hiveDelegate" min="0.000" class="form-control">
   						</div>
  					 <div class="col-xs-4 px-2">
  					   <button type="submit" class="btn btn-primary">Send</button>
