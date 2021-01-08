@@ -33,7 +33,7 @@
  function readResponseAsBlob(response) {
      return response.blob();
  }
- var user, dlux, User = { dlux: {}, hive: {}, dex: {}, stats: {}, opts: { to: 0, agent: 0, fee: '0.000 Hive', dfee: 0, type: 'Buy' } }
+ var user, dlux, User = { dlux: {}, hive: {}, dex: {}, stats: {}, opts: { to: 0, agent: 0, fee: '0.000 HIVE', dfee: 25, type: 'Buy' } }
 
  function checkCookie() {
      console.log('Checking for login')
