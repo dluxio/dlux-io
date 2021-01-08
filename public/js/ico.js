@@ -31,8 +31,7 @@ Promise.all(promises).then(res =>
         } else {
             mins = `${mins}`
         }
-        let hours =
-            document.getElementById('icoHoursRemain').innerHTML = `<h3><span>${hours}:${mins}:${secs}</span></h3>
+        document.getElementById('icoHoursRemain').innerHTML = `<h3><span>${hours}:${mins}:${secs}</span></h3>
 				<div>
 					<label>Time Remaining</label>
                 </div>` // (num - 20000) % 30240 === 0
