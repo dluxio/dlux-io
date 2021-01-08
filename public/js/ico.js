@@ -16,11 +16,12 @@ Promise.all(promises).then(res =>
     let availible = jsons[0].balance
     document.getElementById('icoTokensRemain').innerHTML = `<h3><span>${parseFloat(availible/1000).toFixed(3).commafy()} DLUX</span></h3><div><label>Tokens Available</label></div>`
     if (User) {
-        console.log({ User })
+        console.log({ User }, User.hive, User.hive.balance)
         document.getElementById('icoSendButton').addEventListener("click", function() {
             let hive_val = document.getElementById('hiveDonate').value
+            console.log(hive_val)
             Dluxsession.hive_sign([user, [
-                    ['transfer', { to: 'robotolux', from: user, amount: `${hive_val.toFixed(3)} HIVE`, memo: '' }]
+                    ['transfer', { to: 'robotolux', from: user, amount: `${hive_val} HIVE`, memo: '' }]
                 ], 'active']).then(r => {
                     console.log(`Sent ${ hive_val.toFixed(3) } HIVE to Robotolux for ICO`)
                 })
