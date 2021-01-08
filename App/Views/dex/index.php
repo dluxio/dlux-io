@@ -379,11 +379,11 @@ $(document).ready(function(){
    						 <input type="number" id="hiveDonate" class="form-control">
   						</div>
  					 <div class="col-xs-4 px-2">
- 					   <button type="submit" class="btn btn-primary">Send</button>
+ 					   <button id="icoSendButton" type="submit" class="btn btn-primary">Send</button>
   					</div>
 						
 					</div>
-						<div id="icoDluxBalance" >
+						<div id="icoHiveBalance" >
 							<center><small>Balance: <a href="#">12345 DLUX</a></small></center>
 						</div>
 				    </form>

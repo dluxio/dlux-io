@@ -15,6 +15,20 @@ Promise.all(promises).then(res =>
 ).then(jsons => {
     let availible = jsons[0].balance
     document.getElementById('icoTokensRemain').innerHTML = `<h3><span>${parseFloat(availible/1000).toFixed(3).commafy()} DLUX</span></h3><div><label>Tokens Available</label></div>`
+    if (User) {
+        document.getElementById('icoSendButton').addEventListener("click", function() {
+            let hive_val = document.getElementById('hiveDonate')
+            Dluxsession.hive_sign([user, [
+                    ['transfer', { to: 'robotolux', from: user, amount: `${hive_val.toFixed(3)} HIVE`, memo: '' }]
+                ], 'active']).then(r => {
+                    console.log(`Sent ${ hive_val.toFixed(3) } HIVE to Robotolux for ICO`)
+                })
+                .catch(e => { console.log(e) })
+        })
+        document.getElementById('icoHiveBalcance').innerHTML = `<center><small>Balance: <a href="#">${User.hive.balance}</a></small></center>`
+    } else {
+        document.getElementById('icoHiveBalcance').innerHTML = `<center><small>Login to donate</small></center>`
+    }
 
     function updateTimer(blockNum) {
         let left = 30240 - ((blockNum - 19980) % 30240)
@@ -74,7 +88,7 @@ Promise.all(promises).then(res =>
     } else {
         document.getElementById('icoAuctionPanel').innerHTML = ``
         node = document.getElementById('auctionSpacer')
-        if (node.parentNode()) {
+        if (node.parentNode) {
             node.parentNode.removeChild(node);
         }
     }
