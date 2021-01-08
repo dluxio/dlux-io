@@ -8,64 +8,64 @@ Number.prototype.commafy = function() {
     return String(this).commafy();
 };
 
-var urls = [`https://token.dlux.io/@ri`, 'https://token.dlux.io/stats'] //datasources
-let promises = urls.map(u => fetch(u))
-Promise.all(promises).then(res =>
-    Promise.all(res.map(res => res.json()))
-).then(jsons => {
-    let availible = jsons[0].balance
-    document.getElementById('icoTokensRemain').innerHTML = `<h3><span>${parseFloat(availible/1000).toFixed(3).commafy()} DLUX</span></h3><div><label>Tokens Available</label></div>`
-    if (User) {
-        console.log({ User }, User.hive, User.hive.balance)
-        document.getElementById('icoSendButton').addEventListener("click", function() {
-            let hive_val = document.getElementById('hiveDonate').value
-            console.log(hive_val)
-            Dluxsession.hive_sign([user, [
-                    ['transfer', { to: 'robotolux', from: user, amount: `${hive_val} HIVE`, memo: '' }]
-                ], 'active']).then(r => {
-                    console.log(`Sent ${ hive_val.toFixed(3) } HIVE to Robotolux for ICO`)
-                })
-                .catch(e => { console.log(e) })
-        })
-        document.getElementById('icoHiveBalance').innerHTML = `<center><small>Balance: <a href="#">${User.hive.balance}</a></small></center>`
-    } else {
-        document.getElementById('icoHiveBalance').innerHTML = `<center><small>Login to donate</small></center>`
-    }
+function icoPop(user) {
+    var urls = [`https://token.dlux.io/@ri`, 'https://token.dlux.io/stats'] //datasources
+    let promises = urls.map(u => fetch(u))
+    Promise.all(promises).then(res =>
+        Promise.all(res.map(res => res.json()))
+    ).then(jsons => {
+        let availible = jsons[0].balance
+        document.getElementById('icoTokensRemain').innerHTML = `<h3><span>${parseFloat(availible/1000).toFixed(3).commafy()} DLUX</span></h3><div><label>Tokens Available</label></div>`
+        if (user) {
+            document.getElementById('icoSendButton').addEventListener("click", function() {
+                let hive_val = document.getElementById('hiveDonate').value
+                console.log(hive_val)
+                Dluxsession.hive_sign([user, [
+                        ['transfer', { to: 'robotolux', from: user, amount: `${hive_val} HIVE`, memo: '' }]
+                    ], 'active']).then(r => {
+                        console.log(`Sent ${ hive_val.toFixed(3) } HIVE to Robotolux for ICO`, r)
+                    })
+                    .catch(e => { console.log(e) })
+            })
+            document.getElementById('icoHiveBalance').innerHTML = `<center><small>Balance: <a href="#">${user.hive.balance}</a></small></center>`
+        } else {
+            document.getElementById('icoHiveBalance').innerHTML = `<center><small>Login to donate</small></center>`
+        }
 
-    function updateTimer(blockNum) {
-        let left = 30240 - ((blockNum - 19980) % 30240)
-        let secs = (left % 20) * 3
-        let mins = (left % 1200) / 20
-        let hours = parseInt(left / 1200)
-        if (secs < 10) {
-            secs = '0' + secs
-        } else {
-            secs = `${secs}`
-        }
-        if (mins < 10) {
-            mins = `0${mins}`
-        } else {
-            mins = `${mins}`
-        }
-        document.getElementById('icoHoursRemain').innerHTML = `<h3><span>${hours}:${mins}:${secs}</span></h3>
+        function updateTimer(blockNum) {
+            let left = 30240 - ((blockNum - 19980) % 30240)
+            let secs = (left % 20) * 3
+            let mins = (left % 1200) / 20
+            let hours = parseInt(left / 1200)
+            if (secs < 10) {
+                secs = '0' + secs
+            } else {
+                secs = `${secs}`
+            }
+            if (mins < 10) {
+                mins = `0${mins}`
+            } else {
+                mins = `${mins}`
+            }
+            document.getElementById('icoHoursRemain').innerHTML = `<h3><span>${hours}:${mins}:${secs}</span></h3>
 				<div>
 					<label>Time Remaining</label>
                 </div>` // (num - 20000) % 30240 === 0
-        setTimeout(function() {
-            updateTimer(blockNum++)
-        }, 3000);
-    }
-    if (jsons[1].stats.icoRound) {
-        updateTimer(jsons[1].realtime)
-        document.getElementById('icoRound').innerText = `ROUND ${jsons[1].stats.icoRound}`
-        document.getElementById('dluxForHive').innerText = `${parseFloat(jsons[1].stats.icoPrice/1000).toFixed(3)} DLUX for 1.000 HIVE`
-        document.getElementById('icoTokensRemain').innerHTML = `<h3><span>${parseFloat(jsons[1].stats.icoPrice/1000).toFixed(3)} HIVE</span></h3>
+            setTimeout(function() {
+                updateTimer(blockNum++)
+            }, 3000);
+        }
+        if (jsons[1].stats.icoRound) {
+            updateTimer(jsons[1].realtime)
+            document.getElementById('icoRound').innerText = `ROUND ${jsons[1].stats.icoRound}`
+            document.getElementById('dluxForHive').innerText = `${parseFloat(jsons[1].stats.icoPrice/1000).toFixed(3)} DLUX for 1.000 HIVE`
+            document.getElementById('icoTokensRemain').innerHTML = `<h3><span>${parseFloat(jsons[1].stats.icoPrice/1000).toFixed(3)} HIVE</span></h3>
 				<div>
 					<label>Current Price</label>
 				</div>`
-    }
-    if (jsons[1].stats.outOnBlock) {
-        document.getElementById('icoAuctionPanel').innerHTML = `
+        }
+        if (jsons[1].stats.outOnBlock) {
+            document.getElementById('icoAuctionPanel').innerHTML = `
         <div id="icoHiveSpent" class="text-center market-info-item">
 				<h3><span>1817.438 HIVE</span></h3>
 				<div>
@@ -87,16 +87,16 @@ Promise.all(promises).then(res =>
 				</div>
 			</div>
         `
-    } else {
-        document.getElementById('icoAuctionPanel').innerHTML = ``
-        node = document.getElementById('auctionSpacer')
-        if (node.parentNode) {
-            node.parentNode.removeChild(node);
+        } else {
+            document.getElementById('icoAuctionPanel').innerHTML = ``
+            node = document.getElementById('auctionSpacer')
+            if (node.parentNode) {
+                node.parentNode.removeChild(node);
+            }
         }
-    }
 
-}).catch(e => console.log(e))
-
+    }).catch(e => console.log(e))
+}
 /* For auction panel reference
 if (bals.ri == 0) {
                                         stats.tokenSupply += 100000000

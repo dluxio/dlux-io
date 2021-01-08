@@ -1,14 +1,13 @@
 function dex(usr, pair, type) {
-    console.log('dex js')
     User.opts.pair = pair || 'hive'
     User.opts.type = type || 'Buy'
-    usr.hbd = { balance: usr.hive.hbd_balance }
-    User.hbd = { balance: usr.hive.hbd_balance }
+    usr.hbd = { balance: User.hive.hbd_balance }
+    User.hbd = { balance: User.hive.hbd_balance }
+    icoPop(usr)
     document.getElementById('jumbobal').innerHTML = `<h4>Balances: ${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3)} DLUX & ${usr[User.opts.pair].balance}</h4>`
     document.getElementById('senddluxfrom').value = user
     document.getElementById('menupricelab').innerHTML = `Calculated Price: (<a href="#" onClick="insertBal('${parseFloat(User.dex.markets[User.opts.pair].tick)}', 'menuprice')">Market Price: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
     document.getElementById('menupairlab').innerHTML = `For: (<a href="#" onClick="insertBal(parseFloat(User[User.opts.pair].balance),'menupair')">Balance: ${User[User.opts.pair].balance}</a>):`
-    console.log('I know youre getting here')
     document.getElementById('buyTab').addEventListener("click", function() {
         dexview(User.opts.pair, "Buy");
     })
