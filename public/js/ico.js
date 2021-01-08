@@ -8,7 +8,7 @@ Number.prototype.commafy = function() {
     return String(this).commafy();
 };
 
-function icoPop(user) {
+function icoPop(usr) {
     var urls = [`https://token.dlux.io/@ri`, 'https://token.dlux.io/stats'] //datasources
     let promises = urls.map(u => fetch(u))
     Promise.all(promises).then(res =>
@@ -19,7 +19,6 @@ function icoPop(user) {
         if (user) {
             document.getElementById('icoSendButton').addEventListener("click", function() {
                 let hive_val = document.getElementById('hiveDonate').value
-                console.log(hive_val)
                 Dluxsession.hive_sign([user, [
                         ['transfer', { to: 'robotolux', from: user, amount: `${hive_val} HIVE`, memo: '' }]
                     ], 'active']).then(r => {
@@ -27,7 +26,8 @@ function icoPop(user) {
                     })
                     .catch(e => { console.log(e) })
             })
-            document.getElementById('icoHiveBalance').innerHTML = `<center><small>Balance: <a href="#">${user.hive.balance}</a></small></center>`
+            document.getElementById('hiveDonate').max = parseFloat(usr.hive.balance).toFixed(3)
+            document.getElementById('icoHiveBalance').innerHTML = `<center><small>Balance: <a href="#">${usr.hive.balance}</a></small></center>`
         } else {
             document.getElementById('icoHiveBalance').innerHTML = `<center><small>Login to donate</small></center>`
         }
