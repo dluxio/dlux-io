@@ -25,9 +25,9 @@ Promise.all(promises).then(res =>
                 })
                 .catch(e => { console.log(e) })
         })
-        document.getElementById('icoHiveBalcance').innerHTML = `<center><small>Balance: <a href="#">${User.hive.balance}</a></small></center>`
+        document.getElementById('icoHiveBalance').innerHTML = `<center><small>Balance: <a href="#">${User.hive.balance}</a></small></center>`
     } else {
-        document.getElementById('icoHiveBalcance').innerHTML = `<center><small>Login to donate</small></center>`
+        document.getElementById('icoHiveBalance').innerHTML = `<center><small>Login to donate</small></center>`
     }
 
     function updateTimer(blockNum) {
