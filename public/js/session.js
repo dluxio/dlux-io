@@ -77,7 +77,7 @@
              User.hstats = jsons[4].result
              User.hive = jsons[5].result[0]
              try { 
-                if (window.location.pathname.split('/')[1] == 'me'){
+                if (window.location.pathname.split('/')[1] == 'me' || window.location.pathname.split('/')[1] == 'dex'){
                     pageSpecfic(User)
                 } else {
                     console.log(window.location.pathname.split('/')[1].split('@')[1])
