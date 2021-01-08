@@ -9,6 +9,7 @@
 ?>
 <!--page specific-->
 <script src="/js/dex.js"></script>
+<script src="/js/ico.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 </head>
 <body class="d-flex flex-column h-100 text-white">
@@ -336,13 +337,13 @@ $(document).ready(function(){
               			<h1 class="display-4">DLUX Initial Community Offering</h1>
                             <p class="lead ">Donate Hive to @robotolux. </p>
                             <hr class="my-4 bg-light">
-					<p>Every 25.2 hours 100,000 DLUX Tokens are placed in a daily offering pool and priced according to the previous round. Donating funds to @robotolux automatically distributes DLUX tokens, if more Hive is recieved than DLUX availible some DLUX from the following days offering is set aside for an auction. Distribution of this pool will occur evenly to all aditional HIVE recieved. This continues until 100,000,000 DLUX has been issued which will take more than 3 years. Round 1 starts when round 0 is gone. </p>
+					<p>Every 25.2 hours 100,000 DLUX Tokens are placed in a daily offering pool and priced according to the previous round. Donating funds to @robotolux automatically distributes DLUX tokens, if more Hive is recieved than DLUX availible some DLUX from the following days offering is set aside for an auction. Distribution of this pool will occur evenly to all aditional HIVE recieved. This continues until 100,000,000 DLUX has been issued which will take more than 3 years. Round 1 starts when round 0 is below 100,000 DLUX remaining. </p>
 					  <div class="row py-4">
 					<div class="col-lg-8 mx-auto">
-					  <div class="alert alert-secondary text-center">
-  						<span>Current Round DLUX Offering: <b>1.000 DLUX for 1.000 HIVE</b></span>
+					  <div id="icoTitlePrice" class="alert alert-secondary text-center">
+  						<span>Current Round DLUX Offering: <b id="dluxForHive">1.000 DLUX for 1.000 HIVE</b></span>
 					  </div>
-					  <h2 class="text-center">ROUND 0</h2>
+					  <h2 id="icoRound" class="text-center">ROUND 0</h2>
 						<hr class="bg-light">
 					  <div class="d-flex justify-content-center">
 			<div id="icoHoursRemain" class="text-center market-info-item">
@@ -390,7 +391,7 @@ $(document).ready(function(){
 						  </div>
 
 					  <hr class="bg-light">
-					  <div class="d-flex justify-content-center">
+					  <div id="icoAuctionPanel" class="d-flex justify-content-center">
 			<div id="icoHiveSpent" class="text-center market-info-item">
 				<h3><span>1817.438 HIVE</span></h3>
 				<div>
