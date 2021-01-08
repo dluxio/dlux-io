@@ -181,7 +181,8 @@ function placeHiveBuy() {
                     json_meta: JSON.stringify({
                         dextx: {
                             dlux,
-                            fee: User.opts.dfee
+                            fee: User.opts.dfee,
+                            hours: until
                         }
                     })
                 }
@@ -233,7 +234,8 @@ function placeHbdBuy() {
                     json_meta: JSON.stringify({
                         dextx: {
                             dlux,
-                            fee: User.opts.dfee
+                            fee: User.opts.dfee,
+                            hours: until
                         }
                     })
                 }
