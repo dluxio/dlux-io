@@ -47,7 +47,7 @@
          } else {
              dlux = new Dluxsession({ hiveidip: user });
          }
-         $('.no-session').addClass('d-none');
+         $('.gitno-session').addClass('d-none');
          document.getElementById('userImage').src = 'https://token.dlux.io/getauthorpic/' + user
          document.getElementById('userName').innerText = '@' + user;
          let dex, stats, hive, feed

@@ -72,7 +72,7 @@ function me(usr) {
         })
         .then(result => {
             let node = document.createElement('h4')
-            node.innerHTML = 'Transactions:<form><input type="checkbox" id="hideReportsCB" name="report" value="No" checked></input></form>'
+            node.innerHTML = 'Transactions:'
             node.class = "mb-3"
             let txholder = document.getElementById('dluxtxs')
 
