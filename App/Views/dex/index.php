@@ -166,8 +166,9 @@
 		  <div>
 			  <div class="widget">
 			<ul id="orderwidget" class="nav nav-pills justify-content-center" role="tablist">
-			  <li class="nav-item"> <a class="nav-link active" href="#" id="buyTab" role="tab" data-toggle="tab" aria-controls="buytab" aria-expanded="true" onClick="toggleListBtn()">Buy DLUX</a></li>
-			  <li class="nav-item"> <a class="nav-link" href="#" role="tab" id="sellTab" data-toggle="tab" aria-controls="selltab" onClick="toggleListBtn()">Sell DLUX</a></li>
+			  <li class="nav-item"> <a class="nav-link active" href="#" id="buyTab" role="tab" data-toggle="tab" aria-controls="buyTab" aria-expanded="true" onClick="toggleListBtn()">Buy DLUX</a></li>
+			  <li class="nav-item"> <a class="nav-link" href="#" role="tab" id="sellTab" data-toggle="tab" aria-controls="sellTab" onClick="toggleListBtn()">Sell DLUX</a></li>
+			  <li class="nav-item"> <a class="nav-link" href="#" role="tab" id="agentTab" data-toggle="tab" aria-controls="agentTab" onClick="toggleListBtn()"><i class="fas fa-users-cog"></i></a></li>
 			</ul>
 			  <!-- Order Form -->
 		    <form>
@@ -209,11 +210,27 @@
     		</div>
 		  </div>
 			 </div>
-		 <p><a data-toggle="collapse" href="#buydluxadvanced" role="button" aria-expanded="false" aria-controls="collapseExample">Advanced Options<i class="fas fa-angle-double-down ml-2"></i></a></p>
-	   <div class="collapse" id="buydluxadvanced">
-	
 
- <div class="form-group">
+<div class="form-group">
+    <label for="escrowExpire">Expiration:</label>
+    <select class="form-control" id="escrowExpire">
+      <option value=1>1 hour</option>
+      <option value=3>3 hours</option>
+      <option value=6>6 hours</option>
+      <option value=12>12 hours</option>
+      <option value=24>1 day</option>
+	  <option value=72>3 days</option>
+	  <option value=120 selected>5 days</option>
+    </select>
+</div>
+				
+					<div class="text-center">
+        <button id="listButton" type="button" class="btn btn-outline-success btn-75" onClick="dexsend(User.opts.type, User.opts.pair)">Buy</button>
+				</div> 
+		  </div>
+	  </form>
+		
+	 <div class="form-group">
 	 <label for="custodialAgent">Custodial Agent:</label>
 	 <div class="input-group">
 	 	<div class="input-group-prepend">
@@ -239,7 +256,8 @@
   		</div>
 	</div>
 </div>
-		
+	
+			  
  <div class="form-group">
 	 <label for="escrowAgent">Escrow Agent:</label>
 	 <div class="input-group">
@@ -284,30 +302,13 @@ $(document).ready(function(){
     });
   });
 });
-</script> 
-
-<div class="form-group">
-    <label for="escrowExpire">Expiration:</label>
-    <select class="form-control" id="escrowExpire">
-      <option value=1>1 hour</option>
-      <option value=3>3 hours</option>
-      <option value=6>6 hours</option>
-      <option value=12>12 hours</option>
-      <option value=24>1 day</option>
-	  <option value=72>3 days</option>
-	  <option value=120 selected>5 days</option>
-    </select>
-</div>
-		  
+</script> 			
+				
       </div>
-		<div class="text-center">
-        <button id="listButton" type="button" class="btn btn-outline-success btn-75" onClick="dexsend(User.opts.type, User.opts.pair)">Buy</button>
-				</div> 
-		  </div>
-	  </form>
+		
 			  
 		 
-		  </div>
+		
   
 	<div class="text-center pt-5">
 		<h5>TRADE HISTORY</h5></div>
