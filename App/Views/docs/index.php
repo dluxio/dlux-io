@@ -386,8 +386,8 @@ Click the + New File button in the left sidepanel
     <h3>Example 1</h3>
     <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
     &lt;a-assets&gt;
-        &lt;a-asset-item id=&quot;window-obj&quot; src=&quot;url...&quot;&gt;&lt;/a-asset-item&gt;
-        &lt;a-asset-item id=&quot;window-mtl&quot; src=&quot;url...&quot;&gt;&lt;/a-asset-item&gt;
+        &lt;a-assetsitem id=&quot;window-obj&quot; src=&quot;url...&quot;&gt;&lt;/a-assetsitem&gt;
+        &lt;a-assetsitem id=&quot;window-mtl&quot; src=&quot;url...&quot;&gt;&lt;/a-assetsitem&gt;
      &lt;/a-assets&gt;
 
      &lt;a-obj-model src=&quot;#window-obj&quot; mtl=&quot;#window-mtl&quot; material=&quot;transparent: true&quot;&gt;&lt;/a-obj-model&gt;
@@ -395,7 +395,7 @@ Click the + New File button in the left sidepanel
     <h3>Example 2</h3>
     <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
      &lt;a-assets&gt;
-        &lt;a-asset-item id=&quot;tree&quot; src=&quot;url...&quot;&gt;&lt;/a-asset-item&gt;
+        &lt;a-assetsitem id=&quot;tree&quot; src=&quot;url...&quot;&gt;&lt;/a-assetsitem&gt;
      &lt;/a-assets&gt;
 
      &lt;a-entity obj-model=&quot;obj:#tree&quot; material=&quot;shader: flat; color: green; visible: false&quot;&gt;&lt;/a-obj-model&gt;
@@ -470,7 +470,7 @@ Upload your video to d.tube, then
 Load Video Assets
 All videos should be loaded via the asset manager denoted
 
-<!--<a-asset-item id="myVideo" src="d.tube/ipfsHash" crossorigin="anonymous"></a-asset-item>-->
+<!--<a-assetsitem id="myVideo" src="d.tube/ipfsHash" crossorigin="anonymous"></a-assetsitem>-->
 
 You can use traditional 16x9 or 360 videos.
 
