@@ -455,14 +455,14 @@ function dexview(pair, type) {
     for (i in User.dex.queue) {
         if (User.opts.agent !== User.dex.queue[i]) {
             var node = document.createElement('li')
-            node.innerHTML = `<a href="#" onclick="User.opts.to='${i}';insertBal('${i}', 'custodialAgent', 'innerText');dexview(User.opts.pair,User.opts.type)">${i} - Fee: 0.25% DLUX- Liquid: ${parseFloat(User.dex.queue[i].l/1000).toFixed(3)}</a>`
+            node.innerHTML = `<a href="#" onclick="User.opts.to='${i}';insertBal('${i}', 'custodialAgent', 'innerText');dexview(User.opts.pair,User.opts.type)">@${i} - Liquid: ${parseFloat(User.dex.queue[i].l/1000).toFixed(3)} - Fee: 0.25% DLUX</a>`
             cAgentNode.appendChild(node)
         }
     }
     for (i in User.dex.queue) {
         if (User.opts.to !== User.dex.queue[i]) {
             var node = document.createElement('li')
-            node.innerHTML = `<a href="#" onclick="User.opts.agent='${i}';dexview(User.opts.pair,User.opts.type)">${i} - Fee: 0.25% DLUX- Liquid: ${parseFloat(User.dex.queue[i].l/1000).toFixed(3)}</a>`
+            node.innerHTML = `<a href="#" onclick="User.opts.agent='${i}';dexview(User.opts.pair,User.opts.type)">@${i} - Liquid: ${parseFloat(User.dex.queue[i].l/1000).toFixed(3)}  - Fee: 0.25% DLUX</a>`
             eAgentNode.appendChild(node)
         }
     }
@@ -622,50 +622,50 @@ function dexmodal(pair, type) {
         cAgentNode.removeChild(cAgentNode.getElementsByTagName('li')[0]);
     }
     for (a in User.dex.queue) {
-        if (User.dex.queue[a] == user) {
+        if (a == user) {
             delete User.dex.queue[a]
             break
         }
     }
+    let bals = []
+    for (a in User.dex.queue) {
+        bals.push(User.dex.queue[a].l)
+    }
+    bals.sort(function(a, b) {
+        return a - b;
+    });
     if (!User.opts.to) {
-        User.opts.to = User.dex.queue[0] ? User.dex.queue[0] : User.dex.queue[2]
+        for (a in User.dex.queue) {
+            if (User.dex.queue[a].l == bals[bals.length - 1]) {
+                User.opts.to = a
+                bals.pop()
+            }
+        }
     }
     if (!User.opts.agent) {
-        User.opts.agent = User.dex.queue[1] ? User.dex.queue[1] : User.dex.queue[2]
+        for (a in User.dex.queue) {
+            if (User.dex.queue[a].l == bals[bals.length - 1]) {
+                User.opts.agent = a
+            }
+        }
     }
+    console.log(User.opts)
     document.getElementById('escrowAgent').innerText = User.opts.agent
     document.getElementById('custodialAgent').innerText = User.opts.to
-    var balsP = []
     for (i in User.dex.queue) {
-        console.log(User.dex.queue[i])
-        balsP.push(fetch(`https://token.dlux.io/@${User.dex.queue[i]}`))
+        if (User.opts.agent !== User.dex.queue[i]) {
+            var node = document.createElement('li')
+            node.innerHTML = `<a href="#" onclick="User.opts.to='${i}';insertBal('${i}', 'custodialAgent', 'innerText');dexview(User.opts.pair,User.opts.type)">@${i} - Liquid: ${parseFloat(User.dex.queue[i].l/1000).toFixed(3)} - Fee: 0.25% DLUX</a>`
+            cAgentNode.appendChild(node)
+        }
     }
-    Promise.all(balsP)
-        .then(res =>
-            Promise.all(res.map(res => res.json()))
-        )
-        .then(b => {
-            a = {}, j = 0
-            for (i in User.dex.queue) {
-                a[i] = b[j]
-                j++
-            }
-            console.log(a)
-            for (i in User.dex.queue) {
-                if (User.opts.agent !== User.dex.queue[i]) {
-                    var node = document.createElement('li')
-                    node.innerHTML = `<a href="#" onclick="User.opts.to='${User.dex.queue[i]}';insertBal('${User.dex.queue[i]}', 'custodialAgent', 'innerText');dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: 0.25% DLUX - Liquid: ${parseInt(a[i].balance/1000)}</a>`
-                    cAgentNode.appendChild(node)
-                }
-            }
-            for (i in User.dex.queue) {
-                if (User.opts.to !== User.dex.queue[i]) {
-                    var node = document.createElement('li')
-                    node.innerHTML = `<a href="#" onclick="User.opts.agent='${User.dex.queue[i]}';dexmodal(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: 0.25% DLUX - Liquid: ${parseInt(a[i].balance/1000)}</a>`
-                    eAgentNode.appendChild(node)
-                }
-            }
-        })
+    for (i in User.dex.queue) {
+        if (User.opts.to !== User.dex.queue[i]) {
+            var node = document.createElement('li')
+            node.innerHTML = `<a href="#" onclick="User.opts.agent='${i}';dexview(User.opts.pair,User.opts.type)">@${i} - Liquid: ${parseFloat(User.dex.queue[i].l/1000).toFixed(3)}  - Fee: 0.25% DLUX</a>`
+            eAgentNode.appendChild(node)
+        }
+    }
 }
 
 

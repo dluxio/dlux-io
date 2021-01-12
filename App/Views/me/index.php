@@ -719,7 +719,7 @@
 			<div class="input-group-prepend">
       		  <div class="input-group-text">@</div>
     		</div>
-        	<input class="form-control" id="senddluxfrom" type="text" dmx-bind:placeholder="{{dluxGetBlog.data.result[0].blog}}" readonly>
+        	<input class="form-control" id="senddluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
 		  </div>
 			 </div>
 		  <div class="form-group">
@@ -773,7 +773,7 @@
 			<div class="input-group-prepend">
       		  <div class="input-group-text">@</div>
     		</div>
-        	<input class="form-control" id="powerupdluxfrom" type="text" dmx-bind:placeholder="{{dluxGetBlog.data.result[0].blog}}" readonly>
+        	<input class="form-control" id="powerupdluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
 		  </div>
 			 </div>
 		  <div class="form-group">
@@ -782,7 +782,7 @@
 			<div class="input-group-prepend">
       		  <div class="input-group-text">@</div>
     		</div>
-        	<input class="form-control" id="powerupdluxto" type="text" dmx-bind:placeholder="{{dluxGetBlog.data.result[0].blog}}" readonly>
+        	<input class="form-control" id="powerupdluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
 		  </div>
 			 </div>
         <div class="form-group">
@@ -827,7 +827,7 @@
 			<div class="input-group-prepend">
       		  <div class="input-group-text">@</div>
     		</div>
-        	<input class="form-control" id="powerdowndluxfrom" type="text" dmx-bind:placeholder="{{dluxGetBlog.data.result[0].blog}}" readonly>
+        	<input class="form-control" id="powerdowndluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
 		  </div>
 			 </div>
 		  <div class="form-group">
@@ -836,7 +836,7 @@
 			<div class="input-group-prepend">
       		  <div class="input-group-text">@</div>
     		</div>
-        	<input class="form-control" id="powerdowndluxto" type="text" dmx-bind:placeholder="{{dluxGetBlog.data.result[0].blog}}" readonly>
+        	<input class="form-control" id="powerdowndluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
 		  </div>
 			 </div>
         <div class="form-group">
@@ -897,7 +897,7 @@
 			<div class="input-group-prepend">
       		  <div class="input-group-text">@</div>
     		</div>
-        	<input class="form-control" id="senddluxfrom" type="text" dmx-bind:placeholder="{{dluxGetBlog.data.result[0].blog}}" readonly>
+        	<input class="form-control" id="senddluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
 		  </div>
 			 </div>
 		  
