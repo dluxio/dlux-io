@@ -427,9 +427,9 @@ function dexview(pair, type) {
             break
         }
     }
+    let most = { l: 0, u: '' },
+        almost = { l: 0, u: '' }
     if (!User.opts.to) {
-        let most = { l: 0, u: '' },
-            almost = { l: 0, u: '' }
         for (a in User.dex.queue) {
             if (User.dex.queue[a].l >= most.l) {
                 almost = most
