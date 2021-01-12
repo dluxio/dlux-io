@@ -181,7 +181,7 @@
 	 </div>
 	</div>
        <div role="tabpanel" class="tab-pane fade show" id="wallet" aria-labelledby="wallettab">
-		   <div id="walletBanner" class="container">	   
+		   <div id="walletBanner" class="container no-session">	   
 		   <div class="alert alert-danger mt-5" role="alert">
              Please log in to see balance information.
             </div>

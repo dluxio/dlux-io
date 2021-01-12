@@ -47,7 +47,7 @@
          } else {
              dlux = new Dluxsession({ hiveidip: user });
          }
-         $('#no-session').addClass('d-none');
+         $('.no-session').addClass('d-none');
          document.getElementById('userImage').src = 'https://token.dlux.io/getauthorpic/' + user
          document.getElementById('userName').innerText = '@' + user;
          let dex, stats, hive, feed
@@ -110,7 +110,7 @@
               } catch (e) {}
          })
      } else {
-         $('#active-session').addClass('d-none');
+         $('.active-session').addClass('d-none');
      }
  }
 
@@ -234,14 +234,14 @@
 
  function logout() {
      sessionStorage.clear()
-     $('#active-session').addClass('d-none');
-     $('#no-session').removeClass('d-none');
+     $('.active-session').addClass('d-none');
+     $('.no-session').removeClass('d-none');
      user = ''
  }
 
  function loginDismiss() {
-     $('#active-session').removeClass('d-none');
-     $('#no-session').addClass('d-none');
+     $('.active-session').removeClass('d-none');
+     $('.no-session').addClass('d-none');
      $('#loginModal').modal('hide');
      checkCookie();
  }
