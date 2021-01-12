@@ -206,8 +206,8 @@ function placeHbdBuy() {
             return response.json();
         })
         .then(function(myJson) {
-            var updex = myJson.markets
-            var queue = myJson.queue
+            //var updex = myJson.markets
+            //var queue = myJson.queue
             if (dlux > 0 && typeof dlux == 'number' && amount > 0 && typeof amount == 'number') {
                 var escrowTimer = {}
                 let now = new Date();
@@ -422,51 +422,43 @@ function dexview(pair, type) {
         cAgentNode.removeChild(cAgentNode.getElementsByTagName('li')[0]);
     }
     for (a in User.dex.queue) {
-        if (User.dex.queue[a] == user) {
+        if (a == user) {
             delete User.dex.queue[a]
             break
         }
     }
     if (!User.opts.to) {
-        User.opts.to = User.dex.queue[0] ? User.dex.queue[0] : User.dex.queue[2]
+        let most = { l: 0, u: '' },
+            almost = { l: 0, u: '' }
+        for (a in User.dex.queue) {
+            if (User.dex.queue[a].l >= most.l) {
+                almost = most
+                most.u = a
+                most.l = User.dex.queue[a].l
+            }
+        }
+        User.opts.to = most.u
     }
     if (!User.opts.agent) {
-        User.opts.agent = User.dex.queue[1] ? User.dex.queue[1] : User.dex.queue[2]
+        User.opts.agent = almost.u
     }
     console.log(User.opts)
     document.getElementById('escrowAgent').innerText = User.opts.agent
     document.getElementById('custodialAgent').innerText = User.opts.to
-    var balsP = []
     for (i in User.dex.queue) {
-        console.log(User.dex.queue[i])
-        balsP.push(fetch(`https://token.dlux.io/@${User.dex.queue[i]}`))
+        if (User.opts.agent !== User.dex.queue[i]) {
+            var node = document.createElement('li')
+            node.innerHTML = `<a href="#" onclick="User.opts.to='${i}';insertBal('${i}', 'custodialAgent', 'innerText');dexview(User.opts.pair,User.opts.type)">${i} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(User.dex.queue[i].l/1000)}</a>`
+            cAgentNode.appendChild(node)
+        }
     }
-    Promise.all(balsP)
-        .then(res =>
-            Promise.all(res.map(res => res.json()))
-        )
-        .then(b => {
-            a = {}, j = 0
-            for (i in User.dex.queue) {
-                a[i] = b[j]
-                j++
-            }
-            console.log(a)
-            for (i in User.dex.queue) {
-                if (User.opts.agent !== User.dex.queue[i]) {
-                    var node = document.createElement('li')
-                    node.innerHTML = `<a href="#" onclick="User.opts.to='${User.dex.queue[i]}';insertBal('${User.dex.queue[i]}', 'custodialAgent', 'innerText');dexview(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
-                    cAgentNode.appendChild(node)
-                }
-            }
-            for (i in User.dex.queue) {
-                if (User.opts.to !== User.dex.queue[i]) {
-                    var node = document.createElement('li')
-                    node.innerHTML = `<a href="#" onclick="User.opts.agent='${User.dex.queue[i]}';dexview(User.opts.pair,User.opts.type)">${User.dex.queue[i]} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(a[i].balance/1000)}</a>`
-                    eAgentNode.appendChild(node)
-                }
-            }
-        })
+    for (i in User.dex.queue) {
+        if (User.opts.to !== User.dex.queue[i]) {
+            var node = document.createElement('li')
+            node.innerHTML = `<a href="#" onclick="User.opts.agent='${i}';dexview(User.opts.pair,User.opts.type)">${i} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(User.dex.queue[i].l/1000)}</a>`
+            eAgentNode.appendChild(node)
+        }
+    }
 }
 
 function popStats() {
