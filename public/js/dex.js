@@ -427,20 +427,27 @@ function dexview(pair, type) {
             break
         }
     }
-    let most = { l: 0, u: '' },
-        almost = { l: 0, u: '' }
+    let bals = []
+    for (a in User.dex.queue) {
+        bals.push(User.dex.queue[a].l)
+    }
+    bals.sort(function(a, b) {
+        return a - b;
+    });
     if (!User.opts.to) {
         for (a in User.dex.queue) {
-            if (User.dex.queue[a].l >= most.l) {
-                almost = most
-                most.u = a
-                most.l = User.dex.queue[a].l
+            if (User.dex.queue[a].l == bals[bals.length - 1]) {
+                User.opts.to = a
+                bals.pop()
             }
         }
-        User.opts.to = most.u
     }
     if (!User.opts.agent) {
-        User.opts.agent = almost.u
+        for (a in User.dex.queue) {
+            if (User.dex.queue[a].l == bals[bals.length - 1]) {
+                User.opts.agent = a
+            }
+        }
     }
     console.log(User.opts)
     document.getElementById('escrowAgent').innerText = User.opts.agent
@@ -448,14 +455,14 @@ function dexview(pair, type) {
     for (i in User.dex.queue) {
         if (User.opts.agent !== User.dex.queue[i]) {
             var node = document.createElement('li')
-            node.innerHTML = `<a href="#" onclick="User.opts.to='${i}';insertBal('${i}', 'custodialAgent', 'innerText');dexview(User.opts.pair,User.opts.type)">${i} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(User.dex.queue[i].l/1000)}</a>`
+            node.innerHTML = `<a href="#" onclick="User.opts.to='${i}';insertBal('${i}', 'custodialAgent', 'innerText');dexview(User.opts.pair,User.opts.type)">${i} - Fee: 0.25% DLUX- Liquid: ${parseFloat(User.dex.queue[i].l/1000).toFixed(3)}</a>`
             cAgentNode.appendChild(node)
         }
     }
     for (i in User.dex.queue) {
         if (User.opts.to !== User.dex.queue[i]) {
             var node = document.createElement('li')
-            node.innerHTML = `<a href="#" onclick="User.opts.agent='${i}';dexview(User.opts.pair,User.opts.type)">${i} - Fee: .0DLUX - Trust: Hi - Liquid: ${parseInt(User.dex.queue[i].l/1000)}</a>`
+            node.innerHTML = `<a href="#" onclick="User.opts.agent='${i}';dexview(User.opts.pair,User.opts.type)">${i} - Fee: 0.25% DLUX- Liquid: ${parseFloat(User.dex.queue[i].l/1000).toFixed(3)}</a>`
             eAgentNode.appendChild(node)
         }
     }
