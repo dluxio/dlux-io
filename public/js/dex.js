@@ -73,14 +73,41 @@ function reqsign(op, req) { //requests keychain to sign and broadcast
 }
 
 function dexsend(type, pair) {
+    const dlux = parseFloat(document.getElementById('menudlux').value)
+    const pair = parseFloat(document.getElementById('menupair').value)
+    const tick = parseFloat(User.dex.markets[User.opts.pair].tick)
     if (type == 'Buy' && pair == 'hbd') {
-        placeHbdBuy()
+        if (dlux / pair > tick * 0.8 && dlux / pair < tick * 1.2) {
+            if (User.opts.toBal > dlux * 4000 && User.opts.agentBal > dlux * 4000) {
+                placeHbdBuy()
+            } else {
+                alert(`Select agents with higher liquid`)
+            }
+        } else {
+            alert('Requested trade is too far from current price!')
+        }
     } else if (type == 'Buy' && pair == 'hive') {
-        placeHiveBuy()
+        if (dlux / pair > tick * 0.8 && dlux / pair < tick * 1.2) {
+            if (User.opts.toBal > dlux * 4000 && User.opts.agentBal > dlux * 4000) {
+                placeHiveBuy()
+            } else {
+                alert(`Select agents with higher liquid`)
+            }
+        } else {
+            alert('Requested trade is too far from current price!')
+        }
     } else if (type == 'Sell' && pair == 'hive') {
-        placeHiveAsk()
+        if (dlux / pair > tick * 0.8 && dlux / pair < tick * 1.2) {
+            placeHiveAsk()
+        } else {
+            alert('Requested trade is too far from current price!')
+        }
     } else if (type == 'Sell' && pair == 'hbd') {
-        placeHbdAsk()
+        if (dlux / pair > tick * 0.8 && dlux / pair < tick * 1.2) {
+            placeHbdAsk()
+        } else {
+            alert('Requested trade is too far from current price!')
+        }
     }
 
 }
@@ -228,7 +255,7 @@ function placeHbdBuy() {
                     hive_amount: hiveAmount,
                     escrow_id: eid,
                     agent: User.opts.agent,
-                    fee: User.opts.fee,
+                    fee: "0.000 HIVE",
                     ratification_deadline: escrowTimer.ratifyString,
                     escrow_expiration: escrowTimer.expiryString,
                     json_meta: JSON.stringify({
@@ -307,7 +334,7 @@ function getItID(txid) {
                     hive_amount: hiveAmount,
                     escrow_id: eid,
                     agent: User.opts.agent,
-                    fee: User.opts.fee,
+                    fee: "0.000 HIVE",
                     ratification_deadline: escrowTimer.ratifyString,
                     escrow_expiration: escrowTimer.expiryString,
                     json_meta: JSON.stringify({
@@ -387,6 +414,22 @@ function insertBal(data, loc, atr) {
     }
 }
 
+function insertCalc(data, loc, atr) {
+    if (!atr) {
+        if (document.getElementById(menudlux).value > 0) {
+            document.getElementById(loc).value = parseFloat(data).toFixed(6)
+            document.getElementById(menupair).value = parseFloat(parseFloat(data) * parseFloat(document.getElementById(menudlux).value)).toFixed(6)
+        } else if (document.getElementById(menupair).value > 0) {
+            document.getElementById(loc).value = parseFloat(data).toFixed(6)
+            document.getElementById(menudlux).value = parseFloat(parseFloat(data) / parseFloat(document.getElementById(menudlux).value)).toFixed(6)
+        } else {
+            document.getElementById(loc).value = parseFloat(data).toFixed(6)
+        }
+    } else {
+        document.getElementById(loc)[atr] = parseFloat(data).toFixed(6)
+    }
+}
+
 function dexview(pair, type) {
     User.opts.pair = pair
     User.opts.type = type
@@ -438,6 +481,7 @@ function dexview(pair, type) {
         for (a in User.dex.queue) {
             if (User.dex.queue[a].l == bals[bals.length - 1]) {
                 User.opts.to = a
+                User.opts.toBal = User.dex.queue[a].l
                 bals.pop()
             }
         }
@@ -446,6 +490,7 @@ function dexview(pair, type) {
         for (a in User.dex.queue) {
             if (User.dex.queue[a].l == bals[bals.length - 1]) {
                 User.opts.agent = a
+                User.opts.agentBal = User.dex.queue[a].l
             }
         }
     }
@@ -455,14 +500,14 @@ function dexview(pair, type) {
     for (i in User.dex.queue) {
         if (User.opts.agent !== User.dex.queue[i]) {
             var node = document.createElement('li')
-            node.innerHTML = `<a href="#" onclick="User.opts.to='${i}';insertBal('${i}', 'custodialAgent', 'innerText');dexview(User.opts.pair,User.opts.type)">@${i} - Liquid: ${parseFloat(User.dex.queue[i].l/1000).toFixed(3)} - Fee: 0.25% DLUX</a>`
+            node.innerHTML = `<a href="#" onclick="User.opts.to='${i}';User.opts.toBal='${User.dex.queue[i].l}';insertBal('${i}', 'custodialAgent', 'innerText');dexview(User.opts.pair,User.opts.type)">@${i} - Liquid: ${parseFloat(User.dex.queue[i].l/1000).toFixed(3)} - Fee: 0.25% DLUX</a>`
             cAgentNode.appendChild(node)
         }
     }
     for (i in User.dex.queue) {
         if (User.opts.to !== User.dex.queue[i]) {
             var node = document.createElement('li')
-            node.innerHTML = `<a href="#" onclick="User.opts.agent='${i}';dexview(User.opts.pair,User.opts.type)">@${i} - Liquid: ${parseFloat(User.dex.queue[i].l/1000).toFixed(3)}  - Fee: 0.25% DLUX</a>`
+            node.innerHTML = `<a href="#" onclick="User.opts.agent='${i}';User.opts.agentBal='${User.dex.queue[i].l}';dexview(User.opts.pair,User.opts.type)">@${i} - Liquid: ${parseFloat(User.dex.queue[i].l/1000).toFixed(3)}  - Fee: 0.25% DLUX</a>`
             eAgentNode.appendChild(node)
         }
     }
