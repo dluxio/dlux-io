@@ -181,6 +181,11 @@
 	 </div>
 	</div>
        <div role="tabpanel" class="tab-pane fade show" id="wallet" aria-labelledby="wallettab">
+		   <div id="walletBanner" class="container">	   
+		   <div class="alert alert-danger mt-5" role="alert">
+             Please log in to see balance information.
+            </div>
+		   </div>
 	<div class="p-3">
 		   <ul class="nav nav-pills justify-content-center" role="tablist">
 	    <li class="nav-item">
@@ -202,7 +207,7 @@
 				  		<p class="text-white-50">The utility token for content distribution and smart contracts, also called a smart media token (SMT)</p>
 				  	</div>
 				  	<div id="dluxactions" class="float-right text-right">
-						<h5>846.068 DLUX</h5>
+						<h5>0 DLUX</h5>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
   							<button type="button" class="btn btn-info mr-half" data-toggle="modal" id="senddluxmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
   							<div class="btn-group" role="group">
@@ -230,7 +235,7 @@
 						</ul>
 				  	</div>
 				  	<div id="dluxpactions" class="float-right text-right">
-						<h5>468.848 DLUX</h5>
+						<h5>0 DLUX</h5>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
 							<button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-user-friends mr-2"></i>Delegate</button>
   							<div class="btn-group" role="group">
@@ -249,7 +254,7 @@
 				  		<p class="text-white-50">The approximate US Dollar value for all DLUX in your account</p>
 				  	</div>
 				  	<div id="dluxval" class="float-right text-right">
-						<h5>$187.50</h5>
+						<h5>$0</h5>
 				  	</div>
 				  </div>
 			   </div>
@@ -269,7 +274,7 @@
 				  		<p class="text-white-50">The main token of the chain, often rewarded for content.</p>
 				  	</div>
 				  	<div id="hiveactions" class="float-right text-right">
-						<h5>768.186 HIVE</h5>
+						<h5>0 HIVE</h5>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
   							<button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhivemodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
   							<div class="btn-group" role="group">
@@ -294,7 +299,7 @@
 						</ul>
 				  	</div>
 				  	<div id="hivepactions" class="float-right text-right">
-						<h5>352.153 HP</h5>
+						<h5>0 HP</h5>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
   							<button type="button" class="btn btn-info mr-half"><i class="fas fa-user-friends mr-2"></i>Delegate</button>
   							<div class="btn-group" role="group">
@@ -315,7 +320,7 @@
 				  		<p class="text-white-50">Also a reward for content, this token is pegged to the US Dollar</p>
 				  	</div>
 				  	<div id="hbdactions" class="float-right text-right">
-						<h5>63.189 HBD</h5>
+						<h5>0 HBD</h5>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
   							<button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhbdmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
   							<div class="btn-group" role="group">
@@ -337,7 +342,7 @@
 				  		<p class="text-white-50 mb-0">A 3 day waiting period is imposed on withdrawl</p>
 				  	</div>
 				  	<div id="savingsactions" class="float-right text-right">
-						<h5>69.841 HBD</h5>
+						<h5>0 HBD</h5>
 				  	</div>
 				  </div>
 				  <hr class="my-4 bg-light">
@@ -347,7 +352,7 @@
 				  		<p class="text-white-50">The approximate US Dollar value for all HIVE in your account</p>
 				  	</div>
 				  	<div id="hiveval" class="float-right text-right">
-						<h5>$126.35</h5>
+						<h5>$0</h5>
 				  	</div>
 				  </div>
 			   </div>
@@ -367,6 +372,11 @@
 			 </div>
 		 </div>
 		 <div role="tabpanel" class="tab-pane fade show" id="node" aria-labelledby="nodetab">
+			 <div id="nodeBanner" class="container">	   
+		   <div class="alert alert-danger mt-5" role="alert">
+             Please log in to see node information.
+            </div>
+		   </div>
               <div class="container">
 		   		<br>
 			    <form>
