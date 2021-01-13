@@ -175,10 +175,11 @@
  }
 
  function dluxsend(toid, amountid, memoid) {
-     return new Promise((resolve, reject) => {
-         var to = document.getElementById(toid).value,
-             amount = parseInt(document.getElementById(amountid).value * 1000),
-             memo = document.getElementById(memoid).value
+    return new Promise((resolve, reject) => {
+        var to = document.getElementById(toid).value,
+            amount = parseInt(document.getElementById(amountid).value * 1000),
+            memo = document.getElementById(memoid).value
+        if (amount){
          checkAccount(to)
              .then(r => {
                  Dluxsession.hive_sign([user, [
@@ -199,7 +200,10 @@
                      .catch(e => { reject(e) })
              })
              .catch(e => { alert(e) })
-     });
+        } else {
+            alert('Please enter an amount to send.')
+        }
+    });
  }
 
  function reply(parent_author, parent_permlink, titleid, bodyid) {
