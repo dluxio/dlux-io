@@ -34,13 +34,24 @@ function me(usr) {
         document.getElementById('senddluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
     })
     document.getElementById('freezedluxbutton').addEventListener("click", function() {
-        document.getElementById('sendmodalsend').addEventListener("click", function() {
+        document.getElementById('powerdluxsubmitbutton').addEventListener("click", function() {
             dluxgovup('senddluxamount')
         })
-        document.getElementById('sendDluxTitle').innerText = `Freeze DLUX for Governance Ops`
+        $("#powerupdluxmemo").addClass("d-none");
+        document.getElementById('powerDluxTitle').innerText = `Freeze DLUX for Governance Ops`
         document.getElementById('sendformunits').innerText = 'DLUX'
-        document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'senddluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
-        document.getElementById('senddluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
+        document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
+        document.getElementById('powerupdluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
+    })
+    document.getElementById('powerupdluxbutton').addEventListener("click", function() {
+        document.getElementById('powerdluxsubmitbutton').addEventListener("click", function() {
+            powerUp('powerupdluxamount', 'powerupdluxto', 'powerupdluxmemo')
+        })
+        $("#powerupdluxmemo").addClass("d-none");
+        document.getElementById('powerDluxTitle').innerText = `Freeze DLUX for Governance Ops`
+        document.getElementById('sendformunits').innerText = 'DLUX'
+        document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
+        document.getElementById('powerupdluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
     })
     document.getElementById('poweruphivebutton').addEventListener("click", function() {
         document.getElementById('sendmodalsend').addEventListener("click", function() {
@@ -245,8 +256,6 @@ function hivepower(toid, amountid, memoid) {
         }
     });
 }
-
-dluxgovup('senddluxamount')
 
 function dluxgovup(amt) {
     let amount = parseInt(document.getElementById(amt).value * 1000),
