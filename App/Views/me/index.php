@@ -214,7 +214,7 @@
     						<button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
     						<div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1">
       							<a class="dropdown-item" href="#" id="powerupdluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a>
-								<a class="dropdown-item disabled" href="#"><i class="fas fa-snowflake fa-fw mr-2"></i>Freeze</a>
+								<a class="dropdown-item" href="#" id="freezedluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-snowflake fa-fw mr-2"></i>Freeze</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#" id="buylink" data-toggle="modal" data-target="#buyDluxModal"><i class="fas fa-cart-arrow-down fa-fw mr-2"></i>Buy DLUX</a>
 								<a class="dropdown-item" href="#" id="selllink" data-toggle="modal" data-target="#buyDluxModal"><i class="fas fa-coins fa-fw mr-2"></i>Sell DLUX</a>
@@ -244,7 +244,7 @@
     						<button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ></button>
     						<div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1">
       							<a class="dropdown-item" href="#" data-toggle="modal" id="dluxpowerdownModalButton" data-target="#powerdownDluxModal"><i class="fas fa-angle-double-down fa-fw mr-2"></i>Power Down</a>
-								<a class="dropdown-item disabled" href="#"><i class="fas fa-random fa-fw mr-2"></i>Convert to Governance</a>
+								<a class="dropdown-item" href="#" data-toggle="modal" id="powertogovbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to Governance</a>
     						</div>
   							</div>
 						</div>
@@ -254,12 +254,12 @@
 				  <div class="clearfix">
 				  	<div class="float-left">
 			  		  <h4>DLUX Governance</h4>
-				  		<p class="text-white-50">Frozen tokens used to determine concensus - running a node is required</p>
+				  		<p class="text-white-50">Frozen tokens used to determine concensus and earns rewards for running a node</p>
 						<p class="text-white-50">Benefits of DLUX Governance:</p>
 						<ul class="text-white-50">
 						<li>Provides liquid funds to DAO multi-sig wallet</li>
 						<li>Ensures collateral for DEX escrow transactions</li>
-						<li>Enables voting on community proposals</li>
+						<li>Enables voting on proposed community measures</li>
 						<li>1 Week Freezing Period | 4 Week Thawing Period</li>
 						</ul>
 				  	</div>
@@ -271,7 +271,7 @@
     						<button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
     						<div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1">
       							<a class="dropdown-item" href="#" data-toggle="modal" id="dluxpowerdownModalButton" data-target="#powerdownDluxModal"><i class="fas fa-fire fa-fw mr-2"></i>Thaw</a>
-								<a class="dropdown-item disabled" href="#"><i class="fas fa-random fa-fw mr-2"></i>Convert to Power</a>
+								<a class="dropdown-item" href="#" data-toggle="modal" id="govtopowerbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to Power</a>
     						</div>
   							</div>
 						</div>
