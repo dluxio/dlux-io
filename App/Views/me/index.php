@@ -233,7 +233,7 @@
 						<li>Increased voting power on content</li>
 						<li>Increased rewards from content</li>
 						<li>Increased resource credits</li>
-						<li>Instant Power-Up Period | 13 Week Power-Down Period</li>
+						<li>Instant Power-Up Period | 4 Week Power-Down Period</li>
 						</ul>
 				  	</div>
 				  	<div id="dluxpactions" class="float-right text-right">
@@ -773,7 +773,7 @@
     		</div>
 		  </div>
 			 </div>
-		  <div class="form-group">
+		  <div class="form-group" id="senddluxmemogroup">
 	   <label for="senddluxmemo">Memo:</label>
 		<div class="input-group">
         	<input class="form-control" id="senddluxmemo" type="text" placeholder="Include a memo (optional)">
