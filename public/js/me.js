@@ -35,9 +35,9 @@ function me(usr) {
     })
     document.getElementById('freezedluxbutton').addEventListener("click", function() {
         document.getElementById('powerdluxsubmitbutton').addEventListener("click", function() {
-            dluxgovup('senddluxamount')
+            dluxgovup('powerupdluxamount')
         })
-        $("#powerupdluxmemo").addClass("d-none");
+        $("#powerupmemodiv").addClass("d-none");
         document.getElementById('powerDluxTitle').innerText = `Freeze DLUX for Governance Ops`
         document.getElementById('sendformunits').innerText = 'DLUX'
         document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3)} DLUX</a>):`

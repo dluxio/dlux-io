@@ -827,7 +827,7 @@
     		</div>
 		  </div>
 			 </div>
-		  <div class="form-group">
+		  <div id="powerupmemodiv" class="form-group">
 	   <label for="powerupdluxmemo">Memo:</label>
 		<div class="input-group">
         	<input class="form-control" id="powerupdluxmemo" type="text" placeholder="Include a memo (optional)">
