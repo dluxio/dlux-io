@@ -421,7 +421,7 @@ function insertCalc(data, loc, atr) {
             document.getElementById('menupair').value = parseFloat(parseFloat(data) * parseFloat(document.getElementById('menudlux').value)).toFixed(6)
         } else if (document.getElementById('menupair').value > 0) {
             document.getElementById(loc).value = parseFloat(data).toFixed(6)
-            document.getElementById('menudlux').value = parseFloat(parseFloat(data) / parseFloat(document.getElementById('menupair').value)).toFixed(6)
+            document.getElementById('menudlux').value = parseFloat(parseFloat(document.getElementById('menupair').value) / parseFloat(data)).toFixed(6)
         } else {
             document.getElementById(loc).value = parseFloat(data).toFixed(6)
         }
