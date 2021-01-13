@@ -793,7 +793,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content bg-darker text-white">
       <div class="modal-header">
-        <h5 class="modal-title" id="sendDluxTitle">Power Up DLUX</h5>
+        <h5 class="modal-title" id="powerDluxTitle">Power Up DLUX</h5>
 		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span class="close text-white">×</span>
         </button>
@@ -836,7 +836,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" onClick="powerUp('powerupdluxamount', 'powerupdluxto', 'powerupdluxmemo')">Continue</button>
+        <button type="button" class="btn btn-primary" id="powerdluxsubmitbutton">Continue</button>
       </div>
 	</form>
     </div>
