@@ -33,6 +33,15 @@ function me(usr) {
         document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'senddluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
         document.getElementById('senddluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
     })
+    document.getElementById('freezedluxbutton').addEventListener("click", function() {
+        document.getElementById('sendmodalsend').addEventListener("click", function() {
+            dluxgovup('senddluxamount')
+        })
+        document.getElementById('sendDluxTitle').innerText = `Freeze DLUX for Governance Ops`
+        document.getElementById('sendformunits').innerText = 'DLUX'
+        document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'senddluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
+        document.getElementById('senddluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
+    })
     document.getElementById('poweruphivebutton').addEventListener("click", function() {
         document.getElementById('sendmodalsend').addEventListener("click", function() {
             hivepower('senddluxto', 'senddluxamount', 'senddluxmemo')
@@ -43,6 +52,17 @@ function me(usr) {
         document.getElementById('sendformunits').innerText = 'HIVE'
         document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.hive.balance),'senddluxamount')">${User.hive.balance}</a>):`
         document.getElementById('senddluxamount').max = parseFloat(User.hive.balance)
+    })
+    document.getElementById('govtopowerbutton').addEventListener("click", function() {
+        document.getElementById('sendmodalsend').addEventListener("click", function() {
+            govtopower('senddluxto', 'senddluxamount', 'senddluxmemo')
+        })
+        console.log('triggered')
+        $("#senddluxmemo").addClass("d-none");
+        document.getElementById('sendDluxTitle').innerText = `Convert DLUX Gov to DLUX Power`
+        document.getElementById('sendformunits').innerText = 'GOV'
+        document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.gov.balance),'senddluxamount')">${User.gov.balance}</a>):`
+        document.getElementById('senddluxamount').max = parseFloat(User.gov.balance) / 1000
     })
     document.getElementById('sendhivemodalbutton').addEventListener("click", function() {
         document.getElementById('sendmodalsend').addEventListener("click", function() {
@@ -224,6 +244,24 @@ function hivepower(toid, amountid, memoid) {
                 .catch(e => { reject(e) })
         }
     });
+}
+
+dluxgovup('senddluxamount')
+
+function dluxgovup(amt) {
+    let amount = parseInt(document.getElementById(amt).value * 1000),
+        params = {
+            "required_auths": [user],
+            "required_posting_auths": 0,
+            "id": "dlux_gov_up",
+            "json": JSON.stringify({
+                amount
+            })
+        }
+    console.log(params)
+    reqsign(['custom_json', params], ['active', user])
+        .then(r => { feedback(r) })
+        .catch(e => { feedback(e) })
 }
 
 function powerUp(amt, tol, memol) {
