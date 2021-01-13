@@ -416,12 +416,12 @@ function insertBal(data, loc, atr) {
 
 function insertCalc(data, loc, atr) {
     if (!atr) {
-        if (document.getElementById(menudlux).value > 0) {
+        if (document.getElementById('menudlux').value > 0) {
             document.getElementById(loc).value = parseFloat(data).toFixed(6)
-            document.getElementById(menupair).value = parseFloat(parseFloat(data) * parseFloat(document.getElementById(menudlux).value)).toFixed(6)
-        } else if (document.getElementById(menupair).value > 0) {
+            document.getElementById('menupair').value = parseFloat(parseFloat(data) * parseFloat(document.getElementById('menudlux').value)).toFixed(6)
+        } else if (document.getElementById('menupair').value > 0) {
             document.getElementById(loc).value = parseFloat(data).toFixed(6)
-            document.getElementById(menudlux).value = parseFloat(parseFloat(data) / parseFloat(document.getElementById(menudlux).value)).toFixed(6)
+            document.getElementById('menudlux').value = parseFloat(parseFloat(data) / parseFloat(document.getElementById('menudlux').value)).toFixed(6)
         } else {
             document.getElementById(loc).value = parseFloat(data).toFixed(6)
         }
