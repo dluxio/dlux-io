@@ -74,10 +74,10 @@ function reqsign(op, req) { //requests keychain to sign and broadcast
 
 function dexsend(type, pair) {
     const dlux = parseFloat(document.getElementById('menudlux').value)
-    const pair = parseFloat(document.getElementById('menupair').value)
+    const pairamount = parseFloat(document.getElementById('menupair').value)
     const tick = parseFloat(User.dex.markets[User.opts.pair].tick)
     if (type == 'Buy' && pair == 'hbd') {
-        if (dlux / pair > tick * 0.8 && dlux / pair < tick * 1.2) {
+        if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
             if (User.opts.toBal > dlux * 4000 && User.opts.agentBal > dlux * 4000) {
                 placeHbdBuy()
             } else {
@@ -87,7 +87,7 @@ function dexsend(type, pair) {
             alert('Requested trade is too far from current price!')
         }
     } else if (type == 'Buy' && pair == 'hive') {
-        if (dlux / pair > tick * 0.8 && dlux / pair < tick * 1.2) {
+        if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
             if (User.opts.toBal > dlux * 4000 && User.opts.agentBal > dlux * 4000) {
                 placeHiveBuy()
             } else {
@@ -97,13 +97,13 @@ function dexsend(type, pair) {
             alert('Requested trade is too far from current price!')
         }
     } else if (type == 'Sell' && pair == 'hive') {
-        if (dlux / pair > tick * 0.8 && dlux / pair < tick * 1.2) {
+        if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
             placeHiveAsk()
         } else {
             alert('Requested trade is too far from current price!')
         }
     } else if (type == 'Sell' && pair == 'hbd') {
-        if (dlux / pair > tick * 0.8 && dlux / pair < tick * 1.2) {
+        if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
             placeHbdAsk()
         } else {
             alert('Requested trade is too far from current price!')
