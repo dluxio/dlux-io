@@ -16,7 +16,7 @@ function me(usr) {
         User.opts.type = 'Buy'
         dexmodal("hive", "Buy");
     })
-    setVotePower(usr.dlux.poweredUp, usr.dlux.up, usr.dlux.down, usr.hive.voting_power, usr, hstats.head_block_number)
+    setVotePower(usr.dlux.poweredUp, usr.dlux.up, usr.dlux.down, usr.hive.voting_power, usr.hstats.head_block_number)
     document.getElementById('buyDluxTitle').innerText = 'Buy With:'
     document.getElementById('selllink').addEventListener("click", function() {
         User.opts.type = 'Sell'
@@ -347,6 +347,7 @@ function updateNode() {
 }
 
 function setVotePower(pow, upobj, downobj, vp, block) {
+    console.log(pow, upobj, downobj, vp, block)
     let up, dp, hp
     if (!Object.keys(up).length) {
         up = {
@@ -361,6 +362,7 @@ function setVotePower(pow, upobj, downobj, vp, block) {
         }
     }
     const newPower = downPowerMagic(upobj, downobj, block)
+    console.log({ newPower })
     up = newPower.up.power
     dp = newPower.down.power
     hp = parseInt(vp / 100)
