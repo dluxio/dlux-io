@@ -13,7 +13,6 @@
 <script src="/dmxAppConnect/dmxFormatter.js"></script>
 <script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 <script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
-	
 <!--page specific-->
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
@@ -100,7 +99,7 @@
              </a></div>
              <center>
 				 
-               <a dmx-bind:href="{{url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch">Launch App</a>
+               <a dmx-bind:href="{{url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch" target="_blank">Launch App</a>
              </center>
              <div class="card-footer">
                <div class="collapse" dmx-bind:id="vote{{post_id}}">
@@ -115,7 +114,7 @@
 							<input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{post_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{post_id}}','slider{{post_id}}');">
 						  </p>
 					</div>
-                    <div class="text-right">
+                    <div>
 			            <p class="my-0"><span class="mr-1"  id="commentVal">0</span><img src="/img/hextacular.svg" alt="" width="17"/></p>
           			</div>
                    </div>
