@@ -363,8 +363,8 @@ function setVotePower(pow, upobj, downobj, vp, block) {
     }
     const newPower = downPowerMagic(upobj, downobj, block)
     console.log({ newPower })
-    up = newPower.up.power
-    dp = newPower.down.power
+    up = parseInt(newPower.up.power / newPower.up.max)
+    dp = parseInt(newPower.up.down / newPower.up.max)
     hp = parseInt(vp / 100)
     $('upvotePower').style = `width: ${up}%`
     $('downvotePower').style = `width: ${dp}%`
@@ -381,7 +381,7 @@ function setVotePower(pow, upobj, downobj, vp, block) {
 function downPowerMagic(up, down, block_num) {
     const downHealTime = block_num - down.last //144000 blocks in 5 days
     const downHeal = parseInt(down.max * downHealTime / 144000)
-    weight = 10000
+    const weight = 10000
     var newDownPower = down.power + downHeal
     if (newDownPower > down.max) {
         newDownPower = down.max
@@ -411,12 +411,12 @@ function downPowerMagic(up, down, block_num) {
     }
     const newUp = {
         max: up.max,
-        last: json.block_num,
+        last: block_num,
         power: newPower
     }
     const newDown = {
         max: down.max,
-        last: json.block_num,
+        last: block_num,
         power: newDownPower
     }
     return { up: newUp, down: newDown, vote: vote }

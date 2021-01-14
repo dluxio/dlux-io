@@ -37,21 +37,30 @@
 </footer>
 <!-- Footer -->
 <script>
+<script>
 function hiveKeychain () {
     let username = document.getElementById('hk-username').value
     console.log('value: ' + username)
-	sessionStorage.setItem("user", username);
+    sessionStorage.setItem("user", username);
     let session = new Dluxsession(hive, {hiveidip:username})
 } 
    window.addEventListener('load', function () {
     let use = document.getElementById("hiveKeychain");
     let get = document.getElementById("getKeychain");
-    if(window.hive_keychain) {
-        get.style.display = "none";
-    } else {
-        use.style.display = "none";
-    } 
+    let count = 0;
+    let kc_interval = setInterval(function() {
+      if(window.hive_keychain) {
+          get.style.display = "none";
+          use.style.display = "block";
+      } else {
+          use.style.display = "none";
+          get.style.display = "block";
+      }
+      if (count >= 8) clearInterval(kc_interval)
+    }, 250);
   checkCookie()
 }) 
+
+</script>
 
 </script>
