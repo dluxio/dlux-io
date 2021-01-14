@@ -37,7 +37,6 @@
 </footer>
 <!-- Footer -->
 <script>
-<script>
 function hiveKeychain () {
     let username = document.getElementById('hk-username').value
     console.log('value: ' + username)
@@ -49,6 +48,7 @@ function hiveKeychain () {
     let get = document.getElementById("getKeychain");
     let count = 0;
     let kc_interval = setInterval(function() {
+      count++
       if(window.hive_keychain) {
           get.style.display = "none";
       } else {
@@ -58,7 +58,5 @@ function hiveKeychain () {
     }, 250);
   checkCookie()
 }) 
-
-</script>
 
 </script>
