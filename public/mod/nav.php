@@ -28,7 +28,7 @@
   				<div class="progress-bar progress-bar-striped bg-primary" id="upvotePower" role="progressbar" style="width: 100%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><span id="upvotePowerSpan" class="small">100%</span></div>
 			</div>
 			<div class="progress border border-secondary" data-toggle="tooltip"  title="DOWNVOTE POWER" style="height: 10px;  margin-bottom: 2px;">
-  				<div class="progress-bar progress-bar-striped bg-danger" id="downvotePower" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span id="downupvotePowerSpan" class="small">90%</span></div>
+  				<div class="progress-bar progress-bar-striped bg-danger" id="downvotePower" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span id="downvotePowerSpan" class="small">90%</span></div>
 			</div>
 			<div class="progress border border-secondary" data-toggle="tooltip"  title="HIVE VOTE POWER" style="height: 10px;  margin-bottom: 2px;">
   				<div class="progress-bar progress-bar-striped bg-info" id="resourceCredits" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span id="resourceCreditsSpan" class="small">80%</span></div>

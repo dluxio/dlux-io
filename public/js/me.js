@@ -16,7 +16,7 @@ function me(usr) {
         User.opts.type = 'Buy'
         dexmodal("hive", "Buy");
     })
-    setVotePower(usr.dlux.poweredUp, usr.dlux.up, usr.dlux.down, usr.hive.voting_power, usr.hstats.head_block_number)
+    User.dlux.nextVoteWeight = setVotePower(usr.dlux.poweredUp, usr.dlux.up, usr.dlux.down, usr.hive.voting_power, usr.hstats.head_block_number)
     document.getElementById('buyDluxTitle').innerText = 'Buy With:'
     document.getElementById('selllink').addEventListener("click", function() {
         User.opts.type = 'Sell'
@@ -364,17 +364,20 @@ function setVotePower(pow, upobj, downobj, vp, block) {
     const newPower = downPowerMagic(upobj, downobj, block)
     console.log({ newPower })
     up = parseInt(newPower.up.power / newPower.up.max)
-    dp = parseInt(newPower.up.down / newPower.up.max)
+    console.log({ up })
+    dp = parseInt(newPower.down.down / newPower.down.max)
+    console.log({ dp })
     hp = parseInt(vp / 100)
+    console.log({ hp })
     $('upvotePower').style = `width: ${up}%`
     $('downvotePower').style = `width: ${dp}%`
-    $('resourceCredit').style = `width: ${hp}%`
+    $('resourceCredits').style = `width: ${hp}%`
     $('upvotePower')['aria-valuenow'] = `${up}`
     $('downvotePower')['aria-valuenow'] = `${dp}`
-    $('resourceCredit')['aria-valuenow'] = `${hp}`
+    $('resourceCredits')['aria-valuenow'] = `${hp}`
     $('upvotePowerSpan').innerText = `${up}%`
     $('downvotePowerSpan').innerText = `${dp}%`
-    $('resourceCreditSpan').innerText = `${hp}%`
+    $('resourceCreditsSpan').innerText = `${hp}%`
     return newPower.vote
 }
 
