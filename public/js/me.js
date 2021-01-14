@@ -360,7 +360,7 @@ function setVotePower(pow, upobj, downobj, vp, block) {
             power: pow * 50
         }
     }
-    const newPower = downPowerMagic(up, down, block)
+    const newPower = downPowerMagic(upobj, downobj, block)
     up = newPower.up.power
     dp = newPower.down.power
     hp = parseInt(vp / 100)
