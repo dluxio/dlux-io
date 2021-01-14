@@ -392,22 +392,9 @@ function downPowerMagic(up, down, block_num) {
     if (newPower > up.max) {
         newPower = up.max
     }
-    var bigSpender = false
+    //var bigSpender = false
     var vote = parseInt(newDownPower * weight / 500000) //5 from max AND 10000 from full weight
-    newDownPower -= downvote
-    if (newDownPower < down.max * 0.9) { //further down power vote effect up and down power meters
-        bigSpender = true
-    }
-    if (bigSpender) {
-        vote = parseInt(newPower * weight / 500000) //50 from max AND 10000 from full weight
-        if (vote > downVote) {
-            newPower -= vote
-            newDownPower -= vote
-        } else {
-            newPower -= downVote
-            newDownPower -= downVote
-        }
-    }
+        //newDownPower -= downvote
     const newUp = {
         max: up.max,
         last: block_num,
