@@ -42,8 +42,8 @@
 			 <a class="dropdown-item" href="/me/#settings"><i class="fas fa-cog fa-fw mr-2"></i>Settings</a>
 			 <a class="dropdown-item" href="/docs/"><i class="fas fa-info-circle fa-fw mr-2"></i>About</a>
              <div class="dropdown-divider"></div>
-             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#loginModal"><i class="fas fa-user-friends mr-2"></i>Switch User</a>
-			 <a class="dropdown-item" href="javascript:logout()"><i class="fas fa-power-off fa-fw mr-2"></i>Logout</a></div>
+             <a class="dropdown-item" href="#" onclick="logout()" data-toggle="modal" data-target="#loginModal"><i class="fas fa-user-friends mr-2"></i>Switch User</a>
+			 <a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-power-off fa-fw mr-2"></i>Logout</a></div>
         </li>
       </ul>
 	</div>

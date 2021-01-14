@@ -241,6 +241,7 @@
      $('.active-session').addClass('d-none');
      $('.no-session').removeClass('d-none');
      user = ''
+     User = ''
  }
 
  function loginDismiss() {
