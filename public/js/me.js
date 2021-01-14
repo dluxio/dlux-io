@@ -349,13 +349,13 @@ function updateNode() {
 function setVotePower(pow, upobj, downobj, vp, block) {
     console.log(pow, upobj, downobj, vp, block)
     let up, dp, hp
-    if (!Object.keys(up).length) {
-        up = {
+    if (!Object.keys(upobj).length) {
+        upobj = {
             max: pow * 50,
             last: 0,
             power: pow * 50
         }
-        down = {
+        downobj = {
             max: pow * 50,
             last: 0,
             power: pow * 50
