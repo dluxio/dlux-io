@@ -13,7 +13,7 @@
 	<li class="nav-item"><a class="nav-link acct-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
 	<li class="nav-item"><a class="nav-link acct-link" href="https://signup.hive.io/">Sign up</a></li>
 	</ul>
-    <div class="mr-5 active-session" id="userMenu">
+    <div class="mr-5 -session" id="userMenu">
 	  <ul class="nav navbar-nav">
 		<li class="nav-item my-auto">
 			<a class="nav-link" href="/new/" data-toggle="tooltip"  title="Create a new app">
@@ -24,14 +24,14 @@
 			  <span id="userName">username</span></a>
           <div class="dropdown-menu pt-0" aria-labelledby="userDropdown">
               <div class="p-2">
-			  <div class="progress border border-secondary" data-toggle="tooltip"  title="DLUX VOTE POWER" style="height: 10px; margin-bottom: 2px;">
-  				<div class="progress-bar" id="dluxVotePower" role="progressbar" style="width: 30%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><span class="small">DVP</span></div>
+			  <div class="progress border border-secondary" data-toggle="tooltip"  title="UPVOTE POWER" style="height: 10px; margin-bottom: 2px;">
+  				<div class="progress-bar progress-bar-striped bg-primary" id="upvotePower" role="progressbar" style="width: 100%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><span class="small">100%</span></div>
 			</div>
-			<div class="progress border border-secondary" data-toggle="tooltip"  title="HIVE VOTE POWER" style="height: 10px;  margin-bottom: 2px;">
-  				<div class="progress-bar bg-danger" id="hiveVotePower" role="progressbar" style="width: 90%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span class="small">HVP</span></div>
+			<div class="progress border border-secondary" data-toggle="tooltip"  title="DOWNVOTE POWER" style="height: 10px;  margin-bottom: 2px;">
+  				<div class="progress-bar progress-bar-striped bg-danger" id="downvotePower" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><span class="small">90%</span></div>
 			</div>
-			<div class="progress border border-secondary" data-toggle="tooltip"  title="HIVE RESOURCES" style="height: 10px;  margin-bottom: 2px;">
-  				<div class="progress-bar bg-info" id="hiveResources" role="progressbar" style="width: 80%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><span class="small">HR</span></div>
+			<div class="progress border border-secondary" data-toggle="tooltip"  title="RESOURCE CREDITS" style="height: 10px;  margin-bottom: 2px;">
+  				<div class="progress-bar progress-bar-striped bg-info" id="resourceCredits" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><span class="small">80%</span></div>
 			</div>
 				  </div>
 			 <a class="dropdown-item" href="/me/#blog"><i class="fas fa-user fa-fw mr-2"></i>Profile</a>
