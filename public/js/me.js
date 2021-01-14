@@ -363,21 +363,21 @@ function setVotePower(pow, upobj, downobj, vp, block) {
     }
     const newPower = downPowerMagic(upobj, downobj, block)
     console.log({ newPower })
-    up = parseInt(newPower.up.power / newPower.up.max)
+    up = parseInt(newPower.up.power / newPower.up.max) * 100
     console.log({ up })
-    dp = parseInt(newPower.down.down / newPower.down.max)
+    dp = parseInt(newPower.down.power / newPower.down.max) * 100
     console.log({ dp })
     hp = parseInt(vp / 100)
     console.log({ hp })
-    $('upvotePower').style = `width: ${up}%`
-    $('downvotePower').style = `width: ${dp}%`
-    $('resourceCredits').style = `width: ${hp}%`
-    $('upvotePower')['aria-valuenow'] = `${up}`
-    $('downvotePower')['aria-valuenow'] = `${dp}`
-    $('resourceCredits')['aria-valuenow'] = `${hp}`
-    $('upvotePowerSpan').innerText = `${up}%`
-    $('downvotePowerSpan').innerText = `${dp}%`
-    $('resourceCreditsSpan').innerText = `${hp}%`
+    document.getElementById('upvotePower').style = `width: ${up}%`
+    document.getElementById('downvotePower').style = `width: ${dp}%`
+    document.getElementById('resourceCredits').style = `width: ${hp}%`
+    document.getElementById('upvotePower')['aria-valuenow'] = `${up}`
+    document.getElementById('downvotePower')['aria-valuenow'] = `${dp}`
+    document.getElementById('resourceCredits')['aria-valuenow'] = `${hp}`
+    document.getElementById('upvotePowerSpan').innerText = `${up}%`
+    document.getElementById('downvotePowerSpan').innerText = `${dp}%`
+    document.getElementById('resourceCreditsSpan').innerText = `${hp}%`
     return newPower.vote
 }
 
