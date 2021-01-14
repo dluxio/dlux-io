@@ -456,9 +456,12 @@ function setPortals(action) {
                 val = Math.round(parseFloat(post.total_payout_value.substring(0, 5)) * 100) / 100
             }
             var portalImage = JSON.parse(post.json_metadata).Hash360
-            if (portalImage.split('/')[3] == 'ipfs') {
-                portalImage = portalImage.split('/')[4];
-            }
+
+            try {
+                if (portalImage.split('/')[3] == 'ipfs') {
+                    portalImage = portalImage.split('/')[4];
+                }
+            } catch (e) { console.log(portalImage) }
             let portal = {
                 key: i,
                 visible: true,
