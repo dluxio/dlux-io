@@ -51,10 +51,8 @@ function hiveKeychain () {
     let kc_interval = setInterval(function() {
       if(window.hive_keychain) {
           get.style.display = "none";
-          use.style.display = "block";
       } else {
           use.style.display = "none";
-          get.style.display = "block";
       }
       if (count >= 8) clearInterval(kc_interval)
     }, 250);
