@@ -5,7 +5,7 @@ function me(usr) {
     document.getElementById('hiveactions').firstElementChild.innerText = usr.hive.balance
     document.getElementById('hbdactions').firstElementChild.innerText = usr.hive.hbd_balance
     document.getElementById('savingsactions').firstElementChild.innerText = User.hive.savings_hbd_balance
-
+    document.getElementById('govbal').innerText = `${parseFloat((User.dlux.gov + User.dlux.heldCollateral)/ 1000).toFixed(3)} DLUXG`
     document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(parseInt(User.dlux.balance)/1000),'powerupdluxamount')">${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
     document.getElementById('dluxactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3)} DLUX`
     document.getElementById('dluxpactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3)} DLUX`

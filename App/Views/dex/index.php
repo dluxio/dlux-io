@@ -217,8 +217,9 @@
       <option value=6>6 hours</option>
       <option value=12>12 hours</option>
       <option value=24>1 day</option>
-	  <option value=72>3 days</option>
-	  <option value=120 selected>5 days</option>
+	  <option value=72>3 day
+	  </option>
+	  <option value=120 selected>5 days </option>
     </select>
 </div>
 		 <div class="text-center">
