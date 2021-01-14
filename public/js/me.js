@@ -393,8 +393,7 @@ function downPowerMagic(up, down, block_num) {
         newPower = up.max
     }
     var bigSpender = false
-    var vote
-    var downvote = parseInt(newDownPower * weight / 500000) //5 from max AND 10000 from full weight
+    var vote = parseInt(newDownPower * weight / 500000) //5 from max AND 10000 from full weight
     newDownPower -= downvote
     if (newDownPower < down.max * 0.9) { //further down power vote effect up and down power meters
         bigSpender = true
