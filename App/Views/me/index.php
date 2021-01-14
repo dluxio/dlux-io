@@ -18,7 +18,6 @@
 <script src="/js/me.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker h-100" id="apps" is="dmx-app">
-
 <?php 
 	if(isset($author)){
     	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" 
@@ -99,38 +98,35 @@
                <p class="preview-text">{{body.removeMD().trunc(100,true,"...")}}</p>
              </a></div>
              <center>
+				 
                <a dmx-bind:href="{{url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch">Launch App</a>
              </center>
              <div class="card-footer">
-               <div class="collapse" dmx-bind:id="vote{{entry_id}}">
+               <div class="collapse" dmx-bind:id="vote{{post_id}}">
                  <form id="voteForm">
-                   <div class="form-group">
-                     <ul class="list-unstyled">
-                       <li class="float-left px-1">
-                         <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{entry_id}}" dmx-bind:onclick="vote('{{author}}','{{permlink}}','slider{{entry_id}}')" style="width:70px">100%</button>
-                       </li>
-                       <li class="float-left px-1">
-                         <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{entry_id}}"><span class="close text-white">×</span></button>
-                       </li>
-                     </ul>
-                     <ul class="float-right list-unstyled">
-                       <li>###.### <img src="../img/hextacular.svg" alt="" width="17"/></li>
-                     </ul>
-                     <div class="">
-                       <div style="display: flex; flex-grow: 1" class="px-3">
-                         <input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{entry_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{entry_id}}','slider{{entry_id}}');">
-                       </div>
-                     </div>
+					<div class="d-flex align-items-center text-white-50">
+ 					  <div>
+                         <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{post_id}}" dmx-bind:onclick="vote('{{author}}','{{permlink}}','slider{{post_id}}')" style="width:70px">100%</button>
+                         <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><span class="close text-white">×</span></button>
+					  </div>
+				      <div class="flex-fill mx-2">
+			            <p class="my-1">
+							<input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{post_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{post_id}}','slider{{post_id}}');">
+						  </p>
+					</div>
+                    <div class="text-right">
+			            <p class="my-0"><span class="mr-1"  id="commentVal">0</span><img src="/img/hextacular.svg" alt="" width="17"/></p>
+          			</div>
                    </div>
                  </form>
+               </div> 
+               <div class="d-flex align-items-center my-2">
+                 <div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><i class="fas fa-heart fa-fw mr-1"></i></a>{{active_votes.countUpVotes()}} <i class="fas fa-comment fa-fw ml-2 mr-1"></i>{{children}}</div>
+                 <div class="ml-auto">{{total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
                </div>
-               <div class="d-inline-block">
-                 <div class="float-left"><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{entry_id}}"><i class="fas fa-heart mr-1"></i></a>{{active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{children}}</div>
-               </div>
-               <div class="float-right">{{total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
-             </div>
            </div>
          </div>
+		   </div>
    <dmx-data-detail id="data_detail" dmx-bind:data="dluxGetBlog.data.result" key="url">      
 <div class="modal fade" id="detailModal" tabindex="11" role="dialog" aria-hidden="true">
  <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
@@ -151,30 +147,28 @@
 		  <center>
       <a dmx-bind:href="{{data_detail.data.url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch">Launch App</a>
     </center>
-<hr class="mb-0">
-		<div class="collapse" dmx-bind:id="vote{{entry_id}}">
+	<div class="card-footer">
+		<div class="collapse" dmx-bind:id="vote{{post_id}}">
 		<form id="voteForm">
-  		<div class="form-group">
-
-    	<ul class="list-unstyled">
-			<li class="float-left px-1"><button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{entry_id}}" dmx-bind:onclick="vote('{{comment.author}}','{{data_detail.data.comment.permlink}}','slider{{entry_id}}')" style="width:70px">100%</button></li>
-			<li class="float-left px-1"><button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{entry_id}}"><span class="close text-white">×</span></button></li>
-		</ul>
-		<ul class="float-right list-unstyled">
-			<li>###.###  <img src="../img/hextacular.svg" alt="" width="17"/></li>
-		</ul>
-			<div class="">
-    	<div style="display: flex; flex-grow: 1" class="px-3"><input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{entry_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{entry_id}}','slider{{entry_id}}');"></div>
-  </div>
-			</div>
-</form>
-			</div>
-		<div class="d-inline-block p-2">
-        <a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{entry_id}}"><i class="fas fa-heart mr-1"></i></a>{{data_detail.data.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{data_detail.data.children}}</div>
-      
-      <div class="float-right p-2">{{data_detail.data.total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
-	 
-
+  		<div class="d-flex align-items-center text-white-50">
+          <div>
+			<button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{post_id}}" dmx-bind:onclick="vote('{{comment.author}}','{{data_detail.data.comment.permlink}}','slider{{post_id}}')" style="width:70px">100%</button>
+			<button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><span class="close text-white">×</span></button>
+		  </div>
+		  <div class="flex-fill mx-2">
+            <p class="my-1">
+			<input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{post_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{post_id}}','slider{{post_id}}');">
+			</p>
+		  </div>
+			<p class="my-0"><span class="mr-1"  id="commentVal">0</span><img src="/img/hextacular.svg" alt="" width="17"/></p>
+ 		 </div>
+	  </form>
+	 </div>
+		<div class="d-flex align-items-center my-2">
+		<div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><i class="fas fa-heart mr-1"></i></a>{{data_detail.data.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{data_detail.data.children}}</div>
+     	<div class="ml-auto"> {{data_detail.data.total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
+		</div>
+	   </div>
 </dmx-data-detail>
 		   </div>
 		   </div>
