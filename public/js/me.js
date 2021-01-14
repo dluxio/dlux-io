@@ -16,6 +16,7 @@ function me(usr) {
         User.opts.type = 'Buy'
         dexmodal("hive", "Buy");
     })
+    setVotePower(usr.dlux.poweredUp, usr.dlux.up, usr.dlux.down, usr.hive.voting_power, usr, hstats.head_block_number)
     document.getElementById('buyDluxTitle').innerText = 'Buy With:'
     document.getElementById('selllink').addEventListener("click", function() {
         User.opts.type = 'Sell'
@@ -37,8 +38,7 @@ function me(usr) {
         document.getElementById('powerdluxsubmitbutton').addEventListener("click", function() {
             dluxgovup('powerupdluxamount')
         })
-        $("#powerupmemodiv").addClass("d-none");
-        document.getElementById('powerDluxTitle').innerText = `Freeze DLUX for Governance Ops`
+        document.getElementById('powerDluxTitle').innerText = `Lock DLUX for Governance Ops`
         document.getElementById('sendformunits').innerText = 'DLUX'
         document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
         document.getElementById('powerupdluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
@@ -48,7 +48,7 @@ function me(usr) {
             powerUp('powerupdluxamount', 'powerupdluxto', 'powerupdluxmemo')
         })
         $("#powerupdluxmemo").addClass("d-none");
-        document.getElementById('powerDluxTitle').innerText = `Freeze DLUX for Governance Ops`
+        document.getElementById('powerDluxTitle').innerText = `Power Up DLUX`
         document.getElementById('sendformunits').innerText = 'DLUX'
         document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
         document.getElementById('powerupdluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
@@ -344,4 +344,78 @@ function updateNode() {
             .then(r => { resolve(r) })
             .catch(e => { reject(e) })
     });
+}
+
+function setVotePower(pow, upobj, downobj, vp, block) {
+    let up, dp, hp
+    if (!Object.keys(up).length) {
+        up = {
+            max: pow * 50,
+            last: 0,
+            power: pow * 50
+        }
+        down = {
+            max: pow * 50,
+            last: 0,
+            power: pow * 50
+        }
+    }
+    const newPower = downPowerMagic(up, down, block)
+    up = newPower.up.power
+    dp = newPower.down.power
+    hp = parseInt(vp / 100)
+    $('upvotePower').style = `width: ${up}%`
+    $('downvotePower').style = `width: ${dp}%`
+    $('resourceCredit').style = `width: ${hp}%`
+    $('upvotePower')['aria-valuenow'] = `${up}`
+    $('downvotePower')['aria-valuenow'] = `${dp}`
+    $('resourceCredit')['aria-valuenow'] = `${hp}`
+    $('upvotePowerSpan').innerText = `${up}%`
+    $('downvotePowerSpan').innerText = `${dp}%`
+    $('resourceCreditSpan').innerText = `${hp}%`
+    return newPower.vote
+}
+
+function downPowerMagic(up, down, block_num) {
+    const downHealTime = block_num - down.last //144000 blocks in 5 days
+    const downHeal = parseInt(down.max * downHealTime / 144000)
+    weight = 10000
+    var newDownPower = down.power + downHeal
+    if (newDownPower > down.max) {
+        newDownPower = down.max
+    }
+    const healTime = block_num - up.last //144000 blocks in 5 days
+    const heal = parseInt(up.max * healTime / 144000)
+    var newPower = up.power + heal
+    if (newPower > up.max) {
+        newPower = up.max
+    }
+    var bigSpender = false
+    var vote
+    var downvote = parseInt(newDownPower * weight / 500000) //5 from max AND 10000 from full weight
+    newDownPower -= downvote
+    if (newDownPower < down.max * 0.9) { //further down power vote effect up and down power meters
+        bigSpender = true
+    }
+    if (bigSpender) {
+        vote = parseInt(newPower * weight / 500000) //50 from max AND 10000 from full weight
+        if (vote > downVote) {
+            newPower -= vote
+            newDownPower -= vote
+        } else {
+            newPower -= downVote
+            newDownPower -= downVote
+        }
+    }
+    const newUp = {
+        max: up.max,
+        last: json.block_num,
+        power: newPower
+    }
+    const newDown = {
+        max: down.max,
+        last: json.block_num,
+        power: newDownPower
+    }
+    return { up: newUp, down: newDown, vote: vote }
 }
