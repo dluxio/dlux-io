@@ -49,7 +49,7 @@
 		  <div class="row">
         <div class="col-2"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{dluxGetAccount.data.result[0].name}}" alt="" class="rounded-circle bg-light img-fluid mr-4 cover profile-img"></div>
 			  <div class="col-10"><p class="display-4 mb-0">{{dluxGetAccount.data.result[0].name}}</p>
-        <small class="lead p-2">{{dluxGetAccount.data.result[0].json_metadata.parseJSON().profile.about}}</small>
+        <small class="lead p-2">{{dluxGetAccount.data.result[0].posting_json_metadata.parseJSON().profile.about}}</small>
 			  </div></div></div>
       <div class="col-md-4 text-center m-auto"> 
           <a target="_blank" class="btn btn-outline-primary btn-lg m-1" role="button" dmx-bind:href="/vr/@{{dluxGetAccount.data.result[0].name}}">VR Page<i class="fas fa-vr-cardboard mx-2 fa-lg"></i></a>
@@ -207,14 +207,14 @@
 				  		<p class="text-white-50">The utility token for content distribution and smart contracts, also called a smart media token (SMT)</p>
 				  	</div>
 				  	<div id="dluxactions" class="float-right text-right">
-						<h5>0 DLUX</h5>
+						<h5 id="dluxbal">0 DLUX</h5>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
   							<button type="button" class="btn btn-info mr-half" data-toggle="modal" id="senddluxmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
   							<div class="btn-group" role="group">
     						<button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
     						<div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1">
       							<a class="dropdown-item" href="#" id="powerupdluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a>
-								<a class="dropdown-item" href="#" id="freezedluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-snowflake fa-fw mr-2"></i>Freeze</a>
+								<a class="dropdown-item" href="#" id="freezedluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-lock fa-fw mr-2"></i>Lock GOV</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#" id="buylink" data-toggle="modal" data-target="#buyDluxModal"><i class="fas fa-cart-arrow-down fa-fw mr-2"></i>Buy DLUX</a>
 								<a class="dropdown-item" href="#" id="selllink" data-toggle="modal" data-target="#buyDluxModal"><i class="fas fa-coins fa-fw mr-2"></i>Sell DLUX</a>
@@ -233,18 +233,18 @@
 						<li>Increased voting power on content</li>
 						<li>Increased rewards from content</li>
 						<li>Increased resource credits</li>
-						<li>Instant Power-Up Period | 4 Week Power-Down Period</li>
+						<li>Instant Power Up Period | 4 Week Power Down Period</li>
 						</ul>
 				  	</div>
 				  	<div id="dluxpactions" class="float-right text-right">
-						<h5>0 DLUX</h5>
+						<h5 id="pwrbal">0 DLUX</h5>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
 							<button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-user-friends fa-fw mr-2"></i>Delegate</button>
   							<div class="btn-group" role="group">
     						<button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ></button>
     						<div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1">
       							<a class="dropdown-item" href="#" data-toggle="modal" id="dluxpowerdownModalButton" data-target="#powerdownDluxModal"><i class="fas fa-angle-double-down fa-fw mr-2"></i>Power Down</a>
-								<a class="dropdown-item" href="#" data-toggle="modal" id="powertogovbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to Governance</a>
+								<a class="dropdown-item" href="#" data-toggle="modal" id="powertogovbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to GOV</a>
     						</div>
   							</div>
 						</div>
@@ -254,24 +254,24 @@
 				  <div class="clearfix">
 				  	<div class="float-left">
 			  		  <h4>DLUX Governance</h4>
-				  		<p class="text-white-50">Frozen tokens used to determine concensus and earns rewards for running a node</p>
+				  		<p class="text-white-50">Locked tokens used to determine concensus and earn rewards for running a node</p>
 						<p class="text-white-50">Benefits of DLUX Governance:</p>
 						<ul class="text-white-50">
 						<li>Provides liquid funds to DAO multi-sig wallet</li>
 						<li>Ensures collateral for DEX escrow transactions</li>
 						<li>Enables voting on proposed community measures</li>
-						<li>1 Week Freezing Period | 4 Week Thawing Period</li>
+						<li>1 Week Locking Period | 4 Week Unlocking Period</li>
 						</ul>
 				  	</div>
 				  	<div id="dluxgactions" class="float-right text-right">
-						<h5>0 DLUX</h5>
+						<h5 id="govbal">0 DLUX</h5>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
 							<button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
   							<div class="btn-group" role="group">
     						<button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
     						<div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1">
-      							<a class="dropdown-item" href="#" data-toggle="modal" id="dluxpowerdownModalButton" data-target="#powerdownDluxModal"><i class="fas fa-fire fa-fw mr-2"></i>Thaw</a>
-								<a class="dropdown-item" href="#" data-toggle="modal" id="govtopowerbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to Power</a>
+      							<a class="dropdown-item" href="#" data-toggle="modal" id="dluxpowerdownModalButton" data-target="#powerdownDluxModal"><i class="fas fa-lock-open fa-fw mr-2"></i>Unlock GOV</a>
+								<a class="dropdown-item" href="#" data-toggle="modal" id="govtopowerbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to PWR</a>
     						</div>
   							</div>
 						</div>
@@ -284,7 +284,7 @@
 				  		<p class="text-white-50">The approximate US Dollar value for all DLUX in your account</p>
 				  	</div>
 				  	<div id="dluxval" class="float-right text-right">
-						<h5>$0</h5>
+						<h5 id="totaldbal">$0</h5>
 				  	</div>
 				  </div>
 			   </div>
@@ -304,7 +304,7 @@
 				  		<p class="text-white-50">The main token of the chain, often rewarded for content.</p>
 				  	</div>
 				  	<div id="hiveactions" class="float-right text-right">
-						<h5>0 HIVE</h5>
+						<h5 id="hivebal">0 HIVE</h5>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
   							<button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhivemodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
   							<div class="btn-group" role="group">
@@ -332,7 +332,7 @@
 						</ul>
 				  	</div>
 				  	<div id="hivepactions" class="float-right text-right">
-						<h5>0 HP</h5>
+						<h5 id="hpbal">0 HP</h5>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
   							<button type="button" class="btn btn-info mr-half" style="pointer-events: none;" disabled><i class="fas fa-user-friends mr-2"></i>Delegate</button>
   							<div class="btn-group" role="group">
@@ -353,7 +353,7 @@
 				  		<p class="text-white-50">Also a reward for content, this token is pegged to the US Dollar</p>
 				  	</div>
 				  	<div id="hbdactions" class="float-right text-right">
-						<h5>0 HBD</h5>
+						<h5 id="hbdbal">0 HBD</h5>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
   							<button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhbdmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
   							<div class="btn-group" role="group">
@@ -375,7 +375,7 @@
 				  		<p class="text-white-50 mb-0">A 3 day waiting period is imposed on withdrawl</p>
 				  	</div>
 				  	<div id="savingsactions" class="float-right text-right">
-						<h5>0 HBD</h5>
+						<h5 id="savbal">0 HBD</h5>
 				  	</div>
 				  </div>
 				  <hr class="my-4 bg-light">
@@ -385,7 +385,7 @@
 				  		<p class="text-white-50">The approximate US Dollar value for all HIVE in your account</p>
 				  	</div>
 				  	<div id="hiveval" class="float-right text-right">
-						<h5>$0</h5>
+						<h5 id="totalhbal">$0</h5>
 				  	</div>
 				  </div>
 			   </div>
