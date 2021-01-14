@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
-    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.7.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://unpkg.com/aframe-text-geometry-component@0.5.0/dist/aframe-text-geometry-component.min.js"></script>
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
@@ -44,7 +44,7 @@
     <a-scene antialias="true">
         <!-- Asset Manager-->
         <a-assets><img id="nav-trending-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2FFire_Emoji.png" crossorigin="anonymous" /><img id="nav-new-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Forange-new-512.gif" crossorigin="anonymous" /><img id="nav-random-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Fwhitedice.png" crossorigin="anonymous" /><img id="nav-browse-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2F29506-200.png" crossorigin="anonymous" /><img id="nav-create-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Fdocument.png" crossorigin="anonymous" /><img id="nav-hive-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Fhive-coin.png" crossorigin="anonymous" /><img id="nav-profile-icon" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Fmarkegiles.jpg" crossorigin="anonymous" /><img id="greeter-pic-photo" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Frobotolux.png" crossorigin="anonymous" /><img id="voteButtonPic" src="https://cdn.glitch.com/5ba0e9a1-e1be-470c-be6c-b6bd1b8e349e%2Fupvote.png?1528448497979" crossorigin="anonymous" />
-            <a-assetsitem id="obfont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-assetsitem><template id="hand-template"><a-entity><a-box scale="0.1 0.1 0.1"></a-box></a-entity></template></a-assets>
+            <a-assets-item id="obfont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-assets-item><template id="hand-template"><a-entity><a-box scale="0.1 0.1 0.1"></a-box></a-entity></template></a-assets>
         <!-- DLUX-->
         <a-entity id="dlux-container" look-at="[camera]" position="0 1.6 -14">
             <!-- DLUX Navigation-->
