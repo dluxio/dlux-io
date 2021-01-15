@@ -485,7 +485,7 @@
 
      static handshake(id) {
          return new Promise((resolve, reject) => {
-            subid = id 
+            let subid = id 
             if(subid.split('.')[1]){
                  subid.replace('.','-dot-')
              }
