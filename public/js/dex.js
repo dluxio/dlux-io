@@ -474,6 +474,7 @@ function dexview(pair, type) {
     for (a in User.dex.queue) {
         if (User.dex.queue[a].g) bals.push(User.dex.queue[a].g)
     }
+    console.log(bals)
     bals.sort(function(a, b) {
         return a - b;
     });
