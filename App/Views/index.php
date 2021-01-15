@@ -81,4 +81,9 @@
    $path .= "/mod/footer.php";
    include_once($path);
 ?>
+<script>
+function pageSpecific(info){
+    me(info)
+}
+</script>
 </body></html>
