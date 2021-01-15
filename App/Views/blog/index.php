@@ -51,7 +51,7 @@
       <form id="voteForm">
         <div class="d-flex align-items-center text-white-50">
           <div>
-            <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{dluxGetContent.data.result.id}}" dmx-bind:onclick="vote('{{dluxGetContent.data.result.author}}','{{dluxGetContent.data.result.permlink}}','slider{{dluxGetContent.data.result.id}}')" style="width:70px">100%</button>
+            <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{dluxGetContent.data.result.id}}" dmx-bind:onclick="vote('{{dluxGetContent.data.result.author}}','{{dluxGetContent.data.result.permlink}}','slider{{dluxGetContent.data.result.id}}')">100%</button>
             <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{dluxGetContent.data.result.id}}'><span class="close text-white">×</span></button>
           </div>
           <div class="flex-fill mx-2">
@@ -97,7 +97,7 @@
       <div class="collapse" dmx-bind:id="vote{{id}}">
         <div class="d-flex align-items-center">
           <div class="text-white-50">
-            <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{dluxGetContent.data.result.id}}" dmx-bind:onclick="vote('{{dluxGetContent.data.result.author}}','{{dluxGetContent.data.result.permlink}}','slider{{dluxGetContent.data.result.id}}')" style="width:70px">100%</button>
+            <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{dluxGetContent.data.result.id}}" dmx-bind:onclick="vote('{{dluxGetContent.data.result.author}}','{{dluxGetContent.data.result.permlink}}','slider{{dluxGetContent.data.result.id}}')">100%</button>
             <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target='{{&quot;#&quot;}}vote{{id}}'><span class="close text-white">×</span></button>
           </div>
           <div class="flex-fill mx-2">
