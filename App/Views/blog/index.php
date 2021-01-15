@@ -56,7 +56,7 @@
           </div>
           <div class="flex-fill mx-2">
             <p class="my-1">
-              <input type="range" class="form-control-range" value="100" dmx-bind:id="hiveSlider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/>
+              <input type="range" class="form-control-range" step="0.01" value="100" dmx-bind:id="hiveSlider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/>
             </p>
           </div>
           <div class="text-right">
@@ -102,7 +102,7 @@
           </div>
           <div class="flex-fill mx-2">
             <p class="my-1">
-              <input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/>
+              <input type="range" class="form-control-range" step="0.01" value="100" dmx-bind:id="slider{{dluxGetContent.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxGetContent.data.result.id}}','slider{{dluxGetContent.data.result.id}}');"/>
             </p>
           </div>
           <div class="text-right">

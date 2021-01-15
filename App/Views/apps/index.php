@@ -63,7 +63,7 @@
 					  </div>
 				      <div class="flex-fill mx-2">
 			            <p class="my-1">
-							<input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{post_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{post_id}}','slider{{post_id}}');">
+							<input type="range" class="form-control-range" step="0.01" value="100" dmx-bind:id="slider{{post_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{post_id}}','slider{{post_id}}');">
 						  </p>
 					</div>
 						<div>
@@ -109,7 +109,7 @@
 		  </div>
 		  <div class="flex-fill mx-2">
             <p class="my-1">
-			<input type="range" class="form-control-range" value="100" dmx-bind:id="slider{{post_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{post_id}}','slider{{post_id}}');">
+			<input type="range" class="form-control-range" step="0.01" value="100" dmx-bind:id="slider{{post_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{post_id}}','slider{{post_id}}');">
 			</p>
 		  </div>
 			<p class="my-0"><span class="mr-1"  id="commentVal">0</span><img src="/img/hextacular.svg" alt="" width="17"/></p>
