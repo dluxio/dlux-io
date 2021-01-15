@@ -118,7 +118,7 @@
      return new Promise((resolve, reject) => {
          var weight = parseInt(document.getElementById(weightid).value) * 100
          Dluxsession.hive_sign([user, [
-                 ['vote', { voter, author, permlink, weight }]
+                 ['vote', { voter:user, author, permlink, weight }]
              ], 'posting'])
              .then(r => {
                  resolve(r)
