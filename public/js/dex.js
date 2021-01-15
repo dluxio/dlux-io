@@ -226,7 +226,7 @@ function placeHiveBuy() {
 function placeHbdBuy() {
     var dlux = parseInt(parseFloat(document.getElementById('menudlux').value) * 1000),
         amount = parseInt(parseFloat(document.getElementById('menupair').value) * 1000),
-        hiveAmount = '0.000 HIVE    ',
+        hiveAmount = '0.000 HIVE',
         hbdAmount = (amount / 1000).toFixed(3) + ' HBD'
     fetch('https://token.dlux.io/dex')
         .then(function(response) {
@@ -255,7 +255,7 @@ function placeHbdBuy() {
                     hive_amount: hiveAmount,
                     escrow_id: eid,
                     agent: User.opts.agent,
-                    fee: "0.000 HIVE",
+                    fee: "0.000 HBD",
                     ratification_deadline: escrowTimer.ratifyString,
                     escrow_expiration: escrowTimer.expiryString,
                     json_meta: JSON.stringify({
@@ -334,7 +334,7 @@ function getItID(txid) {
                     hive_amount: hiveAmount,
                     escrow_id: eid,
                     agent: User.opts.agent,
-                    fee: "0.000 HIVE",
+                    fee: "0.000 HBD",
                     ratification_deadline: escrowTimer.ratifyString,
                     escrow_expiration: escrowTimer.expiryString,
                     json_meta: JSON.stringify({
