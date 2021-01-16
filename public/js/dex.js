@@ -78,39 +78,39 @@ function dexsend(type, pair) {
     const tick = parseFloat(User.stats[`${User.opts.pair.replace('h', 'H')}VWMA`].rate)
     console.log('Current Average:', tick)
     if (type == 'Buy' && pair == 'hbd') {
-        console.log(dlux / pairamount))
-    if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
-        if (User.opts.toBal > dlux * 4000 && User.opts.agentBal > dlux * 4000) {
-            placeHbdBuy()
+        console.log(dlux / pairamount)
+        if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
+            if (User.opts.toBal > dlux * 4000 && User.opts.agentBal > dlux * 4000) {
+                placeHbdBuy()
+            } else {
+                alert(`Select agents with higher liquid`)
+            }
         } else {
-            alert(`Select agents with higher liquid`)
+            alert('Requested trade is too far from current price!')
         }
-    } else {
-        alert('Requested trade is too far from current price!')
-    }
-} else if (type == 'Buy' && pair == 'hive') {
-    if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
-        if (User.opts.toBal > dlux * 4000 && User.opts.agentBal > dlux * 4000) {
-            placeHiveBuy()
+    } else if (type == 'Buy' && pair == 'hive') {
+        if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
+            if (User.opts.toBal > dlux * 4000 && User.opts.agentBal > dlux * 4000) {
+                placeHiveBuy()
+            } else {
+                alert(`Select agents with higher liquid`)
+            }
         } else {
-            alert(`Select agents with higher liquid`)
+            alert('Requested trade is too far from current price!')
         }
-    } else {
-        alert('Requested trade is too far from current price!')
+    } else if (type == 'Sell' && pair == 'hive') {
+        if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
+            placeHiveAsk()
+        } else {
+            alert('Requested trade is too far from current price!')
+        }
+    } else if (type == 'Sell' && pair == 'hbd') {
+        if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
+            placeHbdAsk()
+        } else {
+            alert('Requested trade is too far from current price!')
+        }
     }
-} else if (type == 'Sell' && pair == 'hive') {
-    if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
-        placeHiveAsk()
-    } else {
-        alert('Requested trade is too far from current price!')
-    }
-} else if (type == 'Sell' && pair == 'hbd') {
-    if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
-        placeHbdAsk()
-    } else {
-        alert('Requested trade is too far from current price!')
-    }
-}
 
 }
 
