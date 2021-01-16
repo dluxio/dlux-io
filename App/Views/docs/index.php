@@ -915,7 +915,9 @@ AFRAME.registerComponent('nav-pointer', {
 		<code>cd dlux_open_token</code>
 		<li>Set configuration variables</li>
 		<code>nano .env</code>
+		<br>
 		<code>username=hiveaccount</code>
+		<br>
 		<code>active=hiveactivekey</code>
 		<li>Quit editor and save changes</li>
 		<code>y to save</code>
@@ -935,10 +937,10 @@ AFRAME.registerComponent('nav-pointer', {
 		<li>Fork this repository</li>
 		<li>Connect your fork to the cloud server</li>
 		<li>Set configuration variables</li>
+		<code>username=hiveaccount</code>
+		<br>
+		<code>active=hiveactivekey</code>
 	</ul>
-	<code>username=hiveaccount</code>
-	<br>
-	<code>active=hiveactivekey</code>
 </article>
 <article class="docs-article" id="api">
     <h1 class="bd-title">DLUX API</h1>
