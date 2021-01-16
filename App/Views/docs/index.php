@@ -900,6 +900,47 @@ AFRAME.registerComponent('nav-pointer', {
         <li>Create and sign Smart Contracts, witness transactions, hold and release escrow</li>
     </ul>
     <p>dlux nodes power the decentralized exchange, dlux Token, and dlux NFT smart contract framework.</p>
+	<h2>Running A Node</h2>
+	<p><i>This software has been tested on Node.js version 10 through 15</i></p>
+	<h3>Prerequisites</h3>
+	<ul>
+	<li>Node.js</li>
+	<li>git</li>
+	</ul>
+	<h3>Server Installation</h3>
+	<ul>
+		<li>Clone this repository</li>
+		<code>git clone https://github.com/dluxio/dlux_open_token.git</code>
+		<li>Navigate to the root directory of token</li>
+		<code>cd dlux_open_token</code>
+		<li>Set configuration variables</li>
+		<code>nano .env</code>
+		<br>
+		<code>username=hiveaccount</code>
+		<br>
+		<code>active=hiveactivekey</code>
+		<li>Quit editor and save changes</li>
+		<code>y to save</code>
+		<li>Install</li>
+		<code>npm install</code>
+		<li>Start</li>
+		<code>npm start</code>
+	</ul>
+	<h3>Recommendations</h3>
+	<ul>
+		<li>Script a way to automatically git pull to stay up to date with daily changes.</li>
+		<li>Setup a system service to restart on quits to keep your node online.</li>
+	</ul>
+	<h3>Cloud Installation</h3>
+	<ul>
+		<li>Choose a cloud provider</li>
+		<li>Fork this repository</li>
+		<li>Connect your fork to the cloud server</li>
+		<li>Set configuration variables</li>
+		<code>username=hiveaccount</code>
+		<br>
+		<code>active=hiveactivekey</code>
+	</ul>
 </article>
 <article class="docs-article" id="api">
     <h1 class="bd-title">DLUX API</h1>
