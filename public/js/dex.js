@@ -78,8 +78,8 @@ function dexsend(type, pair) {
     const tick = parseFloat(User.stats[`${User.opts.pair.replace('h', 'H')}VWMA`].rate)
     console.log('Current Average:', tick)
     if (type == 'Buy' && pair == 'hbd') {
-        console.log(dlux / pairamount)
-        if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
+        console.log(pairamount / dlux)
+        if (pairamount / dlux > tick * 0.8 && pairamount / dlux < tick * 1.2) {
             if (User.opts.toBal > dlux * 4000 && User.opts.agentBal > dlux * 4000) {
                 placeHbdBuy()
             } else {
@@ -89,7 +89,7 @@ function dexsend(type, pair) {
             alert('Requested trade is too far from current price!')
         }
     } else if (type == 'Buy' && pair == 'hive') {
-        if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
+        if (pairamount / dlux > tick * 0.8 && pairamount / dlux < tick * 1.2) {
             if (User.opts.toBal > dlux * 4000 && User.opts.agentBal > dlux * 4000) {
                 placeHiveBuy()
             } else {
@@ -99,13 +99,13 @@ function dexsend(type, pair) {
             alert('Requested trade is too far from current price!')
         }
     } else if (type == 'Sell' && pair == 'hive') {
-        if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
+        if (pairamount / dlux > tick * 0.8 && pairamount / dlux < tick * 1.2) {
             placeHiveAsk()
         } else {
             alert('Requested trade is too far from current price!')
         }
     } else if (type == 'Sell' && pair == 'hbd') {
-        if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
+        if (pairamount / dlux > tick * 0.8 && pairamount / dlux < tick * 1.2) {
             placeHbdAsk()
         } else {
             alert('Requested trade is too far from current price!')
@@ -573,7 +573,7 @@ function popHist() {
         m = '',
         tradeHist = document.getElementById('tradeHist')
     tradeHist.innerHTML = `<tr>
-      <th scope="col">DATE</th>
+      <th scope="col">WHEN</th>
       <th scope="col">PRICE</th>
       <th scope="col">DLUX</th>
       <th scope="col">${User.opts.pair.toUpperCase()}</th>
@@ -581,7 +581,7 @@ function popHist() {
     for (i in User.dex.markets[User.opts.pair].his) {
         if (User.dex.markets[User.opts.pair].his[i].block > (User.hstats.head_block_number - 28800)) {
             var node = document.createElement('tr')
-            node.innerHTML = `<td>${blocktimer(User.dex.markets[User.opts.pair].his[i].block)} Ago</td>
+            node.innerHTML = `<td>${blocktimer(User.dex.markets[User.opts.pair].his[i].block)} ago</td>
       <td>${User.dex.markets[User.opts.pair].his[i].rate}</td>
       <td>${parseFloat(User.dex.markets[User.opts.pair].his[i].amount/1000)}</td>
       <td>${parseFloat(parseFloat(User.dex.markets[User.opts.pair].his[i].rate)*User.dex.markets[User.opts.pair].his[i].amount/1000).toFixed(1)}</td>`
