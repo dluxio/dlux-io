@@ -75,7 +75,7 @@ function reqsign(op, req) { //requests keychain to sign and broadcast
 function dexsend(type, pair) {
     const dlux = parseFloat(document.getElementById('menudlux').value)
     const pairamount = parseFloat(document.getElementById('menupair').value)
-    const tick = parseFloat(User.dex.markets[User.opts.pair].tick)
+    const tick = parseFloat(User.stats[`${User.opts.pair.replace('h', 'H')}VWMA`].rate)
     if (type == 'Buy' && pair == 'hbd') {
         if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
             if (User.opts.toBal > dlux * 4000 && User.opts.agentBal > dlux * 4000) {
@@ -453,7 +453,7 @@ function dexview(pair, type) {
     document.getElementById('paycoin').innerText = User.opts.pair.toUpperCase()
     document.getElementById('menupairlab').innerHTML = `For: (<a href="#" onClick="insertBal(parseFloat(User[User.opts.pair].balance),'menupair')">Balance: ${User[User.opts.pair].balance}</a>):`
     document.getElementById('menupair').max = parseFloat(User[User.opts.pair].balance)
-    document.getElementById('menupricelab').innerHTML = `Calculated Price: (<a href="#" onClick="insertCalc('${parseFloat(User.dex.markets[User.opts.pair].tick)}', 'menuprice')">MP: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
+    document.getElementById('menupricelab').innerHTML = `Calculated Price: (<a href="#" onClick="insertCalc('${parseFloat(User.stats[`${User.opts.pair.replace('h', 'H')}VWMA`].rate)}', 'menuprice')">MP: ${parseFloat(User.stats[`${User.opts.pair.replace('h', 'H')}VWMA`].rate).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
     let eAgentNode = document.getElementById('escrowAgentUl'),
         cAgentNode = document.getElementById('custodialAgentUl')
     lis = eAgentNode.getElementsByTagName('li')
@@ -554,13 +554,13 @@ function blocktimer(num) {
         unit = 'mins'
         ago = parseFloat(ago / 60).toFixed(1)
     }
-    if (ago > 60) {
+    if (ago > 3600) {
         unit = 'hours'
-        ago = parseFloat(parseFloat(ago) / 60).toFixed(1)
+        ago = parseFloat(parseFloat(ago) / 3600).toFixed(1)
     }
-    if (ago > 24) {
+    if (ago > 86400) {
         unit = 'days'
-        ago = parseFloat(parseFloat(ago) / 24).toFixed(1)
+        ago = parseFloat(parseFloat(ago) / 86400).toFixed(1)
     }
     return `${ago} ${unit}`
 }
