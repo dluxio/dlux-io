@@ -76,6 +76,7 @@ function dexsend(type, pair) {
     const dlux = parseFloat(document.getElementById('menudlux').value)
     const pairamount = parseFloat(document.getElementById('menupair').value)
     const tick = parseFloat(User.stats[`${User.opts.pair.replace('h', 'H')}VWMA`].rate)
+    console.log('Current Average:', tick)
     if (type == 'Buy' && pair == 'hbd') {
         if (dlux / pairamount > tick * 0.8 && dlux / pairamount < tick * 1.2) {
             if (User.opts.toBal > dlux * 4000 && User.opts.agentBal > dlux * 4000) {
@@ -554,11 +555,11 @@ function blocktimer(num) {
         unit = 'mins'
         ago = parseFloat(ago / 60).toFixed(1)
     }
-    if (ago > 3600) {
+    if (ago > 60) {
         unit = 'hours'
-        ago = parseFloat(parseFloat(ago) / 3600).toFixed(1)
+        ago = parseFloat(parseFloat(ago) / 60).toFixed(1)
     }
-    if (ago > 86400) {
+    if (ago > 24 && unit == 'hours') {
         unit = 'days'
         ago = parseFloat(parseFloat(ago) / 86400).toFixed(1)
     }
@@ -583,7 +584,7 @@ function popHist() {
       <td>${User.dex.markets[User.opts.pair].his[i].rate}</td>
       <td>${parseFloat(User.dex.markets[User.opts.pair].his[i].amount/1000)}</td>
       <td>${parseFloat(parseFloat(User.dex.markets[User.opts.pair].his[i].rate)*User.dex.markets[User.opts.pair].his[i].amount/1000).toFixed(1)}</td>`
-            tradeHist.appendChild(node)
+            tradeHist.insertBefore(node, tradeHist.childNodes[0])
             vol += parseInt(User.dex.markets[User.opts.pair].his[i].amount)
         }
     }
