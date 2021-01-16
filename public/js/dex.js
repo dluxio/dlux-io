@@ -677,7 +677,6 @@ function dexmodal(pair, type) {
     for (a in User.dex.queue) {
         if (a == user) {
             delete User.dex.queue[a]
-            break
         }
     }
     let bals = []
@@ -691,7 +690,8 @@ function dexmodal(pair, type) {
         for (a in User.dex.queue) {
             if (User.dex.queue[a].g == bals[bals.length - 1]) {
                 User.opts.to = a
-                bals.pop()
+                console.log(bals.pop())
+                break;
             }
         }
     }
@@ -699,6 +699,7 @@ function dexmodal(pair, type) {
         for (a in User.dex.queue) {
             if (User.dex.queue[a].g == bals[bals.length - 1]) {
                 User.opts.agent = a
+                break;
             }
         }
     }
