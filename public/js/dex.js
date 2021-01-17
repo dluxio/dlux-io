@@ -625,7 +625,8 @@ function popOrderTable(orderstable, type) {
     buyOrdersTable.innerHTML = `<tr>
       <th scope="col">DLUX</th>
       <th scope="col" id="pair1">${User.opts.pair.toUpperCase()}</th>
-      <th scope="col">Price</th>
+      <th scope="col">PRICE</th>
+      <th scope="col">FEE</th>
       <th scope="col">&nbsp;</th>
     </tr>`
     for (i in User.dex.markets[User.opts.pair][type]) {
@@ -635,9 +636,10 @@ function popOrderTable(orderstable, type) {
             whos = `<button class ="btn btn-outline-warning btn-sm" type="submit" onclick="cancel('${i.split(':')[1]}')"> Cancel </button>`
         }
         txnode.innerHTML = `
-    <td>${parseFloat(User.dex.markets[User.opts.pair][type][i].amount/1000).toFixed(3)}</td> 
+    <td>${parseFloat((parseInt(User.dex.markets[User.opts.pair][type][i].amount * 0.9975)-3)/1000).toFixed(3)}</td> 
     <td>${parseFloat(User.dex.markets[User.opts.pair][type][i][User.opts.pair]/1000).toFixed(3)}</td> 
     <td>${parseFloat(User.dex.markets[User.opts.pair][type][i].rate).toFixed(6)}</td> 
+    <td>${parseFloat((parseInt(User.dex.markets[User.opts.pair][type][i].amount * 0.0025)+3)/1000).toFixed(3)}
     <td> ${whos}</td >`
         if (type == 'sellOrders') {
             buyOrdersTable.appendChild(txnode)

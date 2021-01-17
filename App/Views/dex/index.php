@@ -185,7 +185,7 @@
 		  <div class="form-group">
 	   <label id="menudluxlab" for="buydluxquantity">This:</label>
 		<div class="input-group">
-			<input class="form-control" id="menudlux" type="number" step="0.001" min="0.001" placeholder="1.000">
+			<input class="form-control" id="menudlux" type="number" step="0.001" min="0.004" placeholder="1.000">
 			<div class="input-group-append">
       		  <div class="input-group-text">DLUX</div>
     		</div>
