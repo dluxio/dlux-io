@@ -748,53 +748,51 @@ AFRAME.registerComponent('nav-pointer', {
 </article>
 <article class="docs-article" id="second-layer">
     <h1 class="bd-title">Second Layer</h1>
-    <p>The dlux side chain is comprised of several nodes running the same token software that determine their state from only signed transactions on the hive blockchain. Together these nodes communicate through hive and perform complex tasks. Forming a distributed trusted third party for open ended transactions, multiparty contracts, and multi step processes. These node will arrive at consensus and maintain sharding information for each node.</p>
+    <p>The dlux side chain is comprised of several nodes running the same token software that determine their state from only signed transactions on the hive blockchain. Together these nodes communicate through hive and perform complex tasks. Forming a distributed trusted third party for open ended transactions, multiparty contracts, oracle information, and multi step processes. These node will arrive at consensus and maintain current state for each node.</p>
     <h2>DLUX Node Framework</h2>
     <ul>
-        <li>State Nodes maintain state in RAM</li>
+        <li>State Nodes maintain state in a LevelDB</li>
+        <li>LevelDB has custom handlers to ensure order of transactions.</li>
         <li>Every 100 blocks, a state file is posted to IPFS</li>
-        <li>Each node then queries the API of each node to see what file was posted and broadcasts agreements so a deterministic state can be calculated using the blockchain as a gossip protocol.</li>
+        <li>Each node then posts the hash to Hive so a deterministic state can be calculated using the blockchain as a gossip protocol.</li>
         off-chain services now have deterministic consensus that can be rewarded via PoB.</ul>
     <h3>Decentralized Mesh Network</h3>
-    <p>Each node queries every other node to make sure there is consensus to verify the non-reversible block every 100 blocks that issues block rewards, which are determined by the bid rate (cost of running a node) determined by the users running nodes, and the users querying</p>
-    <p>An average of the top 20 nodes in each category sets the bid rate (price per unity).</p>
-    <p>The hash is deterministic and already agreed on, the outcome is easy to know, because the if statement is known.</p>
+    <p>Each node has active permissions for a Hive account. They can perform a range of actions from signing custom json for oracle and consensus reasons, facilitating escrow and transfers, account creation, and more.</p>
+    <p>Up to 25 nodes can control what consensus is. Nodes are elected to this group based on how much DLUXG they have which is used both to collateralized DEX transactions as well as a multi-signature wallet between them.</p>
+    <p>New nodes are elected if their addition to the group will improve the collateral conditions of the group.</p>
+    <p>Since consensus is determined by IPFS hash, replays are near instant. Ensuring the network remains current with the main layer, Hive.</p>
     <p>Configuration: env vars:</p>
     <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
     posting posting key
     active active key Can perform escrow transactions for rewards
     ACCOUNT hive account ie dlux-io
     DOMAIN Public / ie https://token.dlux.io
-    BIDRATE If elected a runner, used to determine node payouts
-    STARTING Hash from a recent block. Find one at https://token.dlux.io
     </code></pre></figure>
     <p>API: Read:</p>
     <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
-    /@username -> DLUX balance and Powered Balance
+    /@username -> DLUX balances
     /stats -> Current Info
     /state -> State dump, for testing
     /runners -> Who is trusted to process blocks
-    /markets -> DEX Info, in progress(80%)
-    /dex -> DEX Info, in progress(80%)
+    /markets -> DEX Info
+    /dex -> DEX Info
     </code></pre></figure>
-    <p>Write: CURRENTLY dlux_test_ prefix!!! Custom JSON:</p>
+    <p>Write: CURRENTLY dlux_ is the token prefix Custom JSON:</p>
     <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
     send | to (account to not checked) & amount (integer, no float)
     power_up | amount (dlux to power up for voting)
     power_down | amount to schedule for power down 1
-    vote_content | author permlink weight(1-10000)
+    gov_up | locked for POS
+    gov_down | 4 week unlock period
     node_add | domain(https://token.example.com) bidRate(1-1000) marketingRate(1-2000}
     node_delete
-    set_delegation_reward | @dlux-io to set delegation reward rate (0-2000)
-    expire_post | @dlux-io to expire reblog rewards for specified post permlink
-    set_reblog_reward | @dlux-io to set reblog reward rate (0-10000)
     </code></pre></figure>
     <p>Operations</p>
     <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
     Setting bennifactor rewards to @dlux-io >= 10% to make post votable 1
     Transfers to @robotolux automatically distributes ICO auction
     Delegations to @dlux-io paid daily and tracked automaticly
-    Votes tallied and paid after ~10 days
+    Votes tallied and paid after ~7 days
     </code></pre></figure>
     </p>
 </article>
@@ -803,21 +801,22 @@ AFRAME.registerComponent('nav-pointer', {
     <p>The Hive accounts running DLUX software in consensus are able to facilitate token swaps utilizing the following protocol.</p>
     <p>Alice has 10 Hive, and wants to buy  10 DLUX. There are no buyers yet, so Alice checks the network to see which nodes are active(fills out escrow fields in advanced area of form), and selects Charlie as an escrow agent, and David to forward the transaction to a buyer, A collateralized escrow agent as well.</p>
     <p>Alice signs an 'escrow_transaction' to Charlie and David. The Hive blockchain will ensure all the security around accepting this transaction. The DLUX network will read the transaction, verify it's acceptable, and let all nodes know that Charlie and David both have enough collateral to hold this trade.</p>
-    <p>Charlie and David will autonomously sign and broadcast the expected 'escrow_approve' transactions. Hive is in escrow between Charlie and David, each of whom have collateralized 10 DLUX. Bob sees the contract: 10 Hive for 10 DLUX, and buys it, That is sends a 'custom_json' transaction on hive with dlux header information.</p>
+    <p>Charlie and David will autonomously sign and broadcast the expected 'escrow_approve' transactions. Hive is in escrow between Charlie and David, each of whom have collateralized 20 DLUX. Bob sees the contract: 10 Hive for 10 DLUX, and buys it, That is sends a 'custom_json' transaction on hive with dlux header information.</p>
     <p>The dlux network sees this transaction and the 10 DLUX is sent to Alice, and the 10 Hive is released from escrow to David, (David autonomously signs 'escrow_dispute', and charlie autonomously signs 'escrow_release'). The Dlux network withholds 10 more DLUX from each as the custody changes. Once David recieves the Hive Charlie has his dlux retruned plus a fee. David sends the 10 Hive to Bob and then has his dlux returned plus his fee.</p>
-    <p>At any time the trade will be upto 150% garanteed by the network. Since any one actor can hold any number of accounts some of the held escrow would be burned(sent to null) to prevent attacks that could withdraw dlux voting power early. On inflow trades like this holding a trade will be more costly as the escrow must be held longer.</p>
+    <p>At any time the trade will be 100% garanteed by the network. Since any one actor can hold any number of accounts some of the held escrow would be burned(sent to null) to prevent attacks that could withdraw dlux governance power early. On inflow trades like this holding a trade will be more costly as the escrow must be held longer.</p>
     <p>While nearly the same chain of custody happens in the reverse direction, the order sits on the dlux side with out the need to collateralize the trade until execution.</p>
-    <p>Because collateralizing these trades requires liquidity, these trades can not be free. Especially inflow  and time based fees are being implemented(the listing fee is 1/2 of the execution fee, and would need to be paid incrementally to keep an order open).</p>
+    <p>Because collateralizing these trades requires liquidity, these trades can not be free. Especially inflow  and fees are being implemented: 0.25% + 0.003 DLUX. 1/3 of which goes to each node fascilitating the trade, and the other third to the node reward pool which gets spread evenly over all creditable transactions daily.</p>
+    <p>This fee structure is to encourage larger balances to handle larger swaps, as well as to reward the network for enabling the trust required for the larger accounts.</p>
     <p>Collateralization is also a finite resource, as such the network itself must regulate acceptable trades and autonomously cancel orders that fall out of acceptable bands to free liquidity at market prices.</p>
-    <p>No information asymmetry either way, all transactions on the DX are open.</p>
+    <p>No information asymmetry either way, all transactions on the DEX are open.</p>
 </article>
 <article class="docs-article" id="token">
     <h1 class="bd-title">DLUX OpenToken</h1>
-    <p>The first dlux tokens are being sold at auction in VR right now dlux.io/ico</p>
-    <p>dlux tokens allow us to reward user actions like re-blogging our ads, sharing dlux on other social platforms, and other types of engagement.</p>
+    <p>Tokens are being issued for hive donations in the exchange area.</p>
+    <p>dlux tokens allow us to reward user actions like content discovery, performing swaps, determining consensus, and services like content storage and relay servers(streaming audio/video).</p>
     <ul>
-        <li>Incentivize to participate in the dlux p2p economy</li>
-        <li>Distribute tokens from the reward pool to token holders, based on Hive rewards</li>
+        <li>Incentivize participation in the dlux p2p economy</li>
+        <li>Distribute tokens from the reward pool to token holders.</li>
         <li>Incentives for any action a webserver can verify</li>
         <li>Decentralized exchanges with asset transfer</li>
         <li>Issue tokens from our auction pool daily</li>
@@ -827,45 +826,24 @@ AFRAME.registerComponent('nav-pointer', {
         <li>the reward pool pays for the node and incentivizes other nodes</li>
         <li>the more nodes, the stronger the network gets</li>
         <li>At ~5% APY inflation</li>
-        <li>Every 100 blocks 1 DLUX token is minted for every 2100.000 DLUX in existence.</li>
+        <li>Every 100 blocks 0.001 DLUX token is minted for every 2100.000 DLUX in existence.</li>
     </ul>
-    <p>The reward pool is used to incentivize others to run dlux nodes to verify integrity and that we're running our code fairly and correctly, provable through the hash. The 20 fastest verification responses earn rewards.</p>
+    <p>The reward pool is used to incentivize others to run dlux nodes to verify integrity and that we're running our code fairly and correctly, provable through the hash.</p>
 </article>
 <article class="docs-article" id="dex">
     <h1 class="bd-title">Decentralized Exchange (DEX)</h1>
     <p></p>
-<article class="docs-article" id="nft-smt">
-    <h1 class="bd-title">Non Fungible Tokens (NFTs)</h1>
-    <p>In addition to the dlux Token, we have created a smart contract framework for building Non-fungible Tokens (NFT). They can contain key-pairs for activation, meaning you can ship devices deactivated and require codes for activation, similar to the electric scooter model. Our NFT framework creates a path forward for Internet of Things (IoT) governance.</p>
-    <h3>EXAMPLES</h3>
-    <p>Auctions, Prediction Markets, Equities</p>
-    <h3>IPFS Pinning Service</h3>
-    <p>Content uploaded to dlux automatically receives an IPFS NFT smart contract that looks for IPFS pinning services currently bidding to host content, and chooses the cheapest one to place your content. The contract is funded through the dlux rewards pool.</p>
-    <h3>Free Physical Security</h3>
-    <p>Increase your level safety anytime there's danger by inviting your family and a jury of your peers to watch and listen in. Push a single button to initiate a contract that contacts your next-of-kin (NoK) capable of taking legal action, and your 12 closest friends familiar with your life. Send your location and open a one-way audio call, or activate the camera. Broadcast irrefutable evidence to the people you trust, instantly and automatically.</p>
-    <h3>AR Scavenger Hunt (Augmented Reality Location Based Experience)</h3>
-    <p>Cryptographically run a location based experience with side-chain soft and hard consensus (dlux) on a distributed computing platform (HIVE) inside an augmented reality container (WebXR) on the decentralized storage system (IPFS).</p>
-    <ul>Flow
-        <li>Attendees are on-boarded to HIVE through dlux</li>
-        <li>Event NFT is transferred to their dlux Wallet</li>
-        <li>Attendees physically search the event for AR markers with their mobile using WebXR</li>
-        <li>Each marker seen by the camera signs a checks a box inside the Event NFT</li>
-        <li>The Event NFT can be completed, or expire at the end of the event</li>
-        <li>At completion, the NFT pays out, and the user recieves DLUX tokens, trophy NFT, or anything else</li>
-        <li>At expiration, the NFT pays out according to the table for the quest progress, and returns the remainder to the event</li>
-    </ul>
-</article>
 <article class="docs-article" id="accounts">
     <h1 class="bd-title">Account Creation Tokens</h1>
-    <p></p>
+    <p>Utilizing delegation of Hive Power and multi-signature. An Account Creation Market can be deveoped to exchange ACTs between members of the network at fair cost.</p>
 </article>
 <article class="docs-article" id="pinning">
     <h1 class="bd-title">Asset Pinning</h1>
-    <p></p>
+    <p>Use proof of access and the oracle network to enable decentralized content delivery networks.</p>
 </article>
 <article class="docs-article" id="nodes">
     <h1 class="bd-title">DLUX Node Network</h1>
-    <p>dlux is the ultimate decentralized computer</p>
+    <p>dlux enables the ultimate decentralized computer</p>
     <p>Out of the box dlux supports the Hive blockchain, a social media proof-of-brain system utilizing upvotes to reward content creators from a rewards pool.</p>
     <p>We offer one-click publishing to the Hive blockchain in a monetize-able vessel that pays crypto currency for upvotes.</p>
     <p>Hive functionality is built into both the 2D apps, and VR / AR scenes themselves, so for the first time people can interact with the blockchain from inside another reality.</p>
@@ -891,7 +869,7 @@ AFRAME.registerComponent('nav-pointer', {
         <li>WebRTC</li>
         <li>Turn Server</li>
     </ul>
-    <p>The dlux token architecture is unique in that it uses web worker nodes listening to every signed Hive Transaction (HTx) via hive-js (GitHub Source) to determine state. The can also perform actions on those signed HTx because the nodes have Hive Credentials (HC), which they can use to place the transaction back into the HIVE transaction stream.</p>
+    <p>The dlux token architecture is unique in that it uses worker nodes listening to every signed Hive Transaction (HTx) via hive-js (GitHub Source) to determine state. The can also perform actions on those signed HTx because the nodes have Hive Credentials (HC), which they can use to place the transaction back into the HIVE transaction stream.</p>
     <p>DLUX nodes form a consensus. And can even collectively hold the keys to their HIVE funding accounts using multi-signature account authorities.</p>
     <p>dlux Node listening to HTx</p>
     <ul>dlux nodes use a hive block processor, are super easy to run, and can do things like:
