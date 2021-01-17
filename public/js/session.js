@@ -148,7 +148,7 @@
                         coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.001).toFixed(3)} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
                         document.getElementById('escrowtx').appendChild(coll)
                     }
-                    if(user == r.markets[type].sellOrders[order].agent){
+                    if(user == r.markets[type].sellOrders[order].tagent){
                         let coll = document.createElement('p')
                         coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.001).toFixed(3)} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
                         document.getElementById('escrowtx').appendChild(coll)
@@ -160,7 +160,7 @@
                         coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.001).toFixed(3)} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].co}`
                         document.getElementById('escrowtx').appendChild(coll)
                     }
-                    if(user == r.markets[type].buyOrders[order].agent){
+                    if(user == r.markets[type].buyOrders[order].tagent){
                         let coll = document.createElement('p')
                         coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.001).toFixed(3)} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].co}`
                         document.getElementById('escrowtx').appendChild(coll)
