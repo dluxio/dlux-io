@@ -119,7 +119,7 @@
     document.getElementById('savingsactions').firstElementChild.innerText = User.hive.savings_hbd_balance
     document.getElementById('govbal').innerText = `${parseFloat((User.dlux.gov + User.dlux.heldCollateral)/ 1000).toFixed(3)} DLUXG`
     if(User.dlux.heldCollateral){
-        document.getElementById('escrowbal').innerText = `(${parseFloat(User.dlux.heldCollateral / 1000).toFixed(3)} DLUXG)`
+        document.getElementById('escrowbal').innerHTML = `(${parseFloat(User.dlux.heldCollateral / 1000).toFixed(3)} DLUXG)<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-search ml-2"></i></a>`
     } else {
         document.getElementById('escrowbal').innerHTML = ``
     }
