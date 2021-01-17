@@ -171,13 +171,13 @@
             document.getElementById('loadingtx').innerText = `Orders your node is facilitating:`
         })
 
-function myTimer() {
-  document.getElementById("loadingtx").innerText += '.';
-}
+        function myTimer() {
+        document.getElementById("loadingtx").innerText += '.';
+        }
 
-function myStopFunction() {
-  clearInterval(myVar);
-} 
+        function myStopFunction() {
+        clearInterval(myVar);
+        } 
     })
     document.getElementById('buylink').addEventListener("click", function() {
         User.opts.type = 'Buy'
@@ -199,8 +199,8 @@ function myStopFunction() {
         })
         document.getElementById('sendDluxTitle').innerText = `Send DLUX`
         document.getElementById('sendformunits').innerText = 'DLUX'
-        document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'senddluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
-        document.getElementById('senddluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
+        document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'senddluxamount')">${parseFloat(User.dlux.balance/1000).toFixed(3)} DLUX</a>):`
+        document.getElementById('senddluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000).toFixed(3)
     })
     document.getElementById('freezedluxbutton').addEventListener("click", function() {
         document.getElementById('powerdluxsubmitbutton').addEventListener("click", function() {
