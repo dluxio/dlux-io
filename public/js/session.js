@@ -129,56 +129,6 @@
     document.getElementById('hivepactions').firstElementChild.innerText = parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)).toFixed(3) + ' HP'
     document.getElementById('hiveval').firstElementChild.innerText = `$${parseFloat((parseFloat(( parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)) + parseFloat(usr.hive.balance))*usr.price).toFixed(2)}`
     document.getElementById('dluxval').firstElementChild.innerText = `$${parseFloat(((parseInt(usr.dlux.balance) + parseInt(usr.dlux.gov) + parseInt(usr.dlux.poweredUp))/1000)*parseFloat(usr.dex.markets.hive.tick)*parseFloat(usr.price)).toFixed(2)}`
-    document.getElementById('escrowtxbutton').addEventListener("click", function() {
-        document.getElementById('escrowtx').innerHTML = `<hr class="my-2 bg-light">`
-        let loading = document.createElement('p')
-        loading.id = 'loadingtx'
-        loading.innerText = `Retrieving orders.`
-        document.getElementById('escrowtx').appendChild(loading)
-        var myVar = setInterval(myTimer, 500);
-        fetch('https://token.dlux.io/dex')
-        .then(function(response) {
-            return response.json();
-        })
-        .then(r => {
-            for (type in r.markets){
-                for( order in r.markets[type].sellOrders){
-                    if(user == r.markets[type].sellOrders[order].agent){
-                        let coll = document.createElement('p')
-                        coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
-                        document.getElementById('escrowtx').appendChild(coll)
-                    }
-                    if(user == r.markets[type].sellOrders[order].tagent){
-                        let coll = document.createElement('p')
-                        coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
-                        document.getElementById('escrowtx').appendChild(coll)
-                    }
-                }
-                for( order in r.markets[type].buyOrders){
-                    if(user == r.markets[type].buyOrders[order].agent){
-                        let coll = document.createElement('p')
-                        coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].eo}`
-                        document.getElementById('escrowtx').appendChild(coll)
-                    }
-                    if(user == r.markets[type].buyOrders[order].tagent){
-                        let coll = document.createElement('p')
-                        coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].eo}`
-                        document.getElementById('escrowtx').appendChild(coll)
-                    }
-                }              
-            }
-            myStopFunction()
-            document.getElementById('loadingtx').innerText = `Orders your node is facilitating:`
-        })
-
-        function myTimer() {
-        document.getElementById("loadingtx").innerText += '.';
-        }
-
-        function myStopFunction() {
-        clearInterval(myVar);
-        } 
-    })
     document.getElementById('buylink').addEventListener("click", function() {
         User.opts.type = 'Buy'
         dexmodal("hive", "Buy");
@@ -265,6 +215,56 @@
     })
     document.getElementById('updateNode').addEventListener("click", function() {
         updateNode()
+    })
+    document.getElementById('escrowtxbutton').addEventListener("click", function() {
+        document.getElementById('escrowtx').innerHTML = `<hr class="my-2 bg-light">`
+        let loading = document.createElement('p')
+        loading.id = 'loadingtx'
+        loading.innerText = `Retrieving orders.`
+        document.getElementById('escrowtx').appendChild(loading)
+        var myVar = setInterval(myTimer, 500);
+        fetch('https://token.dlux.io/dex')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(r => {
+            for (type in r.markets){
+                for( order in r.markets[type].sellOrders){
+                    if(user == r.markets[type].sellOrders[order].agent){
+                        let coll = document.createElement('p')
+                        coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
+                        document.getElementById('escrowtx').appendChild(coll)
+                    }
+                    if(user == r.markets[type].sellOrders[order].tagent){
+                        let coll = document.createElement('p')
+                        coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
+                        document.getElementById('escrowtx').appendChild(coll)
+                    }
+                }
+                for( order in r.markets[type].buyOrders){
+                    if(user == r.markets[type].buyOrders[order].agent){
+                        let coll = document.createElement('p')
+                        coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].eo}`
+                        document.getElementById('escrowtx').appendChild(coll)
+                    }
+                    if(user == r.markets[type].buyOrders[order].tagent){
+                        let coll = document.createElement('p')
+                        coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].eo}`
+                        document.getElementById('escrowtx').appendChild(coll)
+                    }
+                }              
+            }
+            myStopFunction()
+            document.getElementById('loadingtx').innerText = `Orders your node is facilitating:`
+        })
+
+        function myTimer() {
+            document.getElementById("loadingtx").innerText += '.';
+        }
+
+        function myStopFunction() {
+            clearInterval(myVar);
+        } 
     })
 
     fetch('https://token.dlux.io/feed')
