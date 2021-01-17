@@ -121,7 +121,7 @@
     if(User.dlux.heldCollateral){
         document.getElementById('escrowbal').innerText = `(${parseFloat(User.dlux.heldCollateral / 1000).toFixed(3)} DLUXG)`
     } else {
-        document.getElementById('dluxgactions').innerHTML = ``
+        document.getElementById('escrowbal').innerHTML = ``
     }
     document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(parseInt(User.dlux.balance)/1000),'powerupdluxamount')">${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
     document.getElementById('dluxactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3)} DLUX`
