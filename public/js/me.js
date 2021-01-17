@@ -99,6 +99,22 @@ function dluxgovup(amt) {
         .catch(e => { feedback(e) })
 }
 
+function dluxgovdown(amt) {
+    let amount = parseInt(document.getElementById(amt).value * 1000),
+        params = {
+            "required_auths": [user],
+            "required_posting_auths": 0,
+            "id": "dlux_gov_down",
+            "json": JSON.stringify({
+                amount
+            })
+        }
+    console.log(params)
+    reqsign(['custom_json', params], ['active', user])
+        .then(r => { feedback(r) })
+        .catch(e => { feedback(e) })
+}
+
 function powerUp(amt, tol, memol) {
     let amount = parseInt(document.getElementById(amt).value * 1000),
         to = document.getElementById(tol).value || '',

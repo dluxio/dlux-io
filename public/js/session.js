@@ -117,7 +117,7 @@
     document.getElementById('hiveactions').firstElementChild.innerText = usr.hive.balance
     document.getElementById('hbdactions').firstElementChild.innerText = usr.hive.hbd_balance
     document.getElementById('savingsactions').firstElementChild.innerText = User.hive.savings_hbd_balance
-    document.getElementById('govbal').innerText = `${parseFloat((User.dlux.gov + User.dlux.heldCollateral)/ 1000).toFixed(3)} DLUXG`
+    document.getElementById('govbal').innerText = `${parseFloat((User.dlux.gov)/ 1000).toFixed(3)} DLUXG`
     if(User.dlux.heldCollateral){
         document.getElementById('escrowbal').innerHTML = `(${parseFloat(User.dlux.heldCollateral / 1000).toFixed(3)} DLUXG)<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapse"><i class="fas fa-search ml-2"></i></a>`
     } else {
@@ -145,24 +145,24 @@
                 for( order in r.markets[type].sellOrders){
                     if(user == r.markets[type].sellOrders[order].agent){
                         let coll = document.createElement('p')
-                        coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.00001).toFixed(3)} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
+                        coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
                         document.getElementById('escrowtx').appendChild(coll)
                     }
                     if(user == r.markets[type].sellOrders[order].tagent){
                         let coll = document.createElement('p')
-                        coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.00001).toFixed(3)} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
+                        coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
                         document.getElementById('escrowtx').appendChild(coll)
                     }
                 }
                 for( order in r.markets[type].buyOrders){
                     if(user == r.markets[type].buyOrders[order].agent){
                         let coll = document.createElement('p')
-                        coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.00001).toFixed(3)} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].eo}`
+                        coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].eo}`
                         document.getElementById('escrowtx').appendChild(coll)
                     }
                     if(user == r.markets[type].buyOrders[order].tagent){
                         let coll = document.createElement('p')
-                        coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.00001).toFixed(3)} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].eo}`
+                        coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].eo}`
                         document.getElementById('escrowtx').appendChild(coll)
                     }
                 }              
