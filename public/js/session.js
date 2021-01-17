@@ -167,8 +167,8 @@
                     }
                 }              
             }
-            //myStopFunction()
-            //document.getElementById('escrowtx').removeChild(document.getElementById('loadingtx'))
+            myStopFunction()
+            document.getElementById('loadingtx').innerText = `Orders your node is facilitating:`
         })
 
 function myTimer() {
