@@ -259,7 +259,7 @@
 					  </div>
 				  	<div id="dluxgactions" class="float-right text-right">
 						<h5 id="govbal">0 DLUX</h5>
-						<h6 id="escrowbal">(-0 DG)<a data-toggle="collapse" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-search ml-2"></i></a></h6>
+						<h6 id="escrowbal">(-0 DG)<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-search ml-2"></i></a></h6>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
 							<button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
   							<div class="btn-group" role="group">
@@ -273,11 +273,9 @@
 				  	</div>
 						
 				  </div>
-					  <div class="collapse" id="escrowtx">
+					<div class="collapse" id="escrowtx">
 						<hr class="my-2 bg-light">
-						  <p>Escrow Transaction Here</p>
-						
-						</div>
+					</div>
 				  <hr class="my-4 bg-light">
 				  <div class="clearfix">
 				  	<div class="float-left">
