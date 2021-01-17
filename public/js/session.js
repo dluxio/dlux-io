@@ -119,7 +119,7 @@
     document.getElementById('savingsactions').firstElementChild.innerText = User.hive.savings_hbd_balance
     document.getElementById('govbal').innerText = `${parseFloat((User.dlux.gov + User.dlux.heldCollateral)/ 1000).toFixed(3)} DLUXG`
     if(User.dlux.heldCollateral){
-        document.getElementById('escrowbal').innerHTML = `(${parseFloat(User.dlux.heldCollateral / 1000).toFixed(3)} DLUXG)<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-search ml-2"></i></a>`
+        document.getElementById('escrowbal').innerHTML = `(${parseFloat(User.dlux.heldCollateral / 1000).toFixed(3)} DLUXG)<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapse"><i class="fas fa-search ml-2"></i></a>`
     } else {
         document.getElementById('escrowbal').innerHTML = ``
     }
@@ -135,7 +135,7 @@
         loading.id = 'loadingtx'
         loading.innerText = `Retrieving orders.`
         document.getElementById('escrowtx').appendChild(loading)
-        var myVar = setInterval(myTimer, 333);
+        var myVar = setInterval(myTimer, 500);
         fetch('https://token.dlux.io/dex')
         .then(function(response) {
             return response.json();
@@ -167,8 +167,8 @@
                     }
                 }              
             }
-            myStopFunction()
-            document.getElementById('escrowtx').removeChild(document.getElementById('loadingtx'))
+            //myStopFunction()
+            //document.getElementById('escrowtx').removeChild(document.getElementById('loadingtx'))
         })
 
 function myTimer() {
