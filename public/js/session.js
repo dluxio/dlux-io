@@ -146,6 +146,9 @@ function updateprogress(id) {
     document.getElementById('dluxpowerdownModalButton').addEventListener("click", function() {
         document.getElementById('powerdowndluxsubmit').innerText = `Powerdown`
         document.getElementById('powerdownDluxTitle').innerText = `Power Down Tokens`
+        var el = document.getElementById('powerdowndluxsubmit'),
+            elClone = el.cloneNode(true);
+            el.parentNode.replaceChild(elClone, el);
         document.getElementById('powerdowndluxsubmit').addEventListener('click', function (){
             powerDown('powerdowndluxamount', 'powerdowndluxto', 'powerdowndluxmemo')
         })
@@ -155,6 +158,9 @@ function updateprogress(id) {
     document.getElementById('dluxgovdownModalButton').addEventListener("click", function() {
         document.getElementById('powerdownDluxTitle').innerText = `Unlock Governance Tokens`
         document.getElementById('powerdowndluxsubmit').innerText = `Unlock`
+        var el = document.getElementById('powerdowndluxsubmit'),
+            elClone = el.cloneNode(true);
+            el.parentNode.replaceChild(elClone, el);
         document.getElementById('powerdowndluxsubmit').addEventListener('click', function (){
             govDown('powerdowndluxamount', 'powerdowndluxto', 'powerdowndluxmemo')
         })
