@@ -125,8 +125,8 @@ function powerUp(amt, tol, memol) {
             "id": "dlux_power_up",
             "json": JSON.stringify({
                 amount,
-                to,
-                memo
+                //to,
+                //memo
             })
         }
     console.log(params)
@@ -137,16 +137,16 @@ function powerUp(amt, tol, memol) {
 
 function powerDown(amt, tol, memol) {
     let amount = parseInt(document.getElementById(amt).value * 1000),
-        to = document.getElementById(tol).value,
-        memo = document.getElementById(memol).value,
+        //to = document.getElementById(tol).value,
+        //memo = document.getElementById(memol).value,
         params = {
             "required_auths": [user],
             "required_posting_auths": 0,
             "id": "dlux_power_down",
             "json": JSON.stringify({
                 amount,
-                to,
-                memo
+                //to,
+                //memo
             })
         }
     console.log(params)
