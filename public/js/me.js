@@ -99,7 +99,7 @@ function dluxgovup(amt) {
         .catch(e => { feedback(e) })
 }
 
-function dluxgovdown(amt) {
+function govDown(amt, to, memo) {
     let amount = parseInt(document.getElementById(amt).value * 1000),
         params = {
             "required_auths": [user],
