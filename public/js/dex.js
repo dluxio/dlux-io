@@ -58,7 +58,7 @@ function cancel(txid) {
     }
     console.log(params)
     reqsign(['custom_json', params], ['active', user])
-        .then(r => { feedback(r) })
+        .then(r => { spinThings(txis) })
         .catch(e => { feedback(e) })
 }
 
@@ -345,7 +345,7 @@ function getItID(txid) {
                     })
                 }
                 reqsign(['escrow_transfer', params], ['active', user])
-                    .then(r => { feedback(r) })
+                    .then(r => { spinThings(txis.split(':')[1]) })
                     .catch(e => { feedback(e) })
             }
         });
@@ -402,7 +402,7 @@ function getSellID(txid) {
                 }
                 console.log(params)
                 reqsign(['custom_json', params], ['active', user])
-                    .then(r => { feedback(r) })
+                    .then(r => { spinThings(txis.split(':')[1]) })
                     .catch(e => { feedback(e) })
             }
         });
@@ -631,10 +631,11 @@ function popOrderTable(orderstable, type) {
     </tr>`
     for (i in User.dex.markets[User.opts.pair][type]) {
         let txnode = document.createElement('tr')
-        let whos = `<button class ="btn btn-outline-${col} btn-sm" type="submit" onclick="${func}('${i}')"> ${lab} </button>`
+        let whos = `<button class ="btn btn-75 btn-outline-${col} btn-sm" type="submit" onclick="${func}('${i}')"><span id="orderlabel${i.split(':')[1]}" aria-labelledby="$lab"> ${lab} </span> <span d-none id="orderspin${i.split(':')[1]} class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>`
         if (User.dex.markets[User.opts.pair][type][i].from == user) {
-            whos = `<button class ="btn btn-outline-warning btn-sm" type="submit" onclick="cancel('${i.split(':')[1]}')"> Cancel </button>`
+            whos = `<button id="orderbutton${i.split(':')[1]}" class="btn btn-75 btn-outline-warning btn-sm" type="submit" onclick="cancel('${i.split(':')[1]}')"><span id="orderlabel${i.split(':')[1]}" aria-labelledby="$lab"> Cancel </span><span d-none id="orderspin${i.split(':')[1]} class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>`
         }
+        
         txnode.innerHTML = `
     <td>${parseFloat((parseInt(User.dex.markets[User.opts.pair][type][i].amount * 0.9975)-3)/1000).toFixed(3)}</td> 
     <td>${parseFloat(User.dex.markets[User.opts.pair][type][i][User.opts.pair]/1000).toFixed(3)}</td> 
@@ -884,4 +885,9 @@ function setCharts() {
 
         }
     });
+}
+
+function spinThings (i){
+$("#orderspin${i}").removeClass("d-none");
+$("#orderlabel${i}").addClass("d-none");
 }
