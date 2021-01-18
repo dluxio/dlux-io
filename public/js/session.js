@@ -147,14 +147,14 @@ function updateprogress(id) {
         document.getElementById('powerdowndluxsubmit').innerText = `Powerdown`
         document.getElementById('powerdownDluxTitle').innerText = `Power Down Tokens`
         document.getElementById('powerdowndluxsubmit').onClick = `powerDown('powerdowndluxamount', 'powerdowndluxto', 'powerdowndluxmemo')`
-        document.getElementById('powerdowndluxammount').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerupdluxamount')">${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3).commafy()} DLUX</a>):`
+        document.getElementById('dluxammountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerupdluxamount')">${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3).commafy()} DLUX</a>):`
     })
 
     document.getElementById('dluxgovdownModalButton').addEventListener("click", function() {
         document.getElementById('powerdownDluxTitle').innerText = `Unlock Governance Tokens`
         document.getElementById('powerdowndluxsubmit').innerText = `Unlock`
         document.getElementById('powerdowndluxsubmit').onClick = `govDown('powerdowndluxamount', 'powerdowndluxto', 'powerdowndluxmemo')`
-        document.getElementById('powerdowndluxammount').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.gov/1000),'powerupdluxamount')">${parseFloat(parseInt(usr.dlux.gov)/1000).toFixed(3).commafy()} DLUX</a>):`
+        document.getElementById('dluxammountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.gov/1000),'powerupdluxamount')">${parseFloat(parseInt(usr.dlux.gov)/1000).toFixed(3).commafy()} DLUX</a>):`
     })
 
 
@@ -165,7 +165,7 @@ function updateprogress(id) {
         })
         document.getElementById('powerDluxTitle').innerText = `Lock DLUX for Governance Ops`
         document.getElementById('sendformunits').innerText = 'DLUX'
-        document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3).commafy()} DLUX</a>):`
+        document.getElementById('dluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3).commafy()} DLUX</a>):`
         document.getElementById('powerupdluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
     })
 
