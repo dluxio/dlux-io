@@ -1,13 +1,13 @@
- function validateResponse(response) {
-     if (!response.ok) {
-         throw Error(response.statusText);
-     }
-     return response;
- }
+function validateResponse(response) {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
+}
 
- function updateprogress(id) {
-     User[`id-iterator-${id}`]++
-         document.getElementById(`progressbar${id}`).style.width = `${parseInt(User[`id-iterator-${id}`]*5)}%`
+function updateprogress(id) {
+    User[`id-iterator-${id}`]++
+        document.getElementById(`progressbar${id}`).style.width = `${parseInt(User[`id-iterator-${id}`]*5)}%`
         document.getElementById(`progressbarlabel${id}`).innerText = `${User[`id-iterator-${id}`]} Confirmations. 20 Required`
         if(User[`id-iterator-${id}`] >= 21 ){
             delete User[`id-iterator-${id}`]
@@ -117,16 +117,16 @@
     document.getElementById('hiveactions').firstElementChild.innerText = usr.hive.balance
     document.getElementById('hbdactions').firstElementChild.innerText = usr.hive.hbd_balance
     document.getElementById('savingsactions').firstElementChild.innerText = User.hive.savings_hbd_balance
-    document.getElementById('govbal').innerText = `${parseFloat((User.dlux.gov)/ 1000).toFixed(3)} DLUXG`
+    document.getElementById('govbal').innerText = `${parseFloat((User.dlux.gov)/ 1000).toFixed(3).commafy()} DLUXG`
     if(User.dlux.heldCollateral){
-        document.getElementById('escrowbal').innerHTML = `(${parseFloat(User.dlux.heldCollateral / 1000).toFixed(3)} DLUXG)<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapse"><i class="fas fa-search ml-2"></i></a>`
+        document.getElementById('escrowbal').innerHTML = `(${parseFloat(User.dlux.heldCollateral / 1000).toFixed(3).commafy()} DLUXG)<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapse"><i class="fas fa-search ml-2"></i></a>`
     } else {
         document.getElementById('escrowbal').innerHTML = ``
     }
-    document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(parseInt(User.dlux.balance)/1000),'powerupdluxamount')">${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
-    document.getElementById('dluxactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3)} DLUX`
-    document.getElementById('dluxpactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3)} DLUX`
-    document.getElementById('hivepactions').firstElementChild.innerText = parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)).toFixed(3) + ' HP'
+    document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(parseInt(User.dlux.balance)/1000),'powerupdluxamount')">${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3).commafy()} DLUX</a>):`
+    document.getElementById('dluxactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3).commafy()} DLUX`
+    document.getElementById('dluxpactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3).commafy()} DLUX`
+    document.getElementById('hivepactions').firstElementChild.innerText = parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)).toFixed(3).commafy() + ' HP'
     document.getElementById('hiveval').firstElementChild.innerText = `$${parseFloat((parseFloat(( parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)) + parseFloat(usr.hive.balance))*usr.price).toFixed(2)}`
     document.getElementById('dluxval').firstElementChild.innerText = `$${parseFloat(((parseInt(usr.dlux.balance) + parseInt(usr.dlux.gov) + parseInt(usr.dlux.poweredUp))/1000)*parseFloat(usr.dex.markets.hive.tick)*parseFloat(usr.price)).toFixed(2)}`
     document.getElementById('buylink').addEventListener("click", function() {
@@ -141,7 +141,7 @@
         dexmodal("hive", "Sell");
     })
     document.getElementById('dluxpowerdownModalButton').addEventListener("click", function() {
-        document.getElementById('powerdowndluxammount').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.poweredUp)/1000).toFixed(3)} DLUX</a>):`
+        document.getElementById('powerdowndluxammount').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.poweredUp)/1000).toFixed(3).commafy()} DLUX</a>):`
     })
     console.log('running check')
     document.getElementById('senddluxmodalbutton').addEventListener("click", function() {
@@ -151,8 +151,8 @@
         console.log('execution check')
         document.getElementById('sendDluxTitle').innerText = `Send DLUX`
         document.getElementById('sendformunits').innerText = 'DLUX'
-        document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'senddluxamount')">${parseFloat(User.dlux.balance/1000).toFixed(3)} DLUX</a>):`
-        document.getElementById('senddluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000).toFixed(3)
+        document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'senddluxamount')">${parseFloat(User.dlux.balance/1000).toFixed(3).commafy()} DLUX</a>):`
+        document.getElementById('senddluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000).toFixed(3).commafy()
     })
     document.getElementById('freezedluxbutton').addEventListener("click", function() {
         document.getElementById('powerdluxsubmitbutton').addEventListener("click", function() {
@@ -160,7 +160,7 @@
         })
         document.getElementById('powerDluxTitle').innerText = `Lock DLUX for Governance Ops`
         document.getElementById('sendformunits').innerText = 'DLUX'
-        document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
+        document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3).commafy()} DLUX</a>):`
         document.getElementById('powerupdluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
     })
     document.getElementById('powerupdluxbutton').addEventListener("click", function() {
@@ -170,7 +170,7 @@
         $("#powerupdluxmemo").addClass("d-none");
         document.getElementById('powerDluxTitle').innerText = `Power Up DLUX`
         document.getElementById('sendformunits').innerText = 'DLUX'
-        document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3)} DLUX</a>):`
+        document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3).commafy()} DLUX</a>):`
         document.getElementById('powerupdluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
     })
     document.getElementById('poweruphivebutton').addEventListener("click", function() {
@@ -232,24 +232,24 @@
                 for( order in r.markets[type].sellOrders){
                     if(user == r.markets[type].sellOrders[order].agent){
                         let coll = document.createElement('p')
-                        coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
+                        coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3).commafy()} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.000001).toFixed(3).commafy()} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
                         document.getElementById('escrowtx').appendChild(coll)
                     }
                     if(user == r.markets[type].sellOrders[order].tagent){
                         let coll = document.createElement('p')
-                        coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
+                        coll.innerText = `${parseFloat(r.markets[type].sellOrders[order].amount / 500).toFixed(3).commafy()} held to earn ${parseFloat(r.markets[type].sellOrders[order].amount * 0.000001).toFixed(3).commafy()} upon purchase of ${r.markets[type].sellOrders[order].txid} by ${r.markets[type].sellOrders[order].co}`
                         document.getElementById('escrowtx').appendChild(coll)
                     }
                 }
                 for( order in r.markets[type].buyOrders){
                     if(user == r.markets[type].buyOrders[order].agent){
                         let coll = document.createElement('p')
-                        coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].eo}`
+                        coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3).commafy()} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.000001).toFixed(3).commafy()} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].eo}`
                         document.getElementById('escrowtx').appendChild(coll)
                     }
                     if(user == r.markets[type].buyOrders[order].tagent){
                         let coll = document.createElement('p')
-                        coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3)} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.000001).toFixed(3)} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].eo}`
+                        coll.innerText = `${parseFloat(r.markets[type].buyOrders[order].amount / 500).toFixed(3).commafy()} held to earn ${parseFloat(r.markets[type].buyOrders[order].amount * 0.000001).toFixed(3).commafy()} upon purchase of ${r.markets[type].buyOrders[order].txid} by ${r.markets[type].buyOrders[order].eo}`
                         document.getElementById('escrowtx').appendChild(coll)
                     }
                 }              
@@ -681,3 +681,13 @@ function downPowerMagic(up, down, block_num) {
     }
     return { up: newUp, down: newDown, vote: vote }
 }
+
+String.prototype.commafy = function() {
+    return this.replace(/(^|[^\w.])(\d{4,})/g, function($0, $1, $2) {
+        return $1 + $2.replace(/\d(?=(?:\d\d\d)+(?!\d))/g, "$&,");
+    });
+};
+
+Number.prototype.commafy = function() {
+    return String(this).commafy();
+};
