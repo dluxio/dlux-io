@@ -104,9 +104,7 @@
         }
 
         function onMessage(event) {
-            console.log(event.data)
             if (event.origin !== ipfsdomain) return;
-            var data = event.data;
             console.log(event.data)
             if (typeof(window[data.func]) == "function") {
                 if (data.func == 'advPost' || data.func == 'vote' || data.func == 'signDecode' || data.func == 'signEncode' || data.func == 'follow' || data.func == 'aVote' || data.func == 'sendLink' || data.func == 'iloaded' || data.func == 'passGenerateHotLink' || data.func == 'comment' || data.func == 'reqsign') {
@@ -202,7 +200,7 @@
       }, "*");
       target.postMessage({
       'func': 'key',
-      'message': hivekey,
+      'message': hiveKey,
       }, "*");
       target.postMessage({
       'func': 'hiveState',
