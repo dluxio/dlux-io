@@ -49,7 +49,7 @@
     	<a href="#" class="btn btn-danger">Get Started</a>
   	  </div>
 	</div>
-	<div class="card w-100 border-danger bg-dark my-5">
+	<div class="card border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
     	<h5 class="card-title">RISHI SERVER</h5>
     	<p class="card-text">Bare metal with easy install</p>
