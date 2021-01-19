@@ -158,7 +158,7 @@ function updateprogress(id) {
     document.getElementById('dluxgovdownModalButton').addEventListener("click", function() {
         document.getElementById('powerdownDluxTitle').innerText = `Unlock Governance Tokens`
         document.getElementById('powerdowndluxsubmit').innerText = `Unlock`
-        var el = document.getElementById('powerdowndluxsubmit'),
+        var el = document.getElementById('powerdowndluxsubmit'), // should clone without event listeners 
             elClone = el.cloneNode(true);
             el.parentNode.replaceChild(elClone, el);
         document.getElementById('powerdowndluxsubmit').addEventListener('click', function (){

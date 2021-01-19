@@ -171,8 +171,8 @@
             } else {}
         }
         userLoggedIn = 'Guest'
-        if (userLoggedIn == 'Guest' && localStorage.getItem('skn')) {
-            userLoggedIn = localStorage.getItem('skn')
+        if (userLoggedIn == 'Guest' && sessionStorage.getItem('user')) {
+            userLoggedIn = sessionStorage.getItem('user')
         } else if (window.hive_keychain) {
             iAm = prompt('Hive Username for Hive Keychain', 'no @')
         }
@@ -188,6 +188,29 @@
                 });
             }
         }
+
+    function iloaded(){
+        hive.api.getContent(author, permlink, function(err, result) {
+      var target = document.getElementById('theIframe').contentWindow
+      var un = 'Guest'
+      if(sessionStorage.getItem('user')){un = sessionStorage.getItem('user')}
+      target.postMessage({
+      'func': 'iAm',
+      'message': un,
+      }, "*");
+      target.postMessage({
+      'func': 'key',
+      'message': hivekey,
+      }, "*");
+      target.postMessage({
+      'func': 'hiveState',
+      'message': result,
+      }, "*");
+      })
+          if(window.hive_keychain) {
+            postable = true
+        }
+      }
 
         function pageSpecific(usr) {
             if (isIOS()) {
