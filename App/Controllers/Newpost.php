@@ -29,4 +29,8 @@ class Newpost extends \Core\Controller
     {
         View::render('new/advanced.php');
     }
+    public function node($request, $response, $service)
+    {
+        View::render('new/node.php');
+    }
 }
