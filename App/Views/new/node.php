@@ -15,55 +15,7 @@
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
-<main role="main" class="flex-shrink-0">
-  <div class="container">
-	<div class="card w-100 border-danger bg-dark my-5">
-      <div class="card-body text-center text-white">
-    	<h5 class="card-title">DLUX VR BUILDER</h5>
-    	<p class="card-text">Remix our boilerplate on Glitch and upload your own images and 3D models</p>
-		<hr class="bg-light">
-		<center>
-		<ul class="text-left">
-		<li>App Type: VR</li>
-		<li>Builder: 2D drag-and-drop asset upload, code panel, and publishing form; 3D A-Frame inspector</li>
-		<li>Difficulty: Intermediate</li>
-		</ul>
-		</center>
-    	<a href="https://dlux-vr.glitch.me/build.html" target="_blank" class="btn btn-danger">Get Started</a>
-  	  </div>
-	</div>
-	<div class="card w-100 border-danger bg-dark my-5">
-      <div class="card-body text-center text-white">
-    	<h5 class="card-title">SUPERCRAFT</h5>
-    	<p class="card-text">Use a VR headset to build scenes with your hands, then publish to DLUX</p>
-		<hr class="bg-light">
-		<center>
-		<ul class="text-left">
-		<li>App Type: VR</li>
-		<li>Builder: VR with Touch Controls, 2D publishing form</li>
-		<li>Difficulty: Easy</li>
-		</ul>
-		</center>
-    	<a href="/new/supercraft" class="btn btn-danger">Get Started</a>
-  	  </div>
-	</div>
-	<div class="card w-100 border-danger bg-dark my-5">
-      <div class="card-body text-center text-white">
-    	<h5 class="card-title">ADVANCED UPLOADER</h5>
-    	<p class="card-text">Upload any HTML5 Single Page App (SPA)</p>
-		<hr class="bg-light">
-		<center>
-		<ul class="text-left">
-		<li>App Type: AR/VR/2D</li>
-		<li>Builder: 2D publishing form with drag-and-drop support for images</li>
-		<li>Difficulty: Easy</li>
-		</ul>
-		</center>
-    	<a href="/new/advanced" class="btn btn-danger">Get Started</a>
-  	  </div>
-	</div>	
-	</div>
-	</main>
+<p class="text-white">TEST</p>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/footer.php";
