@@ -52,7 +52,7 @@
 	<div class="card border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
     	<h5 class="card-title">RISHI SERVER</h5>
-    	<p class="card-text">Bare metal with easy install</p>
+    	<p class="card-text">Presetup Servers For A Quick Start</p>
 		<hr class="bg-light">
 		<center>
 		<ul class="text-left">
@@ -61,7 +61,7 @@
 		<li>Price: $5</li>
 		</ul>
 		</center>
-    	<a href="#" class="btn btn-danger">Get Started</a>
+    	<a href="#" class="btn btn-danger disabled">Get Started</a>
   	  </div>
 	</div>	
 	</div>
