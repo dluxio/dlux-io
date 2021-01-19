@@ -31,7 +31,7 @@
 		<li>Price: varies</li>
 		</ul>
 		</center>
-    	<a href="#" class="btn btn-danger">Get Started</a>
+    	<a href="/docs/#node" class="btn btn-danger">Get Started</a>
   	  </div>
 	</div>
 	<div class="card border-danger bg-dark my-5">
@@ -46,7 +46,7 @@
 		<li>Price: $0-10</li>
 		</ul>
 		</center>
-    	<a href="#" class="btn btn-danger">Get Started</a>
+    	<a href="/docs/#node" class="btn btn-danger">Get Started</a>
   	  </div>
 	</div>
 	<div class="card border-danger bg-dark my-5">
