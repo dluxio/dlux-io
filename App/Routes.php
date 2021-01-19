@@ -31,12 +31,10 @@ $router->respondWithController('GET', '/', 'Home@index');
 $router->respondWithController('GET', '/new', 'Newpost@index');
 $router->respondWithController('GET', '/new/', 'Newpost@index');
 $router->respondWithController('GET', '/new/node', 'Newpost@node');
-//$router->respondWithController('GET', '/new/node/', 'Newpost@node');
+$router->respondWithController('GET', '/new/node/', 'Newpost@node');
 $router->respondWithController('GET', '/new/supercraft', 'Newpost@supercraft');
 $router->respondWithController('GET', '/new/supercraft/', 'Newpost@supercraft');
 $router->respondWithController('GET', '/new/advanced', 'Newpost@advanced');
 $router->respondWithController('GET', '/new/advanced/', 'Newpost@advanced');
-$router->respondWithController('GET', '/new/node', 'Newpost@node');
-$router->respondWithController('GET', '/new/node/', 'Newpost@node');
 // Dispatch the router
 $router->dispatch();
