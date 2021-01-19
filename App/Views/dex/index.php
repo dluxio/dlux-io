@@ -24,6 +24,7 @@
   		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   		<a href="#" class="alert-link">The dlux DEX is under construction. Have a look around and let us know what you think.</a>
 	</div>
+	
   <div class="container-fluid" style="padding: 0">
 	  <ul id="pagenav" class="nav nav-pills justify-content-center" role="tablist">
 		  <li class="nav-item"><a class="nav-link" href="#info" id="infotab" role="tab" data-toggle="tab" aria-controls="info" aria-expanded="true">INFO</a></li>
@@ -118,27 +119,27 @@
 			</div>
 		<div class="d-flex justify-content-center">
 			<div class="text-center market-info-item">
-				<h3><span>$125.1K</span></h3>
+				<h3><span>$0</span></h3>
 				<div>
 					<label>Market Cap</label>
 				</div>
 			</div>
 			<div class="text-center market-info-item"><h1>|</h1></div>
 			<div class="text-center market-info-item">
-				<h3><span>6M DLUX</span></h3>
+				<h3><span>0 DLUX</span></h3>
 				<div>
 					<label>Supply</label>
 				</div>
 			</div>
 			<div class="text-center market-info-item"><h1>|</h1></div>
 			<div class="text-center market-info-item">
-				<h3><span>$1.3K</span></h3>
+				<h3><span>$0</span></h3>
 				<div>
 					<label>Volume</label>
 				</div>
 			</div>
 		  </div>
-			<div id="jumbobal" class="balance"><h4>BAL: LOADING... DLUX</h4></div>
+			<div id="jumbobal" class="balance"><h4>BAL: 0 DLUX</h4></div>
 		  </div>
 	
 	<canvas id="marketOrdersChart" height="125" class="orderbook-chart"></canvas>
@@ -192,7 +193,7 @@
 		  </div>
 			 </div>
         <div class="form-group">
-	   <label id="menupricelab" for="buydluxprice">Calculated Price (<a href="#" onClick="insertCalc(User.dex.markets[User.opts.type].tick, 'menuprice')">MP: 0.22 HIVE</a>):</label>
+	   <label id="menupricelab" for="buydluxprice">Calculated Price (<a href="#" onClick="insertCalc(User.dex.markets[User.opts.type].tick, 'menuprice')">MP: 0 HIVE</a>):</label>
 		<div class="input-group">
 			<input class="form-control" id="menuprice" type="number" placeholder="1.000" readonly>
 			<div class="input-group-append">
@@ -201,7 +202,7 @@
 		  </div>
 			 </div>
 		  <div class="form-group">
-	   <label id="menupairlab" for="buydluxtotal">For: (<a href="#" onClick="insertBal(parseFloat(User[User.opts.type].balance), 'menupair')">Balance: 486 HIVE</a>):</label>
+	   <label id="menupairlab" for="buydluxtotal">For: (<a href="#" onClick="insertBal(parseFloat(User[User.opts.type].balance), 'menupair')">Balance: 0 HIVE</a>):</label>
 		<div class="input-group">
 			<input class="form-control" id="menupair" type="number" step="0.001" min="0.001" placeholder="1.000">
 			<div class="input-group-append">
@@ -217,8 +218,7 @@
       <option value=6>6 hours</option>
       <option value=12>12 hours</option>
       <option value=24>1 day</option>
-	  <option value=72>3 day
-	  </option>
+	  <option value=72>3 days</option>
 	  <option value=120 selected>5 days </option>
     </select>
 </div>
@@ -355,7 +355,7 @@ $(document).ready(function(){
 			</div>
 			<div class="text-center market-info-item"><h1>|</h1></div>
 			<div id="icoTokensRemain" class="text-center market-info-item">
-				<h3><span>898,000 DLUX</span></h3>
+				<h3><span>0 DLUX</span></h3>
 				<div>
 					<label>Tokens Available</label>
 				</div>
@@ -436,7 +436,7 @@ $(document).ready(function(){
   					</div>
 					</div>
 						<div id="icoDelegationAvailible" >
-							<center><small>Balance: <a href="#">12345 HP</a></small></center>
+							<center><small>Balance: <a href="#">0 HP</a></small></center>
 						</div>
 				    </form>
 						  </div>

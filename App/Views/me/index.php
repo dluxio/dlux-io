@@ -131,19 +131,21 @@
 <div class="modal fade" id="detailModal" tabindex="11" role="dialog" aria-hidden="true">
  <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
    <div class="modal-content bg-dark text-white">
-	   		<div class="d-inline-block p-2">
+	 <div class="card text-white bg-dark">
+	   <div class="card-header">
+		<div class="d-inline-block p-2">
 	  <div class="float-left" ><a dmx-bind:href="/@{{data_detail.data.author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{data_detail.data.author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
         <div class="float-left">
           <p class="mt-0 mb-0 text-muted text-semibold"><a dmx-bind:href="/@{{data_detail.data.author}}" class="a-1">{{data_detail.data.author}}<span class="ml-2 badge badge-pill badge-light">{{data_detail.data.author_reputation.toString().rep()}}</span></a></p>
           <small class="text-muted">{{data_detail.data.created.formatDate("MMM dd, yyyy")}}</small></div>
 		</div>
       <div class="float-right p-2"><span class="badge badge-secondary">{{data_detail.data.json_metadata.scat()}}</span><button type="button" class="close text-white ml-3" data-dismiss="modal" aria-label="Close" onclick="window.history.back();"><span aria-hidden="true">×</span></button></div>
-		<hr class="mt-0">
-    <a dmx-bind:href="/blog/@{{data_detail.data.author}}/{{data_detail.data.permlink}}"><h4 class="text-center p-2">{{data_detail.data.title}}</h4></a>
-    
-
-	 <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{data_detail.data.json_metadata.parseJSON().image}}" />  
+		 </div>
+    <a dmx-bind:href="/blog/@{{data_detail.data.author}}/{{data_detail.data.permlink}}" class="text-white"><h3 class="text-center p-2">{{data_detail.data.title}}</h3></a>
+	 <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{data_detail.data.json_metadata.parseJSON().image}}" />
+		 <div class="card-body">
     <p class="p-2">{{data_detail.data.body.removeMD()}}</p>
+		 </div>
 		  <center>
       <a dmx-bind:href="{{data_detail.data.url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch">Launch App</a>
     </center>
@@ -168,6 +170,7 @@
 		<div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><i class="fas fa-heart mr-1"></i></a>{{data_detail.data.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{data_detail.data.children}}</div>
      	<div class="ml-auto"> {{data_detail.data.total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
 		</div>
+	   </div>
 	   </div>
 </dmx-data-detail>
 		   </div>
@@ -259,7 +262,7 @@
 					  </div>
 				  	<div id="dluxgactions" class="float-right text-right">
 						<h5 id="govbal">0 DLUX</h5>
-						<h6 id="escrowbal">(-0 DG)<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-search ml-2"></i></a></h6>
+						<h6 id="escrowbal">(-0 DG)<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapseExample" class="text-white"><i class="fas fa-search ml-2"></i></a></h6>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
 							<button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
   							<div class="btn-group" role="group">
