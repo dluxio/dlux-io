@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="card-footer">
-			    <a class="btn btn-lg btn-outline-primary" href="/docs/#nodes" role="button">Run A Node</a>
+			    <a class="btn btn-lg btn-outline-primary" href="/new/node/" role="button">Run A Node</a>
             </div>
         </div>
     </div>
