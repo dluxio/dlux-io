@@ -93,10 +93,7 @@
 		</div>
       <div class="float-right p-2"><span class="badge badge-secondary">{{data_detail.data.json_metadata.scat()}}</span><button type="button" class="close text-white ml-3" data-dismiss="modal" aria-label="Close" onclick="window.history.back();"><span aria-hidden="true">×</span></button></div>
 		   </div>
-	
     <a dmx-bind:href="/blog/@{{data_detail.data.author}}/{{data_detail.data.permlink}}" class="text-white"><h3 class="card-title mt-2 text-center text-capitalize p-2">{{data_detail.data.title}}</h3></a>
-    
-
 	 <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{data_detail.data.json_metadata.parseJSON().image}}" />  
     <div class="card-body">
 		   <p class="p-2">{{data_detail.data.body.removeMD()}}</p>

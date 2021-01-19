@@ -75,7 +75,7 @@
 									<p class="lead pt-3 text-uppercase">The DLUX node network</p>
 				<p>Achieve consensus for more than just dlux token balances. Using nodes as oracles, concensus is maintained for any outside data as well. The most trusted nodes are elected to hold some owner authority over community controlled accounts, allowing them to provide services like Account Creation Tokens, or IPFS content pinning.</p>
 				<div class="text-center">	
-						<a class="btn btn-outline-light m-3" href="#">Run A Node</a>
+						<a class="btn btn-outline-light m-3" href="/new/node">Run A Node</a>
 							</div>
 								</div>
 								
