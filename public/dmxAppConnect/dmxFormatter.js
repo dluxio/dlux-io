@@ -65,6 +65,7 @@ dmx.Formatters("global", {
             return b
         },
         hasVoted(u, a) {
+            console.log(u, a)
             for (let i = 0; i < a.length; i++) {
                 if (a[i].voter == u) {
                     return 'blue'
