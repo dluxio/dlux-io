@@ -64,6 +64,14 @@ dmx.Formatters("global", {
             }
             return b
         },
+        hasVoted(u, a) {
+            for (let i = 0; i < a.length; i++) {
+                if (a[i].voter == u) {
+                    return 'blue'
+                }
+            }
+            return 'black'
+        },
         randomize: function(t) {
             var n,
                 r,
