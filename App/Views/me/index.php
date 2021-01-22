@@ -252,7 +252,10 @@
 						<hr class="my-2 bg-light">
 					  <div class="clearfix">
 					  	<p class="float-left pt-2">@username was delegated 1000 DP 5 Days Ago</p>
-					  	<button class="float-right btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+						<div class="float-right">
+						  <button class="btn btn-secondary">UPDATE</button>
+					  	<button class="btn btn-danger ml-1"><i class="fas fa-trash-alt"></i></button>
+						  </div>
 					</div>
 				  </div>
 				  <hr class="my-4 bg-light">
