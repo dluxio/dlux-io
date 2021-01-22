@@ -131,12 +131,13 @@ function updateprogress(id) {
     document.getElementById('dluxpactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3).commafy()} DLUX`
     document.getElementById('hivepactions').firstElementChild.innerText = parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)).toFixed(3).commafy() + ' HP'
     try{
-       HP = parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares))
+       HP = parseFloat((parseFloat(User.hstats.total_vesting_fund_hive) * parseFloat(User.hive.vesting_shares)) / parseFloat(User.hstats.total_vesting_shares))
        document.getElementById('icoDelegationAvailible').innerHTML = `<center><small>Balance: <a href="#">${HP.toFixed(3)} HP</a></small></center>`
        document.getElementById('hiveDelegate').max = HP.toFixed(3)
        document.getElementById('delegateToDlux').addEventListener("click", function() {
         delegateToLeader("hiveDelegate");
     })
+    console.log({HP})
     } catch (e){console.log(e)}
 
     document.getElementById('hiveval').firstElementChild.innerText = `$${parseFloat((parseFloat(( parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)) + parseFloat(usr.hive.balance))*usr.price).toFixed(2)}`
