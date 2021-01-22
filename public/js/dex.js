@@ -408,6 +408,21 @@ function getSellID(txid) {
         });
 }
 
+function delegateToLeader() {
+    console.log('delegate to dlux-io:', document.getElementById('hiveDelegate').value)
+    vests = parseInt(document.getElementById('hiveDelegate').value / HP) * usr.hive.vesting_shares)
+reqsign([
+        'delegate_vesting_shares',
+        {
+            delegator: user,
+            delegatee: 'dlux-io',
+            vesting_shares: vests,
+        },
+    ], ['active', user])
+    .then(r => { spinThings(txid.split(':')[1]) })
+    .catch(e => { feedback(e) })
+}
+
 function insertBal(data, loc, atr) {
     if (!atr) {
         document.getElementById(loc).value = data
