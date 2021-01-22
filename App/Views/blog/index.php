@@ -20,14 +20,12 @@
 <?php
 	echo "<dmx-api-datasource id=\"dluxGetContent\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_content/\" dmx-param:author=\"'".$author."'\" dmx-param:permlink=\"'".$permlink."'\"></dmx-api-datasource>";
 	echo "<dmx-api-datasource id=\"dluxGetReplies\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_content_replies/\" dmx-param:author=\"'".$author."'\" dmx-param:permlink=\"'".$permlink."'\"></dmx-api-datasource>";
-?>
-	
+?>	
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
-
 <main role="main" class="flex-shrink-0 ">
   <div class="container bg-dark text-white pb-2 mb-3">
     <div class="d-flex align-items-center">
