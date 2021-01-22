@@ -419,7 +419,7 @@ function delegateToLeader() {
                 vesting_shares: vests,
             },
         ], ['active', user])
-        .then(r => { spinThings(txid.split(':')[1]) })
+        .then(r => { console.log(r) })
         .catch(e => { feedback(e) })
 }
 
