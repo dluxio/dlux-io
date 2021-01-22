@@ -59,14 +59,14 @@
             </p>
           </div>
           <div class="text-right">
-            <p class="my-0"><span class="mr-1"  id="commentVal">0</span><i class="ml-1 fab fa-fw fa-hive"></i></p>
+            <p class="my-0"><span class="mr-1" id="commentVal">0</span><i class="ml-1 fab fa-fw fa-hive"></i></p>
           </div>
         </div>
       </form>
     </div>
     <div class="d-flex align-items-center my-2">
       <div><a data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{dluxGetContent.data.result.id}}'><i class="fas fa-heart fa-fw mr-1"></i></a>{{dluxGetContent.data.result.active_votes.countUpVotes()}}<i class="fas fa-comment fa-fw ml-2 mr-1"></i>{{dluxGetContent.data.result.children}} <i class="fas fa-gift fa-fw ml-2"></i> </div>
-      <div class="ml-auto">{{dluxGetContent.data.result.total_payout_value}} <img src="/img/hextacular.svg" alt="" width="17" /></div>
+      <div class="ml-auto">{{dluxGetContent.data.result.total_payout_value}}<i class="ml-1 fab fa-fw fa-hive"></i></div>
     </div>
 		  </div>
 	   <hr class="mb-0" />
@@ -87,7 +87,7 @@
       <div class="d-flex align-items-center">
         <div> <a dmx-bind:href="/@{{author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"/></a> </div>
         <div>
-          <p class="mt-0 mb-0 text-muted text-semibold"> <a dmx-bind:href="/@{{author}}" class="a-1">{{author}}<span class="ml-2 badge badge-pill badge-light">{{author_reputation.toString().rep()}}</span></a> <small class="text-muted ml-2">{{created.formatDate("MMM dd, yyyy")}}</small> </p>
+          <p class="mt-0 mb-0 text-muted text-semibold"> <a dmx-bind:href="/@{{author}}" class="a-1">{{author}}<span class="ml-2 badge badge-pill badge-light">{{author_reputation.toString().rep()}}</span></a><small class="text-muted ml-2">{{created.formatDate("MMM dd, yyyy")}}</small></p>
         </div>
       </div>
       <div class="d-flex">
@@ -110,9 +110,9 @@
         </div>
       </div>
       <div class="d-flex align-items-center">
-        <div> <a data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{id}}' role="button" aria-expanded="false" dmx-bind:aria-controls='{{"#"}}vote{{id}}'><i class="fas fa-heart mr-1"></i></a>{{active_votes.countUpVotes()}} </div>
+        <div> <a data-toggle="collapse" dmx-bind:data-target='{{"#"}}vote{{id}}' role="button" aria-expanded="false" dmx-bind:aria-controls='{{"#"}}vote{{id}}'><i class="fas fa-heart mr-1"></i></a>{{active_votes.countUpVotes()}}</div>
         <div class="mx-2">&#8226;</div>
-        <div> {{total_payout_value}} <img src="/img/hextacular.svg" alt="" width="17" /> </div>
+        <div>{{total_payout_value}}<i class="ml-1 fab fa-fw fa-hive"></i></div>
         <div class="mx-2">&#8226;</div>
         <div><a data-toggle="collapse" dmx-bind:href='{{"#"}}reply{{id}}' role="button" aria-expanded="false" dmx-bind:aria-controls='{{"#"}}reply{{id}}'>Reply</a></div>
       </div>
