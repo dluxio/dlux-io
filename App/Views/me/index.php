@@ -251,7 +251,7 @@
 				  <div class="collapse" id="delegations">
 						<hr class="my-2 bg-light">
 					  <div class="clearfix">
-					  	<p class="float-left ">@username was delegated 1000 DP 5 Days Ago</p>
+					  	<p class="float-left pt-2">@username was delegated 1000 DP 5 Days Ago</p>
 					  	<button class="float-right btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 					</div>
 				  </div>
