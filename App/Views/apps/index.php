@@ -74,7 +74,7 @@
                </div> 
                <div class="d-flex align-items-center my-2">
                  <div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><i class="fas fa-heart fa-fw mr-1"></i></a>{{active_votes.countUpVotes()}} <i class="fas fa-comment fa-fw ml-2 mr-1"></i>{{children}}</div>
-                 <div class="ml-auto">{{total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
+                 <div class="ml-auto">{{total_payout_value}}<i class="ml-1 fab fa-fw fa-hive"></i></div>
                </div>
            </div>
     </div>
@@ -120,7 +120,7 @@
 	 </div>
 		<div class="d-flex align-items-center my-2">
 		<div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><i class="fas fa-heart mr-1"></i></a>{{data_detail.data.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{data_detail.data.children}}</div>
-     	<div class="ml-auto"> {{data_detail.data.total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
+     	<div class="ml-auto"> {{data_detail.data.total_payout_value}}<i class="ml-1 fab fa-fw fa-hive"></i></div>
 		</div>
 	   </div>
 	   </div>
