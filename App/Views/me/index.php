@@ -230,13 +230,14 @@
 						<li>Increased voting power on content</li>
 						<li>Increased rewards from content</li>
 						<li>Increased resource credits</li>
-						<li>Instant Power Up Period | 4 Week Power Down Period</li>
+						<li>Instant Power Up | 4 Week Power Down | 1 Week Convert</li>
 						</ul>
 				  	</div>
 				  	<div id="dluxpactions" class="float-right text-right">
 						<h5 id="pwrbal">0 DLUX</h5>
+						<a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white" style="text-decoration: none"><h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6></a>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
-							<button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-user-friends fa-fw mr-2"></i>Delegate</button>
+							<button type="button" class="btn btn-info mr-half" data-toggle="modal" title="Delegate DLUX" id="delegatedluxbtn" data-target="#sendDluxModal"><i class="fas fa-user-friends fa-fw mr-2"></i>Delegate</button>
   							<div class="btn-group" role="group">
     						<button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ></button>
     						<div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1">
@@ -246,6 +247,13 @@
   							</div>
 						</div>
 				  	</div>
+				  </div>
+				  <div class="collapse" id="delegations">
+						<hr class="my-2 bg-light">
+					  <div class="clearfix">
+					  	<p class="float-left ">@username was delegated 1000 DP 5 Days Ago</p>
+					  	<button class="float-right btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+					</div>
 				  </div>
 				  <hr class="my-4 bg-light">
 				  <div class="clearfix">
@@ -257,12 +265,12 @@
 						<li>Provides liquid funds to DAO multi-sig wallet</li>
 						<li>Ensures collateral for DEX escrow transactions</li>
 						<li>Enables voting on proposed community measures</li>
-						<li>1 Week Locking Period | 4 Week Unlocking Period</li>
+						<li>1 Week Lock | 4 Week Unlock | 1 Week Convert</li>
 						</ul>
 					  </div>
 				  	<div id="dluxgactions" class="float-right text-right">
 						<h5 id="govbal">0 DLUX</h5>
-						<h6 id="escrowbal">(-0 DG)<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapseExample" class="text-white"><i class="fas fa-search ml-2"></i></a></h6>
+						<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none"><h6 id="escrowbal">(-0 DG)<i class="fas fa-search ml-2"></i></h6></a>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
 							<button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
   							<div class="btn-group" role="group">
