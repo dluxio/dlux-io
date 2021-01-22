@@ -115,14 +115,14 @@
 						  </p>
 					</div>
                     <div>
-			            <p class="my-0"><span class="mr-1"  id="commentVal">0</span><img src="/img/hextacular.svg" alt="" width="17"/></p>
+			            <p class="my-0"><span class="mr-1"  id="commentVal">0</span><i class="ml-1 fab fa-fw fa-hive"></i></p>
           			</div>
                    </div>
                  </form>
                </div> 
                <div class="d-flex align-items-center my-2">
-                 <div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><i class="fas fa-heart fa-fw mr-1" style="color: {{active_votes.hasVoted('disregardfiat')}}"></i></a>{{active_votes.countUpVotes()}} <i class="fas fa-comment fa-fw ml-2 mr-1"></i>{{children}}</div>
-                 <div class="ml-auto">{{total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
+                 <div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><i class="fas fa-heart fa-fw mr-1" style="color: {{active_votes.hasVoted('disregardfiat')}}"></i></a>{{active_votes.countUpVotes()}}<i class="fas fa-comment fa-fw ml-2 mr-1"></i>{{children}}</div>
+                 <div class="ml-auto">{{total_payout_value}}<i class="ml-1 fab fa-fw fa-hive"></i></div>
                </div>
            </div>
          </div>
@@ -162,13 +162,13 @@
 			<input type="range" class="form-control-range" step="0.01" value="100" dmx-bind:id="slider{{post_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{post_id}}','slider{{post_id}}');">
 			</p>
 		  </div>
-			<p class="my-0"><span class="mr-1"  id="commentVal">0</span><img src="/img/hextacular.svg" alt="" width="17"/></p>
+			<p class="my-0"><span class="mr-1"  id="commentVal">0</span><i class="ml-1 fab fa-fw fa-hive"></i></p>
  		 </div>
 	  </form>
 	 </div>
 		<div class="d-flex align-items-center my-2">
-		<div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><i class="fas fa-heart mr-1"></i></a>{{data_detail.data.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{data_detail.data.children}}</div>
-     	<div class="ml-auto"> {{data_detail.data.total_payout_value}} <img src="../img/hextacular.svg" alt="" width="17"/></div>
+		<div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><i class="fas fa-heart mr-1"></i></a>{{data_detail.data.active_votes.countUpVotes()}}<i class="fas fa-fw fa-comment ml-2 mr-1"></i>{{data_detail.data.children}}</div>
+     	<div class="ml-auto">{{data_detail.data.total_payout_value}}<i class="ml-1 fab fa-fw fa-hive"></i></div>
 		</div>
 	   </div>
 	   </div>
@@ -253,8 +253,8 @@
 					  <div class="clearfix">
 					  	<p class="float-left pt-2">@username was delegated 1000 DP 5 Days Ago</p>
 						<div class="float-right">
-						  <button class="btn btn-secondary">UPDATE</button>
-					  	<button class="btn btn-danger ml-1"><i class="fas fa-trash-alt"></i></button>
+						  <button class="btn btn-secondary"><i class="fas fa-fw fa-user-edit"></i></button>
+					  	<button class="btn btn-danger ml-1"><i class="fas fa-fw fa-trash-alt"></i></button>
 						  </div>
 					</div>
 				  </div>
