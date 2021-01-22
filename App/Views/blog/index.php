@@ -20,7 +20,8 @@
 <?php
 	echo "<dmx-api-datasource id=\"dluxGetContent\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_content/\" dmx-param:author=\"'".$author."'\" dmx-param:permlink=\"'".$permlink."'\"></dmx-api-datasource>";
 	echo "<dmx-api-datasource id=\"dluxGetReplies\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_content_replies/\" dmx-param:author=\"'".$author."'\" dmx-param:permlink=\"'".$permlink."'\"></dmx-api-datasource>";
-?>	
+?>
+	
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
@@ -60,7 +61,7 @@
             </p>
           </div>
           <div class="text-right">
-            <p class="my-0"><span class="mr-1"  id="commentVal">0</span><img src="/img/hextacular.svg" alt="" width="17"/></p>
+            <p class="my-0"><span class="mr-1"  id="commentVal">0</span><i class="ml-1 fab fa-fw fa-hive"></i></p>
           </div>
         </div>
       </form>
@@ -106,7 +107,7 @@
             </p>
           </div>
           <div class="text-right">
-            <p class="my-0"><span class="mr-1"  id="commentHiveVal">0.10</span><img src="/img/hextacular.svg" alt="" width="17"/></p>
+            <p class="my-0"><span class="mr-1"  id="commentHiveVal">0</span><i class="ml-1 fab fa-fw fa-hive"></i></p>
           </div>
         </div>
       </div>
