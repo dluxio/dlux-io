@@ -143,14 +143,14 @@ function powerGrant(amt, to) {
         amount = parseInt(document.getElementById(amt).value * 1000)
     }
     let to = document.getElementById(tol).value || '',
-        memo = document.getElementById(memol).value || '',
+        //memo = document.getElementById(memol).value || '',
         params = {
             "required_auths": [user],
             "required_posting_auths": 0,
             "id": "dlux_power_up",
             "json": JSON.stringify({
                 amount,
-                //to,
+                to,
                 //memo
             })
         }
