@@ -235,9 +235,9 @@
 				  	</div>
 				  	<div id="dluxpactions" class="float-right text-right">
 						<h5 id="pwrbal">0 DLUX</h5>
-						<a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white" style="text-decoration: none"><h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6></a>
+						<a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white d-none" style="text-decoration: none"><h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6></a>
 						<div class="btn-group" role="group" aria-label="DLUX Actions">
-							<button type="button" class="btn btn-info mr-half" data-toggle="modal" title="Delegate DLUX" id="delegatedluxbtn" data-target="#sendDluxModal"><i class="fas fa-user-friends fa-fw mr-2"></i>Delegate</button>
+							<button type="button" class="btn btn-info mr-half disabled" data-toggle="modal" title="Delegate DLUX" id="delegatedluxbtn" data-target="#sendDluxModal" style="pointer-events: none"><i class="fas fa-user-friends fa-fw mr-2"></i>Delegate</button>
   							<div class="btn-group" role="group">
     						<button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ></button>
     						<div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1">
