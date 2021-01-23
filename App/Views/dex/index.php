@@ -432,7 +432,7 @@ $(document).ready(function(){
    						 <input type="number" id="hiveDelegate" min="0.000" class="form-control">
   						</div>
  					 <div class="col-xs-4 px-2">
- 					   <button type="submit" class="btn btn-primary disabled" style="pointer-events: none">Send</button>
+ 					   <button type="submit" id="delegateToDlux" class="btn btn-primary disabled" style="pointer-events: none">Send</button>
   					</div>
 					</div>
 						<div id="icoDelegationAvailible" >
