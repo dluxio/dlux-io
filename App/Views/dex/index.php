@@ -385,7 +385,7 @@ $(document).ready(function(){
 						
 					</div>
 						<div id="icoHiveBalance" >
-							<center><small>Balance: <a href="#">12345 DLUX</a></small></center>
+							<center><small>Balance: <a href="#">0 DLUX</a></small></center>
 						</div>
 				    </form>
 						  </div>
@@ -394,7 +394,7 @@ $(document).ready(function(){
 					  <hr id="auctionSpacer" class="bg-light">
 					  <div id="icoAuctionPanel" class="d-flex justify-content-center">
 			<div id="icoHiveSpent" class="text-center market-info-item">
-				<h3><span>1817.438 HIVE</span></h3>
+				<h3><span>0 HIVE</span></h3>
 				<div>
 					<label>Donated This Round</label>
 				</div>
@@ -432,7 +432,7 @@ $(document).ready(function(){
    						 <input type="number" id="hiveDelegate" min="0.000" class="form-control">
   						</div>
  					 <div class="col-xs-4 px-2">
- 					   <button type="submit" class="btn btn-primary">Send</button>
+ 					   <button type="submit" class="btn btn-primary disabled" style="pointer-events: none">Send</button>
   					</div>
 					</div>
 						<div id="icoDelegationAvailible" >
@@ -443,41 +443,23 @@ $(document).ready(function(){
 						  </div>
                     </div>
 			
-						
-						<div class="row align-items-center pb-5">
-							<div class="col-lg-6 order-lg-2">
-								<img src="/img/dex1.jpeg" class="img-fluid rounded">
-							</div>
-							<div class="col-lg-6 order-lg-1">
-						<p class="lead pt-3 text-uppercase">Why so long?</p>
+						<div class="d-flex">
+							<div class="pr-4">
+						<p class="lead pt-3 text-uppercase text-center">Why so long?</p>
 						<p>The hardest thing about decentralized systems is properly distributing them. Hive is a large crypto community but a tiny global community. We hope this distribution method will enable many more people to take part.</p>
-						<div class="text-center">	
-						<a class="btn btn-outline-light m-3" href="#">Read Documentation</a>
 							</div>
-							</div>
+	
 							
-						</div>
-						
-						<div class="row align-items-center py-5">
-							<div class="col-lg-6 order-lg-1"><img src="/img/dex2.jpeg" class="img-fluid rounded"></div>
-							<div class="col-lg-6 order-lg-2">
-								<p class="lead pt-3 text-uppercase">How does pricing feedback work?</p>
-				<p>If the daily pool sells out: the time it took is used to raise the following days price. If the daily offering fails to sell out: how much remains will be used to calculate the next offerings price. If there isn't enough tokens being purchased here, the price of these tokens have a set floor so you won't have to compete with an out of control inflation mechanism on the DEX.</p>
-								<div class="text-center">	
-						<a class="btn btn-outline-light m-3" href="#">Visit DEX</a>
-							</div>
-							</div></div>
-						
-							<div class="row align-items-center py-5">
-								<div class="col-lg-6 order-lg-2"><img src="/img/dex3.jpeg" class="img-fluid rounded"></div>
-								<div class="col-lg-6 order-lg-1">
-									<p class="lead pt-3 text-uppercase">Non ICO inflation</p>
+								<div class="px-4">
+									<p class="lead pt-3 text-uppercase text-center">Non-ICO inflation</p>
 				<p>Soon these tokens will be recieved by a "multi-signature" account that's operated collective by DLUX node runners. Due to the way node security works here, Hive funds held in excess of a safe amount will automatically be used to purchase the lowest Price DEX orders, raising the collateral held and there fore the security margins. The Standard source of inflation remains constant with currently issued tokens. And after 100,000,000 total tokens has been issued by any means will remain the only source of inflation.</p>
-				<div class="text-center">	
-						<a class="btn btn-outline-light m-3" href="#">Run A Node</a>
-							</div>
+
 								</div>
+								<div class="pl-4">
+								<p class="lead pt-3 text-uppercase text-center">Pricing Feedback</p>
+				<p>If the daily pool sells out: the time it took is used to raise the following days price. If the daily offering fails to sell out: how much remains will be used to calculate the next offerings price. If there isn't enough tokens being purchased here, the price of these tokens have a set floor so you won't have to compete with an out of control inflation mechanism on the DEX.</p>
 								
+							</div>
 								</div>
 						
 			    
@@ -485,7 +467,7 @@ $(document).ready(function(){
                     </div>
 	  </div>
 </div>
-	</div>
+
 	</main>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
