@@ -135,7 +135,7 @@ function powerUp(amt, tol, memol) {
         .catch(e => { feedback(e) })
 }
 
-function powerGrant(amt, to) {
+function powerGrant(amt, tol) {
     let amount
     if (typeof amt == 'number') {
         amount = amt
