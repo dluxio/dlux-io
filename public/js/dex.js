@@ -409,7 +409,7 @@ function getSellID(txid) {
 }
 
 try {
-    HP = parseFloat((parseFloat(User.hstats.total_vesting_fund_hive) * parseFloat(User.hive.vesting_shares)) / parseFloat(User.hstats.total_vesting_shares))
+    HP = parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(User.hstats.total_vesting_shares))
     document.getElementById('icoDelegationAvailible').innerHTML = `<center><small>Balance: <a href="#">${HP.toFixed(3)} HP</a></small></center>`
     document.getElementById('hiveDelegate').max = HP.toFixed(3)
     document.getElementById('delegateToDlux').addEventListener("click", function() {
