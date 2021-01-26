@@ -180,6 +180,19 @@ function powerDown(amt, tol, memol) {
         .catch(e => { feedback(e) })
 }
 
+function voteProp(props, user) {
+    reqsign([
+            "update_proposal_votes",
+            {
+                "voter": user,
+                "proposal_ids": props,
+                "approve": true
+            }
+        ], ['active', user])
+        .then(r => { feedback(r) })
+        .catch(e => { feedback(e) })
+}
+
 function updateNode() {
     return new Promise((resolve, reject) => {
         var nodeDomain = document.getElementById('nodeDomainSet').value,

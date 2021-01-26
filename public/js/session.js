@@ -38,6 +38,41 @@ function updateprogress(id) {
      user = sessionStorage.getItem('user');
      console.log('user=' + user)
      if (user != null) {
+         propCheck(user)
+         .then(r=>{
+            if (r.one48 && r.one52){
+                var el = document.getElementById('propVotePlead')
+                el.parentElement.removeChild(el)
+            } else if (r.one48){
+                document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-danger alert-dismissible text-center">
+  		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<span>Our proposal to improve the multi-signature DAO wallet needs your support.</span>
+		<a href="https://peakd.com/proposals/152" target="_blank" class="alert-link">Prop #152</a>
+  		<a href="#" class="alert-link"></a>
+		<button class="btn btn-danger ml-3" onclick="voteProp([152],${user})">Vote Now</button>
+	</div>`
+            } else if (r.one52){
+document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-danger alert-dismissible text-center">
+  		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<span>Our proposal to improve the token software needs your support.</span>
+		<a href="https://peakd.com/proposals/148" target="_blank" class="alert-link">Prop #148</a>
+  		<a href="#" class="alert-link"></a>
+		<button class="btn btn-danger ml-3" onclick="voteProp([148],${user})">Vote Now</button>
+	</div>`
+            } else {
+document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-danger alert-dismissible text-center">
+  		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<span>Our proposals to improve the token software and multi-signature wallet need your support.</span>
+		<a href="https://peakd.com/proposals/148" target="_blank" class="alert-link">Prop #148</a>
+		<span> | </span>
+		<a href="https://peakd.com/proposals/152" target="_blank" class="alert-link">Prop #152</a>
+  		<a href="#" class="alert-link"></a>
+		<button class="btn btn-danger ml-3" onclick="voteProp([148,152],${user})">Vote Now</button>
+	</div>`
+            }
+         })
+         .catch(e=>console.log(e))
+
          let account = sessionStorage.getItem('account')
          if (account != 'undefined') {
              console.log(account)
@@ -65,6 +100,7 @@ function updateprogress(id) {
              },
              method: "POST"
          }))
+         
          Promise.all(promises).then(res =>
              Promise.all(res.map(res => res.json()))
          ).then(jsons => {
@@ -710,6 +746,51 @@ function downPowerMagic(up, down, block_num) {
         power: newDownPower
     }
     return { up: newUp, down: newDown, vote: vote }
+}
+
+function propCheck(user){
+    return new Promise((resolve, reject)=>{
+        var one48 = false, one52 = false, done1 = false, done2 = false
+    var url = "https://api.hive.blog";
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url);
+
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+   if (xhr.readyState === 4) {
+      //console.log(xhr.status);
+      console.log(xhr.responseText);
+      for (voter in xhr.responseText.result){
+          if (xhr.responseText.result[voter].voter == user){
+              one48 = true
+              break;
+          }
+      }
+      done1 = true
+      if(done2){resolve({one48, one52})}
+   }};
+    var data = '{"jsonrpc":"2.0", "method":"condenser_api.list_proposal_votes", "params":[[148], 1000, "by_proposal_voter", "ascending", "active"], "id":1}';
+    xhr.send(data);
+    var xhr2 = new XMLHttpRequest();
+    xhr2.open("POST", url);
+
+    xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr2.onreadystatechange = function () {
+   if (xhr2.readyState === 4) {
+      //console.log(xhr.status);
+      console.log(xhr2.responseText);
+      for (voter in xhr2.responseText.result){
+          if (xhr2.responseText.result[voter].voter == user){
+              one52 = true
+              break;
+          }
+      }
+      done2 = true
+      if(done1){resolve({one48, one52})}
+   }};
+    var data2 = '{"jsonrpc":"2.0", "method":"condenser_api.list_proposal_votes", "params":[[152], 1000, "by_proposal_voter", "ascending", "active"], "id":1}';
+    xhr.send(data2);
+    })
 }
 
 String.prototype.commafy = function() {

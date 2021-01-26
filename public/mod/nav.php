@@ -50,16 +50,8 @@
     </div>
     </div>
 </header>
-<container class="m-auto">
-<div class="alert alert-danger alert-dismissible text-center">
-  		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		<span>Our proposals to improve the token software and multi-signature wallet need your support.</span>
-		<a href="https://peakd.com/proposals/148" target="_blank" class="alert-link">Prop #148</a>
-		<span> | </span>
-		<a href="https://peakd.com/proposals/152" target="_blank" class="alert-link">Prop #152</a>
-  		<a href="#" class="alert-link"></a>
-		<button class="btn btn-danger ml-3">Vote Now</button>
-	</div></container>
+<container id="propVotePlead" class="m-auto">
+</container>
 <!-- Login Modal -->       
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
