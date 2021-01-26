@@ -750,50 +750,45 @@ function downPowerMagic(up, down, block_num) {
 
 function propCheck(user){
     return new Promise((resolve, reject)=>{
-        var one48 = false, one52 = false, done1 = false, done2 = false
-    var url = "https://api.hive.blog";
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url);
-
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-   if (xhr.readyState === 4) {
-      //console.log(xhr.status);
-      //console.log(xhr.responseText);
-      const all1 = xhr.responseText
-      console.log(all1)  
-      const res1 = all1.result
-      for (i = 0; i < res1.length; i++){
-          if (res1[i].voter == user){
-              console.log(res1[i].voter)
-              one48 = true
-              break;
-          }
-      }
-      done1 = true
-      if(done2){resolve({one48, one52})}
-   }};
-    var data = '{"jsonrpc":"2.0", "method":"condenser_api.list_proposal_votes", "params":[[148], 1000, "by_proposal_voter", "ascending", "active"], "id":1}';
-    xhr.send(data);
-    var xhr2 = new XMLHttpRequest();
-    xhr2.open("POST", url);
-
-    xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr2.onreadystatechange = function () {
-   if (xhr2.readyState === 4) {
-      const res2 = xhr2.responseText.result
-      for (i = 0; i < res2.length; i++){
-          if (res2[i].voter == user){
-              one52 = true
-              break;
-          }
-      }
-      done2 = true
-      if(done1){resolve({one48, one52})}
-   }};
-    var data2 = '{"jsonrpc":"2.0", "method":"condenser_api.list_proposal_votes", "params":[[152], 1000, "by_proposal_voter", "ascending", "active"], "id":1}';
-    xhr2.send(data2);
-    })
+    var url148 = fetch("https://api.hive.blog", {
+        body: "{\"jsonrpc\":\"2.0\", \"method\":\"condenser_api.list_proposal_votes\", \"params\":[[148], 1000, \"by_proposal_voter\", \"ascending\", \"active\"], \"id\":1}",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: "POST"
+        })
+    var url152 = fetch("https://api.hive.blog", {
+        body: "{\"jsonrpc\":\"2.0\", \"method\":\"condenser_api.list_proposal_votes\", \"params\":[[152], 1000, \"by_proposal_voter\", \"ascending\", \"active\"], \"id\":1}",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: "POST"
+        })
+    Promise.all([url148, url152])
+        .then(r=>{
+            var one48 = false, on52 = false
+            for(i=0;i<r[0].result.length;i++){
+                if(r[0].result[i].proposal.id != 148){
+                    break;
+                }
+                if(r[0].result[i].voter == user){
+                    one48 = true
+                    break;
+                }
+            }
+            for(i=0;i<r[1].result.length;i++){
+                if(r[0].result[i].proposal.id != 148){
+                    break;
+                }
+                if(r[1].result[i].voter == user){
+                    one52 = true
+                    break;
+                }
+            }
+            resolve({one48,one52})
+        })
+        .catch(e=>reject(e))
+    });
 }
 
 String.prototype.commafy = function() {
