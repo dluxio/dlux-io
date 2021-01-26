@@ -803,6 +803,16 @@ Number.prototype.commafy = function() {
     return String(this).commafy();
 };
 
+function reqsign(op, req) { //requests keychain to sign and broadcast
+    return new Promise((resolve, reject) => {
+        Dluxsession.hive_sign([req[1],
+                [op], req[0]
+            ])
+            .then(r => { resolve(r) })
+            .catch(e => reject(e))
+    })
+}
+
 function voteProp(props, user) {
     reqsign([
             "update_proposal_votes",

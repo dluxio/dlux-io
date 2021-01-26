@@ -63,15 +63,6 @@ function cancel(txid) {
         .catch(e => { feedback(e) })
 }
 
-function reqsign(op, req) { //requests keychain to sign and broadcast
-    return new Promise((resolve, reject) => {
-        Dluxsession.hive_sign([req[1],
-                [op], req[0]
-            ])
-            .then(r => { resolve(r) })
-            .catch(e => reject(e))
-    })
-}
 
 function dexsend(type, pair) {
     const dlux = parseFloat(document.getElementById('menudlux').value)
