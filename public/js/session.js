@@ -767,7 +767,7 @@ function propCheck(user){
     Promise.all([url148, url152])
         .then(res=>Promise.all(res.map(res => res.json())))
         .then(r=>{
-            var one48 = false, on52 = false
+            var one48 = false, one52 = false
             for(i=0;i<r[0].result.length;i++){
                 if(r[0].result[i].proposal.id != 148){
                     break;
