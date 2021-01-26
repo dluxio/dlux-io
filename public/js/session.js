@@ -765,7 +765,7 @@ function propCheck(user){
         method: "POST"
         })
     Promise.all([url148, url152])
-        .then(response => {return response.json()})
+        .then(res=>Promise.all(res.map(res => res.json())))
         .then(r=>{
             var one48 = false, on52 = false
             for(i=0;i<r[0].result.length;i++){
