@@ -759,8 +759,10 @@ function propCheck(user){
     xhr.onreadystatechange = function () {
    if (xhr.readyState === 4) {
       //console.log(xhr.status);
-      console.log(xhr.responseText);
-      const res1 = xhr.responseText.result
+      //console.log(xhr.responseText);
+      const all1 = xhr.responseText
+      console.log(all1)  
+      const res1 = all1.result
       for (i = 0; i < res1.length; i++){
           if (res1[i].voter == user){
               console.log(res1[i].voter)
