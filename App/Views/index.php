@@ -14,14 +14,14 @@
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
-<main class="flex-shrink-0">
-  <div class="container-fluid m-0 p-0">
-    <div class="jumbotron jumbotron-fluid text-center text-white bg-color">
+<main>
+	  <div class="d-flex flex-column align-items-center h-100 text-white">
+	<div class="jumbotron jumbotron-fluid text-center text-white bg-color">
        <div class="container">
 		<div class="row">
          <div class="col-xl-6"><h1 class="display-4">dlux</h1>
-		   <h6>DECENTRALIZED LIMITLESS USER EXPERIENCES </h6>
-		   <hr class="my-4 bg-light">
+		   <h6 class="text-uppercase">Decentralized Limitless User Experiences</h6>
+		   <hr class="bg-light">
        <p class="lead">The easiest way to build and distribute dApps on HIVE</p>
        <p>Empower your  project with an open source token and wallet backed by deterministic concensus on a distributed ledger</p>
 <p class="lead">
@@ -35,8 +35,20 @@
 </div>
     </div> 
     </div>
-	  
-    <div class="card-group text-white">
+	<div class="jumbotron bg-dark border-danger mb-5" style="border-style:solid">
+		<h1 class="text-center">Support Our Hive Proposals</h1>
+		<hr class="bg-light">
+	<h6 class="text-uppercase text-center">We currently have 2 proposals on HIVE</h6>
+		<ul>
+		<li><a href="https://peakd.com/proposals/148" target="_blank">#148</a> - Funds the development of our Token and DEX to further our decentralized finance architecture.</li>
+		<li><a href="https://peakd.com/proposals/152" target="_blank">#152</a> - Funds the development of our DAO multi-signature wallet to enable higher security and more features.</li>
+		</ul>
+	<hr class="bg-light">
+		<p class="text-center">Vote on both at once by clicking the button below.</p>
+		<center><button class="btn btn-danger">Vote Now</button></center>
+	</div>
+	<div class="mt-auto">
+		<div class="card-group text-white">
 		  <div class="card bg-dark border-primary text-center">
               <div class="card-body d-flex align-items-center">
                   <div>
@@ -72,9 +84,8 @@
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
+	</div>
+	</div>
 </main>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
