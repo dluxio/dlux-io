@@ -767,20 +767,22 @@ function propCheck(user){
     Promise.all([url148, url152])
         .then(r=>{
             var one48 = false, on52 = false
-            for(i=0;i<r[0].result.length;i++){
-                if(r[0].result[i].proposal.id != 148){
+            const r0 = JSON.parse(r[0])
+            const r1 = JSON.parse(r[1])
+            for(i=0;i<r0.result.length;i++){
+                if(r0.result[i].proposal.id != 148){
                     break;
                 }
-                if(r[0].result[i].voter == user){
+                if(r0.result[i].voter == user){
                     one48 = true
                     break;
                 }
             }
-            for(i=0;i<r[1].result.length;i++){
-                if(r[0].result[i].proposal.id != 148){
+            for(i=0;i<r1.result.length;i++){
+                if(r1.result[i].proposal.id != 148){
                     break;
                 }
-                if(r[1].result[i].voter == user){
+                if(r1.result[i].voter == user){
                     one52 = true
                     break;
                 }
