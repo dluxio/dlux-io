@@ -759,9 +759,10 @@ function propCheck(user){
     xhr.onreadystatechange = function () {
    if (xhr.readyState === 4) {
       //console.log(xhr.status);
-      //console.log(xhr.responseText);
-      for (voter in xhr.responseText.result){
-          if (xhr.responseText.result[voter].voter == user){
+      console.log(xhr.responseText);
+      for (i = 0; i < xhr.responseText.result.length; i++){
+          if (xhr.responseText.result[i].voter == user){
+              console.log(xhr.responseText.result[i].voter)
               one48 = true
               break;
           }
@@ -779,8 +780,8 @@ function propCheck(user){
    if (xhr2.readyState === 4) {
       //console.log(xhr.status);
       //console.log(xhr2.responseText);
-      for (voter in xhr2.responseText.result){
-          if (xhr2.responseText.result[voter].voter == user){
+      for (i = 0; i < xhr2.responseText.result.length; i++){
+          if (xhr2.responseText.result[i].voter == user){
               one52 = true
               break;
           }
