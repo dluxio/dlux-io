@@ -760,9 +760,10 @@ function propCheck(user){
    if (xhr.readyState === 4) {
       //console.log(xhr.status);
       console.log(xhr.responseText);
-      for (i = 0; i < xhr.responseText.result.length; i++){
-          if (xhr.responseText.result[i].voter == user){
-              console.log(xhr.responseText.result[i].voter)
+      const res1 = xhr.responseText.result
+      for (i = 0; i < res1.length; i++){
+          if (res1[i].voter == user){
+              console.log(res1[i].voter)
               one48 = true
               break;
           }
@@ -778,10 +779,9 @@ function propCheck(user){
     xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr2.onreadystatechange = function () {
    if (xhr2.readyState === 4) {
-      //console.log(xhr.status);
-      //console.log(xhr2.responseText);
-      for (i = 0; i < xhr2.responseText.result.length; i++){
-          if (xhr2.responseText.result[i].voter == user){
+      const res2 = xhr2.responseText.result
+      for (i = 0; i < res2.length; i++){
+          if (res2[i].voter == user){
               one52 = true
               break;
           }
