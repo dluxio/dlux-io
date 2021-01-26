@@ -49,7 +49,7 @@ function updateprogress(id) {
 		<span>Our proposal to improve the multi-signature DAO wallet needs your support.</span>
 		<a href="https://peakd.com/proposals/152" target="_blank" class="alert-link">Prop #152</a>
   		<a href="#" class="alert-link"></a>
-		<button class="btn btn-danger ml-3" onclick="voteProp([152],${user})">Vote Now</button>
+		<button class="btn btn-danger ml-3" onclick="voteProp([152],'${user}')">Vote Now</button>
 	</div>`
             } else if (r.one52){
 document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-danger alert-dismissible text-center">
@@ -57,7 +57,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
 		<span>Our proposal to improve the token software needs your support.</span>
 		<a href="https://peakd.com/proposals/148" target="_blank" class="alert-link">Prop #148</a>
   		<a href="#" class="alert-link"></a>
-		<button class="btn btn-danger ml-3" onclick="voteProp([148],${user})">Vote Now</button>
+		<button class="btn btn-danger ml-3" onclick="voteProp([148],'${user}')">Vote Now</button>
 	</div>`
             } else {
 document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-danger alert-dismissible text-center">
@@ -67,7 +67,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
 		<span> | </span>
 		<a href="https://peakd.com/proposals/152" target="_blank" class="alert-link">Prop #152</a>
   		<a href="#" class="alert-link"></a>
-		<button class="btn btn-danger ml-3" onclick="voteProp([148,152],${user})">Vote Now</button>
+		<button class="btn btn-danger ml-3" onclick="voteProp([148,152],'${user}')">Vote Now</button>
 	</div>`
             }
          })
@@ -802,3 +802,16 @@ String.prototype.commafy = function() {
 Number.prototype.commafy = function() {
     return String(this).commafy();
 };
+
+function voteProp(props, user) {
+    reqsign([
+            "update_proposal_votes",
+            {
+                "voter": user,
+                "proposal_ids": props,
+                "approve": true
+            }
+        ], ['active', user])
+        .then(r => { feedback(r) })
+        .catch(e => { feedback(e) })
+}
