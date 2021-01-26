@@ -759,7 +759,7 @@ function propCheck(user){
     xhr.onreadystatechange = function () {
    if (xhr.readyState === 4) {
       //console.log(xhr.status);
-      console.log(xhr.responseText);
+      //console.log(xhr.responseText);
       for (voter in xhr.responseText.result){
           if (xhr.responseText.result[voter].voter == user){
               one48 = true
@@ -778,7 +778,7 @@ function propCheck(user){
     xhr2.onreadystatechange = function () {
    if (xhr2.readyState === 4) {
       //console.log(xhr.status);
-      console.log(xhr2.responseText);
+      //console.log(xhr2.responseText);
       for (voter in xhr2.responseText.result){
           if (xhr2.responseText.result[voter].voter == user){
               one52 = true
@@ -789,7 +789,7 @@ function propCheck(user){
       if(done1){resolve({one48, one52})}
    }};
     var data2 = '{"jsonrpc":"2.0", "method":"condenser_api.list_proposal_votes", "params":[[152], 1000, "by_proposal_voter", "ascending", "active"], "id":1}';
-    xhr.send(data2);
+    xhr2.send(data2);
     })
 }
 
