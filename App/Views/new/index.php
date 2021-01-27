@@ -34,7 +34,7 @@
 	</div>
 	  <div class="card w-100 border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
-    	<h5 class="card-title">360 Gallery°</h5>
+    	<h5 class="card-title">360° Gallery</h5>
     	<p class="card-text">Upload 360° images to view in VR</p>
 		<hr class="bg-light">
 		<center>
