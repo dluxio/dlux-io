@@ -1,5 +1,3 @@
-var dragDrop = require('drag-drop')
-
 dragDrop("body", function(files) {
     //const convertPNG = document.querySelector('#convertpng').checked
     const is360 = document.querySelector('#is360').checked
