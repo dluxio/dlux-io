@@ -216,6 +216,7 @@
 				name: assets[i].path,
 				size: assets[i].size,
 				pin: true,
+				type: "ts",
 				thumbHash: assets[i].hash
 			})
 		}
