@@ -8,17 +8,18 @@
    include_once($path);
 ?>
 <style>
-	.img-well {
+	#img-well {
 		border-style: solid;
 		border-radius: 5px;
 		border-width: 5px;
 			}
-	.img-well.drag {
+	#img-well.drag {
 		background: #8ED2C9;		
 			}
 </style>
 <script src="../js/drag-drop.js"></script>
 <script src="../js/img-ipfs.js"></script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script src="https://unpkg.com/ipfs-http-client@29.1.1/dist/index.min.js"></script>
     <script>
     const ipfs = window.IpfsHttpClient({ host: 'ipfs.infura.io', port: '5001', protocol: 'https' })
@@ -65,7 +66,7 @@
 	<div class="d-flex flex-wrap justify-content-center">
 	  <div class="flex-column mb-4">
 		<div class="flex-row">
-			<div class="border-danger alert-danger img-well p-5">
+			<div id="img-well" class="border-danger alert-danger p-5">
 				<h3>Drag and drop your images here</h3>
 				<h6>.JPG, .JPEG, and .PNG up to 4096x2048 are supported</h6>
 				<p>Click or tap to browse</p>
@@ -89,7 +90,7 @@
 	      </div>
 		  <div class="form-group">
 		    <label for="description">Description</label>
-		    <input type="text" class="form-control" id="description" placeholder="Enter an attention grabbing title">
+		    <textarea class="form-control" rows="2" id="validationCustomDescription" placeholder="Add a comment" required></textarea>
 	      </div>
 		  <div class="form-group">
 		    <label for="title">Tags</label>
@@ -130,4 +131,79 @@
    $path .= "/mod/footer.php";
    include_once($path);
 ?>
+<script>
+      function updateVoteSubmit(id, val) {
+        document.getElementById(id).innerHTML =
+          document.getElementById(val).value + "%";
+      }
+
+      var simplemde = new SimpleMDE({
+        element: document.getElementById("validationCustomDescription")
+      });
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        "use strict";
+        window.addEventListener(
+          "load",
+          function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName("needs-validation");
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener(
+                "submit",
+                function(event) {
+                  console.log("button");
+                  if (
+                    document.getElementById("validationCustomDescription")
+                      .innerHTML == "Sign In"
+                  ) {
+                    sendLink("/auth");
+                  }
+                  var tagField = document.getElementById(
+                    "validationCustomReferal"
+                  ).value;
+                  var tags = tagField.split(",").map(item => item.trim());
+                  let otherTags = tags.slice(0, 4);
+                  var customJSON = JSON.stringify({
+                    tags: otherTags,
+                    subApp: "SuperCraftLoader/v0.1",
+                    xr: false,
+                    vrHash: "QmTzKnzxEm3ZXcqFMxytt3fnJZvSSvtRnMCZTuzzMxwG7y",
+                    superCraft: document.getElementById(
+                      "validationCustomLoader"
+                    ).value
+                  });
+                  var postData = {
+                    title: document.getElementById("validationCustomTitle")
+                      .value,
+                    message: document.getElementById(
+                      "validationCustomDescription"
+                    ).value,
+                    customJSON: customJSON
+                  };
+                  console.log(postData);
+                  if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                  } else {
+                    window.parent.postMessage(
+                      {
+                        func: "advPost",
+                        message: postData
+                      },
+                      "*"
+                    );
+                  }
+                  form.classList.add("was-validated");
+                },
+                false
+              );
+            });
+          },
+          false
+        );
+      })();
+      //onpageloaded();
+    </script>
 </body></html>
