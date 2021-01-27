@@ -212,20 +212,20 @@
 		console.log({assets, info})
 		for (var i = 0; i < assets.length; i++){
 			custom_json.assets.push({
-			hash: assets[i].hash,
-			name: assets[i].path,
-			size: hash: assets[i].size,
-			pin: true,
-			thumbHash: assets[i].hash
-		})
+				hash: assets[i].hash,
+				name: assets[i].path,
+				size: hash: assets[i].size,
+				pin: true,
+				thumbHash: assets[i].hash
+			})
 		}
         hive.api.getContent('markegiles', 'dlux-vr-tutorial-sm-test', function(err, result) {
           result.json_metadata = JSON.stringify({
-      custom_json
-   })
+				custom_json
+			})
       var target = document.getElementById('aframePreview').contentWindow
       var un = 'Guest'
-      if(localStorage.getItem('un')){un = localStorage.getItem('un')}
+      if(sessionStorage.getItem('user')){un = sessionStorage.getItem('user')}
       target.postMessage({
       'func': 'iAm',
       'message': un,
