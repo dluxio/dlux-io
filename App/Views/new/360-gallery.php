@@ -18,7 +18,6 @@
 			}
 </style>
 <script src="../js/drag-drop.js"></script>
-<script src="../js/img-ipfs.js"></script>
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script src="https://unpkg.com/ipfs-http-client@29.1.1/dist/index.min.js"></script>
 </head>
@@ -98,6 +97,7 @@
    $path .= "/mod/footer.php";
    include_once($path);
 ?>
+<script src="../js/img-ipfs.js"></script>
 <script>
       function updateVoteSubmit(id, val) {
         document.getElementById(id).innerHTML =
