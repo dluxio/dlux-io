@@ -10,7 +10,7 @@
 <style>
 	#img-well {
 		border-style: solid;
-		border-radius: 5px;
+		border-radius: 10px;
 		border-width: 5px;
 			}
 	#img-well.drag {
@@ -65,16 +65,16 @@
 			<small id="tagsHelp" class="form-text text-muted">Add up to 4 tags, comma separated, no spaces</small>
 	      </div>
 		  <div class="text-center">
-		    <button type="submit" class="btn btn-primary">Publish</button>
+		    <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Publish Gallery to HIVE">Publish</button>
 		  </div>
 	    </form>
 		</div>
       </div>
 		<div id="listOfImgs" class="flex-column flex-shrink mx-3">
-			<div id="item01 px-3 mb-3">
+			<div id="item01" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
 				<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
-					<div style="font-size: 1.3em; font-weight: bold">Item01</div>
-					<div class="ml-auto"><button class="btn btn-primary btn-sm mr-2"><i class="fas fa-fw fa-thumbtack"></i></button><button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></button></div>
+					<form class="form-inline"><input class="form-control form-control-sm mr-2" type="text" placeholder="Item name" disabled><button class="btn btn-secondary btn-sm ml-auto" data-toggle="tooltip" data-placement="top" title="Edit Name"><i class="fas fa-fw fa-pencil-alt"></i></button></form>
+					<div class="ml-auto"><button class="btn btn-primary btn-sm mr-2" data-toggle="tooltip" data-placement="top" title="Asset Pinned to IPFS"><i class="fas fa-fw fa-thumbtack"></i></button><button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Asset"><i class="fas fa-fw fa-trash-alt"></i></button></div>
 				</div>
 				<div class="d-flex flex-row">
 		  		<div id="source01" class="mr-3">
@@ -89,7 +89,7 @@
 		</div>
 		</div>
 	  <div class="flex-column flex-fill">
-		<iframe id="aframePreview" src="https://lumbar-encouraging-snarl.glitch.me/post.html" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe id="aframePreview" src="https://turnkey-360-gallery.glitch.me/post.html" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 	</div>
 </main>
