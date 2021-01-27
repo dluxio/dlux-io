@@ -251,7 +251,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		var item = document.createElement('div')
 		item.id = `item${i}`
 		item.class = `px-3 mb-3`
-		  var item.innerHTML = `<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
+		item.innerHTML = `<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
 					<div style="font-size: 1.3em; font-weight: bold">${img.name}</div>
 					<div class="ml-auto"><button class="btn ${btnclass} btn-sm mr-2" onclick="togglePin('${img.hash}')"><i class="fas fa-fw fa-thumbtack"></i></button><button class="btn btn-danger btn-sm" onclick="deleteImg('${img.hash}')"><i class="fas fa-fw fa-trash-alt"></i></button></div>
 				</div>
