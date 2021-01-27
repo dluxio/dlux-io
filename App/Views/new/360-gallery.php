@@ -53,7 +53,6 @@
     }
     </script>
 </head>
-
 <body class="d-flex flex-column h-100 padme-t70 text-center text-white">
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
