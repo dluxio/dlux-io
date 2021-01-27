@@ -53,8 +53,8 @@
 			<small id="permlinkPreview" class="form-text text-muted d-flex"><span id="permlink" class="mr-auto">Permlink: build-permlink-here</span><a href="#" class="ml-auto">Edit Permlink</a></small>
 	      </div>
 		  <div class="form-group">
-		    <label for="title">Description</label>
-		    <input type="password" class="form-control" id="title" placeholder="Enter an attention grabbing title">
+		    <label for="description">Description</label>
+		    <input type="text" class="form-control" id="description" placeholder="Enter an attention grabbing title">
 	      </div>
 		  <div class="form-group">
 		    <label for="title">Tags</label>
