@@ -244,9 +244,10 @@
 		  document.getElementById('listOfImgs').innerHTML = ``
 for(var i = 0; i < custom_json.assets.length; i++){
 		const img = custom_json.assets[i]
-		var btnclass = 'btn-outline-primary'
+		if(img.type == 'ts'){
+		var btnclass = 'btn-primary'
 		if(!img.pin){
-			btnclass = 'btn-primary'
+			btnclass = 'btn-outline-primary'
 		}
 		var item = document.createElement('div')
 		item.id = `item${i}`
@@ -265,6 +266,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 					<div class="small"><a href="#" id="tHashImg${i}" target="_blank">Thumbnail</a></div>
 				  </div>`
 		document.getElementById('listOfImgs').appendChild(item)
+	}
 }
 	  }
 	  function togglePin(hash){
