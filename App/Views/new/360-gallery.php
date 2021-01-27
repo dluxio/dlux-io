@@ -17,8 +17,8 @@
 		background: #8ED2C9;		
 			}
 </style>
-<script src="../js/img-ipfs.js"></script>
 <script src="../js/drag-drop.js"></script>
+<script src="../js/img-ipfs.js"></script>
 <script src="https://unpkg.com/ipfs-http-client@29.1.1/dist/index.min.js"></script>
     <script>
     const ipfs = window.IpfsHttpClient({ host: 'ipfs.infura.io', port: '5001', protocol: 'https' })
