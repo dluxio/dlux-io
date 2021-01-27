@@ -21,39 +21,6 @@
 <script src="../js/img-ipfs.js"></script>
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script src="https://unpkg.com/ipfs-http-client@29.1.1/dist/index.min.js"></script>
-    <script>
-    const ipfs = window.IpfsHttpClient({ host: 'ipfs.infura.io', port: '5001', protocol: 'https' })
-    function saveToIpfs(ar, pin, is360, newAsset){
-      console.log(`You've requested to upload and pin(${pin}) 360(${is360}) image(s) and create assets(${newAsset})\nIPFS maky take some time to upload...`)
-      var ipfsIP = []
-      var info = []
-      for (var name in ar){
-        ipfsIP.push({'path':`${ar[name][1]}`,'content':ar[name][0]})
-        info.push([name,ar[name][1]])
-      }
-    ipfs.add(ipfsIP, (err, ipfsReturn) => {
-            if (!err){
-              var pass = localStorage.getItem('pass')
-              if (!pass){
-              pass = alert('enter the edit password', 'set this in .env')
-                localStorage.setItem('pass', pass)
-              }
-              fetch(`/img/${pass}`, {
-                method: 'POST',
-                headers: {
-            "Content-Type": "application/json",
-            // "Content-Type": "application/x-www-form-urlencoded",
-        },
-                body: JSON.stringify({refs:ipfsReturn, info, pin, is360,new:newAsset})
-              })
-              .then(response => response.text())
-              .then(response => console.log('IPFS Complete, glitches turn...', response))
-              .catch(error => console.error('Error:', error));
-            } else {
-        console.log('IPFS Upload Failed', err)}
-          })
-    }
-    </script>
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-center text-white">
 <?php 
@@ -122,7 +89,7 @@
 		</div>
 		</div>
 	  <div class="flex-column flex-fill">
-		<iframe src="https://volcano-aware-cardboard.glitch.me/" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe id="aframePreview" src="https://lumbar-encouraging-snarl.glitch.me/post.html" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 	</div>
 </main>
@@ -205,5 +172,49 @@
         );
       })();
       //onpageloaded();
+    </script>
+	<script>
+    const ipfs = window.IpfsHttpClient({ host: 'ipfs.infura.io', port: '5001', protocol: 'https' })
+    function saveToIpfs(ar, pin, is360, newAsset){
+      console.log(`You've requested to upload and pin(${pin}) 360(${is360}) image(s) and create assets(${newAsset})\nIPFS maky take some time to upload...`)
+      var ipfsIP = []
+      var info = []
+      for (var name in ar){
+        ipfsIP.push({'path':`${ar[name][1]}`,'content':ar[name][0]})
+        info.push([name,ar[name][1]])
+      }
+    ipfs.add(ipfsIP, (err, ipfsReturn) => {
+            if (!err){
+              iloaded(ipfsReturn, info)
+            } else {
+        console.log('IPFS Upload Failed', err)}
+          })
+	}
+	function iloaded(assets, info){
+		console.log({assets, info})
+        hive.api.getContent('markegiles', 'dlux-vr-tutorial-sm-test', function(err, result) {
+          result.json_metadata = JSON.stringify({
+      "assets": assets
+   })
+      var target = document.getElementById('aframePreview').contentWindow
+      var un = 'Guest'
+      if(localStorage.getItem('un')){un = localStorage.getItem('un')}
+      target.postMessage({
+      'func': 'iAm',
+      'message': un,
+      }, "*");
+      target.postMessage({
+      'func': 'key',
+      'message': 'markegiles/dlux-vr-tutorial-sm-test',
+      }, "*");
+      target.postMessage({
+      'func': 'hiveState',
+      'message': result,
+      }, "*");
+      })
+          if(window.hive_keychain) {
+            postable = true
+        }
+      }
     </script>
 </body></html>

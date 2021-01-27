@@ -1,9 +1,9 @@
-dragDrop("body", function(files) {
+dragDrop("#img-well", function(files) {
     //const convertPNG = document.querySelector('#convertpng').checked
-    const is360 = document.querySelector('#is360').checked
-    const pinIpfs = document.querySelector('#pinthis').checked
-    const makeAsset = document.querySelector('#makeAsset').checked
-    const resize = document.querySelector('#magic').checked
+    const is360 = true
+    const pinIpfs = true
+    const makeAsset = true
+    const resize = false
 
     const buffers = []
     let pending = 0
