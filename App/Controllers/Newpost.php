@@ -33,4 +33,8 @@ class Newpost extends \Core\Controller
     {
         View::render('new/node.php');
     }
+    public function threesixty($request, $response, $service)
+    {
+        View::render('new/360-gallery.php');
+    }
 }

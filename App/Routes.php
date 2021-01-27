@@ -36,5 +36,7 @@ $router->respondWithController('GET', '/new/supercraft', 'Newpost@supercraft');
 $router->respondWithController('GET', '/new/supercraft/', 'Newpost@supercraft');
 $router->respondWithController('GET', '/new/advanced', 'Newpost@advanced');
 $router->respondWithController('GET', '/new/advanced/', 'Newpost@advanced');
+$router->respondWithController('GET', '/new/360-gallery', 'Newpost@threesixty');
+$router->respondWithController('GET', '/new/360-gallery/', 'Newpost@threesixty');
 // Dispatch the router
 $router->dispatch();
