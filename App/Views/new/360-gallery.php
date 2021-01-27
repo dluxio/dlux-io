@@ -220,9 +220,7 @@
 			})
 		}
         hive.api.getContent('markegiles', 'dlux-vr-tutorial-sm-test', function(err, result) {
-          result.json_metadata = JSON.stringify({
-				custom_json
-			})
+          result.json_metadata = JSON.stringify(custom_json)
       var target = document.getElementById('aframePreview').contentWindow
       var un = 'Guest'
       if(sessionStorage.getItem('user')){un = sessionStorage.getItem('user')}
