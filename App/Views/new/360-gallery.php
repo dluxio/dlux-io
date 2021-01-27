@@ -17,8 +17,8 @@
 		background: #8ED2C9;		
 			}
 </style>
-<script src="../js/drag-drop.js"></script>
 <script src="../js/buffer.js"></script>
+<script src="../js/drag-drop.js"></script>
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script src="https://unpkg.com/ipfs-http-client@29.1.1/dist/index.min.js"></script>
 </head>
