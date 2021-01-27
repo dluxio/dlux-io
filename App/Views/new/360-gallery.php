@@ -8,15 +8,12 @@
    include_once($path);
 ?>
 <style>
-	.imgwell {
-		background: #FCF4D9;
-		color: #FF7A5A;
-		border: #FF7A5A;
+	.img-well {
 		border-style: solid;
 		border-radius: 5px;
 		border-width: 5px;
 			}
-	.imgwell.drag {
+	.img-well.drag {
 		background: #8ED2C9;		
 			}
 </style>
@@ -29,19 +26,17 @@
    include_once($path);
 ?>
 <main role="main" class="p-3 flex-shrink-0">
-	<h1 class="p-5">DLUX 360° Image Gallery</h1>
+	<h1 class="p-5">DLUX 360° Image Gallery Builder</h1>
 	<div class="d-flex flex-wrap justify-content-center">
 	  <div class="flex-column mb-4">
 		<div class="flex-row">
-			<div class="imgwell p-5">
+			<div class="border-danger alert-danger img-well p-5">
 				<h3>Drag and drop your images here</h3>
-				<h6>Supports .JPG, .JPEG, .PNG up to 5 MB</h6>
-			  <div class="option">
-					<input type="checkbox" id="pinthis" checked /> Request to pin asset upon post.
-				</div>
+				<h6>.JPG, .JPEG, and .PNG up to 4096x2048 are supported</h6>
+				<p>Click or tap to browse</p>
 			</div>
 		</div>
-		<div class="flex-row text-left">
+		<div class="flex-row text-left mt-2">
 		<form>
 		  <div class="form-group">
 		    <label for="username">Author</label>
@@ -67,22 +62,28 @@
 			<small id="tagsHelp" class="form-text text-muted">Add up to 4 tags, comma separated, no spaces</small>
 	      </div>
 		  <div class="text-center">
-		    <button type="submit" class="btn btn-danger">Publish</button>
+		    <button type="submit" class="btn btn-primary">Publish</button>
 		  </div>
 	    </form>
 		</div>
       </div>
 		<div class="flex-column flex-shrink mx-3">
-			<div id="item01" class="d-flex flex-row px-3 mb-3">
-		  		<div id="pano01" class="mr-3">
-					<div><img id="pImg01" src="/img/equirectangular.jpeg" height="150"/></div>
-					<div class="small"><a href="#" id="deleteItem01">Delete</a></div>
+			<div id="item01 px-3 mb-3">
+				<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
+					<div style="font-size: 1.3em; font-weight: bold">Item01</div>
+					<div class="ml-auto"><button class="btn btn-primary btn-sm mr-2"><i class="fas fa-fw fa-thumbtack"></i></button><button class="btn btn-danger btn-sm"><i class="fas fa-fw fa-trash-alt"></i></button></div>
+				</div>
+				<div class="d-flex flex-row">
+		  		<div id="source01" class="mr-3">
+					<div><img id="sImg01" src="/img/equirectangular.jpeg" height="150"/></div>
+					<div class="small"><a href="#" id="sHashImg01" target="_blank">Source</a></div>
 		  		</div>
 		  		<div id="thumb01">
 					<div><img id="tImg01" src="/img/equirectangular_thumb.jpg" height="150"/></div>
-					<div class="small"><a href="#" id="editThumb01">Edit</a></div>
+					<div class="small"><a href="#" id="tHashImg01" target="_blank">Thumbnail</a></div>
 		  		</div>
 			</div>
+		</div>
 		</div>
 	  <div class="flex-column flex-fill">
 		<iframe src="https://volcano-aware-cardboard.glitch.me/" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
