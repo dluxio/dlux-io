@@ -175,6 +175,23 @@
       //onpageloaded();
     </script>
 	<script>
+	var custom_json = {
+      "app": "dlux/0.0.9",
+      "xr": true,
+      "Hash360": "QmeDDfa2QUUhuTvVJrEQNRNB1qBCJCjUKmx2enmVjLqP8H",
+      "format": "markdown",
+      "assets": [
+         {
+            "hash": "QmaQ2rrr7EV6VouPpb1Uvv5MTG716u8VW63kVBt9M3ozMB",
+            "size": 29907,
+            "pin": false
+         }
+      ],
+      "tags": [
+         "dlux"
+      ],
+      "vrHash": "QmaQ2rrr7EV6VouPpb1Uvv5MTG716u8VW63kVBt9M3ozMB"
+   }
     const ipfs = window.IpfsHttpClient({ host: 'ipfs.infura.io', port: '5001', protocol: 'https' })
     function saveToIpfs(ar, pin, is360, newAsset){
       console.log(`You've requested to upload and pin(${pin}) 360(${is360}) image(s) and create assets(${newAsset})\nIPFS maky take some time to upload...`)
@@ -193,9 +210,18 @@
 	}
 	function iloaded(assets, info){
 		console.log({assets, info})
+		for (var i = 0; i < assets.length; i++){
+			custom_json.assets.push({
+			hash: assets[i].hash,
+			name: assets[i].path,
+			size: hash: assets[i].size,
+			pin: true,
+			thumbHash: assets[i].hash
+		})
+		}
         hive.api.getContent('markegiles', 'dlux-vr-tutorial-sm-test', function(err, result) {
           result.json_metadata = JSON.stringify({
-      "assets": assets
+      custom_json
    })
       var target = document.getElementById('aframePreview').contentWindow
       var un = 'Guest'
