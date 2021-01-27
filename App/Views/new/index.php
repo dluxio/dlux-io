@@ -32,6 +32,21 @@
     	<a href="https://dlux-vr.glitch.me/build.html" target="_blank" class="btn btn-danger">Get Started</a>
   	  </div>
 	</div>
+	  <div class="card w-100 border-danger bg-dark my-5">
+      <div class="card-body text-center text-white">
+    	<h5 class="card-title">360° Gallery</h5>
+    	<p class="card-text">Upload 360° images to view in VR</p>
+		<hr class="bg-light">
+		<center>
+		<ul class="text-left">
+		<li>App Type: VR</li>
+		<li>Builder: 2D drag-and-drop asset upload and publishing form; 3D A-Frame preview</li>
+		<li>Difficulty: Easy</li>
+		</ul>
+		</center>
+    	<a href="/new/360-gallery" class="btn btn-danger">Get Started</a>
+  	  </div>
+	</div>
 	<div class="card w-100 border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
     	<h5 class="card-title">SUPERCRAFT</h5>
@@ -55,7 +70,7 @@
 		<center>
 		<ul class="text-left">
 		<li>App Type: AR/VR/2D</li>
-		<li>Builder: 2D drag-and-drop asset upload and publishing form</li>
+		<li>Builder: 2D publishing form with drag-and-drop support for images</li>
 		<li>Difficulty: Easy</li>
 		</ul>
 		</center>
