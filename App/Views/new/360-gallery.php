@@ -70,7 +70,7 @@
 	    </form>
 		</div>
       </div>
-		<div class="flex-column flex-shrink mx-3">
+		<div id="listOfImgs" class="flex-column flex-shrink mx-3">
 			<div id="item01 px-3 mb-3">
 				<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
 					<div style="font-size: 1.3em; font-weight: bold">Item01</div>
@@ -237,10 +237,52 @@
       'func': 'hiveState',
       'message': result,
       }, "*");
-      })
-          if(window.hive_keychain) {
-            postable = true
-        }
-      }
+	  })
+	  buildList()
+	  }
+	  function buildList (){
+		  document.getElementById('listOfImgs').innerHTML = ``
+for(var i = 0; i < custom_json.assets.length; i++){
+		const img = custom_json.assets[i]
+		var btnclass = 'btn-outline-primary'
+		if(!img.pin){
+			btnclass = 'btn-primary'
+		}
+		  var item = `<div id="item${i} px-3 mb-3">
+				<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
+					<div style="font-size: 1.3em; font-weight: bold">${img.name}</div>
+					<div class="ml-auto"><button class="btn ${btnclass} btn-sm mr-2" onclick="togglePin('${img.hash}')"><i class="fas fa-fw fa-thumbtack"></i></button><button class="btn btn-danger btn-sm" onclick="deleteImg('${img.hash}')"><i class="fas fa-fw fa-trash-alt"></i></button></div>
+				</div>
+				<div class="d-flex flex-row">
+		  		<div id="source${i}" class="mr-3">
+					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" height="150"/></div>
+					<div class="small"><a href="#" id="sHashImg${i}" target="_blank">Source</a></div>
+		  		</div>
+		  		<div id="thumb${i}">
+					<div><img id="tImg${i}" src="https://ipfs.io/ipfs/${img.thumbHash}" height="150"/></div>
+					<div class="small"><a href="#" id="tHashImg${i}" target="_blank">Thumbnail</a></div>
+		  		</div>
+			</div>`
+}
+	  }
+	  function togglePin(hash){
+		  for(var i = 0; i < custom_json.assets.length; i++){
+			  const img = custom_json.assets[i]
+			  if(img.hash == hash){
+			  	if(img.pin){custom_json.assets[i].pin = false}
+			  	else {custom_json.assets[i].pin = true}
+			  }
+		  }
+buildList ()
+	  }
+	  function deleteImg(hash){
+		  for(var i = 0; i < custom_json.assets.length; i++){
+			  const img = custom_json.assets[i]
+			  if(img.hash == hash){
+				  custom_json.assets.splice(i,1)
+			  }
+		  }
+buildList ()
+	  }
     </script>
 </body></html>
