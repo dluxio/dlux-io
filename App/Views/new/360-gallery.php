@@ -214,7 +214,7 @@
 			custom_json.assets.push({
 				hash: assets[i].hash,
 				name: assets[i].path,
-				size: hash: assets[i].size,
+				size: assets[i].size,
 				pin: true,
 				thumbHash: assets[i].hash
 			})
