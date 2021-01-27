@@ -11,7 +11,7 @@ dragDrop("#img-well", function(files) {
         pending++
         const reader = new FileReader()
         reader.onload = () => {
-            let imageBuffer = Buffer.from(reader.result)
+            let imageBuffer = buffer.from(reader.result)
 
             let name = f.fullPath.substring(1)
             let ext = f.fullPath.split('.')[1]
