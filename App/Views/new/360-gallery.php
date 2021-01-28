@@ -209,16 +209,17 @@
           })
 	}
 	function iloaded(assets, info){
-		console.log({assets, info})
-		for (var i = 0; i < assets.length; i++){
-			custom_json.assets.push({
-				hash: assets[i].hash,
-				name: assets[i].path,
-				size: assets[i].size,
-				pin: true,
-				type: "ts",
-				thumbHash: assets[i].hash
-			})
+		if(Object.keys(assets).length){
+			for (var i = 0; i < assets.length; i++){
+				custom_json.assets.push({
+					hash: assets[i].hash,
+					name: assets[i].path,
+					size: assets[i].size,
+					pin: true,
+					type: "ts",
+					thumbHash: assets[i].hash
+				})
+			}
 		}
         hive.api.getContent('markegiles', 'dlux-vr-tutorial-sm-test', function(err, result) {
           result.json_metadata = JSON.stringify(custom_json)
