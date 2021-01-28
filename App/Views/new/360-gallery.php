@@ -314,9 +314,10 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			permlink()
 		} catch (e){}
 	}
+
 	function permlink(text){
 		if(text){
-		text.replace(/[\W_]+/g, '-').toLowerCase()
+		text.replace(/[\W_]+/g, '-').replace(' ', '-').toLowerCase()
 		document.getElementById('permlink').innerText = `permlink: ${text}`
 		permlink = text
 		} else {
@@ -326,6 +327,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		permlink = text
 		}
 	}
+	
 	if(sessionStorage.getItem('user')){document.getElementById('username').value = sessionStorage.getItem('user')}
 
 	function post(){
