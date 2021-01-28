@@ -326,7 +326,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		} else {
 			text = document.getElementById('title').value
 			text = text.replace(' ', '-')
-			text = text.replace(/[\W_]+/g, '')
+			text = text.replace(/[\W_]+/g, '-')
 			text = text.toLowerCase()
 		document.getElementById('permlink').innerText = `permlink: ${text}`
 		permlink = text
