@@ -313,17 +313,17 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			  //document.getElementById(`editName${hash}`).addClass('fa-pencil-alt')
 			  //document.getElementById(`editName${hash}`).removeClass('fa-check')
 			  for(var i = 0; i < custom_json.assets.length; i++){
-			  const img = custom_json.assets[i]
-			  if(img.hash == hash){
-				  custom_json.assets[i].name = document.getElementById(`nameOf${hash}`).value
-				  break;
-			  }
+				const img = custom_json.assets[i]
+				if(img.hash == hash){
+					custom_json.assets[i].name = document.getElementById(`nameOf${hash}`).value
+					break;
+				}
+			}
+			buildList()
+			iloaded()
 		  } else {
 			  document.getElementById(`editName${hash}`).removeClass('fa-pencil-alt')
 			  document.getElementById(`editName${hash}`).addClass('fa-check')
-		  }
-		  buildList()
-		  iloaded()
 		  }
 	  }
     </script>
