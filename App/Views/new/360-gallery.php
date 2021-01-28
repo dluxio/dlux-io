@@ -209,7 +209,7 @@
           })
 	}
 	function iloaded(assets, info){
-		if(Object.keys(assets).length){
+		if(assets){
 			for (var i = 0; i < assets.length; i++){
 				custom_json.assets.push({
 					hash: assets[i].hash,
