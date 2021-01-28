@@ -49,7 +49,7 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="title">Title</label>
-		    <input type="text" class="form-control" id="title" onkeyup="keyupwrap()" placeholder="Enter an attention grabbing title">
+		    <input type="text" class="form-control" id="title" onfocusout="keyupwrap()" placeholder="Enter an attention grabbing title">
 			<small id="permlinkPreview" class="form-text text-muted d-flex"><span id="permlink" class="mr-auto">Permlink: build-permlink-here</span><a href="#" class="ml-auto">Edit Permlink</a></small>
 	      </div>
 		  <div class="form-group">
@@ -330,8 +330,11 @@ for(var i = 0; i < custom_json.assets.length; i++){
 
 	function post(){
 		var tags = document.getElementById('tags').value.toLowerCase().split(',')
+		custom_json.tags = ['dlux']
 		for (i = 0; i < tags.length; i++){
+			if(tags[i] != 'dlux'){
 			custom_json.tags.push(tags[i].replace(/[\W_]+/g, '-'))
+			}
 		}
 		console.log(custom_json.tags)
 		if (sessionStorage.getItem('user')){
