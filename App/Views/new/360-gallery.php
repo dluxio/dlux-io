@@ -318,12 +318,15 @@ for(var i = 0; i < custom_json.assets.length; i++){
 	function permlink(text){
 		if(text){
 		text.replace(/[\W_]+/g, '-').replace(' ', '-').toLowerCase()
+		text = text.replace(' ', '-')
+			text = text.replace(/[\W_]+/g, '')
+			text = text.toLowerCase()
 		document.getElementById('permlink').innerText = `permlink: ${text}`
 		permlink = text
 		} else {
 			text = document.getElementById('title').value
-			text = text.replace(/[\W_]+/g, '')
 			text = text.replace(' ', '-')
+			text = text.replace(/[\W_]+/g, '')
 			text = text.toLowerCase()
 		document.getElementById('permlink').innerText = `permlink: ${text}`
 		permlink = text
