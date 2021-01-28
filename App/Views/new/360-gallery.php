@@ -185,7 +185,7 @@
       "tags": [
          "dlux"
       ],
-      "vrHash": "QmXu8KHyTUmgcZDeBBPZ7t1Dpfo1b46Z9U8kcWxwh5pFRy"
+      "vrHash": "QmNby3SMAAa9hBVHvdkKvvTqs7ssK4nYa2jBdZkxqmRc16"
    },
    permlink
     const ipfs = window.IpfsHttpClient({ host: 'ipfs.infura.io', port: '5001', protocol: 'https' })
@@ -327,7 +327,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		permlink = text
 		}
 	}
-	
+
 	if(sessionStorage.getItem('user')){document.getElementById('username').value = sessionStorage.getItem('user')}
 
 	function post(){
