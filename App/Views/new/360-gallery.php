@@ -314,13 +314,13 @@ for(var i = 0; i < custom_json.assets.length; i++){
 	}
 	function permlink(text){
 		if(text){
-		text.replace(/[\W_]+/g, '-')
-		document.getElementById(permlink).innerText = `permlink: ${text}`
+		text.replace(/[\W_]+/g, '-').toLowerCase()
+		document.getElementById('permlink').innerText = `permlink: ${text}`
 		permlink = text
 		} else {
 			text = document.getElementById('title').value
-			text.replace(/[\W_]+/g, '-')
-		document.getElementById(permlink).innerText = `permlink: ${text}`
+			text.replace(/[\W_]+/g, '-').toLowerCase()
+		document.getElementById('permlink').innerText = `permlink: ${text}`
 		permlink = text
 		}
 	}
