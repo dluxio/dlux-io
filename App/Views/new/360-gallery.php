@@ -74,7 +74,7 @@
 				<a href="#" class="alert-link">Click or tap to browse</a>
 			</div>
 		<div id="listOfImgs" >
-			<div id="item01" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
+			<!--<div id="item01" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
 				<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
 					<div class="d-flex"><input class="form-control form-control-sm mr-2" type="text" placeholder="Item name" disabled><button class="btn btn-secondary btn-sm ml-auto" data-toggle="tooltip" data-placement="top" title="Edit Name"><i class="fas fa-fw fa-pencil-alt"></i></button></div>
 					<div class="ml-auto"><button class="btn btn-primary btn-sm mr-2" data-toggle="tooltip" data-placement="top" title="Asset Pinned to IPFS"><i class="fas fa-fw fa-thumbtack"></i></button><button class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Asset"><i class="fas fa-fw fa-trash-alt"></i></button></div>
@@ -89,7 +89,7 @@
 					<div class="small"><a href="#" id="tHashImg01" target="_blank">Thumbnail</a></div>
 		  		</div>
 			</div>
-		</div>
+		</div>-->
 		</div>
 			</div>
 	  <div class="flex-column flex-fill">
