@@ -342,6 +342,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			if(tags[i] != 'dlux'){
 			custom_json.tags.push(tags[i].replace(/[\W_]+/g, '-'))
 			}
+			if(i == 8)break;
 		}
 		console.log(custom_json.tags)
 		if (sessionStorage.getItem('user')){
