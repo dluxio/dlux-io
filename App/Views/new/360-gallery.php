@@ -49,7 +49,7 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="title">Title</label>
-		    <input type="text" class="form-control" id="title" onkeyup="permlink()" placeholder="Enter an attention grabbing title">
+		    <input type="text" class="form-control" id="title" onkeyup="keyupwrap()" placeholder="Enter an attention grabbing title">
 			<small id="permlinkPreview" class="form-text text-muted d-flex"><span id="permlink" class="mr-auto">Permlink: build-permlink-here</span><a href="#" class="ml-auto">Edit Permlink</a></small>
 	      </div>
 		  <div class="form-group">
@@ -185,7 +185,7 @@
       "tags": [
          "dlux"
       ],
-      "vrHash": "QmaQ2rrr7EV6VouPpb1Uvv5MTG716u8VW63kVBt9M3ozMB"
+      "vrHash": "QmXu8KHyTUmgcZDeBBPZ7t1Dpfo1b46Z9U8kcWxwh5pFRy"
    },
    permlink
     const ipfs = window.IpfsHttpClient({ host: 'ipfs.infura.io', port: '5001', protocol: 'https' })
@@ -309,8 +309,10 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			iloaded()
 		  }
 	  }
-	function post(){
-
+	function keyupwrap(){
+		try{
+			permlink()
+		} catch (e){}
 	}
 	function permlink(text){
 		if(text){
