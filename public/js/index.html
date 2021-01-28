@@ -220,6 +220,15 @@
             }
             return uparr.join('')
         }
+
+        function varval(name, arr) {
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i].split('=')[0] == name) {
+                    return arr[i].split('=')[1]
+                }
+            }
+            return ''
+        }
     </script>
 </head>
 
