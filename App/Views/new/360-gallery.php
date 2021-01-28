@@ -49,7 +49,7 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="title">Title</label>
-		    <input type="text" class="form-control" id="title" placeholder="Enter an attention grabbing title">
+		    <input type="text" class="form-control" id="title" onkeyup="permlink()" placeholder="Enter an attention grabbing title">
 			<small id="permlinkPreview" class="form-text text-muted d-flex"><span id="permlink" class="mr-auto">Permlink: build-permlink-here</span><a href="#" class="ml-auto">Edit Permlink</a></small>
 	      </div>
 		  <div class="form-group">
@@ -62,7 +62,7 @@
 			<small id="tagsHelp" class="form-text text-muted">Add up to 4 tags, comma separated, no spaces</small>
 	      </div>
 		  <div class="text-center">
-		    <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Publish Gallery to HIVE">Publish</button>
+		    <button type="button" onclick="post()" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Publish Gallery to HIVE">Publish</button>
 		  </div>
 	    </form>
 		</div>
