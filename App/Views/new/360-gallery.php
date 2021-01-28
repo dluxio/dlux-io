@@ -308,8 +308,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 	  function toggleNameEdit(hash){
 		  var enabled = document.getElementById(`nameOf${hash}`).disabled
 		  document.getElementById(`nameOf${hash}`).disabled = !enabled
-		  document.getElementById(`editName${hash}`).removeClass('fa-pencil-alt')
-		  document.getElementById(`editName${hash}`).addClass('fa-check')
+		  document.getElementById(`editName${hash}`).setAttribute('class', 'fas fa-fw fa-check')
 		  console.log(enabled)
 		  if(!enabled){
 			  //document.getElementById(`editName${hash}`).addClass('fa-pencil-alt')
