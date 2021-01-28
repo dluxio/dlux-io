@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<title>DLUX - New Node</title>
+<title>DLUX - 360° Image Gallery</title>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/header.php";
@@ -29,15 +29,12 @@
    include_once($path);
 ?>
 <main role="main" class="p-3 flex-shrink-0">
-	<h1 class="p-5">DLUX 360° Image Gallery Builder</h1>
 	<div class="d-flex flex-wrap justify-content-center">
 	  <div class="flex-column mb-4">
-		<div class="flex-row">
-			<div id="img-well" class="border-danger alert-danger p-5">
-				<h3>Drag and drop your images here</h3>
-				<h6>.JPG, .JPEG, and .PNG up to 4096x2048 are supported</h6>
-				<p>Click or tap to browse</p>
-			</div>
+		<div class="flex-row py-2">
+			<h1 class="px-4 font-weight-bold">DLUX 360°</h1>
+			<h1 class="px-4 font-weight-bold" style="font-variant:small-caps;">Image Gallery Builder</h1>
+			<hr class="bg-light">
 		</div>
 		<div class="flex-row text-left mt-2">
 		<form>
@@ -70,7 +67,13 @@
 	    </form>
 		</div>
       </div>
-		<div id="listOfImgs" class="flex-column flex-shrink mx-3">
+		<div class="flex-column flex-shrink mx-3">
+			<div id="img-well" class="border-danger alert-danger p-5 mb-3">
+				<h3>Drag and drop your images here</h3>
+				<h6>.JPG, .JPEG, and .PNG up to 4096x2048 are supported</h6>
+				<a href="#" class="alert-link">Click or tap to browse</a>
+			</div>
+		<div id="listOfImgs" >
 			<div id="item01" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
 				<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
 					<div class="d-flex"><input class="form-control form-control-sm mr-2" type="text" placeholder="Item name" disabled><button class="btn btn-secondary btn-sm ml-auto" data-toggle="tooltip" data-placement="top" title="Edit Name"><i class="fas fa-fw fa-pencil-alt"></i></button></div>
@@ -88,6 +91,7 @@
 			</div>
 		</div>
 		</div>
+			</div>
 	  <div class="flex-column flex-fill">
 		<iframe id="aframePreview" src="https://turnkey-360-gallery.glitch.me/post.html" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
