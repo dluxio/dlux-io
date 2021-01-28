@@ -302,13 +302,15 @@ for(var i = 0; i < custom_json.assets.length; i++){
 				  custom_json.assets.splice(i,1)
 			  }
 		  }
-		  buildList ()
+		  //buildList ()
 		  iloaded()
 	  }
 	  function toggleNameEdit(hash){
 		  var enabled = document.getElementById(`nameOf${hash}`).disabled
 		  document.getElementById(`nameOf${hash}`).disabled = !enabled
-		  console.log(document.getElementById(`nameOf${hash}`).value)
+		  document.getElementById(`editName${hash}`).removeClass('fa-pencil-alt')
+		  document.getElementById(`editName${hash}`).addClass('fa-check')
+		  console.log(enabled)
 		  if(!enabled){
 			  //document.getElementById(`editName${hash}`).addClass('fa-pencil-alt')
 			  //document.getElementById(`editName${hash}`).removeClass('fa-check')
@@ -319,11 +321,8 @@ for(var i = 0; i < custom_json.assets.length; i++){
 					break;
 				}
 			}
-			buildList()
+			//buildList()
 			iloaded()
-		  } else {
-			  document.getElementById(`editName${hash}`).removeClass('fa-pencil-alt')
-			  document.getElementById(`editName${hash}`).addClass('fa-check')
 		  }
 	  }
     </script>
