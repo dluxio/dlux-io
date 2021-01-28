@@ -71,6 +71,7 @@
 		</div>
       </div>
 		<div id="listOfImgs" class="flex-column flex-shrink mx-3">
+		<!--
 			<div id="item01" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
 				<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
 					<form class="form-inline"><input class="form-control form-control-sm mr-2" type="text" placeholder="Item name" disabled><button class="btn btn-secondary btn-sm ml-auto" data-toggle="tooltip" data-placement="top" title="Edit Name"><i class="fas fa-fw fa-pencil-alt"></i></button></form>
@@ -86,6 +87,7 @@
 					<div class="small"><a href="#" id="tHashImg01" target="_blank">Thumbnail</a></div>
 		  		</div>
 			</div>
+			-->
 		</div>
 		</div>
 	  <div class="flex-column flex-fill">
@@ -251,8 +253,23 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		}
 		var item = document.createElement('div')
 		item.id = `item${i}`
-		item.class = `px-3 mb-3`
+		item.class = `p-3 mb-3 bg-dark`
+		item.setAttribute('style', 'border-radius', '10px')
 		item.innerHTML = `<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
+					<form class="form-inline"><input id="nameOf${img.hash}" class="form-control form-control-sm mr-2" type="text" placeholder="${img.name}" disabled><button onclick="toggleNameEdit('${img.hash}')" class="btn btn-secondary btn-sm ml-auto" data-toggle="tooltip" data-placement="top" title="Edit Name"><i class="fas fa-fw fa-pencil-alt"></i></button></form>
+					<div class="ml-auto"><button onclick="togglePin('${img.hash}')" class="btn ${btnclass} btn-sm mr-2" data-toggle="tooltip" data-placement="top" title="Asset Pinned to IPFS"><i class="fas fa-fw fa-thumbtack"></i></button><button class="btn btn-danger btn-sm" onclick="deleteImg('${img.hash}')" data-toggle="tooltip" data-placement="top" title="Delete Asset"><i class="fas fa-fw fa-trash-alt"></i></button></div>
+				</div>
+				<div class="d-flex flex-row">
+		  		<div id="source${i}" class="mr-3">
+					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" height="150"/></div>
+					<div class="small"><a href="#" id="sHashImg${i}" target="_blank">Source</a></div>
+		  		</div>
+		  		<div id="thumb${i}">
+					<div><img id="tImg${i}" src="https://ipfs.io/ipfs/${img.thumbHash}" height="150"/></div>
+					<div class="small"><a href="#" id="tHashImg${i}" target="_blank">Thumbnail</a></div>
+				  </div>`
+				 /* 
+				  `<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
 					<div style="font-size: 1.3em; font-weight: bold">${img.name}</div>
 					<div class="ml-auto"><button class="btn ${btnclass} btn-sm mr-2" onclick="togglePin('${img.hash}')"><i class="fas fa-fw fa-thumbtack"></i></button><button class="btn btn-danger btn-sm" onclick="deleteImg('${img.hash}')"><i class="fas fa-fw fa-trash-alt"></i></button></div>
 				</div>
@@ -265,6 +282,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 					<div><img id="tImg${i}" src="https://ipfs.io/ipfs/${img.thumbHash}" height="150"/></div>
 					<div class="small"><a href="#" id="tHashImg${i}" target="_blank">Thumbnail</a></div>
 				  </div>`
+				  */
 		document.getElementById('listOfImgs').appendChild(item)
 	}
 }
@@ -277,7 +295,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			  	else {custom_json.assets[i].pin = true}
 			  }
 		  }
-buildList ()
+		  buildList ()
 	  }
 	  function deleteImg(hash){
 		  for(var i = 0; i < custom_json.assets.length; i++){
@@ -286,7 +304,21 @@ buildList ()
 				  custom_json.assets.splice(i,1)
 			  }
 		  }
-buildList ()
+		  buildList ()
+	  }
+	  function toggleNameEdit(hash){
+		  var enabled = document.getElementById(`nameOf${hash}`).disabled
+		  document.getElementById(`nameOf${hash}`).disabled = !enabled
+		  if(!enabled){
+			  for(var i = 0; i < custom_json.assets.length; i++){
+			  const img = custom_json.assets[i]
+			  if(img.hash == hash){
+				  custom_json.assets[i].name = document.getElementById(`nameOf${hash}`).value
+				  break;
+			  }
+			  buildList()
+		  }
+		  }
 	  }
     </script>
 </body></html>
