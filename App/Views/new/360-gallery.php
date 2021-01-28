@@ -177,7 +177,8 @@
 
 	var custom_json = {
       "app": "dlux/0.0.9",
-      "xr": true,
+	  "xr": true,
+	  "image": {},
       "Hash360": "",
       "format": "markdown",
       "assets": [
@@ -215,6 +216,7 @@
 					type: "ts",
 					thumbHash: assets[i].hash
 				})
+				custom_json.image['0'] = `https://ipfs.io/ipfs/${assets[i].hash}`
 				if(!custom_json.Hash360){
 					custom_json.Hash360 = assets[i].hash
 				}
