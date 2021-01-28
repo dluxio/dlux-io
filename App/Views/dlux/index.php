@@ -4,9 +4,7 @@
 <head>
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js"></script>
@@ -36,7 +34,8 @@
             if(err)console.log(err)
             stateObj = result
             var metadata = result.json_metadata
-            var hashy = JSON.parse(metadata).vrHash
+            var hashy = JSON.parse(metadata).vrHash,
+                vars = `?${location.href.split('?')[1]}` || `?`
             if (!hashy) {
                 hashy = JSON.parse(metadata).arHash
             }
@@ -51,7 +50,7 @@
             }
             let subdomain = to58lower(hashy)
             ipfsdomain = `https://${subdomain}.ipfs.dlux.io`;
-            location.href = ipfsdomain + `?${vars}&author=${author}&permlink=${permlink}&user=${sessionStorage.getItem('user')}`
+            location.href = ipfsdomain + `${vars}&author=${author}&permlink=${permlink}&user=${sessionStorage.getItem('user')}`
             
         });
         if (isIOS()) {
