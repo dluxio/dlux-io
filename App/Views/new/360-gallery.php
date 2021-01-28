@@ -322,7 +322,9 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		permlink = text
 		} else {
 			text = document.getElementById('title').value
-			text.replace(/[\W_]+/g, '').replace(' ', '-').toLowerCase()
+			text.replace(/[\W_]+/g, '')
+			text.replace(' ', '-')
+			text.toLowerCase()
 		document.getElementById('permlink').innerText = `permlink: ${text}`
 		permlink = text
 		}
