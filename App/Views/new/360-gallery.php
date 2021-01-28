@@ -303,6 +303,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			  }
 		  }
 		  buildList ()
+		  iloaded()
 	  }
 	  function toggleNameEdit(hash){
 		  var enabled = document.getElementById(`nameOf${hash}`).disabled
@@ -317,6 +318,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			  }
 		  }
 		  buildList()
+		  iloaded()
 		  }
 	  }
     </script>
