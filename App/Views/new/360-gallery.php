@@ -58,7 +58,7 @@
 	      </div>
 		  <div class="form-group">
 		    <label for="title">Tags</label>
-		    <input type="text" class="form-control" id="tags" placeholder="tags,look,like,this">
+		    <input type="text" class="form-control" id="tags" placeholder="tags,look-like,this">
 			<small id="tagsHelp" class="form-text text-muted">Add up to 4 tags, comma separated, no spaces</small>
 	      </div>
 		  <div class="text-center">
@@ -104,11 +104,6 @@
 ?>
 <script src="../js/img-ipfs.js"></script>
 <script>
-      function updateVoteSubmit(id, val) {
-        document.getElementById(id).innerHTML =
-          document.getElementById(val).value + "%";
-      }
-
       var simplemde = new SimpleMDE({
         element: document.getElementById("validationCustomDescription")
       });
@@ -179,23 +174,20 @@
       //onpageloaded();
     </script>
 	<script>
+
 	var custom_json = {
       "app": "dlux/0.0.9",
       "xr": true,
-      "Hash360": "QmeDDfa2QUUhuTvVJrEQNRNB1qBCJCjUKmx2enmVjLqP8H",
+      "Hash360": "",
       "format": "markdown",
       "assets": [
-         {
-            "hash": "QmaQ2rrr7EV6VouPpb1Uvv5MTG716u8VW63kVBt9M3ozMB",
-            "size": 29907,
-            "pin": false
-         }
       ],
       "tags": [
          "dlux"
       ],
       "vrHash": "QmaQ2rrr7EV6VouPpb1Uvv5MTG716u8VW63kVBt9M3ozMB"
-   }
+   },
+   permlink
     const ipfs = window.IpfsHttpClient({ host: 'ipfs.infura.io', port: '5001', protocol: 'https' })
     function saveToIpfs(ar, pin, is360, newAsset){
       console.log(`You've requested to upload and pin(${pin}) 360(${is360}) image(s) and create assets(${newAsset})\nIPFS maky take some time to upload...`)
@@ -223,6 +215,9 @@
 					type: "ts",
 					thumbHash: assets[i].hash
 				})
+				if(!custom_json.Hash360){
+					custom_json.Hash360 = assets[i].hash
+				}
 			}
 		}
         hive.api.getContent('markegiles', 'dlux-vr-tutorial-sm-test', function(err, result) {
@@ -271,21 +266,6 @@ for(var i = 0; i < custom_json.assets.length; i++){
 					<div><img id="tImg${i}" src="https://ipfs.io/ipfs/${img.thumbHash}" height="150"/></div>
 					<div class="small"><a href="#" id="tHashImg${i}" target="_blank">Thumbnail</a></div>
 				  </div>`
-				 /* 
-				  `<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
-					<div style="font-size: 1.3em; font-weight: bold">${img.name}</div>
-					<div class="ml-auto"><button class="btn ${btnclass} btn-sm mr-2" onclick="togglePin('${img.hash}')"><i class="fas fa-fw fa-thumbtack"></i></button><button class="btn btn-danger btn-sm" onclick="deleteImg('${img.hash}')"><i class="fas fa-fw fa-trash-alt"></i></button></div>
-				</div>
-				<div class="d-flex flex-row">
-		  		<div id="source${i}" class="mr-3">
-					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" height="150"/></div>
-					<div class="small"><a href="#" id="sHashImg${i}" target="_blank">Source</a></div>
-		  		</div>
-		  		<div id="thumb${i}">
-					<div><img id="tImg${i}" src="https://ipfs.io/ipfs/${img.thumbHash}" height="150"/></div>
-					<div class="small"><a href="#" id="tHashImg${i}" target="_blank">Thumbnail</a></div>
-				  </div>`
-				  */
 		document.getElementById('listOfImgs').appendChild(item)
 	}
 }
@@ -329,5 +309,56 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			iloaded()
 		  }
 	  }
+	function post(){
+
+	}
+	function permlink(text){
+		if(text){
+		text.replace(/[\W_]+/g, '-')
+		document.getElementById(permlink).innerText = `permlink: ${text}`
+		permlink = text
+		} else {
+			text = document.getElementById('title').value
+			text.replace(/[\W_]+/g, '-')
+		document.getElementById(permlink).innerText = `permlink: ${text}`
+		permlink = text
+		}
+	}
+	if(sessionStorage.getItem('user')){document.getElementById('username').value = sessionStorage.getItem('user')}
+
+	function post(){
+		var tags = document.getElementById('tags').value.toLowerCase().split(',')
+		for (i = 0; i < tags.length; i++){
+			custom_json.tags.push(tags[i].replace(/[\W_]+/g, '-'))
+		}
+		console.log(custom_json.tags)
+		if (sessionStorage.getItem('user')){
+			const operations = [["comment", 
+                                 {"parent_author": "", 
+                                  "parent_permlink": "dlux", 
+                                  "author": sessionStorage.getItem('user'), 
+                                  "permlink": permlink, 
+                                  "title": document.getElementById('title').value, 
+                                  "body": simplemde.value() + `\n***\n#### [View in VR @ dlux.io](https://dlux.io/dlux/@${sessionStorage.getItem('user')}/${permlink})\n`, 
+                                  "json_metadata": JSON.stringify(custom_json)}], 
+                                ["comment_options", 
+                                 {"author": sessionStorage.getItem('user'), 
+                                  "permlink": permlink, 
+                                  "max_accepted_payout": "1000000.000 HBD", 
+                                  "percent_hbd": 10000, 
+                                  "allow_votes": true, 
+                                  "allow_curation_rewards": true, 
+                                  "extensions": 
+                                  [[0, 
+                                    {"beneficiaries":
+                                     [{"account":"dlux-io",
+                                       "weight":1000}]}]]}]]
+            hive_keychain.requestBroadcast(sessionStorage.getItem('user'), operations, 'active', function(response) {
+              console.log(response);
+            });
+		} else {
+			alert('Please Log In')
+		}
+	}
     </script>
 </body></html>
