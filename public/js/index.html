@@ -19,8 +19,13 @@
     <script>
         var stateObj,
             vars = location.href.split('?')[1],
-            vararr = vars.split('&'),
-            author = varval('author', vararr),
+            vararr
+        if (vars.length) {
+            vararr = vars.split('&')
+        } else {
+            location.href = 'https://www.dlux.io'
+        }
+        author = varval('author', vararr),
             permlink = varval('permlink', vararr),
             hiveKey = `${author}/${permlink}`,
             hashy = to58(location.hostname.split('.')[0])
