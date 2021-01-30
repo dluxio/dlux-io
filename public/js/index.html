@@ -28,7 +28,7 @@
         author = varval('author', vararr),
             permlink = varval('permlink', vararr),
             hiveKey = `${author}/${permlink}`,
-            hashy = to58(location.hostname.split('.')[0])
+            hashy = varval('hash', vararr)
         if (!hashy) {
             location.href = 'https://www.dlux.io'
         }
@@ -38,7 +38,6 @@
             document.title = `DLUX | ${result.title}`
             stateObj = result
             var metadata = result.json_metadata
-            var hashy = JSON.parse(metadata).vrHash
             var scrolling = JSON.parse(metadata).scrolling
             var vars = location.href.split('?')[1]
             var iframe = document.createElement('iframe');
@@ -191,34 +190,6 @@
             if (window.hive_keychain) {
                 postable = true
             }
-        }
-
-        function to58lower(hash) {
-            var arr = hash.split('')
-            for (var i = 0; i < arr.length; i++) {
-                if (i == 0) {
-                    arr[i] = 'q'
-                } else if (arr[i].toLowerCase() != arr[i]) {
-                    arr[i] = `0${arr[i].toLowerCase()}`
-                }
-            }
-            return arr.join('')
-        }
-
-        function to58(hash) {
-            var arr = hash.split('')
-            var uparr = []
-            for (var i = 0; i < arr.length; i++) {
-                if (i == 0) {
-                    uparr.push('Q')
-                } else if (arr[i] == '0') {
-                    uparr.push(arr[i + 1].toUpperCase())
-                    arr.splice(i, 0)
-                } else {
-                    uparr.push(arr[i])
-                }
-            }
-            return uparr.join('')
         }
 
         function varval(name, arr) {

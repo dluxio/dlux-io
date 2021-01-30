@@ -48,9 +48,10 @@
             if (hashy.split('/')[3] == 'ipfs') {
                 hashy = hashy.split('/')[4];
             }
-            let subdomain = to58lower(hashy)
-            ipfsdomain = `https://${subdomain}.ipfs.dlux.io`;
-            location.href = ipfsdomain + `${vars}&author=${author}&permlink=${permlink}&user=${sessionStorage.getItem('user')}`
+            subauthor = author
+            subauthor.replace('.', '-')
+            ipfsdomain = `https://${subauthor}.ipfs.dlux.io`;
+            location.href = ipfsdomain + `${vars}&hash=${hashy}&author=${author}&permlink=${permlink}&user=${sessionStorage.getItem('user')}`
             
         });
         if (isIOS()) {

@@ -216,7 +216,7 @@
 					type: "ts",
 					thumbHash: assets[i].hash
 				})
-				custom_json.image['0'] = `https://ipfs.io/ipfs/${assets[i].hash}`
+				custom_json.image['0'] = `https://ipfs.io/ipfs/${assets[i].hash}?.${assets[i].path.split('.')[1] || 'jpg'}`
 				if(!custom_json.Hash360){
 					custom_json.Hash360 = assets[i].hash
 				}
