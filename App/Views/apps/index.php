@@ -124,7 +124,7 @@
 		</div>
 	   </div>
 	   </div>
-</dmx-data-detail>
+
 		   </div>
 		   </div>
 	 </div>

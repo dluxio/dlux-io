@@ -38,24 +38,25 @@
 <!-- Footer -->
 <script>
 function hiveKeychain () {
-    console.log('clicked')
     let username = document.getElementById('hk-username').value
     console.log('value: ' + username)
-	sessionStorage.setItem("user", username);
+    sessionStorage.setItem("user", username);
     let session = new Dluxsession(hive, {hiveidip:username})
 } 
-hive.api.login('', '', function(err, result) {
-  console.log(err, result);
-  let use = document.getElementById("hiveKeychain");
+   window.addEventListener('load', function () {
+    let use = document.getElementById("hiveKeychain");
     let get = document.getElementById("getKeychain");
-    if(window.hive_keychain) {
-        get.style.display = "none";
-    } else {
-        use.style.display = "none";
-    }
-checkCookie()
-});
-    
-setTimeout(function(){
-}, 1000);
+    let count = 0;
+    let kc_interval = setInterval(function() {
+      count++
+      if(window.hive_keychain) {
+          get.style.display = "none";
+      } else {
+          use.style.display = "none";
+      }
+      if (count >= 8) clearInterval(kc_interval)
+    }, 250);
+  checkCookie()
+}) 
+
 </script>
