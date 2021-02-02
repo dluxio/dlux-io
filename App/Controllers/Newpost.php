@@ -37,4 +37,8 @@ class Newpost extends \Core\Controller
     {
         View::render('new/360-gallery.php');
     }
+    public function threesixtytour($request, $response, $service)
+    {
+        View::render('new/360-tour.php');
+    }
 }
