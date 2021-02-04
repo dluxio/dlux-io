@@ -74,37 +74,6 @@
 				<a href="#" class="alert-link">Click or tap to browse</a>
 			</div>
 		<div id="listOfItems" >
-			<div id="image01" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
-				<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
-					<div class="d-flex">
-						<input id="image01Name" class="form-control form-control-sm mr-2" type="text" placeholder="Image Name" disabled>
-						<button id="image01NameEdit" class="btn btn-secondary btn-sm ml-auto" data-toggle="tooltip" data-placement="top" title="Edit Image Name"><i class="fas fa-fw fa-pencil-alt"></i></button>
-					</div>
-					<div class="ml-auto">
-						<button id="image01Pin" class="btn btn-primary btn-sm mr-2" data-toggle="tooltip" data-placement="top" title="Asset Pinned to IPFS"><i class="fas fa-fw fa-thumbtack"></i></button>
-						<button id="image01Delete" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Asset"><i class="fas fa-fw fa-trash-alt"></i></button></div>
-				</div>
-				<div class="d-flex flex-row">
-		  		<div>
-						<div><img id="image01Src" src="/img/equirectangular.jpeg" width="700"/></div>
-						<div class="small"><a href="#" id="image01SrcLnk" target="_blank">Source Link</a></div>
-		  		</div>
-			</div>
-			<div class="pt-2 mb-3 text-left" style="border-bottom-style: solid; border-bottom-color: #909090">
-				<h4>Link Hotspots <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Click and drag on the image to add a link hotspot."></i></h4>
-			</div>
-			<div id="listOfImage01Spots">
-				<div id="image01Spot01">
-					<div class="d-flex pb-3" style="border-bottom-style: solid; border-bottom-color: #909090">
-						<input id="image01Spot01Name" class="form-control form-control-sm mr-2" type="text" placeholder="Link Name" disabled>
-						<button id="image01Spot01NameEdit" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Link Name"><i class="fas fa-fw fa-pencil-alt"></i></button>
-						<select id="image01Spot01Link" class="form-control form-control-sm ml-5" type="text" placeholder="Link to Image" data-toggle="tooltip" data-placement="top" title="Select the image this hotspot links to.">
-					 		<option>Image Name 1</option><option>Image Name 2</option><option>Image Name 3</option>
-						</select>
-						<button id="image01Spot01Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link"><i class="fas fa-fw fa-trash-alt"></i></button>
-					</div>
-				</div>
-			</div>
 		</div>
 		</div>
 			</div>
@@ -120,6 +89,7 @@
 ?>
 <script src="../js/img-ipfs.js"></script>
 <script>
+	var bodyVars = {} //{"QmUgit7bQH4m2eR1cmwWWWmo2ZKis1kKsk3g5SbgZwgScv":{links:[{hash:"QmR6kb8uqRKEf9i54xrkWDkv3xM5vMZvFrg3kgf2TE1cRb", pos:"10 0 -10", text: "test text"}]}}
       var simplemde = new SimpleMDE({
         element: document.getElementById("validationCustomDescription")
       });
@@ -225,7 +195,6 @@
 			for (var i = 0; i < assets.length; i++){
 				custom_json.assets.push({
 					hash: assets[i].hash,
-					name: assets[i].path,
 					size: assets[i].size,
 					pin: true,
 					type: "ts",
@@ -257,7 +226,7 @@
 	  buildList()
 	  }
 	  function buildList (){
-		  document.getElementById('listOfImgs').innerHTML = ``
+		  document.getElementById('listOfItems').innerHTML = ``
 for(var i = 0; i < custom_json.assets.length; i++){
 		const img = custom_json.assets[i]
 		if(img.type == 'ts'){
@@ -269,23 +238,76 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		item.id = `item${i}`
 		item.class = `p-3 mb-3 bg-dark`
 		item.setAttribute('style', 'border-radius', '10px')
-		item.innerHTML = `<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
-					<div class="d-flex"><input id="nameOf${img.hash}" class="form-control form-control-sm mr-2" type="text" value="${img.name}" disabled><button onclick="toggleNameEdit('${img.hash}')" class="btn btn-secondary btn-sm ml-auto" data-toggle="tooltip" data-placement="top" title="Edit Name"><i id="editName${img.hash}" class="fas fa-fw fa-pencil-alt"></i></button></div>
-					<div class="ml-auto"><button type="button" onclick="togglePin('${img.hash}')" class="btn ${btnclass} btn-sm mr-2" data-toggle="tooltip" data-placement="top" title="Asset Pinned to IPFS"><i class="fas fa-fw fa-thumbtack"></i></button><button class="btn btn-danger btn-sm" onclick="deleteImg('${img.hash}')" data-toggle="tooltip" data-placement="top" title="Delete Asset"><i class="fas fa-fw fa-trash-alt"></i></button></div>
+		item.innerHTML = `
+		<div id="image${i}" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
+				<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
+					<div class="d-flex">
+						<input id="image${i}Name" class="form-control form-control-sm mr-2" type="text" placeholder="Image Name" disabled>
+						<button id="image${i}NameEdit" class="btn btn-secondary btn-sm ml-auto" data-toggle="tooltip" data-placement="top" title="Edit Image Name"><i class="fas fa-fw fa-pencil-alt"></i></button>
+					</div>
+					<div class="ml-auto">
+						<button id="image${i}Pin" class="btn btn-primary btn-sm mr-2" data-toggle="tooltip" data-placement="top" title="Asset Pinned to IPFS"><i class="fas fa-fw fa-thumbtack"></i></button>
+						<button id="image${i}Delete" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Asset"><i class="fas fa-fw fa-trash-alt"></i></button></div>
 				</div>
 				<div class="d-flex flex-row">
-		  		<div id="source${i}" class="mr-3">
-					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" height="150"/></div>
-					<div class="small"><a href="#" id="sHashImg${i}" target="_blank">Source</a></div>
+		  		<div>
+						<div><img id="image${i}Src" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" width="700"/></div>
+						<div class="small"><a href="#" id="image${i}SrcLnk" target="_blank">Source Link</a></div>
 		  		</div>
-		  		<div id="thumb${i}">
-					<div><img id="tImg${i}" src="https://ipfs.io/ipfs/${img.thumbHash}" height="150"/></div>
-					<div class="small"><a href="#" id="tHashImg${i}" target="_blank">Thumbnail</a></div>
-				  </div>`
+			</div>
+			<div class="pt-2 mb-3 text-left" style="border-bottom-style: solid; border-bottom-color: #909090">
+				<h4>Link Hotspots <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Click and drag on the image to add a link hotspot."></i></h4>
+			</div>
+			<div id="listOfImage${i}Spots">
+			</div>
+		`
 		document.getElementById('listOfImgs').appendChild(item)
+		for(var j = 0; j < custom_json.assets.length; j++){
+			const limg = custom_json.assets[j]
+			if(limg.type == 'ts' && i != j){
+				var litem = document.createElement('div')
+				litem.id = `image${i}Spot${j}`
+				litem.innerHTML = `
+					<div class="d-flex pb-3" style="border-bottom-style: solid; border-bottom-color: #909090">
+						<input id="image${i}Spot01Name" class="form-control form-control-sm mr-2" type="text" placeholder="Link Name" disabled>
+						<button id="image${i}Spot01NameEdit" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Link Name"><i class="fas fa-fw fa-pencil-alt"></i></button>
+						<select id="image${i}Spot01Link" class="form-control form-control-sm ml-5" type="text" placeholder="Link to Image" data-toggle="tooltip" data-placement="top" title="Select the image this hotspot links to.">
+						</select>
+						<button id="image01Spot01Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link"><i class="fas fa-fw fa-trash-alt"></i></button>
+					</div>
+					`
+				for (k = 0; k <= Object.keys(bodyVars).length; k++){
+					buildLinkList(i,k)
+				}
+			}
+		}
 	}
 }
 	  }
+
+	  function buildLinkList (i, k){
+		var opts = ''
+		for(var j = 0; j < custom_json.assets.length; j++){
+			if(limg.type == 'ts' && i != j){
+				opts += `<option>${custom_json.assets[j].path}</option>`
+			}	
+		}
+		if(opts){
+			var litem = document.createElement('div')
+			litem.id = `image${i}Spot${k}`
+			litem.innerHTML = `
+				<div class="d-flex pb-3" style="border-bottom-style: solid; border-bottom-color: #909090">
+					<input id="image${i}Spot${k}Name" class="form-control form-control-sm mr-2" type="text" placeholder="Link Name" disabled>
+					<button id="image${i}Spot${k}NameEdit" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Link Name"><i class="fas fa-fw fa-pencil-alt"></i></button>
+					<select id="image${i}Spot${k}Link" class="form-control form-control-sm ml-5" type="text" placeholder="Link to Image" data-toggle="tooltip" data-placement="top" title="Select the image this hotspot links to.">
+						${opts}
+					</select>
+					<button id="image${i}Spot01Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link"><i class="fas fa-fw fa-trash-alt"></i></button>
+				</div>
+				`
+		}
+	  }
+
 	  function togglePin(hash){
 		  for(var i = 0; i < custom_json.assets.length; i++){
 			  const img = custom_json.assets[i]
