@@ -87,10 +87,10 @@
 				<a href="#" class="alert-danger alert-link" >Click or tap to browse (coming soon)</a>
 				<div class="d-flex">
 				<div class="mx-auto pt-3 pr-3 mt-3" style="background-color: #EEAAB1; border-style: solid; border-radius: 5px; border-color: #721C24">
-				<h6 class="text-justify" style="color: #721C24"><ul>
+				<h6 class="text-left" style="color: #721C24"><ul>
 						<li>Equirectangular - 2:1</li>
 						<li>.JPG, .JPEG, .PNG</li>
-				  		<li>Max 3MB 4096x2048</li>
+				  		<li>Max 5MB 4096x2048</li>
                 </ul>
 			  </h6></div></div>
 			</div>
