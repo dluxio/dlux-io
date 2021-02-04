@@ -288,7 +288,9 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		item.id = `item${i}`
 		item.class = `p-3 mb-3 bg-dark`
 		item.setAttribute('style', 'border-radius', '10px')
-		item.innerHTML = `<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
+		item.innerHTML = `
+				<div id="image${i}" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
+				<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
 					<div class="d-flex"><input id="nameOf${img.hash}" class="form-control form-control-sm mr-2" type="text" value="${img.name}" disabled><button onclick="toggleNameEdit('${img.hash}')" class="btn btn-secondary btn-sm ml-auto" data-toggle="tooltip" data-placement="top" title="Edit Name"><i id="editName${img.hash}" class="fas fa-fw fa-pencil-alt"></i></button></div>
 					<div class="ml-auto"><button type="button" onclick="togglePin('${img.hash}')" class="btn ${btnclass} btn-sm mr-2" data-toggle="tooltip" data-placement="top" title="Asset Pinned to IPFS"><i class="fas fa-fw fa-thumbtack"></i></button><button class="btn btn-danger btn-sm" onclick="deleteImg('${img.hash}')" data-toggle="tooltip" data-placement="top" title="Delete Asset"><i class="fas fa-fw fa-trash-alt"></i></button></div>
 				</div>
@@ -300,7 +302,9 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		  		<div id="thumb${i}">
 					<div><img id="tImg${i}" src="https://ipfs.io/ipfs/${img.thumbHash}" height="150"/></div>
 					<div class="small"><a href="#" id="tHashImg${i}" target="_blank">Thumbnail</a></div>
-				  </div>`
+			</div>	 
+			</div>
+				`
 		document.getElementById('listOfImgs').appendChild(item)
 	}
 }
