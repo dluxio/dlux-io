@@ -341,7 +341,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		</div>
 		`
 		document.getElementById('listOfItems').appendChild(item)
-		for (k = 0; k <= bodyVars[custom_json.assets[i]].links.length; k++){
+		for (k = 0; k <= bodyVars[custom_json.assets[i].hash].links.length; k++){
 			document.getElementById(`listOfImage${i}Spots`).appendChild(buildLinkList(i,k))
 		}
 	}
