@@ -272,6 +272,7 @@ Split(['#one', '#two', '#three'], {
 			for (var i = 0; i < assets.length; i++){
 				custom_json.assets.push({
 					hash: assets[i].hash,
+					name: assets[i].path,
 					size: assets[i].size,
 					pin: true,
 					type: "ts"
@@ -340,7 +341,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		</div>
 		`
 		document.getElementById('listOfItems').appendChild(item)
-		for (k = 0; k <= Object.keys(bodyVars).length; k++){
+		for (k = 0; k <= bodyVars[custom_json.assets[i]].links.length; k++){
 			document.getElementById(`listOfImage${i}Spots`).appendChild(buildLinkList(i,k))
 		}
 	}
@@ -352,7 +353,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		for(var j = 0; j < custom_json.assets.length; j++){
 			const img = custom_json.assets[j]
 			if(img.type == 'ts' && i != j){
-				opts += `<option>${img.path}</option>`
+				opts += `<option>${img.name}</option>`
 			}	
 		}
 		if(opts){
