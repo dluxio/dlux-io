@@ -12,10 +12,17 @@
 		border-style: solid;
 		border-radius: 10px;
 		border-width: 5px;
+		border-color:#96242F;
 			}
 	#img-well.drag {
 		background: #8ED2C9;		
 			}
+	.specs {
+		color: #431015;
+		border-style: solid;
+		border-radius: 5px;
+		border-color: #721C24;
+	}
 	.flex {
   		display: flex;
   		flex-direction: row;
@@ -80,12 +87,12 @@
       </div></div>
   <div id="two">
 	  <div class="flex-column flex-shrink mx-3">
-			<div id="img-well" class="p-5 mb-3 alert-danger" style="border-style: solid; border-color:#96242F;">
-				<h3 class="alert-danger">Drag and drop images here</h3>
-				<a href="#" class="alert-danger alert-link" >Click or tap to browse (coming soon)</a>
+			<div id="img-well" class="p-5 mb-3 alert-danger">
+				<h3 style="color: #721C24;">Drag and drop images here</h3>
+				<a href="#" class="alert-link disabled" >Click or tap to browse (coming soon)</a>
 				<div class="d-flex">
-				<div class="mx-auto pt-3 pr-3 mt-3" style="background-color: #EEAAB1; border-style: solid; border-radius: 5px; border-color: #721C24">
-				<h6 class="text-left" style="color: #721C24"><ul>
+				<div class="specs mx-auto pt-3 pr-3 mt-3">
+				<h6 class="text-left"><ul>
 						<li>Equirectangular - 2:1</li>
 						<li>.JPG, .JPEG, .PNG</li>
 				  		<li>Max 5MB 4096x2048</li>

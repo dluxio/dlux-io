@@ -12,6 +12,7 @@
 		border-style: solid;
 		border-radius: 10px;
 		border-width: 5px;
+		border-color:#96242F;
 			}
 		#img-well.drag {
 		background: #8ED2C9;		
@@ -88,7 +89,7 @@
       </div></div>
   <div id="two">
 	  <div class="flex-column flex-shrink mx-3">
-			<div id="img-well" class="p-5 mb-3 alert-danger" style="border-style: solid; border-color:#96242F;">
+			<div id="img-well" class="p-5 mb-3 alert-danger">
 				<h3 style="color: #721C24;">Drag and drop images here</h3>
 				<a href="#" class="alert-link" >Click or tap to browse (coming soon)</a>
 				<div class="d-flex">
