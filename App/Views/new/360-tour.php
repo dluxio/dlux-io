@@ -265,12 +265,16 @@ Split(['#one', '#two', '#three'], {
 	function iloaded(assets, info){
 		if(assets){
 			for (var i = 0; i < assets.length; i++){
+				if (bodyVars[assets[i].hash] == undefined){
+					bodyVars[assets[i].hash] = {links:[]}
+				}
+			}
+			for (var i = 0; i < assets.length; i++){
 				custom_json.assets.push({
 					hash: assets[i].hash,
 					size: assets[i].size,
 					pin: true,
-					type: "ts",
-					thumbHash: assets[i].hash
+					type: "ts"
 				})
 				if(!custom_json.Hash360){
 					custom_json.Hash360 = assets[i].hash
@@ -361,7 +365,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 					<select id="image${i}Spot${k}Link" class="form-control form-control-sm ml-5" type="text" placeholder="Link to Image" data-toggle="tooltip" data-placement="top" title="Select the image this hotspot links to.">
 						${opts}
 					</select>
-					<button id="image${i}Spot01Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link"><i class="fas fa-fw fa-trash-alt"></i></button>
+					<button id="image${i}Spot${k}Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link"><i class="fas fa-fw fa-trash-alt"></i></button>
 				</div>
 				`
 			return litem
@@ -385,7 +389,34 @@ for(var i = 0; i < custom_json.assets.length; i++){
 				  custom_json.assets.splice(i,1)
 			  }
 		  }
-		  //buildList ()
+		  delete bodyVars[hash]
+		  iloaded()
+	  }
+	  function deleteLink(hash, link){
+		  for(var i = 0; i < bodyVars[hash].length; i++){
+			  if(bodyVars[hash].links[i].hash == link){
+				  bodyVars[hash].links.splice(i,1)
+				  break;
+			  }
+		  }
+		  iloaded()
+	  }
+	  function nameLink(hash, link, name){
+		  for(var i = 0; i < bodyVars[hash].length; i++){
+			  if(bodyVars[hash].links[i].hash == link){
+				  bodyVars[hash].links[i].text = name
+				  break;
+			  }
+		  }
+		  iloaded()
+	  }
+	  function posLink(hash, link, pos){
+		  for(var i = 0; i < bodyVars[hash].length; i++){
+			  if(bodyVars[hash].links[i].hash == link){
+				  bodyVars[hash].links[i].pos = pos
+				  break;
+			  }
+		  }
 		  iloaded()
 	  }
 	  function toggleNameEdit(hash){
