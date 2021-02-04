@@ -31,9 +31,12 @@
 		<li>Price: varies</li>
 		</ul>
 		</center>
+		  </div>
+		  <div class="card-footer text-center">
     	<a href="/docs/#nodes" class="btn btn-danger">Get Started</a>
+		  </div>
   	  </div>
-	</div>
+	
 	<div class="card border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
     	<h5 class="card-title">CLOUD</h5>
@@ -46,9 +49,12 @@
 		<li>Price: $0-10</li>
 		</ul>
 		</center>
+		  </div>
+		  <div class="card-footer text-center">
     	<a href="/docs/#nodes" class="btn btn-danger">Get Started</a>
+		</div>
   	  </div>
-	</div>
+	
 	<div class="card border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
     	<h5 class="card-title">RISHI SERVER</h5>
@@ -61,7 +67,9 @@
 		<li>Price: $5</li>
 		</ul>
 		</center>
-    	<a href="#" class="btn btn-danger disabled">Get Started</a>
+		  </div>
+		  <div class="card-footer text-center">
+    	<a href="#" class="btn btn-danger disabled">Coming Soon</a>
   	  </div>
 	</div>	
 	</div>
