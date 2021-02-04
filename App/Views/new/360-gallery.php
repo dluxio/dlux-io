@@ -16,7 +16,18 @@
 	#img-well.drag {
 		background: #8ED2C9;		
 			}
+	.flex {
+  		display: flex;
+  		flex-direction: row;
+}
+	.gutter {
+		background-repeat: no-repeat;
+     	background-position: 50%;
+	}
+	.gutter.gutter-horizontal {cursor: col-resize;background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg=='); }
+	.gutter.gutter-vertical {cursor: row-resize;background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII='); }
 </style>
+
 <script src="../js/buffer.js"></script>
 <script src="../js/drag-drop.js"></script>
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
@@ -28,10 +39,12 @@
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
+	
 <main role="main" class="p-3 flex-shrink-0">
-	<div class="d-flex flex-wrap justify-content-center">
-	  <div class="flex-column mb-4">
-		<div class="flex-row py-2">
+<section class="flex">
+  <div id="one">
+	  <div class="flex-column mb-4 px-3">
+		<div class="flex-row">
 			<h1 class="px-4 font-weight-bold">DLUX 360°</h1>
 			<h1 class="px-4 font-weight-bold" style="font-variant:small-caps;">Image Gallery Builder</h1>
 			<hr class="bg-light">
@@ -66,8 +79,9 @@
 		  </div>
 	    </form>
 		</div>
-      </div>
-		<div class="flex-column flex-shrink mx-3">
+      </div></div>
+  <div id="two">
+	  <div class="flex-column flex-shrink mx-3">
 			<div id="img-well" class="border-danger alert-danger p-5 mb-3">
 				<h3>Drag and drop your images here</h3>
 				<h6>.JPG, .JPEG, and .PNG up to 4096x2048 are supported</h6>
@@ -92,10 +106,31 @@
 		</div>-->
 		</div>
 			</div>
-	  <div class="flex-column flex-fill">
+</div>
+  <div id="three">
+		  <div class="flex-column flex-fill h-100 ml-3">
 		<iframe id="aframePreview" src="https://turnkey-360-gallery.glitch.me/post.html" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		</div>
+		</div>			
 	</div>
+</section>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.3.5/split.min.js"></script>
+	<script>
+const GUTTER_SIZE = 100;
+
+const gutterStyle = dimension => ({
+  'flex-basis': `${GUTTER_SIZE}px`,
+});
+
+const elementStyle = (dimension, size) => ({
+  'flex-basis': `calc(${size}% - ${GUTTER_SIZE}px)`,
+})
+
+Split(['#one', '#two', '#three'], {
+  sizes: [400, 300, 500],
+  minSize: 200,
+  elementStyle,
+  gutterStyle
+});</script>
 </main>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
@@ -177,8 +212,7 @@
 
 	var custom_json = {
       "app": "dlux/0.0.9",
-	  "xr": true,
-	  "image": {},
+      "xr": true,
       "Hash360": "",
       "format": "markdown",
       "assets": [
@@ -216,7 +250,6 @@
 					type: "ts",
 					thumbHash: assets[i].hash
 				})
-				custom_json.image['0'] = `https://ipfs.io/ipfs/${assets[i].hash}?.${assets[i].path.split('.')[1] || 'jpg'}`
 				if(!custom_json.Hash360){
 					custom_json.Hash360 = assets[i].hash
 				}
@@ -344,7 +377,6 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			if(tags[i] != 'dlux'){
 			custom_json.tags.push(tags[i].replace(/[\W_]+/g, '-'))
 			}
-			if(i == 8)break;
 		}
 		console.log(custom_json.tags)
 		if (sessionStorage.getItem('user')){
