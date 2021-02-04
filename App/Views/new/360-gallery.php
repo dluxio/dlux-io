@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<title>DLUX - 360° Image Gallery</title>
+<title>DLUX 360° Gallery</title>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/header.php";
@@ -82,8 +82,7 @@
       </div></div>
   <div id="two">
 	  <div class="flex-column flex-shrink mx-3">
-			<div id="img-well" class="p-5 mb-3" style="border-style: solid; border-color:#96242F;"
-													   >
+			<div id="img-well" class="p-5 mb-3 alert-danger" style="border-style: solid; border-color:#96242F;">
 				<h3 class="alert-danger">Drag and drop images here</h3>
 				<a href="#" class="alert-danger alert-link" >Click or tap to browse (coming soon)</a>
 				<div class="d-flex">
