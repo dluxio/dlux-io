@@ -75,7 +75,6 @@
 			</div>
 		<div id="listOfItems" >
 		</div>
-		</div>
 			</div>
 	  <div class="flex-column flex-fill">
 		<iframe id="aframePreview" src="https://turnkey-360-tour.glitch.me/post.html" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -247,9 +246,10 @@ for(var i = 0; i < custom_json.assets.length; i++){
 					</div>
 					<div class="ml-auto">
 						<button id="image${i}Pin" class="btn btn-primary btn-sm mr-2" data-toggle="tooltip" data-placement="top" title="Asset Pinned to IPFS"><i class="fas fa-fw fa-thumbtack"></i></button>
-						<button id="image${i}Delete" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Asset"><i class="fas fa-fw fa-trash-alt"></i></button></div>
+						<button id="image${i}Delete" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Asset"><i class="fas fa-fw fa-trash-alt"></i></button>
+					</div>
 				</div>
-				<div class="d-flex flex-row">
+			<div class="d-flex flex-row">
 		  		<div>
 						<div><img id="image${i}Src" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" width="700"/></div>
 						<div class="small"><a href="#" id="image${i}SrcLnk" target="_blank">Source Link</a></div>
@@ -260,6 +260,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			</div>
 			<div id="listOfImage${i}Spots">
 			</div>
+		</div>
 		`
 		document.getElementById('listOfImgs').appendChild(item)
 		for(var j = 0; j < custom_json.assets.length; j++){
