@@ -296,25 +296,9 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			</div>
 		</div>
 		`
-		document.getElementById('listOfImgs').appendChild(item)
-		for(var j = 0; j < custom_json.assets.length; j++){
-			const limg = custom_json.assets[j]
-			if(limg.type == 'ts' && i != j){
-				var litem = document.createElement('div')
-				litem.id = `image${i}Spot${j}`
-				litem.innerHTML = `
-					<div class="d-flex pb-3" style="border-bottom-style: solid; border-bottom-color: #909090">
-						<input id="image${i}Spot01Name" class="form-control form-control-sm mr-2" type="text" placeholder="Link Name" disabled>
-						<button id="image${i}Spot01NameEdit" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Link Name"><i class="fas fa-fw fa-pencil-alt"></i></button>
-						<select id="image${i}Spot01Link" class="form-control form-control-sm ml-5" type="text" placeholder="Link to Image" data-toggle="tooltip" data-placement="top" title="Select the image this hotspot links to.">
-						</select>
-						<button id="image01Spot01Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link"><i class="fas fa-fw fa-trash-alt"></i></button>
-					</div>
-					`
-				for (k = 0; k <= Object.keys(bodyVars).length; k++){
-					buildLinkList(i,k)
-				}
-			}
+		document.getElementById('listOfItems').appendChild(item)
+		for (k = 0; k <= Object.keys(bodyVars).length; k++){
+			document.getElementById(`listOfImage${i}Spots`).appendChild(buildLinkList(i,k))
 		}
 	}
 }
@@ -323,8 +307,9 @@ for(var i = 0; i < custom_json.assets.length; i++){
 	  function buildLinkList (i, k){
 		var opts = ''
 		for(var j = 0; j < custom_json.assets.length; j++){
-			if(limg.type == 'ts' && i != j){
-				opts += `<option>${custom_json.assets[j].path}</option>`
+			const img = custom_json.assets[j]
+			if(img.type == 'ts' && i != j){
+				opts += `<option>${img.path}</option>`
 			}	
 		}
 		if(opts){
@@ -340,6 +325,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 					<button id="image${i}Spot01Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link"><i class="fas fa-fw fa-trash-alt"></i></button>
 				</div>
 				`
+			return litem
 		}
 	  }
 
