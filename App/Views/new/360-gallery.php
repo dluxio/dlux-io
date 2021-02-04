@@ -83,8 +83,8 @@
   <div id="two">
 	  <div class="flex-column flex-shrink mx-3">
 			<div id="img-well" class="p-5 mb-3 alert-danger" style="border-style: solid; border-color:#96242F;">
-				<h3 class="alert-danger">Drag and drop images here</h3>
-				<a href="#" class="alert-danger alert-link" >Click or tap to browse (coming soon)</a>
+				<h3 style="color: #721C24;">Drag and drop images here</h3>
+				<a href="#" class="alert-link" >Click or tap to browse (coming soon)</a>
 				<div class="d-flex">
 				<div class="mx-auto pt-3 pr-3 mt-3" style="background-color: #EEAAB1; border-style: solid; border-radius: 5px; border-color: #721C24">
 				<h6 class="text-left" style="color: #721C24"><ul>
@@ -303,7 +303,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 				</div>
 				<div class="d-flex flex-row">
 		  		<div id="source${i}" class="mr-3">
-					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" width="700"/></div>
+					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" width="100%"/></div>
 					<div class="small"><a href="https://ipfs.io/ipfs/${img.hash}" id="sHashImg${i}" target="_blank">https://ipfs.io/ipfs/${img.hash}</a></div>
 		  		</div>
 			</div>
