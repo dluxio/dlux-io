@@ -296,13 +296,9 @@ for(var i = 0; i < custom_json.assets.length; i++){
 				</div>
 				<div class="d-flex flex-row">
 		  		<div id="source${i}" class="mr-3">
-					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" height="150"/></div>
-					<div class="small"><a href="#" id="sHashImg${i}" target="_blank">Source</a></div>
+					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" width="700"/></div>
+					<div class="small"><a href="https://ipfs.io/ipfs/${img.hash}" id="sHashImg${i}" target="_blank">https://ipfs.io/ipfs/${img.hash}</a></div>
 		  		</div>
-		  		<div id="thumb${i}">
-					<div><img id="tImg${i}" src="https://ipfs.io/ipfs/${img.thumbHash}" height="150"/></div>
-					<div class="small"><a href="#" id="tHashImg${i}" target="_blank">Thumbnail</a></div>
-			</div>	 
 			</div>
 				`
 		document.getElementById('listOfImgs').appendChild(item)
