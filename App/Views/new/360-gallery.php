@@ -16,7 +16,11 @@
 		#img-well.drag {
 		background: #8ED2C9;		
 			}
+	#specs.drag {
+		background: #8ED2C9;		
+			}
 	.specs {
+		background: #EEAAB1;
 		color: #721C24;
 		border-style: solid;
 		border-radius: 5px;
@@ -92,7 +96,7 @@
 				<h3 style="color: #721C24;">Drag and drop images here</h3>
 				<a href="#" class="alert-link" >Click or tap to browse (coming soon)</a>
 				<div class="d-flex">
-				<div class="specs mx-auto pt-3 pr-3 mt-3" >
+				<div id="specs" class="specs mx-auto pt-3 pr-3 mt-3" >
 				<h6 class="text-left"><ul>
 						<li>Equirectangular - 2:1</li>
 						<li>.JPG, .JPEG, .PNG</li>
