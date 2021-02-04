@@ -82,8 +82,8 @@
       </div></div>
   <div id="two">
 	  <div class="flex-column flex-shrink mx-3">
-			<div id="img-well" class="p-5 mb-3" style="border-style: solid; border-color:#96242F;
-													   background-color: #F7D7DA">
+			<div id="img-well" class="p-5 mb-3" style="border-style: solid; border-color:#96242F;"
+													   >
 				<h3 class="alert-danger">Drag and drop images here</h3>
 				<a href="#" class="alert-danger alert-link" >Click or tap to browse (coming soon)</a>
 				<div class="d-flex">
@@ -304,7 +304,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 				</div>
 				<div class="d-flex flex-row">
 		  		<div id="source${i}" class="mr-3">
-					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" /></div>
+					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" width="700"/></div>
 					<div class="small"><a href="https://ipfs.io/ipfs/${img.hash}" id="sHashImg${i}" target="_blank">https://ipfs.io/ipfs/${img.hash}</a></div>
 		  		</div>
 			</div>
