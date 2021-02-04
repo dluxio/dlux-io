@@ -13,7 +13,14 @@
 		border-radius: 10px;
 		border-width: 5px;
 			}
-	#img-well.drag, #specs.drag {
+	#specs {
+		color: #721C24;
+		background: #EEAAB1;
+		border-style: solid;
+		border-radius: 5px;
+		border-color: #721C24;
+	}
+	#img-well.drag {
 		background: #8ED2C9;		
 			}
 	.flex {
@@ -86,8 +93,8 @@
 				<h3 style="color: #721C24;">Drag and drop images here</h3>
 				<a href="#" class="alert-link" >Click or tap to browse (coming soon)</a>
 				<div class="d-flex">
-				<div class="mx-auto pt-3 pr-3 mt-3" style="background-color: #EEAAB1; border-style: solid; border-radius: 5px; border-color: #721C24">
-				<h6 class="text-left" id="specs" style="color: #721C24"><ul>
+				<div id="specs" class="mx-auto pt-3 pr-3 mt-3" >
+				<h6 class="text-left"><ul>
 						<li>Equirectangular - 2:1</li>
 						<li>.JPG, .JPEG, .PNG</li>
 				  		<li>Max 5MB 4096x2048</li>
