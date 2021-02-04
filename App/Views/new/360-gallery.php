@@ -18,7 +18,7 @@
 			}
 	.specs {
 		color: #721C24;
-		background: #EEAAB1;
+		background-color: #EEAAB1;
 		border-style: solid;
 		border-radius: 5px;
 		border-color: #721C24;
