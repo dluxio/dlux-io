@@ -21,7 +21,7 @@
 	  <div class="card-deck">
 		 	  <div class="card border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
-    	<h5 class="card-title">360° Gallery</h5>
+    	<h5 class="card-title">360° GALLERY</h5>
     	<p class="card-text">Upload 360° images to view in VR</p>
 		<hr class="bg-light">
 		<center>
@@ -39,7 +39,7 @@
 
 		  	  <div class="card border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
-    	<h5 class="card-title">360° Tour</h5>
+    	<h5 class="card-title">360° TOUR</h5>
     	<p class="card-text">Upload 360° images to view in VR</p>
 		<hr class="bg-light">
 		<center>
@@ -53,9 +53,27 @@
 		  <div class="card-footer text-center">
     	<a href="/new/360-tour" class="btn btn-danger disabled">Coming Soon</a>
 		  </div>
-  	  
 	</div>
+		  
+		  <div class="card border-danger bg-dark my-5">
+      <div class="card-body text-center text-white">
+    	<h5 class="card-title">360° VIDEO</h5>
+    	<p class="card-text">Link a 360° video to view in VR</p>
+		<hr class="bg-light">
+		<center>
+		<ul class="text-left">
+		<li>App Type: VR</li>
+		<li>Builder: 2D drag-and-drop asset upload and publishing form; 3D A-Frame preview</li>
+		<li>Difficulty: Easy</li>
+		</ul>
+		</center>
+		  </div>
+		  <div class="card-footer text-center">
+    	<a href="/new/360-tour" class="btn btn-danger disabled">Coming Soon</a>
+		  </div>
+	</div>	  
 	  </div>
+	  
 	<div class="card-deck">
 	<div class="card border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
@@ -75,11 +93,28 @@
 		  </div>
   	  </div>
 	
+		<div class="card border-danger bg-dark my-5">
+      <div class="card-body text-center text-white">
+    	<h5 class="card-title">VR GALLERY</h5>
+    	<p class="card-text">Choose a 3D gallery template and upload your assets</p>
+		<hr class="bg-light">
+		<center>
+		<ul class="text-left">
+		<li>App Type: VR</li>
+		<li>Builder: 2D drag-and-drop asset upload, code panel, and publishing form; 3D A-Frame inspector</li>
+		<li>Difficulty: Intermediate</li>
+		</ul>
+		</center>
+		  </div>
+		  <div class="card-footer text-center">
+    	<a href="#" target="_blank" class="btn btn-danger disabled">Coming Soon</a>
+		  </div>
+  	  </div>
 
 	<div class="card border-danger bg-dark my-5">
       <div class="card-body text-center text-white">
     	<h5 class="card-title">SUPERCRAFT</h5>
-    	<p class="card-text">Use a VR headset to build scenes with your hands, then publish to DLUX</p>
+    	<p class="card-text">Use a VR headset with SUPERMEDIUM to build scenes with your hands </p>
 		<hr class="bg-light">
 		<center>
 		<ul class="text-left">
