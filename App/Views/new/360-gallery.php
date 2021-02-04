@@ -42,7 +42,7 @@
 	
 <main role="main" class="p-3 flex-shrink-0">
 <section class="flex">
-  <div id="one ">
+  <div id="one">
 	  <div class="flex-column mb-4 px-3">
 		<div class="flex-row">
 			<h1 class="px-4 font-weight-bold">DLUX 360°</h1>
