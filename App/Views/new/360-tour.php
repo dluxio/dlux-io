@@ -75,6 +75,40 @@
 			</div>
 		<div id="listOfItems" >
 		</div>
+			<!--<div id="listOfItems" >
+			<div id="image01" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
+				<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
+					<div class="d-flex">
+						<input id="image01Name" class="form-control form-control-sm mr-2" type="text" placeholder="Image Name" disabled>
+						<button id="image01NameEdit" class="btn btn-secondary btn-sm ml-auto" data-toggle="tooltip" data-placement="top" title="Edit Image Name"><i class="fas fa-fw fa-pencil-alt"></i></button>
+					</div>
+					<div class="ml-auto">
+						<button id="image01Pin" class="btn btn-primary btn-sm mr-2" data-toggle="tooltip" data-placement="top" title="Asset Pinned to IPFS"><i class="fas fa-fw fa-thumbtack"></i></button>
+						<button id="image01Delete" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Asset"><i class="fas fa-fw fa-trash-alt"></i></button></div>
+				</div>
+				<div class="d-flex flex-row">
+		  		<div>
+						<div><img id="image01Src" src="/img/equirectangular.jpeg" width="700"/></div>
+						<div class="small"><a href="#" id="image01SrcLnk" target="_blank">Source Link</a></div>
+		  		</div>
+			</div>
+			<div class="pt-2 mb-3 text-left" style="border-bottom-style: solid; border-bottom-color: #909090">
+				<h4>Link Hotspots <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Click and drag on the image to add a link hotspot."></i></h4>
+			</div>
+			<div id="listOfImage01Spots">
+				<div id="image01Spot01">
+					<div class="d-flex pb-3" style="border-bottom-style: solid; border-bottom-color: #909090">
+						<input id="image01Spot01Name" class="form-control form-control-sm mr-2" type="text" placeholder="Link Name" disabled>
+						<button id="image01Spot01NameEdit" class="btn btn-secondary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Link Name"><i class="fas fa-fw fa-pencil-alt"></i></button>
+						<select id="image01Spot01Link" class="form-control form-control-sm ml-5" type="text" placeholder="Link to Image" data-toggle="tooltip" data-placement="top" title="Select the image this hotspot links to.">
+					 		<option>Image Name 1</option><option>Image Name 2</option><option>Image Name 3</option>
+						</select>
+						<button id="image01Spot01Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link"><i class="fas fa-fw fa-trash-alt"></i></button>
+					</div>
+				</div>
+			</div>
+		  </div>	
+		</div>-->
 			</div>
 	  <div class="flex-column flex-fill">
 		<iframe id="aframePreview" src="https://turnkey-360-tour.glitch.me/post.html" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
