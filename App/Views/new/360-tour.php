@@ -16,6 +16,16 @@
 	#img-well.drag {
 		background: #8ED2C9;		
 			}
+	.flex {
+  		display: flex;
+  		flex-direction: row;
+}
+	.gutter {
+		background-repeat: no-repeat;
+     	background-position: 50%;
+	}
+	.gutter.gutter-horizontal {cursor: col-resize;background-image:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg=='); }
+	.gutter.gutter-vertical {cursor: row-resize;background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII='); }
 </style>
 <script src="../js/buffer.js"></script>
 <script src="../js/drag-drop.js"></script>
@@ -29,11 +39,12 @@
    include_once($path);
 ?>
 <main role="main" class="p-3 flex-shrink-0">
-	<div class="d-flex flex-wrap justify-content-center">
-	  <div class="flex-column mb-4">
+  <section class="flex">
+  	<div id="one">
+	  <div class="flex-column mb-4 px-3">
 		<div class="flex-row py-2">
 			<h1 class="px-4 font-weight-bold">DLUX 360°</h1>
-			<h1 class="px-4 font-weight-bold" style="font-variant:small-caps;">Image Tour Builder</h1>
+			<h1 class="px-4 font-weight-bold" style="font-variant:small-caps;">image tour builder</h1>
 			<hr class="bg-light">
 		</div>
 		<div class="flex-row text-left mt-2">
@@ -66,17 +77,24 @@
 		  </div>
 	    </form>
 		</div>
-      </div>
-		<div class="flex-column flex-shrink mx-3">
-			<div id="img-well" class="border-danger alert-danger p-5 mb-3">
-				<h3>Drag and drop your images here</h3>
-				<h6>.JPG, .JPEG, and .PNG up to 4096x2048 are supported</h6>
-				<a href="#" class="alert-link">Click or tap to browse</a>
+      </div></div>
+  <div id="two">
+	  <div class="flex-column flex-shrink mx-3">
+			<div id="img-well" class="p-5 mb-3" style="border-style: solid; border-color:#96242F;
+													   background-color: #F7D7DA">
+				<h3 class="alert-danger">Drag and drop images here</h3>
+				<a href="#" class="alert-danger alert-link" >Click or tap to browse (coming soon)</a>
+				<div class="d-flex">
+				<div class="mx-auto pt-3 pr-3 mt-3" style="background-color: #EEAAB1; border-style: solid; border-radius: 5px; border-color: #721C24">
+				<h6 class="text-justify" style="color: #721C24"><ul>
+						<li>Equirectangular - 2:1</li>
+						<li>.JPG, .JPEG, .PNG</li>
+				  		<li>Max 3MB 4096x2048</li>
+                </ul>
+			  </h6></div></div>
 			</div>
 		<div id="listOfItems" >
-		</div>
-			<!--<div id="listOfItems" >
-			<div id="image01" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
+			<!--<div id="image01" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
 				<div class="d-flex align-items-center flex-row pb-2 mb-2" style="border-bottom-style: solid; border-bottom-color: #909090">
 					<div class="d-flex">
 						<input id="image01Name" class="form-control form-control-sm mr-2" type="text" placeholder="Image Name" disabled>
@@ -109,11 +127,33 @@
 			</div>
 		  </div>	
 		</div>-->
-			</div>
-	  <div class="flex-column flex-fill">
-		<iframe id="aframePreview" src="https://turnkey-360-tour.glitch.me/post.html" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
+			</div>
+</div>
+  <div id="three">
+	  <div class="flex-column flex-fill h-100 ml-3">
+		<iframe id="aframePreview" src="https://turnkey-360-tour.glitch.me/post.html" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		</div>			
 	</div>
+</section>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.3.5/split.min.js"></script>
+	<script>
+const GUTTER_SIZE = 100;
+
+const gutterStyle = dimension => ({
+  'flex-basis': `${GUTTER_SIZE}px`,
+});
+
+const elementStyle = (dimension, size) => ({
+  'flex-basis': `calc(${size}% - ${GUTTER_SIZE}px)`,
+})
+
+Split(['#one', '#two', '#three'], {
+  sizes: [350, 350, 600],
+  minSize: 200,
+  elementStyle,
+  gutterStyle
+});</script>
 </main>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
@@ -286,7 +326,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			<div class="d-flex flex-row">
 		  		<div>
 						<div><img id="image${i}Src" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" width="700"/></div>
-						<div class="small"><a href="#" id="image${i}SrcLnk" target="_blank">Source Link</a></div>
+						<div class="small"><a href="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" id="image${i}SrcLnk" target="_blank">https://ipfs.io/ipfs/${custom_json.assets[i].hash}</a></div>
 		  		</div>
 			</div>
 			<div class="pt-2 mb-3 text-left" style="border-bottom-style: solid; border-bottom-color: #909090">

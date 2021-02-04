@@ -42,11 +42,11 @@
 	
 <main role="main" class="p-3 flex-shrink-0">
 <section class="flex">
-  <div id="one">
+  <div id="one ">
 	  <div class="flex-column mb-4 px-3">
 		<div class="flex-row">
 			<h1 class="px-4 font-weight-bold">DLUX 360°</h1>
-			<h1 class="px-4 font-weight-bold" style="font-variant:small-caps;">Image Gallery Builder</h1>
+			<h1 class="px-4 font-weight-bold" style="font-variant:small-caps;">image gallery builder</h1>
 			<hr class="bg-light">
 		</div>
 		<div class="flex-row text-left mt-2">
@@ -82,10 +82,18 @@
       </div></div>
   <div id="two">
 	  <div class="flex-column flex-shrink mx-3">
-			<div id="img-well" class="border-danger alert-danger p-5 mb-3">
-				<h3>Drag and drop your images here</h3>
-				<h6>.JPG, .JPEG, and .PNG up to 4096x2048 are supported</h6>
-				<a href="#" class="alert-link">Click or tap to browse</a>
+			<div id="img-well" class="p-5 mb-3" style="border-style: solid; border-color:#96242F;
+													   background-color: #F7D7DA">
+				<h3 class="alert-danger">Drag and drop images here</h3>
+				<a href="#" class="alert-danger alert-link" >Click or tap to browse (coming soon)</a>
+				<div class="d-flex">
+				<div class="mx-auto pt-3 pr-3 mt-3" style="background-color: #EEAAB1; border-style: solid; border-radius: 5px; border-color: #721C24">
+				<h6 class="text-justify" style="color: #721C24"><ul>
+						<li>Equirectangular - 2:1</li>
+						<li>.JPG, .JPEG, .PNG</li>
+				  		<li>Max 3MB 4096x2048</li>
+                </ul>
+			  </h6></div></div>
 			</div>
 		<div id="listOfImgs" >
 			<!--<div id="item01" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
@@ -126,7 +134,7 @@ const elementStyle = (dimension, size) => ({
 })
 
 Split(['#one', '#two', '#three'], {
-  sizes: [400, 300, 500],
+  sizes: [350, 350, 600],
   minSize: 200,
   elementStyle,
   gutterStyle
@@ -296,7 +304,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 				</div>
 				<div class="d-flex flex-row">
 		  		<div id="source${i}" class="mr-3">
-					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" width="700"/></div>
+					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" /></div>
 					<div class="small"><a href="https://ipfs.io/ipfs/${img.hash}" id="sHashImg${i}" target="_blank">https://ipfs.io/ipfs/${img.hash}</a></div>
 		  		</div>
 			</div>
