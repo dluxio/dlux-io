@@ -13,7 +13,7 @@
 		border-radius: 10px;
 		border-width: 5px;
 			}
-	#img-well.drag {
+	#img-well.drag, #specs.drag {
 		background: #8ED2C9;		
 			}
 	.flex {
@@ -87,7 +87,7 @@
 				<a href="#" class="alert-link" >Click or tap to browse (coming soon)</a>
 				<div class="d-flex">
 				<div class="mx-auto pt-3 pr-3 mt-3" style="background-color: #EEAAB1; border-style: solid; border-radius: 5px; border-color: #721C24">
-				<h6 class="text-left" style="color: #721C24"><ul>
+				<h6 class="text-left" id="specs" style="color: #721C24"><ul>
 						<li>Equirectangular - 2:1</li>
 						<li>.JPG, .JPEG, .PNG</li>
 				  		<li>Max 5MB 4096x2048</li>
@@ -302,7 +302,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 					<div class="ml-auto"><button type="button" onclick="togglePin('${img.hash}')" class="btn ${btnclass} btn-sm mr-2" data-toggle="tooltip" data-placement="top" title="Asset Pinned to IPFS"><i class="fas fa-fw fa-thumbtack"></i></button><button class="btn btn-danger btn-sm" onclick="deleteImg('${img.hash}')" data-toggle="tooltip" data-placement="top" title="Delete Asset"><i class="fas fa-fw fa-trash-alt"></i></button></div>
 				</div>
 				<div class="d-flex flex-row">
-		  		<div id="source${i}" class="mr-3">
+		  		<div id="source${i}">
 					<div><img id="sImg${i}" src="https://ipfs.io/ipfs/${img.hash}" width="100%"/></div>
 					<div class="small"><a href="https://ipfs.io/ipfs/${img.hash}" id="sHashImg${i}" target="_blank">https://ipfs.io/ipfs/${img.hash}</a></div>
 		  		</div>
