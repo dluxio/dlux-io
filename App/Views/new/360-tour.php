@@ -198,7 +198,7 @@ Split(['#one', '#two', '#three'], {
 <script src="../js/img-ipfs.js"></script>
 <script>
 	var bodyVars = {} //{"QmUgit7bQH4m2eR1cmwWWWmo2ZKis1kKsk3g5SbgZwgScv":{links:[{hash:"QmR6kb8uqRKEf9i54xrkWDkv3xM5vMZvFrg3kgf2TE1cRb", pos:"10 0 -10", text: "test text"}]}}
-	var programVars = {}
+	var programVars = {index:[]}
 	var simplemde = new SimpleMDE({
         element: document.getElementById("validationCustomDescription")
       });
