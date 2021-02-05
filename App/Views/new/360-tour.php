@@ -17,6 +17,13 @@
 	#img-well.drag {
 		background: #8ED2C9;		
 			}
+	#graph > svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
 	.specs {
 		color: #431015;
 		border-style: solid;
@@ -347,7 +354,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 				</div>
 			<div class="d-flex flex-row">
 		  		<div>
-						<div id="imageGraph${i}"></div><img id="image${i}Src" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" width="700"/>
+						<div id="imageGraph${i}" class="graph"></div><img id="image${i}Src" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" width="700"/>
 						<div class="small"><a href="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" id="image${i}SrcLnk" target="_blank">https://ipfs.io/ipfs/${custom_json.assets[i].hash}</a></div>
 		  		</div>
 			</div>
