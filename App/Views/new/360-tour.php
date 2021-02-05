@@ -395,10 +395,10 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		}})(i);
 		window[`image${i}SVG`].on(
   "mousedown",
-  function(a) {
+  (function (i){return function(a) {
 	  console.log(i)
     deselect_shapes();
-    programVars[img].rects.push([`image${i}SVG`].circle())
+    programVars[img].rects.push(window[`image${i}SVG`].circle())
     programVars[`image${i}SVG`].in_shape = !0;
     r = rects[rects.length - 1];
     r.aid = rects.length - 1;
@@ -426,7 +426,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
       },
       !1
     );
-  },
+  }})(i),
   !1
 );
 window[`image${i}SVG`].on(
