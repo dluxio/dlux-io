@@ -400,7 +400,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
     deselect_shapes();
     programVars[`image${i}SVG`].rects.push(window[`image${i}SVG`].circle())
     programVars[`image${i}SVG`].in_shape = !0;
-    r = programVars[`image${i}SVG`].rects[rects.length - 1];
+    r = programVars[`image${i}SVG`].rects[programVars[`image${i}SVG`].rects.length - 1];
     r.aid = programVars[`image${i}SVG`].rects.length - 1;
     "poly" == set_shape
       ? r.draw().opacity(".3")
@@ -433,7 +433,7 @@ window[`image${i}SVG`].on(
   "mouseup",
   ( function (i){ return function(a) {
     if ("poly" == set_shape) return !1;
-    r = programVars[`image${i}SVG`].rects[rects.length - 1];
+    r = programVars[`image${i}SVG`].rects[programVars[`image${i}SVG`].rects.length - 1];
     r.draw("stop", a);
     programVars[`image${i}SVG`].in_shape = !1;
     if (0 == r.width() || 0 == r.height())
