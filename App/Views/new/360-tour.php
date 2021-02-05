@@ -20,7 +20,7 @@
 		color: #00B97B;
 	}
 	#img-well.drag {
-		background: #A1AFFE;		
+		background: #015F3F;		
 			}
 	.border-turq {
 		border-color: #21FFB5;
@@ -371,7 +371,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 				</div>
 			</div>
 			<div class="d-flex flex-row">
-				<div class="small text-center"><a href="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" id="image${i}SrcLnk" target="_blank">https://ipfs.io/ipfs/${custom_json.assets[i].hash}</a></div>
+				<div class="small text-center flex-fill"><a href="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" id="image${i}SrcLnk" target="_blank">https://ipfs.io/ipfs/${custom_json.assets[i].hash}</a></div>
 			</div>
 			<div class="pt-2 mb-3 text-left" style="border-bottom-style: solid; border-bottom-color: #909090">
 				<h4>Link Hotspots <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Click and drag on the image to add a link hotspot."></i></h4>
