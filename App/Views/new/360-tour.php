@@ -17,7 +17,7 @@
 	#img-well.drag {
 		background: #8ED2C9;		
 			}
-	#graph > svg {
+	.graph > svg {
     position: absolute;
     width: 100%;
     height: 100%;
