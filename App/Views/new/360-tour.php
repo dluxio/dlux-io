@@ -20,7 +20,7 @@
 		color: #00B97B;
 	}
 	#img-well.drag {
-		background: #3735FF;		
+		background: #4EB8FF;		
 			}
 	.border-turq {
 		border-color: #21FFB5;
@@ -37,10 +37,7 @@
     left: 0;
 }
 	img-preview {
-    margin: auto;
-    width: 100%;
-    max-width: 700px;
-    max-height:100%
+    width: 700px;
 }
 	.specs {
 		color: #00B97B;
