@@ -9,26 +9,19 @@
 ?>
 <style>
 	#img-well {
-		color: #00B97B;
-		background: #A2FEDF;
+		color: #9E9C00;
+		background: #FEFCA2;
 		border-style: solid;
 		border-radius: 10px;
 		border-width: 5px;
-		border-color:#21FFB5;
+		border-color: #D6D301;
 			}
 	#img-well > a {
-		color: #00B97B;
+		color: #868400;
 	}
 	#img-well.drag {
-		background: #015F3F;		
+		background: #B9FEA2;		
 			}
-	.border-turq {
-		border-color: #21FFB5;
-	}
-	.btn-turq {
-		color: #363636;
-		background: #21FFB5;
-	}
 	.graph > svg {
     position: absolute;
     width: 100%;
@@ -38,10 +31,10 @@
 }
 
 	.specs {
-		color: #00B97B;
+		color: #5F5500;
 		border-style: solid;
 		border-radius: 5px;
-		border-color: #00B97B;
+		border-color: #5F5500;
 	}
 	.flex {
   		display: flex;
