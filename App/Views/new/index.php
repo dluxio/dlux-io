@@ -136,6 +136,12 @@
   	  </div>
 	  </div>
 	
+		  <div class="text-left pt-5">
+	  	<h2 >UTILITIES</h2>
+	  <hr class="bg-light m-0" />
+	  <p class="lead mt-2">Other useful tools</p>
+	  </div>
+	
 		<div class="card-deck my-3">
 	<div class="card border-danger bg-dark">
 		<div class="card-header">
@@ -151,6 +157,23 @@
 		  </div>
 		  <div class="card-footer">
     	<a href="/new/advanced" class="btn btn-danger">Get Started</a>
+		  </div>
+  	  </div>
+			
+				<div class="card border-danger bg-dark">
+		<div class="card-header">
+			<h5 class="card-title">DLUX NODE</h5>
+    		<p class="card-text">Run a node to support the platform</p>
+	  </div>
+      <div class="card-body">
+		<ul class="text-left">
+		<li>App Type: Node.js</li>
+		<li>Builder: DIY, Auto Script, Pre Configured</li>
+		<li>Difficulty: Varies</li>
+		</ul>
+		  </div>
+		  <div class="card-footer">
+    	<a href="/new/node" class="btn btn-danger">Get Started</a>
 		  </div>
   	  </div>
 	</div>
