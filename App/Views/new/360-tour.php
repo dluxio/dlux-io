@@ -398,7 +398,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
   (function (i){return function(a) {
 	  console.log(i)
     deselect_shapes();
-    programVars[img].rects.push(window[`image${i}SVG`].circle())
+    programVars[`image${i}SVG`].rects.push(window[`image${i}SVG`].circle())
     programVars[`image${i}SVG`].in_shape = !0;
     r = rects[rects.length - 1];
     r.aid = rects.length - 1;
@@ -431,7 +431,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 );
 window[`image${i}SVG`].on(
   "mouseup",
-  function(a) {
+  ( function (i){ return function(a) {
     if ("poly" == set_shape) return !1;
     r = rects[rects.length - 1];
     r.draw("stop", a);
@@ -446,7 +446,7 @@ window[`image${i}SVG`].on(
       ),
         delete_shape(a, r.aid);
     generate_bodyVars();
-  },
+  }})(i),
   !1
 );
 		for (k = 0; k < bodyVars[custom_json.assets[i].hash].links.length; k++){
