@@ -396,7 +396,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		window[`image${i}SVG`].on(
   "mousedown",
   (function (i){return function(a) {
-	  console.log(i)
+	  console.log({i, a})
     deselect_shapes();
     programVars[`image${i}SVG`].rects.push(window[`image${i}SVG`].circle())
     programVars[`image${i}SVG`].in_shape = !0;
@@ -432,6 +432,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 window[`image${i}SVG`].on(
   "mouseup",
   ( function (i){ return function(a) {
+	  console.log({i, a})
     r = programVars[`image${i}SVG`].rects[programVars[`image${i}SVG`].rects.length - 1];
     r.draw("stop", a);
     programVars[`image${i}SVG`].in_shape = !1;
