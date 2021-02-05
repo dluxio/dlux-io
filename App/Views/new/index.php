@@ -7,6 +7,29 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
+<style>
+	.border-turq {
+		border-color: #21FFB5;
+	}
+	.btn-turq {
+		color: #363636;
+		background: #21FFB5;
+	}
+	.border-blue {
+		border-color: #033EFD;
+	}
+	.btn-blue {
+		color: #fff;
+		background: #033EFD;
+	}
+	.border-fusch {
+		border-color: #FB00FF;
+	}
+	.btn-fusch {
+		color: #fff;
+		background: #FB00FF;
+	}
+</style>
 </head>
 
 <body class="d-flex flex-column h-100 padme-t70">
@@ -26,7 +49,7 @@
 	  </div>
 	  
 	  <div class="card-deck my-3">
-		 <div class="card border-danger bg-dark">
+		 <div class="card border-turq bg-dark">
 			<div class="card-header">
 				<h5 class="card-title">360° GALLERY</h5>
     			<p class="card-text">Grid link 360° images</p>
@@ -39,11 +62,11 @@
 					</ul>
 			</div>
 		  <div class="card-footer">
-    	<a href="/new/360-gallery" class="btn btn-danger">Get Started</a>
+    	<a href="/new/360-gallery" class="btn btn-turq">Get Started</a>
 		  </div>
   	  </div>
 
-	<div class="card border-danger bg-dark text-white-50">
+	<div class="card border-turq bg-dark text-white-50">
 	<div class="card-header">
 		<h5 class="card-title">360° TOUR</h5>
     	<p class="card-text">Hotspot link 360° images</p>
@@ -57,11 +80,11 @@
 		</center>
 		  </div>
 		  <div class="card-footer">
-    	<a href="/new/360-tour" class="btn btn-danger disabled">Coming Soon</a>
+    	<a href="/new/360-tour" class="btn btn-turq disabled">Coming Soon</a>
 		  </div>
 	</div>
 		  
-		  <div class="card border-danger bg-dark text-white-50">
+		  <div class="card border-turq bg-dark text-white-50">
 			  <div class="card-header">
 			  <h5 class="card-title">360° VIDEO</h5>
     	<p class="card-text">Play a 360° video URL</p>
@@ -74,7 +97,7 @@
 		</ul>
 		  </div>
 		  <div class="card-footer">
-    	<a href="/new/360-tour" class="btn btn-danger disabled">Coming Soon</a>
+    	<a href="/new/360-tour" class="btn btn-turq disabled">Coming Soon</a>
 		  </div>
 	</div>	  
 	  </div>
@@ -84,7 +107,7 @@
 	  <p class="lead mt-2">Fully immersive experiences with player movement and teleport control</p>
 	  </div>
 	<div class="card-deck my-3">
-	<div class="card border-danger bg-dark">
+	<div class="card border-fusch bg-dark">
 		<div class="card-header">
 			  <h5 class="card-title">VR BUILDER</h5>
     	<p class="card-text">Remix our boilerplate on Glitch and upload your own images and 3D models</p>
@@ -97,11 +120,11 @@
 		</ul>
 		  </div>
 		  <div class="card-footer">
-    	<a href="https://dlux-vr.glitch.me/build.html" target="_blank" class="btn btn-danger">Get Started</a>
+    	<a href="https://dlux-vr.glitch.me/build.html" target="_blank" class="btn btn-fusch">Get Started</a>
 		  </div>
   	  </div>
 		
-		<div class="card border-danger bg-dark text-white-50">
+		<div class="card border-fusch bg-dark text-white-50">
 			<div class="card-header">
 			  <h5 class="card-title">VR GALLERY</h5>
     	<p class="card-text">Choose a 3D gallery template and upload your assets</p>
@@ -114,11 +137,11 @@
 		</ul>
 		  </div>
 		  <div class="card-footer">
-    	<a href="#" target="_blank" class="btn btn-danger disabled">Coming Soon</a>
+    	<a href="#" target="_blank" class="btn btn-fusch disabled">Coming Soon</a>
 		  </div>
   	  </div>
 
-	<div class="card border-danger bg-dark">
+	<div class="card border-fusch bg-dark">
 		<div class="card-header">
 		<h5 class="card-title">SUPERCRAFT</h5>
     	<p class="card-text">Use a VR headset with SUPERMEDIUM to build scenes with your hands </p>
@@ -131,7 +154,7 @@
 		</ul>
 		  </div>
 		  <div class="card-footer">
-    	<a href="/new/supercraft" class="btn btn-danger">Get Started</a>
+    	<a href="/new/supercraft" class="btn btn-fusch">Get Started</a>
 		  </div>
   	  </div>
 	  </div>
@@ -143,7 +166,7 @@
 	  </div>
 	
 		<div class="card-deck my-3">
-	<div class="card border-danger bg-dark">
+	<div class="card border-blue bg-dark">
 		<div class="card-header">
 			<h5 class="card-title">ADVANCED UPLOADER</h5>
     		<p class="card-text">Upload any HTML5 Single Page App (SPA)</p>
@@ -156,11 +179,11 @@
 		</ul>
 		  </div>
 		  <div class="card-footer">
-    	<a href="/new/advanced" class="btn btn-danger">Get Started</a>
+    	<a href="/new/advanced" class="btn btn-blue">Get Started</a>
 		  </div>
   	  </div>
 			
-				<div class="card border-danger bg-dark">
+				<div class="card border-blue bg-dark">
 		<div class="card-header">
 			<h5 class="card-title">DLUX NODE</h5>
     		<p class="card-text">Run a node to support the platform</p>
@@ -173,7 +196,7 @@
 		</ul>
 		  </div>
 		  <div class="card-footer">
-    	<a href="/new/node" class="btn btn-danger">Get Started</a>
+    	<a href="/new/node" class="btn btn-blue">Get Started</a>
 		  </div>
   	  </div>
 	</div>
