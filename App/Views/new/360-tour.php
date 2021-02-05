@@ -169,7 +169,8 @@ Split(['#one', '#two', '#three'], {
 <script src="../js/img-ipfs.js"></script>
 <script>
 	var bodyVars = {} //{"QmUgit7bQH4m2eR1cmwWWWmo2ZKis1kKsk3g5SbgZwgScv":{links:[{hash:"QmR6kb8uqRKEf9i54xrkWDkv3xM5vMZvFrg3kgf2TE1cRb", pos:"10 0 -10", text: "test text"}]}}
-      var simplemde = new SimpleMDE({
+	var programVars = {}
+	var simplemde = new SimpleMDE({
         element: document.getElementById("validationCustomDescription")
       });
       // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -336,7 +337,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 				</div>
 			<div class="d-flex flex-row">
 		  		<div>
-						<div><img id="image${i}Src" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" width="700"/></div>
+						<div id="imageGraph${i}"><img id="image${i}Src" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" width="700"/></div>
 						<div class="small"><a href="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" id="image${i}SrcLnk" target="_blank">https://ipfs.io/ipfs/${custom_json.assets[i].hash}</a></div>
 		  		</div>
 			</div>
@@ -347,14 +348,92 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			</div>
 		</div>
 		`
+		var [`image${i}SVG`] = new SVG(`imageGraph${i}`);
+		programVars[`image${i}SVG`] = {
+			rects: [],
+  			in_shape: !1,
+  			shape_selected: -1;
+		}
+		var [`image${i}Src`] = document.getElementById(`image${i}Src`)
+		[`image${i}Src`].onload = function() {
+      		[`image${i}SVG`].node.setAttribute("viewBox", "0 0 " + [`image${i}Src`].width + " " + [`image${i}Src`].height);
+		};
+		[`image${i}SVG`].on(
+  "mousedown",
+  function(a) {
+    deselect_shapes();
+    rects.push([`image${i}SVG`].circle())
+    programVars[`image${i}SVG`].in_shape = !0;
+    r = rects[rects.length - 1];
+    r.aid = rects.length - 1;
+    "poly" == set_shape
+      ? r.draw().opacity(".3")
+      : r
+          .draw(a)
+          .fill("#333")
+          .opacity(".3");
+    r.draggable().on("dragmove", function(a) {
+      generate_bodyVars();
+    });
+    r.on("drawstop", function() {
+      console.log("drawstop");
+      add_href_input(this);
+    });
+    r.on(
+      "mousedown",
+      function(a) {
+        deselect_shapes();
+        "poly" == set_shape
+          ? this.selectize(!0, { deepSelect: !0, rotationPoint: !1 }).resize()
+          : this.selectize(!0, { deepSelect: !1, rotationPoint: !1 }).resize();
+        shape_selected = this.aid;
+      },
+      !1
+    );
+  },
+  !1
+);
+[`image${i}SVG`].on(
+  "mouseup",
+  function(a) {
+    if ("poly" == set_shape) return !1;
+    r = rects[rects.length - 1];
+    r.draw("stop", a);
+    programVars[`image${i}SVG`].in_shape = !1;
+    if (0 == r.width() || 0 == r.height())
+      console.log(
+        "deleting empty shape ",
+        r.attr("x"),
+        r.attr("y"),
+        r.width(),
+        r.height()
+      ),
+        delete_shape(a, r.aid);
+    generate_bodyVars();
+  },
+  !1
+);
+
 		document.getElementById('listOfItems').appendChild(item)
-		for (k = 0; k <= bodyVars[custom_json.assets[i].hash].links.length; k++){
+		for (k = 0; k < bodyVars[custom_json.assets[i].hash].links.length; k++){
 			document.getElementById(`listOfImage${i}Spots`).appendChild(buildLinkList(i,k))
 		}
 	}
 }
 	  }
 
+function deselect_shapes() {
+	for (img in programVars){	
+		if (-1 < programVars[img]shape_selected) {
+			for (i = 0; i < programVars[img]rects.length; i++) programVars[img]rects[i].selectize(!1);
+			programVars[img]shape_selected = -1;
+		}
+	}
+}
+
+function generate_bodyVars(){
+
+}
 	  function buildLinkList (i, k){
 		var opts = ''
 		for(var j = 0; j < custom_json.assets.length; j++){
