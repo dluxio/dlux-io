@@ -11,15 +11,11 @@
 	#img-well {
 		color: #FF7A5A;
 		background: #FCF4D9;
-		border-style: solid;
+		border-style: none;
 		border-radius: 10px;
-		border-width: 5px;
+		border-width: 1.5px;
 		border-color: #FFAB96;
 			}
-	#img-well > a {
-		color: #1762A7;
-		font-weight: bold;
-	}
 	#img-well.drag {
 		background: #8ED2C9;		
 			}
@@ -113,8 +109,11 @@
   <div id="two">
 	  <div class="flex-column flex-shrink mx-3">
 			<div id="img-well" class="p-5 mb-3">
+				<div class="d-flex">
+				<div class="flex-fill text-center">
 				<h3>Drag and drop images here</h3>
-				<a href="#" >Click or tap to browse (coming soon)</a>
+					</div>
+				</div>
 				<div class="d-flex">
 				<div class="specs mx-auto pt-3 pr-3 mt-3">
 				<h6 class="text-left"><ul>
@@ -122,7 +121,12 @@
 						<li>.JPG, .JPEG, .PNG</li>
 				  		<li>Max 5MB 4096x2048</li>
                 </ul>
-			  </h6></div></div>
+			  </h6>
+				</div>
+				</div>
+				<div class="d-flex mt-4">
+				<div class="flex-fill text-center"><a href="#" >Click or tap to browse</a></div>
+				</div>
 			</div>
 		<div id="listOfItems" >
 			<!--<div id="image01" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
