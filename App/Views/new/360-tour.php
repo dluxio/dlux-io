@@ -36,6 +36,10 @@
 </style>
 <script src="../js/buffer.js"></script>
 <script src="../js/drag-drop.js"></script>
+<script src="../js/svg.draw.min.js"></script>
+<script src="../js/svg.draggable.min.js"></script>
+<script src="../js/svg.resize.min.js"></script>
+<script src="../js/svg.select.min.js"></script>
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 <script src="https://unpkg.com/ipfs-http-client@29.1.1/dist/index.min.js"></script>
 </head>
