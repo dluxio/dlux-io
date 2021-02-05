@@ -366,8 +366,10 @@ for(var i = 0; i < custom_json.assets.length; i++){
   			shape_selected: -1
 		}
 		window[`image${i}Src`] = document.getElementById(`image${i}Src`)
+		window[`image${i}Src`].i = i 
 		window[`image${i}Src`].onload = function() {
-      		window[`image${i}SVG`].node.setAttribute("viewBox", "0 0 " + window[`image${i}Src`].width + " " + window[`image${i}Src`].height);
+			console.log(node)
+      		//node.setAttribute("viewBox", "0 0 " + window[`image${i}Src`].width + " " + window[`image${i}Src`].height);
 		};
 		window[`image${i}SVG`].on(
   "mousedown",
