@@ -368,8 +368,10 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		window[`image${i}Src`] = document.getElementById(`image${i}Src`)
 		window[`image${i}Src`].i = i 
 		window[`image${i}Src`].onload = (function (i){return function() {
-      		window[`image${i}SVG`].setAttribute("viewBox", "0 0 " + window[`image${i}Src`].width + " " + window[`image${i}Src`].height);
-		}});
+			const img = document.getElementById(`image${i}Src`)
+			console.log({i}, img)
+      		document.getElementById(`image${i}SVG`).setAttribute("viewBox", "0 0 " + img.width + " " + img.height);
+		}})(i);
 		window[`image${i}SVG`].on(
   "mousedown",
   function(a) {
