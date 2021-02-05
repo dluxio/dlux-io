@@ -348,7 +348,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			</div>
 		</div>
 		`
-		window.[`image${i}SVG`] = new SVG(`imageGraph${i}`);
+		window[`image${i}SVG`] = new SVG(`imageGraph${i}`);
 		programVars[`image${i}SVG`] = {
 			rects: [],
   			in_shape: !1,
