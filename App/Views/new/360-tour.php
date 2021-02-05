@@ -432,7 +432,6 @@ for(var i = 0; i < custom_json.assets.length; i++){
 window[`image${i}SVG`].on(
   "mouseup",
   ( function (i){ return function(a) {
-    if ("poly" == set_shape) return !1;
     r = programVars[`image${i}SVG`].rects[programVars[`image${i}SVG`].rects.length - 1];
     r.draw("stop", a);
     programVars[`image${i}SVG`].in_shape = !1;
