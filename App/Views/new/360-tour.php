@@ -9,15 +9,16 @@
 ?>
 <style>
 	#img-well {
-		color: #A58711;
+		color: #FF7A5A;
 		background: #FCF4D9;
 		border-style: solid;
 		border-radius: 10px;
 		border-width: 5px;
-		border-color: #A58711;
+		border-color: #FFAB96;
 			}
 	#img-well > a {
-		color: #A58711;
+		color: #1762A7;
+		font-weight: bold;
 	}
 	#img-well.drag {
 		background: #8ED2C9;		
@@ -31,10 +32,11 @@
 }
 
 	.specs {
-		color: #725D0A;
+		color: #000;
 		border-style: solid;
+		border-width: 1.5px;
 		border-radius: 5px;
-		border-color: #725D0A;
+		border-color: #000;
 	}
 	.flex {
   		display: flex;
