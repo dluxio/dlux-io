@@ -358,6 +358,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			</div>
 		</div>
 		`
+		document.getElementById('listOfItems').appendChild(item)
 		window[`image${i}SVG`] = new SVG(`imageGraph${i}`);
 		programVars[`image${i}SVG`] = {
 			rects: [],
@@ -423,8 +424,6 @@ window[`image${i}SVG`].on(
   },
   !1
 );
-
-		document.getElementById('listOfItems').appendChild(item)
 		for (k = 0; k < bodyVars[custom_json.assets[i].hash].links.length; k++){
 			document.getElementById(`listOfImage${i}Spots`).appendChild(buildLinkList(i,k))
 		}
