@@ -348,7 +348,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			</div>
 		</div>
 		`
-		var [`image${i}SVG`] = new SVG(`imageGraph${i}`);
+		window.[`image${i}SVG`] = new SVG(`imageGraph${i}`);
 		programVars[`image${i}SVG`] = {
 			rects: [],
   			in_shape: !1,
@@ -358,7 +358,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		[`image${i}Src`].onload = function() {
       		[`image${i}SVG`].node.setAttribute("viewBox", "0 0 " + [`image${i}Src`].width + " " + [`image${i}Src`].height);
 		};
-		[`image${i}SVG`].on(
+		window.[`image${i}SVG`].on(
   "mousedown",
   function(a) {
     deselect_shapes();
@@ -393,7 +393,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
   },
   !1
 );
-[`image${i}SVG`].on(
+window.[`image${i}SVG`].on(
   "mouseup",
   function(a) {
     if ("poly" == set_shape) return !1;
