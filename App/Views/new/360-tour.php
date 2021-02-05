@@ -402,26 +402,26 @@ for(var i = 0; i < custom_json.assets.length; i++){
     programVars[`image${i}SVG`].in_shape = !0;
     r = programVars[`image${i}SVG`].rects[programVars[`image${i}SVG`].rects.length - 1];
     r.aid = programVars[`image${i}SVG`].rects.length - 1;
-    "poly" == set_shape
-      ? r.draw().opacity(".3")
-      : r
+    r.draw().opacity(".3")
+    /* r
           .draw(a)
           .fill("#333")
-          .opacity(".3");
+		  .opacity(".3");
+		  */
     r.draggable().on("dragmove", function(a) {
-      generate_bodyVars();
+		console.log('dragmove')
+		generate_bodyVars();
     });
     r.on("drawstop", function() {
       console.log("drawstop");
-      add_href_input(this);
+      //add_href_input(this);
     });
     r.on(
       "mousedown",
       function(a) {
         deselect_shapes();
-        "poly" == set_shape
-          ? this.selectize(!0, { deepSelect: !0, rotationPoint: !1 }).resize()
-          : this.selectize(!0, { deepSelect: !1, rotationPoint: !1 }).resize();
+        this.selectize(!0, { deepSelect: !0, rotationPoint: !1 }).resize()
+        //  this.selectize(!0, { deepSelect: !1, rotationPoint: !1 }).resize();
         shape_selected = this.aid;
       },
       !1
@@ -444,7 +444,7 @@ window[`image${i}SVG`].on(
         r.width(),
         r.height()
       ),
-        delete_shape(a, r.aid);
+    delete_shape(a, r.aid);
     generate_bodyVars();
   }})(i),
   !1
@@ -466,7 +466,7 @@ function deselect_shapes() {
 }
 
 function generate_bodyVars(){
-
+	console.log('gbv')
 }
 	  function buildLinkList (i, k){
 		var opts = ''
