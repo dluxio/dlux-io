@@ -27,7 +27,6 @@
 	.img-preview {
     margin: auto;
     width: 100%;
-    max-width: 700px;
     max-height:100%
 }
 	.specs {
@@ -359,7 +358,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 					</div>
 				</div>
 			<div class="d-flex flex-row">
-		  		<div style="position: relative">
+		  		<div style="position: relative; width: 700px">
 						<div id="imageGraph${i}" class="graph"></div><img id="image${i}Src" class="img-preview" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" />
 				</div>
 			</div>
