@@ -352,7 +352,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		programVars[`image${i}SVG`] = {
 			rects: [],
   			in_shape: !1,
-  			shape_selected: -1;
+  			shape_selected: -1
 		}
 		var [`image${i}Src`] = document.getElementById(`image${i}Src`)
 		[`image${i}Src`].onload = function() {
