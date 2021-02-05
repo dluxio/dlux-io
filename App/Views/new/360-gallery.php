@@ -9,19 +9,22 @@
 ?>
 <style>
 	#img-well {
-		border-style: solid;
+		color: #FF7A5A;
+		background: #FCF4D9;
+		border-style: none;
 		border-radius: 10px;
-		border-width: 5px;
-		border-color:#96242F;
+		border-width: 1.5px;
+		border-color: #FFAB96;
 			}
 		#img-well.drag {
-		background: #8ED2C9;		
+			background: #8ED2C9;		
 			}
 	.specs {
-		color: #431015;
+		color: #000;
 		border-style: solid;
+		border-width: 1.5px;
 		border-radius: 5px;
-		border-color: #721C24;
+		border-color: #000;
 	}
 	.flex {
   		display: flex;
@@ -89,17 +92,25 @@
       </div></div>
   <div id="two">
 	  <div class="flex-column flex-shrink mx-3">
-			<div id="img-well" class="p-5 mb-3 alert-danger">
-				<h3 style="color: #721C24;">Drag and drop images here</h3>
-				<a href="#" class="alert-link" >Click or tap to browse (coming soon)</a>
+			<div id="img-well" class="p-5 mb-3">
 				<div class="d-flex">
-				<div class="specs mx-auto pt-3 pr-3 mt-3" >
+				<div class="flex-fill text-center">
+				<h3>Drag and drop images here</h3>
+					</div>
+				</div>
+				<div class="d-flex">
+				<div class="specs mx-auto pt-3 pr-3 mt-3">
 				<h6 class="text-left"><ul>
 						<li>Equirectangular - 2:1</li>
 						<li>.JPG, .JPEG, .PNG</li>
 				  		<li>Max 5MB 4096x2048</li>
                 </ul>
-			  </h6></div></div>
+			  </h6>
+				</div>
+				</div>
+				<div class="d-flex mt-4">
+				<div class="flex-fill text-center d-none"><a href="#" >Click or tap to browse</a></div>
+				</div>
 			</div>
 		<div id="listOfImgs" >
 			<!--<div id="item01" class="p-3 mb-3 bg-dark" style="border-radius: 10px;">
