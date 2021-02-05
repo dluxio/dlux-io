@@ -341,7 +341,7 @@ Split(['#one', '#two', '#three'], {
 	  }
 	  function buildList (){
 		  document.getElementById('listOfItems').innerHTML = ``
-for(var i = Object.keys(bodyVars).length; i < custom_json.assets.length; i++){
+for(var i = 0; i < custom_json.assets.length; i++){
 		const img = custom_json.assets[i]
 		if(img.type == 'ts'){
 		var btnclass = 'btn-primary'
