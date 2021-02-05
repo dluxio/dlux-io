@@ -367,10 +367,9 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		}
 		window[`image${i}Src`] = document.getElementById(`image${i}Src`)
 		window[`image${i}Src`].i = i 
-		window[`image${i}Src`].onload = function() {
-			console.log(node)
-      		//node.setAttribute("viewBox", "0 0 " + window[`image${i}Src`].width + " " + window[`image${i}Src`].height);
-		};
+		window[`image${i}Src`].onload = (function (i){return function() {
+      		window[`image${i}SVG`].setAttribute("viewBox", "0 0 " + window[`image${i}Src`].width + " " + window[`image${i}Src`].height);
+		}});
 		window[`image${i}SVG`].on(
   "mousedown",
   function(a) {
