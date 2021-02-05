@@ -354,7 +354,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
   			in_shape: !1,
   			shape_selected: -1
 		}
-		var [`image${i}Src`] = document.getElementById(`image${i}Src`)
+		window[`image${i}Src`] = document.getElementById(`image${i}Src`)
 		[`image${i}Src`].onload = function() {
       		[`image${i}SVG`].node.setAttribute("viewBox", "0 0 " + [`image${i}Src`].width + " " + [`image${i}Src`].height);
 		};
