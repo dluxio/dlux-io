@@ -353,7 +353,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 					</div>
 				</div>
 			<div class="d-flex flex-row">
-		  		<div>
+		  		<div style="position: relative">
 						<div id="imageGraph${i}" class="graph"></div><img id="image${i}Src" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" width="700"/>
 						<div class="small"><a href="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" id="image${i}SrcLnk" target="_blank">https://ipfs.io/ipfs/${custom_json.assets[i].hash}</a></div>
 		  		</div>
