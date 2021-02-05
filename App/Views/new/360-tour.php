@@ -9,18 +9,18 @@
 ?>
 <style>
 	#img-well {
-		color: #9E9C00;
-		background: #FEFCA2;
+		color: #A58711;
+		background: #FCF4D9;
 		border-style: solid;
 		border-radius: 10px;
 		border-width: 5px;
-		border-color: #D6D301;
+		border-color: #A58711;
 			}
 	#img-well > a {
-		color: #868400;
+		color: #A58711;
 	}
 	#img-well.drag {
-		background: #B9FEA2;		
+		background: #8ED2C9;		
 			}
 	.graph > svg {
     position: absolute;
@@ -31,10 +31,10 @@
 }
 
 	.specs {
-		color: #5F5500;
+		color: #725D0A;
 		border-style: solid;
 		border-radius: 5px;
-		border-color: #5F5500;
+		border-color: #725D0A;
 	}
 	.flex {
   		display: flex;
