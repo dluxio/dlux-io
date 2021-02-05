@@ -24,6 +24,12 @@
     top: 0;
     left: 0;
 }
+	.img-preview {
+    margin: auto;
+    width: 100%;
+    max-width: 700px;
+    max-height:100%
+}
 	.specs {
 		color: #431015;
 		border-style: solid;
@@ -354,7 +360,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 				</div>
 			<div class="d-flex flex-row">
 		  		<div style="position: relative">
-						<div id="imageGraph${i}" class="graph"></div><img id="image${i}Src" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" />
+						<div id="imageGraph${i}" class="graph"></div><img id="image${i}Src" class="img-preview" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" />
 				</div>
 			</div>
 			<div class="d-flex flex-row">
