@@ -370,7 +370,8 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		window[`image${i}Src`].onload = (function (i){return function() {
 			const img = document.getElementById(`image${i}Src`)
 			console.log({i}, img, window[`image${i}SVG`])
-      		window[`image${i}SVG`].setAttribute("viewBox", "0 0 " + img.width + " " + img.height);
+			const node = window[`image${i}SVG`]
+      		node.setAttribute("viewBox", "0 0 " + img.width + " " + img.height);
 		}})(i);
 		window[`image${i}SVG`].on(
   "mousedown",
