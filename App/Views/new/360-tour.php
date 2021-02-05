@@ -424,9 +424,9 @@ window[`image${i}SVG`].on(
 
 function deselect_shapes() {
 	for (img in programVars){	
-		if (-1 < programVars[img]shape_selected) {
-			for (i = 0; i < programVars[img]rects.length; i++) programVars[img]rects[i].selectize(!1);
-			programVars[img]shape_selected = -1;
+		if (-1 < programVars[img].shape_selected) {
+			for (i = 0; i < programVars[img].rects.length; i++) programVars[img].rects[i].selectize(!1);
+			programVars[img]/shape_selected = -1;
 		}
 	}
 }
