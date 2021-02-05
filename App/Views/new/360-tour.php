@@ -341,7 +341,7 @@ Split(['#one', '#two', '#three'], {
 	  }
 	  function buildList (){
 		  document.getElementById('listOfItems').innerHTML = ``
-for(var i = 0; i < custom_json.assets.length; i++){
+for(var i = Object.keys(bodyVars).length; i < custom_json.assets.length; i++){
 		const img = custom_json.assets[i]
 		if(img.type == 'ts'){
 		var btnclass = 'btn-primary'
@@ -459,8 +459,10 @@ window[`image${i}SVG`].on(
 function deselect_shapes() {
 	for (img in programVars){	
 		if (-1 < programVars[img].shape_selected) {
-			for (i = 0; i < programVars[img].rects.length; i++) programVars[img].rects[i].selectize(!1);
-			programVars[img].shape_selected = -1;
+			for (i = 0; i < programVars[img].rects.length; i++) {
+				programVars[img].rects[i].selectize(!1);
+				programVars[img].shape_selected = -1;
+			}
 		}
 	}
 }
