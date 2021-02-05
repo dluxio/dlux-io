@@ -25,10 +25,7 @@
     left: 0;
 }
 	.img-preview {
-    margin: auto;
-    min-width: 100%;
-    max-height:100%;
-	object-fit: cover;
+	max-width: 700px;
 }
 	.specs {
 		color: #431015;
