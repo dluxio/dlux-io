@@ -381,10 +381,12 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		`
 		document.getElementById('listOfItems').appendChild(item)
 		window[`image${i}SVG`] = new SVG(`imageGraph${i}`);
-		programVars[`image${i}SVG`] = {
+		programVars.index.push(custom_json.assets[i].hash)
+		programVars[custom_json.assets[i].hash] = {
 			rects: [],
   			in_shape: !1,
-  			shape_selected: -1
+			shape_selected: -1,
+			index: i  
 		}
 		window[`image${i}Src`] = document.getElementById(`image${i}Src`)
 		window[`image${i}Src`].i = i 
@@ -398,10 +400,10 @@ for(var i = 0; i < custom_json.assets.length; i++){
   (function (i){return function(a) {
 	  console.log({i, a})
     deselect_shapes();
-    programVars[`image${i}SVG`].rects.push(window[`image${i}SVG`].circle())
-    programVars[`image${i}SVG`].in_shape = !0;
-    r = programVars[`image${i}SVG`].rects[programVars[`image${i}SVG`].rects.length - 1];
-    r.aid = programVars[`image${i}SVG`].rects.length - 1;
+    programVars[custom_json.assets[i].hash].rects.push(window[`image${i}SVG`].circle())
+    programVars[custom_json.assets[i].hash].in_shape = !0;
+    r = programVars[custom_json.assets[i].hash].rects[programVars[custom_json.assets[i].hash].rects.length - 1];
+    r.aid = programVars[custom_json.assets[i].hash].rects.length - 1;
     r.draw().opacity(".3")
     /* r
           .draw(a)
@@ -433,9 +435,9 @@ window[`image${i}SVG`].on(
   "mouseup",
   ( function (i){ return function(a) {
 	  console.log({i, a})
-    r = programVars[`image${i}SVG`].rects[programVars[`image${i}SVG`].rects.length - 1];
+    r = programVars[custom_json.assets[i].hash].rects[programVars[custom_json.assets[i].hash].rects.length - 1];
     r.draw("stop", a);
-    programVars[`image${i}SVG`].in_shape = !1;
+    programVars[custom_json.assets[i].hash].in_shape = !1;
     if (0 == r.width() || 0 == r.height())
       console.log(
         "deleting empty shape ",
