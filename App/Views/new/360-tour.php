@@ -347,7 +347,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 				</div>
 			<div class="d-flex flex-row">
 		  		<div>
-						<div id="imageGraph${i}"><img id="image${i}Src" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" width="700"/></div>
+						<div id="imageGraph${i}"></div><img id="image${i}Src" crossorigin="anonymous" src="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" width="700"/>
 						<div class="small"><a href="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" id="image${i}SrcLnk" target="_blank">https://ipfs.io/ipfs/${custom_json.assets[i].hash}</a></div>
 		  		</div>
 			</div>
@@ -369,7 +369,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		window[`image${i}Src`].i = i 
 		window[`image${i}Src`].onload = (function (i){return function() {
 			const img = document.getElementById(`image${i}Src`)
-			console.log({i}, img)
+			console.log({i}, img, window[`image${i}SVG`])
       		window[`image${i}SVG`].setAttribute("viewBox", "0 0 " + img.width + " " + img.height);
 		}})(i);
 		window[`image${i}SVG`].on(
