@@ -9,14 +9,26 @@
 ?>
 <style>
 	#img-well {
+		color: #00B97B;
+		background: #A2FEDF;
 		border-style: solid;
 		border-radius: 10px;
 		border-width: 5px;
-		border-color:#96242F;
+		border-color:#21FFB5;
 			}
+	#img-well > a {
+		color: #00B97B;
+	}
 	#img-well.drag {
-		background: #8ED2C9;		
+		background: #3735FF;		
 			}
+	.border-turq {
+		border-color: #21FFB5;
+	}
+	.btn-turq {
+		color: #363636;
+		background: #21FFB5;
+	}
 	.graph > svg {
     position: absolute;
     width: 100%;
@@ -24,14 +36,17 @@
     top: 0;
     left: 0;
 }
-	.img-preview {
-	max-width: 700px;
+	img-preview {
+    margin: auto;
+    width: 100%;
+    max-width: 700px;
+    max-height:100%
 }
 	.specs {
-		color: #431015;
+		color: #00B97B;
 		border-style: solid;
 		border-radius: 5px;
-		border-color: #721C24;
+		border-color: #00B97B;
 	}
 	.flex {
   		display: flex;
@@ -107,9 +122,9 @@
       </div></div>
   <div id="two">
 	  <div class="flex-column flex-shrink mx-3">
-			<div id="img-well" class="p-5 mb-3 alert-danger">
-				<h3 style="color: #721C24;">Drag and drop images here</h3>
-				<a href="#" class="alert-link disabled" >Click or tap to browse (coming soon)</a>
+			<div id="img-well" class="p-5 mb-3">
+				<h3>Drag and drop images here</h3>
+				<a href="#" >Click or tap to browse (coming soon)</a>
 				<div class="d-flex">
 				<div class="specs mx-auto pt-3 pr-3 mt-3">
 				<h6 class="text-left"><ul>
@@ -361,7 +376,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 				</div>
 			</div>
 			<div class="d-flex flex-row">
-				<div class="small"><a href="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" id="image${i}SrcLnk" target="_blank">https://ipfs.io/ipfs/${custom_json.assets[i].hash}</a></div>
+				<div class="small text-center"><a href="https://ipfs.io/ipfs/${custom_json.assets[i].hash}" id="image${i}SrcLnk" target="_blank">https://ipfs.io/ipfs/${custom_json.assets[i].hash}</a></div>
 			</div>
 			<div class="pt-2 mb-3 text-left" style="border-bottom-style: solid; border-bottom-color: #909090">
 				<h4>Link Hotspots <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Click and drag on the image to add a link hotspot."></i></h4>
