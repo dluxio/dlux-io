@@ -413,7 +413,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		  */
     r.draggable().on("dragmove", function(a) {
 		console.log('dragmove')
-		generate_bodyVars();
+		bodyVars = generate_bodyVars();
     });
     r.on("drawstop", function() {
       console.log("drawstop");
@@ -448,7 +448,7 @@ window[`image${i}SVG`].on(
         r.height()
       ),
     delete_shape(a, r.aid);
-    generate_bodyVars();
+    bodyVars = generate_bodyVars();
   }})(i),
   !1
 );
@@ -510,12 +510,14 @@ function generate_bodyVars(){
 				const cy = Math.round(r.attr("cy"))
 				const radius = Math.round(r.attr("r"))
 				op[img].links.push(link)
-				buildLinkList(programVars.index.indexOf(img), i)
+				buildLinkList(programVars.index.indexOf(img), i, !0)
 			}
 		}
 	}
+	return op
 }
-	  function buildLinkList (i, k){
+	  function buildLinkList (i, k, append){
+		console.log({i,k})
 		var opts = ''
 		for(var j = 0; j < custom_json.assets.length; j++){
 			const img = custom_json.assets[j]
@@ -536,7 +538,11 @@ function generate_bodyVars(){
 					<button id="image${i}Spot${k}Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link"><i class="fas fa-fw fa-trash-alt"></i></button>
 				</div>
 				`
-			return litem
+			if(append){
+				document.getElementById(`listOfImage${i}Spots`).appendChild(litem)
+			} else {
+				return litem
+			}
 		}
 	  }
 
