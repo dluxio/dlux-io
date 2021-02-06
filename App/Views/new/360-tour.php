@@ -302,11 +302,6 @@ Split(['#one', '#two', '#three'], {
 	function iloaded(assets, info){
 		if(assets){
 			for (var i = 0; i < assets.length; i++){
-				if (bodyVars[assets[i].hash] == undefined){
-					bodyVars[assets[i].hash] = {links:[]}
-				}
-			}
-			for (var i = 0; i < assets.length; i++){
 				custom_json.assets.push({
 					hash: assets[i].hash,
 					name: assets[i].path,
@@ -320,7 +315,8 @@ Split(['#one', '#two', '#three'], {
 			}
 		}
         hive.api.getContent('markegiles', 'dlux-vr-tutorial-sm-test', function(err, result) {
-          result.json_metadata = JSON.stringify(custom_json)
+		  result.json_metadata = JSON.stringify(custom_json)
+		  result.body += '[dlux]# (' + JSON.stringify(bodyVars) + ')'
       var target = document.getElementById('aframePreview').contentWindow
       var un = 'Guest'
       if(sessionStorage.getItem('user')){un = sessionStorage.getItem('user')}
@@ -471,6 +467,38 @@ function deselect_shapes() {
 
 function generate_bodyVars(){
 	console.log('gbv')
+	/*
+	{
+		"QmUgit7bQH4m2eR1cmwWWWmo2ZKis1kKsk3g5SbgZwgScv":{
+			links:[
+				{hash:"QmR6kb8uqRKEf9i54xrkWDkv3xM5vMZvFrg3kgf2TE1cRb", pos:"10 0 -10", text: "test text"}
+			]
+		}
+	}
+	*/
+	var op = {}
+	const begining = '[dlux]:# (';
+	for (img in programVars){
+		if (img != 'index'){
+			op[img] = {
+				links: []
+			}
+			for (i = 0; i < programVars[img].rects.length; i++) {
+				var link = {
+					text: bodyVars[img].links[i].text || '', 
+					pos: bodyVars[img].links[i].pos || '', 
+					hash: bodyVars[img].links[i].hash || ''
+				}
+				r = programVars[img].rects[i];
+				console.log(r)
+				const cx = Math.round(r.attr("cx"))
+				const cy = Math.round(r.attr("cy"))
+				const radius = Math.round(r.attr("r"))
+				op[img].links.push(link)
+				buildLinkList(programVars.index.indexOf(img), i)
+			}
+		}
+	}
 }
 	  function buildLinkList (i, k){
 		var opts = ''
