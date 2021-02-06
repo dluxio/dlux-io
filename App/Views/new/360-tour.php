@@ -362,7 +362,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 					</div>
 					<div class="ml-auto">
 						<button id="image${i}Pin" class="btn btn-primary btn-sm mr-2" data-toggle="tooltip" data-placement="top" title="Asset Pinned to IPFS"><i class="fas fa-fw fa-thumbtack"></i></button>
-						<button id="image${i}Delete" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Asset"><i class="fas fa-fw fa-trash-alt"></i></button>
+						<button id="image${i}Delete" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Asset" onclick="deleteImg('${custom_json.assets[i].hash}')"><i class="fas fa-fw fa-trash-alt"></i></button>
 					</div>
 				</div>
 			<div class="d-flex flex-row">
@@ -537,7 +537,7 @@ function generate_bodyVars(){
 					<select id="image${i}Spot${k}Link" class="form-control form-control-sm ml-5" type="text" placeholder="Link to Image" data-toggle="tooltip" data-placement="top" title="Select the image this hotspot links to.">
 						${opts}
 					</select>
-					<button id="image${i}Spot${k}Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link"><i class="fas fa-fw fa-trash-alt"></i></button>
+					<button id="image${i}Spot${k}Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link" onclick="deleteLink('${programVars.index.indexOf(i)}', '${programVars.index.indexOf(k)}')"><i class="fas fa-fw fa-trash-alt"></i></button>
 				</div>
 				`
 			if(append && !document.getElementById(`image${i}Spot${k}`)){
@@ -559,22 +559,14 @@ function generate_bodyVars(){
 		  buildList ()
 	  }
 	  function deleteImg(hash){
-		  for(var i = 0; i < custom_json.assets.length; i++){
-			  const img = custom_json.assets[i]
-			  if(img.hash == hash){
-				  custom_json.assets.splice(i,1)
-			  }
-		  }
+		  programVars.index.splice(programVars.index.indexOf(hash),1)
+		  custom_json.assets.splice(custom_json.assets.indexOf(hash),1)
+		  delete programVars[hash]
 		  delete bodyVars[hash]
 		  iloaded()
 	  }
 	  function deleteLink(hash, link){
-		  for(var i = 0; i < bodyVars[hash].length; i++){
-			  if(bodyVars[hash].links[i].hash == link){
-				  bodyVars[hash].links.splice(i,1)
-				  break;
-			  }
-		  }
+		  bodyVars[hash].links.splice(bodyVars[hash].links.indexOf(link),1)
 		  iloaded()
 	  }
 	  function nameLink(hash, link, name){
