@@ -448,7 +448,10 @@ window[`image${i}SVG`].on(
         r.height()
       ),
     delete_shape(a, r.aid);
-    bodyVars = generate_bodyVars();
+	const newBodyVars = generate_bodyVars();
+	for (item in newBodyVars){
+		bodyVars[item] = newBodyVars[item]
+	}
   }})(i),
   !1
 );
@@ -482,7 +485,7 @@ function generate_bodyVars(){
 	}
 	*/
 	var op = {}
-	const begining = '[dlux]:# (';
+	//const begining = '[dlux]:# (';
 	for (img in programVars){
 		if (img != 'index'){
 			op[img] = {
