@@ -509,6 +509,7 @@ function generate_bodyVars(){
 				const cx = Math.round(r.attr("cx"))
 				const cy = Math.round(r.attr("cy"))
 				const radius = Math.round(r.attr("r"))
+				link.pos = '0 -1 -10'
 				op[img].links.push(link)
 				buildLinkList(programVars.index.indexOf(img), i, !0)
 			}
