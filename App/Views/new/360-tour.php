@@ -492,8 +492,9 @@ function generate_bodyVars(){
 				var oldlink
 				try {
 					oldlink = bodyVars[img].links[i]
-				} catch (e){
-						oldlink = {
+				} catch (e){}
+				if (!oldlink){
+					oldlink = {
 							text: '',
 							pos: '',
 							hash: ''
