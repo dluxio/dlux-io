@@ -489,14 +489,20 @@ function generate_bodyVars(){
 				links: []
 			}
 			for (i = 0; i < programVars[img].rects.length; i++) {
-				var oldlink = {}
+				var oldlink
 				try {
 					oldlink = bodyVars[img].links[i]
-				} catch (e){}
+				} catch (e){
+						oldlink = {
+							text: '',
+							pos: '',
+							hash: ''
+						}
+				}
 				var link = {
-					text: oldlink.text || '', 
-					pos: oldlink.pos || '', 
-					hash: oldlink.hash || ''
+					text: oldlink.text, 
+					pos: oldlink.pos, 
+					hash: oldlink.hash
 				}
 				r = programVars[img].rects[i];
 				console.log(r)
