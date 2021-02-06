@@ -312,6 +312,11 @@ Split(['#one', '#two', '#three'], {
 				if(!custom_json.Hash360){
 					custom_json.Hash360 = assets[i].hash
 				}
+				if (!bodyVars[assets[i].hash]){
+					bodyVars[assets[i].hash] = {
+						links: []
+					}
+				}
 			}
 		}
         hive.api.getContent('markegiles', 'dlux-vr-tutorial-sm-test', function(err, result) {
