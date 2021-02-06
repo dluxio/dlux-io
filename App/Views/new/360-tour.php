@@ -540,7 +540,7 @@ function generate_bodyVars(){
 					<select id="image${i}Spot${k}Link" class="form-control form-control-sm ml-5" type="text" placeholder="Link to Image" data-toggle="tooltip" data-placement="top" title="Select the image this hotspot links to.">
 						${opts}
 					</select>
-					<button id="image${i}Spot${k}Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link" onclick="deleteLink('${programVars.index.indexOf(i)}', '${programVars.index.indexOf(k)}')"><i class="fas fa-fw fa-trash-alt"></i></button>
+					<button id="image${i}Spot${k}Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link" onclick="deleteLink('${programVars.index[i]}', '${programVars.index[k]}')"><i class="fas fa-fw fa-trash-alt"></i></button>
 				</div>
 				`
 			if(append && !document.getElementById(`image${i}Spot${k}`)){
