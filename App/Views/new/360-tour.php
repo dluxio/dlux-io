@@ -321,7 +321,7 @@ Split(['#one', '#two', '#three'], {
 		}
         hive.api.getContent('markegiles', 'dlux-vr-tutorial-sm-test', function(err, result) {
 		  result.json_metadata = JSON.stringify(custom_json)
-		  result.body += '[dlux]# (' + JSON.stringify(bodyVars) + ')'
+		  result.body += '[dlux]:# (' + JSON.stringify(bodyVars) + ')'
       var target = document.getElementById('aframePreview').contentWindow
       var un = 'Guest'
       if(sessionStorage.getItem('user')){un = sessionStorage.getItem('user')}
@@ -489,10 +489,14 @@ function generate_bodyVars(){
 				links: []
 			}
 			for (i = 0; i < programVars[img].rects.length; i++) {
+				var oldlink = {}
+				try {
+					oldlink = bodyVars[img].links[i]
+				} catch (e){}
 				var link = {
-					text: bodyVars[img].links[i].text || '', 
-					pos: bodyVars[img].links[i].pos || '', 
-					hash: bodyVars[img].links[i].hash || ''
+					text: oldlink.text || '', 
+					pos: oldlink.pos || '', 
+					hash: oldlink.hash || ''
 				}
 				r = programVars[img].rects[i];
 				console.log(r)
