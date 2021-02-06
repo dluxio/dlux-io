@@ -540,7 +540,7 @@ function generate_bodyVars(){
 					<button id="image${i}Spot${k}Delete" class="btn btn-danger btn-sm ml-2" data-toggle="tooltip" data-placement="top" title="Delete Link"><i class="fas fa-fw fa-trash-alt"></i></button>
 				</div>
 				`
-			if(append){
+			if(append && !document.getElementById(`image${i}Spot${k}`)){
 				document.getElementById(`listOfImage${i}Spots`).appendChild(litem)
 			} else {
 				return litem
