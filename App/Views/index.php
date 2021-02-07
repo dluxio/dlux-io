@@ -12,7 +12,7 @@
 		background-image: url("/img/jtree.jpg");
 		background-size: cover;
 		background-position: center;
-		min-height: 600px;
+		min-height: 670px;
 	}
 	#defi {
 		background-image: url("/img/dex-alpha.png");
@@ -148,7 +148,7 @@
 	<div id="defi" class="d-flex flex-row px-2">
 		<div class="d-flex flex-column dlux-turq jumbo-dlux container p-5 m-auto">
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">DeFi</span></h1></div>
-			<div class="mt-2"><h5 class="text-white">TOKEN EXCHANGE NETWORK</h5></div>
+			<div class="mt-2"><h5 class="text-white">DECENTRALIZED TOKEN EXCHANGE</h5></div>
 			<div>
 				<a class="btn btn-dlux btn-turq mt-2" href="/dex/">Trade Tokens</a>
 				<a class="btn btn-dlux btn-outline-turq mt-2" href="/new/node">Run A Node</a>
