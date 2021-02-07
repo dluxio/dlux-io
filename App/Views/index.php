@@ -76,9 +76,6 @@
 	.btn-dlux {
 		min-width: 150px;
 	}
-	.btn-dlux:visited {
-		color: purple;
-	}
 	.btn-dlux:hover {
 		color: cornflowerblue;
 	}
@@ -144,8 +141,8 @@
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">dApps</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">2D, 3D, AR, VR, XR, ANYTHING</h5></div>
 			<div>
-				<button class="btn btn-dlux btn-blue" href="/vr/">Enter Metaverse</button>
-				<button class="btn btn-dlux btn-outline-blue" href="/apps/">Browse dApps</button>
+				<a class="btn btn-dlux btn-blue" href="/vr/">Enter Metaverse</a>
+				<a class="btn btn-dlux btn-outline-blue" href="/apps/">Browse dApps</a>
 			</div>
 		</div>
 	</div>
@@ -154,8 +151,8 @@
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">DeFi</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">TOKEN EXCHANGE NETWORK</h5></div>
 			<div>
-				<button class="btn btn-dlux btn-turq" href="/dex/">Trade Tokens</button>
-				<button class="btn btn-dlux btn-outline-turq" href="/new/node">Run A Node</button>
+				<a class="btn btn-dlux btn-turq" href="/dex/">Trade Tokens</a>
+				<a class="btn btn-dlux btn-outline-turq" href="/new/node">Run A Node</a>
 			</div>
 		</div>
 	</div>
@@ -164,8 +161,8 @@
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">Hive</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">OWN YOUR ACCOUNT &amp; CONTENT</h5></div>
 			<div>
-				<button class="btn btn-dlux btn-fusch" href="https://signup.hive.io/" target="_blank">Get Account</button>
-				<button class="btn btn-dlux btn-outline-fusch" href="#" data-toggle="modal" data-target="#loginModal">Login</button>
+				<a class="btn btn-dlux btn-fusch" href="https://signup.hive.io/" target="_blank">Get Account</a>
+				<a class="btn btn-dlux btn-outline-fusch" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
 			</div>
 		</div>
 	</div>
@@ -174,8 +171,8 @@
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">Open</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">LEARN MORE ABOUT THE PROJECT</h5></div>
 			<div>
-				<button class="btn btn-dlux btn-tang" href="/docs/#about">About Page</button>
-				<button class="btn btn-dlux btn-outline-tang" href="/docs/">Documentation</button>
+				<a class="btn btn-dlux btn-tang" href="/docs/#about">About Page</a>
+				<a class="btn btn-dlux btn-outline-tang" href="/docs/">Documentation</a>
 			</div>
 		</div>
 	</div>
