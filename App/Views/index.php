@@ -7,6 +7,130 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
+<style>
+	#dapps {
+		background-image: url("/img/jtree.jpg");
+		background-size: cover;
+		background-position: center;
+		min-height: 600px;
+	}
+	#defi {
+		background-image: url("/img/dex-alpha.png");
+		background-size: cover;
+		background-position: center;
+		min-height: 600px;
+	}
+	#hive {
+		background-image: url("/img/metaverse.png");
+		background-size: cover;
+		background-position: center;
+		min-height: 600px;
+	}
+	#info {
+		background-image: url("/img/foundersavatars.png");
+		background-size: cover;
+		background-position: center;
+		min-height: 600px;
+	}
+	.dlux-header {
+		border-bottom: solid;
+		border-bottom-color: gray;
+		border-width: 2px;
+	}
+	.dlux-is{
+		text-decoration: underline; 
+		text-decoration-color: white;
+	}
+	.dlux-turq {
+		color: #21FFB5;
+		border-color: #21FFB5;
+		border-style: solid;
+		border-width: 1.5px;
+	}
+	.dlux-blue {
+		color: #033EFD;
+		border-color: #033EFD;
+		border-style: solid;
+		border-width: 1.5px;
+	}
+	.dlux-fusch {
+		color: #FB00FF;
+		border-color: #FB00FF;
+		border-style: solid;
+		border-width: 1.5px;
+	}
+	.dlux-tang {
+		color: #FFA300;
+		border-color: #FFA300;
+		border-style: solid;
+		border-width: 1.5px;
+	}
+	
+	.jumbo-dlux {
+		background-color: rgba(0,0,0,0.8);
+		-webkit-backdrop-filter: blur(10px);
+  		backdrop-filter: blur(10px);
+		border-radius: 5px;
+		max-width: 600px;
+	}
+	.btn-dlux {
+		min-width: 150px;
+	}
+	.btn-dlux:visited {
+		color: purple;
+	}
+	.btn-dlux:hover {
+		color: cornflowerblue;
+	}
+	.btn-dlux:active {
+		color: darkorange;
+	}
+	.border-turq {
+		border-color: #21FFB5;
+	}
+	.btn-turq {
+		color: #fff;
+		background: #21FFB5;
+	}
+	.btn-outline-turq {
+		color: #fff;
+		border-color: #21FFB5;
+	}
+	.border-blue {
+		border-color: #033EFD;
+	}
+	.btn-blue {
+		color: #fff;
+		background: #033EFD;
+	}
+	.btn-outline-blue {
+		color: #fff;
+		border-color: #033EFD;
+		
+	}
+	.border-fusch {
+		border-color: #FB00FF;
+	}
+	.btn-fusch {
+		color: #fff;
+		background: #FB00FF;
+	}
+	.btn-outline-fusch {
+		color: #fff;
+		border-color: #FB00FF;
+	}
+	.border-tang {
+		border-color: #FFA300;
+	}
+	.btn-tang {
+		color: #fff;
+		background: #FFA300;
+	}
+	.btn-outline-tang {
+		color: #fff;
+		border-color: #FFA300;
+	}	
+</style>
 </head>
 <body class="d-flex flex-column h-100">
 <?php 
@@ -14,66 +138,46 @@
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
-<main class="h-100">
-	  <div class="d-flex flex-column align-items-center text-white h-100">
-	<div class="jumbotron jumbotron-fluid text-center text-white bg-color">
-       <div class="container">
-		<div class="row">
-         <div class="col-xl-6"><h1 class="display-4">dlux</h1>
-		   <h6 class="text-uppercase">Decentralized Limitless User Experiences</h6>
-		   <hr class="bg-light">
-       <p class="lead">The easiest way to build and distribute dApps on HIVE</p>
-       <p>Empower your project with an open source token and wallet backed by deterministic concensus on a distributed ledger</p>
-<p class="lead">
-          <a class="btn btn-lg btn-primary m-3" href="/apps" role="button">Explore<i class="fab fa-wpexplorer ml-2"></i></a>
-	
-	<a class="btn btn-lg btn-secondary" href="/new" role="button">Create<i class="fas fa-plus-circle ml-2"></i></a>
-       </p>
-
-    </div>
-         <div class="col-xl-6 order-first order-md-last"><img src="/img/dlux-sdk.png" alt="dlux logo" class="img-fluid"></div>
-</div>
-    </div> 
-    </div>
-	
-	<div class="mt-auto">
-		<div class="card-group text-white">
-		  <div class="card bg-dark border-primary text-center">
-              <div class="card-body d-flex align-items-center">
-                  <div>
-                      <h1>Virtual Reality</h1>
-                      <p>Digital spaces resoponsive across mobile, desktop, and headset all connected via tags and the Hive social network.</p>
-                  </div>
-              </div>
-              <div class="card-footer">
-                  <a class="btn btn-lg btn-outline-primary" href="/vr/" role="button">Enter The Metaverse</a>
-              </div>
-	    </div>
-		  
-	    <div class="card bg-dark border-primary text-center">
-             <div class="card-body d-flex align-items-center">
-                 <div>
-                     <h1>Decentralized Exchange</h1>
-			         <p>Absolutely no data asymetry, only pure atomic swaps via smart contracts preventing any foul use of custodial funds.</p>
-                </div>
-            </div>
-            <div class="card-footer">
-			    <a class="btn btn-lg btn-outline-primary" href="/dex/" role="button">Start Trading</a>
-            </div>
-	    </div>
-	    <div  class="card bg-dark border-primary text-center">
-            <div class="card-body d-flex align-items-center">
-                <div>
-                    <h1>Node Network</h1>
-			        <p>Dlux nodes enable a much deeper experience with the Hive blockchain, including automated markets for asset pinning and account creation.</p>
-                </div>
-            </div>
-            <div class="card-footer">
-			    <a class="btn btn-lg btn-outline-primary" href="/new/node/" role="button">Run A Node</a>
-            </div>
-        </div>
-    </div>
+<main class="d-flex flex-column text-center flex-shrink-0">
+	<div id="dapps" class="d-flex flex-row px-2">
+		<div class="d-flex flex-column dlux-blue jumbo-dlux container p-5 m-auto">
+			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">dApps</span></h1></div>
+			<div class="mt-2"><h5 class="text-white">2D, 3D, AR, VR, XR, ANYTHING</h5></div>
+			<div>
+				<button class="btn btn-dlux btn-blue" href="/vr/">Enter Metaverse</button>
+				<button class="btn btn-dlux btn-outline-blue" href="/apps/">Browse dApps</button>
+			</div>
+		</div>
 	</div>
+	<div id="defi" class="d-flex flex-row px-2">
+		<div class="d-flex flex-column dlux-turq jumbo-dlux container p-5 m-auto">
+			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">DeFi</span></h1></div>
+			<div class="mt-2"><h5 class="text-white">TOKEN EXCHANGE NETWORK</h5></div>
+			<div>
+				<button class="btn btn-dlux btn-turq" href="/dex/">Trade Tokens</button>
+				<button class="btn btn-dlux btn-outline-turq" href="/new/node">Run A Node</button>
+			</div>
+		</div>
+	</div>
+	<div id="hive" class="d-flex flex-row px-2">
+		<div class="d-flex flex-column dlux-fusch jumbo-dlux container p-5 m-auto">
+			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">Hive</span></h1></div>
+			<div class="mt-2"><h5 class="text-white">OWN YOUR ACCOUNT &amp; CONTENT</h5></div>
+			<div>
+				<button class="btn btn-dlux btn-fusch" href="https://signup.hive.io/" target="_blank">Get Account</button>
+				<button class="btn btn-dlux btn-outline-fusch" href="#" data-toggle="modal" data-target="#loginModal">Login</button>
+			</div>
+		</div>
+	</div>
+	<div id="info" class="d-flex flex-row px-2">
+		<div class="d-flex flex-column dlux-tang jumbo-dlux container p-5 m-auto">
+			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">Open</span></h1></div>
+			<div class="mt-2"><h5 class="text-white">LEARN MORE ABOUT THE PROJECT</h5></div>
+			<div>
+				<button class="btn btn-dlux btn-tang" href="/docs/#about">About Page</button>
+				<button class="btn btn-dlux btn-outline-tang" href="/docs/">Documentation</button>
+			</div>
+		</div>
 	</div>
 </main>
 <?php 

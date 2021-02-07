@@ -11,7 +11,7 @@
       </ul>
 	<ul class="navbar-nav mr-5 no-session" id="loginMenu">
 	<li class="nav-item"><a class="nav-link acct-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
-	<li class="nav-item"><a class="nav-link acct-link" href="https://signup.hive.io/">Sign up</a></li>
+	<li class="nav-item"><a class="nav-link acct-link" href="https://signup.hive.io/">Get Account</a></li>
 	</ul>
     <div class="mr-5 active-session" id="userMenu">
 	  <ul class="nav navbar-nav">
