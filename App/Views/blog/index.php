@@ -16,7 +16,7 @@
 <!--page specific-->
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 </head>
-<body class="d-flex flex-column h-100" id="blog" is="dmx-app" class="text-white">
+<body class="d-flex flex-column h-100 padme-t70" id="blog" is="dmx-app" class="text-white">
 <?php
 	echo "<dmx-api-datasource id=\"dluxGetContent\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_content/\" dmx-param:author=\"'".$author."'\" dmx-param:permlink=\"'".$permlink."'\"></dmx-api-datasource>";
 	echo "<dmx-api-datasource id=\"dluxGetReplies\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_content_replies/\" dmx-param:author=\"'".$author."'\" dmx-param:permlink=\"'".$permlink."'\"></dmx-api-datasource>";

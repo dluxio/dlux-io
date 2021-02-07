@@ -17,14 +17,13 @@
         background-color: #C7C7C7;
       }</style>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100 padme-t70">
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
 <main role="main" class="flex-shrink-0 text-white">
-<div class="padme-t70"></div>
     <div class="container-fluid header-layer">
       <div class="container header-content">
         <br />

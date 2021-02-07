@@ -14,7 +14,7 @@
 <script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
 
-<body id="index" is="dmx-app" class="d-flex flex-column h-100">
+<body id="index" is="dmx-app" class="d-flex flex-column h-100 padme-t70">
 <dmx-api-datasource id="dluxGetBlog" is="dmx-fetch" url="https://token.dlux.io/api/condenser_api/get_discussions_by_blog/" dmx-param:tag="'robotolux'" dmx-param:limit="10"></dmx-api-datasource>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
