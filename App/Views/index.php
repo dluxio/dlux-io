@@ -70,7 +70,6 @@
 		background-color: rgba(0,0,0,0.8);
 		-webkit-backdrop-filter: blur(10px);
   		backdrop-filter: blur(10px);
-		border-radius: 1000px;
 		max-width: 600px;
 	}
 	.btn-dlux {
