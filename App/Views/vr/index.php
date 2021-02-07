@@ -101,7 +101,7 @@
         <!-- DLUX Spotlight-->
         <a-entity id="spot-light" light="angle:35;intensity:0.2;type:spot" position="0 8.5 31" rotation="-10.5 0 0"></a-entity>
         <!-- Environment-->
-        <a-entity environment="preset: volcano"></a-entity>
+        <a-entity environment="preset: forrest"></a-entity>
         <a-entity id="ambient-light" light="type:ambient;intensity:0.5"></a-entity>
         <!-- Camera-->
         <a-entity id="player" movement-controls="speed: 0.1;" position="0 0 0">
