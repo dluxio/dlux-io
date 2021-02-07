@@ -15,7 +15,7 @@
 		min-height: 670px;
 	}
 	#defi {
-		background-image: url("/img/dex-alpha.png");
+		background-image: url("/img/dex-vr.png");
 		background-size: cover;
 		background-position: center;
 		min-height: 600px;
@@ -136,42 +136,42 @@
 ?>
 <main class="d-flex flex-column text-center flex-shrink-0">
 	<div id="dapps" class="d-flex flex-row px-2">
-		<div class="d-flex flex-column dlux-blue jumbo-dlux container p-5 m-auto">
+		<div class="d-flex flex-column dlux-fusch jumbo-dlux container p-5 m-auto">
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">dApps</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">2D, 3D, AR, VR, XR, ANYTHING</h5></div>
 			<div>
-				<a class="btn btn-dlux btn-blue mt-2" href="/vr/">Enter Metaverse</a>
-				<a class="btn btn-dlux btn-outline-blue mt-2" href="/apps/">Browse dApps</a>
+				<a class="btn btn-dlux btn-fusch mt-2" href="/vr/">Enter Metaverse</a>
+				<a class="btn btn-dlux btn-outline-fusch mt-2" href="/apps/">Browse dApps</a>
 			</div>
 		</div>
 	</div>
 	<div id="defi" class="d-flex flex-row px-2">
-		<div class="d-flex flex-column dlux-turq jumbo-dlux container p-5 m-auto">
+		<div class="d-flex flex-column dlux-tang jumbo-dlux container p-5 m-auto">
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">DeFi</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">DECENTRALIZED TOKEN EXCHANGE</h5></div>
 			<div>
-				<a class="btn btn-dlux btn-turq mt-2" href="/dex/">Trade Tokens</a>
-				<a class="btn btn-dlux btn-outline-turq mt-2" href="/new/node">Run A Node</a>
+				<a class="btn btn-dlux btn-tang mt-2" href="/dex/">Trade Tokens</a>
+				<a class="btn btn-dlux btn-outline-tang mt-2" href="/new/node">Run A Node</a>
 			</div>
 		</div>
 	</div>
 	<div id="hive" class="d-flex flex-row px-2">
-		<div class="d-flex flex-column dlux-fusch jumbo-dlux container p-5 m-auto">
+		<div class="d-flex flex-column dlux-turq jumbo-dlux container p-5 m-auto">
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">Hive</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">OWN YOUR ACCOUNT &amp; CONTENT</h5></div>
 			<div>
-				<a class="btn btn-dlux btn-fusch mt-2" href="https://signup.hive.io/" target="_blank">Get Account</a>
-				<a class="btn btn-dlux btn-outline-fusch mt-2" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+				<a class="btn btn-dlux btn-turq mt-2" href="https://signup.hive.io/" target="_blank">Get Account</a>
+				<a class="btn btn-dlux btn-outline-turq mt-2" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
 			</div>
 		</div>
 	</div>
 	<div id="info" class="d-flex flex-row px-2">
-		<div class="d-flex flex-column dlux-tang jumbo-dlux container p-5 m-auto">
+		<div class="d-flex flex-column dlux-blue jumbo-dlux container p-5 m-auto">
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">Open</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">LEARN MORE ABOUT THE PROJECT</h5></div>
 			<div>
-				<a class="btn btn-dlux btn-tang mt-2" href="/docs/#about">About Page</a>
-				<a class="btn btn-dlux btn-outline-tang mt-2" href="/docs/">Documentation</a>
+				<a class="btn btn-dlux btn-blue mt-2" href="/docs/#about">About Page</a>
+				<a class="btn btn-dlux btn-outline-blue mt-2" href="/docs/">Documentation</a>
 			</div>
 		</div>
 	</div>
