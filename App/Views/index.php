@@ -65,7 +65,23 @@
 		border-style: solid;
 		border-width: 1.5px;
 	}
-	
+	.hive {
+		color: #E31337;
+		border-color: #E31337;
+		border-style: solid;
+		border-width: 1.5px;
+	}
+	.border-hive {
+		border-color: #E31337;
+	}
+	.btn-hive {
+		color: #fff;
+		background: #E31337;
+	}
+	.btn-outline-hive {
+		color: #fff;
+		border-color: #E31337;
+	}
 	.jumbo-dlux {
 		background-color: rgba(0,0,0,0.8);
 		-webkit-backdrop-filter: blur(10px);
@@ -140,8 +156,8 @@
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">dApps</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">2D, 3D, AR, VR, XR, ANYTHING</h5></div>
 			<div>
-				<a class="btn btn-dlux btn-fusch mt-2" href="/vr/">Enter Metaverse</a>
-				<a class="btn btn-dlux btn-outline-fusch mt-2" href="/apps/">Browse dApps</a>
+				<a class="btn btn-dlux btn-lg btn-fusch mt-2" href="/vr/">Enter Metaverse<i class="fas fa-vr-cardboard ml-2"></i></a>
+				<a class="btn btn-dlux btn-lg btn-outline-fusch mt-2" href="/apps/">Browse dApps<i class="fab fa-wpexplorer ml-2"></i></a>
 			</div>
 		</div>
 	</div>
@@ -150,18 +166,18 @@
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">DeFi</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">DECENTRALIZED TOKEN EXCHANGE</h5></div>
 			<div>
-				<a class="btn btn-dlux btn-tang mt-2" href="/dex/">Trade Tokens</a>
-				<a class="btn btn-dlux btn-outline-tang mt-2" href="/new/node">Run A Node</a>
+				<a class="btn btn-dlux btn-lg btn-tang mt-2" href="/dex/">Trade Tokens<i class="fas fa-store fa-fw ml-2"></i></a>
+				<a class="btn btn-dlux btn-lg btn-outline-tang mt-2" href="/new/node">Run A Node<i class="fas fa-robot fa-fw ml-2"></i></a>
 			</div>
 		</div>
 	</div>
 	<div id="hive" class="d-flex flex-row px-2">
-		<div class="d-flex flex-column dlux-turq jumbo-dlux container p-5 m-auto">
+		<div class="d-flex flex-column hive jumbo-dlux container p-5 m-auto">
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">Hive</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">OWN YOUR ACCOUNT &amp; CONTENT</h5></div>
 			<div>
-				<a class="btn btn-dlux btn-turq mt-2" href="https://signup.hive.io/" target="_blank">Get Account</a>
-				<a class="btn btn-dlux btn-outline-turq mt-2" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+				<a class="btn btn-dlux btn-lg btn-hive mt-2" href="https://signup.hive.io/" target="_blank">Get Account<i class="fab fa-fw fa-hive ml-2"></i></a>
+				<a class="btn btn-dlux btn-lg btn-outline-hive mt-2" href="#" data-toggle="modal" data-target="#loginModal">Login<i class="fas fa-fw fa-key ml-2"></i></a>
 			</div>
 		</div>
 	</div>
@@ -170,8 +186,8 @@
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">Open</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">LEARN MORE ABOUT THE PROJECT</h5></div>
 			<div>
-				<a class="btn btn-dlux btn-blue mt-2" href="/docs/#about">About Page</a>
-				<a class="btn btn-dlux btn-outline-blue mt-2" href="/docs/">Documentation</a>
+				<a class="btn btn-dlux btn-lg btn-blue mt-2" href="/docs/#about">About Page<i class="fas fa-fw fa-info-circle ml-2"></i></a>
+				<a class="btn btn-dlux btn-lg btn-outline-blue mt-2" href="/docs/">Documentation<i class="fas fa-fw fa-book ml-2"></i></a>
 			</div>
 		</div>
 	</div>
