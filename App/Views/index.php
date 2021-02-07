@@ -9,7 +9,7 @@
 ?>
 <style>
 	#dapps {
-		background-image: url("/img/jtree.jpg");
+		background-image: url("/img/metaverse-vr.png");
 		background-size: cover;
 		background-position: center;
 		min-height: 670px;
@@ -21,13 +21,13 @@
 		min-height: 600px;
 	}
 	#hive {
-		background-image: url("/img/metaverse.png");
+		background-image: url("/img/jtree.jpg");
 		background-size: cover;
 		background-position: center;
 		min-height: 600px;
 	}
 	#info {
-		background-image: url("/img/foundersavatars.png");
+		background-image: url("/img/gallery-vr.png");
 		background-size: cover;
 		background-position: center;
 		min-height: 600px;
@@ -42,22 +42,56 @@
 		text-decoration-color: white;
 	}
 	.dlux-turq {
-		color: #21FFB5;
-		border-color: #21FFB5;
+		color: #14D695;
+		border-color: #14D695;
 		border-style: solid;
-		border-width: 1.5px;
+		border-width: 2px;
+	}
+	.border-turq {
+		border-color: #14D695;
+	}
+	.btn-turq {
+		color: #fff;
+		background: #14D695;
+	}
+	.btn-outline-turq {
+		color: #fff;
+		border-color: #14D695;
 	}
 	.dlux-blue {
 		color: #033EFD;
 		border-color: #033EFD;
 		border-style: solid;
-		border-width: 1.5px;
+		border-width: 2px;
+	}
+	.border-blue {
+		border-color: #033EFD;
+	}
+	.btn-blue {
+		color: #fff;
+		background: #033EFD;
+	}
+	.btn-outline-blue {
+		color: #fff;
+		border-color: #033EFD;
+		
 	}
 	.dlux-fusch {
 		color: #FB00FF;
 		border-color: #FB00FF;
 		border-style: solid;
-		border-width: 1.5px;
+		border-width: 2px;
+	}
+	.border-fusch {
+		border-color: #FB00FF;
+	}
+	.btn-fusch {
+		color: #fff;
+		background: #FB00FF;
+	}
+	.btn-outline-fusch {
+		color: #fff;
+		border-color: #FB00FF;
 	}
 	.dlux-tang {
 		color: #FFA300;
@@ -65,6 +99,34 @@
 		border-style: solid;
 		border-width: 1.5px;
 	}
+	.border-tang {
+		border-color: #FFA300;
+	}
+	.btn-tang {
+		color: #fff;
+		background: #FFA300;
+	}
+	.btn-outline-tang {
+		color: #fff;
+		border-color: #FFA300;
+	}
+	.dlux-purp {
+		color: #9300FF;
+		border-color: #9300FF;
+		border-style: solid;
+		border-width: 2px;
+	}
+	.border-purp {
+		border-color: #9300FF;
+	}
+	.btn-purp {
+		color: #fff;
+		background: #9300FF;
+	}
+	.btn-outline-purp {
+		color: #fff;
+		border-color: #9300FF;
+	}	
 	.hive {
 		color: #E31337;
 		border-color: #E31337;
@@ -82,12 +144,6 @@
 		color: #fff;
 		border-color: #E31337;
 	}
-	.jumbo-dlux {
-		background-color: rgba(0,0,0,0.8);
-		-webkit-backdrop-filter: blur(10px);
-  		backdrop-filter: blur(10px);
-		max-width: 600px;
-	}
 	.btn-dlux {
 		min-width: 150px;
 	}
@@ -97,50 +153,11 @@
 	.btn-dlux:active {
 		color: darkorange;
 	}
-	.border-turq {
-		border-color: #21FFB5;
-	}
-	.btn-turq {
-		color: #fff;
-		background: #21FFB5;
-	}
-	.btn-outline-turq {
-		color: #fff;
-		border-color: #21FFB5;
-	}
-	.border-blue {
-		border-color: #033EFD;
-	}
-	.btn-blue {
-		color: #fff;
-		background: #033EFD;
-	}
-	.btn-outline-blue {
-		color: #fff;
-		border-color: #033EFD;
-		
-	}
-	.border-fusch {
-		border-color: #FB00FF;
-	}
-	.btn-fusch {
-		color: #fff;
-		background: #FB00FF;
-	}
-	.btn-outline-fusch {
-		color: #fff;
-		border-color: #FB00FF;
-	}
-	.border-tang {
-		border-color: #FFA300;
-	}
-	.btn-tang {
-		color: #fff;
-		background: #FFA300;
-	}
-	.btn-outline-tang {
-		color: #fff;
-		border-color: #FFA300;
+	.jumbo-dlux {
+		background-color: rgba(0,0,0,0.8);
+		-webkit-backdrop-filter: blur(10px);
+  		backdrop-filter: blur(10px);
+		max-width: 600px;
 	}	
 </style>
 </head>
@@ -152,12 +169,12 @@
 ?>
 <main class="d-flex flex-column text-center flex-shrink-0">
 	<div id="dapps" class="d-flex flex-row px-2">
-		<div class="d-flex flex-column dlux-fusch jumbo-dlux container p-5 m-auto">
+		<div class="d-flex flex-column dlux-turq jumbo-dlux container p-5 m-auto">
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">dApps</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">2D, 3D, AR, VR, XR, ANYTHING</h5></div>
 			<div>
-				<a class="btn btn-dlux btn-lg btn-fusch mt-2" href="/vr/">Enter Metaverse<i class="fas fa-vr-cardboard ml-2"></i></a>
-				<a class="btn btn-dlux btn-lg btn-outline-fusch mt-2" href="/apps/">Browse dApps<i class="fab fa-wpexplorer ml-2"></i></a>
+				<a class="btn btn-dlux btn-lg btn-turq mt-2" href="/vr/">Enter Metaverse<i class="fas fa-vr-cardboard ml-2"></i></a>
+				<a class="btn btn-dlux btn-lg btn-outline-turq mt-2" href="/apps/">Browse dApps<i class="fab fa-wpexplorer ml-2"></i></a>
 			</div>
 		</div>
 	</div>
@@ -182,12 +199,12 @@
 		</div>
 	</div>
 	<div id="info" class="d-flex flex-row px-2">
-		<div class="d-flex flex-column dlux-blue jumbo-dlux container p-5 m-auto">
+		<div class="d-flex flex-column dlux-purp jumbo-dlux container p-5 m-auto">
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">Open</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">LEARN MORE ABOUT THE PROJECT</h5></div>
 			<div>
-				<a class="btn btn-dlux btn-lg btn-blue mt-2" href="/docs/#about">About Page<i class="fas fa-fw fa-info-circle ml-2"></i></a>
-				<a class="btn btn-dlux btn-lg btn-outline-blue mt-2" href="/docs/">Documentation<i class="fas fa-fw fa-book ml-2"></i></a>
+				<a class="btn btn-dlux btn-lg btn-purp mt-2" href="/docs/#about">About Page<i class="fas fa-fw fa-info-circle ml-2"></i></a>
+				<a class="btn btn-dlux btn-lg btn-outline-purp mt-2" href="/docs/">Documentation<i class="fas fa-fw fa-book ml-2"></i></a>
 			</div>
 		</div>
 	</div>
