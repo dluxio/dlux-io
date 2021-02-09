@@ -53,7 +53,7 @@
 <container id="propVotePlead" class="m-auto">
 </container>
 <!-- Login Modal -->       
-<div class="modal fade d-inline" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content text-white bg-darker">
       <div class="modal-header">
