@@ -13,6 +13,7 @@
 		background-size: cover;
 		background-position: center;
 		min-height: 670px;
+		margin-top: -70px;
 	}
 	#defi {
 		background-image: url("/img/dex-vr.png");
@@ -42,17 +43,17 @@
 		text-decoration-color: white;
 	}
 	.dlux-turq {
-		color: #14D695;
-		border-color: #14D695;
+		color: #0ED18C;
+		border-color: #0ED18C;
 		border-style: solid;
 		border-width: 2px;
 	}
 	.border-turq {
-		border-color: #14D695;
+		border-color: #0ED18C;
 	}
 	.btn-turq {
 		color: #fff;
-		background: #14D695;
+		background: #0ED18C;
 	}
 	.btn-outline-turq {
 		color: #fff;
@@ -161,7 +162,7 @@
 	}	
 </style>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100 padme-t70">
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
