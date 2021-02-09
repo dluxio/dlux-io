@@ -12,8 +12,8 @@
 		background-image: url("/img/metaverse-vr.png");
 		background-size: cover;
 		background-position: center;
-		min-height: 670px;
-		margin-top: -70px;
+		min-height: 760px;
+		margin-top: -160px;
 	}
 	#defi {
 		background-image: url("/img/dex-vr.png");
