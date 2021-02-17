@@ -29,7 +29,7 @@
 <main role="main" class="flex-shrink-0 ">
   <div class="container bg-dark text-white pb-2 mb-3">
     <div class="d-flex align-items-center">
-      <div> <a dmx-bind:href="/@{{dluxGetContent.data.result.author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{dluxGetContent.data.result.author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"/></a> </div>
+      <div> <a dmx-bind:href="/@{{dluxGetContent.data.result.author}}"><img dmx-bind:src="http://images.hive.blog/u/{{dluxGetContent.data.result.author}}/avatar" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"/></a> </div>
       <div>
         <p class="mt-0 mb-0 text-muted text-semibold"> <a dmx-bind:href="/@{{dluxGetContent.data.result.author}}" class="a-1">{{dluxGetContent.data.result.author}}<span class="ml-2 badge badge-pill badge-light">{{dluxGetContent.data.result.author_reputation.toString().rep()}}</span></a><br>
           <small class="text-muted ml-2">{{dluxGetContent.data.result.created.formatDate("MMM dd, yyyy")}}</small> </p>
@@ -85,7 +85,7 @@
     <hr />
     <div class="container" id="comments" is="dmx-repeat" dmx-bind:repeat="dluxGetReplies.data.result">
       <div class="d-flex align-items-center">
-        <div> <a dmx-bind:href="/@{{author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"/></a> </div>
+        <div> <a dmx-bind:href="/@{{author}}"><img dmx-bind:src="http://images.hive.blog/u/{{author}}/avatar" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"/></a> </div>
         <div>
           <p class="mt-0 mb-0 text-muted text-semibold"> <a dmx-bind:href="/@{{author}}" class="a-1">{{author}}<span class="ml-2 badge badge-pill badge-light">{{author_reputation.toString().rep()}}</span></a><small class="text-muted ml-2">{{created.formatDate("MMM dd, yyyy")}}</small></p>
         </div>

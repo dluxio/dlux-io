@@ -36,7 +36,7 @@
     <div class="card text-white bg-dark mt-2 mb-3">
       <div class="card-header">
         <div class="d-inline-block">
-          <div class="float-left" ><a dmx-bind:href="/@{{author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
+          <div class="float-left" ><a dmx-bind:href="/@{{author}}"><img dmx-bind:src="http://images.hive.blog/u/{{author}}/avatar" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
           <div class="float-left">
             <p class="mt-0 mb-0 text-muted text-semibold"><a dmx-bind:href="/@{{author}}" class="a-1">{{author}}<span class="ml-2 badge badge-pill badge-light">{{author_reputation.toString().rep()}}</span></a></p>
             <small class="text-muted">{{created.formatDate("MMM dd, yyyy")}}</small></div>
@@ -86,7 +86,7 @@
 	   <div class="card text-white bg-dark">
 		   <div class="card-header">
 	   		<div class="d-inline-block p-2">
-	  <div class="float-left" ><a dmx-bind:href="/@{{data_detail.data.author}}"><img dmx-bind:src="https://token.dlux.io/getauthorpic/{{data_detail.data.author}}" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
+	  <div class="float-left" ><a dmx-bind:href="/@{{data_detail.data.author}}"><img dmx-bind:src="http://images.hive.blog/u/{{data_detail.data.author}}/avatar" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
         <div class="float-left">
           <p class="mt-0 mb-0 text-muted text-semibold"><a dmx-bind:href="/@{{data_detail.data.author}}" class="a-1">{{data_detail.data.author}}<span class="ml-2 badge badge-pill badge-light">{{data_detail.data.author_reputation.toString().rep()}}</span></a></p>
           <small class="text-muted">{{data_detail.data.created.formatDate("MMM dd, yyyy")}}</small></div>
