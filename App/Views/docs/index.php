@@ -224,7 +224,7 @@
     <p>We recommend creating a Glitch account so you can keep track of all your apps and collaborate easily.</p>
     <p>The dlux vr boilerplate is accessible on Glitch here:</p>
     <p>App URL: <a href="dlux-vr.glitch.me" target="_blank">dlux-vr.glitch.me</a></p>
-    <p>Remix URL: <a href="glitch.com/remix/#!/dlux-vr" target="_blank">glitch.com/remix/#!/dlux-vr</a></p> 
+    <p>Remix URL: <a href="https://glitch.com/remix/#!/dlux-vr" target="_blank">glitch.com/remix/#!/dlux-vr</a></p> 
     <ul>Remix a dlux experience on Glitch
         <li>Click <span class="bg-dark p-1">Remix to edit &#127908;</span></li>
         <li>Click <span class="bg-dark p-1">Show Live &#128374;</span></li>
