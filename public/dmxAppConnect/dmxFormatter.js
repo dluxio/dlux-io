@@ -433,25 +433,6 @@ dmx.Formatters("global", {
                 else if (t.appHash) return 'dAPP'
                 else return 'BLOG'
             },
-            picFind: function(json) {
-                if (typeof json.parseJSON().image == 'string') {
-                    return json.parseJSON().image
-                } else if (typeof json.parseJSON().image[0] == 'string') {
-                    return json.parseJSON().image[0]
-                } else if (typeof json.parseJSON().hash360 == 'string') {
-                    return `https://ipfs.io/ipfs/${json.parseJSON().Hash360}`
-                } else {
-                    /*
-                    var looker
-                    try {
-                        looker = body.split('![')[1]
-                        looker = looker.split('(')[1]
-                        looker = looker.split(')')[0]
-                    } catch (e) {
-                        */
-                    return '/img/dluxdefault.svg'
-                }
-            },
             parseJSON: function(g) {
                 return JSON.parse(g)
             },
@@ -928,6 +909,25 @@ dmx.Formatters("global", {
         },
         default: function(t) {
             return t;
+        },
+        picFind: function(json) {
+            if (typeof json.image == 'string') {
+                return json.image
+            } else if (typeof json.image[0] == 'string') {
+                return json.image[0]
+            } else if (typeof json.hash360 == 'string') {
+                return `https://ipfs.io/ipfs/${json.Hash360}`
+            } else {
+                /*
+                var looker
+                try {
+                    looker = body.split('![')[1]
+                    looker = looker.split('(')[1]
+                    looker = looker.split(')')[0]
+                } catch (e) {
+                    */
+                return '/img/dluxdefault.svg'
+            }
         }
     }),
     dmx.Formatters("boolean", {
