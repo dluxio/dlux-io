@@ -45,7 +45,7 @@
       </div>
       <a href="#detailModal" class="a-1" data-toggle="modal" dmx-on:click="data_detail.select(url)" dmx-bind:onclick="window.history.pushState('{{url}}','{{title}}', '/blog/@{{author}}/{{permlink}}');">
         <h5 class="card-title mt-2 text-center text-capitalize">{{title}}</h5>
-        <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{json_metadata.picFind()}}" />
+        <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{json_metadata.parseJSON().picFind()}}" />
         <div class="card-body">
           <p class="preview-text">{{body.removeMD().trunc(100,true,"...")}}</p>
         </div>
