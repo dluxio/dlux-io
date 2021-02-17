@@ -81,7 +81,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
              dlux = new Dluxsession({ hiveidip: user });
          }
          $('.no-session').addClass('d-none');
-         document.getElementById('userImage').src = 'https://token.dlux.io/getauthorpic/' + user
+         document.getElementById('userImage').src = 'http://images.hive.blog/u/' + user + '/avatar'
          document.getElementById('userName').innerText = '@' + user;
          let dex, stats, hive, feed
          var urls = [`https://token.dlux.io/@${user}`, 'https://token.dlux.io/dex', 'https://token.dlux.io/stats', 'https://api.coingecko.com/api/v3/simple/price?ids=hive&vs_currencies=usd'] //datasources
