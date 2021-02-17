@@ -50,6 +50,9 @@
             }
             var subauthor = author
             subauthor.replace('.', '-')
+            if(subauthor.find('.')[0]){
+                console.alert(subauthor)
+            }
             ipfsdomain = `https://${subauthor}.ipfs.dlux.io`;
             location.href = ipfsdomain + `${vars}&hash=${hashy}&author=${author}&permlink=${permlink}&user=${sessionStorage.getItem('user')}`
             
