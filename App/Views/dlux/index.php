@@ -48,7 +48,7 @@
             if (hashy.split('/')[3] == 'ipfs') {
                 hashy = hashy.split('/')[4];
             }
-            subauthor = author
+            var subauthor = author
             subauthor.replace('.', '-')
             ipfsdomain = `https://${subauthor}.ipfs.dlux.io`;
             location.href = ipfsdomain + `${vars}&hash=${hashy}&author=${author}&permlink=${permlink}&user=${sessionStorage.getItem('user')}`
