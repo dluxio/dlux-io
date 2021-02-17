@@ -915,7 +915,7 @@ dmx.Formatters("global", {
                 return json.image
             } else if (typeof json.image[0] == 'string') {
                 return json.image[0]
-            } else if (typeof json.hash360 == 'string') {
+            } else if (typeof json.Hash360 == 'string') {
                 return `https://ipfs.io/ipfs/${json.Hash360}`
             } else {
                 /*
