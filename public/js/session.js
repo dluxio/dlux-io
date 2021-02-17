@@ -33,7 +33,9 @@ function updateprogress(id) {
         return json.parseJSON().image
      } else if (typeof json.parseJSON().image[0] == 'string'){
         return json.parseJSON().image[0]
-     } else {
+     } else if (typeof json.parseJSON().hash360 == 'string'){
+        return `https://ipfs.io/ipfs/${json.parseJSON().Hash360}`
+     }else {
         var looker 
         try{
         looker = body.split('![')[1]
