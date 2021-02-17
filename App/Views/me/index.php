@@ -17,7 +17,7 @@
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
 </head>
-<body class="d-flex flex-column bg-darker h-100" id="apps" is="dmx-app">
+<body class="d-flex flex-column bg-darker h-100 padme-t70" id="apps" is="dmx-app">
 <?php 
 	if(isset($author)){
     	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" 

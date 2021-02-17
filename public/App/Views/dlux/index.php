@@ -2,10 +2,9 @@
 <html>
 
 <head>
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <title></title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js"></script>
@@ -33,12 +32,10 @@
         //hive.api.setOptions({ url: 'https://anyx.io'})
         hive.api.getContent(author, permlink, (err, result) => {
             if(err)console.log(err)
-            console.log(result)
-            document.title = `DLUX | ${result.title}`
             stateObj = result
             var metadata = result.json_metadata
-            var hashy = JSON.parse(metadata).vrHash
-            var scrolling = JSON.parse(metadata).scrolling
+            var hashy = JSON.parse(metadata).vrHash,
+                vars = `?${location.href.split('?')[1]}` || `?`
             if (!hashy) {
                 hashy = JSON.parse(metadata).arHash
             }
@@ -51,17 +48,11 @@
             if (hashy.split('/')[3] == 'ipfs') {
                 hashy = hashy.split('/')[4];
             }
-            var vars = location.href.split('?')[1]
-            var iframe = document.createElement('iframe');
-            iframe.id = 'theIframe'
-            iframe.scrolling = scrolling || 'yes'
-            iframe.width = '100%'
-            iframe.height = '100%'
-            iframe.setAttribute('allowfullscreen', true)
-            iframe.setAttribute('allow', 'gyroscope; accelerometer; microphone; camera')
-            ipfsdomain = `https://${hashy}.ipfs.dlux.io`.toLowerCase();
-            iframe.src = ipfsdomain + `/ipfs/${hashy}?${vars}`
-            document.body.appendChild(iframe);
+            subauthor = author
+            subauthor.replace('.', '-')
+            ipfsdomain = `https://${subauthor}.ipfs.dlux.io`;
+            location.href = ipfsdomain + `${vars}&hash=${hashy}&author=${author}&permlink=${permlink}&user=${sessionStorage.getItem('user')}`
+            
         });
         if (isIOS()) {
             window.addEventListener('devicemotion', function(e) {
@@ -105,7 +96,8 @@
 
         function onMessage(event) {
             if (event.origin !== ipfsdomain) return;
-            var data = event.data;
+            console.log(event.data)
+            let data = event.data
             if (typeof(window[data.func]) == "function") {
                 if (data.func == 'advPost' || data.func == 'vote' || data.func == 'signDecode' || data.func == 'signEncode' || data.func == 'follow' || data.func == 'aVote' || data.func == 'sendLink' || data.func == 'iloaded' || data.func == 'passGenerateHotLink' || data.func == 'comment' || data.func == 'reqsign') {
                     window[data.func].call(null, data.message);
@@ -117,8 +109,6 @@
             if (link == '/auth') {
                 setCookie('dropOff', `/dlux/@dlux-io/addmst758y8ajhiuvigmesxuj1yo4mve`, 15);
                 location.href = '/auth';
-            } else if (link.includes("steemconnect.com")) {
-                location.href = link;
             } else if (link.split('/')[0].includes(":")) {
                 if (confirm('The was a request to navigate away from dlux.io | Would you like to navigate to | ' + link)) {
                     location.href = link;
@@ -171,8 +161,8 @@
             } else {}
         }
         userLoggedIn = 'Guest'
-        if (userLoggedIn == 'Guest' && localStorage.getItem('skn')) {
-            userLoggedIn = localStorage.getItem('skn')
+        if (userLoggedIn == 'Guest' && sessionStorage.getItem('user')) {
+            userLoggedIn = sessionStorage.getItem('user')
         } else if (window.hive_keychain) {
             iAm = prompt('Hive Username for Hive Keychain', 'no @')
         }
@@ -188,6 +178,29 @@
                 });
             }
         }
+
+    function iloaded(){
+        hive.api.getContent(author, permlink, function(err, result) {
+      var target = document.getElementById('theIframe').contentWindow
+      var un = 'Guest'
+      if(sessionStorage.getItem('user')){un = sessionStorage.getItem('user')}
+      target.postMessage({
+      'func': 'iAm',
+      'message': un,
+      }, "*");
+      target.postMessage({
+      'func': 'key',
+      'message': hiveKey,
+      }, "*");
+      target.postMessage({
+      'func': 'hiveState',
+      'message': result,
+      }, "*");
+      })
+          if(window.hive_keychain) {
+            postable = true
+        }
+      }
 
         function pageSpecific(usr) {
             if (isIOS()) {
@@ -217,9 +230,35 @@
                 postable = true
             }
         }
+
+        function to58lower (hash){
+            var arr = hash.split('')
+            for(var i = 0; i < arr.length; i++){
+                if (i == 0){
+                    arr[i] = 'q'
+                } else if (arr[i].toLowerCase() != arr[i]){
+                    arr[i] = `0${arr[i].toLowerCase()}`
+                }
+            }
+            return arr.join('')
+        }
+
+        function to58 (hash){
+            var arr = hash.split('')
+            var uparr = []
+            for(var i = 0; i < arr.length; i++){
+                if (i == 0){
+                    uparr.push('Q')
+                } else if (arr[i] == '0'){
+                    uparr.push(arr[i+1].toUpperCase())
+                    arr.splice(i,0)
+                } else {
+                    uparr.push(arr[i])
+                }
+            }
+            return uparr.join('')
+        }
     </script>
-
-    <body></body>
 </head>
-
+ <body></body>
 </html>

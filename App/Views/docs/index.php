@@ -11,7 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js"></script>
     <script src="../js/session.js" type="application/javascript"></script>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100 padme-t70">
 <a class="skippy sr-only sr-only-focusable" href="#content">
   <span class="skippy-text">Skip to main content</span>
 </a>
