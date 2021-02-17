@@ -28,6 +28,24 @@ function updateprogress(id) {
      cb(r)
  }
 
+ function picFinder(body, json){
+     if (typeof json.parseJSON().image == 'string'){
+        return json.parseJSON().image
+     } else if (typeof json.parseJSON().image[0] == 'string'){
+        return json.parseJSON().image[0]
+     } else {
+        var looker 
+        try{
+        looker = body.split('![')[1]
+        looker = looker.split('(')[1]
+        looker = looker.split(')')[0]
+        } catch (e){
+            return '/img/dluxdefault.svg'
+        }
+        return looker
+     }
+ }
+
  function readResponseAsBlob(response) {
      return response.blob();
  }
