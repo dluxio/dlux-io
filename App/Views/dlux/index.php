@@ -28,7 +28,7 @@
             echo "const author = '".$author."',";
             echo " permlink = '".$permlink."',";
             ;?>
-         hiveKey = `${author}/${permlink}`
+         const hiveKey = `${author}/${permlink}`
         //hive.api.setOptions({ url: 'https://anyx.io'})
         hive.api.getContent(author, permlink, (err, result) => {
             if(err)console.log(err)
