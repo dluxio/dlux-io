@@ -40,7 +40,7 @@
     <div class="d-flex">
       <h4 class="text-center p-2">{{dluxGetContent.data.result.title}}</h4>
     </div>
-    <div class="d-flex"> <img src="..." alt="Card image cap" class="card-img-top" dmx-bind:src="{{dluxGetContent.data.result.json_metadata.parseJSON().image}}"/> </div>
+    <div class="d-flex"> <img src="..." alt="Card image cap" class="card-img-top" dmx-bind:src="{{dluxGetContent.data.result.json_metadata.parseJSON().picFind()}}"/> </div>
     <div class="d-flex">
       <p class="p-2">{{dluxGetContent.data.result.body.removeMD()}}</p>
     </div>

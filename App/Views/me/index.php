@@ -93,7 +93,7 @@
              </div>
              <a href="#detailModal" class="a-1" data-toggle="modal" dmx-on:click="data_detail.select(url)" dmx-bind:onclick="window.history.pushState('{{url}}','{{title}}', '/blog/@{{author}}/{{permlink}}');">
                <h5 class="card-title mt-2 text-center text-capitalize">{{title}}</h5>
-               <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{json_metadata.parseJSON().image[0]}}" />
+               <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{json_metadata.parseJSON().picFind()}}" />
              <div class="card-body">
                <p class="preview-text">{{body.removeMD().trunc(100,true,"...")}}</p>
              </a></div>
@@ -142,7 +142,7 @@
       <div class="float-right p-2"><span class="badge badge-secondary">{{data_detail.data.json_metadata.scat()}}</span><button type="button" class="close text-white ml-3" data-dismiss="modal" aria-label="Close" onclick="window.history.back();"><span aria-hidden="true">×</span></button></div>
 		 </div>
     <a dmx-bind:href="/blog/@{{data_detail.data.author}}/{{data_detail.data.permlink}}" class="text-white"><h3 class="text-center p-2">{{data_detail.data.title}}</h3></a>
-	 <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{data_detail.data.json_metadata.parseJSON().image}}" />
+	 <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{data_detail.data.json_metadata.parseJSON().picFind()}}" />
 		 <div class="card-body">
     <p class="p-2">{{data_detail.data.body.removeMD()}}</p>
 		 </div>
