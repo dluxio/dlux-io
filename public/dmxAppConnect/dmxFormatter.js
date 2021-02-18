@@ -911,10 +911,16 @@ dmx.Formatters("global", {
             return t;
         },
         picFind: function(json) {
+            var arr
+            try {
+                arr = json.image[0]
+            } catch (e) {
+
+            }
             if (typeof json.image == 'string') {
                 return json.image
-            } else if (typeof json.image[0] == 'string') {
-                return json.image[0]
+            } else if (typeof arr == 'string') {
+                return arr
             } else if (typeof json.Hash360 == 'string') {
                 return `https://ipfs.io/ipfs/${json.Hash360}`
             } else {
