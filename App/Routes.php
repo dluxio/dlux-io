@@ -40,5 +40,7 @@ $router->respondWithController('GET', '/new/360-gallery', 'Newpost@threesixty');
 $router->respondWithController('GET', '/new/360-gallery/', 'Newpost@threesixty');
 $router->respondWithController('GET', '/new/360-tour', 'Newpost@threesixtytour');
 $router->respondWithController('GET', '/new/360-tour/', 'Newpost@threesixtytour');
+$router->respondWithController('GET', '/about/', 'About@index');
+$router->respondWithController('GET', '/about', 'About@index');
 // Dispatch the router
 $router->dispatch();

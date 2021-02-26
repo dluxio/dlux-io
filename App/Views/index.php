@@ -204,7 +204,7 @@
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">Open</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">LEARN MORE ABOUT THE PROJECT</h5></div>
 			<div>
-				<a class="btn btn-dlux btn-lg btn-purp mt-2" href="/docs/#about">About Page<i class="fas fa-fw fa-info-circle ml-2"></i></a>
+				<a class="btn btn-dlux btn-lg btn-purp mt-2" href="/about/">About Page<i class="fas fa-fw fa-info-circle ml-2"></i></a>
 				<a class="btn btn-dlux btn-lg btn-outline-purp mt-2" href="/docs/">Documentation<i class="fas fa-fw fa-book ml-2"></i></a>
 			</div>
 		</div>
