@@ -118,7 +118,7 @@ function govDown(amt, to, memo) {
 function powerUp(amt, tol, memol) {
     let amount = parseInt(document.getElementById(amt).value * 1000),
         to = document.getElementById(tol).value || '',
-        memo = document.getElementById(memol).value || '',
+        //memo = document.getElementById(memol).value || '',
         params = {
             "required_auths": [user],
             "required_posting_auths": 0,
