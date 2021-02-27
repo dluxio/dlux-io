@@ -96,7 +96,7 @@
 			</div>
 		</div>
 		
-		<div role="tabpanel" class="tab-pane fade show active" id="stories" aria-labelledby="storiesTab">
+		<div role="tabpanel" class="tab-pane fade show" id="stories" aria-labelledby="storiesTab">
 		   <div class="jumbotron container bg-darker text-left text-center">
   				<h1 class="display-4 text-center">Stories</h1>
   				<p class="lead text-center">Ground breaking project collaborations and interviews</p>
