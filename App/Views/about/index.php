@@ -13,6 +13,26 @@
 		color: #FFA300;
 		border-color: #FFA300;
 	}
+		.middle-newsroom {
+			border-right: solid;
+			border-right-width: 2.5px;
+			border-right-color: #191C20;
+			border-left: solid;
+			border-left-width: 2.5px;
+			border-left-color: #191C20;
+		}
+		@media screen and (max-width: 991px) {
+			.middle-newsroom {
+			border-right: none;
+			border-left: none;
+			border-top: solid;
+			border-top-width: 2.5px;
+			border-top-color: #191C20;
+			border-bottom: solid;
+			border-bottom-width: 2.5px;
+			border-bottom-color: #191C20;
+		}
+			}
 	</style>
 	</head>
 <body class="d-flex flex-column bg-darker padme-t70" id="apps" is="dmx-app">	
@@ -25,7 +45,7 @@
   <div class="container-fluid px-0 text-center">
 	  <div class="container-fluid fixed-top bg-dark" style="margin-top: 66px;">
 
-		  <nav class="navbar navbar-dark">
+		  <nav class="navbar navbar-dark navbar-expand-lg">
 			  <div class="m-auto">
   <ul class="nav nav-tabs navbar py-0 border-bottom-0" role="tablist">
 	    <li class="nav-item">
@@ -76,7 +96,7 @@
 			</div>
 		</div>
 		
-		<div role="tabpanel" class="tab-pane fade show" id="stories" aria-labelledby="storiesTab">
+		<div role="tabpanel" class="tab-pane fade show active" id="stories" aria-labelledby="storiesTab">
 		   <div class="jumbotron container bg-darker text-left text-center">
   				<h1 class="display-4 text-center">Stories</h1>
   				<p class="lead text-center">Ground breaking project collaborations and interviews</p>
@@ -89,7 +109,7 @@
 								</div>
 							</div>
 							<div class="col-lg-6 order-lg-1 p-3">
-						<h3 style="color: #FB00FF">Discover DaVinci</h3>
+						<h3 class="pt-3" style="color: #FB00FF">Discover DaVinci</h3>
 						<p class="lead">University of Florida Digital Worlds Institute</p>
 						<p>Discover DaVinci is a novel augmented reality system that incorporates blockchain technology with experiential learning to engage participants in an interactive discovery of Leonardo da Vinci’s ouvre. In the true spirit of this “Renaissance man”, Discover DaVinci explores new ideas and technologies “ahead of their time”.</p>
 						<div class="text-center">	
@@ -105,7 +125,7 @@
 								</div>
 							</div>
 							<div class="col-lg-6 order-lg-2">
-								<h3 style="color:#FB00FF">Emergent Virtues</h3>
+								<h3 class="pt-3" style="color:#FB00FF">Emergent Virtues</h3>
 								<p class="lead">World IA Day LA 2019</p>
 				<p>A tentpole experience of this event with hundreds of attendees was a dlux AR camera app participant ice breaker. The goal: scan each other's badges to collect all six emergent virtue 3D models. As users moved around the room meeting eachother and scanning badges, a live leader board updated with their status of trophies found. Real networking gameified through AR and captured on blockchain!</p>
 								<div class="text-center">	
@@ -115,7 +135,7 @@
 			   
 			   <div class="row align-items-center py-5" style="border-bottom: solid; border-bottom-width: 2.5px; border-bottom-color: #191C20;">
 				   
-			   	<div class="col-lg-4 order-lg-1 p-5" style="border-right: solid; border-right-width: 2.5px; border-right-color: #191C20;">
+			   	<div class="col-lg-4 order-lg-1 p-5">
 					<h3 style="color:#FB00FF">CyberBuzz</h3>
 						<p class="lead">VR, AR &amp; DeFi</p>
 						<p>@crimsonclad interviews @disregardfiat about #dlux</p>
@@ -124,7 +144,7 @@
 						</div>
 				</div>
 				   
-				   <div class="col-lg-4 order-lg-1 p-5" style="border-right: solid; border-right-width: 2.5px; border-right-color: #191C20;">
+				   <div class="col-lg-4 order-lg-1 p-5 middle-newsroom">
 					<h3 style="color:#FB00FF">Simulation Nation</h3>
 						<p class="lead">Virtual Money</p>
 						<p>@disregardfiat and @markegiles broadcast from inside Altspace VR</p>
@@ -146,7 +166,7 @@
 			   
 			    <div class="row align-items-center py-5">
 				
-				<div class="col-lg-4 order-lg-1 p-5" style="border-right: solid; border-right-width: 2.5px; border-right-color: #191C20;">
+				<div class="col-lg-4 order-lg-1 p-5">
 					<h3 style="color:#FB00FF">HiveCoffee</h3>
 						<p class="lead">Side Chains</p>
 						<p>Leo, Hive, and how Layer 2 solutions like DLUX add critical features</p>
@@ -155,7 +175,7 @@
 						</div>
 				</div>	
 					
-			   	<div class="col-lg-4 order-lg-1 p-5" style="border-right: solid; border-right-width: 2.5px; border-right-color: #191C20;">
+			   	<div class="col-lg-4 order-lg-1 p-5 middle-newsroom">
 					<h3 style="color:#FB00FF">ARK.io</h3>
 						<p class="lead">Market Square Hub</p>
 						<p>Press Release: ARK Announces Partnership With DLUX</p>
@@ -265,7 +285,7 @@
  				 <hr class="my-4 bg-light">
 			   
 			   <div class="row align-items-center py-5" style="border-bottom: solid; border-bottom-width: 2.5px; border-bottom-color: #191C20;">
-							<div class="col-lg-2 text-center"><img src="/img/aframe.png" width="100%"></div>
+							<div class="col-4 col-lg-2 text-center mx-auto my-5"><img src="/img/aframe.png" width="100%"></div>
 							<div class="col-lg-8 px-5">
 								<h3 style="color:#27BFF4">Networked A-Frame</h3>
 								<p>Build AR and VR scenes from simple tags that are responsive across mobile, desktop, and headset via HTML5 with teleport controls, touch controls, magic window looking, and keyboard + cursor controls. Start by using a drag and drop uploader or remixing a boiler plate project.</p>
@@ -274,7 +294,7 @@
 			   </div>
 			   
 						<div class="row align-items-center py-5" style="border-bottom: solid; border-bottom-width: 2.5px; border-bottom-color: #191C20;">
-							<div class="col-lg-2 text-center"><img src="/img/ipfs-logo.svg" width="100%"></div>
+							<div class="col-4 col-lg-2 text-center mx-auto my-5"><img src="/img/ipfs-logo.svg" width="100%"></div>
 							<div class="col-lg-8 px-5">
 								<h3 style="color:#139192">InterPlanetary File System</h3>
 								<p>Distribute content peer-to-peer via the InterPlanetary File System (IPFS), with ultimate resiliancy and no file dupliation. Access your file from anywhere via it's finger print, or "hash" identity. DLUX pins uploaded content to avoid garbage collection.</p>
@@ -283,7 +303,7 @@
 			   </div>
 						
 							<div class="row align-items-center py-5">
-								<div class="col-lg-2 text-center"><img src="/img/hextacular.svg" width="100%"></div>
+								<div class="col-4 col-lg-2 text-center mx-auto my-5"><img src="/img/hextacular.svg" width="100%"></div>
 								<div class="col-lg-8 px-5">
 									<h3 style="color:#E31337">Hive Blockchain</h3>
 				<p>Users own their account and content, as well as their crypto currency. By powering up some crypto, users gain vote power enabling them to reward content creators and curators via upvotes that earn crypto from the reward pool which can be immediately withdrawn.</p>
