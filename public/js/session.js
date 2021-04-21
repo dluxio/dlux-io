@@ -60,34 +60,16 @@ function updateprogress(id) {
      if (user != null) {
          propCheck(user)
          .then(r=>{
-            if (r.one48 && r.one52){
+            if (r.one71){
                 var el = document.getElementById('propVotePlead')
                 el.parentElement.removeChild(el)
-            } else if (r.one48){
-                document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-danger alert-dismissible text-center">
-  		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		<span>Our proposal to improve the multi-signature DAO wallet needs your support.</span>
-		<a href="https://peakd.com/proposals/152" target="_blank" class="alert-link">Prop #152</a>
-  		<a href="#" class="alert-link"></a>
-		<button class="btn btn-danger ml-3" onclick="voteProp([152],'${user}')">Vote Now</button>
-	</div>`
-            } else if (r.one52){
-document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-danger alert-dismissible text-center">
-  		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		<span>Our proposal to improve the token software needs your support.</span>
-		<a href="https://peakd.com/proposals/148" target="_blank" class="alert-link">Prop #148</a>
-  		<a href="#" class="alert-link"></a>
-		<button class="btn btn-danger ml-3" onclick="voteProp([148],'${user}')">Vote Now</button>
-	</div>`
             } else {
 document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-danger alert-dismissible text-center">
   		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		<span>Our proposals to improve the token software and multi-signature wallet need your support.</span>
-		<a href="https://peakd.com/proposals/148" target="_blank" class="alert-link">Prop #148</a>
-		<span> | </span>
-		<a href="https://peakd.com/proposals/152" target="_blank" class="alert-link">Prop #152</a>
+		<a href="https://peakd.com/proposals/171" target="_blank" class="alert-link">Prop #171</a>
   		<a href="#" class="alert-link"></a>
-		<button class="btn btn-danger ml-3" onclick="voteProp([148,152],'${user}')">Vote Now</button>
+		<button class="btn btn-danger ml-3" onclick="voteProp([171],'${user}')">Vote Now</button>
 	</div>`
             }
          })
@@ -770,43 +752,27 @@ function downPowerMagic(up, down, block_num) {
 
 function propCheck(user){
     return new Promise((resolve, reject)=>{
-    var url148 = fetch("https://api.hive.blog", {
-        body: "{\"jsonrpc\":\"2.0\", \"method\":\"condenser_api.list_proposal_votes\", \"params\":[[148], 1000, \"by_proposal_voter\", \"ascending\", \"active\"], \"id\":1}",
+    var url171 = fetch("https://api.hive.blog", {
+        body: "{\"jsonrpc\":\"2.0\", \"method\":\"condenser_api.list_proposal_votes\", \"params\":[[171], 1000, \"by_proposal_voter\", \"ascending\", \"active\"], \"id\":1}",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
         },
         method: "POST"
         })
-    var url152 = fetch("https://api.hive.blog", {
-        body: "{\"jsonrpc\":\"2.0\", \"method\":\"condenser_api.list_proposal_votes\", \"params\":[[152], 1000, \"by_proposal_voter\", \"ascending\", \"active\"], \"id\":1}",
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        method: "POST"
-        })
-    Promise.all([url148, url152])
+    Promise.all([url171])
         .then(res=>Promise.all(res.map(res => res.json())))
         .then(r=>{
-            var one48 = false, one52 = false
+            var one71 = false
             for(i=0;i<r[0].result.length;i++){
                 if(r[0].result[i].proposal.id != 148){
                     break;
                 }
                 if(r[0].result[i].voter == user){
-                    one48 = true
+                    one71 = true
                     break;
                 }
             }
-            for(i=0;i<r[1].result.length;i++){
-                if(r[0].result[i].proposal.id != 148){
-                    break;
-                }
-                if(r[1].result[i].voter == user){
-                    one52 = true
-                    break;
-                }
-            }
-            resolve({one48,one52})
+            resolve({one71})
         })
         .catch(e=>reject(e))
     });
