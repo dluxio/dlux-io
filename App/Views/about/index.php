@@ -51,7 +51,7 @@
 	    <li class="nav-item">
 			<a class="nav-link active" id="aboutTab" role="tab" data-toggle="tab" aria-controls="about" aria-expanded="true" href="#about" >About</a></li>
 	  <li class="nav-item"> 
-			<a class="nav-link" id="storiesTab" role="tab" data-toggle="tab" aria-controls="stories" aria-expanded="true" href="#stories">Stories</a></li>
+			<a class="nav-link" id="storiesTab" role="tab" data-toggle="tab" aria-controls="stories" aria-expanded="true" href="#stories">Newsroom</a></li>
 	    <li class="nav-item"> 
 			<a class="nav-link" id="brandTab" role="tab" data-toggle="tab" aria-controls="brand" aria-expanded="true" href="#brand">Brand Kit</a></li>
 		  <li class="nav-item"> 
@@ -96,10 +96,10 @@
 			</div>
 		</div>
 		
-		<div role="tabpanel" class="tab-pane fade show" id="stories" aria-labelledby="storiesTab">
+		<div role="tabpanel" class="tab-pane fade show " id="stories" aria-labelledby="storiesTab">
 		   <div class="jumbotron container bg-darker text-left text-center">
-  				<h1 class="display-4 text-center">Stories</h1>
-  				<p class="lead text-center">Ground breaking project collaborations and interviews</p>
+  				<h1 class="display-4 text-center">Newsroom</h1>
+  				<p class="lead text-center">Project collaborations and interviews</p>
  				 <hr class="my-4 bg-light">
 			   
  				 <div class="row align-items-center py-5" style="border-bottom: solid; border-bottom-width: 2.5px; border-bottom-color: #191C20;">
@@ -132,10 +132,19 @@
 						<a class="btn btn-outline-light m-3" href="https://peakd.com/dlux/@dlux-io/introducing-steem-events-video-tokenized-networking" target="_blank">Learn More</a>
 							</div>
 							</div></div>
-			   
-			   <div class="row align-items-center py-5" style="border-bottom: solid; border-bottom-width: 2.5px; border-bottom-color: #191C20;">
-				   
+               
+                <div class="row align-items-center py-5" style="border-bottom: solid; border-bottom-width: 2.5px; border-bottom-color: #191C20;">
+                   
 			   	<div class="col-lg-4 order-lg-1 p-5">
+					<h3 style="color:#FB00FF">The Cryptomaniacs</h3>
+						<p class="lead">DLUX Token</p>
+						<p>DLUX deep dive with @Taskmaster4450 &amp; Jon Olson</p>
+						<div class="text-center">	
+							<a class="btn btn-outline-light m-3" href="https://anchor.fm/cryptomaniacs/episodes/The-CryptoManiacs-Podcast---Episode-7-ish-w-DisregardFiat-of-Dlux-io-evplq5" target="_blank">Listen Now</a>
+						</div>
+				</div>
+				   
+            	<div class="col-lg-4 order-lg-1 p-5 middle-newsroom">
 					<h3 style="color:#FB00FF">CyberBuzz</h3>
 						<p class="lead">VR, AR &amp; DeFi</p>
 						<p>@crimsonclad interviews @disregardfiat about #dlux</p>
@@ -144,7 +153,7 @@
 						</div>
 				</div>
 				   
-				   <div class="col-lg-4 order-lg-1 p-5 middle-newsroom">
+				   <div class="col-lg-4 order-lg-1 p-5">
 					<h3 style="color:#FB00FF">Simulation Nation</h3>
 						<p class="lead">Virtual Money</p>
 						<p>@disregardfiat and @markegiles broadcast from inside Altspace VR</p>
@@ -153,20 +162,20 @@
 						</div>
 				</div>
 				   
-				   <div class="col-lg-4 order-lg-1 p-5">
-					<h3 style="color:#FB00FF">Altcoin Buzz</h3>
-						<p class="lead">Time is Crypto</p>
-						<p>The Crypto Godess interrogates @markegiles about the dlux ICO</p>
-						<div class="text-center">	
-							<a class="btn btn-outline-light m-3" href="https://www.youtube.com/watch?v=9mUcP3VrwXE" target="_blank">Watch Now</a>
-						</div>
-				</div>
-				   
 			   </div>
 			   
-			    <div class="row align-items-center py-5">
-				
-				<div class="col-lg-4 order-lg-1 p-5">
+			   <div class="row align-items-center py-5" style="border-bottom: solid; border-bottom-width: 2.5px; border-bottom-color: #191C20;">
+				   
+				     	<div class="col-lg-4 order-lg-1 p-5">
+					<h3 style="color:#FB00FF">ARK.io</h3>
+						<p class="lead">Market Square Hub</p>
+						<p>Press Release: ARK Announces Partnership With DLUX</p>
+						<div class="text-center">	
+							<a class="btn btn-outline-light m-3" href="https://ark.io/blog/ark-announces-partnership-with-dlux/" target="_blank">Read Now</a>
+						</div>
+				</div> 
+				   
+                   <div class="col-lg-4 order-lg-1 p-5 middle-newsroom">
 					<h3 style="color:#FB00FF">HiveCoffee</h3>
 						<p class="lead">Side Chains</p>
 						<p>Leo, Hive, and how Layer 2 solutions like DLUX add critical features</p>
@@ -174,16 +183,21 @@
 							<a class="btn btn-outline-light m-3" href="https://youtu.be/Wi8QwroY2bI" target="_blank">Watch Now</a>
 						</div>
 				</div>	
-					
-			   	<div class="col-lg-4 order-lg-1 p-5 middle-newsroom">
-					<h3 style="color:#FB00FF">ARK.io</h3>
-						<p class="lead">Market Square Hub</p>
-						<p>Press Release: ARK Announces Partnership With DLUX</p>
+                   
+                   <div class="col-lg-4 order-lg-1 p-5">
+					<h3 style="color:#FB00FF">Altcoin Buzz</h3>
+						<p class="lead">Time is Crypto</p>
+						<p>The Crypto Godess interrogates @markegiles about the dlux ICO</p>
 						<div class="text-center">	
-							<a class="btn btn-outline-light m-3" href="https://ark.io/blog/ark-announces-partnership-with-dlux/" target="_blank">Read Now</a>
+							<a class="btn btn-outline-light m-3" href="https://www.youtube.com/watch?v=9mUcP3VrwXE" target="_blank">Watch Now</a>
 						</div>
 				</div>
-				   
+                   
+			   </div>
+			   
+			    <div class="row align-items-center py-5">
+				
+				
 				   <div class="col-lg-4 order-lg-1 p-5">
 					<h3 style="color:#FB00FF">Voyage LA</h3>
 						<p class="lead">Introducing...</p>
@@ -201,21 +215,21 @@
 			</div>
 		</div>
 		
-		<div role="tabpanel" class="tab-pane fade show" id="brand" aria-labelledby="brandTab">
+		<div role="tabpanel" class="tab-pane fade show " id="brand" aria-labelledby="brandTab">
 		   <div class="jumbotron container bg-darker text-left">
   				<h1 class="display-4 text-center">Brand Kit</h1>
   				<p class="lead text-center">Assets and colorway</p>
  				 <hr class="my-4 bg-light">
 			   <div class="d-flex d-row">
-			   	<div class="d-flex flex-column col-md-3 p-5">
+			   	<div class="d-flex flex-column col-md-4 p-5">
  				 <p class="lead">SVG: Logo</p>
 			   	 <img src="/img/dlux-hive-logo-alpha.svg">
 					</div>
-				   <div class="d-flex flex-column col-md-3 p-5">
+				   <div class="d-flex flex-column col-md-4 p-5">
  				 <p class="lead">SVG: Icon</p>
 			   	 <img src="/img/dlux-hive-logo.svg">
 					</div>
-				   <div class="d-flex flex-column col-md-3 p-5">
+				   <div class="d-flex flex-column col-md-4 p-5">
  				 <div class="lead">SVG: Hive XR</div>
 			   	 <div class="my-auto"><img src="/img/ar-vr-icon.svg"></div>
 					</div>
@@ -223,11 +237,11 @@
 			   <div class="d-flex d-row">
 			   	<div class="d-flex flex-column col-md-4 p-5">
  				 <p class="lead">PNG: Logo</p>
-			   	 <img src="/img/dlux-hive-logo-alpha.svg">
+			   	 <img src="/img/dlux-logo.png" width="100%">
 					</div>
 				   <div class="d-flex flex-column col-md-4 p-5">
  				 <p class="lead">PNG: Icon</p>
-			   	 <img src="/img/dlux-hive-logo.svg">
+			   	 <img src="/img/dlux-logo-icon.png" width="100%">
 					</div>
 				   <div class="d-flex flex-column col-md-4 p-5">
  				 <div class="lead">PNG: Hive XR</div>
@@ -261,7 +275,7 @@
 			   <p>DLUX, acting as a front end, stores no user data. Login happens via the Hive Keychain extension, so user keys are never exposed to DLUX. A user session is stored locally, and DLUX does no user data tracking whatsoever.</p>
  				 <div class="d-flex flex-column col-md-6 mx-auto pt-5">
 			   <p class="lead text-center">Would you like to learn more about how your data is stored and accessed via the Hive blockchain?</p>
- 				   <a class="btn btn-outline-primary btn-lg col-md-6 mx-auto" href="https://discord.gg/Beeb38j" target="_blank" role="button">Learn about Hive<i class="fab fa-hive fa-fw ml-2"></i></a></div>
+ 				   <a class="btn btn-outline-primary btn-lg col-md-6 mx-auto" href="https://hive.io/whitepaper.pdf" target="_blank" role="button">Hive Whitepaper<i class="fab fa-hive fa-fw ml-2"></i></a></div>
 			</div>
 		</div>
 		
@@ -274,7 +288,7 @@
 			   <p>You are free to use the code for your own projects, and we encourage others to contribute improvements. We offer no warranty or gurantee and consider this software in public beta. Users are welcome to test, debug, provide feedback, and use at their own risk.</p>
  				 <div class="d-flex flex-column col-md-6 mx-auto pt-5">
 			   <p class="lead text-center">Would you like to audit the code, issue a pull request, clone the repo, or just have a look around?</p>
- 				   <a class="btn btn-outline-primary btn-lg col-md-6 mx-auto" href="https://discord.gg/Beeb38j" target="_blank" role="button">Browse the Code<i class="fab fa-github fa-fw ml-2"></i></a></div>
+ 				   <a class="btn btn-outline-primary btn-lg col-md-6 mx-auto" href="https://github.com/dluxio/dluxio" target="_blank" role="button">Browse our Code<i class="fab fa-github fa-fw ml-2"></i></a></div>
 			</div>
 		</div>
 		

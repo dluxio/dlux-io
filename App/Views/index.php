@@ -9,26 +9,26 @@
 ?>
 <style>
 	#dapps {
-		background-image: url("/img/metaverse-vr.png");
+		background-image: url("/img/metaverse-vr-comp.jpg");
 		background-size: cover;
 		background-position: center;
 		min-height: 600px;
 		margin-top: -70px;
 	}
 	#defi {
-		background-image: url("/img/dex-vr.png");
+		background-image: url("/img/dex-vr-comp.jpg");
 		background-size: cover;
 		background-position: center;
 		min-height: 600px;
 	}
 	#hive {
-		background-image: url("/img/jtree.jpg");
+		background-image: url("/img/jtree-comp.jpg");
 		background-size: cover;
 		background-position: center;
 		min-height: 600px;
 	}
 	#info {
-		background-image: url("/img/gallery-vr.png");
+		background-image: url("/img/gallery-vr-comp.jpg");
 		background-size: cover;
 		background-position: center;
 		min-height: 600px;
