@@ -764,7 +764,7 @@ function propCheck(user){
         .then(r=>{
             var one71 = false
             for(i=0;i<r[0].result.length;i++){
-                if(r[0].result[i].proposal.id != 148){
+                if(r[0].result[i].proposal.id != 171){
                     break;
                 }
                 if(r[0].result[i].voter == user){

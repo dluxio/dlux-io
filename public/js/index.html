@@ -187,9 +187,14 @@
                     'message': result,
                 }, "*");
             })
+            var postable = false
             if (window.hive_keychain) {
                 postable = true
             }
+            target.postMessage({
+                    'func': 'hiveKeychain',
+                    'message': postable,
+                }, "*");
         }
 
         function varval(name, arr) {
