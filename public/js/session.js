@@ -175,14 +175,6 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
         User.opts.type = 'Buy'
         dexmodal("hive", "Buy");
     })
-console.log('hs')
-    User.dlux.nextVoteWeight = setVotePower(usr.dlux.poweredUp, usr.dlux.up, usr.dlux.down, usr.hive.voting_power, usr.hstats.head_block_number)
-    document.getElementById('buyDluxTitle').innerText = 'Buy With:'
-    document.getElementById('selllink').addEventListener("click", function() {
-        User.opts.type = 'Sell'
-        dexmodal("hive", "Sell");
-    })
-console.log('hs')
     //power down modal ops
     document.getElementById('dluxpowerdownModalButton').addEventListener("click", function() {
         document.getElementById('powerdowndluxsubmit').innerText = `Powerdown`
@@ -333,6 +325,14 @@ console.log('hs')
         function myStopFunction() {
             clearInterval(myVar);
         } 
+        console.log('Problem code below')
+        User.dlux.nextVoteWeight = setVotePower(usr.dlux.poweredUp, usr.dlux.up, usr.dlux.down, usr.hive.voting_power, usr.hstats.head_block_number)
+    document.getElementById('buyDluxTitle').innerText = 'Buy With:'
+    document.getElementById('selllink').addEventListener("click", function() {
+        User.opts.type = 'Sell'
+        dexmodal("hive", "Sell");
+    })
+    console.log('problem code above')
     })
 
     fetch('https://token.dlux.io/feed')
