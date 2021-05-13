@@ -66,7 +66,7 @@ function updateprogress(id) {
             } else {
 document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-danger alert-dismissible text-center">
   		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		<span>Our proposals to improve the token software and multi-signature wallet need your support.</span>
+		<span>Our proposal to improve the token software with multi-signature features need your support.</span>
 		<a href="https://peakd.com/proposals/171" target="_blank" class="alert-link">Prop #171</a>
   		<a href="#" class="alert-link"></a>
 		<button class="btn btn-danger ml-3" onclick="voteProp([171],'${user}')">Vote Now</button>
@@ -168,7 +168,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
     document.getElementById('dluxactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3).commafy()} DLUX`
     document.getElementById('dluxpactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3).commafy()} DLUX`
     document.getElementById('hivepactions').firstElementChild.innerText = parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)).toFixed(3).commafy() + ' HP'
-
+    console.log('half split')
     document.getElementById('hiveval').firstElementChild.innerText = `$${parseFloat((parseFloat(( parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)) + parseFloat(usr.hive.balance))*usr.price).toFixed(2)}`
     document.getElementById('dluxval').firstElementChild.innerText = `$${parseFloat(((parseInt(usr.dlux.balance) + parseInt(usr.dlux.gov) + parseInt(usr.dlux.poweredUp))/1000)*parseFloat(usr.dex.markets.hive.tick)*parseFloat(usr.price)).toFixed(2)}`
     document.getElementById('buylink').addEventListener("click", function() {
@@ -195,7 +195,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
         })
         document.getElementById('dluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerdowndluxamount')">${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3).commafy()} DLUX</a>):`
     })
-
+    console.log('Power Down EL added')
     document.getElementById('dluxgovdownModalButton').addEventListener("click", function() {
         document.getElementById('powerdownDluxTitle').innerText = `Unlock Governance Tokens`
         document.getElementById('powerdowndluxsubmit').innerText = `Unlock`
