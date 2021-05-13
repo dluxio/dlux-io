@@ -223,6 +223,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
         document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'senddluxamount')">${parseFloat(User.dlux.balance/1000).toFixed(3).commafy()} DLUX</a>):`
         document.getElementById('senddluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000).toFixed(3).commafy()
     })
+    console.log('running check')
     document.getElementById('powerupdluxbutton').addEventListener("click", function() {
         document.getElementById('powerdluxsubmitbutton').addEventListener("click", function() {
             powerUp('powerupdluxamount', 'powerupdluxto', 'powerupdluxmemo')
@@ -233,6 +234,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
         document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3).commafy()} DLUX</a>):`
         document.getElementById('powerupdluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
     })
+    console.log('running check')
     document.getElementById('poweruphivebutton').addEventListener("click", function() {
         document.getElementById('sendmodalsend').addEventListener("click", function() {
             hivepower('senddluxto', 'senddluxamount', 'senddluxmemo')
@@ -244,6 +246,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
         document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.hive.balance),'senddluxamount')">${User.hive.balance}</a>):`
         document.getElementById('senddluxamount').max = parseFloat(User.hive.balance)
     })
+    console.log('running check')
     document.getElementById('govtopowerbutton').addEventListener("click", function() {
         document.getElementById('sendmodalsend').addEventListener("click", function() {
             govtopower('senddluxto', 'senddluxamount', 'senddluxmemo')
@@ -255,6 +258,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
         document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.gov.balance),'senddluxamount')">${User.gov.balance}</a>):`
         document.getElementById('senddluxamount').max = parseFloat(User.gov.balance) / 1000
     })
+    console.log('running check')
     document.getElementById('sendhivemodalbutton').addEventListener("click", function() {
         document.getElementById('sendmodalsend').addEventListener("click", function() {
             hivesend('senddluxto', 'senddluxamount', 'senddluxmemo')
@@ -264,6 +268,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
         document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.hive.balance),'senddluxamount')">${User.hive.balance}</a>):`
         document.getElementById('senddluxamount').max = parseFloat(usr.hive.balance)
     })
+    console.log('running check')
     document.getElementById('sendhbdmodalbutton').addEventListener("click", function() {
         document.getElementById('sendmodalsend').addEventListener("click", function() {
             hbdsend('senddluxto', 'senddluxamount', 'senddluxmemo')
@@ -273,9 +278,11 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
         document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(usr.hive.hbd_balance),'senddluxamount')">${User.hbd.balance}</a>):`
         document.getElementById('senddluxamount').max = parseFloat(usr.hive.hbd_balance)
     })
+    console.log('running check')
     document.getElementById('updateNode').addEventListener("click", function() {
         updateNode()
     })
+    console.log('running check')
     document.getElementById('escrowtxbutton').addEventListener("click", function() {
         document.getElementById('escrowtx').innerHTML = `<hr class="my-2 bg-light">`
         let loading = document.createElement('p')
