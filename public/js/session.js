@@ -168,21 +168,21 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
     document.getElementById('dluxactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3).commafy()} DLUX`
     document.getElementById('dluxpactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3).commafy()} DLUX`
     document.getElementById('hivepactions').firstElementChild.innerText = parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)).toFixed(3).commafy() + ' HP'
-    console.log('half split')
+
     document.getElementById('hiveval').firstElementChild.innerText = `$${parseFloat((parseFloat(( parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)) + parseFloat(usr.hive.balance))*usr.price).toFixed(2)}`
     document.getElementById('dluxval').firstElementChild.innerText = `$${parseFloat(((parseInt(usr.dlux.balance) + parseInt(usr.dlux.gov) + parseInt(usr.dlux.poweredUp))/1000)*parseFloat(usr.dex.markets.hive.tick)*parseFloat(usr.price)).toFixed(2)}`
     document.getElementById('buylink').addEventListener("click", function() {
         User.opts.type = 'Buy'
         dexmodal("hive", "Buy");
     })
-
+console.log('hs')
     User.dlux.nextVoteWeight = setVotePower(usr.dlux.poweredUp, usr.dlux.up, usr.dlux.down, usr.hive.voting_power, usr.hstats.head_block_number)
     document.getElementById('buyDluxTitle').innerText = 'Buy With:'
     document.getElementById('selllink').addEventListener("click", function() {
         User.opts.type = 'Sell'
         dexmodal("hive", "Sell");
     })
-
+console.log('hs')
     //power down modal ops
     document.getElementById('dluxpowerdownModalButton').addEventListener("click", function() {
         document.getElementById('powerdowndluxsubmit').innerText = `Powerdown`
