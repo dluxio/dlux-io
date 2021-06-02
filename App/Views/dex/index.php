@@ -22,7 +22,7 @@
 <div class="container">
 	<div class="alert alert-danger alert-dismissible">
   		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  		<span>The dlux DEX is under construction. Have a look around and let us know what you think.</span>
+  		<span>The dlux DEX UI still needs work, mostly in charts.</span>
 	</div>
 	
   <div class="container-fluid" style="padding: 0">

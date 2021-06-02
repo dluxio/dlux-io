@@ -618,11 +618,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
 
      static handshake(id) {
          return new Promise((resolve, reject) => {
-            let subid = id 
-            if(subid.split('.')[1]){
-                 subid.replace('.','-dot-')
-             }
-             fetch(`https://${subid}.ipfs.dlux.io/api/account/${id}`)
+             fetch(`https://challenge.ipfs.dlux.io/api/account/${id}`)
                  .then((response) => {
                      return response.json();
                  })
