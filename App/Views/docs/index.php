@@ -894,7 +894,7 @@ AFRAME.registerComponent('nav-pointer', {
 		<li>Set configuration variables</li>
 		<code>nano .env</code>
 		<br>
-		<code>username=hiveaccount</code>
+		<code>account=hiveaccount</code>
 		<br>
 		<code>active=hiveactivekey</code>
 		<li>Quit editor and save changes</li>
@@ -915,7 +915,7 @@ AFRAME.registerComponent('nav-pointer', {
 		<li>Fork this repository</li>
 		<li>Connect your fork to the cloud server</li>
 		<li>Set configuration variables</li>
-		<code>username=hiveaccount</code>
+		<code>account=hiveaccount</code>
 		<br>
 		<code>active=hiveactivekey</code>
 	</ul>
