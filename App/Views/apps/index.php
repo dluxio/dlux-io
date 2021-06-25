@@ -14,8 +14,8 @@
 <script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
 
-<body id="index" is="dmx-app" class="d-flex flex-column h-100 padme-t70">
-<dmx-api-datasource id="dluxGetBlog" is="dmx-fetch" url="https://token.dlux.io/api/condenser_api/get_discussions_by_blog/" dmx-param:tag="'robotolux'" dmx-param:limit="30"></dmx-api-datasource>
+<body class="d-flex flex-column h-100 padme-t70" id="index" is="dmx-app">
+<dmx-api-datasource id="dluxGetBlog" is="dmx-fetch" url="https://dluxdata.herokuapp.com/api/condenser_api/get_discussions_by_blog?tag=robotolux"></dmx-api-datasource> // new | hot | trending
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
@@ -86,7 +86,7 @@
 	   <div class="card text-white bg-dark">
 		   <div class="card-header">
 	   		<div class="d-inline-block p-2">
-	  <div class="float-left" ><a dmx-bind:href="/@{{data_detail.data.author}}"><img dmx-bind:src="{{data_detail.data.author}}/avatar" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
+	  <div class="float-left" ><a dmx-bind:href="/@{{data_detail.data.author}}"><img dmx-bind:src="https://images.hive.blog/u/{{data_detail.data.author}}/avatar" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
         <div class="float-left">
           <p class="mt-0 mb-0 text-muted text-semibold"><a dmx-bind:href="/@{{data_detail.data.author}}" class="a-1">{{data_detail.data.author}}<span class="ml-2 badge badge-pill badge-light">{{data_detail.data.author_reputation.toString().rep()}}</span></a></p>
           <small class="text-muted">{{data_detail.data.created.formatDate("MMM dd, yyyy")}}</small></div>
