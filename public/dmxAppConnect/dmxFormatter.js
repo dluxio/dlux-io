@@ -166,7 +166,7 @@ dmx.Formatters("global", {
             );
         },
         toString: function (i){
-            return JSON.stringify(i).replace(/"/g, '&QO');
+            return JSON.stringify(i).replace(/"/g, '\&QO').replace(/'/g, '\&SQO');
         },
         sort: function(t, r) {
             return t.slice(0).sort(function(t, n) {
@@ -939,7 +939,7 @@ dmx.Formatters("global", {
             }
         },
         toString: function (i){
-            return JSON.stringify(i).replace(/"/g, '&QO');
+            return JSON.stringify(i).replace(/"/g, '\&QO').replace(/'/g, '\&SQO');
         }
     }),
     dmx.Formatters("boolean", {
