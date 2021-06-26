@@ -56,7 +56,7 @@
         </div>
         <div class="float-right"><span class="badge badge-secondary">{{dluxLoad.data.result.json_metadata.scat()}}</span></div>
       </div>
-      <a href="#detailModal" class="a-1" data-toggle="modal" dmx-on:click="data_detail.select(url)" dmx-bind:onclick="window.history.pushState('{{url}}','{{dluxLoad.data.result.title}}', '/blog/@{{author}}/{{permlink}}');updateModalData('{{dluxLoad.data.result.created}}', '{{dluxLoad.data.result.json_metadata.parseJSON().toString()}}', '{{dluxLoad.data.result.title}}', '{{dluxLoad.data.result.body}}', '{{dluxLoad.data.result.active_votes.toString()}}', '{{dluxLoad.data.result.children.toString()}}', '{{dluxLoad.data.result.total_payout_value}}')">
+      <a href="#detailModal" class="a-1" data-toggle="modal" dmx-on:click="data_detail.select(url)" dmx-bind:onclick="window.history.pushState('{{url}}','{{dluxLoad.data.result.title}}', '/blog/@{{author}}/{{permlink}}');objCheck('{{dluxLoad.data.result.created}}'); updateModalData('{{dluxLoad.data.result.created}}', '{{dluxLoad.data.result.json_metadata.parseJSON().toString()}}', '{{dluxLoad.data.result.title}}', '{{dluxLoad.data.result.body}}', '{{dluxLoad.data.result.active_votes.toString()}}', '{{dluxLoad.data.result.children.toString()}}', '{{dluxLoad.data.result.total_payout_value}}')">
         <h5 class="card-title mt-2 text-center text-capitalize">{{dluxLoad.data.result.title}}</h5>
         <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{dluxLoad.data.result.json_metadata.parseJSON().picFind()}}" />
         <div class="card-body">
@@ -156,6 +156,10 @@
 ?>
 <script>
 var modalData = {}
+function objCheck(obj){
+console.log(obj)
+console.log( JSON.parse(obj.replace(/&QO/g, '"').replace(/&SQO/g, "'")))
+}
 function updateModalData(created, json_metadata, title, body, active_votes, children, total_payout_value){
   modalData = {
     created,
