@@ -149,11 +149,11 @@ var modalData = {}
 function updateModalData(created, json_metadata, title, body, active_votes, children, total_payout_value){
   modalData = {
     created,
-    json_metadata: JSON.parse(json_metadata),
+    json_metadata: JSON.parse(json_metadata.replace(/&QO/g, '"')),
     title,
     body,
-    active_votes: JSON.parse(active_votes),
-    children: JSON.parse(children),
+    active_votes: JSON.parse(active_votes.replace(/&QO/g, '"')),
+    children: JSON.parse(children.replace(/&QO/g, '"')),
     total_payout_value
   }
 }
