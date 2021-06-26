@@ -42,7 +42,7 @@
           <div class="float-left" ><a dmx-bind:href="/@{{author}}"><img dmx-bind:src="https://images.hive.blog/u/{{author}}/avatar" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
           <div class="float-left">
             <p class="mt-0 mb-0 text-muted text-semibold"><a dmx-bind:href="/@{{author}}" class="a-1">{{author}}<span class="ml-2 badge badge-pill badge-light">{{author_reputation.toString().rep()}}</span></a></p>
-            <small class="text-muted">{{created.formatDate("MMM dd, yyyy")}}</small></div>
+            <small class="text-muted">{{dluxLoad.data.result.created.formatDate("MMM dd, yyyy")}}</small></div>
         </div>
         <div class="float-right"><span class="badge badge-secondary">{{dluxLoad.data.result.json_metadata.scat()}}</span></div>
       </div>
