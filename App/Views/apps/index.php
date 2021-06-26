@@ -15,9 +15,9 @@
 </head>
 
 <body class="d-flex flex-column h-100 padme-t70" id="index" is="dmx-app">
-<dmx-api-datasource id="dluxList" is="dmx-fetch" url="https://dluxdata.herokuapp.com/new"></dmx-api-datasource>
-<!-- <dmx-api-datasource id="dluxGetContent" is="dmx-fetch" url="https://token.dlux.io/api/condenser_api/get_content?author=dlux-io&permlink=testing-dlux-vr"></dmx-api-datasource> -->
-// new | hot | trending
+<dmx-api-datasource id="dluxList" is="dmx-fetch" url="https://dluxdata.herokuapp.com/new"></dmx-api-datasource> // new | hot | trending
+<!--<dmx-api-datasource id="dluxGetContent" is="dmx-fetch" url="https://token.dlux.io/api/condenser_api/get_content?author=dlux-io&permlink=testing-dlux-vr"></dmx-api-datasource>-->
+
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
@@ -34,8 +34,8 @@
       <div class="col-md-4 text-center m-auto"> <a class="btn btn-primary btn-lg m-1 btn-1" href="/docs" role="button">Learn<i class="fas fa-shapes ml-2"></i></a><a class="btn btn-primary btn-lg m-1 btn-1" href="/new" role="button">Create<i class="fas fa-plus-circle ml-2"></i></a></div>
     </div>
   </div>
-  <div class="card-columns p-3" id="blogResult" is="dmx-repeat" dmx-bind:repeat="dluxList.data.result">
-	  <dmx-api-datasource id="dluxLoad" is="dmx-fetch" dmx-bind:url="https://dluxdata.herokuapp.com/api/condenser_api/get_content?author={{author}}&permlink={{permlink}}"></dmx-api-datasource>
+  <div class="card-columns p-3" id="dluxCards" is="dmx-repeat" dmx-bind:repeat="dluxList.data.result">
+    <dmx-api-datasource id="dluxLoad" is="dmx-fetch" dmx-bind:url="https://dluxdata.herokuapp.com/api/condenser_api/get_content?author={{author}}&permlink={{permlink}}"></dmx-api-datasource>
     <div class="card text-white bg-dark mt-2 mb-3">
       <div class="card-header">
         <div class="d-inline-block">
@@ -57,29 +57,29 @@
         <a dmx-bind:href="{{url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch" target="_blank">Launch App</a>
       </center>
       <div class="card-footer">
-               <div class="collapse" dmx-bind:id="vote{{dluxLoad.data.result.post_id}}">
-                 <form id="voteForm">
-					<div class="d-flex align-items-center text-white-50">
- 					  <div>
-                         <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{dluxLoad.data.result.post_id}}" dmx-bind:onclick="vote('{{dluxLoad.data.result.author}}','{{dluxLoad.data.result.permlink}}','slider{{dluxLoad.data.result.post_id}}')">100%</button>
-                         <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{dluxLoad.data.result.post_id}}"><span class="close text-white">×</span></button>
-					  </div>
-				      <div class="flex-fill mx-2">
-			            <p class="my-1">
-							<input type="range" class="form-control-range" step="0.01" value="100" dmx-bind:id="slider{{dluxLoad.data.result.post_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxLoad.data.result.post_id}}','slider{{dluxLoad.data.result.post_id}}');">
-						  </p>
-					</div>
-						<div>
-			            <p class="my-0"><span class="mr-1"  id="commentVal">0</span><i class="ml-1 fab fa-fw fa-hive"></i></p>
-						</div>
-                   </div>
-                 </form>
-               </div> 
-               <div class="d-flex align-items-center my-2">
-                 <div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{dluxLoad.data.result.post_id}}"><i class="fas fa-heart fa-fw mr-1"></i></a>{{dluxLoad.data.result.active_votes.countUpVotes()}} <i class="fas fa-comment fa-fw ml-2 mr-1"></i>{{dluxLoad.data.result.children}}</div>
-                 <div class="ml-auto">{{dluxLoad.data.result.total_payout_value}}<i class="ml-1 fab fa-fw fa-hive"></i></div>
-               </div>
-           </div>
+        <div class="collapse" dmx-bind:id="vote{{dluxLoad.data.result.id}}">
+          <form id="voteForm">
+            <div class="d-flex align-items-center text-white-50">
+              <div>
+                <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{dluxLoad.data.result.id}}" dmx-bind:onclick="vote('{{dluxLoad.data.result.author}}','{{dluxLoad.data.result.permlink}}','slider{{dluxLoad.data.result.id}}')">100%</button>
+                <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{dluxLoad.data.result.id}}"><span class="close text-white">×</span></button>
+              </div>
+              <div class="flex-fill mx-2">
+                <p class="my-1">
+                  <input type="range" class="form-control-range" step="0.01" value="100" dmx-bind:id="slider{{dluxLoad.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{dluxLoad.data.result.id}}','slider{{dluxLoad.data.result.id}}');">
+                </p>
+              </div>
+              <div>
+                <p class="my-0"><span class="mr-1"  id="commentVal">0</span><i class="ml-1 fab fa-fw fa-hive"></i></p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="d-flex align-items-center my-2">
+          <div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{dluxLoad.data.result.id}}"><i class="fas fa-heart fa-fw mr-1"></i></a>{{dluxLoad.data.result.active_votes.countUpVotes()}} <i class="fas fa-comment fa-fw ml-2 mr-1"></i>{{dluxLoad.data.result.children}}</div>
+          <div class="ml-auto">{{dluxLoad.data.result.total_payout_value}}<i class="ml-1 fab fa-fw fa-hive"></i></div>
+        </div>
+      </div>
     </div>
   </div>
   <dmx-data-detail id="data_detail" dmx-bind:data="dluxList.data.result" key="url">
@@ -99,25 +99,25 @@
               </div>
             </div>
             <a dmx-bind:href="/blog/@{{data_detail.data.author}}/{{data_detail.data.permlink}}" class="text-white">
-              <h3 class="card-title mt-2 text-center text-capitalize p-2">{{blogResult[2].dluxLoad.data.title}}</h3>
+              <h3 class="card-title mt-2 text-center text-capitalize p-2">{{blogResult[10].data.result.title}}</h3>
             </a> <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{data_detail.data.json_metadata.parseJSON().picFind()}}" />
             <div class="card-body">
-              <p class="p-2">{{data_detail2.data.body.removeMD()}}</p>
+              <p class="p-2">{{data_detail.data.body.removeMD()}}</p>
             </div>
             <center>
               <a dmx-bind:href="{{data_detail.data.url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch">Launch App</a>
             </center>
             <div class="card-footer">
-              <div class="collapse" dmx-bind:id="vote{{post_id}}">
+              <div class="collapse" dmx-bind:id="vote{{id}}">
                 <form id="voteForm">
                   <div class="d-flex align-items-center text-white-50">
                     <div>
-                      <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{post_id}}" dmx-bind:onclick="vote('{{comment.author}}','{{data_detail.data.comment.permlink}}','slider{{post_id}}')">100%</button>
-                      <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><span class="close text-white">×</span></button>
+                      <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{id}}" dmx-bind:onclick="vote('{{comment.author}}','{{data_detail.data.comment.permlink}}','slider{{id}}')">100%</button>
+                      <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{id}}"><span class="close text-white">×</span></button>
                     </div>
                     <div class="flex-fill mx-2">
                       <p class="my-1">
-                        <input type="range" class="form-control-range" step="0.01" value="100" dmx-bind:id="slider{{post_id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{post_id}}','slider{{post_id}}');">
+                        <input type="range" class="form-control-range" step="0.01" value="100" dmx-bind:id="slider{{id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{id}}','slider{{id}}');">
                       </p>
                     </div>
                     <p class="my-0"><span class="mr-1"  id="commentVal">0</span><i class="ml-1 fab fa-fw fa-hive"></i></p>
@@ -125,7 +125,7 @@
                 </form>
               </div>
               <div class="d-flex align-items-center my-2">
-                <div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{post_id}}"><i class="fas fa-heart mr-1"></i></a>{{data_detail.data.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{data_detail.data.children}}</div>
+                <div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{id}}"><i class="fas fa-heart mr-1"></i></a>{{data_detail.data.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{data_detail.data.children}}</div>
                 <div class="ml-auto"> {{data_detail.data.total_payout_value}}<i class="ml-1 fab fa-fw fa-hive"></i></div>
               </div>
             </div>
