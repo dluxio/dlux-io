@@ -92,17 +92,17 @@
                 <div class="float-left" ><a dmx-bind:href="/@{{data_detail.data.author}}"><img dmx-bind:src="https://images.hive.blog/u/{{data_detail.data.author}}/avatar" alt="" class="rounded-circle bg-light img-fluid mr-2 cover author-img"></a></div>
                 <div class="float-left">
                   <p class="mt-0 mb-0 text-muted text-semibold"><a dmx-bind:href="/@{{data_detail.data.author}}" class="a-1">{{data_detail.data.author}}<span class="ml-2 badge badge-pill badge-light">{{data_detail.data.author_reputation.toString().rep()}}</span></a></p>
-                  <small class="text-muted">{{data_detail.data.created.formatDate("MMM dd, yyyy")}}</small></div>
+                  <small class="text-muted">{{modalData.created.formatDate("MMM dd, yyyy")}}</small></div>
               </div>
-              <div class="float-right p-2"><span class="badge badge-secondary"> {{blogResult[0].dluxLoad.data.json_metadata.scat()}}</span>
+              <div class="float-right p-2"><span class="badge badge-secondary"> {{modalData.json_metadata.scat()}}</span>
                 <button type="button" class="close text-white ml-3" data-dismiss="modal" aria-label="Close" onclick="window.history.back();"><span aria-hidden="true">×</span></button>
               </div>
             </div>
             <a dmx-bind:href="/blog/@{{data_detail.data.author}}/{{data_detail.data.permlink}}" class="text-white">
-              <h3 class="card-title mt-2 text-center text-capitalize p-2">{{blogResult[10].data.result.title}}</h3>
+              <h3 class="card-title mt-2 text-center text-capitalize p-2">{{modalData.title}}</h3>
             </a> <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{data_detail.data.json_metadata.parseJSON().picFind()}}" />
             <div class="card-body">
-              <p class="p-2">{{data_detail.data.body.removeMD()}}</p>
+              <p class="p-2">{{modalData.body.removeMD()}}</p>
             </div>
             <center>
               <a dmx-bind:href="{{data_detail.data.url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch">Launch App</a>
@@ -125,8 +125,8 @@
                 </form>
               </div>
               <div class="d-flex align-items-center my-2">
-                <div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{id}}"><i class="fas fa-heart mr-1"></i></a>{{data_detail.data.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{data_detail.data.children}}</div>
-                <div class="ml-auto"> {{data_detail.data.total_payout_value}}<i class="ml-1 fab fa-fw fa-hive"></i></div>
+                <div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{id}}"><i class="fas fa-heart mr-1"></i></a>{{modalData.active_votes.countUpVotes()}} <i class="fas fa-comment ml-2 mr-1"></i>{{modalData.children}}</div>
+                <div class="ml-auto"> {{modalData.total_payout_value}}<i class="ml-1 fab fa-fw fa-hive"></i></div>
               </div>
             </div>
           </div>
