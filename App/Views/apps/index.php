@@ -26,7 +26,17 @@
 <main role="main" class="flex-shrink-0">
   <div class="container-fluid">
     <div class="row mt-3">
-      <div class="col-md-8 text-white text-center">
+		<div class="col-md-1 text-white m-auto text-center">
+		<a id="pairmenustatus"class="btn btn-outline-primary btn-lg dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">NEW
+    			<span class="sr-only">Toggle Dropdown</span>
+  				</a>
+  				<div class="dropdown-menu">
+    				<a id="hivepairselect" class="dropdown-item">NEW</a>
+    				<a id="hbdpairselect" class="dropdown-item">HOT</a>
+					<a id="hbdpairselect" class="dropdown-item">TRENDING</a>
+				</div>
+	  </div>
+      <div class="col-md-7 text-white text-center">
         <div class="display-4">Virtual Reality</div>
         <p class="lead">Responsive WebXR across mobile, desktop, and headset.<br>
           <a href="/vr" class="lead" target="_blank"><i class="fas fa-vr-cardboard mr-2"></i>Enter Metaverse</a></p>
