@@ -165,6 +165,9 @@ dmx.Formatters("global", {
                 })
             );
         },
+        toString: function (i){
+            return JSON.stringify(i)
+        },
         sort: function(t, r) {
             return t.slice(0).sort(function(t, n) {
                 return (
@@ -934,6 +937,9 @@ dmx.Formatters("global", {
                     */
                 return '/img/dluxdefault.svg'
             }
+        },
+        toString: function (i){
+            return JSON.stringify(i)
         }
     }),
     dmx.Formatters("boolean", {
