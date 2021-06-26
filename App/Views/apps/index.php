@@ -46,7 +46,7 @@
         </div>
         <div class="float-right"><span class="badge badge-secondary">{{dluxLoad.data.result.json_metadata.scat()}}</span></div>
       </div>
-      <a href="#detailModal" class="a-1" data-toggle="modal" dmx-on:click="data_detail.select(url)" dmx-bind:onclick="window.history.pushState('{{url}}','{{title}}', '/blog/@{{author}}/{{permlink}}');">
+      <a href="#detailModal" class="a-1" data-toggle="modal" dmx-on:click="data_detail.select(url)" dmx-bind:onclick="window.history.pushState('{{url}}','{{title}}', '/blog/@{{author}}/{{permlink}}');updateModalData({created:'{{dluxLoad.data.result.created}}', json_metadata:'{{dluxLoad.data.result.json_metadata}}', title:'{{dluxLoad.data.result.title}}', body:'{{dluxLoad.data.result.body}}', active_votes:'{{dluxLoad.data.result.active_votes}}', children:'{{dluxLoad.data.result.children}}', total_payout_value:'{{dluxLoad.data.result.total_payout_value}}'})">
         <h5 class="card-title mt-2 text-center text-capitalize">{{dluxLoad.data.result.title}}</h5>
         <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{dluxLoad.data.result.json_metadata.parseJSON().picFind()}}" />
         <div class="card-body">
@@ -61,7 +61,7 @@
           <form id="voteForm">
             <div class="d-flex align-items-center text-white-50">
               <div>
-                <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{dluxLoad.data.result.id}}" dmx-bind:onclick="vote('{{dluxLoad.data.result.author}}','{{dluxLoad.data.result.permlink}}','slider{{dluxLoad.data.result.id}}')">100%</button>
+                <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{dluxLoad.data.result.id}}" dmx-bind:onclick="vote('{{dluxLoad.data.result.author}}','{{dluxLoad.data.result.permlink}}','slider{{dluxLoad.data.result.id}}');">100%</button>
                 <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{dluxLoad.data.result.id}}"><span class="close text-white">×</span></button>
               </div>
               <div class="flex-fill mx-2">
@@ -145,7 +145,10 @@
    include_once($path);
 ?>
 <script>
-
+var modalData = {}
+function updateModalData(obj){
+  modalData = obj
+}
 function updateVoteSubmit(id,val) {
     document.getElementById(id).innerHTML = document.getElementById(val).value + '%'; 
 }
