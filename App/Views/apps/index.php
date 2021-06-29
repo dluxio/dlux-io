@@ -161,7 +161,7 @@ function updateModalData(created, json_metadata, title, body, active_votes, chil
     author,
     permlink,
     created,
-    json_metadata: scat(JSON.parse(json_metadata.replace(/&QO/g, '"').replace(/&SQO/g, "'"))),
+    json_metadata: JSON.parse(json_metadata.replace(/&QO/g, '"').replace(/&SQO/g, "'")),
     title,
     body: body.replace(/&QO/g, '"').replace(/&SQO/g, "'").replace(/&OPR/g, '(').replace(/&CPR/g, ')'),
     active_votes: JSON.parse(active_votes.replace(/&QO/g, '"').replace(/&SQO/g, "'")),
@@ -169,7 +169,7 @@ function updateModalData(created, json_metadata, title, body, active_votes, chil
     total_payout_value
   }
   document.getElementById('modal_created').innerHTML = formatDate(modalData.created, "MMM dd, yyyy") //.formatDate("MMM dd, yyyy")
-  document.getElementById('modal_scat').innerHTML = modalData.json_metadata // {{modalData.json_metadata.scat()}}
+  document.getElementById('modal_scat').innerHTML = scat(modalData.json_metadata) // {{modalData.json_metadata.scat()}}
   document.getElementById('modal_body').innerHTML = removeMD(modalData.body) //{{modalData.body.removeMD()}}
   document.getElementById('modal_title').innerHTML = modalData.title // {{modalData.title}}
   document.getElementById('modal_author').innerHTML = '@' + modalData.author //{{data_detail.data.author}}
@@ -208,7 +208,7 @@ function picFind(json) {
             }
         }
 function scat (s) {
-                let t = JSON.parse(s)
+                let t = s
                 if (t.vrHash) return 'VR'
                 else if (t.arHash) return 'AR'
                 else if (t.appHash) return 'dAPP'
