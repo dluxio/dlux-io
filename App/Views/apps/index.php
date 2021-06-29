@@ -176,7 +176,7 @@ function updateModalData(created, json_metadata, title, body, active_votes, chil
   document.getElementById('modal_author').href = `/@${modalData.author}`
   document.getElementById('modal_author_href1').href = `/@${modalData.author}`
   document.getElementById('modal_author_img').src = `https://images.hive.blog/u/${modalData.author}/avatar`
-  document.getElementById('modal_total_payout').innerHTML = modalData. ' ' + modalData.total_payout_value //{{modalData.total_payout_value}}
+  document.getElementById('modal_total_payout').innerHTML = ' ' + modalData.total_payout_value //{{modalData.total_payout_value}}
   document.getElementById('modal_blog_link').href = `/blog/@${modalData.author}/${modalData.permlink}`
   document.getElementById('modal_pic').src = picFind(modalData.json_metadata)
   document.getElementById('modal_blog_link').href = `/blog/@${modalData.author}/${modalData.permlink}`
