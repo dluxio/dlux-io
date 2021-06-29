@@ -437,7 +437,7 @@ dmx.Formatters("global", {
                 else return 'BLOG'
             },
             removeQuotes: function (i){
-                return i.replace(/"/g, '\&QO').replace(/'/g, '\&SQO');
+                return i.replace(/"/g, '\&QO').replace(/'/g, '\&SQO').replace(/\(/g, '\&OPR').replace(/\)/g, '\&CPR');
             },
             parseJSON: function(g) {
                 return JSON.parse(g)
