@@ -257,7 +257,7 @@ function scat (s) {
                 }
                 return output;
             }
-function formatData(t, n) {
+function formatDate(t, n) {
                 var r = h(t);
                 if ("Invalid Date" == r.toString()) return null;
                 var e = function(t) {
