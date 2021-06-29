@@ -163,7 +163,7 @@ function updateModalData(created, json_metadata, title, body, active_votes, chil
     created,
     json_metadata: scat(JSON.parse(json_metadata.replace(/&QO/g, '"').replace(/&SQO/g, "'"))),
     title,
-    body = body.replace(/&QO/g, '"').replace(/&SQO/g, "'").replace(/&OPR/g, '(').replace(/&CPR/g, ')'),
+    body = body //.replace(/&QO/g, '"').replace(/&SQO/g, "'").replace(/&OPR/g, '(').replace(/&CPR/g, ')'),
     active_votes: JSON.parse(active_votes.replace(/&QO/g, '"').replace(/&SQO/g, "'")),
     children: JSON.parse(children.replace(/&QO/g, '"').replace(/&SQO/g, "'")),
     total_payout_value
