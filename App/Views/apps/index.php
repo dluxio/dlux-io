@@ -168,7 +168,7 @@ function updateModalData(created, json_metadata, title, body, active_votes, chil
     children: JSON.parse(children.replace(/&QO/g, '"').replace(/&SQO/g, "'")),
     total_payout_value
   }
-  document.getElementById('modal_created').innerHTML = formatDate(modalData.created, "MMM dd, yyyy")modalData.created //.formatDate("MMM dd, yyyy")
+  document.getElementById('modal_created').innerHTML = formatDate(modalData.created, "MMM dd, yyyy") //.formatDate("MMM dd, yyyy")
   document.getElementById('modal_scat').innerHTML = modalData.json_metadata // {{modalData.json_metadata.scat()}}
   document.getElementById('modal_body').innerHTML = removeMD(modalData.body) //{{modalData.body.removeMD()}}
   document.getElementById('modal_title').innerHTML = modalData.title // {{modalData.title}}
