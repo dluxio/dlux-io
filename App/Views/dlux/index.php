@@ -98,7 +98,7 @@
             console.log(event.data)
             let data = event.data
             if (typeof(window[data.func]) == "function") {
-                if (data.func == 'advPost' || data.func == 'vote' || data.func == 'signDecode' || data.func == 'signEncode' || data.func == 'follow' || data.func == 'aVote' || data.func == 'sendLink' || data.func == 'iloaded' || data.func == 'passGenerateHotLink' || data.func == 'comment' || data.func == 'reqsign') {
+                if (data.func == 'advPost' || data.func == 'vote' || data.func == 'signDecode' || data.func == 'signEncode' || data.func == 'follow' || data.func == 'aVote' || data.func == 'sendLink' || data.func == 'iloaded' || data.func == 'passGenerateHotLink' || data.func == 'comment' || data.func == 'reqsign' || data.func == 'reqsigns') {
                     window[data.func].call(null, data.message);
                 }
             }
@@ -169,6 +169,20 @@
         function reqsign(op) {
             if (window.hive_keychain) {
                 hive_keychain.requestBroadcast(op[1][1], [op[0]], op[1][0], function(response) {
+                    console.log(response);
+                    target.postMessage({
+                        'func': 'keychainResponse',
+                        'message': response
+                    }, "*");
+                });
+            }
+        }
+
+        function reqsigns(op) {
+            if (window.hive_keychain) {
+                let account = op[1][1] || iAm
+                let type = op[1][0] || 'posting'
+                hive_keychain.requestBroadcast(account, op[0], type, function(response) {
                     console.log(response);
                     target.postMessage({
                         'func': 'keychainResponse',
