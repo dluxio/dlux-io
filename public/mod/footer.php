@@ -40,7 +40,7 @@
 function hiveKeychain () {
     let username = document.getElementById('hk-username').value
     console.log('value: ' + username)
-    sessionStorage.setItem("user", username);
+    localStorage.setItem("user", username);
     let session = new Dluxsession(hive, {hiveidip:username})
 } 
    window.addEventListener('load', function () {

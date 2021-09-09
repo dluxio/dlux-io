@@ -55,7 +55,7 @@ function updateprogress(id) {
 
  function checkCookie() {
      console.log('Checking for login')
-     user = sessionStorage.getItem('user');
+     user = localStorage.getItem('user');
      console.log('user=' + user)
      if (user != null) {
          propCheck(user)
@@ -75,7 +75,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
          })
          .catch(e=>console.log(e))
 
-         let account = sessionStorage.getItem('account')
+         let account = localStorage.getItem('account')
          if (account != 'undefined') {
              console.log(account)
              dlux = new Dluxsession({ hiveid: user, account });
@@ -466,7 +466,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
      return new Promise((resolve, reject) => {
          var title = document.getElementById(titleid).value
          var body = document.getElementById(bodyid).value
-         var author = sessionStorage.getItem('user')
+         var author = localStorage.getItem('user')
          Dluxsession.hive_sign([author, [
                  ['comment', {
                      author,
@@ -493,7 +493,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  }
 
  function logout() {
-     sessionStorage.clear()
+     localStorage.clear()
      $('.active-session').addClass('d-none');
      $('.no-session').removeClass('d-none');
      user = ''
@@ -569,7 +569,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
          return new Promise((resolve, reject) => {
              if (!user) {
                  console.log('Fresh login')
-                 let ids = sessionStorage.getItem("user")
+                 let ids = localStorage.getItem("user")
                  let idPromises = [Dluxsession.handshake(ids)]
                  Promise.all(idPromises)
                      .then(r => {
@@ -586,7 +586,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                                  let storables = ['email', 'hiveid', 'jwt', 'account']
                                  for (var i = 0; i < storables.length; i++) {
                                      console.log(itr[storables[i]])
-                                     window.sessionStorage.setItem(storables[i], JSON.stringify(itr[storables[i]]))
+                                     window.localStorage.setItem(storables[i], JSON.stringify(itr[storables[i]]))
                                  }
                                  loginDismiss()
                                  setCookie('user', itr.hiveid, 5)

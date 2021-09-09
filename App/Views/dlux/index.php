@@ -50,7 +50,7 @@
             }
             const subauthor = author.replace('.', '-')
             ipfsdomain = `https://${subauthor}.ipfs.dlux.io`;
-            location.href = ipfsdomain + `${vars}&hash=${hashy}&author=${author}&permlink=${permlink}&user=${sessionStorage.getItem('user')}`
+            location.href = ipfsdomain + `${vars}&hash=${hashy}&author=${author}&permlink=${permlink}&user=${localStorage.getItem('user')}`
             
         });
         if (isIOS()) {
@@ -160,8 +160,8 @@
             } else {}
         }
         userLoggedIn = 'Guest'
-        if (userLoggedIn == 'Guest' && sessionStorage.getItem('user')) {
-            userLoggedIn = sessionStorage.getItem('user')
+        if (userLoggedIn == 'Guest' && localStorage.getItem('user')) {
+            userLoggedIn = localStorage.getItem('user')
         } else if (window.hive_keychain) {
             iAm = prompt('Hive Username for Hive Keychain', 'no @')
         }
@@ -196,7 +196,7 @@
         hive.api.getContent(author, permlink, function(err, result) {
       var target = document.getElementById('theIframe').contentWindow
       var un = 'Guest'
-      if(sessionStorage.getItem('user')){un = sessionStorage.getItem('user')}
+      if(localStorage.getItem('user')){un = localStorage.getItem('user')}
       target.postMessage({
       'func': 'iAm',
       'message': un,
