@@ -58,8 +58,9 @@ function updateprogress(id) {
      user = localStorage.getItem('user');
      console.log('user=' + user)
      if (user != null) {
-         propCheck(user)
-         .then(r=>{
+/*
+        propCheck(user)
+         .then(r=> {
             if (r.one71){
                 var el = document.getElementById('propVotePlead')
                 el.parentElement.removeChild(el)
@@ -72,9 +73,10 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
 		<button class="btn btn-danger ml-3" onclick="voteProp([171],'${user}')">Vote Now</button>
 	</div>`
             }
+            
          })
          .catch(e=>console.log(e))
-
+*/
          let account = localStorage.getItem('account')
          if (account != 'undefined') {
              console.log(account)
