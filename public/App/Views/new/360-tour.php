@@ -240,7 +240,7 @@
           result.json_metadata = JSON.stringify(custom_json)
       var target = document.getElementById('aframePreview').contentWindow
       var un = 'Guest'
-      if(sessionStorage.getItem('user')){un = sessionStorage.getItem('user')}
+      if(localStorage.getItem('user')){un = localStorage.getItem('user')}
       target.postMessage({
       'func': 'iAm',
       'message': un,
@@ -349,7 +349,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
 		}
 	}
 
-	if(sessionStorage.getItem('user')){document.getElementById('username').value = sessionStorage.getItem('user')}
+	if(localStorage.getItem('user')){document.getElementById('username').value = localStorage.getItem('user')}
 
 	function post(){
 		var tags = document.getElementById('tags').value.toLowerCase().split(',')
@@ -360,17 +360,17 @@ for(var i = 0; i < custom_json.assets.length; i++){
 			}
 		}
 		console.log(custom_json.tags)
-		if (sessionStorage.getItem('user')){
+		if (localStorage.getItem('user')){
 			const operations = [["comment", 
                                  {"parent_author": "", 
                                   "parent_permlink": "dlux", 
-                                  "author": sessionStorage.getItem('user'), 
+                                  "author": localStorage.getItem('user'), 
                                   "permlink": permlink, 
                                   "title": document.getElementById('title').value, 
-                                  "body": simplemde.value() + `\n***\n#### [View in VR @ dlux.io](https://dlux.io/dlux/@${sessionStorage.getItem('user')}/${permlink})\n`, 
+                                  "body": simplemde.value() + `\n***\n#### [View in VR @ dlux.io](https://dlux.io/dlux/@${localStorage.getItem('user')}/${permlink})\n`, 
                                   "json_metadata": JSON.stringify(custom_json)}], 
                                 ["comment_options", 
-                                 {"author": sessionStorage.getItem('user'), 
+                                 {"author": localStorage.getItem('user'), 
                                   "permlink": permlink, 
                                   "max_accepted_payout": "1000000.000 HBD", 
                                   "percent_hbd": 10000, 
@@ -381,7 +381,7 @@ for(var i = 0; i < custom_json.assets.length; i++){
                                     {"beneficiaries":
                                      [{"account":"dlux-io",
                                        "weight":1000}]}]]}]]
-            hive_keychain.requestBroadcast(sessionStorage.getItem('user'), operations, 'active', function(response) {
+            hive_keychain.requestBroadcast(localStorage.getItem('user'), operations, 'active', function(response) {
               console.log(response);
             });
 		} else {

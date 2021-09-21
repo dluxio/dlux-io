@@ -58,7 +58,7 @@
       let username = document.getElementById('sk-username').value
       console.log('value: ' + username)
       hive.api.setOptions({ url: "https://anyx.io" })
-	sessionStorage.setItem("user", username);
+	localStorage.setItem("user", username);
 	console.log('session set')
       let session = new Dluxsession(hive, {hiveidip:username})
       	console.log(session)
