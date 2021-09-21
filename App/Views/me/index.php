@@ -456,7 +456,7 @@
 						  	 <div class="d-flex col-12 text-center " style="background-color: purple"><h2>Legendary</h2></div>
 					
 						   
-							   <div class="d-flex flex-wrap flex-md-nowrap  justify-content-around py-3 my-0 col-12" style="background-color: #8E918F; color: black;">
+							   <div class="d-flex flex-wrap flex-sm-nowrap  justify-content-around py-3 my-0 col-12" style="background-color: #8E918F; color: black;">
 								  
 							   	  <div class="d-flex flex-wrap justify-content-center m-1" style="border: 2px solid #6C1112 !important; border-radius: .5em;">
 									<div class="d-flex m-2">COLOR 01</div>
