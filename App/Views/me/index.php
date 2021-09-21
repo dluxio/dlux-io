@@ -11,8 +11,8 @@
 <script src="/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/dmxAppConnect/dmxMoment.js"></script>
 <script src="/dmxAppConnect/dmxFormatter.js"></script>
-<script src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
-<script src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
+<script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <!--page specific-->
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
@@ -391,7 +391,7 @@
               <div class="card-header text-center" style="background: purple">
                 <h5 class="card-title">Founders Token <span style="color:aqua;">{{uid}}</span></h5>
               </div>
-              <img class="card-img-top" src="/img/gold-cube.jpeg" dmx-bind:alt="{{script}}">
+              <img class="card-img-top" src="/img/dlux-hive-logo.svg" dmx-bind:alt="{{script}}">
               <div class="card-body">
                 <p class="card-text">Behold! The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for...</p>
 					</div></a>
@@ -422,7 +422,7 @@
               </div>
 				  <div class="card-body row d-flex">
 					  
-              <div class="col-lg-6"><div class="col-12"><img src="/img/gold-cube.jpeg" class="card-img-top" dmx-bind:alt="{{invnetory_detail.data.script}}"></div></div>
+              <div class="col-lg-6"><div class="col-12"><img src="/img/dlux-hive-logo.svg" class="card-img-top" dmx-bind:alt="{{invnetory_detail.data.script}}"></div></div>
               <div class="col-lg-6">
 				  <div id="accordion" class="col-12">
   					<div class="card bg-dark text-white">
@@ -458,19 +458,19 @@
 						   
 							   <div class="d-flex justify-content-around py-3 my-0 col-12" style="background-color: #8E918F; color: black;">
 								  
-							   	  <div class="d-flex flex-column text-center align-items-center m-1" style="border: 2px solid #6C1112 !important; border-radius: .5em;">
+							   	  <div class="d-flex flex-wrap justify-content-center m-1" style="border: 2px solid #6C1112 !important; border-radius: .5em;">
 									<div class="d-flex m-2">COLOR 01</div>
 									<div class="d-flex col-12" style="background-color: #6C1112">&nbsp;</div>
 									<div class="d-flex m-2">#6C1112</div>
 								  </div>
 								   
-								  <div class="d-flex flex-column text-center align-items-center align-content-stretch m-1" style="border: 2px solid #E7F742 !important; border-radius: .5em;">
+								  <div class="d-flex flex-wrap justify-content-center m-1" style="border: 2px solid #E7F742 !important; border-radius: .5em;">
 									<div class="d-flex m-2">COLOR 02</div>
 									<div class="d-flex col-12" style="background-color: #E7F742">&nbsp;</div>
 									<div class="d-flex m-2">#E7F742</div>  
 								  </div>
 								   
-								  <div class="d-flex flex-column text-center align-items-center m-1" style="border: 2px solid #774323 !important; border-radius: .5em;">
+								  <div class="d-flex flex-wrap justify-content-center m-1" style="border: 2px solid #774323 !important; border-radius: .5em;">
 									<div class="d-flex m-2">COLOR 03</div>
 									<div class="d-flex col-12" style="background-color: #774323">&nbsp;</div>
 									<div class="d-flex m-2">#774323</div>
