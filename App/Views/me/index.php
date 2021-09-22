@@ -9,6 +9,7 @@
 ?>
 <!--dmxAppConnect-->
 <script src="/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/js/jquery-3.4.1.min.js"></script>
 <script src="/dmxAppConnect/dmxMoment.js"></script>
 <script src="/dmxAppConnect/dmxFormatter.js"></script>
 <script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
@@ -386,15 +387,15 @@
         <div class="container">
           <div class="alert alert-warning mt-5 " role="alert"> Inventory is under development and coming soon. <span class="float-right"><a href="#" onClick="toggleInventory()">🐇</a></span></div>
           <div class="card-columns cc-3 pt-5 d-none" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
-            <div class="card text-white bg-dark ">
-				<a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_detail.select(uid)">
+            <div class="card text-white bg-dark "> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_detail.select(uid)">
               <div class="card-header text-center" style="background: purple">
                 <h5 class="card-title">Founders Token <span style="color:aqua;">{{uid}}</span></h5>
               </div>
               <img class="card-img-top" src="/img/dlux-hive-logo.svg" dmx-bind:alt="{{script}}">
               <div class="card-body">
                 <p class="card-text">Behold! The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for...</p>
-					</div></a>
+              </div>
+              </a>
               <div class="card-footer">
                 <div class="d-flex flex-wrap justify-content-between">
                   <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1" data-toggle="collapse" dmx-bind:data-target="#{{uid}}footer" aria-expanded="false" dmx-bind:aria-controls="{{uid}}footer">Actions</button>
@@ -411,286 +412,235 @@
               </div>
             </div>
           </div>
-			<dmx-data-detail id="inventory_detail" dmx-bind:data="inventorydata.data.result" key="uid">
-				<div class="modal fade" id="inventoryModal" tabindex="11" role="dialog" aria-hidden="true">
-			<div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
-            <div class="modal-content bg-dark text-white">
-              <div class="card text-white bg-dark ">
-				  
-              <div class="card-header text-center" style="background: purple">
-                <h5 class="card-title">Founders Token <span style="color:aqua;">{{inventory_detail.data.uid}}</span></h5>
-              </div>
-				  <div class="card-body row d-flex">
-					  
-              <div class="col-lg-6"><div class="col-12"><img src="/img/dlux-hive-logo.svg" class="card-img-top" dmx-bind:alt="{{invnetory_detail.data.script}}"></div></div>
-              <div class="col-lg-6">
-				  <div id="accordion" class="col-12">
-  					<div class="card bg-dark text-white">
-  					  <div class="card-header" id="headingDescription">
-    					  <h5 class="mb-0">
-      						  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseDescription">
-         						 DESCRIPTION
-        						</button>
-      					</h5>
-  					  </div>
-
-   					 <div id="collapseDescription" class="collapse" aria-labelledby="headingDescription" data-parent="#accordion">
-   					   <div class="card-body">
-        				<p class="card-text">Behold! The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for 100 DLUX (your NFT will be burned and 100 DLUX will be placed in your wallet).</p>
-						   {{inventory_detail.data.uid}}
-     					 </div>
-   					 </div>
-  					</div>
-					  <div class="card bg-dark text-white">
-  					  <div class="card-header" id="headingAttributes">
-    					  <h5 class="mb-0">
-      						  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseAttributes" aria-expanded="false" aria-controls="collapseAttributes">
-         						 ATTRIBUTES
-        						</button>
-      					</h5>
-  					  </div>
-   					 <div id="collapseAttributes" class="collapse" aria-labelledby="headingAttributes" data-parent="#accordion">
-   					   <div class="card-body">
-						   <div class="d-flex flex-wrap rounded bg-darker" style="border: 1.5px solid purple">
-							   
-						  	 <div class="d-flex col-12 text-center " style="background-color: purple"><h2>Legendary</h2></div>
-					
-						   
-							   <div class="d-flex flex-wrap flex-sm-nowrap  justify-content-around py-3 my-0 col-12" style="background-color: #8E918F; color: black;">
-								  
-							   	  <div class="d-flex flex-wrap justify-content-center m-1" style="border: 2px solid #6C1112 !important; border-radius: .5em;">
-									<div class="d-flex m-2">COLOR 01</div>
-									<div class="d-flex col-12" style="background-color: #6C1112">&nbsp;</div>
-									<div class="d-flex m-2">#6C1112</div>
-								  </div>
-								   
-								  <div class="d-flex flex-wrap justify-content-center m-1" style="border: 2px solid #E7F742 !important; border-radius: .5em;">
-									<div class="d-flex m-2">COLOR 02</div>
-									<div class="d-flex col-12" style="background-color: #E7F742">&nbsp;</div>
-									<div class="d-flex m-2">#E7F742</div>  
-								  </div>
-								   
-								  <div class="d-flex flex-wrap justify-content-center m-1" style="border: 2px solid #774323 !important; border-radius: .5em;">
-									<div class="d-flex m-2">COLOR 03</div>
-									<div class="d-flex col-12" style="background-color: #774323">&nbsp;</div>
-									<div class="d-flex m-2">#774323</div>
-								  </div>
-								   
-							   </div>
-							
-						   <div class="d-flex"></div>
-						   <div class="d-flex ml-auto px-3 py-1"><h3>#348</h3><span class="ml-3 small">/4096</span></div>
-     					 
-							   </div>
-						 </div>
-   					 </div>
-  					</div>
- 					 <div class="card bg-dark text-white" style="width: 100">
-  					  <div class="card-header" id="headingMarket">
-      					<h5 class="mb-0">
-        					<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseMarket" aria-expanded="false" aria-controls="collapseMarket">
-         						 MARKET
-        					</button>
-     					 </h5>
-    				</div>
-    				<div id="collapseMarket" class="collapse" aria-labelledby="headingMarket" data-parent="#accordion">
-      					<div class="card-body">
-        					<div class="d-flex align-self-end text-center">
-								<div class="border border-secondary bg-darker mx-auto px-5 py-3 rounded col-12">
-									<div>Rolling Average Market Price (7-days):</div>
-									<div><h1><span style="color: lawngreen">151.24 DLUX</span></h1></div>
-									<hr class="bg-light">
-									<div class="container-fluid">
-										 <ul class="nav nav-pills bg-darker justify-content-center" role="tablist">
-          									<li class="nav-item"> <a class="nav-link " id="tradetab" role="tab" data-toggle="tab" aria-controls="trade" aria-expanded="true" href="#trade">Trade</a></li>
-          									<li class="nav-item"> <a class="nav-link" id="selltab" role="tab" data-toggle="tab" aria-controls="sell" aria-expanded="true" href="#sell">Sell</a></li>
-          									<li class="nav-item"> <a class="nav-link" id="auctiontab" role="tab" data-toggle="tab" aria-controls="auction" aria-expanded="true" href="#auction">Auction</a></li>
-        								</ul>
-										<div class="tab-content">
-      										<div role="tabpanel" class="tab-pane fade show " id="trade" aria-labelledby="tradetab">
-        										
-											  <form class="needs-validation mt-4" novalidate>
-  												<div class="form-row my-2">
-    												<div class="col-12">
-      													<label for="validationSendUsername">Username</label>
-      													<div class="input-group">
-        													<div class="input-group-prepend">
-          														<span class="input-group-text" id="inputGroupPrepend">@</span>
-        													</div>
-        													<input type="text" class="form-control" id="validationSendUsername" aria-describedby="inputGroupPrepend" required>
-       														 <div class="invalid-feedback">
-          														Please enter the username you'd like to trade with.
-       														 </div>
-     													 </div>
-    													</div>
-  													</div>
-												  <div class="form-row my-2">
-    												<div class="col-12">
-      													<label for="validationReceiveItem">Item Hash</label>
-      													<div class="input-group">
-        													<div class="input-group-prepend">
-          														<span class="input-group-text" id="inputGroupPrepend">#</span>
-        													</div>
-        													<input type="text" class="form-control" id="validationReceiveItem" aria-describedby="inputGroupPrepend" required>
-       														 <div class="invalid-feedback">
-          														Please enter an item hash from the users inventory.
-       														 </div>
-     													 </div>
-    													</div>
-  													</div>
-												  <div class="form-row col-12 align-items-center my-2">
-														<div class="form-group form-check">
-   															 <input type="checkbox" class="form-check-input" id="giftTrade">
-    														<label class="form-check-label" for="giftTrade">This is a gift, no item in return</label>
- 														 </div>
-													</div>
-												  <button class="btn btn-info my-2" type="submit">Propose Trade</button>
-												</form>
-
-
+          <dmx-data-detail id="inventory_detail" dmx-bind:data="inventorydata.data.result" key="uid">
+            <div class="modal fade" id="inventoryModal" tabindex="11" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
+                <div class="modal-content bg-dark text-white">
+                  <div class="card text-white bg-dark ">
+                    <div class="card-header text-center" style="background: #9200A6">
+                      <h5 class="card-title">Founders Token <span style="color:aqua;">{{inventory_detail.data.uid}}</span></h5>
+                    </div>
+                    <div class="card-body row d-flex ">
+                      <div class="col-lg-6 px-0 px-sm-2">
+                        <div class="col-12 px-0 px-sm-2"><img src="/img/dlux-hive-logo.svg" class="card-img-top" dmx-bind:alt="{{invnetory_detail.data.script}}"></div>
+                        <div class="small text-muted text-center py-2"><i>{{inventory_detail.data.script}}</i></div>
+                      </div>
+                      <div class="col-lg-6 px-0 px-sm-2">
+                        <div id="accordion" class="col-12 px-0 px-sm-2">
+                          <div class="card bg-dark text-white">
+                            <div class="card-header" id="headingDescription">
+                              <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseDescription"> DESCRIPTION </button>
+                              </h5>
+                            </div>
+                            <div id="collapseDescription" class="collapse" aria-labelledby="headingDescription" data-parent="#accordion">
+                              <div class="card-body">
+                                <p class="card-text">Behold! The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for 100 DLUX (your NFT will be burned and 100 DLUX will be placed in your wallet).</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card bg-dark text-white">
+                            <div class="card-header" id="headingAttributes">
+                              <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseAttributes" aria-expanded="false" aria-controls="collapseAttributes"> ATTRIBUTES </button>
+                              </h5>
+                            </div>
+                            <div id="collapseAttributes" class="collapse" aria-labelledby="headingAttributes" data-parent="#accordion">
+                              <div class="card-body p-0">
+                                <div class="d-flex flex-wrap rounded bg-darker" style="border: 1px solid #9200A6">
+                                  <div class="d-flex col-12 justify-content-center pt-2">
+                                    <h2 style="color: #9200A6">Legendary</h2>
+                                  </div>
+                                  <div class="d-flex flex-wrap flex-sm-nowrap  justify-content-around py-3 my-0 col-12">
+                                    <div class="d-flex flex-wrap justify-content-center m-1" style="border: 4px solid #6C1112 !important; border-radius: .5em;">
+                                      <div class="d-flex m-2">COLOR 01</div>
+                                      <div class="d-flex col-12" style="background-color: #6C1112">&nbsp;</div>
+                                      <div class="d-flex m-2">#6C1112</div>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-center m-1" style="border: 4px solid #E7F742 !important; border-radius: .5em;">
+                                      <div class="d-flex m-2">COLOR 02</div>
+                                      <div class="d-flex col-12" style="background-color: #E7F742">&nbsp;</div>
+                                      <div class="d-flex m-2">#E7F742</div>
+                                    </div>
+                                    <div class="d-flex flex-wrap justify-content-center m-1" style="border: 4px solid #774323 !important; border-radius: .5em;">
+                                      <div class="d-flex m-2">COLOR 03</div>
+                                      <div class="d-flex col-12" style="background-color: #774323">&nbsp;</div>
+                                      <div class="d-flex m-2">#774323</div>
+                                    </div>
+                                  </div>
+                                  <div class="d-flex"></div>
+                                  <div class="d-flex ml-auto px-3 py-1">
+                                    <h3>#348</h3>
+                                    <span class="ml-3 small">/4096</span></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card bg-dark text-white" style="width: 100">
+                            <div class="card-header" id="headingMarket">
+                              <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseMarket" aria-expanded="false" aria-controls="collapseMarket"> MARKET </button>
+                              </h5>
+                            </div>
+                            <div id="collapseMarket" class="collapse" aria-labelledby="headingMarket" data-parent="#accordion">
+                              <div class="card-body p-0">
+                                <div class="d-flex align-self-end text-center">
+                                  <div class="border border-info bg-darker mx-auto px-5 py-3 rounded col-12">
+                                    <div>Rolling Average Market Price (7-days):</div>
+                                    <div>
+                                      <h1><span style="color: lawngreen">151.24 DLUX</span></h1>
+                                    </div>
+                                    <hr class="bg-light">
+                                    <div class="container-fluid">
+                                      <ul class="nav nav-pills bg-darker justify-content-center" role="tablist">
+                                        <li class="nav-item"> <a class="nav-link " id="tradetab" role="tab" data-toggle="tab" aria-controls="trade" aria-expanded="true" href="#trade">Trade</a></li>
+                                        <li class="nav-item"> <a class="nav-link" id="selltab" role="tab" data-toggle="tab" aria-controls="sell" aria-expanded="true" href="#sell">Sell</a></li>
+                                        <li class="nav-item"> <a class="nav-link" id="auctiontab" role="tab" data-toggle="tab" aria-controls="auction" aria-expanded="true" href="#auction">Auction</a></li>
+                                      </ul>
+                                      <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade show " id="trade" aria-labelledby="tradetab">
+                                          <form class="needs-validation mt-4" novalidate>
+                                            <div class="form-row my-2">
+                                              <div class="col-12">
+                                                <label for="validationSendUsername">Username</label>
+                                                <div class="input-group">
+                                                  <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">@</span> </div>
+                                                  <input type="text" class="form-control" id="validationSendUsername" aria-describedby="inputGroupPrepend" required>
+                                                  <div class="invalid-feedback"> Please enter the username you'd like to trade with. </div>
+                                                </div>
+                                              </div>
                                             </div>
-	  										<div role="tabpanel" class="tab-pane fade show " id="sell" aria-labelledby="selltab">
-												
-												<form class="needs-validation mt-4" novalidate>
-  												<div class="form-row my-2">
-    												<div class="col-12">
-      													<label for="validationSellPrice">Sale Price</label>
-      													<div class="input-group">
-        													<input type="number" class="form-control" id="validationSellPrice" aria-describedby="sellcoin" required>
-															<div class="input-group-append">
-          														<div class="input-group-text" id="sellcoin">DLUX</div>
-        													</div>
-															</div>
-       														 <div class="invalid-feedback">
-          														Please enter the ammount of DLUX you'd like to receive.
-       														 </div>
-    													</div>
-  													</div>
-													<div class="form-row my-2">
-														<div class="form-group form-check">
-   															 <input type="checkbox" class="form-check-input" id="sellOwnership">
-    														<label class="form-check-label" for="sellOwnership">I agree to transfer ownership to the DAO Listing Service for 30 days.</label>
-															<div class="invalid-feedback">
-       														 You must agree before submitting.
-      														</div>
- 														 </div>
-													</div>
-												  <button class="btn btn-info my-2" type="submit">List Item</button>
-												</form>
-											
+                                            <div class="form-row my-2">
+                                              <div class="col-12">
+                                                <label for="validationReceiveItem">Item Hash</label>
+                                                <div class="input-group">
+                                                  <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">#</span> </div>
+                                                  <input type="text" class="form-control" id="validationReceiveItem" aria-describedby="inputGroupPrepend" required>
+                                                  <div class="invalid-feedback"> Please enter an item hash from the users inventory. </div>
+                                                </div>
+                                              </div>
                                             </div>
-	  										<div role="tabpanel" class="tab-pane fade show " id="auction" aria-labelledby="auctiontab">
-     										   
-												<form class="needs-validation mt-4" novalidate>
-  												<div class="form-row my-2">
-    												<div class="col-12">
-      													<label for="validationAuctionPrice">Starting Bid</label>
-      													<div class="input-group">
-        													<input type="number" class="form-control" id="validationAuctionPrice" aria-describedby="auctioncoin" required>
-															<div class="input-group-append">
-          														<div class="input-group-text" id="auctioncoin">DLUX</div>
-        													</div>
-															</div>
-       														 <div class="invalid-feedback">
-          														Please enter the ammount of DLUX you'd like to start the bidding.
-       														 </div>
-     													 </div>
-  													</div>
-													
-    												<div class="form-group">
-      													<label for="validationReservePrice">Reserve Price</label>
-      													<div class="input-group">
-        													<input class="form-control" id="validationReservePrice" type="number" required>
-															<div class="input-group-append">
-          														<div class="input-group-text" id="reservecoin">DLUX</div>
-        													</div>
-     													 </div>
-														<div class="invalid-feedback">
-          														Please enter the ammount of DLUX that must be reached.
-       														 </div>
-    													</div>
-  													
-													<div class="form-group">
-                    									<label for="buyNowPrice">Buy It Now Price</label>
-                    									<div class="input-group">
-                      										<input class="form-control" id="buyNowPrice" type="number" step="0.001" min="0.001" required>
-                      										<div class="input-group-append">
-                        										<div class="input-group-text" id="buyNowcoin">DLUX</div>
-                      										</div>
-                    									</div>
-                  									</div>
-													
-													
-													<div class="form-row my-2">
-														<div class="form-group form-check">
-   															 <input type="checkbox" class="form-check-input" id="auctionOwnership">
-    														<label class="form-check-label" for="auctionOwnership">I agree to transfer ownership to the DAO Auction House for 30 days.</label>
-															<div class="invalid-feedback">
-       														 You must agree before submitting.
-      														</div>
- 														 </div>
-													</div>
-												  <button class="btn btn-info my-2" type="submit">List Item</button>
-												</form>
-												
-	 										 </div>
-      								</div>
-    								</div>
-								
-    							
-										
-										
-										
-										
-										
-										
-									  
-									
-								</div>
-							</div>  
-     	 					</div>
-    					</div>
-  					</div>
-  					<div class="card bg-dark text-white">
-    					<div class="card-header" id="headingRedeem">
-     					 <h5 class="mb-0">
-        				<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseRedeem" aria-expanded="false" aria-controls="collapseRedeem">
-          					REDEEM
-        				</button>
-      					</h5>
-    					</div>
-    				<div id="collapseRedeem" class="collapse show" aria-labelledby="headingRedeem" data-parent="#accordion">
-      				<div class="card-body">
-       					<div class="d-flex align-self-end">
-				<div class="border border-warning rounded bg-darker col-12 p-4">
-					<div class="d-flex align-items-center justify-content-between">
-						<div class="d-flex mr-1"><h4>Redemption Value:</h4></div>
-          				<div class="d-flex ml-1"><h1><u>100 DLUX</u></h1></div>
-      				</div>
-					
-					<div class="pt-2">
-					<p class="text-uppercase text-muted">This NFT can be traded, sold, or auctioned until redeemed. Once redeemed it will disappear forever.</p>
-					<center><button type="button" class="btn btn-warning m-1">Redeem <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button></center>
-					</div>
-					</div>
-						  </div>
-      </div>
-    </div>
-  </div>
-</div>
-               
-				
-				
-				</div></div>
-              <div class="card-footer text-center">
-                <small class="text-muted"><i>Token acquired September 20th, 2021</i></small>
+                                            <div class="form-row col-12 align-items-center my-2">
+                                              <div class="form-group form-check">
+                                                <input type="checkbox" class="form-check-input" id="giftTrade">
+                                                <label class="form-check-label" for="giftTrade">This is a gift, no item in return</label>
+                                              </div>
+                                            </div>
+                                            <button class="btn btn-info my-2" type="submit">Propose Trade</button>
+                                          </form>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade show " id="sell" aria-labelledby="selltab">
+                                          <form class="needs-validation mt-4" novalidate>
+                                            <div class="form-row my-2">
+                                              <div class="col-12">
+                                                <label for="validationSellPrice">Sale Price</label>
+                                                <div class="input-group">
+                                                  <input type="number" class="form-control" id="validationSellPrice" aria-describedby="sellcoin" required>
+                                                  <div class="input-group-append">
+                                                    <div class="input-group-text" id="sellcoin">DLUX</div>
+                                                  </div>
+                                                </div>
+                                                <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-row my-2">
+                                              <div class="form-group form-check">
+                                                <input type="checkbox" class="form-check-input" id="sellOwnership">
+                                                <label class="form-check-label" for="sellOwnership">I agree to transfer ownership to the DAO Listing Service for 30 days.</label>
+                                                <div class="invalid-feedback"> You must agree before submitting. </div>
+                                              </div>
+                                            </div>
+                                            <button class="btn btn-info my-2" type="submit">List Item</button>
+                                          </form>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade show " id="auction" aria-labelledby="auctiontab">
+                                          <form class="needs-validation mt-4" novalidate>
+                                            <div class="form-row my-2">
+                                              <div class="col-12">
+                                                <label for="validationAuctionPrice">Starting Bid</label>
+                                                <div class="input-group">
+                                                  <input type="number" class="form-control" id="validationAuctionPrice" aria-describedby="auctioncoin" required>
+                                                  <div class="input-group-append">
+                                                    <div class="input-group-text" id="auctioncoin">DLUX</div>
+                                                  </div>
+                                                </div>
+                                                <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to start the bidding. </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="validationReservePrice">Reserve Price</label>
+                                              <div class="input-group">
+                                                <input class="form-control" id="validationReservePrice" type="number" required>
+                                                <div class="input-group-append">
+                                                  <div class="input-group-text" id="reservecoin">DLUX</div>
+                                                </div>
+                                              </div>
+                                              <div class="invalid-feedback"> Please enter the ammount of DLUX that must be reached. </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="buyNowPrice">Buy It Now Price</label>
+                                              <div class="input-group">
+                                                <input class="form-control" id="buyNowPrice" type="number" step="0.001" min="0.001" required>
+                                                <div class="input-group-append">
+                                                  <div class="input-group-text" id="buyNowcoin">DLUX</div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-row my-2">
+                                              <div class="form-group form-check">
+                                                <input type="checkbox" class="form-check-input" id="auctionOwnership">
+                                                <label class="form-check-label" for="auctionOwnership">I agree to transfer ownership to the DAO Auction House for 30 days.</label>
+                                                <div class="invalid-feedback"> You must agree before submitting. </div>
+                                              </div>
+                                            </div>
+                                            <button class="btn btn-info my-2" type="submit">List Item</button>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card bg-dark text-white">
+                            <div class="card-header" id="headingRedeem">
+                              <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseRedeem" aria-expanded="false" aria-controls="collapseRedeem"> REDEEM </button>
+                              </h5>
+                            </div>
+                            <div id="collapseRedeem" class="collapse show" aria-labelledby="headingRedeem" data-parent="#accordion">
+                              <div class="card-body p-0">
+                                <div class="d-flex align-self-end">
+                                  <div class="border border-warning rounded bg-darker col-12 p-4">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                      <div class="d-flex mr-1">
+                                        <h4>Redemption Value:</h4>
+                                      </div>
+                                      <div class="d-flex ml-1">
+                                        <h1><u>100 DLUX</u></h1>
+                                      </div>
+                                    </div>
+                                    <div class="pt-2">
+                                      <p class="text-uppercase text-muted">This NFT can be traded, sold, or auctioned until redeemed. Once redeemed it will disappear forever.</p>
+                                      <center>
+                                        <button type="button" class="btn btn-warning m-1">Redeem <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span></button>
+                                      </center>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer text-center"> <small class="text-muted"><i>Token acquired September 20th, 2021</i></small></div>
+                  </div>
+                </div>
               </div>
             </div>
-              
-            </div>
-          </div>
-				</div>
-			</dmx-data-detail>
+          </dmx-data-detail>
         </div>
       </div>
       <div role="tabpanel" class="tab-pane fade show" id="node" aria-labelledby="nodetab">
@@ -1259,10 +1209,9 @@
                       </div>
                     </div>
                   </div>
-                  <script src="/dlux-io/js/jquery-3.4.1.min.js"></script>
-                  <script src="/dlux-io/js/popper.min.js"></script>
+<script src="/dlux-io/js/popper.min.js"></script>
                   <script src="/dlux-io/js/bootstrap-4.4.1.js"></script>
-<script>
+                  <script>
 $(document).ready(function(){
   $("#custodialAgentSearch").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -1318,7 +1267,7 @@ $(document).ready(function(){
    $path .= "/mod/footer.php";
    include_once($path);
 ?>
-	<script>
+<script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
   'use strict';
