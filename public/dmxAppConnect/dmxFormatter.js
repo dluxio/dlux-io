@@ -478,6 +478,24 @@ dmx.Formatters("global", {
                 document.getElementById(`image-${c}-${o}`).innerHTML = SVG;
                 })
             },
+            nftImageWell : function(o, s, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("${o}")`;
+                const SVG = eval(code);
+                document.getElementById(`image-${c}-${o}`).innerHTML = SVG;
+                })
+            },
+            nftDetailWell : function(o, s, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("${o}")`;
+                const SVG = eval(code);
+                document.getElementById(`detail-image-${c}-${o}`).innerHTML = SVG;
+                })
+            },
             slugify: function(t) {
                 return t
                     .toLowerCase()
