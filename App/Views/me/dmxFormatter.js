@@ -949,8 +949,8 @@ dmx.Formatters("global", {
             .then((response) => response.text())
             .then((data) => {
             const code = `(//${data}\n)("${o.uid}")`;
-            return eval(code);
-            })
+            const SVG = eval(code);
+            document.getElementById(`image-${o.set}-${o.uid}`).innerHTML = SVG;
         },
         toString: function (i){
             return JSON.stringify(i).replace(/"/g, '\&QO').replace(/'/g, '\&SQO');
