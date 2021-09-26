@@ -391,7 +391,7 @@
               <div class="card-header text-center" style="background: purple">
                 <h5 class="card-title">{{set}} <span style="color:aqua;">{{uid}}</span></h5>
               </div>
-				<div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.callScript(script, set)}}</div>      
+				<div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>      
 				
               <div class="card-body">
                 <p class="card-text">Behold&#33; The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for...</p>
@@ -425,7 +425,7 @@
                     <div class="card-body row d-flex ">
                       <div class="col-lg-6 px-0 px-sm-2">
                         <div class="col-12 px-0 px-sm-2">
-							<div class="card-img-top" dmx-bind:id="detail-image-{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}" dmx-bind:alt="{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}">{{inventory_detail.data.uid.callScript(inventory_detail.data.script, inventory_detail.data.set)}}</div>
+							<div class="card-img-top" dmx-bind:id="detail-image-{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}" dmx-bind:alt="{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}">{{inventory_detail.data.uid.nftDetailWell(inventory_detail.data.script, inventory_detail.data.set)}}</div>
 						  </div>
                       </div>
                       <div class="col-lg-6 px-0 px-sm-2">
