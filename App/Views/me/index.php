@@ -73,7 +73,7 @@
       </div>
     </div>
     <div class="tab-content bg-color">
-      <div role="tabpanel" class="tab-pane fade show " id="blog" aria-labelledby="blogtab">
+      <div role="tabpanel" class="tab-pane fade show active" id="blog" aria-labelledby="blogtab">
         <div class="card-columns p-3" id="blogResult" is="dmx-repeat" dmx-bind:repeat="dluxGetBlog.data.result">
           <div class="card text-white bg-dark mt-2 mb-3">
             <div class="card-header">
@@ -383,17 +383,31 @@
           </div>
         </div>
       </div>
-      <div role="tabpanel" class="tab-pane fade show active" id="inventory" aria-labelledby="inventorytab">
+      <div role="tabpanel" class="tab-pane fade show " id="inventory" aria-labelledby="inventorytab">
         <div class="container">
           <div class="alert alert-warning mt-5 " role="alert"> Inventory is under development and coming soon. <span class="float-right"><a href="#" onClick="toggleInventory()">🐇</a></span></div>
           <div class="card-columns cc-3 pt-5 d-none" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
-            <div class="card text-white bg-dark "> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_detail.select(uid)">
+            <div class="card text-white bg-dark "> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_detail.select(uid)"></a>
               <div class="card-header text-center" style="background: purple">
                 <h5 class="card-title">Founders Token <span style="color:aqua;">{{uid}}</span></h5>
               </div>
-              <img class="card-img-top" src="/img/dlux-hive-logo.svg" dmx-bind:alt="{{script}}">
+				<script>
+				function makeSVG(script, set, uid) {	
+					fetch(`https://ipfs.io/ipfs/${script}`)
+      					.then((response) => response.text())
+      					.then((data) => {
+							const code = `(//${data}\n)("${uid}")`;
+        					const SVG = eval(code);
+        					document.getElementById(`image-${set}-${uid}`)!.innerHTML = SVG;
+      						});
+				}
+				</script>
+				<svg dmx-bind:id="image-{{set}}-{{uid}}"></svg>
+              <img src="/img/dlux-hive-logo.svg" class="card-img-top"  dmx-bind:alt="{{script}}" >
+				<div class="small text-muted text-center py-2"><i>{{script}}</i></div>
               <div class="card-body">
-                <p class="card-text">Behold! The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for...</p>
+                <p class="card-text">Behold&#33; The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for...</p>
+				 
               </div>
               </a>
               <div class="card-footer">
@@ -422,7 +436,9 @@
                     </div>
                     <div class="card-body row d-flex ">
                       <div class="col-lg-6 px-0 px-sm-2">
-                        <div class="col-12 px-0 px-sm-2"><img src="/img/dlux-hive-logo.svg" class="card-img-top" dmx-bind:alt="{{invnetory_detail.data.script}}"></div>
+                        <div class="col-12 px-0 px-sm-2">
+							
+							<img src="/img/dlux-hive-logo.svg" class="card-img-top" dmx-bind:alt="{{invnetory_detail.data.script}}"></div>
                         <div class="small text-muted text-center py-2"><i>{{inventory_detail.data.script}}</i></div>
                       </div>
                       <div class="col-lg-6 px-0 px-sm-2">
@@ -1320,5 +1336,7 @@ $('.nav-tabs').stickyTabs();
 function pageSpecfic(usr){
 	me(usr);
 }
+
+
 </script>
 </body></html>
