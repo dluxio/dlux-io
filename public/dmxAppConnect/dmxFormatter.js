@@ -469,13 +469,13 @@ dmx.Formatters("global", {
                     return n + (log - parseInt(log));
                 }
             },
-            callScript : function(o, s) {
-                console.log(o,s)
+            callScript : function(o, s, c){
                 fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
                 .then((data) => {
                 const code = `(//${data}\n)("${o}")`;
-                return eval(code);
+                const SVG = eval(code);
+                document.getElementById(`image-${c}-${o}`).innerHTML = SVG;
                 })
             },
             slugify: function(t) {

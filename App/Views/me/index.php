@@ -391,7 +391,7 @@
               <div class="card-header text-center" style="background: purple">
                 <h5 class="card-title">{{set}} <span style="color:aqua;">{{uid}}</span></h5>
               </div>
-				<div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.callScript(script)}}</div>      
+				<div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.callScript(script, set)}}</div>      
 				<div class="small text-muted text-center py-2"><i>{{script}}</i></div>
               <div class="card-body">
                 <p class="card-text">Behold&#33; The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for...</p>
