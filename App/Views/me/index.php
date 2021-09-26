@@ -392,7 +392,7 @@
                 <h5 class="card-title">{{set}} <span style="color:aqua;">{{uid}}</span></h5>
               </div>
 				
-				<div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{inventorydata.data.result.callScript()}}</div>
+				<div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{callScript()}}</div>
             
 				<div class="small text-muted text-center py-2"><i>{{script}}</i></div>
               <div class="card-body">
