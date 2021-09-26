@@ -470,6 +470,7 @@ dmx.Formatters("global", {
                 }
             },
             callScript : function(o, s) {
+                console.log(o,s)
                 fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
                 .then((data) => {
