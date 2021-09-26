@@ -392,7 +392,7 @@
                 <h5 class="card-title">{{set}} <span style="color:aqua;">{{uid}}</span></h5>
               </div>
 				<div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.callScript(script, set)}}</div>      
-				<div class="small text-muted text-center py-2"><i>{{script}}</i></div>
+				
               <div class="card-body">
                 <p class="card-text">Behold&#33; The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for...</p>
 				 
@@ -420,14 +420,13 @@
                 <div class="modal-content bg-dark text-white">
                   <div class="card text-white bg-dark ">
                     <div class="card-header text-center" style="background: #9200A6">
-                      <h5 class="card-title">Founders Token <span style="color:aqua;">{{inventory_detail.data.uid}}</span></h5>
+                      <h5 class="card-title">{{inventory_detail.data.set}} <span style="color:aqua;">{{inventory_detail.data.uid}}</span></h5>
                     </div>
                     <div class="card-body row d-flex ">
                       <div class="col-lg-6 px-0 px-sm-2">
                         <div class="col-12 px-0 px-sm-2">
-							
-							<img src="/img/dlux-hive-logo.svg" class="card-img-top" dmx-bind:alt="{{invnetory_detail.data.script}}"></div>
-                        <div class="small text-muted text-center py-2"><i>{{inventory_detail.data.script}}</i></div>
+							<div class="card-img-top" dmx-bind:id="detail-image-{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}" dmx-bind:alt="{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}">{{inventory_detail.data.uid.callScript(script, set)}}</div>
+						  </div>
                       </div>
                       <div class="col-lg-6 px-0 px-sm-2">
                         <div id="accordion" class="col-12 px-0 px-sm-2">
