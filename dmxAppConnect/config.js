@@ -1838,6 +1838,64 @@ dmx.config({
           }
         ]
       }
+    ],
+    "inventorydata": [
+      {
+        "type": "array",
+        "name": "data",
+        "sub": [
+          {
+            "type": "text",
+            "name": "uid"
+          },
+          {
+            "type": "text",
+            "name": "set"
+          },
+          {
+            "type": "text",
+            "name": "script"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "via"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          }
+        ]
+      }
     ]
   }
 });

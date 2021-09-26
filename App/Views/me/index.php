@@ -24,7 +24,7 @@
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="apps" is="dmx-app">
 
-<dmx-api-datasource id="inventorydata" is="dmx-fetch" url="https://token.dlux.io/api/set/dlux"></dmx-api-datasource>
+<dmx-api-datasource id="inventorydata" is="dmx-fetch" url="https://token.dlux.io/api/nfts/ada"></dmx-api-datasource>
 <?php 
 	if(isset($author)){
     	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" 
@@ -387,23 +387,13 @@
         <div class="container">
           <div class="alert alert-warning mt-5 " role="alert"> Inventory is under development and coming soon. <span class="float-right"><a href="#" onClick="toggleInventory()">🐇</a></span></div>
           <div class="card-columns cc-3 pt-5 d-none" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
-            <div class="card text-white bg-dark "> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_detail.select(uid)"></a>
+            <div class="card text-white bg-dark "> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_detail.select(uid)">
               <div class="card-header text-center" style="background: purple">
-                <h5 class="card-title">Founders Token <span style="color:aqua;">{{uid}}</span></h5>
+                <h5 class="card-title">{{set}} <span style="color:aqua;">{{uid}}</span></h5>
               </div>
-				<script>
-				function makeSVG(script, set, uid) {	
-					fetch(`https://ipfs.io/ipfs/${script}`)
-      					.then((response) => response.text())
-      					.then((data) => {
-							const code = `(//${data}\n)("${uid}")`;
-        					const SVG = eval(code);
-        					document.getElementById(`image-${set}-${uid}`)!.innerHTML = SVG;
-      						});
-				}
-				</script>
-				<svg dmx-bind:id="image-{{set}}-{{uid}}"></svg>
-              <img src="/img/dlux-hive-logo.svg" class="card-img-top"  dmx-bind:alt="{{script}}" >
+				
+				<div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{inventorydata.data.result.callScript()}}</div>
+            
 				<div class="small text-muted text-center py-2"><i>{{script}}</i></div>
               <div class="card-body">
                 <p class="card-text">Behold&#33; The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for...</p>
