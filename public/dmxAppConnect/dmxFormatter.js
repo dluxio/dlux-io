@@ -429,7 +429,7 @@ dmx.Formatters("global", {
             uppercase: function(t) {
                 return t.toUpperCase();
             },
-            scat: function(s) {
+            localStorage: function(s) {
                 let t = JSON.parse(s)
                 if (t.vrHash) return 'VR'
                 else if (t.arHash) return 'AR'
@@ -943,6 +943,14 @@ dmx.Formatters("global", {
                     */
                 return '/img/dluxdefault.svg'
             }
+        },
+        callScript : function(o) {
+            fetch(`https://ipfs.io/ipfs/${o.script}`)
+            .then((response) => response.text())
+            .then((data) => {
+            const code = `(//${data}\n)("${o.uid}")`;
+            return eval(code);
+            })
         },
         toString: function (i){
             return JSON.stringify(i).replace(/"/g, '\&QO').replace(/'/g, '\&SQO');
