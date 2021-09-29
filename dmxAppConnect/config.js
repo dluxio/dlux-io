@@ -1896,6 +1896,52 @@ dmx.config({
           }
         ]
       }
-    ]
+    ],
+    "iterator1": {
+      "meta": null,
+      "outputType": "object"
+    },
+    "inventory_iterator": {
+      "meta": null,
+      "outputType": "object"
+    },
+    "data_view1": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "uid"
+        },
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        }
+      ],
+      "outputType": "array"
+    },
+    "repeat1": {
+      "meta": null,
+      "outputType": "array"
+    },
+    "repeat2": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "uid"
+        },
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        }
+      ],
+      "outputType": "array"
+    }
   }
 });

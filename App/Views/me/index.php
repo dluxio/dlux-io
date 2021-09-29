@@ -24,20 +24,22 @@
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="apps" is="dmx-app">
 
-<dmx-api-datasource id="inventorydata" is="dmx-fetch" url="https://token.dlux.io/api/nfts/ada"></dmx-api-datasource>
+<dmx-data-view id="data_view1" dmx-bind:data="inventorydata.data" sorton="set" pagesize="1"></dmx-data-view>
 <?php 
 	if(isset($author)){
-    	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" 
-		dmx-param:tag=\"'".$author."'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
+    	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'".$author."'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
 		echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'".$author."'\"></dmx-api-datasource>";
+		echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/\"'".$author."'\"></dmx-api-datasource>";
         }
 	else if(isset($_COOKIE['user'])){
     	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'".$_COOKIE['user']."'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
 		echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'".$_COOKIE['user']."'\"></dmx-api-datasource>";
+		echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/\"'".$_COOKIE['user']."'\"></dmx-api-datasource>";
         }
 		else{
 		echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog/\" dmx-param:tag=\"'robotolux'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
 		echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'robotolux'\"></dmx-api-datasource>";
+		echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
         }
 ;?>
 <?php 
@@ -51,11 +53,14 @@
       <div class="container">
         <div class="row pt-3">
           <div class="col-md-8 text-white">
-            <div class="row">
-              <div class="col-2"><img dmx-bind:src="https://images.hive.blog/u/{{dluxGetAccount.data.result[0].name}}/avatar" alt="" class="rounded-circle bg-light img-fluid mr-4 cover profile-img"></div>
-              <div class="col-10">
-                <p class="display-4 mb-0">{{dluxGetAccount.data.result[0].name}}</p>
-                <small class="lead p-2">{{dluxGetAccount.data.result[0].posting_json_metadata.parseJSON().profile.about}}</small></div>
+            <div class="d-flex flex-wrap">
+              <div class="d-flex"><img dmx-bind:src="https://images.hive.blog/u/{{dluxGetAccount.data.result[0].name}}/avatar" alt="" class="rounded-circle bg-light mr-4 cover profile-img"></div>
+              <div class="d-flex flex-column">
+                <div class="d-flex">
+                  <p class="display-4 mb-0">{{dluxGetAccount.data.result[0].name}}</p>
+                </div>
+                <div class="d-flex"><small class="lead p-2">{{dluxGetAccount.data.result[0].posting_json_metadata.parseJSON().profile.about}}</small></div>
+              </div>
             </div>
           </div>
           <div class="col-md-4 text-center m-auto"> <a target="_blank" class="btn btn-outline-primary btn-lg m-1" role="button" dmx-bind:href="/vr/@{{dluxGetAccount.data.result[0].name}}">VR Page<i class="fas fa-vr-cardboard mx-2 fa-lg"></i></a>
@@ -387,21 +392,19 @@
         <div class="container">
           <div class="alert alert-warning mt-5 " role="alert"> Inventory is under development and coming soon. <span class="float-right"><a href="#" onClick="toggleInventory()">🐇</a></span></div>
           <div class="card-columns cc-3 pt-5 d-none" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
-            <div class="card text-white bg-dark "> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_detail.select(uid)">
+            <div class="card text-white bg-dark "> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
               <div class="card-header text-center" style="background: purple">
                 <h5 class="card-title">{{set}} <span style="color:aqua;">{{uid}}</span></h5>
               </div>
-				<div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>      
-				
+              <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
               <div class="card-body">
                 <p class="card-text">Behold&#33; The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for...</p>
-				 
               </div>
               </a>
-              <div class="card-footer">
+              <div class="card-footer d-none">
                 <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1" data-toggle="collapse" dmx-bind:data-target="#{{uid}}footer" aria-expanded="false" dmx-bind:aria-controls="{{uid}}footer">Actions</button>
-                  <button type="button" class="btn btn-info mr-auto ml-auto mt-1 d-none">Inspect</button>
+                  <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1 d-none" data-toggle="collapse" dmx-bind:data-target="#{{uid}}footer" aria-expanded="false" dmx-bind:aria-controls="{{uid}}footer">Actions</button>
+                  <button type="button" class="btn btn-info mr-auto ml-auto mt-1 ">Inspect</button>
                 </div>
               </div>
               <div dmx-bind:id="{{uid}}footer" class="collapse mb-3">
@@ -414,19 +417,26 @@
               </div>
             </div>
           </div>
+		
+          <dmx-data-iterator id="inventory_iterator" dmx-bind:data="inventorydata.data.result" loop="true"></dmx-data-iterator>
           <dmx-data-detail id="inventory_detail" dmx-bind:data="inventorydata.data.result" key="uid">
-            <div class="modal fade" id="inventoryModal" tabindex="11" role="dialog" aria-hidden="true">
+            <div class="modal fade " id="inventoryModal" tabindex="11" role="dialog" aria-hidden="true">
               <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark text-white">
                   <div class="card text-white bg-dark ">
-                    <div class="card-header text-center" style="background: #9200A6">
-                      <h5 class="card-title">{{inventory_detail.data.set}} <span style="color:aqua;">{{inventory_detail.data.uid}}</span></h5>
+                    <div class="card-header d-flex align-items-baseline" style="background: #9200A6">
+                      <div class="ml-auto">
+                        <h5 class="card-title">{{inventory_detail.data.set}} <span style="color:aqua;">{{inventory_detail.data.uid}}</span></h5>
+                      </div>
+                      <div class="ml-auto">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      </div>
                     </div>
                     <div class="card-body row d-flex ">
                       <div class="col-lg-6 px-0 px-sm-2">
                         <div class="col-12 px-0 px-sm-2">
-							<div class="card-img-top" dmx-bind:id="detail-image-{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}" dmx-bind:alt="{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}">{{inventory_detail.data.uid.nftDetailWell(inventory_detail.data.script, inventory_detail.data.set)}}</div>
-						  </div>
+                          <div class="card-img-top" dmx-bind:id="detail-image-{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}" dmx-bind:alt="{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}">{{inventory_detail.data.uid.nftDetailWell(inventory_detail.data.script, inventory_detail.data.set)}}</div>
+                        </div>
                       </div>
                       <div class="col-lg-6 px-0 px-sm-2">
                         <div id="accordion" class="col-12 px-0 px-sm-2">
@@ -507,7 +517,7 @@
                                               <div class="col-12">
                                                 <label for="validationSendUsername">Username</label>
                                                 <div class="input-group">
-                                                  <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">@</span> </div>
+                                                  <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">@</span></div>
                                                   <input type="text" class="form-control" id="validationSendUsername" aria-describedby="inputGroupPrepend" required>
                                                   <div class="invalid-feedback"> Please enter the username you'd like to trade with. </div>
                                                 </div>
@@ -517,7 +527,7 @@
                                               <div class="col-12">
                                                 <label for="validationReceiveItem">Item Hash</label>
                                                 <div class="input-group">
-                                                  <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">#</span> </div>
+                                                  <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">#</span></div>
                                                   <input type="text" class="form-control" id="validationReceiveItem" aria-describedby="inputGroupPrepend" required>
                                                   <div class="invalid-feedback"> Please enter an item hash from the users inventory. </div>
                                                 </div>
@@ -638,7 +648,11 @@
                         </div>
                       </div>
                     </div>
-                    <div class="card-footer text-center"> <small class="text-muted"><i>Token acquired September 20th, 2021</i></small></div>
+                    <div class="card-footer d-flex align-items-center">
+                      <h2><a class="text-muted p-3" href="#" dmx-on:click="inventory_iterator.prev();inventory_detail.select(inventory_iterator.value.uid)"><i class="fas fa-caret-square-left"></i></a></h2>
+                      <small class="ml-auto text-muted"><i>Token acquired September 20th, 2021</i></small>
+                      <h2 class="ml-auto"><a class="text-muted p-3" href="#" dmx-on:click="inventory_iterator.next();inventory_detail.select(inventory_iterator.value.uid)"><i class="fas fa-caret-square-right"></i></a></h2>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1212,7 +1226,7 @@
                       </div>
                     </div>
                   </div>
-<script src="/dlux-io/js/popper.min.js"></script>
+                  <script src="/dlux-io/js/popper.min.js"></script>
                   <script src="/dlux-io/js/bootstrap-4.4.1.js"></script>
                   <script>
 $(document).ready(function(){
