@@ -9,7 +9,6 @@
 ?>
 <!--dmxAppConnect-->
 <script src="/dmxAppConnect/dmxAppConnect.js"></script>
-<script src="/js/jquery-3.4.1.min.js"></script>
 <script src="/dmxAppConnect/dmxMoment.js"></script>
 <script src="/dmxAppConnect/dmxFormatter.js"></script>
 <script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
@@ -17,6 +16,7 @@
 <!--page specific-->
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
+<script src="/js/jquery-3.4.1.min.js"></script>
 <style>@media (min-width: 1200px) {  .cc-3 {
     column-count: 3; } }
 	.max-350 {
@@ -24,7 +24,6 @@
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="apps" is="dmx-app">
 
-<dmx-data-view id="data_view1" dmx-bind:data="inventorydata.data" sorton="set" pagesize="1"></dmx-data-view>
 <?php 
 	if(isset($author)){
     	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'".$author."'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
