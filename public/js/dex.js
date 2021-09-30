@@ -932,7 +932,7 @@ function  countdown(t, s, u){
     document.getElementById(`timer-${s}-${u}`).innerText = days + "d " + hours + "h "
   + minutes + "m " + seconds + "s ";
   //} catch (e){
-  //  console.log(e)
+    console.log(s, u)
   //  clearInterval(x)
   //}
 
@@ -942,4 +942,5 @@ function  countdown(t, s, u){
     document.getElementById(`timer-${s}-${u}`).innerText = "EXPIRED";
   }
 }, 1000);
+x()
 }
