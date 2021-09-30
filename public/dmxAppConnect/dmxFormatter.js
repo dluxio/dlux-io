@@ -919,6 +919,22 @@ dmx.Formatters("global", {
                 return "Invalid Date" == n.toString() ?
                     null :
                     Math.floor(n.getTime() / 1e3);
+            },
+            animateTime: function(t, a) {
+                const now = new Date()
+                const then = new Date(t)
+                const diff = Math.abs(now - then)
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+                var time = ``
+                if(days)time += `${days}d `
+                if(hours)time += `${hours}h `
+                if(minutes)time += `${minutes}m `
+                if(seconds)time += `${seconds}s `
+                countdown(a)
+                return time
             }
         });
     })(),
