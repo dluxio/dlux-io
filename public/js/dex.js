@@ -932,6 +932,7 @@ function  countdown(t, s, u){
     document.getElementById(`timer-${s}-${u}`).innerText = days + "d " + hours + "h "
   + minutes + "m " + seconds + "s ";
   } catch (e){
+    console.log(e)
     clearInterval(x)
   }
 
