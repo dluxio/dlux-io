@@ -64,8 +64,8 @@
 	   			<div class="card-columns my-3" id="sales-mint-cards" >
 					<div class="card text-white bg-dark" dmx-repeat:repeatMint3="items">
 					<a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
-						<div class="card-header text-center" style="background: purple"><h5 class="card-title"><span style="color:aqua;" dmx-bind:id="timer-{{set}}-{{uid}}">{{time.animateTime(set, uid)}}</span></h5></div>
-						<div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}"><i class="far fa-gem"></i></div>
+						<div class="card-header text-center" style="background: #43C45F"><h5 class="card-title" dmx-bind:id="timer-{{set}}-{{uid}}">{{time.animateTime(set, uid)}}</h5></div>
+						<div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}"><h1 class="p-5 text-center" style="color: #43C45F"><i class="far fa-gem"></i></h1></div>
 						<div class="card-body"><p class="card-text">MINT DLUX FOUNDERS TOKEN. Unwrap to see color, redeemable for 100 DLUX.</p></div>
 					</a>
 					<div class="card-footer text-center">{{price.nai()}}</div>
@@ -74,7 +74,6 @@
 			</div>
 		</div>
 
-	
 	</div>
   </div>
 </main>
