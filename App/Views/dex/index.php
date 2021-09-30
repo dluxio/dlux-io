@@ -52,7 +52,7 @@
 		  <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
 		  <div class="card-body"><p class="card-text">Behold&#33; The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for...</p></div>
 		 </a>
-		 <div class="card-footer text-center">{{price.amount.formatNumber(price.precision,'.',',')}} {{price.token}}</div>
+		 <div class="card-footer text-center">{{price.nai()}}</div>
 		</div>
 	   </div>
 
