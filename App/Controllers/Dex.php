@@ -21,4 +21,8 @@ class Dex extends \Core\Controller
     {
         View::render('dex/index.php');
     }
+	public function dlux($request, $response, $service)
+    {
+        View::render('dex/dlux.php');
+    }
 }

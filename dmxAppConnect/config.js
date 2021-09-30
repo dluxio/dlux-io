@@ -475,6 +475,469 @@ dmx.config({
         }
       ],
       "outputType": "array"
+    },
+    "sales": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "array",
+            "name": "result",
+            "sub": [
+              {
+                "type": "text",
+                "name": "uid"
+              },
+              {
+                "type": "text",
+                "name": "set"
+              },
+              {
+                "type": "object",
+                "name": "price",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "amount"
+                  },
+                  {
+                    "type": "number",
+                    "name": "precision"
+                  },
+                  {
+                    "type": "text",
+                    "name": "token"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "name": "time"
+              },
+              {
+                "type": "text",
+                "name": "by"
+              },
+              {
+                "type": "text",
+                "name": "script"
+              }
+            ]
+          },
+          {
+            "type": "array",
+            "name": "mint",
+            "sub": [
+              {
+                "type": "array",
+                "name": "$value",
+                "sub": [
+                  {
+                    "type": "text",
+                    "name": "set"
+                  },
+                  {
+                    "type": "array",
+                    "name": "items",
+                    "sub": [
+                      {
+                        "type": "object",
+                        "name": "price",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "time"
+                      },
+                      {
+                        "type": "text",
+                        "name": "by"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "name": "script"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "node"
+          },
+          {
+            "type": "text",
+            "name": "VERSION"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "via"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "connection"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          }
+        ]
+      }
+    ],
+    "data_view1": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "uid"
+        },
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "object",
+          "name": "price",
+          "sub": [
+            {
+              "type": "number",
+              "name": "amount"
+            },
+            {
+              "type": "number",
+              "name": "precision"
+            },
+            {
+              "type": "text",
+              "name": "token"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "time"
+        },
+        {
+          "type": "text",
+          "name": "by"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        }
+      ],
+      "outputType": "array"
+    },
+    "salesMint": {
+      "meta": [
+        {
+          "type": "array",
+          "name": "$value",
+          "sub": [
+            {
+              "type": "text",
+              "name": "set"
+            },
+            {
+              "type": "array",
+              "name": "items",
+              "sub": [
+                {
+                  "type": "object",
+                  "name": "price",
+                  "sub": [
+                    {
+                      "type": "number",
+                      "name": "amount"
+                    },
+                    {
+                      "type": "number",
+                      "name": "precision"
+                    },
+                    {
+                      "type": "text",
+                      "name": "token"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "name": "time"
+                },
+                {
+                  "type": "text",
+                  "name": "by"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "script"
+            }
+          ]
+        }
+      ],
+      "outputType": "array"
+    },
+    "repeat1": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "uid"
+        },
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "object",
+          "name": "price",
+          "sub": [
+            {
+              "type": "number",
+              "name": "amount"
+            },
+            {
+              "type": "number",
+              "name": "precision"
+            },
+            {
+              "type": "text",
+              "name": "token"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "time"
+        },
+        {
+          "type": "text",
+          "name": "by"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        }
+      ],
+      "outputType": "array"
+    },
+    "repeatmint": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "array",
+          "name": "items",
+          "sub": [
+            {
+              "type": "object",
+              "name": "price",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "amount"
+                },
+                {
+                  "type": "number",
+                  "name": "precision"
+                },
+                {
+                  "type": "text",
+                  "name": "token"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "time"
+            },
+            {
+              "type": "text",
+              "name": "by"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "script"
+        }
+      ],
+      "outputType": "array"
+    },
+    "repeatmint1": {
+      "meta": [
+        {
+          "type": "array",
+          "name": "$value",
+          "sub": [
+            {
+              "type": "text",
+              "name": "set"
+            },
+            {
+              "type": "array",
+              "name": "items",
+              "sub": [
+                {
+                  "type": "object",
+                  "name": "price",
+                  "sub": [
+                    {
+                      "type": "number",
+                      "name": "amount"
+                    },
+                    {
+                      "type": "number",
+                      "name": "precision"
+                    },
+                    {
+                      "type": "text",
+                      "name": "token"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "name": "time"
+                },
+                {
+                  "type": "text",
+                  "name": "by"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "script"
+            }
+          ]
+        }
+      ],
+      "outputType": "array"
+    },
+    "repeatmint2": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "array",
+          "name": "items",
+          "sub": [
+            {
+              "type": "object",
+              "name": "price",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "amount"
+                },
+                {
+                  "type": "number",
+                  "name": "precision"
+                },
+                {
+                  "type": "text",
+                  "name": "token"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "time"
+            },
+            {
+              "type": "text",
+              "name": "by"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "script"
+        }
+      ],
+      "outputType": "array"
+    },
+    "repeatmint3": {
+      "meta": [
+        {
+          "type": "object",
+          "name": "price",
+          "sub": [
+            {
+              "type": "number",
+              "name": "amount"
+            },
+            {
+              "type": "number",
+              "name": "precision"
+            },
+            {
+              "type": "text",
+              "name": "token"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "time"
+        },
+        {
+          "type": "text",
+          "name": "by"
+        }
+      ],
+      "outputType": "array"
     }
   },
   "apps": {
