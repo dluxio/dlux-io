@@ -920,7 +920,7 @@ dmx.Formatters("global", {
                     null :
                     Math.floor(n.getTime() / 1e3);
             },
-            animateTime: function(t, a) {
+            animateTime: function(t, s, u) {
                 const now = new Date()
                 const then = new Date(t)
                 const diff = Math.abs(now - then)
@@ -933,7 +933,7 @@ dmx.Formatters("global", {
                 if(hours)time += `${hours}h `
                 if(minutes)time += `${minutes}m `
                 if(seconds)time += `${seconds}s `
-                countdown(t, a)
+                countdown(t, s, u)
                 return time
             }
         });
