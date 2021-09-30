@@ -928,12 +928,13 @@ function  countdown(t, s, u){
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   // Display the result in the element with id="demo"
-  try{
+  //try{
     document.getElementById(`timer-${s}-${u}`).innerText = days + "d " + hours + "h "
   + minutes + "m " + seconds + "s ";
-  } catch (e){
-    clearInterval(x)
-  }
+  //} catch (e){
+    console.log(s, u)
+  //  clearInterval(x)
+  //}
 
   // If the count down is finished, write some text
   if (distance < 0) {
@@ -941,4 +942,5 @@ function  countdown(t, s, u){
     document.getElementById(`timer-${s}-${u}`).innerText = "EXPIRED";
   }
 }, 1000);
+x()
 }
