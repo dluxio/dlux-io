@@ -48,7 +48,7 @@
 	   <div class="card-columns my-3" id="sales-token-cards">
 		<div class="card text-white bg-dark" dmx-repeat:repeatToken1="salesToken.data">
 		 <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
-		  <div class="card-header text-center" style="background: purple"><h5 class="card-title">{{time.animateTime(set, uid)}}</h5></div>
+		  <div class="card-header text-center" style="background: purple"><h5 class="card-title" dmx-bind:id="timer-{{set}}-{{uid}}">{{time.animateTime(set, uid)}}</h5></div>
 		  <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
 		  <div class="card-body"><p class="card-text">Behold&#33; The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for...</p></div>
 		 </a>
