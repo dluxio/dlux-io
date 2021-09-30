@@ -933,7 +933,7 @@ dmx.Formatters("global", {
                 if(hours)time += `${hours}h `
                 if(minutes)time += `${minutes}m `
                 if(seconds)time += `${seconds}s `
-                countdown(a)
+                countdown(t, a)
                 return time
             }
         });
