@@ -942,6 +942,9 @@ dmx.Formatters("global", {
         keys: function(t) {
             return Object.keys(t);
         },
+        nai: function(t) {
+            return `${parseFloat(o.amount/Math.pow(10, o.precision)).toFixed(o.precision)} ${o.token}`
+        },
         values: function(n) {
             return Object.keys(n).map(function(t) {
                 return n[t];

@@ -68,7 +68,7 @@
 						<div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}"><i class="far fa-gem"></i></div>
 						<div class="card-body"><p class="card-text">MINT DLUX FOUNDERS TOKEN. Unwrap to see color, redeemable for 100 DLUX.</p></div>
 					</a>
-					<div class="card-footer text-center">{{price.amount.formatNumber(price.precision,'.',',')}} {{price.token}}</div>
+					<div class="card-footer text-center">{{price.nai()}}</div>
 					</div>
 				</div>
 			</div>
