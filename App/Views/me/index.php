@@ -31,6 +31,7 @@
 		echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/\"'".$author."'\"></dmx-api-datasource>";
         }
 	else if(isset($_COOKIE['user'])){
+	else if(isset($_COOKIE['user'])){
     	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'".$_COOKIE['user']."'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
 		echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'".$_COOKIE['user']."'\"></dmx-api-datasource>";
 		echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/\"'".$_COOKIE['user']."'\"></dmx-api-datasource>";
@@ -1131,7 +1132,7 @@
           <li class="nav-item"><a href="javascript:dexmodal('hive', User.opts.type)" class="nav-link active" id="buywithhivetab" onClick="toggleActive()">HIVE</a></li>
           <li class="nav-item"><a href="javascript:dexmodal('hbd', User.opts.type)" class="nav-link" id="buywithhbdtab" onClick="toggleActive()">HBD</a></li>
         </ul>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">x</span></button>
       </div>
       <div class="container-fluid">
         <div class="row" id="buy-main-row">
