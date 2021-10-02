@@ -204,11 +204,7 @@
       </div>
       <div class="modal-body">
       <div class="d-flex flex-column">
-		   <div class="d-none align-items-center small px-4 ">
-				  <p class="my-0 text-white-50" >Available  </p>
-				  <p class="my-0 mx-1" style="color: aqua;">1,256.234 <i class="fab fa-hive"></i></p>
-				<p class="ml-auto my-0 text-muted font-weight-bold">&asymp; &#36;651.23</p>
-			  </div>
+		  
 		  <div class="d-flex justify-content-between">
 		  <h2><a class="text-muted p-3" href="#" dmx-on:click="inventory_iterator.prev();inventory_detail.select(inventory_iterator.value.uid)"><i class="fas fa-caret-square-left"></i></a></h2>
 			<h2 style="color: greenyellow">0.251 <i class="fab fa-hive"></i></h2>			  
@@ -220,8 +216,8 @@
 			<p style="font-size: 18px;" class="p-0 m-0 font-weight-light">From</p>
 			<div class="d-flex ml-auto align-items-baseline">
 				<div class="d-flex small justify-content-between">
-					<p class="my-0 text-white-50" >Available</p>
-			  		<p class="my-0 mx-1 text-primary">1,256.234<i class="fab fa-hive mx-1"></i></p>
+					<p class="my-0 text-white-50" >Available<i class="fab fa-hive mx-1"></i></p>
+			  		<p class="my-0 text-primary">1,256.234</p>
 					
 				</div>
 			</div>
