@@ -71,7 +71,7 @@
 		  <h1 class="display-4">DLUX OpenToken</h1>
 		   <hr class="my-4">
 		  <p class="lead">100% Decentralized Atomic Swap Marketplace</p>
-		  <p class="lead"> <a class="btn btn-primary btn-lg" href="/dex/dlux/" role="button">Get DLUX</a> </p>
+		  <p class="lead"> <a class="btn btn-primary btn-lg" href="/dex/dlux/" role="button">Order Book</a> </p>
 	  </div>
 		<div style="border-bottom: #FFFFFF thick solid"><h1 class="text-white p-0 m-0">Fungible Tokens</h1></div>
 	   			<div class="card-columns my-3" id="sales-mint-cards" >
@@ -81,9 +81,9 @@
 						<div class="card-header text-center" style=""><h5 class="card-title lead" style="color: black">COIN</h5></div>
 						<div class="card-img-top" alt="dlux-coin"><h1 class="py-3 mb-0 text-center text-primary"><i class="fas fa-coins"></i></h1><h3 class="text-center mb-0" style="color: black;">DLUX Token</h3><p class="card-text lead text-center pt-1" style="color: black">Powering the multiverse!</p></div>
 						<div class="card-body" style="color: black;"><div class="text-center"><u>0.254 HIVE</u></div></div>
-					</a>
-						<div class="card-footer text-center"><p class="lead"> <a class="btn btn-primary btn-lg" href="/dex/dlux/" role="button">Get DLUX</a> </p></div>
-					</div>
+					
+						<div class="card-footer text-center"><p class="lead"> <button class="btn btn-primary btn-lg" href="#" role="button">Get DLUX</button> </p></div>
+						</a></div>
 					<div class="card text-white bg-dark" style="color:black; background:radial-gradient(lawngreen,#43C45F)" dmx-repeat:repeatsalesmint2="$value">
 					<a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
 						<div class="card-header text-center" style="background: linear-gradient(#43C45F,lawngreen)"><h5 class="card-title lead" style="color: black">MINT</h5></div>
