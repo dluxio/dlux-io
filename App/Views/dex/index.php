@@ -76,7 +76,7 @@
             														  linear-gradient(127deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),
             														  linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
 		  <h1 class="display-4">DLUX OpenToken</h1>
-		   <hr class="my-4 bg-light">
+		   <hr class="my-4" style="border: white 0.5px solid">
 		  <p class="lead">100% Decentralized Atomic Swap Marketplace</p>
 		  <p class="lead"> <a class="btn btn-outline-light btn-lg" href="/dex/dlux/" role="button">Order Book</a> </p>
 	<div class="d-flex"><p class="ml-auto mb-2">Balance<u class="ml-2 font-weight-bold" style="font-size:1.1em;">1,234.567 DLUX</u></p></div>
