@@ -49,12 +49,17 @@
 }
 	.arrow {
 	position: absolute;
-
+	background: #ffc107;
+	border-radius: 50%;
+	border: black thick solid;
+	text-align: center;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 3rem;
-    height: 3rem;
+    width: 4rem;
+    height: 4rem;
     z-index: 1;
+	color: crimson;
+	
 	}
 	</style>
 
@@ -67,19 +72,19 @@
 <main role="main" class="flex-shrink-0">
   <div class="container">
     <div class="container-fluid" style="padding: 0">
-<div class="jumbotron text-dark mt-5 text-center" style="background:radial-gradient(gold,orange)">
+<div class="jumbotron text-white mt-5 text-center" style="background:linear-gradient(45deg,#FB00FF,#21FFB5)">
 		  <h1 class="display-4">DLUX OpenToken</h1>
 		   <hr class="my-4">
 		  <p class="lead">100% Decentralized Atomic Swap Marketplace</p>
-		  <p class="lead"> <a class="btn btn-primary btn-lg" href="/dex/dlux/" role="button">Order Book</a> </p>
+		  <p class="lead"> <a class="btn btn-outline-light btn-lg" href="/dex/dlux/" role="button">Order Book</a> </p>
 	  </div>
 		<div style="border-bottom: #FFFFFF thick solid"><h1 class="text-white p-0 m-0">Fungible Tokens</h1></div>
 	   			<div class="card-columns my-3" id="sales-mint-cards" >
 					<div dmx-repeat:repeatsalesmint1="salesMint.data">
-					<div class="card" style="color:black; background:radial-gradient(gold,orange)">
+					<div class="card" style="color:black; background:radial-gradient(yellow,darkorange)">
 					<a href="#buyDluxModal" class="a-1" data-toggle="modal">
-						<div class="card-header text-center" style=""><h5 class="card-title lead" style="color: black">COIN</h5></div>
-						<div class="card-img-top" alt="dlux-coin"><h1 class="py-3 mb-0 text-center text-primary"><i class="fas fa-coins"></i></h1><h3 class="text-center mb-0" style="color: black;">DLUX Token</h3><p class="card-text lead text-center pt-1" style="color: black">Powering the multiverse!</p></div>
+						<div class="card-header text-center" style="color: black;background:linear-gradient(darkorange,yellow)"><h5 class="card-title lead">COIN</h5></div>
+						<div class="card-img-top" alt="dlux-coin"><h1 class="py-3 mb-0 text-center text-primary"><i class="fas fa-coins"></i></h1><h3 class="text-center mb-0" style="color:  black;">DLUX Token</h3><p class="card-text lead text-center pt-1" style="color: black">Powering the multiverse!</p></div>
 						<div class="card-body" style="color: black;"><div class="text-center"><u>0.254 HIVE</u></div></div>
 					
 						<div class="card-footer text-center"><p class="lead"> <button class="btn btn-primary btn-lg" href="#" role="button">Get DLUX</button> </p></div>
@@ -197,7 +202,7 @@
 <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
     <div class="modal-content bg-dark text-white">
-      <div class="modal-header d-flex flex-fill justify-content-between align-items-center" style="border-bottom-color: #333; background:radial-gradient(gold,orange)">
+      <div class="modal-header d-flex flex-fill justify-content-between align-items-center" style="border-bottom-color: #333; background:radial-gradient(gold,orangered)">
           <div></div>
            <h3 class="ml-auto lead" id="buyDluxTitle" style="color: black">GET DLUX</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">x</span></button>
@@ -207,7 +212,7 @@
 		  
 		  <div class="d-flex justify-content-between">
 		  <h2><a class="text-muted p-3" href="#" dmx-on:click="inventory_iterator.prev();inventory_detail.select(inventory_iterator.value.uid)"><i class="fas fa-caret-square-left"></i></a></h2>
-			<h2 style="color: greenyellow">0.251 <i class="fab fa-hive"></i></h2>			  
+			<h2 style="color: greenyellow">100 @ 0.251 <i class="fab fa-hive"></i> </h2>			  
 		  <h2 class=""><a class="text-muted p-3" href="#" dmx-on:click="inventory_iterator.next();inventory_detail.select(inventory_iterator.value.uid)"><i class="fas fa-caret-square-right"></i></a></h2>
 		  </div>
 		  
@@ -253,7 +258,7 @@
 		  </div>
 		  
 		  
-		  <div class"p-0 m-0 bg-dark"><h1 class="text-white-50 p-0 m-0 p-1"><p class="arrow bg-warning rounded text-center m-0 "  style="border: #333 1px solid; color: crimson"><i class="fas fa-level-down-alt"></i></p></h1></div>
+		  <div class"p-0 m-0 bg-dark"><h1 class="text-white-50 p-0 m-0 p-1"><p class="arrow text-center m-0 " ><i class="fas fa-angle-double-down"></i></p></h1></div>
 		  
 		  
 		  <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 border border-warning" style="background: radial-gradient(#222,#111);">
