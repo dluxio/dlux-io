@@ -31,7 +31,6 @@
 		echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/\"'".$author."'\"></dmx-api-datasource>";
         }
 	else if(isset($_COOKIE['user'])){
-	else if(isset($_COOKIE['user'])){
     	echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'".$_COOKIE['user']."'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
 		echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'".$_COOKIE['user']."'\"></dmx-api-datasource>";
 		echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/\"'".$_COOKIE['user']."'\"></dmx-api-datasource>";
