@@ -72,11 +72,14 @@
 <main role="main" class="flex-shrink-0">
   <div class="container">
     <div class="container-fluid" style="padding: 0">
-<div class="jumbotron text-white mt-5 text-center" style="background:linear-gradient(45deg,#FB00FF,#21FFB5)">
+<div class="jumbotron text-white mt-5 pb-1 text-center" style="background: linear-gradient(217deg, rgba(251,0,255,.8), rgba(251,0,255,0) 70.71%),
+            														  linear-gradient(127deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),
+            														  linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
 		  <h1 class="display-4">DLUX OpenToken</h1>
-		   <hr class="my-4">
+		   <hr class="my-4 bg-light">
 		  <p class="lead">100% Decentralized Atomic Swap Marketplace</p>
 		  <p class="lead"> <a class="btn btn-outline-light btn-lg" href="/dex/dlux/" role="button">Order Book</a> </p>
+	<div class="d-flex"><p class="ml-auto mb-2">Balance<u class="ml-2 font-weight-bold" style="font-size:1.1em;">1,234.567 DLUX</u></p></div>
 	  </div>
 		<div style="border-bottom: #FFFFFF thick solid"><h1 class="text-white p-0 m-0">Fungible Tokens</h1></div>
 	   			<div class="card-columns my-3" id="sales-mint-cards" >
