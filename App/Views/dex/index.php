@@ -61,6 +61,12 @@
 	color: crimson;
 	
 	}
+	.arrow2 {
+		position: absolute;
+		left: 50%;
+    	transform: translate(-50%, -50%);
+		z-index: 1;
+	}
 	</style>
 
 <?php 
@@ -205,7 +211,7 @@
 <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
     <div class="modal-content bg-dark text-white">
-      <div class="modal-header d-flex flex-fill justify-content-between align-items-center" style="border-bottom-color: #333; background:radial-gradient(gold,orangered)">
+      <div class="modal-header d-flex flex-fill justify-content-between align-items-center" style="border-bottom-color: #333; background:linear-gradient(darkorange,yellow)">
           <div></div>
            <h3 class="ml-auto lead" id="buyDluxTitle" style="color: black">GET DLUX</h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">x</span></button>
@@ -215,7 +221,7 @@
 		  
 		  <div class="d-flex justify-content-between">
 		  <h2><a class="text-muted p-3" href="#" dmx-on:click="inventory_iterator.prev();inventory_detail.select(inventory_iterator.value.uid)"><i class="fas fa-caret-square-left"></i></a></h2>
-			<h2 style="color: greenyellow">100 @ 0.251 <i class="fab fa-hive"></i> </h2>			  
+			<h2 style="color: greenyellow">0.251 <i class="fab fa-hive"></i></h2>			  
 		  <h2 class=""><a class="text-muted p-3" href="#" dmx-on:click="inventory_iterator.next();inventory_detail.select(inventory_iterator.value.uid)"><i class="fas fa-caret-square-right"></i></a></h2>
 		  </div>
 		  
@@ -261,7 +267,7 @@
 		  </div>
 		  
 		  
-		  <div class"p-0 m-0 bg-dark"><h1 class="text-white-50 p-0 m-0 p-1"><p class="arrow text-center m-0 " ><i class="fas fa-angle-double-down"></i></p></h1></div>
+		  <div class"p-0 m-0 bg-dark"><div class="arrow2 rounded-circle border border-warning bg-darker text-warning"><h1 class="m-2 px-3 py-1"><i class="fas fa-angle-double-down"></i></h1></div></div>
 		  
 		  
 		  <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 border border-warning" style="background: radial-gradient(#222,#111);">
