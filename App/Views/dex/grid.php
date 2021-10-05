@@ -121,7 +121,7 @@ tr.customer {
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <dmx-data-detail id="dataDetail1" dmx-bind:data="dataView1.data" >
+        <dmx-data-detail id="dataDetail1" dmx-bind:data="dataView1.data" key="$value.txid">
         	
         	<div class="panel panel-default mt-0">
          <div class="panel-heading">
