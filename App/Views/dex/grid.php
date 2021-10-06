@@ -128,10 +128,11 @@ tr.customer {
            <h3 class="panel-title">DETAIL</h3>
          </div>
          <ul class="list-group text-dark">
-  			<li class="list-group-item">DLUX: {{dataDetail1.data.$value.amount}}</li>
-  			<li class="list-group-item">HIVE: {{dataDetail1.data.$value.hive}}</li>
-  			<li class="list-group-item">RATE: {{dataDetail1.data.$value.rate}} </li>
-  			<li class="list-group-item text-break">TXID: {{dataDetail1.data.$value.txid}} </li>
+  			<li class="list-group-item">DLUX&#58; {{dataDetail1.data.$value.amount}}</li>
+  			<li class="list-group-item">HIVE&#58; {{dataDetail1.data.$value.hive}}</li>
+  			<li class="list-group-item">RATE&#58; {{dataDetail1.data.$value.rate}} </li>
+  			<li class="list-group-item text-break">TXID&#58; {{dataDetail1.data.$value.txid}} </li>
+			 <li class="list-group-item text-break">KEY &#40;RATE&#58;TXID&#41;&#58; {{dataDetail1.data.$value.key}} </li>
 		</ul>
        </div>
         </dmx-data-detail>
@@ -141,7 +142,7 @@ tr.customer {
           <table class="table table-bordered table-hover">
             <thead>
               <tr>
-                <th> TXID </th>
+            
                 <th dmx-class:success="dataView1.sort.on == 'amount'"> DLUX <span class="sort-btns">
                   <button type="button" class="btn btn-xs btn-default" title="Sort Ascending" dmx-on:click="dataView1.sort('amount','asc')"><i class="fa fa-sort-alpha-asc"></i></button>
                   <button title="Sort Descending" type="button" class="btn btn-xs btn-default" dmx-on:click="dataView1.sort('amount','desc')"><i class="fa fa-sort-alpha-desc"></i></button>
@@ -154,14 +155,24 @@ tr.customer {
                   <button title="Sort Ascending" type="button" class="btn btn-xs btn-default" dmx-on:click="dataView1.sort('rate','asc')"><i class="fa fa-sort-alpha-asc"></i></button>
                   <button title="Sort Descending" type="button" class="btn btn-xs btn-default" dmx-on:click="dataView1.sort('rate','desc')"><i class="fa fa-sort-alpha-desc"></i></button>
                 </span></th>
+				  <th dmx-class:success="dataView1.sort.on == 'txid'"> TXID <span class="sort-btns">
+                  <button title="Sort Ascending" type="button" class="btn btn-xs btn-default" dmx-on:click="dataView1.sort('txid','asc')"><i class="fa fa-sort-alpha-asc"></i></button>
+                  <button title="Sort Descending" type="button" class="btn btn-xs btn-default" dmx-on:click="dataView1.sort('txid','desc')"><i class="fa fa-sort-alpha-desc"></i></button>
+                </span></th>
+				  <th dmx-class:success="dataView1.sort.on == 'rate'"> KEY &#40;RATE&#58;TXID&#41;<span class="sort-btns">
+                  <button title="Sort Ascending" type="button" class="btn btn-xs btn-default" dmx-on:click="dataView1.sort('rate','asc')"><i class="fa fa-sort-alpha-asc"></i></button>
+                  <button title="Sort Descending" type="button" class="btn btn-xs btn-default" dmx-on:click="dataView1.sort('rate','desc')"><i class="fa fa-sort-alpha-desc"></i></button>
+                </span></th>
               </tr>
             </thead>
             <tbody>
               <tr class="customer" dmx-repeat:repeat1="dataView1.data" dmx-on:click="dataDetail1.select($value.key)" dmx-class:success="dataDetail1.data.$value.key ==  $value.key">
-                <td class="text-break"> {{$value.txid}} </td>
+                
 				<td> {{$value.amount}} </td>
                 <td> {{$value.hive}} </td>
                 <td> {{$value.rate}} </td>
+				  <td class="text-break"> {{$value.txid}} </td>
+				  <td class="text-break"> {{$value.key}} </td>
               </tr>
             </tbody>
           </table>
