@@ -95,7 +95,8 @@
 	  </div>
 		
 	  <div class="d-none">
-		<div id="dexSellOrdersTable">
+		
+		  <div id="dexSellOrdersTable">
       	<div dmx-repeat:repeatdexsellordersview="dexSellOrders.data">
 		  <a href="#" dmx-on:click="iteratedluxsellorders.select($index);dexSellOrdersDetail.select($value.txid)" dmx-bind:title="{{$value.txid}}">
 			  {{$index}} | {{amount}} DLUX | {{$value.hive}} HIVE | {{$value.rate}} RATE | {{$value.fee}} FEE (2.5%) | {{$value.txid}}
@@ -114,52 +115,76 @@
 		</div>
 	  </div>
 		
-      <div class="jumbotron text-white mt-5 pb-1 text-center" style="background: linear-gradient(217deg, rgba(251,0,255,.8), rgba(251,0,255,0) 70.71%),
-            														  linear-gradient(127deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),
-            														  linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
+      <div class="jumbotron text-white text-center px-2 py-2 mt-4" style="background: linear-gradient(217deg, rgba(251,0,255,.8), rgba(251,0,255,0) 70.71%),linear-gradient(127deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
+		  
+      <div class="jumbotron text-white text-center bg-none m-5 p-4">
         <h1 class="display-4">DLUX Token</h1>
         <hr class="my-4" style="border: white 0.5px solid">
         <p class="lead">100% Decentralized Atomic Swap Marketplace</p>
-        <p class="lead"> <a class="btn btn-outline-light btn-lg" href="/dex/dlux/" role="button">Order Book</a></p>
-        <div class="d-flex">
-          <p class="ml-auto mb-2">Balance<u class="ml-2 font-weight-bold" style="font-size:1.1em;">1,234.567 DLUX</u></p>
-        </div>
+        <p class="lead"> <a class="btn btn-outline-light btn-lg" href="/dex/dlux/" role="button">Order Book</a></p> 
       </div>
-		<div class="mt-4" style="border-bottom: #FFFFFF thick solid">
-        <h1 class="text-white p-0 m-0">Coins</h1>
-      </div>
-		<div class="card-deck mb-2">
-		  <div class="card" style="color:black;background:linear-gradient(orange,yellow)">
-			<div class="d-flex m-2">
-			  <div>DLUX</div>
-			  <div class="ml-auto">0.54372&#37;</div>
-			</div>
-			<h4 class="text-center">&#36;0.2513</h4>
-		  </div>
+
+				<div class="jumbotron m-0 p-3" style="background: rgba(0,0,0,0.5)">
+				<div class="card-deck" >
+					
+					<div class="card" style="color:black;background:linear-gradient(orange,yellow)">
+						<a href="#buyDluxModal" class="a-1" data-toggle="modal">
+		  			<div class="card-header">
+						<div class="d-flex m-2 text-dark">
+			  				<div>DLUX</div>
+			  				<div class="ml-auto ">0.54372&#37;</div>
+						</div>
+						<h4 class="text-center text-success">&#36;0.2513</h4>
+						</div>
+						<div class="card-footer text-white" style="background: rgba(0,0,0,0.5)">
+							<div class="d-flex">
+          						<p class="ml-auto mb-2">Balance&#58;<u class="ml-2 font-weight-bold" style="font-size:1.1em;">1,234.567 DLUX</u></p>
+        					</div>
+		  				</div>
+						</a>
+					</div>
 			
 		<div class="card" style="color:black;background:linear-gradient(red,orangered)">
+			<div class="card-header">
 			<div class="d-flex m-2">
 			  <div>HIVE</div>
 			  <div class="ml-auto">0.54372&#37;</div>
 			</div>
 			<h4 class="text-center">&#36;1.05</h4>
+			</div>
+			<div class="card-footer text-white" style="background: rgba(0,0,0,0.5)">
+							<div class="d-flex">
+          						<p class="ml-auto mb-2">Balance&#58;<u class="ml-2 font-weight-bold" style="font-size:1.1em;">125.635 HIVE</u></p>
+        					</div>
+		  				</div>
 		  </div>
 		
-		<div class="card" style="color:black;background:linear-gradient(lawngreen,greenyellow)">
+		<div class="card" style="color:black;background:linear-gradient(#43C45F,lawngreen)">
+			<div class="card-header">
 			<div class="d-flex m-2">
 			  <div>HBD</div>
 			  <div class="ml-auto" dmx-class="">0.65898&#37;</div>
 			</div>
 			<h4 class="text-center">&#36;0.97089</h4>
+			</div>
+			<div class="card-footer text-white" style="background: rgba(0,0,0,0.5)">
+							<div class="d-flex">
+          						<p class="ml-auto mb-2">Balance&#58;<u class="ml-2 font-weight-bold" style="font-size:1.1em;">34.281 HBD</u></p>
+        					</div>
+		  				</div>
 		  </div>
+					
 		</div>
+		</div>
+			</div>
+		
 		
       <div class="mt-4" style="border-bottom: #FFFFFF thick solid">
-        <h1 class="text-white p-0 m-0">Fungible Tokens</h1>
+        <h1 class="text-white p-0 m-0">Sealed NFTs</h1>
       </div>
       <div class="card-columns my-3" id="sales-mint-cards" >
         <div dmx-repeat:repeatsalesmint1="salesMint.data">
-          <div class="card" style="color:black; background:radial-gradient(yellow,darkorange)"> <a href="#buyDluxModal" class="a-1" data-toggle="modal">
+          <div class="card d-none" style="color:black; background:radial-gradient(yellow,darkorange)"> <a href="#buyDluxModal" class="a-1" data-toggle="modal">
             <div class="card-header text-center" style="color: black;background:linear-gradient(darkorange,yellow)">
               <h5 class="card-title lead">COIN</h5>
             </div>
@@ -177,16 +202,17 @@
               </p>
             </div>
           </a></div>
-          <div class="card text-white bg-dark" style="color:black; background:radial-gradient(lawngreen,#43C45F)" dmx-repeat:repeatsalesmint2="$value"> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
-            <div class="card-header text-center" style="background: linear-gradient(#43C45F,lawngreen)">
-              <h5 class="card-title lead" style="color: black">MINT</h5>
+          <div class="card" style="color:black; background:radial-gradient(#8D42EB,purple)" dmx-repeat:repeatsalesmint2="$value"> 
+			  <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
+            <div class="card-header text-center" style="background: linear-gradient(purple,#8D42EB) ">
+              <h5 class="card-title lead">MINT</h5>
             </div>
             <div class="card-img-top" dmx-bind:id="image-{{set}}" dmx-bind:alt="image-{{set}}">
-              <h1 class="py-3 mb-0 text-center text-primary" style="color: #43C45F"><i class="far fa-gem"></i></h1>
-              <h3 class="text-center mb-0" style="color: black;">{{set}} NFT</h3>
-              <p class="lead card-text text-center pt-1" style="color: black">Unwrap to see attributes.</p>
+              <h1 class="py-3 mb-0 text-center" ><i class="far fa-gem"></i></h1>
+              <h3 class="text-center mb-0">{{set}} NFT</h3>
+              <p class="lead card-text text-center pt-1">Unwrap to see attributes.</p>
             </div>
-            <div class="card-body" style="color: black;">
+            <div class="card-body">
               <div class="text-center"><u>{{items[0].price.nai()}}</u></div>
             </div>
             </a>
