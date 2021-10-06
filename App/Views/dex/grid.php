@@ -115,7 +115,7 @@ tr.customer {
 ?>
 <body is="dmx-app" class="d-flex flex-column h-100 padme-t70 text-white ">
 <dmx-api-datasource id="api1" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
-<dmx-data-view id="dataView1" dmx-bind:data="api1.data.markets.hive.sellOrders" pagesize="15"></dmx-data-view>
+<dmx-data-view id="dataView1" dmx-bind:data="api1.data.markets.hive.sellOrders" pagesize="2"></dmx-data-view>
 <main role="main" class="flex-shrink-0">
 <section class="content">
   <div class="container">
@@ -142,7 +142,7 @@ tr.customer {
           <table class="table table-bordered table-hover">
             <thead>
               <tr>
-            
+            	<th>&#36;value</th>
                 <th dmx-class:success="dataView1.sort.on == '$value.amount'"> DLUX <span class="sort-btns">
                   <button type="button" class="btn btn-xs btn-default" title="Sort Ascending" dmx-on:click="dataView1.sort('$value.amount','asc')"><i class="fa fa-sort-alpha-asc"></i></button>
                   <button title="Sort Descending" type="button" class="btn btn-xs btn-default" dmx-on:click="dataView1.sort('$value.amount','desc')"><i class="fa fa-sort-alpha-desc"></i></button>
@@ -167,7 +167,7 @@ tr.customer {
             </thead>
             <tbody>
               <tr class="customer" dmx-repeat:repeat1="dataView1.data" dmx-on:click="dataDetail1.select($value.key)" dmx-class:success="dataDetail1.data.$value.key ==  $value.key">
-                
+                <td>{{$value}}</td>
 				<td> {{$value.amount}} </td>
                 <td> {{$value.hive}} </td>
                 <td> {{$value.rate}} </td>
