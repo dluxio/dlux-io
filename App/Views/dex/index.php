@@ -126,7 +126,7 @@
         </div>
       </div>
 		<div class="my-4" style="border-bottom: #FFFFFF thick solid">
-        <h1 class="text-white p-0 m-0">Coins</h1>
+        <h1 class="text-white p-0 m-0">Fungible Coins</h1>
       </div>
 		<div class="card-deck mb-2">
 		  <div class="card" style="color:black;background:linear-gradient(orange,yellow)">
