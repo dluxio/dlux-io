@@ -115,7 +115,7 @@ tr.customer {
 ?>
 <body is="dmx-app" class="d-flex flex-column h-100 padme-t70 text-white ">
 <dmx-api-datasource id="api1" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
-<dmx-data-view id="dataView1" dmx-bind:data="api1.data.markets.hive.sellOrders" pagesize="1"></dmx-data-view>
+<dmx-data-view id="dataView1" dmx-bind:data="api1.data.markets.hive.sellOrders" pagesize="15"></dmx-data-view>
 <main role="main" class="flex-shrink-0">
 <section class="content">
   <div class="container">
