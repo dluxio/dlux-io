@@ -121,7 +121,7 @@ tr.customer {
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <dmx-data-detail id="dataDetail1" dmx-bind:data="dataView1.data" key="$value.txid">
+        <dmx-data-detail id="dataDetail1" dmx-bind:data="dataView1.data" key="$value.key">
         	
         	<div class="panel panel-default mt-0">
          <div class="panel-heading">
@@ -157,7 +157,7 @@ tr.customer {
               </tr>
             </thead>
             <tbody>
-              <tr class="customer" dmx-repeat:repeat1="dataView1.data" dmx-on:click="dataDetail1.select($value.txid)" dmx-class:success="dataDetail1.data.$value.txid ==  $value.txid">
+              <tr class="customer" dmx-repeat:repeat1="dataView1.data" dmx-on:click="dataDetail1.select($value.key)" dmx-class:success="dataDetail1.data.$value.key ==  $value.key">
                 <td class="text-break"> {{$value.txid}} </td>
 				<td> {{$value.amount}} </td>
                 <td> {{$value.hive}} </td>
