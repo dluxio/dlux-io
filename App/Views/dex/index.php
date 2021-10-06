@@ -125,7 +125,9 @@
           <p class="ml-auto mb-2">Balance<u class="ml-2 font-weight-bold" style="font-size:1.1em;">1,234.567 DLUX</u></p>
         </div>
       </div>
-		
+		<div class="my-4" style="border-bottom: #FFFFFF thick solid">
+        <h1 class="text-white p-0 m-0">Coins</h1>
+      </div>
 		<div class="card-deck mb-2">
 		  <div class="card" style="color:black;background:linear-gradient(orange,yellow)">
 			<div class="d-flex m-2">
@@ -153,11 +155,11 @@
 		</div>
 		
       <div class="mt-4" style="border-bottom: #FFFFFF thick solid">
-        <h1 class="text-white p-0 m-0">Fungible Tokens</h1>
+        <h1 class="text-white p-0 m-0">Sealed NFTs</h1>
       </div>
       <div class="card-columns my-3" id="sales-mint-cards" >
         <div dmx-repeat:repeatsalesmint1="salesMint.data">
-          <div class="card" style="color:black; background:radial-gradient(yellow,darkorange)"> <a href="#buyDluxModal" class="a-1" data-toggle="modal">
+          <div class="card d-none" style="color:black; background:radial-gradient(yellow,darkorange)"> <a href="#buyDluxModal" class="a-1" data-toggle="modal">
             <div class="card-header text-center" style="color: black;background:linear-gradient(darkorange,yellow)">
               <h5 class="card-title lead">COIN</h5>
             </div>
