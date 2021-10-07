@@ -25,14 +25,16 @@
 <body is="dmx-app" class="d-flex flex-column h-100 padme-t70 text-white ">
 <dmx-api-datasource id="api1" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
 <dmx-data-view id="dexSellOrders" dmx-bind:data="api1.data.markets.hive.sells" pagesize="15"></dmx-data-view>
+	
 <main role="main" class="flex-shrink-0">
 <section class="content">
   <div class="container">
   <div class="jumbotron bg-dark my-4 p-2">
-		<div class="jumbotron bg-darker mt-0 mb-2">
-			<h1>Data View</h1>
-		<div id="dexSellOrdersTable">
-			  <table class="table table-hover table-bordered table-dark table-striped text-white">
+	  <h1 class="text-center">Data View &#40;Pagination&#41;</h1>
+		<div class="jumbotron bg-darker my-4 p-2">
+			<h1>Data Repeat</h1>
+		<div id="dexSellOrdersTable ">
+			  <table class="table table-hover table-bordered table-dark table-striped text-white mb-0">
 			  	<thead>
 			  		<tr>
 						<th scope="col" dmx-class:table-primary="dexSellOrders.sort.on == 'rate'" >
@@ -64,28 +66,33 @@
 					
 			  </thead>
 			  <tbody>
-			  	<tr dmx-repeat:repeat1="dexSellOrders.data" dmx-on:click="iteratedluxsellorders.select($index); dexSellOrdersDetail.select(txid)" dmx-class:table-primary="iteratedluxsellorders.value.txid ==  txid">
+			  	<tr dmx-repeat:repeat1="dexSellOrders.data" dmx-on:click="iteratedluxsellorders.select($index); dexSellOrdersDetail.select(txid)" dmx-class:table-primary="dexSellOrdersDetail.data.txid ==  txid">
 						<td>{{rate}}</td>
 						<td>{{amount}}</td>
 						<td>{{hive}}</td>
 					</tr>
 				  
 			</tbody>
-			</table> 
+			</table>
+			<div class="d-flex justify-content-between mt-2">
+           		<div><a class="btn btn-light" href="javascript:void(0);" dmx-on:click="dexSellOrders.prev()" dmx-class:disabled="dexSellOrders.has.prev == false"><i class="fa fa-angle-left"></i></a></div>
+           		<div class="align-self-center"><p class="m-0 p-0">Page {{dexSellOrders.page}} of {{dexSellOrders.pages}}</p></div>
+           		<div><a class="btn btn-light" href="javascript:void(0)" dmx-on:click="dexSellOrders.next()" dmx-class:disabled="dexSellOrders.has.next == false"><i class="fa fa-angle-right"></i></a></div>
+         </div>
 		</div>
 			</div>
 		<div class="jumbotron bg-darker mt-2 mb-0">
 			<h1>Data Iterator</h1>
 		<div id="dexSellOrdersIterate" class="d-flex justify-content-between align-items-center">
-			<button class="btn btn-secondary" dmx-on:click="iteratedluxsellorders.prev()">&larr;</button>
+			<button class="btn btn-primary" dmx-on:click="iteratedluxsellorders.prev()">&larr;</button>
 			<dmx-data-iterator id="iteratedluxsellorders" dmx-bind:data="dexSellOrders.data" loop="true"><a href="#" dmx-on:click="dexSellOrdersDetail.select(value.txid)"><h3>{{index}} | {{value.amount}} DLUX | {{value.hive}} HIVE | {{value.rate}} RATE | {{value.fee}} FEE</h3>
 				<h5 class="text-break">{{value.txid}}</h5></a></dmx-data-iterator>
-			<button class="btn btn-secondary" dmx-on:click="iteratedluxsellorders.next()">&rarr;</button>
+			<button class="btn btn-primary" dmx-on:click="iteratedluxsellorders.next()">&rarr;</button>
 		</div>
 		</div>
 	  <div class="jumbotron bg-darker my-2">
 			<h1>Data Detail</h1>
-		<dmx-data-detail id="dexSellOrdersDetail" dmx-bind:data="dexSellOrders.data" key="txid">
+		<dmx-data-detail id="dexSellOrdersDetail" dmx-bind:data="dexSellOrders.data" key="txid" >
 			<h3>RATE&#58; {{dexSellOrdersDetail.data.rate}}</h3>
 			<h3>DLUX&#58; {{dexSellOrdersDetail.data.amount}}</h3>
 			<h3>HIVE&#58; {{dexSellOrdersDetail.data.hive}}</h3>
