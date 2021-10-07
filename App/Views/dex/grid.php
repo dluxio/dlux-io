@@ -38,29 +38,29 @@
 			  	<thead>
 			  		<tr>
 						<th scope="col" dmx-class:table-primary="dexSellOrders.sort.on == 'rate'" >
-							<div class="d-flex align-items-end">
-							<p class="m-0 p-0">RATE</p> 
-							<span class="ml-4">
-                  			<button title="Sort Ascending" type="button" class="btn btn-sm btn-light" dmx-on:click="dexSellOrders.sort('rate','asc')" dmx-class:bg-primary="dexSellOrders.sort.dir == 'asc' && dexSellOrders.sort.on == 'rate'"><i class="fas fa-sort-amount-down-alt"></i></button>
-                  			<button title="Sort Descending" type="button" class="btn btn-sm btn-light" dmx-on:click="dexSellOrders.sort('rate','desc')" dmx-class:bg-primary="dexSellOrders.sort.dir == 'desc' && dexSellOrders.sort.on == 'rate'"><i class="fas fa-sort-amount-down"></i></button>
-                			</span>
+							<div class="d-flex justify-content-between align-items-end flex-wrap">
+							<div class="d-flex flex-fill text-center"><p class="mx-2 my-0 p-0 text-center align-self-center">RATE</p></div>
+							<div class="d-flex">
+                  			<button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="dexSellOrders.sort('rate','asc')" dmx-class:bg-primary="dexSellOrders.sort.dir == 'asc' && dexSellOrders.sort.on == 'rate'"><i class="fas fa-sort-amount-down-alt"></i></button>
+                  			<button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="dexSellOrders.sort('rate','desc')" dmx-class:bg-primary="dexSellOrders.sort.dir == 'desc' && dexSellOrders.sort.on == 'rate'"><i class="fas fa-sort-amount-down"></i></button>
+                			</div>
 							</div>
 						</th>
 						<th scope="col" dmx-class:table-primary="dexSellOrders.sort.on == 'amount'">
-							<div class="d-flex align-items-end">
-							<p class="m-0 p-0">DLUX</p>
-							<span class="ml-4">
-                  			<button title="Sort Ascending" type="button" class="btn btn-sm btn-light"  dmx-on:click="dexSellOrders.sort('amount','asc')" dmx-class:bg-primary="dexSellOrders.sort.dir == 'asc' && dexSellOrders.sort.on == 'amount'"><i class="fas fa-sort-amount-down-alt"></i></button>
-                  			<button title="Sort Descending" type="button" class="btn btn-sm btn-light" dmx-on:click="dexSellOrders.sort('amount','desc')" dmx-class:bg-primary="dexSellOrders.sort.dir == 'desc' && dexSellOrders.sort.on == 'amount'"><i class="fas fa-sort-amount-down"></i></button>
-                			</span>
+							<div class="d-flex justify-content-between align-items-end flex-wrap">
+							<div class="d-flex flex-fill text-center"><p class="mx-2 my-0 p-0 text-center align-self-center">DLUX</p></div>
+							<div class="d-flex">
+                  			<button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light"  dmx-on:click="dexSellOrders.sort('amount','asc')" dmx-class:bg-primary="dexSellOrders.sort.dir == 'asc' && dexSellOrders.sort.on == 'amount'"><i class="fas fa-sort-amount-down-alt"></i></button>
+                  			<button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="dexSellOrders.sort('amount','desc')" dmx-class:bg-primary="dexSellOrders.sort.dir == 'desc' && dexSellOrders.sort.on == 'amount'"><i class="fas fa-sort-amount-down"></i></button>
+                			</div>
 						</th>
                 		<th scope="col" dmx-class:table-primary="dexSellOrders.sort.on == 'hive'">
-							<div class="d-flex align-items-end">
-							<p class="m-0 p-0">HIVE</p>
-							<span class="ml-4">
-                  			<button title="Sort Ascending" type="button" class="btn btn-sm btn-light" dmx-on:click="dexSellOrders.sort('hive','asc')" dmx-class:bg-primary="dexSellOrders.sort.dir == 'asc'  && dexSellOrders.sort.on == 'hive'"><i class="fas fa-sort-amount-down-alt"></i></button>
-                  			<button title="Sort Descending" type="button" class="btn btn-sm btn-light" dmx-on:click="dexSellOrders.sort('hive','desc')" dmx-class:bg-primary="dexSellOrders.sort.dir == 'desc'  && dexSellOrders.sort.on == 'hive'"><i class="fas fa-sort-amount-down"></i></button>
-               				</span>
+							<div class="d-flex justify-content-between align-items-end flex-wrap">
+							<div class="d-flex flex-fill text-center"><p class="mx-2 my-0 p-0 text-center align-self-center">HIVE</p></div>
+							<div class="d-flex">
+                  			<button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="dexSellOrders.sort('hive','asc')" dmx-class:bg-primary="dexSellOrders.sort.dir == 'asc'  && dexSellOrders.sort.on == 'hive'"><i class="fas fa-sort-amount-down-alt"></i></button>
+                  			<button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="dexSellOrders.sort('hive','desc')" dmx-class:bg-primary="dexSellOrders.sort.dir == 'desc'  && dexSellOrders.sort.on == 'hive'"><i class="fas fa-sort-amount-down"></i></button>
+               				</div>
 						</th>
 					</tr>
 					
@@ -75,9 +75,9 @@
 			</tbody>
 			</table>
 			<div class="d-flex justify-content-between mt-2">
-           		<div><a class="btn btn-light" href="javascript:void(0);" dmx-on:click="dexSellOrders.prev()" dmx-class:disabled="dexSellOrders.has.prev == false"><i class="fa fa-angle-left"></i></a></div>
+           		<div><a class="btn btn-light" href="javascript:void(0);" dmx-on:click="dexSellOrders.prev()" dmx-show="dexSellOrders.has.prev"><i class="fa fa-angle-left"></i></a></div>
            		<div class="align-self-center"><p class="m-0 p-0">Page {{dexSellOrders.page}} of {{dexSellOrders.pages}}</p></div>
-           		<div><a class="btn btn-light" href="javascript:void(0)" dmx-on:click="dexSellOrders.next()" dmx-class:disabled="dexSellOrders.has.next == false"><i class="fa fa-angle-right"></i></a></div>
+           		<div><a class="btn btn-light" href="javascript:void(0)" dmx-on:click="dexSellOrders.next()" dmx-show="dexSellOrders.has.next"><i class="fa fa-angle-right"></i></a></div>
          </div>
 		</div>
 			</div>
@@ -85,8 +85,8 @@
 			<h1>Data Iterator</h1>
 		<div id="dexSellOrdersIterate" class="d-flex justify-content-between align-items-center">
 			<button class="btn btn-primary" dmx-on:click="iteratedluxsellorders.prev()">&larr;</button>
-			<dmx-data-iterator id="iteratedluxsellorders" dmx-bind:data="dexSellOrders.data" loop="true"><a href="#" dmx-on:click="dexSellOrdersDetail.select(value.txid)"><h3>{{index}} | {{value.amount}} DLUX | {{value.hive}} HIVE | {{value.rate}} RATE | {{value.fee}} FEE</h3>
-				<h5 class="text-break">{{value.txid}}</h5></a></dmx-data-iterator>
+			<dmx-data-iterator id="iteratedluxsellorders" dmx-bind:data="dexSellOrders.data" loop="true"><a href="#" dmx-on:click="dexSellOrdersDetail.select(value.txid)"><h3 class="mx-2">{{index}} | {{value.amount}} DLUX | {{value.hive}} HIVE | {{value.rate}} RATE | {{value.fee}} FEE</h3>
+				<h5 class="text-break mx-2">{{value.txid}}</h5></a></dmx-data-iterator>
 			<button class="btn btn-primary" dmx-on:click="iteratedluxsellorders.next()">&rarr;</button>
 		</div>
 		</div>
