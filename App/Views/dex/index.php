@@ -12,7 +12,7 @@
 <script src="/dmxAppConnect/dmxMoment.js"></script>
 <script src="/dmxAppConnect/dmxFormatter.js"></script>
 <script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
-<script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<script src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 	
 <!--page specific-->
 <script src="/js/dex.js"></script>
