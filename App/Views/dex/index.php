@@ -22,7 +22,7 @@
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
 
 <dmx-api-datasource id="dex" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
-<dmx-data-view id="dexSellOrders" dmx-bind:data="dex.data.markets.hive.sellOrders" sorton="fee" sortdir="desc"></dmx-data-view>
+<dmx-data-view id="dexSellOrders" dmx-bind:data="dex.data.markets.hive.sells" sorton="key"></dmx-data-view>
 	
 <dmx-api-datasource id="sales" is="dmx-fetch" url="https://token.dlux.io/api/sales"></dmx-api-datasource>
 <dmx-data-view id="salesToken" dmx-bind:data="sales.data.result" sorton="time" pagesize="4"></dmx-data-view>
@@ -79,43 +79,8 @@
 ?>
 <main role="main" class="flex-shrink-0">
   <div class="container">
-    <div class="container-fluid" style="padding: 0">
-		
-		
-		<div class="d-none">
-        
-		<div dmx-repeat:repeat2="dexSellOrders.data">
-			<a href="#" dmx-on:click="dexSellOrdersDetail.select($value.key)" dmx-bind:title="{{$value.key}}"> {{$index}} | {{$value.amount}} DLUX | {{$value.hive}} HIVE | {{$value.rate}} RATE | {{$value.fee}} FEE (2.5%) | {{$value.txid}} </a>
-		</div>
-			
-        <dmx-data-detail id="dexSellOrdersDetail" dmx-bind:data="dexSellOrders.data" key="key" >
-		  <h3>{{dexSellOrdersDetail.data.$value.amount}} DLUX | {{dexSellOrdersDetail.data.$value.hive}} HIVE | {{dexSellOrdersDetail.data.$value.rate}} RATE | {{dexSellOrdersDetail.data.$value.fee}} FEE (2.5%) | {{dexSellOrdersDetail.data.$value.txid}} </h3>
-        </dmx-data-detail>
-
-	  </div>
-		
-	  <div class="d-none">
-		
-		  <div id="dexSellOrdersTable">
-      	<div dmx-repeat:repeatdexsellordersview="dexSellOrders.data">
-		  <a href="#" dmx-on:click="iteratedluxsellorders.select($index);dexSellOrdersDetail.select($value.txid)" dmx-bind:title="{{$value.txid}}">
-			  {{$index}} | {{amount}} DLUX | {{$value.hive}} HIVE | {{$value.rate}} RATE | {{$value.fee}} FEE (2.5%) | {{$value.txid}}
-		  </a>
-		</div>
-		</div>
-			
-		<dmx-data-detail id="dexSellOrdersDetail" dmx-bind:data="dexSellOrders.data" key="txid">
-		  <h3>{{dexSellOrdersDetail.data.txid}}{{dexSellOrders.data.amount}}{{amount}}{{value}} | {{dexSellOrders.data.amount}} DLUX | {{$value.hive}} HIVE | {{data.rate}} RATE | {{value.fee}} FEE (2.5%)</h3>
-        </dmx-data-detail>
-		
-		<div id="dexSellOrdersIterate" class="d-flex justify-content-between align-items-center">
-			<a href="#" dmx-on:click="iteratedluxsellorders.prev()">&larr; Prev</a>
-			<dmx-data-iterator id="iteratedluxsellorders" dmx-bind:data="dexSellOrders.data" loop="true"><h3>{{index}}</h3></dmx-data-iterator>
-			<a href="#" dmx-on:click="iteratedluxsellorders.next()">Next &rarr;</a>
-		</div>
-	  </div>
-		
-      <div class="jumbotron text-white text-center px-2 py-2 mt-4" style="background: linear-gradient(217deg, rgba(251,0,255,.8), rgba(251,0,255,0) 70.71%),linear-gradient(127deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
+    <div class="container-fluid" style="padding: 0">	
+      <div class="jumbotron text-white text-center p-4 mt-5" style="background: linear-gradient(217deg, rgba(251,0,255,.8), rgba(251,0,255,0) 70.71%),linear-gradient(127deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
 		  
       <div class="jumbotron text-white text-center bg-none m-5 p-4">
         <h1 class="display-4">DLUX Token</h1>
@@ -125,6 +90,7 @@
       </div>
 
 				<div class="jumbotron m-0 p-3" style="background: rgba(0,0,0,0.5)">
+					<h3 class="text-left pb-2">Currency Exchange</h3>
 				<div class="card-deck" >
 					
 					<div class="card" style="color:black;background:linear-gradient(orange,yellow)">
