@@ -66,7 +66,7 @@
 					
 			  </thead>
 			  <tbody>
-			  	<tr dmx-repeat:repeat1="dexSellOrders.data" dmx-on:click="iteratedluxsellorders.select($index); dexSellOrdersDetail.select(txid)" dmx-class:table-primary="dexSellOrdersDetail.data.txid ==  txid">
+			  	<tr dmx-repeat:repeat1="dexSellOrders.data" dmx-on:click="iteratedluxsellorders.select($index); dexSellOrdersDetail.select(txid)" dmx-class:table-primary="dexSellOrdersDetail.data.txid ==  txid" dmx-class:table-danger="rate.toNumber().inRange(dexSellOrders.data[0].rate, (dexSellOrders.data[0].rate*1.01)) ==  false" >
 						<td>{{rate}}</td>
 						<td>{{amount.nai()}}</td>
 						<td>{{hive.nai()}}</td>
