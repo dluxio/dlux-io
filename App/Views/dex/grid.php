@@ -68,8 +68,8 @@
 			  <tbody>
 			  	<tr dmx-repeat:repeat1="dexSellOrders.data" dmx-on:click="iteratedluxsellorders.select($index); dexSellOrdersDetail.select(txid)" dmx-class:table-primary="dexSellOrdersDetail.data.txid ==  txid">
 						<td>{{rate}}</td>
-						<td>{{amount}}</td>
-						<td>{{hive}}</td>
+						<td>{{amount.nai()}}</td>
+						<td>{{hive.nai()}}</td>
 					</tr>
 				  
 			</tbody>
@@ -81,22 +81,22 @@
          </div>
 		</div>
 			</div>
-		<div class="jumbotron bg-darker mt-2 mb-0">
+		<div class="jumbotron bg-darker my-4">
 			<h1>Data Iterator</h1>
 		<div id="dexSellOrdersIterate" class="d-flex justify-content-between align-items-center">
 			<button class="btn btn-primary" dmx-on:click="iteratedluxsellorders.prev()">&larr;</button>
-			<dmx-data-iterator id="iteratedluxsellorders" dmx-bind:data="dexSellOrders.data" loop="true"><a href="#" dmx-on:click="dexSellOrdersDetail.select(value.txid)"><h3 class="mx-2">{{index}} | {{value.amount}} DLUX | {{value.hive}} HIVE | {{value.rate}} RATE | {{value.fee}} FEE</h3>
+			<dmx-data-iterator id="iteratedluxsellorders" dmx-bind:data="dexSellOrders.data" loop="true"><a href="#" dmx-on:click="dexSellOrdersDetail.select(value.txid)"><h3 class="mx-2">{{index}} | {{value.amount.nai()}} DLUX | {{value.hive.nai()}} HIVE | {{value.rate}} RATE | {{value.fee.nai()}} FEE</h3>
 				<h5 class="text-break mx-2">{{value.txid}}</h5></a></dmx-data-iterator>
 			<button class="btn btn-primary" dmx-on:click="iteratedluxsellorders.next()">&rarr;</button>
 		</div>
 		</div>
-	  <div class="jumbotron bg-darker my-2">
+	  <div class="jumbotron bg-darker my-4">
 			<h1>Data Detail</h1>
 		<dmx-data-detail id="dexSellOrdersDetail" dmx-bind:data="dexSellOrders.data" key="txid" >
 			<h3>RATE&#58; {{dexSellOrdersDetail.data.rate}}</h3>
-			<h3>DLUX&#58; {{dexSellOrdersDetail.data.amount}}</h3>
-			<h3>HIVE&#58; {{dexSellOrdersDetail.data.hive}}</h3>
-			<h3>FEE&#58; {{dexSellOrdersDetail.data.fee}}</h3>
+			<h3>DLUX&#58; {{dexSellOrdersDetail.data.amount.nai()}}</h3>
+			<h3>HIVE&#58; {{dexSellOrdersDetail.data.hive.nai()}}</h3>
+			<h3>FEE&#58; {{dexSellOrdersDetail.data.fee.nai()}}</h3>
 		 <small class="text-break text-muted">TXID&#58; {{dexSellOrdersDetail.data.txid}}</small>
         </dmx-data-detail>
 		</div>
