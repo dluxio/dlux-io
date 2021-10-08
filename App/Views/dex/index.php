@@ -12,7 +12,7 @@
 <script src="/dmxAppConnect/dmxMoment.js"></script>
 <script src="/dmxAppConnect/dmxFormatter.js"></script>
 <script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
-<script src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 	
 <!--page specific-->
 <script src="/js/dex.js"></script>
@@ -22,7 +22,7 @@
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
 
 <dmx-api-datasource id="dex" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
-<dmx-data-view id="dexSellOrders" dmx-bind:data="dex.data.markets.hive.sells" sorton="key"></dmx-data-view>
+<dmx-data-view id="dexSellOrders" dmx-bind:data="dex.data.markets.hive.sells" sorton="key" ></dmx-data-view>
 	
 <dmx-api-datasource id="sales" is="dmx-fetch" url="https://token.dlux.io/api/sales"></dmx-api-datasource>
 <dmx-data-view id="salesToken" dmx-bind:data="sales.data.result" sorton="time" pagesize="4"></dmx-data-view>
@@ -79,13 +79,15 @@
 ?>
 <main role="main" class="flex-shrink-0">
   <div class="container">
-    <div class="container-fluid" style="padding: 0">	
+    <div class="container-fluid" style="padding: 0">
+	
+		
       <div class="jumbotron text-white text-center p-4 mt-5" style="background: linear-gradient(217deg, rgba(251,0,255,.8), rgba(251,0,255,0) 70.71%),linear-gradient(127deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
 		  
       <div class="jumbotron text-white text-center bg-none m-5 p-4">
         <h1 class="display-4">DLUX Token</h1>
         <hr class="my-4" style="border: white 0.5px solid">
-        <p class="lead">100% Decentralized Atomic Swap Marketplace</p>
+        <p class="lead">100% Decentralized Atomic Swap Marketplace{{dex.data.markets.hive.sells[0].rate}}</p>
         <p class="lead"> <a class="btn btn-outline-light btn-lg" href="/dex/dlux/" role="button">Order Book</a></p> 
       </div>
 
