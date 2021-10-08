@@ -57,7 +57,7 @@
 				</div>
 			  </div>
 			  </div>
-			  </div></div>
+			
         <div class="jumbotron bg-darker my-4 p-2">
           <h1>Data Repeat Table</h1>
           <div >
