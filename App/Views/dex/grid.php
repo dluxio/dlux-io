@@ -41,16 +41,27 @@
           <div>
 		  	  <div dmx-repeat:repeat1="hivesellsview.data.groupBy('rate')">
 				  <div>
-					<p class="lead mt-3 mb-1 p-2"><small><b>RATE {{$index + 1}}</b></small> &#124; <span dmx-class:text-success="dexapi.data.markets.hive.sells[0].rate == $key" dmx-class:text-warning="$key.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == true && dexapi.data.markets.hive.sells[0].rate !== $key" dmx-class:text-danger="$key.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == false">{{$key.toNumber().formatNumber(3,'.',',')}}</span> HIVE per DLUX</p>
+					<p class="lead mt-3 mb-1 p-2"><small><b>EXCHANGE RATE {{$index + 1}}</b></small> &#124; <span dmx-class:text-success="dexapi.data.markets.hive.sells[0].rate == $key" dmx-class:text-warning="$key.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == true && dexapi.data.markets.hive.sells[0].rate !== $key" dmx-class:text-danger="$key.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == false">{{$key.toNumber().formatNumber(6,'.',',')}}</span> HIVE per DLUX</p>
 					
 					 <div class="card-deck bg-dark mx-0 my-2 p-2">
                 			<div dmx-repeat:repeat3="$value">
 								 <div class="card bg-darker border-primary ml-0">
-								<div class="card-body">
-								<div>{{amount.nai()}}</div>
-                  				<div>{{hive.nai())}}</div>
-								<div><small class="text-muted">&#40;fee: {{fee.nai()}}&#41;</small></div>
-								</div>
+									 <div class="card-header text-right">
+									 	<div><small class="text-muted">FEE: {{fee.nai()}}</small></div>
+									 </div>
+									 <div class="card-body text-right">
+										 <div>{{amount.nai()}}</div>
+										<div>{{hive.nai())}}</div>
+										 
+										 
+									</div>
+									<div class="card-footer text-center">
+										 
+										<button class="btn btn-primary">Exchange</button>
+										 </div>
+								
+								
+								
 							</div>
 						 </div>
 						</div>
