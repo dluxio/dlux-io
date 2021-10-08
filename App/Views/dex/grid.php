@@ -35,13 +35,13 @@
     <div class="container">
 		<!-- BUY DLUX -->
       <div class="jumbotron bg-dark my-4 p-2">
-        <h1 class="text-center">BUY DLUX &#40;SELL HIVE&#41;</h1>
+        <h1 class="text-center">BUY DLUX</h1>
 		  <div class="jumbotron bg-darker my-4 p-2">
           <h1>Data Repeat Group By &#40;Rate&#41;</h1>
           <div>
 		  	  <div dmx-repeat:repeat1="hivesellsview.data.groupBy('rate')">
 				  <div>
-					<p class="lead mt-3 mb-1 p-2"><small><b>RATE&#58;</b></small> <span dmx-class:text-success="dexapi.data.markets.hive.sells[0].rate == $key" dmx-class:text-danger="$key.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) ==  false">{{$key}}</span></p>
+					<p class="lead mt-3 mb-1 p-2"><small><b>RATE {{$index + 1}}</b></small> &#124; <span dmx-class:text-success="dexapi.data.markets.hive.sells[0].rate == $key" dmx-class:text-danger="$key.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) ==  false">{{$key.toNumber().formatNumber(3,'.',',')}}</span></p>
 					
 					 <div class="card-deck bg-dark mx-0 my-2 p-2">
                 			<div dmx-repeat:repeat3="$value">
@@ -96,9 +96,9 @@
               </thead>
               <tbody>
                 <tr dmx-repeat:hivesellsrepeat="hivesellsview.data" dmx-on:click="iteratedluxsellorders.select($index); hivesellsviewDetail.select(txid)" dmx-class:table-primary="hivesellsviewDetail.data.txid ==  txid" dmx-class:table-danger="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) ==  false" >
-                  <td>{{rate}}</td>
+                  <td>{{rate.toNumber().formatNumber(3,'.',',')}}</td>
                   <td>{{amount.nai()}}</td>
-                  <td>{{hive.amount.nai())}}</td>
+                  <td>{{hive.nai())}}</td>
                 </tr>
               </tbody>
             </table>
