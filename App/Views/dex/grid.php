@@ -12,7 +12,7 @@
 <script src="/dmxAppConnect/dmxMoment.js"></script>
 <script src="/dmxAppConnect/dmxFormatter.js"></script>
 <script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
-<script src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 	
 <!--page specific-->
 <script src="/js/dex.js"></script>
@@ -28,7 +28,7 @@
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
 <dmx-data-view id="hbdsellsview" dmx-bind:data="dexapi.data.markets.hbd.sells" pagesize="15"></dmx-data-view>
 <dmx-data-view id="hbdbuysview" dmx-bind:data="dexapi.data.markets.hbd.buys" pagesize="15"></dmx-data-view>
-<dmx-data-view id="hivesellsview" dmx-bind:data="dexapi.data.markets.hive.sells" pagesize="15"></dmx-data-view>
+<dmx-data-view id="hivesellsview" dmx-bind:data="dexapi.data.markets.hive.sells"></dmx-data-view>
 <dmx-data-view id="hivebuysview" dmx-bind:data="dexapi.data.markets.hive.buys" pagesize="15"></dmx-data-view>
 <main role="main" class="flex-shrink-0">
   <section class="content">
@@ -47,17 +47,16 @@
                 			<div dmx-repeat:repeat3="$value">
 								 <div class="card bg-darker border-primary ml-0">
 									 <div class="card-header text-right">
-									 	<div><small class="text-muted">FEE: {{fee.nai()}}</small></div>
+									 	<div><small class="text-muted">FEE: {{feenai.nai()}}</small></div>
 									 </div>
 									 <div class="card-body text-right">
-										 <div>{{amount.nai()}}</div>
-										<div>{{hive.nai())}}</div>
-										 
-										 
+										 <div>{{amountnai.nai()}}</div>
+										<div>{{hivenai.nai()}}</div>
+										
 									</div>
 									<div class="card-footer text-center">
 										 
-										<button class="btn btn-primary">Exchange</button>
+										<button class="btn btn-primary">Swap</button>
 										 </div>
 								
 								
@@ -76,12 +75,12 @@
             <table class="table table-hover table-bordered table-dark table-striped text-white mb-0">
               <thead>
                 <tr>
-                  <th scope="col" dmx-class:table-primary="hivesellsview.sort.on == 'hive.rate'" > <div class="d-flex justify-content-between align-items-end flex-wrap">
+                  <th scope="col" dmx-class:table-primary="hivesellsview.sort.on == 'rate'" > <div class="d-flex justify-content-between align-items-end flex-wrap">
                     <div class="d-flex flex-fill text-center">
                       <p class="mx-2 my-0 p-0 text-center align-self-center">RATE</p>
                     </div>
                     <div class="d-flex">
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="hivesellsview.sort('value.rate','asc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'asc' && hivesellsview.sort.on == 'rate'"><i class="fas fa-sort-amount-down-alt"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="hivesellsview.sort('rate','asc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'asc' && hivesellsview.sort.on == 'rate'"><i class="fas fa-sort-amount-down-alt"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="hivesellsview.sort('rate','desc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'desc' && hivesellsview.sort.on == 'rate'"><i class="fas fa-sort-amount-down"></i></button>
                     </div>
                   </div>
@@ -91,8 +90,8 @@
                       <p class="mx-2 my-0 p-0 text-center align-self-center">DLUX</p>
                     </div>
                     <div class="d-flex">
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light"  dmx-on:click="hivesellsview.sort('amount.price()','asc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'asc' && hivesellsview.sort.on == 'amount'"><i class="fas fa-sort-amount-down-alt"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="hivesellsview.sort('amount.price()','desc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'desc' && hivesellsview.sort.on == 'amount'"><i class="fas fa-sort-amount-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light"  dmx-on:click="hivesellsview.sort('amount','asc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'asc' && hivesellsview.sort.on == 'amount'"><i class="fas fa-sort-amount-down-alt"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="hivesellsview.sort('amount','desc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'desc' && hivesellsview.sort.on == 'amount'"><i class="fas fa-sort-amount-down"></i></button>
                     </div>
                   </div></th>
                   <th scope="col" dmx-class:table-primary="hivesellsview.sort.on == 'hive'"> <div class="d-flex justify-content-between align-items-end flex-wrap">
@@ -109,8 +108,8 @@
               <tbody>
                 <tr dmx-repeat:hivesellsrepeat="hivesellsview.data" dmx-on:click="iteratedluxsellorders.select($index); hivesellsviewDetail.select(txid)" dmx-class:table-primary="hivesellsviewDetail.data.txid ==  txid" dmx-class:table-danger="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) ==  false" >
                   <td>{{rate.toNumber().formatNumber(3,'.',',')}}</td>
-                  <td>{{amount.nai()}}</td>
-                  <td>{{hive.nai())}}</td>
+                  <td>{{amount}}</td>
+                  <td>{{hive}}</td>
                 </tr>
               </tbody>
             </table>
