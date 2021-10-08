@@ -475,7 +475,7 @@ dmx.Formatters("global", {
                 .then((data) => {
                 const code = `(//${data}\n)("${o}")`;
                 const SVG = eval(code);
-                document.getElementById(`image-${c}-${o}`).innerHTML = SVG;
+                document.getElementById(`image-${c}-${o}`).innerHTML = SVG.HTML;
                 })
             },
             nftImageWell : function(o, s, c){
@@ -484,7 +484,7 @@ dmx.Formatters("global", {
                 .then((data) => {
                 const code = `(//${data}\n)("${o}")`;
                 const SVG = eval(code);
-                document.getElementById(`image-${c}-${o}`).innerHTML = SVG;
+                document.getElementById(`image-${c}-${o}`).innerHTML = SVG.HTML;
                 })
             },
             nftDetailWell : function(o, s, c){
@@ -493,7 +493,7 @@ dmx.Formatters("global", {
                 .then((data) => {
                 const code = `(//${data}\n)("${o}")`;
                 const SVG = eval(code);
-                document.getElementById(`detail-image-${c}-${o}`).innerHTML = SVG;
+                document.getElementById(`detail-image-${c}-${o}`).innerHTML = SVG.HTML;
                 })
             },
             slugify: function(t) {
