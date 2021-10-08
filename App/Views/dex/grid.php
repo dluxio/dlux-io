@@ -12,7 +12,7 @@
 <script src="/dmxAppConnect/dmxMoment.js"></script>
 <script src="/dmxAppConnect/dmxFormatter.js"></script>
 <script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
-<script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<script src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 	
 <!--page specific-->
 <script src="/js/dex.js"></script>
@@ -33,20 +33,43 @@
 <main role="main" class="flex-shrink-0">
   <section class="content">
     <div class="container">
+		<!-- BUY DLUX -->
       <div class="jumbotron bg-dark my-4 p-2">
         <h1 class="text-center">BUY DLUX &#40;SELL HIVE&#41;</h1>
+		  <div class="jumbotron bg-darker my-4 p-2">
+          <h1>Data Repeat Group By &#40;Rate&#41;</h1>
+          <div>
+		  	  <div dmx-repeat:repeat1="hivesellsview.data.groupBy('rate')">
+				  <div>
+					<p class="lead mt-3 mb-1 p-2"><small><b>RATE&#58;</b></small> <span dmx-class:text-success="dexapi.data.markets.hive.sells[0].rate == $key" dmx-class:text-danger="$key.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) ==  false">{{$key}}</span></p>
+					
+					 <div class="card-deck bg-dark mx-0 my-2 p-2">
+                			<div dmx-repeat:repeat3="$value">
+								 <div class="card bg-darker ml-0">
+								<div class="card-body">
+								<div>{{amount.nai()}}</div>
+                  				<div>{{hive.nai())}}</div>
+								</div>
+							</div>
+						 </div>
+						</div>
+					</div>
+				</div>
+			  </div>
+			  </div>
+			  </div></div>
         <div class="jumbotron bg-darker my-4 p-2">
-          <h1>Data Repeat</h1>
+          <h1>Data Repeat Table</h1>
           <div >
             <table class="table table-hover table-bordered table-dark table-striped text-white mb-0">
               <thead>
                 <tr>
-                  <th scope="col" dmx-class:table-primary="hivesellsview.sort.on == 'rate'" > <div class="d-flex justify-content-between align-items-end flex-wrap">
+                  <th scope="col" dmx-class:table-primary="hivesellsview.sort.on == 'hive.rate'" > <div class="d-flex justify-content-between align-items-end flex-wrap">
                     <div class="d-flex flex-fill text-center">
                       <p class="mx-2 my-0 p-0 text-center align-self-center">RATE</p>
                     </div>
                     <div class="d-flex">
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="hivesellsview.sort('rate','asc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'asc' && hivesellsview.sort.on == 'rate'"><i class="fas fa-sort-amount-down-alt"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="hivesellsview.sort('value.rate','asc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'asc' && hivesellsview.sort.on == 'rate'"><i class="fas fa-sort-amount-down-alt"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="hivesellsview.sort('rate','desc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'desc' && hivesellsview.sort.on == 'rate'"><i class="fas fa-sort-amount-down"></i></button>
                     </div>
                   </div>
@@ -56,8 +79,8 @@
                       <p class="mx-2 my-0 p-0 text-center align-self-center">DLUX</p>
                     </div>
                     <div class="d-flex">
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light"  dmx-on:click="hivesellsview.sort('amount','asc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'asc' && hivesellsview.sort.on == 'amount'"><i class="fas fa-sort-amount-down-alt"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="hivesellsview.sort('amount','desc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'desc' && hivesellsview.sort.on == 'amount'"><i class="fas fa-sort-amount-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light"  dmx-on:click="hivesellsview.sort('amount.price()','asc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'asc' && hivesellsview.sort.on == 'amount'"><i class="fas fa-sort-amount-down-alt"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="hivesellsview.sort('amount.price()','desc')" dmx-class:bg-primary="hivesellsview.sort.dir == 'desc' && hivesellsview.sort.on == 'amount'"><i class="fas fa-sort-amount-down"></i></button>
                     </div>
                   </div></th>
                   <th scope="col" dmx-class:table-primary="hivesellsview.sort.on == 'hive'"> <div class="d-flex justify-content-between align-items-end flex-wrap">
@@ -72,10 +95,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr dmx-repeat:repeat1="hivesellsview.data" dmx-on:click="iteratedluxsellorders.select($index); hivesellsviewDetail.select(txid)" dmx-class:table-primary="hivesellsviewDetail.data.txid ==  txid" dmx-class:table-danger="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) ==  false" >
+                <tr dmx-repeat:hivesellsrepeat="hivesellsview.data" dmx-on:click="iteratedluxsellorders.select($index); hivesellsviewDetail.select(txid)" dmx-class:table-primary="hivesellsviewDetail.data.txid ==  txid" dmx-class:table-danger="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) ==  false" >
                   <td>{{rate}}</td>
                   <td>{{amount.nai()}}</td>
-                  <td>{{hive.nai()}}</td>
+                  <td>{{hive.amount.nai())}}</td>
                 </tr>
               </tbody>
             </table>
@@ -109,7 +132,9 @@
             <small class="text-break text-muted">TXID&#58; {{hivesellsviewDetail.data.txid}}</small> </dmx-data-detail>
         </div>
       </div>
-      <div class="jumbotron bg-dark my-4 p-2">
+		
+		<!-- SELL DLUX -->
+      <div class="jumbotron bg-dark my-4 p-2 d-none">
         <h1 class="text-center">SELL DLUX &#40;BUY HIVE&#41;</h1>
         <div class="jumbotron bg-darker my-4 p-2">
           <h1>Sell Repeat</h1>
