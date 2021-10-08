@@ -25,4 +25,8 @@ class Dex extends \Core\Controller
     {
         View::render('dex/dlux.php');
     }
+	public function grid($request, $response, $service)
+    {
+        View::render('dex/grid.php');
+    }
 }

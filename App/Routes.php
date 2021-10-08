@@ -16,6 +16,8 @@ $router->respondWithController('GET', '/dex/', 'Dex@index');
 $router->respondWithController('GET', '/dex', 'Dex@index');
 $router->respondWithController('GET', '/dex/dlux/', 'Dex@dlux');
 $router->respondWithController('GET', '/dex/dlux', 'Dex@dlux');
+$router->respondWithController('GET', '/dex/grid/', 'Dex@grid');
+$router->respondWithController('GET', '/dex/grid', 'Dex@grid');
 $router->respondWithController('GET', '/apps', 'Apps@index');
 $router->respondWithController('GET', '/apps/', 'Apps@index');
 $router->respondWithController('GET', '/docs', 'Docs@index');
