@@ -61,8 +61,8 @@
 			<div class="flex-column">
 				<h6 class="dropdown-header text-center border-bottom" dmx-class:text-primary="hivesellsview.sort.on == 'amount'">DLUX</h6>
 				<div class="d-flex text-center border">
-					<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('amount','asc')" dmx-class:active="hivesellsview.sort.on == 'amount' && hivesellsview.sort.dir == 'asc'"><i class="fas fa-sort-amount-up"></i></a>
-					<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('amount','desc')" dmx-class:active="hivesellsview.sort.on == 'amount' && hivesellsview.sort.dir == 'desc'"><i class="fas fa-sort-amount-down"></i></a>
+					<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('amount','asc')" dmx-class:active="hivesellsview.sort.on == 'amount' && hivesellsview.sort.dir == 'asc'"><i class="fas fa-sort-amount-down-alt"></i></a>
+					<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('amount','desc')" dmx-class:active="hivesellsview.sort.on == 'amount' && hivesellsview.sort.dir == 'desc'"><i class="fas fa-sort-amount-up-alt"></i></a>
 				</div>
 			</div>
 			<div class="flex-column ">
@@ -75,37 +75,10 @@
 			<div class="flex-column">
 				<h6 class="dropdown-header text-center border-bottom" dmx-class:text-primary="hivesellsview.sort.on == 'rate'">RATE</h6>
 				<div class="d-flex text-center border">
-	      			<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('rate','asc')" dmx-class:active="hivesellsview.sort.on == 'rate' && hivesellsview.sort.dir == 'asc'"> <i class="fas fa-sort-amount-up"></i></a>
+	      			<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('rate','asc')" dmx-class:active="hivesellsview.sort.on == 'rate' && hivesellsview.sort.dir == 'asc'"> <i class="fas fa-sort-amount-down-alt"></i></a>
 					<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('rate','desc')" dmx-class:active="hivesellsview.sort.on == 'rate' && hivesellsview.sort.dir == 'desc'"> <i class="fas fa-sort-amount-down"></i></a>
 				</div>
 			</div>
-
-	
-  <div class="btn-group d-none" role="group" aria-label="Button group with nested dropdown">
-		  <button type="button" class="btn btn-secondary">Filter</button>
-		  <div class="btn-group" role="group">
-		    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sort By &#124; Direction</button>
-		    <div class="dropdown-menu dropdown-menu-right ">
-				<h6 class="dropdown-header text-center">DLUX</h6>
-				<div class="d-flex text-center">
-				<a class="dropdown-item" href="#" dmx-on:click="hivesellsview.sort('amount','asc')" dmx-class:active="hivesellsview.sort.on == 'amount' && hivesellsview.sort.dir == 'asc'"><i class="fas fa-sort-amount-down-alt"></i></a>
-				<a class="dropdown-item" href="#" dmx-on:click="hivesellsview.sort('amount','desc')" dmx-class:active="hivesellsview.sort.on == 'amount' && hivesellsview.sort.dir == 'desc'"><i class="fas fa-sort-amount-down"></i></a>
-				</div>
-				<div class="dropdown-divider"></div>
-				<h6 class="dropdown-header text-center">HIVE</h6>
-				<div class="d-flex text-center">
-				<a class="dropdown-item" href="#" dmx-on:click="hivesellsview.sort('hive','asc')" dmx-class:active="hivesellsview.sort.on == 'hive' && hivesellsview.sort.dir == 'asc'"> <i class="fas fa-sort-amount-down-alt"></i></a>
-				<a class="dropdown-item" href="#" dmx-on:click="hivesellsview.sort('hive','desc')" dmx-class:active="hivesellsview.sort.on == 'hive' && hivesellsview.sort.dir == 'desc'"> <i class="fas fa-sort-amount-down"></i></a> 
-				</div>
-				<div class="dropdown-divider"></div>
-				<h6 class="dropdown-header text-center">RATE</h6>
-				<div class="d-flex text-center">
-	      		<a class="dropdown-item" href="#" dmx-on:click="hivesellsview.sort('rate','asc')" dmx-class:active="hivesellsview.sort.on == 'rate' && hivesellsview.sort.dir == 'asc'"> <i class="fas fa-sort-amount-down-alt"></i></a>
-				<a class="dropdown-item" href="#" dmx-on:click="hivesellsview.sort('rate','desc')" dmx-class:active="hivesellsview.sort.on == 'rate' && hivesellsview.sort.dir == 'desc'"> <i class="fas fa-sort-amount-down"></i></a>
-				</div>
-			 </div>
-	 		 </div>
-		    </div>
 	
 		  </div>
 		
@@ -115,19 +88,19 @@
 		
 
 <div class="jumbotron  bg-darker my-4 p-2">
-	      <h1>Data Repeat Card Deck</h1>
+	      <h1>Available Orders</h1>
 		  <div class="card-deck m-2">
 			  	<div dmx-repeat:repeat4="hivesellsview.data">
-				  <div class="card bg-darker ml-0 my-1" dmx-class:border-success="dexapi.data.markets.hive.sells[0].rate == rate" dmx-class:border-warning="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == true && dexapi.data.markets.hive.sells[0].rate !== rate" dmx-class:border-danger="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == false">
-					<div class="card-header text-right">
-						<div><small class="text-muted">FEE: {{feenai.nai()}}</small></div>
+				  <div class="btn card bg-darker p-0 ml-0 my-1" dmx-class:border-success="dexapi.data.markets.hive.sells[0].rate == rate" dmx-class:border-info="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == true && dexapi.data.markets.hive.sells[0].rate !== rate" dmx-class:border-danger="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == false" dmx-class:btn-success="dexapi.data.markets.hive.sells[0].rate == rate" dmx-class:btn-info="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == true && dexapi.data.markets.hive.sells[0].rate !== rate" dmx-class:btn-danger="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == false" dmx-class:disabled="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == false">
+					<div class="card-header text-right" dmx-class:text-success="dexapi.data.markets.hive.sells[0].rate == rate" dmx-class:text-info="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == true && dexapi.data.markets.hive.sells[0].rate !== rate" dmx-class:text-white-50="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == false">
+						<small>RATE: {{rate}}</small>
 					</div>
-				  <div class="card-body text-right">
+				  <div class="card-body text-right text-white">
 					<div>{{amountnai.nai()}}</div>
 					<div>{{hivenai.nai()}}</div>					
 				  </div>
 				  <div class="card-footer text-center">			 
-					<button class="btn btn-primary">Swap</button>
+					<div><small class="text-muted">FEE: {{feenai.nai()}}</small></div>
 				  </div>
 				 </div>
 				</div>
