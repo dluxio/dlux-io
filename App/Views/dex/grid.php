@@ -118,7 +118,7 @@
 	      <h1>Data Repeat Card Deck</h1>
 		  <div class="card-deck m-2">
 			  	<div dmx-repeat:repeat4="hivesellsview.data">
-				  <div class="card bg-darker border-primary ml-0 my-1">
+				  <div class="card bg-darker ml-0 my-1" dmx-class:border-success="dexapi.data.markets.hive.sells[0].rate == rate" dmx-class:border-warning="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == true && dexapi.data.markets.hive.sells[0].rate !== rate" dmx-class:border-danger="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == false">
 					<div class="card-header text-right">
 						<div><small class="text-muted">FEE: {{feenai.nai()}}</small></div>
 					</div>
@@ -142,7 +142,7 @@
 					
 					 <div class="card-deck bg-dark mx-0 my-2 p-2">
                 			<div dmx-repeat:repeat3="$value">
-							  <div class="card bg-darker border-primary ml-0">
+							  <div class="card bg-darker ml-0" style="border: #8D04FF solid thin">
 									 <div class="card-header text-right">
 									 	<div><small class="text-muted">FEE: {{feenai.nai()}}</small></div>
 									 </div>
