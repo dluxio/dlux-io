@@ -56,7 +56,7 @@
 		</div>
 	</div>
 
-<div class="d-flex flex-fill text-center align-items-center justify-content-between col-12 mt-4">
+<div class="d-flex flex-fill flex-wrap text-center align-items-center justify-content-between col-12 mt-4">
 	<div class="d-flex">
 		<div class="dropdown show"> <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Page {{hivesellsview.page}} of {{hivesellsview.pages}} </a>
 		  <div class="dropdown-menu">
@@ -66,7 +66,7 @@
 		  </div>
 	    </div>
     </div>
-	<div class="d-flex justify-content-around">
+	<div class="d-flex flex-wrap justify-content-around">
 	<div class="btn-group mx-2" role="group">
 	  <button type="button" class="btn btn-primary" dmx-on:click="hivesellsview.sort('amount','asc')" dmx-class:active="hivesellsview.sort.on == 'amount' && hivesellsview.sort.dir == 'asc'"><i class="fas fa-sort-amount-down-alt"></i></button>
 		<div class="border border-primary p-2 text-white-50" dmx-class:bg-primary="hivesellsview.sort.on == 'amount'">DLUX</div>
