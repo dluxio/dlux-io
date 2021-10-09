@@ -7,6 +7,8 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.min.js" integrity="sha512-mZXUH8DAODwCHioWP3gltQwa953LbABMlzTYwYkKqv8eNxOk37B1HgNNuCMfFxgrpW5C34WJbxPDcM58+s1dJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.css" integrity="sha512-DGB74Gyw93qON+V0QxSRs1er6sqoPyFoy23HBL5LN7MRJBcjeCU22zega+vOEGE0XQLoVrv4ExcaesSTwZQA2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!--dmx App Connect-->
 <script src="/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/dmxAppConnect/dmxMoment.js"></script>
@@ -26,48 +28,143 @@
    include_once($path);
 ?>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
-<dmx-data-view id="hbdsellsview" dmx-bind:data="dexapi.data.markets.hbd.sells" pagesize="15"></dmx-data-view>
-<dmx-data-view id="hbdbuysview" dmx-bind:data="dexapi.data.markets.hbd.buys" pagesize="15"></dmx-data-view>
-<dmx-data-view id="hivesellsview" dmx-bind:data="dexapi.data.markets.hive.sells"></dmx-data-view>
+<dmx-data-view id="hbdsellsview" dmx-bind:data="dexapi.data.markets.hbd.sells" filter="" sorton="" sortdir="" pagesize=""></dmx-data-view>
+<dmx-data-view id="hbdbuysview" dmx-bind:data="dexapi.data.markets.hbd.buys" filter="(amount >= 100000) && (amount <= 900000)"></dmx-data-view>
+<dmx-data-view id="hivesellsview" dmx-bind:data="dexapi.data.markets.hive.sells" ></dmx-data-view>
+<dmx-data-view id="hivesellsviewamount" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="amount"></dmx-data-view>
+<dmx-data-view id="hivesellsviewhive" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="hive" ></dmx-data-view>
 <dmx-data-view id="hivebuysview" dmx-bind:data="dexapi.data.markets.hive.buys" pagesize="15"></dmx-data-view>
 <main role="main" class="flex-shrink-0">
   <section class="content">
     <div class="container">
 		<!-- BUY DLUX -->
-      <div class="jumbotron bg-dark my-4 p-2">
-        <h1 class="text-center">BUY DLUX</h1>
+      <div class="jumbotron bg-dark my-4 p-2 text-center">
+        <h1>BUY DLUX</h1>
+
+	    <div class="d-flex flex-column justify-content-between align-items-center">
+		 <div class="col-12 mx-2">
+	    <div class="d-flex justify-content-between align-items-center">
+			  <input class="form-control col-2 text-center" type="" id="amountmin" placeholder="MIN" dmx-bind:value="hivesellsviewamount.data[0].amountnai.nai()"></input>
+		  	  <div class="flex-fill col-6" id="amountslider"></div>
+		  	  <input class="form-control col-2 text-center" type="" id="amountmax" placeholder="MAX" dmx-bind:value="hivesellsviewamount.data[hivesellsviewamount.data.length -1].amountnai.nai()"></input>
+
+        </div>
+	  <div class="d-flex justify-content-between align-items-center">
+			  <input class="form-control col-2 text-center" type="" id="hivemin" placeholder="MIN" dmx-bind:value="hivesellsviewhive.data[0].hivenai.nai()"></input>
+		  	  <div class="flex-fill col-6" id="hiveslider"></div>
+		  	  <input class="form-control col-2 text-center" type="" id="hivemax" placeholder="MAX" dmx-bind:value="hivesellsviewhive.data[hivesellsviewhive.data.length -1].hivenai.nai()"></input>
+		</div>
+	</div>
+
+<div class="d-flex flex-fill text-center">
+
+			<div class="flex-column">
+				<h6 class="dropdown-header text-center border-bottom" dmx-class:text-primary="hivesellsview.sort.on == 'amount'">DLUX</h6>
+				<div class="d-flex text-center border">
+					<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('amount','asc')" dmx-class:active="hivesellsview.sort.on == 'amount' && hivesellsview.sort.dir == 'asc'"><i class="fas fa-sort-amount-up"></i></a>
+					<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('amount','desc')" dmx-class:active="hivesellsview.sort.on == 'amount' && hivesellsview.sort.dir == 'desc'"><i class="fas fa-sort-amount-down"></i></a>
+				</div>
+			</div>
+			<div class="flex-column ">
+				<h6 class="dropdown-header text-center border-bottom" dmx-class:text-primary="hivesellsview.sort.on == 'hive'">HIVE</h6>
+				<div class="d-flex text-center border">
+					<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('hive','asc')" dmx-class:active="hivesellsview.sort.on == 'hive' && hivesellsview.sort.dir == 'asc'"> <i class="fas fa-sort-amount-up"></i></a>
+					<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('hive','desc')" dmx-class:active="hivesellsview.sort.on == 'hive' && hivesellsview.sort.dir == 'desc'"> <i class="fas fa-sort-amount-down"></i></a> 
+				</div>
+			</div>
+			<div class="flex-column">
+				<h6 class="dropdown-header text-center border-bottom" dmx-class:text-primary="hivesellsview.sort.on == 'rate'">RATE</h6>
+				<div class="d-flex text-center border">
+	      			<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('rate','asc')" dmx-class:active="hivesellsview.sort.on == 'rate' && hivesellsview.sort.dir == 'asc'"> <i class="fas fa-sort-amount-up"></i></a>
+					<a class="dropdown-item text-white-50" href="#" dmx-on:click="hivesellsview.sort('rate','desc')" dmx-class:active="hivesellsview.sort.on == 'rate' && hivesellsview.sort.dir == 'desc'"> <i class="fas fa-sort-amount-down"></i></a>
+				</div>
+			</div>
+
+	
+  <div class="btn-group d-none" role="group" aria-label="Button group with nested dropdown">
+		  <button type="button" class="btn btn-secondary">Filter</button>
+		  <div class="btn-group" role="group">
+		    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Sort By &#124; Direction</button>
+		    <div class="dropdown-menu dropdown-menu-right ">
+				<h6 class="dropdown-header text-center">DLUX</h6>
+				<div class="d-flex text-center">
+				<a class="dropdown-item" href="#" dmx-on:click="hivesellsview.sort('amount','asc')" dmx-class:active="hivesellsview.sort.on == 'amount' && hivesellsview.sort.dir == 'asc'"><i class="fas fa-sort-amount-down-alt"></i></a>
+				<a class="dropdown-item" href="#" dmx-on:click="hivesellsview.sort('amount','desc')" dmx-class:active="hivesellsview.sort.on == 'amount' && hivesellsview.sort.dir == 'desc'"><i class="fas fa-sort-amount-down"></i></a>
+				</div>
+				<div class="dropdown-divider"></div>
+				<h6 class="dropdown-header text-center">HIVE</h6>
+				<div class="d-flex text-center">
+				<a class="dropdown-item" href="#" dmx-on:click="hivesellsview.sort('hive','asc')" dmx-class:active="hivesellsview.sort.on == 'hive' && hivesellsview.sort.dir == 'asc'"> <i class="fas fa-sort-amount-down-alt"></i></a>
+				<a class="dropdown-item" href="#" dmx-on:click="hivesellsview.sort('hive','desc')" dmx-class:active="hivesellsview.sort.on == 'hive' && hivesellsview.sort.dir == 'desc'"> <i class="fas fa-sort-amount-down"></i></a> 
+				</div>
+				<div class="dropdown-divider"></div>
+				<h6 class="dropdown-header text-center">RATE</h6>
+				<div class="d-flex text-center">
+	      		<a class="dropdown-item" href="#" dmx-on:click="hivesellsview.sort('rate','asc')" dmx-class:active="hivesellsview.sort.on == 'rate' && hivesellsview.sort.dir == 'asc'"> <i class="fas fa-sort-amount-down-alt"></i></a>
+				<a class="dropdown-item" href="#" dmx-on:click="hivesellsview.sort('rate','desc')" dmx-class:active="hivesellsview.sort.on == 'rate' && hivesellsview.sort.dir == 'desc'"> <i class="fas fa-sort-amount-down"></i></a>
+				</div>
+			 </div>
+	 		 </div>
+		    </div>
+	
+		  </div>
+		
+    </div>
+	
+	    
+		
+
+<div class="jumbotron  bg-darker my-4 p-2">
+	      <h1>Data Repeat Card Deck</h1>
+		  <div class="card-deck m-2">
+			  	<div dmx-repeat:repeat4="hivesellsview.data">
+				  <div class="card bg-darker border-primary ml-0 my-1">
+					<div class="card-header text-right">
+						<div><small class="text-muted">FEE: {{feenai.nai()}}</small></div>
+					</div>
+				  <div class="card-body text-right">
+					<div>{{amountnai.nai()}}</div>
+					<div>{{hivenai.nai()}}</div>					
+				  </div>
+				  <div class="card-footer text-center">			 
+					<button class="btn btn-primary">Swap</button>
+				  </div>
+				 </div>
+				</div>
+		  </div>
+	    </div>
 		  <div class="jumbotron bg-darker my-4 p-2">
           <h1>Data Repeat Group By &#40;Rate&#41;</h1>
-          <div>
+          <div>			  
 		  	  <div dmx-repeat:repeat1="hivesellsview.data.groupBy('rate')">
 				  <div>
 					<p class="lead mt-3 mb-1 p-2"><small><b>EXCHANGE RATE {{$index + 1}}</b></small> &#124; <span dmx-class:text-success="dexapi.data.markets.hive.sells[0].rate == $key" dmx-class:text-warning="$key.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == true && dexapi.data.markets.hive.sells[0].rate !== $key" dmx-class:text-danger="$key.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) == false">{{$key.toNumber().formatNumber(6,'.',',')}}</span> HIVE per DLUX</p>
 					
 					 <div class="card-deck bg-dark mx-0 my-2 p-2">
                 			<div dmx-repeat:repeat3="$value">
-								 <div class="card bg-darker border-primary ml-0">
+							  <div class="card bg-darker border-primary ml-0">
 									 <div class="card-header text-right">
 									 	<div><small class="text-muted">FEE: {{feenai.nai()}}</small></div>
 									 </div>
-									 <div class="card-body text-right">
+							    <div class="card-body text-right">
 										 <div>{{amountnai.nai()}}</div>
 										<div>{{hivenai.nai()}}</div>
 										
-									</div>
-									<div class="card-footer text-center">
+								</div>
+								<div class="card-footer text-center">
 										 
 										<button class="btn btn-primary">Swap</button>
-										 </div>
+							    </div>
 								
 								
 								
 							</div>
 						 </div>
-						</div>
 					</div>
 				</div>
-			  </div>
-			  </div>
+			</div>
+		    </div>
+	    </div>
 			
         <div class="jumbotron bg-darker my-4 p-2">
           <h1>Data Repeat Table</h1>
@@ -224,6 +321,9 @@
     </div>
   </section>
 </main>
+<script src="/dlux-io/js/jquery-3.4.1.min.js"></script>
+<script src="/dlux-io/js/popper.min.js"></script>
+<script src="/dlux-io/js/bootstrap-4.4.1.js"></script>
 </body>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
@@ -231,4 +331,26 @@
    include_once($path);
 ?>
 </body>
+<script>
+var slider = document.getElementById('amountslider');
+
+noUiSlider.create(slider, {
+    start: [0, 100],
+    connect: true,
+    range: {
+        'min': 0,
+        'max': 100
+    }
+});
+var slider = document.getElementById('hiveslider');
+
+noUiSlider.create(slider, {
+    start: [0, 100],
+    connect: true,
+    range: {
+        'min': 0,
+        'max': 100
+    }
+});
+</script>
 </html>
