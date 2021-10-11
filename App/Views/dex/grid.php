@@ -37,10 +37,60 @@ include_once( $path );
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
 <dmx-data-view id="orderbookmath1" dmx-bind:data="dexapi.data.markets.hive.sells"></dmx-data-view>
 <dmx-data-view id="orderbookview1" dmx-bind:data="dexapi.data.markets.hive.sells" filter="(amount >= 1000) && (amount <= 900000)" sorton="" sortdir="" pagesize=""></dmx-data-view>
+	<!-- hidden orderbook math -->
+    <div class="col d-none">
+	  <div class="form-group">
+        <label>Total Orders</label>
+        <input type="number" id="totalorders" dmx-bind:value="orderbookmath1.items">
+        </input>
+      </div>
+	<div class="form-group">
+        <label>Enabled Orders</label>
+        <input type="number" id="countenabledorders" dmx-bind:value="(orderbookmath1.data.where('rate',maxprice.value,'<=').count())">
+        </input>
+      </div>
+	<div class="form-group">
+        <label>Disabled Orders</label>
+        <input type="number" id="countdisabledorders" dmx-bind:value="orderbookmath1.data.where('rate',maxprice.value,'>').count()">
+        </input>
+      </div>
+      <div class="form-group">
+        <label>Low Price</label>
+        <input type="number" id="lowprice" dmx-bind:value="orderbookmath1.data.min('rate').formatNumber('6','.',',')">
+        </input>
+      </div>
+      <div class="form-group">
+        <label>Avg Price</label>
+        <input type="number" id="avgprice" dmx-bind:value="(orderbookmath1.data.sum('hive')/dexapi.data.markets.hive.sells.sum('amount')).formatNumber('6','.',',')">
+        </input>
+      </div>
+      <div class="form-group">
+        <label>Max Price</label>
+        <input type="number" id="maxprice" dmx-bind:value="(orderbookmath1.data.min('rate')*1.01).formatNumber('6','.',',')">
+        </input>
+      </div>
+      <div class="form-group">
+        <label>High Price</label>
+        <input type="number" id="highprice" dmx-bind:value="orderbookmath1.data.max('rate').formatNumber('6','.',',')">
+        </input>
+      </div>
+      <div class="form-group">
+        <label>Total DLUX</label>
+        <input type="number" id="totalamount1" dmx-bind:value="(orderbookmath1.data.sum('amount')/1000).formatNumber('3','.',',')">
+        </input>
+      </div>
+      <div class="form-group">
+        <label>Total HIVE</label>
+        <input type="number" id="totalamount2" dmx-bind:value="(orderbookmath1.data.sum('hive')/1000).formatNumber('3','.',',')">
+        </input>
+      </div>
+    </div>
 <main role="main" class="flex-shrink-0">
   <section class="content">
-	  <!-- orderbook select -->>
-    <form>
+	<!-- dev menu -->
+	<div class="row px-4 d-none">
+	  <!-- orderbook select -->
+    <form p-2>
       <div class="form-row">
         <select id="orderbookselect1">
           <option value="dexapi.data.markets.hive.sells">Buy DLUX for HIVE</option>
@@ -51,8 +101,7 @@ include_once( $path );
         {{orderbookselect1.value}} </div>
     </form>
 	  
-    <!-- full action bar visible on mobile -->
-    <div class="row d-md-none">
+    <!-- full action bar -->
       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-secondary dropdown-toggle" id="filterdrop" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown"> Filter </button>
@@ -74,7 +123,7 @@ include_once( $path );
           </div>
         </div>
         <div class="btn-group" role="group">
-          <button type="	button" class="btn btn-secondary dropdown-toggle" id="sortdrop" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown"> Sort </button>
+          <button type="button" class="btn btn-secondary dropdown-toggle" id="sortdrop" aria-expanded="false" aria-haspopup="true" data-toggle="dropdown"> Sort </button>
           <div class="dropdown-menu">
             <h6 class="dropdown-header text-center " dmx-class:text-primary="orderbookview1.sort.on == 'amount'">DLUX</h6>
             <div class="d-flex text-center"> <a class="dropdown-item" href="#" dmx-on:click="orderbookview1.sort('amount','asc')" dmx-class:active="orderbookview1.sort.on == 'amount' && orderbookview1.sort.dir == 'asc'"><i class="fas fa-sort-amount-down-alt"></i></a> <a class="dropdown-item" href="#" dmx-on:click="orderbookview1.sort('amount','desc')" dmx-class:active="orderbookview1.sort.on == 'amount' && orderbookview1.sort.dir == 'desc'"><i class="fas fa-sort-amount-up-alt"></i></a> </div>
@@ -150,11 +199,13 @@ include_once( $path );
               <div class="d-flex flex-column card-header">
                 <div class="d-flex justify-content-between lead">
 				  <div>Orders</div>
-                <div>{{orderbookmath1.items}}</div>
+                <div>{{totalorders.value}}</div>
 				  </div>
 				<div class="d-flex small justify-content-around">
-				    <div class="d-flex"><div class="d-flex justify-content-between border border-info rounded m-2 px-2 py-1 text-info text-center">{{(orderbookmath1.data.where('rate',maxprice.value,'<=').count())}} Enabled</div>
-				  <div class="d-flex justify-content-between border border-warning rounded m-2 px-2 py-1 text-warning">{{orderbookmath1.data.where('rate',maxprice.value,'>').count()}} Disabled</div></div>
+				    <div class="d-flex">
+						<div class="d-flex justify-content-between border border-info rounded m-2 px-2 py-1 text-info text-center">
+							{{countenabledorders.value}} Enabled</div>
+				  <div class="d-flex justify-content-between border border-warning rounded m-2 px-2 py-1 text-warning">{{countdisabledorders.value}} Disabled</div></div>
               </div>
 				</div>
               <div class="card-body">
@@ -193,20 +244,24 @@ include_once( $path );
     </div>
     <!-- DETAIL ITERATOR VIEW -->
     <div class="col-md-6 col-xl-3 order-last">
-      <div class="rounded bg-darker my-4">
-		    
-       		<dmx-data-iterator id="iterator1" dmx-bind:data="orderbookview1.data" loop="true">
-            <div class="modal-header d-flex flex-fill justify-content-between align-items-center" >
-           	<h6>{{index + 1}} of {{orderbookview1.items}}</h6>
+      <div class="rounded bg-darker my-4">    
+       	<dmx-data-iterator id="iterator1" dmx-bind:data="orderbookview1.data" loop="true">
+            <div class="card-header d-flex flex-fill justify-content-between align-items-center" >
+           	<h2><a href="#" class="text-secondary p-3" dmx-on:click="iterator1.prev()"><i class="fas fa-caret-square-left"></i></a></h2>
+			<h6 class="text-secondary">Item {{index + 1}} of {{orderbookview1.items}}</h6>
+			<h2 class=""><a href="#" class="text-secondary p-3" dmx-on:click="iterator1.next()"><i class="fas fa-caret-square-right"></i></a></h2>
             </div>
-            <div class="modal-body">
+            <div class="card-body">
               <div class="d-flex flex-column">
-                <div class="d-flex justify-content-between">
-                  <h2><a href="#" class="text-muted p-3" dmx-on:click="iterator1.prev()"><i class="fas fa-caret-square-left"></i></a></h2>
-                  <h2 dmx-class:text-success="(value.rate == lowprice.value)" 
+                <div class="d-flex flex-column text-center">
+                  
+                  <h2 class="mb-0"
+					  dmx-class:text-success="(value.rate == lowprice.value)" 
 					   dmx-class:text-info="((value.rate <= maxprice.value) && (value.rate !== lowprice.value))" 
-					   dmx-class:text-warning="value.rate > maxprice.value">{{value.rate}} <i class="fab fa-hive"></i></h2>
-                  <h2 class=""><a href="#" class="text-muted p-3" dmx-on:click="iterator1.next()"><i class="fas fa-caret-square-right"></i></a></h2>
+					   dmx-class:text-warning="value.rate > maxprice.value">
+					  {{value.rate}} <i class="fab fa-hive"></i></h2>
+				  <span class="small mb-3">PER {{value.amountnai.token}}</span>
+                  
                 </div>
                 <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 border border-danger" >
                   <div class="d-flex flex-row flex-fill align-items-center">
@@ -269,7 +324,13 @@ include_once( $path );
                 </div>
               </div>
               <div class="d-flex justify-content-around my-1 py-3">
-                <button class="btn btn-lg btn-primary">Trade Tokens</button>
+                <button class="btn border"
+					   dmx-class:border-success="(value.rate == lowprice.value)" 
+					   dmx-class:border-info="((value.rate <= maxprice.value) && (value.rate !== lowprice.value))" 
+					   dmx-class:border-warning="value.rate > maxprice.value"
+					   dmx-class:btn-success="(value.rate == lowprice.value)" 
+					   dmx-class:btn-info="((value.rate <= maxprice.value) && (value.rate !== lowprice.value))" 
+					   dmx-class:btn-warning="value.rate > maxprice.value">Trade Tokens</button>
               </div>
             </div>
 				
@@ -311,7 +372,7 @@ include_once( $path );
           <!-- card deck -->
           <div class="tab-pane fade show active" id="deck" role="tabpanel" aria-labelledby="deck-tab">
             <div class="card-deck card-body m-2">
-              <div dmx-repeat:repeat4="orderbookview1.data" dmx-on:click="iteratedluxsellorders.select($index); orderbookview1Detail.select(txid)">
+              <div dmx-repeat:repeat4="orderbookview1.data" dmx-on:click="iterator1.select($index); orderbookview1Detail.select(txid)">
                 
 				<div class="btn card bg-darker p-0 ml-0 my-1" 
 					 dmx-class:active="txid ==  iterator1.value.txid" 
@@ -406,7 +467,7 @@ include_once( $path );
                     </tr>
                   </thead>
                   <tbody>
-                    <tr dmx-repeat:hivesellsrepeat="orderbookview1.data" dmx-on:click="iteratedluxsellorders.select($index); orderbookview1Detail.select(txid)" dmx-class:table-primary="orderbookview1Detail.data.txid ==  txid" dmx-class:table-danger="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) ==  false" >
+                    <tr dmx-repeat:hivesellsrepeat="orderbookview1.data" dmx-on:click="iterator1.select($index); orderbookview1Detail.select(txid)" dmx-class:table-primary="orderbookview1Detail.data.txid ==  txid" dmx-class:table-danger="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) ==  false" >
                       <td>{{rate.toNumber().formatNumber(3,'.',',')}}</td>
                       <td>{{amount}}</td>
                       <td>{{hive}}</td>
@@ -453,39 +514,7 @@ include_once( $path );
       </div>
     </div>
     </div>
-    <!-- math -->
-    <div class="col d-none">
-      <div class="form-group">
-        <label>Low Price</label>
-        <input type="number" id="lowprice" dmx-bind:value="orderbookmath1.data.min('rate').formatNumber('6','.',',')">
-        </input>
-      </div>
-      <div class="form-group">
-        <label>Avg Price</label>
-        <input type="number" id="avgprice" dmx-bind:value="(orderbookmath1.data.sum('hive')/dexapi.data.markets.hive.sells.sum('amount')).formatNumber('6','.',',')">
-        </input>
-      </div>
-      <div class="form-group">
-        <label>Max Price</label>
-        <input type="number" id="maxprice" dmx-bind:value="(orderbookmath1.data.min('rate')*1.01).formatNumber('6','.',',')">
-        </input>
-      </div>
-      <div class="form-group">
-        <label>High Price</label>
-        <input type="number" id="highprice" dmx-bind:value="orderbookmath1.data.max('rate').formatNumber('6','.',',')">
-        </input>
-      </div>
-      <div class="form-group">
-        <label>Total DLUX</label>
-        <input type="number" id="totalamount1" dmx-bind:value="(orderbookmath1.data.sum('amount')/1000).formatNumber('3','.',',')">
-        </input>
-      </div>
-      <div class="form-group">
-        <label>Total HIVE</label>
-        <input type="number" id="totalamount2" dmx-bind:value="(orderbookmath1.data.sum('hive')/1000).formatNumber('3','.',',')">
-        </input>
-      </div>
-    </div>
+  
   </section>
 </main>
 <script src="/dlux-io/js/popper.min.js"></script> 
