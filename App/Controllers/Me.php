@@ -21,10 +21,6 @@ class Me extends \Core\Controller
     {
         View::render('me/index.php');
     }
-    public function test($request, $response, $service)
-    {
-        View::render('me/test.php');
-    }
     public function blog($request, $response, $service)
     {
         View::render('me/index.php',[
