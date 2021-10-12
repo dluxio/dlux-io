@@ -82,16 +82,30 @@
     <div class="container-fluid" style="padding: 0">
 	
 		
-      <div class="jumbotron text-white text-center p-4 mt-5" style="background: linear-gradient(217deg, rgba(251,0,255,.8), rgba(251,0,255,0) 70.71%),linear-gradient(127deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
-		  
-      <div class="jumbotron text-white text-center bg-none m-5 p-4">
-        <h1 class="display-4">DLUX Token</h1>
-        <hr class="my-4" style="border: white 0.5px solid">
-        <p class="lead">100% Decentralized Atomic Swap Marketplace{{dex.data.markets.hive.sells[0].rate}}</p>
-        <p class="lead"> <a class="btn btn-outline-light btn-lg" href="/dex/dlux/" role="button">Order Book</a></p> 
+      <div class="jumbotron text-white text-center p-4 mt-5" 
+           style="background: linear-gradient(217deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),
+          linear-gradient(127deg, rgba(251,0,255,.8), rgba(251,0,255,0) 70.71%),
+                              linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
+ 
+      <div class="jumbotron text-white text-left bg-none m-5 p-4">
+        <div class="d-flex flex-wrap row">
+            <div class="d-flex flex-column col-lg-6">
+                <h1 class="display-4">Discover, collect, and sell NFTs</h1>
+                <div class="my-2">
+                    <button id="nftexplore" class="btn btn-lg btn-primary px-4 mr-3">Explore</button>
+                    <button id="nftcreate" class="btn btn-lg btn-secondary px-4 ml-3">Create</button>
+                </div>
+                <div class="my-4"><a href="/about/"><i class="fas fa-info-circle"></i> Learn more about DLUX</a></div>
+            </div>
+            <div class="d-flex flex-column col-lg-6">
+                <div class="jumbotron" style="background: rgba(0,0,0,0.5)">
+                    <p class="col-12 text-center">Featured</p>
+                </div>
+            </div>
+        </div>
       </div>
 
-				<div class="jumbotron m-0 p-3" style="background: rgba(0,0,0,0.5)">
+				<div class="d-none jumbotron m-0 p-3" style="background: rgba(0,0,0,0.5)">
 					<h3 class="text-left pb-2">Currency Exchange</h3>
 				<div class="card-deck" >
 					
