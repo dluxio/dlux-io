@@ -29,7 +29,7 @@
 ?>
 <main role="main" class="flex-shrink-0">
 <div class="container">
-  <div class="alert alert-danger alert-dismissible"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span>The dlux DEX UI still needs work, mostly in charts.</span></div>
+  <div class="alert alert-danger alert-dismissible"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <a href="/grid/">Preview the new DEX</a></div>
   <div class="container-fluid" style="padding: 0">
     <ul id="pagenav" class="nav nav-pills justify-content-center" role="tablist">
       <li class="nav-item"><a class="nav-link" href="#info" id="infotab" role="tab" data-toggle="tab" aria-controls="info" aria-expanded="true">INFO</a></li>
