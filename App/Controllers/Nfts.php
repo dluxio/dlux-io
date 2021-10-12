@@ -9,7 +9,7 @@ use \Core\View;
  *
  * PHP version 7.0
  */
-class Dex extends \Core\Controller
+class Nfts extends \Core\Controller
 {
 
     /**
@@ -19,10 +19,7 @@ class Dex extends \Core\Controller
      */
     public function index($request, $response, $service)
     {
-        View::render('dex/index.php');
+        View::render('nfts/index.php');
     }
-	public function grid($request, $response, $service)
-    {
-        View::render('dex/grid.php');
-    }
+
 }

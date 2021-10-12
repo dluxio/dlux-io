@@ -6,7 +6,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"> <a class="nav-link" href="/apps/">APPS</a></li>
-        <li class="nav-item"> <a class="nav-link" href="/dex/">EXCHANGE</a></li>
+        <li class="nav-item"> <a class="nav-link" href="/nfts/">NFTS</a></li>
+        <li class="nav-item"> <a class="nav-link" href="/dex/">DEX</a></li>
         <li class="nav-item"> <a class="nav-link" href="/docs/">DOCS</a></li>
       </ul>
 	<ul class="navbar-nav mr-5 no-session" id="loginMenu">

@@ -8,388 +8,482 @@
    include_once($path);
 ?>
 <!--dmx App Connect-->
-<script src="/dmxAppConnect/dmxAppConnect.js"></script>
+<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/dmxAppConnect/dmxMoment.js"></script>
 <script src="/dmxAppConnect/dmxFormatter.js"></script>
-<script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
-<script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<script type="text/javascript" src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 	
 <!--page specific-->
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
 
-<dmx-api-datasource id="dex" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
-<dmx-data-view id="dexSellOrders" dmx-bind:data="dex.data.markets.hive.sells" sorton="key" ></dmx-data-view>
-	
-<dmx-api-datasource id="sales" is="dmx-fetch" url="https://token.dlux.io/api/sales"></dmx-api-datasource>
-<dmx-data-view id="salesToken" dmx-bind:data="sales.data.result" sorton="time" pagesize="4"></dmx-data-view>
-<dmx-data-view id="salesMint" dmx-bind:data="sales.data.mint" sorton="price.amount" pagesize="3" ></dmx-data-view>
-<dmx-api-datasource id="auctions" is="dmx-fetch" url="https://token.dlux.io/api/auctions"></dmx-api-datasource>
-<dmx-data-view id="auctionsToken" dmx-bind:data="auctions.data.result" sorton="time" pagesize="4"></dmx-data-view>
-<style>
-.circle {
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  border-radius: 50%;
-  font-size: 25px;
-  color: #fff;
-  text-align: center;
-  background: #000
-}
-	.circle2 {
-  width: 75px;
-  height: 75px;
-  line-height: 75px;
-  border-radius: 50%;
-  font-size: 50px;
-  color: crimson;
-  text-align: center;
-  background: #000;
-		
-}
-	.arrow {
-	position: absolute;
-	background: #ffc107;
-	border-radius: 50%;
-	border: black thick solid;
-	text-align: center;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 4rem;
-    height: 4rem;
-    z-index: 1;
-	color: crimson;
-	
-	}
-	.arrow2 {
-		position: absolute;
-		left: 50%;
-    	transform: translate(-50%, -50%);
-		z-index: 1;
-	}
-	</style>
+<dmx-api-datasource id="dluxCoins" is="dmx-fetch" url="https://dluxtn.herokuapp.com/api/coin_detail"></dmx-api-datasource>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
 <main role="main" class="flex-shrink-0">
-  <div class="container">
-    <div class="container-fluid" style="padding: 0">
-	
-		
-      <div class="jumbotron text-white text-center p-4 mt-5" style="background: linear-gradient(217deg, rgba(251,0,255,.8), rgba(251,0,255,0) 70.71%),linear-gradient(127deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
-		  
-      <div class="jumbotron text-white text-center bg-none m-5 p-4">
-        <h1 class="display-4">DLUX Token</h1>
-        <hr class="my-4" style="border: white 0.5px solid">
-        <p class="lead">100% Decentralized Atomic Swap Marketplace{{dex.data.markets.hive.sells[0].rate}}</p>
-        <p class="lead"> <a class="btn btn-outline-light btn-lg" href="/dex/dlux/" role="button">Order Book</a></p> 
+<div class="container">
+  <div class="alert alert-danger alert-dismissible"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <span>The dlux DEX UI still needs work, mostly in charts.</span></div>
+  <div class="container-fluid" style="padding: 0">
+    <ul id="pagenav" class="nav nav-pills justify-content-center" role="tablist">
+      <li class="nav-item"><a class="nav-link" href="#info" id="infotab" role="tab" data-toggle="tab" aria-controls="info" aria-expanded="true">INFO</a></li>
+      <li class="nav-item"><a class="nav-link" href="#coins" id="coinstab" role="tab" data-toggle="tab" aria-controls="coins" aria-expanded="true">COINS</a></li>
+      <li class="nav-item"><a class="nav-link active" href="#trade" id="tradetab" role="tab" data-toggle="tab" aria-controls="trade" aria-expanded="true">TRADE</a></li>
+      <li class="nav-item"> <a class="nav-link" href="#ticker" role="tab" id="tickertab" data-toggle="tab" aria-controls="ticker">FEED</a></li>
+      <li class="nav-item"> <a class="nav-link" href="#ico" role="tab" id="icotab" data-toggle="tab" aria-controls="ico">ICO</a></li>
+    </ul>
+    <!-- Content Panel -->
+    <div id="pagecontent" class="tab-content">
+      <div role="tabpanel" class="tab-pane fade show" id="info" aria-labelledby="infotab">
+        <div class="container my-5">
+          <div class="row">
+            <div class="col-12 jumbotron bg-darker">
+              <h1 class="display-4">Goodbye Centralization, Hello DEX</h1>
+              <p class="lead ">The dlux DEX (Decentralized Exchange) offers no information asymetry or central control</p>
+              <hr class="my-4 bg-light">
+              <p>DLUX has pioneered a method to cooperate via HIVE and provide liquidity while being decentralized in every sense of the word: Open source and self-incentivizing, holding it's own keys collectively between it's users.</p>
+            </div>
+          </div>
+          <div class="row align-items-center pb-5">
+            <div class="col-lg-6 order-lg-2"> <img src="/img/dex1.jpeg" class="img-fluid rounded"></div>
+            <div class="col-lg-6 order-lg-1">
+              <p class="lead pt-3 text-uppercase">What to expect</p>
+              <p>Trades are atomic swaps, meaning these are smart contracts holding crypto that you can buy for exactly the listed price. This exchange will over collateralize escrow transactions and pay for these transactions upon completion from an inflationary source.</p>
+              <div class="text-center"> <a class="btn btn-outline-light m-3" href="#">Start Trading</a></div>
+            </div>
+          </div>
+          <div class="row align-items-center py-5">
+            <div class="col-lg-6 order-lg-1"><img src="/img/dex2.jpeg" class="img-fluid rounded"></div>
+            <div class="col-lg-6 order-lg-2">
+              <p class="lead pt-3 text-uppercase">Preventing double spend</p>
+              <p>The last irreversible block is used to verify transactions. That means your account may not be credited with Hive until 2-3 minutes from purchase time. Trust metrics will be maintained, fees and minimums may be enforced by some nodes depending on volume conditions. Choose which accounts you entrust with your escrow transactions.</p>
+              <div class="text-center"> <a class="btn btn-outline-light m-3" href="#">Read FAQ</a></div>
+            </div>
+          </div>
+          <div class="row align-items-center py-5">
+            <div class="col-lg-6 order-lg-2"><img src="/img/dex3.jpeg" class="img-fluid rounded"></div>
+            <div class="col-lg-6 order-lg-1">
+              <p class="lead pt-3 text-uppercase">The DLUX node network</p>
+              <p>Achieve consensus for more than just dlux token balances. Using nodes as oracles, concensus is maintained for any outside data as well. The most trusted nodes are elected to hold some owner authority over community controlled accounts, allowing them to provide services like Account Creation Tokens, or IPFS content pinning.</p>
+              <div class="text-center"> <a class="btn btn-outline-light m-3" href="/new/node">Run A Node</a></div>
+            </div>
+          </div>
+        </div>
       </div>
-
-				<div class="jumbotron m-0 p-3" style="background: rgba(0,0,0,0.5)">
-					<h3 class="text-left pb-2">Currency Exchange</h3>
-				<div class="card-deck" >
-					
-					<div class="card" style="color:black;background:linear-gradient(orange,yellow)">
-						<a href="#buyDluxModal" class="a-1" data-toggle="modal">
-		  			<div class="card-header">
-						<div class="d-flex m-2 text-dark">
-			  				<div>DLUX</div>
-			  				<div class="ml-auto ">0.54372&#37;</div>
-						</div>
-						<h4 class="text-center text-success">&#36;0.2513</h4>
-						</div>
-						<div class="card-footer text-white" style="background: rgba(0,0,0,0.5)">
-							<div class="d-flex">
-          						<p class="ml-auto mb-2">Balance&#58;<u class="ml-2 font-weight-bold" style="font-size:1.1em;">1,234.567 DLUX</u></p>
-        					</div>
-		  				</div>
-						</a>
+      <div role="tabpanel" class="tab-pane fade show" id="coins" aria-labelledby="coinstab">
+        <div class="container pt-3">
+          <div class="row">
+			  <div class="col-lg-6">
+				  <h4>Coins</h4>
+            <div class="list-group" id="coinrepeat" is="dmx-repeat" dmx-bind:repeat="dluxCoins.data.coins">
+              <a href="#" class="list-group-item active" style="border-color: #0d0d0d;" dmx-on:click="coin_detail.select(symbol)">{{symbol}} &#40;{{name}}&#41;</a>
+            </div>
+			</div>
+			  <div class="col-lg-6">
+			  <h4>Details</h4>
+				  <dmx-data-detail id="coin_detail" dmx-bind:data="dluxCoins.data.coins" key="symbol" dmx-bind:value="dluxCoins.data.coins[0].symbol">
+					  <div class="d-flex">
+					  <div class="d-flex align-items-center mr-3"><img dmx-bind:src="coin_detail.data.icon" width="100px"></div>
+					  <div class="d-flex align-items-center">
+						  <div><h3>{{coin_detail.data.symbol}}</h3>
+					  	<h5>{{coin_detail.data.name}}</h5></div>
+						  </div>
 					</div>
-			
-		<div class="card" style="color:black;background:linear-gradient(red,orangered)">
-			<div class="card-header">
-			<div class="d-flex m-2">
-			  <div>HIVE</div>
-			  <div class="ml-auto">0.54372&#37;</div>
-			</div>
-			<h4 class="text-center">&#36;1.05</h4>
-			</div>
-			<div class="card-footer text-white" style="background: rgba(0,0,0,0.5)">
-							<div class="d-flex">
-          						<p class="ml-auto mb-2">Balance&#58;<u class="ml-2 font-weight-bold" style="font-size:1.1em;">125.635 HIVE</u></p>
-        					</div>
-		  				</div>
-		  </div>
-		
-		<div class="card" style="color:black;background:linear-gradient(#43C45F,lawngreen)">
-			<div class="card-header">
-			<div class="d-flex m-2">
-			  <div>HBD</div>
-			  <div class="ml-auto" dmx-class="">0.65898&#37;</div>
-			</div>
-			<h4 class="text-center">&#36;0.97089</h4>
-			</div>
-			<div class="card-footer text-white" style="background: rgba(0,0,0,0.5)">
-							<div class="d-flex">
-          						<p class="ml-auto mb-2">Balance&#58;<u class="ml-2 font-weight-bold" style="font-size:1.1em;">34.281 HBD</u></p>
-        					</div>
-		  				</div>
-		  </div>
-					
-		</div>
-		</div>
-			</div>
-		
-		
-      <div class="mt-4" style="border-bottom: #FFFFFF thick solid">
-        <h1 class="text-white p-0 m-0">Sealed NFTs</h1>
-      </div>
-      <div class="card-columns my-3" id="sales-mint-cards" >
-        <div dmx-repeat:repeatsalesmint1="salesMint.data">
-          <div class="card d-none" style="color:black; background:radial-gradient(yellow,darkorange)"> <a href="#buyDluxModal" class="a-1" data-toggle="modal">
-            <div class="card-header text-center" style="color: black;background:linear-gradient(darkorange,yellow)">
-              <h5 class="card-title lead">COIN</h5>
-            </div>
-            <div class="card-img-top" alt="dlux-coin">
-              <h1 class="py-3 mb-0 text-center text-primary"><i class="fas fa-coins"></i></h1>
-              <h3 class="text-center mb-0" style="color:  black;">DLUX Token</h3>
-              <p class="card-text lead text-center pt-1" style="color: black">Powering the multiverse!</p>
-            </div>
-            <div class="card-body" style="color: black;">
-              <div class="text-center"><u>0.254 HIVE</u></div>
-            </div>
-            <div class="card-footer text-center">
-              <p class="lead">
-                <button class="btn btn-primary btn-lg" href="#" role="button">Get DLUX</button>
-              </p>
-            </div>
-          </a></div>
-          <div class="card" style="color:black; background:radial-gradient(#8D42EB,purple)" dmx-repeat:repeatsalesmint2="$value"> 
-			  <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
-            <div class="card-header text-center" style="background: linear-gradient(purple,#8D42EB) ">
-              <h5 class="card-title lead">MINT</h5>
-            </div>
-            <div class="card-img-top" dmx-bind:id="image-{{set}}" dmx-bind:alt="image-{{set}}">
-              <h1 class="py-3 mb-0 text-center" ><i class="far fa-gem"></i></h1>
-              <h3 class="text-center mb-0">{{set}} NFT</h3>
-              <p class="lead card-text text-center pt-1">Unwrap to see attributes.</p>
-            </div>
-            <div class="card-body">
-              <div class="text-center"><u>{{items[0].price.nai()}}</u></div>
-            </div>
-            </a>
-            <div class="card-footer text-center">
-              <p class="lead"> <a class="btn btn-primary btn-lg" href="/dex/dlux/" role="button">Buy NFT</a></p>
-            </div>
+					  <hr class="bg-light"/>
+					  <p class="lead">{{coin_detail.data.text}}</p>
+					  <p><b>CIRCULATION:</b> {{coin_detail.data.incirc}}
+					  <br><b>SUPPLY:</b> {{coin_detail.data.supply}}</p>
+					  <p><b>WEBSITE:</b> <a dmx-bind:href="{{coin_detail.data.ws}}"target="_blank">{{coin_detail.data.ws}}</a></p>
+					  <p><b>WHITEPAPER:</b> <a dmx-bind:href="{{coin_detail.data.wp}}"target="_blank">{{coin_detail.data.wp}}</a></p>
+					  
+					  
+		  </dmx-data-detail>
+			  </div>
           </div>
         </div>
-      </div>
-      <div style="border-bottom: #FFFFFF thick solid">
-        <h1 class="text-white p-0 m-0">NFT Auctions</h1>
-      </div>
-      <div class="card-columns my-3" id="auctions-token-cards">
-        <div class="card text-white bg-dark" dmx-repeat:repeatauctiontoken1="auctionsToken.data"> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
-          <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
-            <div class="circle">{{uid}}</div>
-            <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
-          </div>
-          <div class="card-img-top p-1" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
-          <div class="text-center " style="background: crimson">
-            <h5 dmx-bind:id="timer-{{set}}-{{uid}}" class="mb-0 lead">{{time.animateTime(set, uid)}}</h5>
-          </div>
-          <div class="card-body">
-            <p class="card-text text-center">Auction: <u>{{price.nai()}}</u></p>
-          </div>
-          </a>
-          <div class="card-footer text-center">
-            <p class="lead"><a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)"> </a><a class="btn btn-primary btn-lg" href="#" role="button">Bid NFT</a></p>
-          </div>
-        </div>
-      </div>
-      <div style="border-bottom: #FFFFFF thick solid">
-        <h1 class="text-white p-0 m-0">NFT Sales</h1>
-      </div>
-      <div class="card-columns my-3" id="sales-token-cards">
-        <div class="card text-white bg-dark" dmx-repeat:repeatsalestoken1="salesToken.data"> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
-          <div class="card-header d-flex" style="background: linear-gradient(blueviolet,darkorchid)">
-            <div class="circle">{{uid}}</div>
-            <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
-          </div>
-          <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
-          <div class="text-center " style="background: crimson">
-            <h5 dmx-bind:id="timer-{{set}}-{{uid}}" class="mb-0 lead">{{time.animateTime(set, uid)}}</h5>
-          </div>
-          <div class="card-body">
-            <p class="card-text text-center">Price: <u>{{price.nai()}}</u></p>
-          </div>
-          </a>
-          <div class="card-footer text-center">
-            <p class="lead"><a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)"> </a><a class="btn btn-primary btn-lg" href="#" role="button">Buy NFT</a></p>
-          </div>
-        </div>
-      </div>
-      <!--<div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
-    <div class="modal-content bg-dark text-white">
-      <div class="modal-header d-flex flex-fill justify-content-between" style="border-bottom-color: #333; background:radial-gradient(gold,orange)">
-        <h3 class="ml-auto lead" id="buyDluxTitle" style="color: black">COIN TRADE</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">x</span></button>
-      </div>
-      <div class="modal-body">
-      <div class="d-flex flex-column">
-		<div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 bg-darker" >
-		  <div class="d-flex flex-row flex-fill align-items-center">
-			<p style="font-size: 18px;" class="p-0 m-0 font-weight-light">From</p>
-			<div class="d-flex ml-auto align-items-baseline">
-				<div class="d-flex align-items-center"><p class="m-0 p-0">Available</p><span class="m-0 p-0 ml-2 text-primary" style="font-size: 20px;"> 1234 HIVE</span></div><button class="btn btn-sm btn-secondary ml-3 py-0">MAX</button>
-			</div>
-		</div>
-			<div class="d-flex flex-row flex-fill mt-1">
-			<div class="d-flex align-items-center">
-				<div class="circle2"><i class="fab fa-hive"></i></div>
-				<h2 class="p-0 m-0 ml-2 font-weight-bold">HIVE</h2>
-			</div>
-			<div class="d-flex ml-auto flex-column">
-				<p class="ml-auto my-0 text-white-50 font-weight-bolder" style="font-size: 30px;">0</p>
-				<p class="ml-auto my-0 text-muted font-weight-bold" style="font-size: 16px;">&asymp; &#36;0</p>
-				</div>
-			</div>
-		  </div>
-		  <div class"p-0 m-0 bg-dark"><h1 class="text-white-50 p-0 m-0 p-1"><p class="arrow bg-dark rounded text-center"  style="border: #333 1px solid;"><i class="fas fa-exchange-alt fa-rotate-90"></i></p></h1></div>
-		  <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 bg-darker">
-		  <div class="d-flex flex-row flex-fill align-items-center">
-			<p style="font-size: 18px;" class="p-0 m-0 font-weight-light">To</p>
-			</div>
-			<div class="d-flex flex-row flex-fill mt-1 align-items-center">
-			<div class="d-flex align-items-center">
-				<div class="circle2 d-flex align-items-center justify-content-around"><img src="/img/dlux-hive-logo-alpha.svg" width="70%"></div>
-				<h2 class="p-0 m-0 ml-2 font-weight-bold">DLUX</h2>
-			</div>
-			<div class="d-flex ml-auto">
-				<p class="ml-auto my-0 text-white-50 font-weight-bolder" style="font-size: 30px;">&asymp; 0 DLUX</p>
-				</div>
-			</div>
-		  </div>
 		  
-		  <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1" style="background:linear-gradient(#191C1F,#272C31); border: #333 1px solid;">
-				<div class="d-flex">
-					<p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Rate</p>
-					<p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">1 HIVE = 4.111 DLUX</p>
-				</div>
-			  	<div class="d-flex">
-			  		<p style="font-size: 12px;" class="p-0 m-0 text-muted ml-auto">1 DLUX = 0.251 HIVE</p>
-			  	</div>
-			  <hr width="100%" style="border: #333 thin solid">
-			    <div class="d-flex">
-					<p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Swap Fee</p>
-					<p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">0.25%</p>
-				</div>
-			</div>
-		 
-		  <div class="d-flex justify-content-around my-1 py-3"><button class="btn btn-lg btn-primary">Swap Tokens</button></div>
-		  
-	  </div>
       </div>
-    </div>
-  </div>
-</div>-->
-      <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
-          <div class="modal-content bg-dark text-white">
-            <div class="modal-header d-flex flex-fill justify-content-between align-items-center" style="border-bottom-color: #333; background:linear-gradient(darkorange,yellow)">
-              <div></div>
-              <h3 class="ml-auto lead" id="buyDluxTitle" style="color: black">GET DLUX</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">x</span></button>
-            </div>
-            <div class="modal-body">
-              <div class="d-flex flex-column">
-                <div class="d-flex justify-content-between">
-                  <h2><a href="#" class="text-muted p-3" dmx-on:click="dexOrders.prev()"><i class="fas fa-caret-square-left"></i></a></h2>
-                  <h2 style="color: greenyellow">{{value.amount}}{{$value}}<i class="fab fa-hive"></i></h2>
-                  <h2 class=""><a href="#" class="text-muted p-3" dmx-on:click="dexOrders.next()"><i class="fas fa-caret-square-right"></i></a></h2>
+      <div role="tabpanel" class="tab-pane fade show active" id="trade" aria-labelledby="tradetab">
+        <div class="container-fluid px-0 py-4"> <a id="pairmenustatus"class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DLUX:HIVE <span class="sr-only">Toggle Dropdown</span></a>
+          <div class="dropdown-menu"> <a id="hivepairselect" class="dropdown-item">DLUX:HIVE</a> <a id="hbdpairselect" class="dropdown-item">DLUX:HBD</a></div>
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="price-info">
+                <canvas id="historicPriceChart" height="250" class="price-chart"></canvas>
+                <div class="d-flex justify-content-center">
+                  <div class="btn-group btn-group-toggle set-timescale" data-toggle="buttons">
+                    <label class="btn btn-primary active">
+                      <input type="radio" name="options" id="hourBtn" autocomplete="off" checked>
+                      1H </label>
+                    <label class="btn btn-primary">
+                      <input type="radio" name="options" id="dayBtn" autocomplete="off">
+                      1D </label>
+                    <label class="btn btn-primary">
+                      <input type="radio" name="options" id="weekBtn" autocomplete="off">
+                      1W </label>
+                    <label class="btn btn-primary">
+                      <input type="radio" name="options" id="monthBtn" autocomplete="off">
+                      1M </label>
+                    <label class="btn btn-primary">
+                      <input type="radio" name="options" id="yearBtn" autocomplete="off">
+                      1Y </label>
+                  </div>
                 </div>
-                <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 bg-darker" >
-                  <div class="d-flex flex-row flex-fill align-items-center">
-                    <p style="font-size: 18px;" class="p-0 m-0 font-weight-light">From</p>
-                    <div class="d-flex ml-auto align-items-baseline">
-                      <div class="d-flex small justify-content-between">
-                        <p class="my-0 text-white-50" >Available<i class="fab fa-hive mx-1"></i></p>
-                        <p class="my-0 text-primary">1,256.234{{value.hive}}</p>
+                <div class="d-flex justify-content-center">
+                  <div class="text-center market-info-item">
+                    <h3><span>$0</span></h3>
+                    <div>
+                      <label>Market Cap</label>
+                    </div>
+                  </div>
+                  <div class="text-center market-info-item">
+                    <h1>|</h1>
+                  </div>
+                  <div class="text-center market-info-item">
+                    <h3><span>0 DLUX</span></h3>
+                    <div>
+                      <label>Supply</label>
+                    </div>
+                  </div>
+                  <div class="text-center market-info-item">
+                    <h1>|</h1>
+                  </div>
+                  <div class="text-center market-info-item">
+                    <h3><span>$0</span></h3>
+                    <div>
+                      <label>Volume</label>
+                    </div>
+                  </div>
+                </div>
+                <div id="jumbobal" class="balance">
+                  <h4>BAL: 0 DLUX</h4>
+                </div>
+              </div>
+              <canvas id="marketOrdersChart" height="125" class="orderbook-chart"></canvas>
+              <div class="container orderbook-table">
+                <div class="row text-center">
+                  <div class="col-lg-6">
+                    <h5 style="padding-top: 10px">BUY ORDERS</h5>
+                    <table width="100%">
+                      <tbody id="buyorderstable">
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-lg-6">
+                    <h5 style="padding-top: 10px">SELL ORDERS</h5>
+                    <table width="100%">
+                      <tbody id="sellorderstable">
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div>
+                <div class="widget">
+                <ul id="orderwidget" class="nav nav-pills justify-content-center" role="tablist">
+                  <li class="nav-item"> <a class="nav-link active" href="#" id="buyTab" role="tab" data-toggle="tab" aria-controls="buytab" aria-expanded="true" onClick="toggleListBtn()">Buy DLUX</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="#" role="tab" id="sellTab" data-toggle="tab" aria-controls="selltab" onClick="toggleListBtn()">Sell DLUX</a></li>
+                </ul>
+                <!-- Order Form -->
+                <form>
+                  <div class="form-group" id ="orderform">
+                    <label for="buydluxfrom">Trader:</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">@</div>
+                      </div>
+                      <input class="form-control" id="senddluxfrom" type="text" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label id="menudluxlab" for="buydluxquantity">This:</label>
+                    <div class="input-group">
+                      <input class="form-control" id="menudlux" type="number" step="0.001" min="0.004" placeholder="1.000">
+                      <div class="input-group-append">
+                        <div class="input-group-text">DLUX</div>
                       </div>
                     </div>
                   </div>
-                  <div class="d-flex flex-row flex-fill mt-1">
-                    <div class="d-flex align-items-center">
-                      <div class="circle2"><i class="fab fa-hive"></i></div>
-                      <h2 class="p-0 m-0 ml-2 font-weight-bold">HIVE</h2>
-                    </div>
-                    <div class="d-flex ml-auto flex-column">
-                      <p class="ml-auto my-0 text-white-50 font-weight-bolder" style="font-size: 30px;">25.000{{value.hive}}</p>
-                      <p class="ml-auto my-0 text-muted font-weight-bold" style="font-size: 16px;">&asymp; &#36;15.33</p>
+                  <div class="form-group">
+                    <label id="menupricelab" for="buydluxprice">Calculated Price (<a href="#" onClick="insertCalc(User.dex.markets[User.opts.type].tick, 'menuprice')">MP: 0 HIVE</a>):</label>
+                    <div class="input-group">
+                      <input class="form-control" id="menuprice" type="number" placeholder="1.000" readonly>
+                      <div class="input-group-append">
+                        <div class="input-group-text" id="menupairdiv">HIVE</div>
+                      </div>
                     </div>
                   </div>
-                  <div class="d-flex justify-content-between">
-                    <div></div>
+                  <div class="form-group">
+                    <label id="menupairlab" for="buydluxtotal">For: (<a href="#" onClick="insertBal(parseFloat(User[User.opts.type].balance), 'menupair')">Balance: 0 HIVE</a>):</label>
+                    <div class="input-group">
+                      <input class="form-control" id="menupair" type="number" step="0.001" min="0.001" placeholder="1.000">
+                      <div class="input-group-append">
+                        <div class="input-group-text" id="paycoin">HIVE</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="escrowExpire">Expiration:</label>
+                    <select class="form-control" id="escrowExpire">
+                      <option value=1>1 hour</option>
+                      <option value=3>3 hours</option>
+                      <option value=6>6 hours</option>
+                      <option value=12>12 hours</option>
+                      <option value=24>1 day</option>
+                      <option value=72>3 days</option>
+                      <option value=120 selected>5 days </option>
+                    </select>
+                  </div>
+                  <div class="text-center">
+                    <button id="listButton" type="button" class="btn btn-outline-success btn-75" onClick="dexsend(User.opts.type, User.opts.pair)">Buy</button>
+                    <button id="agentButton" type="button" class="btn btn-primary btn-75" data-toggle="collapse" href="#buydluxadvanced" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-users-cog"></i></button>
+                  </div>
+                  <div class="collapse" id="buydluxadvanced">
+                    <div class="form-group pt-2">
+                      <label for="custodialAgent">Custodial Agent:</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text">@</label>
+                        </div>
+                        <button class="btn btn-light dropdown-toggle form-control text-left" type="button" id="custodialAgent" data-toggle="dropdown">Custodial Agent</button>
+                        <ul class="dropdown-menu custodial-drop form-control agent-input-ul" id="custodialAgentUl">
+                          <input class="form-control agent-input" id="custodialAgentSearch" type="text" placeholder="Search..">
+                          <li><a href="#">disregardfiat - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+                          <li><a href="#">markegiles - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+                          <li><a href="#">dlux-io - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+                          <li><a href="#">heyhey - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+                          <li><a href="#">inconcievable - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+                          <li><a href="#">robotolux - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+                        </ul>
+                        <div class="input-group-append">
+                          <button id="custodialAgentSort" type="button" class="btn btn-light append-radius" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sort-amount-down"></i></button>
+                          <div class="dropdown-menu dropdown-menu-right text-white"> <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd mr-2"></i>Sort By Fee</a> <a class="dropdown-item" href="#"><i class="fas fa-award fa-fw mr-2"></i>Sort By Trust</a> <a class="dropdown-item" href="#"><i class="fas fa-fish fa-fw mr-2"></i>Sort By Liquidity</a></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="escrowAgent">Escrow Agent:</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text">@</label>
+                        </div>
+                        <button class="btn btn-light dropdown-toggle form-control text-left" type="button" id="escrowAgent" data-toggle="dropdown">Escrow Agent</button>
+                        <ul class="dropdown-menu escrow-drop form-control agent-input-ul mx-auto" id="escrowAgentUl">
+                          <input class="form-control agent-input" id="escrowAgentSearch" type="text" placeholder="Search..">
+                          <li><a href="#">disregardfiat - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+                          <li><a href="#">markegiles - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+                          <li><a href="#">dlux-io - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+                          <li><a href="#">heyhey - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+                          <li><a href="#">inconcievable - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+                          <li><a href="#">robotolux - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
+                        </ul>
+                        <div class="input-group-append">
+                          <button type="button" id="escrowAgentSort" class="btn btn-light append-radius" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sort-amount-down"></i></button>
+                          <div class="dropdown-menu dropdown-menu-right text-white"> <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd mr-2"></i>Sort By Fee</a> <a class="dropdown-item" href="#"><i class="fas fa-award fa-fw mr-2"></i>Sort By Trust</a> <a class="dropdown-item" href="#"><i class="fas fa-fish fa-fw mr-2"></i>Sort By Liquidity</a></div>
+                        </div>
+                      </div>
+                    </div>
+                    <script>
+$(document).ready(function(){
+  $("#custodialAgentSearch").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".custodial-drop li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+$(document).ready(function(){
+  $("#escrowAgentSearch").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".escrow-drop li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+  </script>
+                  </div>
+                  </div>
+                </form>
+              </div>
+              <div class="text-center pt-5">
+                <h5>TRADE HISTORY</h5>
+              </div>
+              <div class="history">
+                <table width="100%" class="history-table">
+                  <tbody id="tradeHist">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="ticker" aria-labelledby="tickertab">
+        <div class="container-fluid" style="padding:0">
+          <div class="col-lg-12 text-center" style="padding: 0">
+            <h5 style="padding-top: 40px">DLUX TRANSACTION FEED</h5>
+            <div id="dluxtxs" class="feed"></div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane fade show" id="ico" aria-labelledby="icotab">
+        <div class="container my-5">
+          <div class="col-12 jumbotron bg-darker">
+            <h1 class="display-4">DLUX Initial Community Offering</h1>
+            <p class="lead ">Donate Hive to @robotolux. </p>
+            <hr class="my-4 bg-light">
+            <p>Every 25.2 hours 100,000 DLUX Tokens are placed in a daily offering pool and priced according to the previous round. Donating funds to @robotolux automatically distributes DLUX tokens, if more Hive is recieved than DLUX availible some DLUX from the following days offering is set aside for an auction. Distribution of this pool will occur evenly to all aditional HIVE recieved. This continues until 100,000,000 DLUX has been issued which will take more than 3 years. Round 1 starts when round 0 is below 100,000 DLUX remaining. </p>
+            <div class="row py-4">
+              <div class="col-lg-8 mx-auto">
+                <div id="icoTitlePrice" class="alert alert-secondary text-center"> <span>Current Round DLUX Offering: <b id="dluxForHive">1.000 DLUX for 1.000 HIVE</b></span></div>
+                <h2 id="icoRound" class="text-center">ROUND 0</h2>
+                <hr class="bg-light">
+                <div class="d-flex justify-content-center">
+                  <div id="icoHoursRemain" class="text-center market-info-item">
+                    <h3><span> &#8734; HRS</span></h3>
                     <div>
-                      <button class="btn btn-outline-secondary btn-sm text-muted" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-info-circle"></i></button>
+                      <label>Time Remaining</label>
                     </div>
                   </div>
-                  <div class="collapse" id="collapseExample">
-                    <div class="d-flex">
-                      <p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Rate</p>
-                      <p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">1 HIVE = 4.111 DLUX</p>
+                  <div class="text-center market-info-item">
+                    <h1>|</h1>
+                  </div>
+                  <div id="icoTokensRemain" class="text-center market-info-item">
+                    <h3><span>0 DLUX</span></h3>
+                    <div>
+                      <label>Tokens Available</label>
                     </div>
-                    <div class="d-flex">
-                      <p style="font-size: 12px;" class="p-0 m-0 text-muted ml-auto text-success">1 DLUX = 0.251 HIVE</p>
-                    </div>
-                    <hr width="100%" style="border: #333 thin solid">
-                    <div class="d-flex">
-                      <p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Swap Fee<small class="rounded-pill border border-secondary p-1 ml-2">0.25&#37;</small></p>
-                      <p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">2.5 DLUX</p>
+                  </div>
+                  <div class="text-center market-info-item">
+                    <h1>|</h1>
+                  </div>
+                  <div id="icoTokensPrice" class="text-center market-info-item">
+                    <h3><span>1.000 HIVE</span></h3>
+                    <div>
+                      <label>Current Price</label>
                     </div>
                   </div>
                 </div>
-                <div class"p-0 m-0 bg-dark">
-                  <div class="arrow2 rounded-circle border border-warning bg-darker text-warning">
-                    <h1 class="m-2 px-3 py-1"><i class="fas fa-angle-double-down"></i></h1>
+                <hr class="bg-light">
+                <div class="row py-3">
+                  <div class="mx-auto">
+                    <form>
+                      <div class="row align-items-center">
+                        <div class="col-xs-4">
+                          <label for="hiveDonate" class="col-form-label"></label>
+                          <h3>Donate:</h3>
+                        </div>
+                        <div class="col-xs-4 px-2">
+                          <input type="number" step="0.001" min="0.001" id="hiveDonate" class="form-control">
+                        </div>
+                        <div class="col-xs-4 px-2">
+                          <button id="icoSendButton" type="submit" class="btn btn-primary">Send</button>
+                        </div>
+                      </div>
+                      <div id="icoHiveBalance" >
+                        <center>
+                          <small>Balance: <a href="#">0 DLUX</a></small>
+                        </center>
+                      </div>
+                    </form>
                   </div>
                 </div>
-                <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 border border-warning" style="background: radial-gradient(#222,#111);">
-                  <div class="d-flex flex-row flex-fill align-items-center">
-                    <p style="font-size: 18px;" class="p-0 m-0 font-weight-light">To</p>
-                  </div>
-                  <div class="d-flex flex-row flex-fill mt-1 align-items-center">
-                    <div class="d-flex align-items-center">
-                      <div class="circle2 d-flex align-items-center justify-content-around"><img src="/img/dlux-hive-logo-alpha.svg" width="70%"></div>
-                      <h2 class="p-0 m-0 ml-2 font-weight-bold">DLUX</h2>
-                    </div>
-                    <div class="d-flex ml-auto">
-                      <p class="ml-auto my-0 text-warning font-weight-bolder" style="font-size: 30px;">100.000</p>
+                <hr id="auctionSpacer" class="bg-light">
+                <div id="icoAuctionPanel" class="d-flex justify-content-center">
+                  <div id="icoHiveSpent" class="text-center market-info-item">
+                    <h3><span>0 HIVE</span></h3>
+                    <div>
+                      <label>Donated This Round</label>
                     </div>
                   </div>
-                  <p class="pt-3">DLUX is your ticket to the metaverse. Purchase NFTs, power-up to vote on proposals, and use it across a variety of XR games and apps.</p>
+                  <div class="text-center market-info-item">
+                    <h1>|</h1>
+                  </div>
+                  <div id="icoDluxPool" class="text-center market-info-item">
+                    <h3><span>0 DLUX</span></h3>
+                    <div>
+                      <label>At Auction</label>
+                    </div>
+                  </div>
+                  <div class="text-center market-info-item">
+                    <h1>|</h1>
+                  </div>
+                  <div id="icoFuturePrice" class="text-center market-info-item">
+                    <h3><span>1.000 HIVE</span></h3>
+                    <div>
+                      <label>Next Round Price</label>
+                    </div>
+                  </div>
                 </div>
+                <hr class="bg-light">
               </div>
-              <div class="d-flex justify-content-around my-1 py-3">
-                <button class="btn btn-lg btn-primary">Trade Tokens</button>
+            </div>
+            <p class="lead ">Delegate Hive Power (HP) to @dlux-io and earn DLUX daily.</p>
+            <hr class="my-4 bg-light">
+            <p>See the latest post from @dlux-io for current information.</p>
+            <div class="row py-3">
+              <div class="mx-auto">
+                <form>
+                  <div class="row align-items-center">
+                    <div class="col-xs-4">
+                      <label for="hiveDelegate" class="col-form-label"></label>
+                      <h3>Delegate:</h3>
+                    </div>
+                    <div class="col-xs-4 px-2">
+                      <input type="number" id="hiveDelegate" min="0.000" class="form-control">
+                    </div>
+                    <div class="col-xs-4 px-2">
+                      <button type="submit" id="delegateToDlux" class="btn btn-primary disabled" style="pointer-events: none">Send</button>
+                    </div>
+                  </div>
+                  <div id="icoDelegationAvailible" >
+                    <center>
+                      <small>Balance: <a href="#">0 HP</a></small>
+                    </center>
+                  </div>
+                </form>
               </div>
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="pr-4">
+              <p class="lead pt-3 text-uppercase text-center">Why so long?</p>
+              <p>The hardest thing about decentralized systems is properly distributing them. Hive is a large crypto community but a tiny global community. We hope this distribution method will enable many more people to take part.</p>
+            </div>
+            <div class="px-4">
+              <p class="lead pt-3 text-uppercase text-center">Non-ICO inflation</p>
+              <p>Soon these tokens will be recieved by a "multi-signature" account that's operated collective by DLUX node runners. Due to the way node security works here, Hive funds held in excess of a safe amount will automatically be used to purchase the lowest Price DEX orders, raising the collateral held and there fore the security margins. The Standard source of inflation remains constant with currently issued tokens. And after 100,000,000 total tokens has been issued by any means will remain the only source of inflation.</p>
+            </div>
+            <div class="pl-4">
+              <p class="lead pt-3 text-uppercase text-center">Pricing Feedback</p>
+              <p>If the daily pool sells out: the time it took is used to raise the following days price. If the daily offering fails to sell out: how much remains will be used to calculate the next offerings price. If there isn't enough tokens being purchased here, the price of these tokens have a set floor so you won't have to compete with an out of control inflation mechanism on the DEX.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</main>
-<?php 
+  </main>
+  <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/footer.php";
    include_once($path);
 ?>
+</div>
+<script>
+// change list button color
+function toggleListBtn(){
+    $("#listButton").toggleClass("btn-outline-success btn-outline-danger");
+  }
+function pageSpecfic(user){dex(user)};
+</script>
 </body>
 </html>

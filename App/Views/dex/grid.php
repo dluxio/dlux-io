@@ -464,10 +464,12 @@ include_once( $path );
 		</div>
 		<div class="card-body d-flex flex-column">
 			<!-- Fuzzy search -->
-			<div class="input-group input-group-lg">
-            <input type="text" class="form-control bg-darker" placeholder="placeholder content">
-            <div class="input-group-append"> <span class="input-group-text"><i class="fas fa-search"></i></span> </div>
-          </div>
+            <div class="input-group input-group-lg">
+              <div class="input-group-prepend"> <span class="input-group-text"><i class="fas fa-search"></i></span> </div>
+              <input type="text" class="form-control" placeholder="Search" >
+              <div class="input-group-append"> <span class="input-group-text">TXID</span> </div>
+            </div>
+
 			<!-- Range amount1 -->
 			<div class="p-3"><div id="amountslider"></div></div>
           <div class="d-flex">
@@ -499,18 +501,18 @@ include_once( $path );
                 <label>MAX</label>
               </center>
             </div>
-			</div>
+		  </div>
 			<!-- Hide disabled orders -->
 			<div class="input-group mb-3">
 	          <div class="input-group-prepend">
 	            <div class="input-group-text">
 	              <input type="checkbox" aria-label="Hide disabled orders">
-	              </div>
-	            </div>
+                </div>
+              </div>
 	          <input type="text" class="form-control" placeholder="Hide disabled orders">
-	          </div>	  
+          </div>	  
           </div>
-			</div>
+		</div>
 		  <div class="card-footer">
 			  
           </div>
