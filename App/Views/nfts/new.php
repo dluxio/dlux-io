@@ -18,7 +18,7 @@ include_once( $path );
 <div class="container">
 <div class="container-fluid my-4">
   <div class="row">
-    <div class="col-6">
+    <div class="col-lg-6">
       <form class="bg-darker p-4 border border-primary">
         <h2>Create new collection</h2>
         <h5>Logo image</h5>
@@ -96,7 +96,7 @@ include_once( $path );
       </form>
     </div>
     <!-- create new item -->
-    <div class="col-6">
+    <div class="col-lg-6">
       <form class="bg-darker p-4 border border-info">
         <h2>Create new item</h2>
         <h5>Image, Video, Audio, or 3D Model</h5>
