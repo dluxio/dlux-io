@@ -1,22 +1,12 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<title>DLUX - DEX</title>
+<title>DLUX - New NFT</title>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-<!--dmx App Connect--> 
-<script src="/dmxAppConnect/dmxAppConnect.js"></script> 
-<script src="/dmxAppConnect/dmxMoment.js"></script> 
-<script src="/dmxAppConnect/dmxFormatter.js"></script> 
-<script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script> 
-<script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script> 
-
-<!--page specific--> 
-<script src="/js/dex.js"></script> 
-<script src="/js/ico.js"></script>
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="index">
 <?php
@@ -215,8 +205,5 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/footer.php";
 include_once( $path );
 ?>
-<script src="/js/jquery-3.4.1.min.js"></script> 
-<script src="/js/popper.min.js"></script> 
-<script src="/js/bootstrap-4.4.1.js"></script>
 </body>
 </html>
