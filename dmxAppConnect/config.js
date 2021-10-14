@@ -975,6 +975,24 @@ dmx.config({
                 ]
               },
               {
+                "type": "object",
+                "name": "initial_price",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "amount"
+                  },
+                  {
+                    "type": "number",
+                    "name": "precision"
+                  },
+                  {
+                    "type": "text",
+                    "name": "token"
+                  }
+                ]
+              },
+              {
                 "type": "text",
                 "name": "time"
               },
@@ -993,6 +1011,14 @@ dmx.config({
               {
                 "type": "text",
                 "name": "script"
+              },
+              {
+                "type": "number",
+                "name": "days"
+              },
+              {
+                "type": "text",
+                "name": "buy"
               }
             ]
           },
