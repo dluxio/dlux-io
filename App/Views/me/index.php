@@ -1393,11 +1393,6 @@ function pageSpecfic(usr){
   });
 });
 	
-function showTab(str) {
-    $('#usertabs a[href="#'+str+'"]').tab("show");
-  });
-
-
 	</script>	
 		
 	

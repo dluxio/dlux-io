@@ -75,8 +75,11 @@
           </div>
       </div>
       <div class="modal-footer justify-content-center">
-        <p class="small">By logging in you agree to our <a href="#">Terms of Service</a>.</p>
+        <p class="small">By logging in you agree to our <a href="/about/">Terms of Service</a>.</p>
       </div>
     </div>
   </div>
 </div>
+<script>function showTab(str) {
+    $('#usertabs a[href="#'+str+'"]').tab("show");
+  });</script>
