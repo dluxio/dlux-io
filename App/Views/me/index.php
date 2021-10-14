@@ -16,6 +16,33 @@
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
 <script src="/js/jquery-3.4.1.min.js"></script>
+<script>
+	$(document).ready(() => {
+  let url = location.href.replace(/\/$/, "");
+ 
+  if (location.hash) {
+    const hash = url.split("#");
+    $('#usertabs a[href="#'+hash[1]+'"]').tab("show");
+    url = location.href.replace(/\/#/, "#");
+    history.replaceState(null, null, url);
+    setTimeout(() => {
+      $(window).scrollTop(0);
+    }, 400);
+  } 
+   
+  $('a[data-toggle="tab"]').on("click", function() {
+    let newUrl;
+    const hash = $(this).attr("href");
+    if(hash == "#blog") {
+      newUrl = url.split("#")[0];
+    } else {
+      newUrl = url.split("#")[0] + hash;
+    }
+    newUrl += "/";
+    history.replaceState(null, null, newUrl);
+  });
+});
+	</script>	
 <style>@media (min-width: 1200px) {  .cc-3 {
     column-count: 3; } }
 	.max-350 {
@@ -38,7 +65,7 @@
 		echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'".$_COOKIE['user']."'\"></dmx-api-datasource>";
 		echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/".$_COOKIE['user']."\"></dmx-api-datasource>";
         }
-		else{
+	else{
 		echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog/\" dmx-param:tag=\"'robotolux'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
 		echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'robotolux'\"></dmx-api-datasource>";
 		echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/disregardfiat\"></dmx-api-datasource>";
@@ -66,7 +93,7 @@
             <div class="dropdown-menu nav-item dropdown-menu-right"> <a class="dropdown-item" type="button">Follow</a> <a class="dropdown-item" type="button">Unfollow</a> <a class="dropdown-item" type="button">Send DLUX</a> <a class="dropdown-item" type="button" href="#settings">Settings</a></div>
           </div>
         </div>
-        <ul class="nav nav-tabs bg-darker mx-0 px-0 mt-5 border-bottom-0" role="tablist">
+        <ul id="usertabs" class="nav nav-tabs bg-darker mx-0 px-0 mt-5 border-bottom-0" role="tablist">
           <li class="nav-item"> <a class="nav-link active" id="blogtab" role="tab" data-toggle="tab" aria-controls="blog" aria-expanded="true" href="#blog">Blog</a></li>
           <li class="nav-item"> <a class="nav-link" id="wallettab" role="tab" data-toggle="tab" aria-controls="wallet" aria-expanded="true" href="#wallet">Wallet</a></li>
           <li class="nav-item"> <a class="nav-link" id="inventorytab" role="tab" data-toggle="tab" aria-controls="inventory" aria-expanded="true" href="#inventory">Inventory</a></li>
