@@ -1150,6 +1150,108 @@ dmx.config({
         }
       ],
       "outputType": "array"
+    },
+    "inventory_iterator": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "uid"
+        },
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "object",
+          "name": "price",
+          "sub": [
+            {
+              "type": "number",
+              "name": "amount"
+            },
+            {
+              "type": "number",
+              "name": "precision"
+            },
+            {
+              "type": "text",
+              "name": "token"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "time"
+        },
+        {
+          "type": "text",
+          "name": "by"
+        },
+        {
+          "type": "number",
+          "name": "bids"
+        },
+        {
+          "type": "text",
+          "name": "bidder"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        }
+      ],
+      "outputType": "array"
+    },
+    "inventory_detail": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "uid"
+        },
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "object",
+          "name": "price",
+          "sub": [
+            {
+              "type": "number",
+              "name": "amount"
+            },
+            {
+              "type": "number",
+              "name": "precision"
+            },
+            {
+              "type": "text",
+              "name": "token"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "time"
+        },
+        {
+          "type": "text",
+          "name": "by"
+        },
+        {
+          "type": "number",
+          "name": "bids"
+        },
+        {
+          "type": "text",
+          "name": "bidder"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        }
+      ],
+      "outputType": "array"
     }
   },
   "apps": {
