@@ -1,3 +1,6 @@
+<script>function showTab(str) {
+    $('#usertabs a[href="#'+str+'"]').tab("show");
+  }</script>
 <header class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:rgba(42, 48, 54, 0.8); -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);">
   <div class="container-fluid">
@@ -80,6 +83,3 @@
     </div>
   </div>
 </div>
-<script>function showTab(str) {
-    $('#usertabs a[href="#'+str+'"]').tab("show");
-  });</script>
