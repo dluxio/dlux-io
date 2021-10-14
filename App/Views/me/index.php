@@ -1366,7 +1366,7 @@ function pageSpecfic(usr){
 
 </script>
 	
-	<script>
+<script>
 	$(document).ready(() => {
   let url = location.href.replace(/\/$/, "");
  
@@ -1392,6 +1392,12 @@ function pageSpecfic(usr){
     history.replaceState(null, null, newUrl);
   });
 });
+	
+function showTab(str) {
+    $('#usertabs a[href="#'+str+'"]').tab("show");
+  });
+
+
 	</script>	
 		
 	

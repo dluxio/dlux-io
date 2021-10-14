@@ -25,12 +25,12 @@
 			  <img src="" id="userImage" alt="" width="30" height="30" class="img-fluid rounded-circle bg-light mr-1 cover">
 			  <span id="userName">username</span></a>
           <div class="dropdown-menu pt-0" aria-labelledby="userDropdown">
-			 <a class="dropdown-item" href="/me#blog/"><i class="fas fa-user fa-fw mr-2"></i>Profile</a>
-			 <a class="dropdown-item" href="/me#wallet/"><i class="fas fa-wallet fa-fw mr-2"></i>Wallet</a>
-			 <a class="dropdown-item" href="/me#inventory/"><i class="fas fa-boxes fa-fw mr-2"></i>Inventory</a>
-			 <a class="dropdown-item" href="/me#node/"><i class="fas fa-robot fa-fw mr-2"></i>Node</a>
+			 <a class="dropdown-item" href="/me#blog/" onClick="showTab('blog')"><i class="fas fa-user fa-fw mr-2"></i>Profile</a>
+			 <a class="dropdown-item" href="/me#wallet/" onClick="showTab('wallet')"><i class="fas fa-wallet fa-fw mr-2"></i>Wallet</a>
+			 <a class="dropdown-item" href="/me#inventory/" onClick="showTab('inventory')"><i class="fas fa-boxes fa-fw mr-2"></i>Inventory</a>
+			 <a class="dropdown-item" href="/me#node/" onClick="showTab(node)"><i class="fas fa-robot fa-fw mr-2"></i>Node</a>
              <div class="dropdown-divider"></div>
-			 <a class="dropdown-item" href="/me#settings"><i class="fas fa-cog fa-fw mr-2"></i>Settings</a>
+			 <a class="dropdown-item" href="/me#settings/ onClick="showTab(settings)""><i class="fas fa-cog fa-fw mr-2"></i>Settings</a>
 			 <a class="dropdown-item" href="/about/"><i class="fas fa-info-circle fa-fw mr-2"></i>About</a>
              <div class="dropdown-divider"></div>
              <a class="dropdown-item" href="#" onclick="logout()" data-toggle="modal" data-target="#loginModal"><i class="fas fa-user-friends mr-2"></i>Switch User</a>
