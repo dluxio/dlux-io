@@ -37,9 +37,6 @@
 </footer>
 <!-- Footer -->
 <script src="/js/bootstrap-4.4.1.js"></script>
-
-
-<script src="/js/jquery-stickytabs.js"></script>
 <script>
 function hiveKeychain () {
     let username = document.getElementById('hk-username').value
