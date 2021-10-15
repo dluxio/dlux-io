@@ -426,6 +426,29 @@
       </div>
       <div role="tabpanel" class="tab-pane fade show " id="inventory" aria-labelledby="inventorytab">
         <div class="container">
+			<div class="card-columns cc-3 pt-5" id="inventory-mint" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.mint_tokens">
+            <div class="card text-white" style="background: linear-gradient(#43C45F,lawngreen)"> 
+              <div class="card-header d-flex" >
+            	<div class="circle">{{qty}}</div>
+           		 <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
+              </div>
+              <div class="card-body text-center lead"><h1><i class="fas fa-gem"></i></h1><h3>This is a sealed mint NFT</h3></div>
+        
+              <div class="card-footer">
+                <div class="d-flex flex-wrap justify-content-between">
+                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1 ">Open NFT</button>
+                </div>
+              </div>
+              <div dmx-bind:id="{{uid}}footer" class="collapse mb-3">
+                <div class="d-flex flex-wrap justify-content-between">
+                  <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1">Trade</button>
+                  <button type="button" class="btn btn-outline-info mr-auto ml-auto mt-1">Sell</button>
+                  <button type="button" class="btn btn-outline-primary mr-auto ml-auto mt-1">Auction</button>
+                  <button type="button" class="btn btn-outline-warning mr-auto ml-auto mt-1">Redeem</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
             <div class="card text-white bg-dark "> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
               <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
