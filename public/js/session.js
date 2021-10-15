@@ -531,6 +531,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  }
 
  function openMintToken(setid){
+     console.log(setid)
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
