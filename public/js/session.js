@@ -542,7 +542,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          }]
                      ], 'active'])
                      .then(r => {
-                         resolve(r)
+                         console.log(r)
                      })
                      .catch(e => { reject(e) })
  }
