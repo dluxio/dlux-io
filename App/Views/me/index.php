@@ -439,16 +439,21 @@
                 <div class="d-flex flex-wrap justify-content-between">
                   <button type="button" class="btn btn-success mr-auto ml-auto mt-1" data-toggle="collapse" dmx-bind:href="#{{set}}-mint-footer" role="button" aria-expanded="false" aria-controls="collapseExample">Actions</button>
                 </div>
-              </div>
+              
               <div dmx-bind:id="{{set}}-mint-footer" class="collapse mb-3">
                 <div class="d-flex flex-wrap justify-content-between">
+<<<<<<< HEAD
                   <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1" onclick="openMintToken('dlux')">Unwrap</button>
+=======
+                  <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1" dmx-on:click="openMintToken('{{set}}')">Unwrap</button>
+>>>>>>> 217b9f624b3490bd4a658e64cccf015e0a5116ca
                   <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1">Trade</button>
                   <button type="button" class="btn btn-outline-info mr-auto ml-auto mt-1">Sell</button>
                   <button type="button" class="btn btn-outline-primary mr-auto ml-auto mt-1">Auction</button>
                   <button type="button" class="btn btn-outline-warning mr-auto ml-auto mt-1">Melt</button>
                 </div>
               </div>
+                  </div>
             </div>
           </div>
           <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
