@@ -391,6 +391,14 @@ dmx.Formatters("global", {
             startsWith: function(t, n) {
                 return 0 === t.indexOf(n);
             },
+            Base64toNumber: function(chars){ 
+                var result = 0, glyphs = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+="
+                chars = chars.split('');
+                for (var e = 0; e < chars.length; e++) {
+                    result = (result * 64) + glyphs.indexOf(chars[e]);
+                }
+                return result;
+            },
             endsWith: function(t, n) {
                 var r = t.length - n.length,
                     e = t.lastIndexOf(n);
