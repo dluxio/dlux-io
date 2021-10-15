@@ -530,14 +530,14 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
      } catch (e) { console.log(e) }
  }
 
- function openMintToken(set){
+ function openMintToken(setid){
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
                              "required_posting_auths": [],
                              "id": "dlux_nft_mint",
                              "json": JSON.stringify({
-                                 set: set
+                                 set: setid
                              })
                          }]
                      ], 'active'])
