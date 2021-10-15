@@ -442,7 +442,7 @@
               
               <div dmx-bind:id="{{set}}-mint-footer" class="collapse mb-3">
                 <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1" onclick="openMintToken('dlux')">Unwrap</button>
+                  <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1" onclick="openMintToken('{{set}}')">Unwrap</button>
                   <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1">Trade</button>
                   <button type="button" class="btn btn-outline-info mr-auto ml-auto mt-1">Sell</button>
                   <button type="button" class="btn btn-outline-primary mr-auto ml-auto mt-1">Auction</button>
