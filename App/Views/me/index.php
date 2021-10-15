@@ -7,16 +7,15 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
+<script src="/js/jquery-3.4.1.min.js"></script>
 <!--dmxAppConnect-->
-<script src="/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/dmxAppConnect/dmxAppConnect.js"></script> 
 <script src="/dmxAppConnect/dmxMoment.js"></script>
 <script src="/dmxAppConnect/dmxFormatter.js"></script>
 <script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 <!--page specific-->
 <script src="/js/dex.js"></script>
-<script src="/js/me.js"></script>
-<script src="/js/jquery-3.4.1.min.js"></script>
-<script>
+<script src="/js/me.js"></script> <script>
 	$(document).ready(() => {
   let url = location.href.replace(/\/$/, "");
  
@@ -424,27 +423,30 @@
           </div>
         </div>
       </div>
-      <div role="tabpanel" class="tab-pane fade show " id="inventory" aria-labelledby="inventorytab">
+      <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
         <div class="container">
 			<div class="card-columns cc-3 pt-5" id="inventory-mint" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.mint_tokens">
             <div class="card text-white" style="background: linear-gradient(#43C45F,lawngreen)"> 
               <div class="card-header d-flex" >
-            	<div class="circle">{{qty}}</div>
+            	<div class="circle"><span style="font-size: .1em">Qty.</span> {{qty}}</div>
            		 <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
               </div>
-              <div class="card-body text-center lead"><h1><i class="fas fa-gem"></i></h1><h3>This is a sealed mint NFT</h3></div>
-        
+              <div class="card-body text-center lead">
+                  <h1><i class="fas fa-gem"></i></h1>
+                  <h3>This is a <u>wrapped NFT</u></h3></div>
+                    <h5>Unwrap to see what's inside.</h5>
               <div class="card-footer">
                 <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1 " onclick="openMintToken()">Open NFT</button>
+                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" data-toggle="collapse" dmx-bind:href="#{{set}}-mint-footer" role="button" aria-expanded="false" aria-controls="collapseExample">Actions</button>
                 </div>
               </div>
-              <div dmx-bind:id="{{uid}}footer" class="collapse mb-3">
+              <div dmx-bind:id="{{set}}-mint-footer" class="collapse mb-3">
                 <div class="d-flex flex-wrap justify-content-between">
+                  <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1" onclick="openMintToken(dlux)">Unwrap</button>
                   <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1">Trade</button>
                   <button type="button" class="btn btn-outline-info mr-auto ml-auto mt-1">Sell</button>
                   <button type="button" class="btn btn-outline-primary mr-auto ml-auto mt-1">Auction</button>
-                  <button type="button" class="btn btn-outline-warning mr-auto ml-auto mt-1">Redeem</button>
+                  <button type="button" class="btn btn-outline-warning mr-auto ml-auto mt-1">Melt</button>
                 </div>
               </div>
             </div>
