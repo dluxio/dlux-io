@@ -436,7 +436,7 @@
         
               <div class="card-footer">
                 <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1 " onclick="openMintToken('dlux)">Open NFT</button>
+                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1 " onclick="openMintToken(dlux)">Open NFT</button>
                 </div>
               </div>
               <div dmx-bind:id="{{uid}}footer" class="collapse mb-3">
