@@ -46,7 +46,18 @@
 <style>@media (min-width: 1200px) {  .cc-3 {
     column-count: 3; } }
 	.max-350 {
-		max-width: 350px; }</style>
+		max-width: 350px; }
+	.circle {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 25px;
+  color: #fff;
+  text-align: center;
+  background: #000
+}
+	</style>
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="apps" is="dmx-app">
 <?php 
@@ -415,16 +426,14 @@
       </div>
       <div role="tabpanel" class="tab-pane fade show " id="inventory" aria-labelledby="inventorytab">
         <div class="container">
-          <div class="alert alert-warning mt-5 " role="alert"> Inventory is under development and coming soon. <span class="float-right"><a href="#" onClick="toggleInventory()">🐇</a></span></div>
-          <div class="card-columns cc-3 pt-5 d-none" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
+          <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
             <div class="card text-white bg-dark "> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
-              <div class="card-header text-center" style="background: purple">
-                <h5 class="card-title">{{set}} <span style="color:aqua;">{{uid}}</span></h5>
+              <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
+            	<div class="circle">{{uid}}</div>
+           		 <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
               </div>
               <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
-              <div class="card-body">
-                <p class="card-text">Behold&#33; The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for...</p>
-              </div>
+            
               </a>
               <div class="card-footer d-none">
                 <div class="d-flex flex-wrap justify-content-between">
@@ -449,13 +458,10 @@
               <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark text-white">
                   <div class="card text-white bg-dark ">
-                    <div class="card-header d-flex align-items-baseline" style="background: #9200A6">
-                      <div class="ml-auto">
-                        <h5 class="card-title">{{inventory_detail.data.set}} <span style="color:aqua;">{{inventory_detail.data.uid}}</span></h5>
-                      </div>
-                      <div class="ml-auto">
+                    <div class="card-header d-flex align-items-baseline justify-content-between"  style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
+                        <h5 class="circle">{{inventory_detail.data.uid}}</h5>
+						  <h3 class="card-title lead border rounded p-2"><a href="/nfts/set/" class="text-white">{{inventory_detail.data.set}} NFT</a></h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      </div>
                     </div>
                     <div class="card-body row d-flex ">
                       <div class="col-lg-6 px-0 px-sm-2">
