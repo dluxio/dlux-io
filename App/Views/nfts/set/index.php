@@ -93,13 +93,10 @@
         <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
           <div class="modal-content bg-dark text-white">
             <div class="card text-white bg-dark ">
-              <div class="card-header d-flex align-items-baseline" style="background: #9200A6">
-                <div class="ml-auto">
-					<h3 class="card-title lead border rounded p-2 ml-auto">{{detail1.data.set}} NFT</h3>
-                </div>
-                <div class="ml-auto">
+              <div class="card-header d-flex align-items-baseline justify-content-between" style="background: #9200A6">
+				  <div></div>
+            		<h3 class="card-title lead border rounded p-2">{{detail1.data.set}} NFT</h3>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
               </div>
               <div class="card-body row d-flex ">
                 <div class="order-md-last col-lg-6 px-0 px-sm-2">
