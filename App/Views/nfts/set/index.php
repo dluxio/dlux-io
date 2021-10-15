@@ -110,7 +110,7 @@
                   </div>
                   <div class="card-img-top" dmx-bind:id="detail-image-{{detail1.data.set}}-{{detail1.data.uid}}" dmx-bind:alt="{{detail1.data.set}}-{{detail1.data.uid}}"> {{detail1.data.uid.nftDetailWell(detail1.data.script, detail1.data.set)}} </div>
                   <div class="text-center mt-2 text-white-50">
-                    <p>Owner: <a dmx-bind:href="/me/@{{detail1.data.owner}}#inventory/" dmx-bind:title="/me/@{{detail1.data.owner}}#inventory/">{{detail1.data.owner}}</a></p>
+                    <p>Owner: <a dmx-bind:href="/@{{detail1.data.owner}}#inventory/" dmx-bind:title="/{{detail1.data.owner}}#inventory/">{{detail1.data.owner}}</a></p>
                   </div>
                 </div>
                 <div class="col-lg-6 px-0 px-sm-2">
