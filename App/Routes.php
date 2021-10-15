@@ -18,6 +18,8 @@ $router->respondWithController('GET', '/nfts/', 'Nfts@index');
 $router->respondWithController('GET', '/nfts', 'Nfts@index');
 $router->respondWithController('GET', '/nfts/new/', 'Nfts@new');
 $router->respondWithController('GET', '/nfts/new', 'Nfts@new');
+$router->respondWithController('GET', '/nfts/set/', 'Nfts@set');
+$router->respondWithController('GET', '/nfts/set', 'Nfts@set');
 $router->respondWithController('GET', '/dex/grid/', 'Dex@grid');
 $router->respondWithController('GET', '/dex/grid', 'Dex@grid');
 $router->respondWithController('GET', '/apps', 'Apps@index');

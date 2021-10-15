@@ -735,34 +735,12 @@ dmx.config({
           "name": "set"
         },
         {
-          "type": "object",
-          "name": "price",
-          "sub": [
-            {
-              "type": "number",
-              "name": "amount"
-            },
-            {
-              "type": "number",
-              "name": "precision"
-            },
-            {
-              "type": "text",
-              "name": "token"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "name": "time"
-        },
-        {
-          "type": "text",
-          "name": "by"
-        },
-        {
           "type": "text",
           "name": "script"
+        },
+        {
+          "type": "text",
+          "name": "owner"
         }
       ],
       "outputType": "array"
@@ -1278,6 +1256,422 @@ dmx.config({
         }
       ],
       "outputType": "array"
+    },
+    "api1": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "array",
+            "name": "result",
+            "sub": [
+              {
+                "type": "text",
+                "name": "uid"
+              },
+              {
+                "type": "text",
+                "name": "set"
+              },
+              {
+                "type": "text",
+                "name": "script"
+              },
+              {
+                "type": "text",
+                "name": "owner"
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "name": "set",
+            "sub": [
+              {
+                "type": "text",
+                "name": "set"
+              },
+              {
+                "type": "text",
+                "name": "link"
+              },
+              {
+                "type": "object",
+                "name": "fee",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "amount"
+                  },
+                  {
+                    "type": "number",
+                    "name": "precision"
+                  },
+                  {
+                    "type": "text",
+                    "name": "token"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "name": "bond",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "amount"
+                  },
+                  {
+                    "type": "number",
+                    "name": "precision"
+                  },
+                  {
+                    "type": "text",
+                    "name": "token"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "name": "permlink"
+              },
+              {
+                "type": "text",
+                "name": "author"
+              },
+              {
+                "type": "text",
+                "name": "script"
+              },
+              {
+                "type": "text",
+                "name": "encoding"
+              },
+              {
+                "type": "number",
+                "name": "type"
+              },
+              {
+                "type": "text",
+                "name": "royalty"
+              },
+              {
+                "type": "text",
+                "name": "name"
+              },
+              {
+                "type": "number",
+                "name": "minted"
+              },
+              {
+                "type": "number",
+                "name": "max"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "node"
+          },
+          {
+            "type": "text",
+            "name": "VERSION"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "via"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          }
+        ]
+      }
+    ],
+    "dataView1": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "uid"
+        },
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        },
+        {
+          "type": "text",
+          "name": "owner"
+        }
+      ],
+      "outputType": "array"
+    },
+    "iterator1": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "uid"
+        },
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        },
+        {
+          "type": "text",
+          "name": "owner"
+        }
+      ],
+      "outputType": "array"
+    },
+    "detail1": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "uid"
+        },
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        },
+        {
+          "type": "text",
+          "name": "owner"
+        }
+      ],
+      "outputType": "array"
+    },
+    "auctions_iterator": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "uid"
+        },
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        },
+        {
+          "type": "text",
+          "name": "owner"
+        }
+      ],
+      "outputType": "array"
+    },
+    "dataView2": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "text",
+          "name": "link"
+        },
+        {
+          "type": "object",
+          "name": "fee",
+          "sub": [
+            {
+              "type": "number",
+              "name": "amount"
+            },
+            {
+              "type": "number",
+              "name": "precision"
+            },
+            {
+              "type": "text",
+              "name": "token"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "bond",
+          "sub": [
+            {
+              "type": "number",
+              "name": "amount"
+            },
+            {
+              "type": "number",
+              "name": "precision"
+            },
+            {
+              "type": "text",
+              "name": "token"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "permlink"
+        },
+        {
+          "type": "text",
+          "name": "author"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        },
+        {
+          "type": "text",
+          "name": "encoding"
+        },
+        {
+          "type": "number",
+          "name": "type"
+        },
+        {
+          "type": "text",
+          "name": "royalty"
+        },
+        {
+          "type": "text",
+          "name": "name"
+        },
+        {
+          "type": "number",
+          "name": "minted"
+        },
+        {
+          "type": "number",
+          "name": "max"
+        }
+      ],
+      "outputType": "object"
+    },
+    "detail2": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "text",
+          "name": "link"
+        },
+        {
+          "type": "object",
+          "name": "fee",
+          "sub": [
+            {
+              "type": "number",
+              "name": "amount"
+            },
+            {
+              "type": "number",
+              "name": "precision"
+            },
+            {
+              "type": "text",
+              "name": "token"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "bond",
+          "sub": [
+            {
+              "type": "number",
+              "name": "amount"
+            },
+            {
+              "type": "number",
+              "name": "precision"
+            },
+            {
+              "type": "text",
+              "name": "token"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "permlink"
+        },
+        {
+          "type": "text",
+          "name": "author"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        },
+        {
+          "type": "text",
+          "name": "encoding"
+        },
+        {
+          "type": "number",
+          "name": "type"
+        },
+        {
+          "type": "text",
+          "name": "royalty"
+        },
+        {
+          "type": "text",
+          "name": "name"
+        },
+        {
+          "type": "number",
+          "name": "minted"
+        },
+        {
+          "type": "number",
+          "name": "max"
+        }
+      ],
+      "outputType": "object"
     }
   },
   "apps": {
