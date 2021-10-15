@@ -211,7 +211,7 @@
         <div class="card text-white bg-dark" dmx-repeat:repeatauctiontoken1="auctionsToken.data"> <a href="#auctionsModal" class="a-1" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)">
           <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
             <div class="circle">{{uid}}</div>
-            <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
+            <h3 class="card-title lead border rounded p-2 ml-auto"><a href="/nfts/set/" class="text-white">{{set}} NFT</a></h3>
           </div>
           <div class="card-img-top p-1" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
           <div class="text-center " style="background: crimson">
