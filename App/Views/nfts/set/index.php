@@ -22,7 +22,7 @@
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
 
 <dmx-api-datasource id="api1" is="dmx-fetch" url="https://token.dlux.io/api/set/dlux"></dmx-api-datasource>
-<dmx-data-view id="dataView1" dmx-bind:data="api1.data.result"></dmx-data-view>
+<dmx-data-view id="dataView1" dmx-bind:data="api1.data.result" sorton="uid"></dmx-data-view>
 <style>
 .circle {
   width: 50px;
@@ -34,38 +34,7 @@
   text-align: center;
   background: #000
 }
-	.circle2 {
-  width: 75px;
-  height: 75px;
-  line-height: 75px;
-  border-radius: 50%;
-  font-size: 50px;
-  color: crimson;
-  text-align: center;
-  background: #000;
-		
-}
-	.arrow {
-	position: absolute;
-	background: #ffc107;
-	border-radius: 50%;
-	border: black thick solid;
-	text-align: center;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 4rem;
-    height: 4rem;
-    z-index: 1;
-	color: crimson;
-	
-	}
-	.arrow2 {
-		position: absolute;
-		left: 50%;
-    	transform: translate(-50%, -50%);
-		z-index: 1;
-	}
-	</style>
+</style>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
@@ -74,6 +43,12 @@
 <main role="main" class="flex-shrink-0">
   <div class="container">
     <div class="container-fluid" style="padding: 0">
+		<button class="btn btn-primary" id="sortbase64asc" dmx-on:click="dataView1.sort('uid.Base64toNumber()','asc')">Sort on base64 <i class="fas fa-arrow-alt-circle-up"></i></button>
+		<button class="btn btn-primary" id="sortbase64desc" dmx-on:click="dataView1.sort('uid.Base64toNumber()','desc')">Sort on base64 <i class="fas fa-arrow-alt-circle-down"></i></button>
+		<button class="btn btn-primary" id="sortuidasc" dmx-on:click="dataView1.sort('uid','asc')">Sort on uid <i class="fas fa-arrow-alt-circle-up"></i></button>
+		<button class="btn btn-primary" id="sortuiddesc" dmx-on:click="dataView1.sort('uid','desc')">Sort on uid <i class="fas fa-arrow-alt-circle-down"></i></button>
+		<button class="btn btn-primary" id="sortasc" dmx-on:click="dataView1.sort('owner','asc')">Sort on owner <i class="fas fa-arrow-alt-circle-up"></i></button>
+		<button class="btn btn-primary" id="sortasc" dmx-on:click="dataView1.sort('owner','desc')">Sort on owner <i class="fas fa-arrow-alt-circle-down"></i></button>
       <div class="card-columns my-3" id="auctions-token-cards">
         <div class="card text-white bg-dark" dmx-repeat:repeat1="dataView1.data"> <a href="#itemModal" class="a-1" data-toggle="modal" dmx-on:click="iterator1.select($index);detail1.select(uid)">
           <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
@@ -81,9 +56,11 @@
             <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
           </div>
           <div class="card-img-top p-1" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
-          <div class="card-body d-flex flex-column text-center"></div>
+          <div class="card-body d-flex flex-column text-center">
+			#{{uid.Base64toNumber()}} / {{api1.data.set.max}}
+			</div>
           </a>
-          <div class="card-footer text-center d-flex justify-content-between align-items-center"> <span>Owner: {{owner}}</span> </div>
+          <div class="card-footer text-center d-flex justify-content-between align-items-center"> <span>Owner: <a dmx-bind:href="/@{{owner}}#inventory">{{owner}}</a> </div>
         </div>
       </div>
     </div>
@@ -143,4 +120,19 @@
    include_once($path);
 ?>
 </body>
+<script>
+const Base64 = {
+
+    glyphs :
+    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+=",
+toNumber : function(chars) {
+        var result = 0;
+        chars = chars.split('');
+        for (var e = 0; e < chars.length; e++) {
+            result = (result * 64) + this.glyphs.indexOf(chars[e]);
+        }
+        return result;
+    }
+}	
+</script>
 </html>
