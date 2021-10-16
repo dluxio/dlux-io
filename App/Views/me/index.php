@@ -7,15 +7,41 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
+<script src="/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/jquery-3.4.1.min.js"></script>
 <!--dmxAppConnect-->
-<script src="/dmxAppConnect/dmxAppConnect.js"></script> 
 <script src="/dmxAppConnect/dmxMoment.js"></script>
 <script src="/dmxAppConnect/dmxFormatter.js"></script>
 <script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 <!--page specific-->
 <script src="/js/dex.js"></script>
-<script src="/js/me.js"></script> <script>
+<script src="/js/me.js"></script>
+<style>
+@media (min-width: 1200px) {  .cc-3 {
+    column-count: 3; } }
+	.max-350 {
+		max-width: 350px; }
+	.circle {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 25px;
+  color: #fff;
+  text-align: center;
+  background: #000
+}
+    .shimmer {
+ background-image: linear-gradient(
+        to right,
+        rgb(194, 255, 182),
+        rgb(255, 163, 182),
+        rgb(221, 169, 255),
+        rgb(162, 209, 255)
+    )
+	</style>
+<script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<script>
 	$(document).ready(() => {
   let url = location.href.replace(/\/$/, "");
  
@@ -41,23 +67,7 @@
     history.replaceState(null, null, newUrl);
   });
 });
-	</script>	
-<style>@media (min-width: 1200px) {  .cc-3 {
-    column-count: 3; } }
-	.max-350 {
-		max-width: 350px; }
-	.circle {
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  border-radius: 50%;
-  font-size: 25px;
-  color: #fff;
-  text-align: center;
-  background: #000
-}
-
-	</style>
+	</script>
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="apps" is="dmx-app">
 <?php 
@@ -428,33 +438,27 @@
         <div class="container">
 			<div class="card-columns cc-3 pt-5" id="inventory-mint" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.mint_tokens">
             <div class="card text-white" style="background: linear-gradient(#43C45F,lawngreen)"> 
-              <div class="card-header d-flex" >
-            	<div class="rounded-pill d-flex align-items-center p-2" style="background-color: black;">
-					<div><span style="font-size: .4em">Qty. </span></div>
-					<div>{{qty}}</div>
+              <div class="card-header d-flex align-items-center justify-content-between" >
+            	<div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
+					<div class="pr-2"><small>QTY: </small></div>
+					<div class="px-2"><h2 class="m-0">{{qty.pad(3)}}</h2></div>
 				  </div>
-           		 <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
+           		 <div>
+                      <a href="/nfts/set/"><h3 class="card-title lead shimmer rounded p-2 m-0 ml-auto" style="color: black"><b>{{set}} NFT</b></h3></a>
+                  </div>
               </div>
               <div class="card-body text-center d-flex flex-column lead">
-                  <h1 class="text-center"><i class="fas fa-gem"></i></h1>
-                  <div class="p-2 text-center"><h3 class="my-0 mx-2 p-0 rounded p-2 ml-auto bg-white" style="color: lawngreen">wrapped NFT</h3></div>
+                  <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.5)">
+                       <h1 class="text-center"><i class="fas fa-gem"></i></h1>
+                      <h3 class="my-0 mx-2 p-0 p-2 ml-auto " style="color: lawngreen">wrapped NFT</h3>
                     <h5>Unwrap to see what's inside.</h5>
-				  </div>
+				  </div></div>
               <div class="card-footer">
                 <div class="d-flex flex-wrap justify-content-between">
 				  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="openMintToken('{{set}}')">Unwrap </button>
                   <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1" data-toggle="collapse" dmx-bind:href="#{{set}}-mint-modal" role="button" aria-expanded="false" aria-controls="collapseExample">Transfer</button>
                 </div>
-              
-              <div dmx-bind:id="{{set}}-mint-footer" class="collapse mb-3">
-                <div class="d-flex flex-wrap justify-content-between">
-                  
-                  <button type="button" class="btn btn-outline-info mr-auto ml-auto mt-1" dmx-on:click="giveMintToken('{{set}}')">Give</button>
-                  <button type="button" class="btn btn-outline-primary mr-auto ml-auto mt-1" dmx-on:click="tradeMintToken('{{set}}')">Trade</button>
-                  <button type="button" class="btn btn-outline-warning mr-auto ml-auto mt-1" dmx-on:click="sellMintToken('{{set}}')">Sell</button>
-				  <button type="button" class="btn btn-outline-danger mr-auto ml-auto mt-1" dmx-on:click="auctionMintToken('{{set}}')">Auction</button>
-                </div>
-              </div>
+
                   </div>
             </div>
           </div>
