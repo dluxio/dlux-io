@@ -451,36 +451,134 @@
                   <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.5)">
                        <h1 class="text-center"><i class="fas fa-gem"></i></h1>
                       <h3 class="my-0 mx-2 p-0 p-2 ml-auto " style="color: lawngreen">wrapped NFT</h3>
-                    <h5>Unwrap to see what's inside.</h5>
+                    <h5>Open to see what's inside.</h5>
 				  </div></div>
               <div class="card-footer">
                 <div class="d-flex flex-wrap justify-content-between">
-				  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="openMintToken('{{set}}')">Unwrap </button>
-                  <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1" data-toggle="collapse" dmx-bind:href="#{{set}}-mint-modal" role="button" aria-expanded="false" aria-controls="collapseExample">Transfer</button>
+				  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="openMintToken('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
+                  <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-ellipsis-v ml-3"></i></button>
                 </div>
 
                   </div>
             </div>
           </div>
-			<div class="modal" tabindex="-1">
-  				<div class="modal-dialog">
-    				<div class="modal-content">
-      					<div class="modal-header">
-        					<h5 class="modal-title">Modal title</h5>
-        					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          					<span aria-hidden="true">&times;</span>
-        					</button>
-      					</div>
-      					<div class="modal-body">
-        					<p>Modal body text goes here.</p>
-      					</div>
-      					<div class="modal-footer">
-        					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        					<button type="button" class="btn btn-primary">Save changes</button>
-      					</div>
+			<div class="modal fade " id="mintTransferModal" tabindex="11" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-full modal-dialog-centered" role="document">
+                <div class="modal-content bg-dark text-white">
+      					 <div class="border border-info bg-darker mx-auto px-5 py-3 rounded col-12">
+   
+                                    <div class="container-fluid">
+                                      <ul class="nav nav-pills bg-darker justify-content-center" role="tablist">
+                                        <li class="nav-item"> <a class="nav-link " id="minttradetab" role="tab" data-toggle="tab" aria-controls="trade" aria-expanded="true" href="#minttrade">Trade</a></li>
+                                        <li class="nav-item"> <a class="nav-link" id="mintselltab" role="tab" data-toggle="tab" aria-controls="sell" aria-expanded="true" href="#mintsell">Sell</a></li>
+                                        <li class="nav-item"> <a class="nav-link" id="mintauctiontab" role="tab" data-toggle="tab" aria-controls="auction" aria-expanded="true" href="#mintauction">Auction</a></li>
+                                      </ul>
+                                      <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade show " id="minttrade" aria-labelledby="minttradetab">
+                                          <form class="needs-validation mt-4" novalidate>
+                                            <div class="form-row my-2">
+                                              <div class="col-12">
+                                                <label for="validationSendUsername">Username</label>
+                                                <div class="input-group">
+                                                  <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">@</span></div>
+                                                  <input type="text" class="form-control" id="validationSendUsername" aria-describedby="inputGroupPrepend" required>
+                                                  <div class="invalid-feedback"> Please enter the username you'd like to trade with. </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-row my-2">
+                                              <div class="col-12">
+                                                <label for="validationReceiveItem">Item Hash</label>
+                                                <div class="input-group">
+                                                  <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">#</span></div>
+                                                  <input type="text" class="form-control" id="validationReceiveItem" aria-describedby="inputGroupPrepend" required>
+                                                  <div class="invalid-feedback"> Please enter an item hash from the users inventory. </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-row col-12 align-items-center my-2">
+                                              <div class="form-group form-check">
+                                                <input type="checkbox" class="form-check-input" id="giftTrade2">
+                                                <label class="form-check-label" for="giftTrade">This is a gift, no item in return</label>
+                                              </div>
+                                            </div>
+                                            <button class="btn btn-info my-2" type="submit">Propose Trade</button>
+                                          </form>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade show " id="mintsell" aria-labelledby="mintselltab">
+                                          <form class="needs-validation mt-4" novalidate>
+                                            <div class="form-row my-2">
+                                              <div class="col-12">
+                                                <label for="validationSellPrice">Sale Price</label>
+                                                <div class="input-group">
+                                                  <input type="number" class="form-control" id="validationSellPrice" aria-describedby="sellcoin" required>
+                                                  <div class="input-group-append">
+                                                    <div class="input-group-text" id="sellcoin">DLUX</div>
+                                                  </div>
+                                                </div>
+                                                <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-row my-2">
+                                              <div class="form-group form-check">
+                                                <input type="checkbox" class="form-check-input" id="sellOwnership">
+                                                <label class="form-check-label" for="sellOwnership">I agree to transfer ownership to the DAO Listing Service for 30 days.</label>
+                                                <div class="invalid-feedback"> You must agree before submitting. </div>
+                                              </div>
+                                            </div>
+                                            <button class="btn btn-info my-2" type="submit">List Item</button>
+                                          </form>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade show " id="mintauction" aria-labelledby="mintauctiontab">
+                                          <form class="needs-validation mt-4" novalidate>
+                                            <div class="form-row my-2">
+                                              <div class="col-12">
+                                                <label for="validationAuctionPrice">Starting Bid</label>
+                                                <div class="input-group">
+                                                  <input type="number" class="form-control" id="validationAuctionPrice" aria-describedby="auctioncoin" required>
+                                                  <div class="input-group-append">
+                                                    <div class="input-group-text" id="auctioncoin">DLUX</div>
+                                                  </div>
+                                                </div>
+                                                <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to start the bidding. </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="validationReservePrice">Reserve Price</label>
+                                              <div class="input-group">
+                                                <input class="form-control" id="validationReservePrice" type="number" required>
+                                                <div class="input-group-append">
+                                                  <div class="input-group-text" id="reservecoin">DLUX</div>
+                                                </div>
+                                              </div>
+                                              <div class="invalid-feedback"> Please enter the ammount of DLUX that must be reached. </div>
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="buyNowPrice">Buy It Now Price</label>
+                                              <div class="input-group">
+                                                <input class="form-control" id="buyNowPrice" type="number" step="0.001" min="0.001" required>
+                                                <div class="input-group-append">
+                                                  <div class="input-group-text" id="buyNowcoin">DLUX</div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-row my-2">
+                                              <div class="form-group form-check">
+                                                <input type="checkbox" class="form-check-input" id="auctionOwnership">
+                                                <label class="form-check-label" for="auctionOwnership">I agree to transfer ownership to the DAO Auction House for 30 days.</label>
+                                                <div class="invalid-feedback"> You must agree before submitting. </div>
+                                              </div>
+                                            </div>
+                                            <button class="btn btn-info my-2" type="submit">List Item</button>
+                                          </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
     				</div>
   				</div>
 			</div>
+            
           <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
            
 			<div class="card text-white bg-dark "> 
@@ -692,7 +790,7 @@
                           <div class="card bg-dark text-white">
                             <div class="card-header" id="headingRedeem">
                               <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseRedeem" aria-expanded="false" aria-controls="collapseRedeem"> REDEEM </button>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseRedeem" aria-expanded="false" aria-controls="collapseRedeem"> MELT </button>
                               </h5>
                             </div>
                             <div id="collapseRedeem" class="collapse show" aria-labelledby="headingRedeem" data-parent="#accordion">
@@ -701,16 +799,17 @@
                                   <div class="border border-warning rounded bg-darker col-12 p-4">
                                     <div class="d-flex align-items-center justify-content-between">
                                       <div class="d-flex mr-1">
-                                        <h4>Redemption Value:</h4>
+                                        <h4>Melt Down Value:</h4>
                                       </div>
                                       <div class="d-flex ml-1">
                                         <h1><u>100 DLUX</u></h1>
                                       </div>
                                     </div>
                                     <div class="pt-2">
-                                      <p class="text-uppercase text-muted">This NFT can be traded, sold, or auctioned until redeemed. Once redeemed it will disappear forever.</p>
+                                      
+                                      <p class="text-uppercase text-muted">This NFT can be traded, sold, or auctioned until melted. Once melted it will disappear forever.</p>
                                       <center>
-                                        <button type="button" class="btn btn-warning m-1">Redeem <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-warning m-1">Melt <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span></button>
                                       </center>
                                     </div>
                                   </div>
@@ -723,7 +822,7 @@
                     </div>
                     <div class="card-footer d-flex align-items-center">
                       <h2><a class="text-muted p-3" href="#" dmx-on:click="inventory_iterator.prev();inventory_detail.select(inventory_iterator.value.uid)"><i class="fas fa-caret-square-left"></i></a></h2>
-                      <small class="ml-auto text-muted"><i>Token acquired September 20th, 2021</i></small>
+                      <small class="ml-auto text-muted"><i>Item {{inventory_iterator.index + 1}} of {{inventorydata.data.result.count()}}</i></small>
                       <h2 class="ml-auto"><a class="text-muted p-3" href="#" dmx-on:click="inventory_iterator.next();inventory_detail.select(inventory_iterator.value.uid)"><i class="fas fa-caret-square-right"></i></a></h2>
                     </div>
                   </div>
