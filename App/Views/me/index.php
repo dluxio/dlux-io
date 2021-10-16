@@ -56,6 +56,7 @@
   text-align: center;
   background: #000
 }
+
 	</style>
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="apps" is="dmx-app">
@@ -428,34 +429,54 @@
 			<div class="card-columns cc-3 pt-5" id="inventory-mint" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.mint_tokens">
             <div class="card text-white" style="background: linear-gradient(#43C45F,lawngreen)"> 
               <div class="card-header d-flex" >
-            	<div class="circle"><span style="font-size: .1em">Qty.</span> {{qty}}</div>
+            	<div class="rounded-pill d-flex align-items-center p-2" style="background-color: black;">
+					<div><span style="font-size: .4em">Qty. </span></div>
+					<div>{{qty}}</div>
+				  </div>
            		 <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
               </div>
-              <div class="card-body text-center lead">
-                  <h1><i class="fas fa-gem"></i></h1>
-                  <h3>This is a <u>wrapped NFT</u></h3></div>
+              <div class="card-body text-center d-flex flex-column lead">
+                  <h1 class="text-center"><i class="fas fa-gem"></i></h1>
+                  <div class="p-2 text-center"><h3 class="my-0 mx-2 p-0 rounded p-2 ml-auto bg-white" style="color: lawngreen">wrapped NFT</h3></div>
                     <h5>Unwrap to see what's inside.</h5>
+				  </div>
               <div class="card-footer">
                 <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" data-toggle="collapse" dmx-bind:href="#{{set}}-mint-footer" role="button" aria-expanded="false" aria-controls="collapseExample">Actions</button>
+				  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="openMintToken('{{set}}')">Unwrap </button>
+                  <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1" data-toggle="collapse" dmx-bind:href="#{{set}}-mint-footer" role="button" aria-expanded="false" aria-controls="collapseExample">Transfer</button>
                 </div>
               
               <div dmx-bind:id="{{set}}-mint-footer" class="collapse mb-3">
                 <div class="d-flex flex-wrap justify-content-between">
-<<<<<<< HEAD
-                  <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1" onclick="openMintToken('dlux')">Unwrap</button>
-=======
-                  <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1" dmx-on:click="openMintToken('{{set}}')">Unwrap</button>
->>>>>>> 217b9f624b3490bd4a658e64cccf015e0a5116ca
-                  <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1">Trade</button>
-                  <button type="button" class="btn btn-outline-info mr-auto ml-auto mt-1">Sell</button>
-                  <button type="button" class="btn btn-outline-primary mr-auto ml-auto mt-1">Auction</button>
-                  <button type="button" class="btn btn-outline-warning mr-auto ml-auto mt-1">Melt</button>
+                  
+                  <button type="button" class="btn btn-outline-info mr-auto ml-auto mt-1" dmx-on:click="giveMintToken('{{set}}')">Give</button>
+                  <button type="button" class="btn btn-outline-primary mr-auto ml-auto mt-1" dmx-on:click="tradeMintToken('{{set}}')">Trade</button>
+                  <button type="button" class="btn btn-outline-warning mr-auto ml-auto mt-1" dmx-on:click="sellMintToken('{{set}}')">Sell</button>
+				  <button type="button" class="btn btn-outline-danger mr-auto ml-auto mt-1" dmx-on:click="auctionMintToken('{{set}}')">Auction</button>
                 </div>
               </div>
                   </div>
             </div>
           </div>
+			<div class="modal" tabindex="-1">
+  				<div class="modal-dialog">
+    				<div class="modal-content">
+      					<div class="modal-header">
+        					<h5 class="modal-title">Modal title</h5>
+        					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          					<span aria-hidden="true">&times;</span>
+        					</button>
+      					</div>
+      					<div class="modal-body">
+        					<p>Modal body text goes here.</p>
+      					</div>
+      					<div class="modal-footer">
+        					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        					<button type="button" class="btn btn-primary">Save changes</button>
+      					</div>
+    				</div>
+  				</div>
+			</div>
           <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
             <div class="card text-white bg-dark "> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
               <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">

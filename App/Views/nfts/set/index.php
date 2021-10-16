@@ -43,12 +43,14 @@
 <main role="main" class="flex-shrink-0">
   <div class="container">
     <div class="container-fluid" style="padding: 0">
+		<div>
 		<button class="btn btn-primary" id="sortbase64asc" dmx-on:click="dataView1.sort('uid.Base64toNumber()','asc')">Sort on base64 <i class="fas fa-arrow-alt-circle-up"></i></button>
 		<button class="btn btn-primary" id="sortbase64desc" dmx-on:click="dataView1.sort('uid.Base64toNumber()','desc')">Sort on base64 <i class="fas fa-arrow-alt-circle-down"></i></button>
 		<button class="btn btn-primary" id="sortuidasc" dmx-on:click="dataView1.sort('uid','asc')">Sort on uid <i class="fas fa-arrow-alt-circle-up"></i></button>
 		<button class="btn btn-primary" id="sortuiddesc" dmx-on:click="dataView1.sort('uid','desc')">Sort on uid <i class="fas fa-arrow-alt-circle-down"></i></button>
 		<button class="btn btn-primary" id="sortasc" dmx-on:click="dataView1.sort('owner','asc')">Sort on owner <i class="fas fa-arrow-alt-circle-up"></i></button>
 		<button class="btn btn-primary" id="sortasc" dmx-on:click="dataView1.sort('owner','desc')">Sort on owner <i class="fas fa-arrow-alt-circle-down"></i></button>
+		</div>
       <div class="card-columns my-3" id="auctions-token-cards">
         <div class="card text-white bg-dark" dmx-repeat:repeat1="dataView1.data"> <a href="#itemModal" class="a-1" data-toggle="modal" dmx-on:click="iterator1.select($index);detail1.select(uid)">
           <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
@@ -64,7 +66,8 @@
           <div class="card-footer text-center d-flex justify-content-between align-items-center"> <span>Owner: <a dmx-bind:href="/@{{owner}}#inventory">{{owner}}</a> </div>
         </div>
       </div>
-    </div>
+    
+	
     <dmx-data-iterator id="iterator1" dmx-bind:data="dataView1.data" loop="true"></dmx-data-iterator>
     <dmx-data-detail id="detail1" dmx-bind:data="dataView1.data" key="uid">
       <div class="modal fade " id="itemModal" tabindex="11" role="dialog" aria-hidden="true">
@@ -113,6 +116,65 @@
         </div>
       </div>
     </dmx-data-detail>
+		
+		        <!-- data table -->
+	<div class="tab-pane fade" id="table" role="tabpanel" aria-labelledby="table-tab">
+        <div class="tab-pane fade" id="table" role="tabpanel" aria-labelledby="table-tab">
+          <div class="jumbotron bg-darker my-4 p-2">
+            <div >
+              <table class="table table-hover table-bordered table-dark table-striped text-white mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" dmx-class:table-primary="orderbookview1.sort.on == 'rate'" > <div class="d-flex justify-content-between align-items-end flex-wrap">
+                      <div class="d-flex flex-fill text-center">
+                        <p class="mx-2 my-0 p-0 text-center align-self-center">RATE</p>
+                      </div>
+                      <div class="d-flex">
+                        <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="orderbookview1.sort('rate','asc')" dmx-class:bg-primary="orderbookview1.sort.dir == 'asc' && orderbookview1.sort.on == 'rate'"><i class="fas fa-sort-amount-down-alt"></i></button>
+                        <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="orderbookview1.sort('rate','desc')" dmx-class:bg-primary="orderbookview1.sort.dir == 'desc' && orderbookview1.sort.on == 'rate'"><i class="fas fa-sort-amount-down"></i></button>
+                      </div>
+                    </div>
+                    </th>
+                    <th scope="col" dmx-class:table-primary="orderbookview1.sort.on == 'amount'"> <div class="d-flex justify-content-between align-items-end flex-wrap">
+                      <div class="d-flex flex-fill text-center">
+                        <p class="mx-2 my-0 p-0 text-center align-self-center">DLUX</p>
+                      </div>
+                      <div class="d-flex">
+                        <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light"  dmx-on:click="orderbookview1.sort('amount','asc')" dmx-class:bg-primary="orderbookview1.sort.dir == 'asc' && orderbookview1.sort.on == 'amount'"><i class="fas fa-sort-amount-down-alt"></i></button>
+                        <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="orderbookview1.sort('amount','desc')" dmx-class:bg-primary="orderbookview1.sort.dir == 'desc' && orderbookview1.sort.on == 'amount'"><i class="fas fa-sort-amount-down"></i></button>
+                      </div>
+                    </div></th>
+                    <th scope="col" dmx-class:table-primary="orderbookview1.sort.on == 'hive'"> <div class="d-flex justify-content-between align-items-end flex-wrap">
+                      <div class="d-flex flex-fill text-center">
+                        <p class="mx-2 my-0 p-0 text-center align-self-center">HIVE</p>
+                      </div>
+                      <div class="d-flex">
+                        <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="orderbookview1.sort('hive','asc')" dmx-class:bg-primary="orderbookview1.sort.dir == 'asc'  && orderbookview1.sort.on == 'hive'"><i class="fas fa-sort-amount-down-alt"></i></button>
+                        <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-light" dmx-on:click="orderbookview1.sort('hive','desc')" dmx-class:bg-primary="orderbookview1.sort.dir == 'desc'  && orderbookview1.sort.on == 'hive'"><i class="fas fa-sort-amount-down"></i></button>
+                      </div>
+                    </div></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr dmx-repeat:hivesellsrepeat="orderbookview1.data" dmx-on:click="iterator1.select($index); orderbookview1Detail.select(txid)" dmx-class:table-primary="orderbookview1Detail.data.txid ==  txid" dmx-class:table-danger="rate.toNumber().inRange(dexapi.data.markets.hive.sells[0].rate, (dexapi.data.markets.hive.sells[0].rate*1.01)) ==  false" >
+                    <td>{{rate.toNumber().formatNumber(3,'.',',')}}</td>
+                    <td>{{amount}}</td>
+                    <td>{{hive}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="d-flex justify-content-between mt-2">
+                <div><a class="btn btn-light" href="javascript:void(0);" dmx-on:click="orderbookview1.prev()" dmx-show="orderbookview1.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                <div class="align-self-center">
+                  <p class="m-0 p-0">Page {{orderbookview1.page}} of {{orderbookview1.pages}}</p>
+                </div>
+                <div><a class="btn btn-light" href="javascript:void(0)" dmx-on:click="orderbookview1.next()" dmx-show="orderbookview1.has.next"><i class="fa fa-angle-right"></i></a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+		  </div>
+	</div>
   </div>
 </main>
 <?php 
