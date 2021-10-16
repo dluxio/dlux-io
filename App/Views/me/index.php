@@ -450,8 +450,8 @@
               <div class="card-body text-center d-flex flex-column lead">
                   <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.5)">
                        <h1 class="text-center"><i class="fas fa-gem"></i></h1>
-                      <h3 class="my-0 mx-2 p-0 p-2 ml-auto " style="color: lawngreen">wrapped NFT</h3>
-                    <h5>Open to see what's inside.</h5>
+                      <h3 class="my-0 mx-2 p-0 p-2 ml-auto " style="color: lawngreen">sealed NFT</h3>
+                    <h5>Unwrap to see what's inside.</h5>
 				  </div></div>
               <div class="card-footer">
                 <div class="d-flex flex-wrap justify-content-between">
