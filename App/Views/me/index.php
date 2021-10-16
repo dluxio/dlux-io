@@ -478,29 +478,16 @@
   				</div>
 			</div>
           <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
-            <div class="card text-white bg-dark "> <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
+           
+			<div class="card text-white bg-dark "> 
               <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
             	<div class="circle">{{uid}}</div>
-           		 <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
+           		 <h3 class="card-title lead border rounded p-2 ml-auto"><a dmx-bind:href="/nfts/{{set}}" class="text-white lead">{{set}} NFT</a></h3>
               </div>
+			 <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
               <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
-            
-              </a>
-              <div class="card-footer d-none">
-                <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1 d-none" data-toggle="collapse" dmx-bind:data-target="#{{uid}}footer" aria-expanded="false" dmx-bind:aria-controls="{{uid}}footer">Actions</button>
-                  <button type="button" class="btn btn-info mr-auto ml-auto mt-1 ">Inspect</button>
-                </div>
-              </div>
-              <div dmx-bind:id="{{uid}}footer" class="collapse mb-3">
-                <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-outline-success mr-auto ml-auto mt-1">Trade</button>
-                  <button type="button" class="btn btn-outline-info mr-auto ml-auto mt-1">Sell</button>
-                  <button type="button" class="btn btn-outline-primary mr-auto ml-auto mt-1">Auction</button>
-                  <button type="button" class="btn btn-outline-warning mr-auto ml-auto mt-1">Redeem</button>
-                </div>
-              </div>
-            </div>
+            </a>
+			 </div>
           </div>
 		
           <dmx-data-iterator id="inventory_iterator" dmx-bind:data="inventorydata.data.result" loop="true"></dmx-data-iterator>
