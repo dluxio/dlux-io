@@ -55,6 +55,7 @@
             <div class="circle">{{uid}}</div>
             <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
           </div>
+			{{$index}}
           <div class="card-img-top p-1" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
           <div class="card-body d-flex flex-column text-center">
 			#{{uid.Base64toNumber()}} / {{api1.data.set.max}}
