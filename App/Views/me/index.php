@@ -482,7 +482,7 @@
 			<div class="card text-white bg-dark "> 
               <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
             	<div class="circle">{{uid}}</div>
-           		 <h3 class="card-title lead border rounded p-2 ml-auto"><a dmx-bind:href="/nfts/set" class="text-white lead">{{set}} NFT</a></h3>
+           		 <h3 class="card-title lead border rounded p-2 ml-auto"><a href="/nfts/set/" class="text-white lead">{{set}} NFT</a></h3>
               </div>
 			 <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
               <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
