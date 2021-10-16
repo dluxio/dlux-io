@@ -443,7 +443,7 @@
               <div class="card-footer">
                 <div class="d-flex flex-wrap justify-content-between">
 				  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="openMintToken('{{set}}')">Unwrap </button>
-                  <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1" data-toggle="collapse" dmx-bind:href="#{{set}}-mint-footer" role="button" aria-expanded="false" aria-controls="collapseExample">Transfer</button>
+                  <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1" data-toggle="collapse" dmx-bind:href="#{{set}}-mint-modal" role="button" aria-expanded="false" aria-controls="collapseExample">Transfer</button>
                 </div>
               
               <div dmx-bind:id="{{set}}-mint-footer" class="collapse mb-3">
