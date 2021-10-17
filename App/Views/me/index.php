@@ -7,21 +7,19 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
-<script src="/dmxAppConnect/dmxAppConnect.js"></script>
-<script src="/js/jquery-3.4.1.min.js"></script>
-<!--dmxAppConnect-->
-<script src="/dmxAppConnect/dmxMoment.js"></script>
-<script src="/dmxAppConnect/dmxFormatter.js"></script>
-<script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 <!--page specific-->
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
 <style>
-@media (min-width: 1200px) {  .cc-3 {
-    column-count: 3; } }
-	.max-350 {
-		max-width: 350px; }
-	.circle {
+@media (min-width: 1200px) {
+	.cc-3 {
+    	column-count: 3; 
+	} 
+}
+.max-350 {
+	max-width: 350px; 
+	}
+.circle {
   width: 50px;
   height: 50px;
   line-height: 50px;
@@ -31,7 +29,7 @@
   text-align: center;
   background: #000
 }
-    .shimmer {
+.shimmer {
  background-image: linear-gradient(
         to right,
         rgb(194, 255, 182),
@@ -40,34 +38,6 @@
         rgb(162, 209, 255)
     )
 	</style>
-<script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
-<script>
-	$(document).ready(() => {
-  let url = location.href.replace(/\/$/, "");
- 
-  if (location.hash) {
-    const hash = url.split("#");
-    $('#usertabs a[href="#'+hash[1]+'"]').tab("show");
-    url = location.href.replace(/\/#/, "#");
-    history.replaceState(null, null, url);
-    setTimeout(() => {
-      $(window).scrollTop(0);
-    }, 400);
-  } 
-   
-  $('a[data-toggle="tab"]').on("click", function() {
-    let newUrl;
-    const hash = $(this).attr("href");
-    if(hash == "#blog") {
-      newUrl = url.split("#")[0];
-    } else {
-      newUrl = url.split("#")[0] + hash;
-    }
-    newUrl += "/";
-    history.replaceState(null, null, newUrl);
-  });
-});
-	</script>
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="apps" is="dmx-app">
 <?php 
