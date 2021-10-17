@@ -548,25 +548,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      .catch(e => { reject(e) })
  }
 
-  function openMintToken(setname, callback){
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_mint",
-                             "json": JSON.stringify({
-                                 set: setname
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         callback(r)
-                     })
-                     .catch(e => { reject(e) })
- }
-
-   function NFTTransfer(setname, uid, to, callback){
+function NFTTransfer(setname, uid, to, callback){
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
