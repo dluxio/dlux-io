@@ -530,20 +530,274 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
      } catch (e) { console.log(e) }
  }
 
- function openMintToken(rando){
-     console.log(rando)
+ function openMintToken(setname, callback){
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
                              "required_posting_auths": [],
                              "id": "dlux_nft_mint",
                              "json": JSON.stringify({
-                                 set: rando
+                                 set: setname
                              })
                          }]
                      ], 'active'])
                      .then(r => {
                          console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+  function openMintToken(setname, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_mint",
+                             "json": JSON.stringify({
+                                 set: setname
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+   function NFTTransfer(setname, uid, to, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_transfer",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid,
+                                 to
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+function NFTReserveTransfer(setname, uid, to, price, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_reserve_transfer",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid,
+                                 to,
+                                 price
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+ function NFTReserveComplete(setname, uid, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_reserve_complete",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+ function NFTReserveCancel(setname, uid, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_transfer_cancel",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+function NFTDelete(setname, uid, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_delete",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+ function NFTDefine(
+    setname,
+    type,
+    script,
+    permlink,
+    start,
+    end,
+    royalty,
+    handling,
+    max_fee,
+    bond, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_define",
+                             "json": JSON.stringify({
+                                 name: setname,
+                                 type,
+                                 script,
+                                 permlink,
+                                 start,
+                                 end,
+                                 royalty,
+                                 handling,
+                                 max_fee,
+                                 bond
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+ function NFTAuction(setname, uid, price, now, time, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_auction",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid,
+                                 price,
+                                 now,
+                                 time
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+ function NFTBid(setname, uid, bid_amount, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_bid",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid,
+                                 bid_amount
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+function NFTSell(setname, uid, price, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_sell",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid,
+                                 price
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+ function NFTBuy(setname, uid, price, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_buy",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid,
+                                 price
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+ function NFTSellCancel(setname, uid, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_sell_cancel",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
                      })
                      .catch(e => { reject(e) })
  }
