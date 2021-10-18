@@ -549,8 +549,13 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  }
 
   function airdropMintTokens(setname, to_array,  callback){
-      // check that these are real hive account
-     Dluxsession.hive_sign([user, [
+    var promises = []
+    for (item in to_array){
+        promises.push(checkAccount(to_array[item]))
+    }
+    Promise.all(promises)
+    .then(r=>{
+        Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
                              "required_posting_auths": [],
@@ -566,10 +571,13 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          callback(r)
                      })
                      .catch(e => { reject(e) })
+    })
+    .catch(e=>alert(`At least one hive account doesn't exist: ${e}`))
  }
 
  function auctionMintToken(setname, price, now, time, callback){
-      // check that these are real hive account
+    time = parseInt(time)
+    price = parseInt(price * 1000)
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
@@ -591,7 +599,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  }
 
  function bidMintToken(setname, uid, bid_amount,  callback){
-      // check that these are real hive account
+    bid_amount = parseInt(bid_amount * 1000)
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
@@ -612,7 +620,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  }
 
  function sellMintToken(setname, price,  callback){
-      // check that these are real hive account
+    price = parseInt(price * 1000)
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
@@ -632,7 +640,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  }
 
  function buyMintToken(setname, uid, price,  callback){
-      // check that these are real hive account
+     price = parseInt(price * 1000)
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
@@ -673,7 +681,8 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  }
 
   function giveMintToken(setname, to, callback){
-     // check accounts 
+    checkAccount(to)
+    .then(r => { 
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
@@ -690,30 +699,39 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          callback(r)
                      })
                      .catch(e => { reject(e) })
+                     })
+    .catch(e=>alert(`${to} is not a valid hive account`))
  }
 
 function giveNFT(setname, uid, to, callback){
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_transfer",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid,
-                                 to
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         callback(r)
-                     })
-                     .catch(e => { reject(e) })
+    checkAccount(to)
+    .then(r => { 
+        Dluxsession.hive_sign([user, [
+            ['custom_json', {
+                "required_auths": [user],
+                "required_posting_auths": [],
+                "id": "dlux_nft_transfer",
+                "json": JSON.stringify({
+                    set: setname,
+                    uid,
+                    to
+                })
+            }]
+        ], 'active'])
+        .then(r => {
+            console.log(r)
+            callback(r)
+        })
+        .catch(e => { reject(e) })
+    })
+    .catch(e=>alert(`${to} is not a valid hive account`))
  }
 
 function NFTReserveTransfer(setname, uid, to, price, callback){
-     Dluxsession.hive_sign([user, [
+    price = parseInt(price * 1000)
+    checkAccount(to)
+    .then(r => {  
+    Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
                              "required_posting_auths": [],
@@ -731,6 +749,8 @@ function NFTReserveTransfer(setname, uid, to, price, callback){
                          callback(r)
                      })
                      .catch(e => { reject(e) })
+                     })
+    .catch(e=>alert(`${to} is not a valid hive account`))
  }
 
  function NFTReserveComplete(setname, uid, callback){
@@ -801,6 +821,9 @@ function NFTDelete(setname, uid, callback){
     handling,
     max_fee,
     bond, callback){
+    max_fee = parseInt(max_fee * 1000)
+    royalty = parseInt(royalty * 100)
+    //more validation
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
@@ -828,6 +851,8 @@ function NFTDelete(setname, uid, callback){
  }
 
  function auctionNFT(setname, uid, price, now, time, callback){
+     time = parseInt(time)
+    price = parseInt(price * 1000)
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
@@ -850,6 +875,7 @@ function NFTDelete(setname, uid, callback){
  }
 
  function NFTBid(setname, uid, bid_amount, callback){
+    bid_amount = parseInt(bid_amount * 1000)
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
@@ -870,6 +896,7 @@ function NFTDelete(setname, uid, callback){
  }
 
 function sellNFT(setname, uid, price, callback){
+    price = parseInt(price * 1000)
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
@@ -890,6 +917,7 @@ function sellNFT(setname, uid, price, callback){
  }
 
  function NFTBuy(setname, uid, price, callback){
+    price = parseInt(price * 1000)
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
