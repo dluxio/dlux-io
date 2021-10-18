@@ -710,12 +710,12 @@
                                                 <label for="giveNFTuser">Username</label>
                                                 <div class="input-group">
                                                   <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">@</span></div>
-                                                  <input type="text" class="form-control" id="giveNFTuser" aria-describedby="inputGroupPrepend" required>
+                                                  <input type="text" class="form-control" dmx-bind:id="giveNFTuser-{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}" aria-describedby="inputGroupPrepend" required>
                                                   <div class="invalid-feedback"> Please enter the username you'd like to send this to.</div>
                                                 </div>
                                               </div>
                                             </div>
-                                            <button class="btn btn-outline-info my-2" dmx-on:click="giveNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{giveNFTuser.value}}')">Send Gift</button>
+                                            <button class="btn btn-outline-info my-2" dmx-on:click="giveNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{giveNFTuser-{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}.value}}')">Send Gift</button>
                                           </form>
                                         </div>
                                         <!-- Trade NFT Tab -->
