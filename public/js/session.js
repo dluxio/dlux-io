@@ -548,6 +548,46 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      .catch(e => { reject(e) })
  }
 
+  function airdropMintTokens(setname, to_array,  callback){
+      // check that these are real hive account
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_ft_airdrop",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 to: [... new set(to_array)]
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+  function giveMintToken(setname, to, callback){
+     // check accounts 
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_ft_transfer",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 to
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
 function NFTTransfer(setname, uid, to, callback){
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
