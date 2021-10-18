@@ -568,6 +568,110 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      .catch(e => { reject(e) })
  }
 
+ function auctionMintToken(setname, price, now, time, callback){
+      // check that these are real hive account
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_ft_auction",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 price,
+                                 now,
+                                 time
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+ function bidMintToken(setname, uid, bid_amount,  callback){
+      // check that these are real hive account
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_ft_bid",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid,
+                                 bid_amount
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+ function sellMintToken(setname, price,  callback){
+      // check that these are real hive account
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_ft_sell",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 price
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+ function buyMintToken(setname, uid, price,  callback){
+      // check that these are real hive account
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_ft_buy",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid,
+                                 price
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
+ function cancelSellMintToken(setname, uid,  callback){
+      // check that these are real hive account
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_ft_sell_cancel",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { reject(e) })
+ }
+
   function giveMintToken(setname, to, callback){
      // check accounts 
      Dluxsession.hive_sign([user, [
