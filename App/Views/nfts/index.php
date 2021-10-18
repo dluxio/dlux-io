@@ -231,7 +231,7 @@
           </div>
           </a>
           <div class="card-footer text-center">
-            <p class="lead"><a href="#salesModal" class="a-1" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)"> </a><a class="btn btn-primary btn-lg" href="#" role="button">Buy NFT</a></p>
+            <p class="lead"><a class="btn btn-primary btn-lg" href="#salesModal" class="a-1" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)">Buy NFT</a></p>
           </div>
         </div>
       </div>
