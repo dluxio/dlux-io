@@ -692,7 +692,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      .catch(e => { reject(e) })
  }
 
-function NFTTransfer(setname, uid, to, callback){
+function giveNFT(setname, uid, to, callback){
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
@@ -869,7 +869,7 @@ function NFTDelete(setname, uid, callback){
                      .catch(e => { reject(e) })
  }
 
-function NFTSell(setname, uid, price, callback){
+function sellNFT(setname, uid, price, callback){
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
