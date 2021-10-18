@@ -710,7 +710,7 @@
                                                 <label for="giveNFTuser">Username</label>
                                                 <div class="input-group">
                                                   <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">@</span></div>
-                                                  <input type="text" class="form-control" dmx-bind:id="giveNFTuser" aria-describedby="inputGroupPrepend" required>
+                                                  <input type="text" class="form-control" id="giveNFTuser" aria-describedby="inputGroupPrepend" required>
                                                   <div class="invalid-feedback"> Please enter the username you'd like to send this to.</div>
                                                 </div>
                                               </div>
