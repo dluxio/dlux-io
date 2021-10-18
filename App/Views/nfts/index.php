@@ -8,6 +8,8 @@
    include_once($path);
 ?>
 <!--page specific-->
+
+
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
 </head>
@@ -231,10 +233,14 @@
           </div>
           </a>
           <div class="card-footer text-center">
-            <p class="lead"><a class="btn btn-primary btn-lg" href="#salesModal" class="a-1" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)">Buy NFT</a></p>
+            <p class="lead">
+              <button id="buyNFTbtn1" class="btn btn-primary btn-lg" href="#salesModal" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)" >Buy NFT</button>
+            </p>
           </div>
         </div>
-      </div>
+        <button id="btn1" dmx-show="by != 'user'">Buy</button>
+        <button id="btn2" dmx-show="by == 'user'">Cancel</button>
+	  </div>
 	  <!-- NFT Sales Modal -->
 		<!-- NFT Sales Iterator -->
 	  <dmx-data-iterator id="sales_iterator" dmx-bind:data="salesToken.data" loop="true"></dmx-data-iterator>
