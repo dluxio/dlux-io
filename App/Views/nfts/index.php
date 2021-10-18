@@ -147,7 +147,7 @@
       </div>
       <div class="card-columns my-3" id="auctions-token-cards">
         <div class="card text-white bg-dark" dmx-repeat:repeatauctiontoken1="auctionsToken.data"> 
-          <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
+          <div class="card-header d-flex" style="background: linear-gradient(dodgerblue,cornflowerblue)">
             <div class="circle">{{uid}}</div>
             <h3 class="card-title lead border rounded p-2 ml-auto"><a href="/nfts/set/" class="text-white">{{set}} NFT</a></h3>
           </div><a href="#auctionsModal" class="a-1" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)">
@@ -176,14 +176,12 @@
               <div class="modal-dialog modal-full modal modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark text-white">
                   <div class="card text-white bg-dark ">
-                    <div class="card-header d-flex align-items-baseline" style="background: #9200A6">
-                      <div class="ml-auto">
-                        <h5 class="card-title">{{auctions_detail.data.set}} <span style="color:aqua;">{{auctions_detail.data.uid}}</span></h5>
-                      </div>
-                      <div class="ml-auto">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      </div>
-                    </div>
+                    <div class="card-header d-flex align-items-baseline justify-content-between" style="background: linear-gradient(dodgerblue,cornflowerblue)">
+            <div class="circle">{{auctions_detail.data.uid}}</div>
+            <h3 class="card-title lead border rounded p-2"><a href="/nfts/set/" class="text-white">{{auctions_detail.data.set}} NFT</a></h3>
+			 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>			
+          </div>
+            </div>
                     
                     <div class="card-img-top" dmx-bind:id="detail-image-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" dmx-bind:alt="{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}">{{auctions_detail.data.uid.nftDetailWell(auctions_detail.data.script, auctions_detail.data.set)}}</div>
 					
@@ -192,7 +190,7 @@
             			<h5 dmx-bind:id="detail-timer-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" class="mb-0 lead">{{auctions_detail.data.time.animateTime(set, uid)}}</h5>
           			</div>
 					<div class="card-body text-center">
-						<div>{{auctions_detail.data.by}} is acutioning {{auctions_detail.data.uid}}</div>
+						<div>{{auctions_detail.data.by}} is auctioning {{auctions_detail.data.uid}}</div>
 						<div>Set: {{auctions_detail.data.set}}</div>
 						<div>Initial Price: {{auctions_detail.data.initial_price.nai()}}</div>
 						<div>Current Bid: {{auctions_detail.data.price.nai()}}</div>
@@ -220,26 +218,59 @@
 		<div style="border-bottom: #FFFFFF thick solid">
         <h1 class="text-white p-0 m-0">NFT Sales</h1>
       </div>
-      <div class="card-columns my-3" id="sales-token-cards">
-        <div class="card text-white bg-dark" dmx-repeat:repeatsalestoken1="salesToken.data"> <a href="#auctionsModal" class="a-1" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)">
+	  <!-- NFT Sales Repeat -->
+	  <div class="card-columns my-3" id="sales-token-cards">
+        <div class="card text-white bg-dark" dmx-repeat:repeatsalestoken1="salesToken.data"> <a href="#salesModal" class="a-1" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)">
           <div class="card-header d-flex" style="background: linear-gradient(blueviolet,darkorchid)">
             <div class="circle">{{uid}}</div>
             <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
           </div>
           <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
-          <div class="text-center " style="background: crimson">
-            <h5 dmx-bind:id="timer-{{set}}-{{uid}}" class="mb-0 lead">{{time.animateTime(set, uid)}}</h5>
-          </div>
           <div class="card-body">
             <p class="card-text text-center">Price: <u>{{price.nai()}}</u></p>
           </div>
           </a>
           <div class="card-footer text-center">
-            <p class="lead"><a href="#auctionModal" class="a-1" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)"> </a><a class="btn btn-primary btn-lg" href="#" role="button">Buy NFT</a></p>
+            <p class="lead"><a href="#salesModal" class="a-1" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)"> </a><a class="btn btn-primary btn-lg" href="#" role="button">Buy NFT</a></p>
           </div>
         </div>
       </div>
-	
+	  <!-- NFT Sales Modal -->
+		<!-- NFT Sales Iterator -->
+	  <dmx-data-iterator id="sales_iterator" dmx-bind:data="salesToken.data" loop="true"></dmx-data-iterator>
+		<!-- NFT Sales Detail --> 
+	  <dmx-data-detail id="sales_detail" dmx-bind:data="salesToken.data" key="uid">
+		<div class="modal fade " id="salesModal" tabindex="11" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-full modal modal-dialog-centered" role="document">
+                <div class="modal-content bg-dark text-white">
+                  <div class="card text-white bg-dark ">
+                    <div class="card-header d-flex align-items-baseline justify-content-between" style="background: linear-gradient(blueviolet,darkorchid)">
+            <div class="circle">{{sales_detail.data.uid}}</div>
+            <h3 class="card-title lead border rounded p-2"><a href="/nfts/set/" class="text-white">{{sales_detail.data.set}} NFT</a></h3>
+          	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  </div>
+                    </div>
+                    
+                    <div class="card-img-top" dmx-bind:id="detail-image-{{sales_detail.data.set}}-{{sales_detail.data.uid}}" dmx-bind:alt="{{sales_detail.data.set}}-{{sales_detail.data.uid}}">{{sales_detail.data.uid.nftDetailWell(sales_detail.data.script, sales_detail.data.set)}}</div>
+					<div class="card-body text-center">
+						<div>{{sales_detail.data.by}} is selling {{sales_detail.data.uid}}</div>
+						<div>Set: {{sales_detail.data.set}}</div>
+						<div>Price: {{sales_detail.data.price.nai()}}</div>
+						<form class="my-3">
+							<button class="btn btn-lg btn-primary" dmx-on:click="buyNFT('{{sales_detail.data.set}}','{{sales_detail.data.uid}}')">Buy NFT</button>
+						</form>
+					</div>
+                    <div class="card-footer d-flex align-items-center">
+						
+                      <h2><a class="text-muted p-3" href="#" dmx-on:click="sales_iterator.prev();sales_detail.select(sales_iterator.value.uid)"><i class="fas fa-caret-square-left"></i></a></h2>
+                      <small class="ml-auto text-muted"><i>Item {{sales_iterator.index + 1}} of {{salesToken.data.count()}}</i></small>
+                      <h2 class="ml-auto"><a class="text-muted p-3" href="#" dmx-on:click="sales_iterator.next();sales_detail.select(sales_iterator.value.uid)"><i class="fas fa-caret-square-right"></i></a></h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </dmx-data-detail>
     	
     </div>
   </div>

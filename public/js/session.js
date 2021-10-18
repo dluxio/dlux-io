@@ -916,7 +916,7 @@ function sellNFT(setname, uid, price, callback){
                      .catch(e => { reject(e) })
  }
 
- function NFTBuy(setname, uid, price, callback){
+ function buyNFT(setname, uid, price, callback){
     price = parseInt(price * 1000)
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
