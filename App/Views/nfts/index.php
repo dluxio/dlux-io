@@ -7,13 +7,7 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
-<!--dmx App Connect-->
-<script src="/dmxAppConnect/dmxAppConnect.js"></script>
-<script src="/dmxAppConnect/dmxMoment.js"></script>
-<script src="/dmxAppConnect/dmxFormatter.js"></script>
-<script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
-<script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
-	
+
 <!--page specific-->
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>

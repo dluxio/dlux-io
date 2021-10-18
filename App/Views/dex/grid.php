@@ -18,11 +18,6 @@ include_once( $path );
 	</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.min.js" integrity="sha512-mZXUH8DAODwCHioWP3gltQwa953LbABMlzTYwYkKqv8eNxOk37B1HgNNuCMfFxgrpW5C34WJbxPDcM58+s1dJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.css" integrity="sha512-DGB74Gyw93qON+V0QxSRs1er6sqoPyFoy23HBL5LN7MRJBcjeCU22zega+vOEGE0XQLoVrv4ExcaesSTwZQA2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<!--dmx App Connect--> 
-<script src="/dmxAppConnect/dmxMoment.js"></script> 
-<script src="/dmxAppConnect/dmxFormatter.js"></script> 
-<script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script> 
-<script src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script> 
 
 <!--page specific--> 
 <script src="/js/dex.js"></script> 

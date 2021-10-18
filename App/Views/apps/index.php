@@ -7,11 +7,6 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
-<!--dmxAppConnect-->
-<script src="/dmxAppConnect/dmxAppConnect.js"></script>
-<script src="/dmxAppConnect/dmxMoment.js"></script>
-<script src="/dmxAppConnect/dmxFormatter.js"></script>
-<script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
 
 <body class="d-flex flex-column h-100 padme-t70" id="index" is="dmx-app">
