@@ -439,12 +439,45 @@
    
                                     <div class="container-fluid">
                                       <ul class="nav nav-pills bg-darker justify-content-center" role="tablist">
-                                        <li class="nav-item"> <a class="nav-link " id="minttradetab" role="tab" data-toggle="tab" aria-controls="trade" aria-expanded="true" href="#minttrade">Trade</a></li>
+                                        <li class="nav-item"> <a class="nav-link" id="mintgivetab active" role="tab" data-toggle="tab" aria-controls="give" aria-expanded="true" href="#mintgive">Give</a></li>
+                                        <li class="nav-item"> <a class="nav-link" id="minttradetab" role="tab" data-toggle="tab" aria-controls="trade" aria-expanded="true" href="#minttrade">Trade</a></li>
                                         <li class="nav-item"> <a class="nav-link" id="mintselltab" role="tab" data-toggle="tab" aria-controls="sell" aria-expanded="true" href="#mintsell">Sell</a></li>
                                         <li class="nav-item"> <a class="nav-link" id="mintauctiontab" role="tab" data-toggle="tab" aria-controls="auction" aria-expanded="true" href="#mintauction">Auction</a></li>
+                                        <li class="nav-item"> <a class="nav-link" id="mintairdroptab" role="tab" data-toggle="tab" aria-controls="airdrop" aria-expanded="true" href="#mintairdrop">Airdrop</a></li>
                                       </ul>
                                       <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane fade show " id="minttrade" aria-labelledby="minttradetab">
+                                        <div role="tabpanel" class="tab-pane fade show " id="mintgive" aria-labelledby="mintgivetab">
+                                          <form class="needs-validation mt-4" novalidate>
+                                            <div class="form-row my-2">
+                                              <div class="col-12">
+                                                <label for="validationSendUsername">Username</label>
+                                                <div class="input-group">
+                                                  <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">@</span></div>
+                                                  <input type="text" class="form-control" id="validationSendUsername" aria-describedby="inputGroupPrepend" required>
+                                                  <div class="invalid-feedback"> Please enter the username you'd like to give to. </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-row my-2">
+                                              <div class="col-12">
+                                                <label for="validationReceiveItem">Item Hash</label>
+                                                <div class="input-group">
+                                                  <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">#</span></div>
+                                                  <input type="text" class="form-control" id="validationReceiveItem" aria-describedby="inputGroupPrepend" required>
+                                                  <div class="invalid-feedback"> Please enter an item hash from the users inventory. </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="form-row col-12 align-items-center my-2">
+                                              <div class="form-group form-check">
+                                                <input type="checkbox" class="form-check-input" id="giftTrade2">
+                                                <label class="form-check-label" for="giftTrade">This is a gift, no item in return</label>
+                                              </div>
+                                            </div>
+                                            <button class="btn btn-info my-2" type="submit">Propose Trade</button>
+                                          </form>
+                                        </div>
+										  <div role="tabpanel" class="tab-pane fade show " id="minttrade" aria-labelledby="minttradetab">
                                           <form class="needs-validation mt-4" novalidate>
                                             <div class="form-row my-2">
                                               <div class="col-12">
@@ -584,16 +617,16 @@
                           <div class="card bg-dark text-white">
                             <div class="card-header" id="headingDescription">
                               <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseDescription"> DESCRIPTION </button>
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseDescription"><i class="fas fa-list mr-3"></i>DESCRIPTION</button>
                               </h5>
                             </div>
-                            <div id="collapseDescription" class="collapse" aria-labelledby="headingDescription" data-parent="#accordion">
+                            <div id="collapseDescription" class="collapse show" aria-labelledby="headingDescription" data-parent="#accordion">
                               <div class="card-body">
-                                <p class="card-text">Behold! The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for 100 DLUX (your NFT will be burned and 100 DLUX will be placed in your wallet).</p>
+                                <p class="card-text">Behold! The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for 100 DLUX (your NFT will be melted and 100 DLUX will be placed in your wallet).</p>
                               </div>
                             </div>
                           </div>
-                          <div class="card bg-dark text-white">
+                          <div class="card bg-dark text-white d-none">
                             <div class="card-header" id="headingAttributes">
                               <h5 class="mb-0">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapseAttributes" aria-expanded="false" aria-controls="collapseAttributes"> ATTRIBUTES </button>
@@ -633,18 +666,14 @@
                           <div class="card bg-dark text-white" style="width: 100">
                             <div class="card-header" id="headingMarket">
                               <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseMarket" aria-expanded="false" aria-controls="collapseMarket"> MARKET </button>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseMarket" aria-expanded="false" aria-controls="collapseMarket"><i class="fas fa-exchange-alt mr-3"></i>TRANSFER</button>
                               </h5>
                             </div>
                             <div id="collapseMarket" class="collapse" aria-labelledby="headingMarket" data-parent="#accordion">
                               <div class="card-body p-0">
                                 <div class="d-flex align-self-end text-center">
                                   <div class="border border-info bg-darker mx-auto px-5 py-3 rounded col-12">
-                                    <div>Rolling Average Market Price (7-days):</div>
-                                    <div>
-                                      <h1><span style="color: lawngreen">151.24 DLUX</span></h1>
-                                    </div>
-                                    <hr class="bg-light">
+                                    
                                     <div class="container-fluid">
                                       <ul class="nav nav-pills bg-darker justify-content-center" role="tablist">
                                         <li class="nav-item"> <a class="nav-link " id="tradetab" role="tab" data-toggle="tab" aria-controls="trade" aria-expanded="true" href="#trade">Trade</a></li>
@@ -760,16 +789,16 @@
                           <div class="card bg-dark text-white">
                             <div class="card-header" id="headingRedeem">
                               <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseRedeem" aria-expanded="false" aria-controls="collapseRedeem"> MELT </button>
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseRedeem" aria-expanded="false" aria-controls="collapseRedeem"><i class="fas fa-burn mr-3"></i>MELT</button>
                               </h5>
                             </div>
-                            <div id="collapseRedeem" class="collapse show" aria-labelledby="headingRedeem" data-parent="#accordion">
+                            <div id="collapseRedeem" class="collapse" aria-labelledby="headingRedeem" data-parent="#accordion">
                               <div class="card-body p-0">
                                 <div class="d-flex align-self-end">
                                   <div class="border border-warning rounded bg-darker col-12 p-4">
                                     <div class="d-flex align-items-center justify-content-between">
                                       <div class="d-flex mr-1">
-                                        <h4>Melt Down Value:</h4>
+                                        <h4>Melt Value:</h4>
                                       </div>
                                       <div class="d-flex ml-1">
                                         <h1><u>100 DLUX</u></h1>
@@ -778,9 +807,28 @@
                                     <div class="pt-2">
                                       
                                       <p class="text-uppercase text-muted">This NFT can be traded, sold, or auctioned until melted. Once melted it will disappear forever.</p>
-                                      <center>
-                                        <button type="button" class="btn btn-warning m-1">Melt <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span></button>
-                                      </center>
+										<div class="d-flex justify-content-around">	
+											<div class ="d-flex align-items-center my-4">
+												<div class="text-center p-4"><h1 class="text-warning" style="font-size: 4em"><i class="fas fa-exclamation-triangle"></i></h1></div>
+												<ul>
+													<li>This action cannot be undone</li>
+													<li>Your NFT will be deleted</li>
+													<li>You will receive 100 DLUX</li>
+												</ul>
+												</div>
+											</div>
+                                      <div class="text-center pb-4">
+                                        <button type="button" class="btn btn-warning" data-toggle="collapse" href="#melt-confirmation">Melt </button>
+                                      </div>
+										<div class="collapse bg-danger rounded" id="melt-confirmation">
+											<div class="text-center pt-4">
+												<h2><b>/////// IRREVERSIBLE \\\\\\\</b></h2>
+												<p>Are you sure you want to proceed?</p></div>
+											<div class="d-flex justify-content-around p-3">
+											<button class="btn btn-secondary" data-toggle="collapse" href="#melt-confirmation">CANCEL <i class="fas fa-running"></i></button>
+											<button class="btn btn-danger border-white" dmx-on:click="NFTDelete({{set}},{{uid}})">DESTROY <i class="fas fa-bomb"></i> <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span> </button>
+											</div>
+										</div>
                                     </div>
                                   </div>
                                 </div>
