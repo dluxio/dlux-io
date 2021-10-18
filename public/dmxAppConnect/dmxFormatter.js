@@ -951,7 +951,9 @@ dmx.Formatters("global", {
             return Object.keys(t);
         },
         nai: function(o) {
-            return `${parseFloat(o.amount/Math.pow(10, o.precision)).toFixed(o.precision)} ${o.token}`
+            return `${parseFloat(o.amount/Math.pow(10, o.precision)).toFixed(o.precision).replace(/(^|[^\w.])(\d{4,})/g, function($0, $1, $2) {
+        return $1 + $2.replace(/\d(?=(?:\d\d\d)+(?!\d))/g, "$&,");
+    })} ${o.token}`
         },
         values: function(n) {
             return Object.keys(n).map(function(t) {
