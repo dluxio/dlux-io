@@ -917,8 +917,7 @@ function sellNFT(setname, uid, price, callback){
  }
 
  function buyNFT(setname, uid, price, callback){
-    price = parseInt(price * 1000)
-     Dluxsession.hive_sign([user, [
+    Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
                              "required_posting_auths": [],
