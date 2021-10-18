@@ -442,7 +442,7 @@
               <div class="card-footer">
                 <div class="d-flex flex-wrap justify-content-between">
                   <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="openMintToken('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
-                  <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-ellipsis-v ml-3"></i></button>
+                  <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1 disabled" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-ellipsis-v ml-3"></i></button>
                 </div>
               </div>
             </div>
