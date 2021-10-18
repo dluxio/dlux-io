@@ -715,7 +715,7 @@
                                                 </div>
                                               </div>
                                             </div>
-                                            <button class="btn btn-outline-info my-2" type="submit" dmx-on:click="giveNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{giveNFTuser.value}}')">Send Gift</button>
+                                            <button class="btn btn-outline-info my-2" dmx-on:click="giveNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{giveNFTuser.value}}')">Send Gift</button>
                                           </form>
                                         </div>
                                         <!-- Trade NFT Tab -->
@@ -757,7 +757,7 @@
                                                 <div class="invalid-feedback"> You must agree before submitting. </div>
                                               </div>
                                             </div>
-                                            <button class="btn btn-outline-info my-2" type="submit" dmx-on:click="sellNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{sellNFTprice.value}}')">List Item</button>
+                                            <button class="btn btn-outline-info my-2" dmx-on:click="sellNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{sellNFTprice.value}}')">List Item</button>
                                           </form>
                                         </div>
                                         <!-- Auction NFT Tab -->
