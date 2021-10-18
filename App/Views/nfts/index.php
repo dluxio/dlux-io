@@ -233,7 +233,7 @@
           <div class="card-footer text-center">
             <p class="lead">
               <button id="buyNFTbtn1" class="btn btn-primary btn-lg" href="#salesModal" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)" >Buy NFT</button>
-					   <button id="btn1" dmx-show="by != getCookie('user')">{{getCookie('user')}}</button>
+					   <button id="btn1" dmx-show="by != getCookie('user')" dmx-on:click="getCookie('user')">{{getCookie('user')}}</button>
 					   <button id="btn2" dmx-show="by == getCookie('user')">Test Cancel</button>
             </p>
           </div>
