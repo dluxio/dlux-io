@@ -8,8 +8,6 @@
    include_once($path);
 ?>
 <!--page specific-->
-
-
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
 </head>
