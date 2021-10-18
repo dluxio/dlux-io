@@ -821,7 +821,7 @@
                                                 <div class="invalid-feedback"> You must agree before submitting. </div>
                                               </div>
                                             </div>
-                                            <button class="btn btn-outline-info my-2" dmx-on:click="auctionNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{auctionNFTprice.value}}','Date.now()','{{auctionNFTdays.value}}')">List Item</button>
+                                            <button class="btn btn-outline-info my-2" dmx-on:click="auctionNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{auctionNFTprice.value}}','{{Date.now()}}','{{auctionNFTdays.value}}')">List Item</button>
                                           </form>
                                         </div>
                                       </div>
