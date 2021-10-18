@@ -233,8 +233,9 @@
           <div class="card-footer text-center">
             <p class="lead">
               <button id="buyNFTbtn1" class="btn btn-primary btn-lg" href="#salesModal" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)" >Buy NFT</button>
-					   <button id="btn1" dmx-show="by != getCookie('user')" dmx-on:click="getCookie('user')">{{getCookie('user')}}</button>
-					   <button id="btn2" dmx-show="by == getCookie('user')">Test Cancel</button>
+				
+					   <button id="btn1" dmx-show="by != localStorage.get('user')">TB {{localStorage.get('user')}}</button>
+					   <button id="btn2" dmx-show="by == localStorage.get('user')">TC {{localStorage.get('user')}}</button>
             </p>
           </div>
         </div>
@@ -286,21 +287,4 @@
    include_once($path);
 ?>
 </body>
-<script>
-function getCookie(cname) {
-  let name = cname + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
-  for(let i = 0; i <ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
-</script>
 </html>
