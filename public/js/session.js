@@ -827,7 +827,7 @@ function NFTDelete(setname, uid, callback){
                      .catch(e => { reject(e) })
  }
 
- function NFTAuction(setname, uid, price, now, time, callback){
+ function auctionNFT(setname, uid, price, now, time, callback){
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],

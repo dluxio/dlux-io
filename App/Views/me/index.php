@@ -741,7 +741,7 @@
                                               <div class="col-12">
                                                 <label for="sellNFTprice">Sale Price</label>
                                                 <div class="input-group">
-                                                  <input type="number" class="form-control" id="sellNFTprice" aria-describedby="sellcoin" required  placeholder="0.000">
+                                                  <input type="number" class="form-control" id="sellNFTprice" aria-describedby="sellcoin" required  placeholder="0.000" step="0.001">
                                                   <div class="input-group-append">
                                                     <div class="input-group-text" id="sellcoin">DLUX</div>
                                                   </div>
@@ -765,9 +765,9 @@
                                           <form class="needs-validation mt-4" novalidate>
                                             <div class="form-row my-2">
                                               <div class="col-12">
-                                                <label for="validationAuctionPrice">Starting Bid</label>
+                                                <label for="auctionNFTprice">Starting Bid</label>
                                                 <div class="input-group">
-                                                  <input type="number" class="form-control" id="validationAuctionPrice" aria-describedby="auctioncoin" required placeholder="0.000">
+                                                  <input type="number" class="form-control" id="auctionNFTprice" aria-describedby="auctioncoin" required placeholder="0.000"  step="0.001">
                                                   <div class="input-group-append">
                                                     <div class="input-group-text" id="auctioncoin">DLUX</div>
                                                   </div>
@@ -777,8 +777,8 @@
                                             </div>
 											<div class="d-flex justify-content-around">
 											<div class="form-row my-2 d-flex align-items-center">
-												<label class="m-0">Duration: </label>
-												<select class="mx-2 btn btn-lg btn-secondary">
+												<label for="auctionNFTdays" class="m-0">Duration: </label>
+												<select class="mx-2 btn btn-lg btn-secondary" class="form-control" id="auctionNFTdays" required >
 													<option value="1">1 Days</option>
 													<option value="2">2 Day</option>
 													<option value="3">3 Days</option>
@@ -821,7 +821,7 @@
                                                 <div class="invalid-feedback"> You must agree before submitting. </div>
                                               </div>
                                             </div>
-                                            <button class="btn btn-outline-info my-2" type="submit">List Item</button>
+                                            <button class="btn btn-outline-info my-2" dmx-on:click="auctionNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{auctionNFTprice.value}}','{{now}}','{{auctionNFTdays}}')">List Item</button>
                                           </form>
                                         </div>
                                       </div>
