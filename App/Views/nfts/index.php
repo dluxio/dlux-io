@@ -17,10 +17,10 @@
 <dmx-data-view id="dexSellOrders" dmx-bind:data="dex.data.markets.hive.sells" sorton="key" ></dmx-data-view>
 	
 <dmx-api-datasource id="sales" is="dmx-fetch" url="https://token.dlux.io/api/sales"></dmx-api-datasource>
-<dmx-data-view id="salesToken" dmx-bind:data="sales.data.result" sorton="time" pagesize="4"></dmx-data-view>
+<dmx-data-view id="salesToken" dmx-bind:data="sales.data.result" sorton="time"></dmx-data-view>
 <dmx-data-view id="salesMint" dmx-bind:data="sales.data.mint" sorton="price.amount" pagesize="3" ></dmx-data-view>
 <dmx-api-datasource id="auctions" is="dmx-fetch" url="https://token.dlux.io/api/auctions"></dmx-api-datasource>
-<dmx-data-view id="auctionsToken" dmx-bind:data="auctions.data.result" sorton="time" pagesize="4"></dmx-data-view>
+<dmx-data-view id="auctionsToken" dmx-bind:data="auctions.data.result" sorton="time"></dmx-data-view>
 <style>
 .circle {
   width: 50px;
