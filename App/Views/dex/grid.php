@@ -7,8 +7,6 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-<script src="/dmxAppConnect/dmxAppConnect.js"></script> 
-<script src="/js/jquery-3.4.1.min.js"></script> 
 	<style>	.arrow2 {
 		position: absolute;
 		left: 50%;
