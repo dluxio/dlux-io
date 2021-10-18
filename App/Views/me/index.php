@@ -826,7 +826,7 @@
 												<p>Are you sure you want to proceed?</p></div>
 											<div class="d-flex justify-content-around p-3">
 											<button class="btn btn-secondary" data-toggle="collapse" href="#melt-confirmation">CANCEL <i class="fas fa-running"></i></button>
-											<button class="btn btn-danger border-white" dmx-on:click="NFTDelete({{set}},{{uid}})">DESTROY <i class="fas fa-bomb"></i> <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span> </button>
+											<button class="btn btn-danger border-white" dmx-on:click="NFTDelete('{{set}}','{{uid}}')">DESTROY <i class="fas fa-bomb"></i> <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span> </button>
 											</div>
 										</div>
                                     </div>
