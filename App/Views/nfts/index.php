@@ -257,7 +257,7 @@
 						<div>Set: {{sales_detail.data.set}}</div>
 						<div>Price: {{sales_detail.data.price.nai()}}</div>
 						<form class="my-3">
-							<button class="btn btn-lg btn-primary" dmx-on:click="buyNFT('{{sales_detail.data.set}}','{{sales_detail.data.uid}}')">Buy NFT</button>
+							<button class="btn btn-lg btn-primary" dmx-on:click="buyNFT('{{sales_detail.data.set}}','{{sales_detail.data.uid}}','{{sales_detail.data.price.amount}}')">Buy NFT</button>
 						</form>
 					</div>
                     <div class="card-footer d-flex align-items-center">
