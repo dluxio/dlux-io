@@ -715,7 +715,7 @@
                                                 </div>
                                               </div>
                                             </div>
-                                            <button class="btn btn-outline-info my-2" dmx-on:click="giveNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{giveNFTuser.value}}'">Send Gift</button>
+                                            <button class="btn btn-outline-info my-2" dmx-on:click="giveNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{giveNFTuser.value}}')">Send Gift</button>
                                           </form>
                                         </div>
                                         <!-- Trade NFT Tab -->
