@@ -874,7 +874,7 @@ function NFTDelete(setname, uid, callback){
                      .catch(e => { reject(e) })
  }
 
- function NFTBid(setname, uid, bid_amount, callback){
+ function bidNFT(setname, uid, bid_amount, callback){
     bid_amount = parseInt(bid_amount * 1000)
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
