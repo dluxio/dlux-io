@@ -8,6 +8,7 @@
    include_once($path);
 ?>
 <!--page specific-->
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
 <style>
@@ -39,7 +40,7 @@
     )
 	</style>
 </head>
-<body class="d-flex flex-column bg-darker h-100 padme-t70" id="apps" is="dmx-app">
+<body class="d-flex flex-column bg-darker h-100 padme-t70" id="index" is="dmx-app">
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
@@ -412,10 +413,10 @@
             	<div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
 					<div class="pr-2"><small>QTY: </small></div>
 					<div class="px-2"><h2 class="m-0">{{qty.pad(3)}}</h2></div>
-				  </div>
+			    </div>
            		 <div>
                       <a href="/nfts/set/"><h3 class="card-title lead shimmer rounded p-2 m-0 ml-auto" style="color: black"><b>{{set}} NFT</b></h3></a>
-                  </div>
+                </div>
               </div>
               <div class="card-body text-center d-flex flex-column lead">
                   <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.5)">
@@ -429,7 +430,7 @@
                   <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-ellipsis-v ml-3"></i></button>
                 </div>
 
-                  </div>
+              </div>
             </div>
           </div>
 			<div class="modal fade " id="mintTransferModal" tabindex="11" role="dialog" aria-hidden="true">
@@ -577,9 +578,9 @@
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-    				</div>
-  				</div>
+                  </div>
+   				</div>
+			  </div>
 			</div>
             
           <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
@@ -592,7 +593,7 @@
 			 <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
               <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
             </a>
-			 </div>
+		    </div>
           </div>
 		
           <dmx-data-iterator id="inventory_iterator" dmx-bind:data="inventorydata.data.result" loop="true"></dmx-data-iterator>
@@ -807,7 +808,7 @@
                                     <div class="pt-2">
                                       
                                       <p class="text-uppercase text-muted">This NFT can be traded, sold, or auctioned until melted. Once melted it will disappear forever.</p>
-										<div class="d-flex justify-content-around">	
+									  <div class="d-flex justify-content-around">	
 											<div class ="d-flex align-items-center my-4">
 												<div class="text-center p-4"><h1 class="text-warning" style="font-size: 4em"><i class="fas fa-exclamation-triangle"></i></h1></div>
 												<ul>
@@ -815,12 +816,12 @@
 													<li>Your NFT will be deleted</li>
 													<li>You will receive 100 DLUX</li>
 												</ul>
-												</div>
-											</div>
+										</div>
+									  </div>
                                       <div class="text-center pb-4">
                                         <button type="button" class="btn btn-warning" data-toggle="collapse" href="#melt-confirmation">Melt </button>
                                       </div>
-										<div class="collapse bg-danger rounded" id="melt-confirmation">
+									  <div class="collapse bg-danger rounded" id="melt-confirmation">
 											<div class="text-center pt-4">
 												<h2><b>/////// IRREVERSIBLE \\\\\\\</b></h2>
 												<p>Are you sure you want to proceed?</p></div>
