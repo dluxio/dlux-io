@@ -115,6 +115,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
              User.stats = jsons[2].stats
              User.price = jsons[3].hive.usd
              document.getElementById('userPFP').value = jsons[4].result[0].pfp;
+             console.log(jsons[4].result[0].pfp)
              User.hstats = jsons[5].result
              User.hive = jsons[6].result[0]
              try { 
