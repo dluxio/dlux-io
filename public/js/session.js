@@ -562,7 +562,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
   function airdropMintTokens(setname, to_array,  callback){
@@ -587,7 +587,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
     })
     .catch(e=>alert(`At least one hive account doesn't exist: ${e}`))
  }
@@ -612,7 +612,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
  function bidMintToken(setname, uid, bid_amount,  callback){
@@ -633,7 +633,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
  function sellMintToken(setname, price,  callback){
@@ -653,7 +653,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
  function buyMintToken(setname, uid, price,  callback){
@@ -674,7 +674,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
  function cancelSellMintToken(setname, uid,  callback){
@@ -694,7 +694,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
   function giveMintToken(setname, to, callback){
@@ -715,7 +715,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
                      })
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
@@ -739,7 +739,7 @@ function giveNFT(setname, uid, to, callback){
             console.log(r)
             callback(r)
         })
-        .catch(e => { reject(e) })
+        .catch(e => { console.log(e) })
     })
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
@@ -765,7 +765,7 @@ function NFTReserveTransfer(setname, uid, to, price, callback){
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
                      })
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
@@ -786,7 +786,7 @@ function NFTReserveTransfer(setname, uid, to, price, callback){
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
  function NFTReserveCancel(setname, uid, callback){
@@ -805,7 +805,7 @@ function NFTReserveTransfer(setname, uid, to, price, callback){
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
 function NFTDelete(setname, uid, callback){
@@ -824,7 +824,7 @@ function NFTDelete(setname, uid, callback){
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
  function NFTDefine(
@@ -864,7 +864,7 @@ function NFTDelete(setname, uid, callback){
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
  function auctionNFT(setname, uid, price, now, time, callback){
@@ -888,7 +888,7 @@ function NFTDelete(setname, uid, callback){
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
  function bidNFT(setname, uid, bid_amount, callback){
@@ -909,7 +909,7 @@ function NFTDelete(setname, uid, callback){
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
 function sellNFT(setname, uid, price, callback){
@@ -930,7 +930,7 @@ function sellNFT(setname, uid, price, callback){
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
  function buyNFT(setname, uid, price, callback){
@@ -950,7 +950,7 @@ function sellNFT(setname, uid, price, callback){
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
  function cancelNFTsell(setname, uid, callback){
@@ -969,7 +969,7 @@ function sellNFT(setname, uid, price, callback){
                          console.log(r)
                          callback(r)
                      })
-                     .catch(e => { reject(e) })
+                     .catch(e => { console.log(e) })
  }
 
  class Dluxsession {
