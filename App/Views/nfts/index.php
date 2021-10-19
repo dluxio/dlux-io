@@ -225,16 +225,17 @@
             <div class="circle">{{uid}}</div>
             <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
           </div>
-          <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
+        <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
           <div class="card-body">
             <p class="card-text text-center">Price: <u>{{price.nai()}}</u></p>
           </div>
           </a>
           <div class="card-footer text-center">
             <p class="lead">
-              <button id="buyNFTbtn1" class="btn btn-primary btn-lg" href="#salesModal" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)" >Buy NFT</button>
-				<button class="btn btn-warning btn-lg" dmx-show="{{by}} == getCookie('user')" dmx-on:click="console.log('{{by}}');console.log(getCookie('document.cookie.user'))">{{by}}</button>
-            </p>
+              <button id="buyNFTbtn2" class="btn btn-primary btn-lg" href="#salesModal" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)" >Buy NFT</button>
+			  <button id="cancelNFTbtn1" class="btn btn-warning btn-lg" dmx-show="(by == userCookie.value)" >Cancel</button>
+			  <button id="buyNFTbtn1" class="btn btn-primary btn-lg" dmx-show="(by != userCookie.value)" href="#salesModal" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)">Buy</button>
+			</p>
           </div>
         </div>
 
