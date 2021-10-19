@@ -697,7 +697,7 @@
                                 <div class="d-flex align-self-end text-center">
                                   <div class="border border-info bg-darker mx-auto px-5 py-3 rounded col-12">
                                     <div class="container-fluid">
-										<div class="border-warning border" dmx-show="('{{inventory_detail.data.set}}:{{inventory_detail.data.uid}}' == userPFP.value)"><p class="text-warning">This is currently your PFP</p></div>
+									  <div class="border-warning border rounded p-3" dmx-show="(inventory_detail.data.set:inventory_detail.data.uid == userPFP.value)"><p class="text-warning m-0">This is currently your PFP</p></div>
                                       <ul class="nav info-pills nav-pills bg-darker transfer-tabs justify-content-center" role="tablist">
                                         <li class="nav-item"> <a class="nav-link active" id="givenfttab" role="tab" data-toggle="tab" aria-controls="give" aria-expanded="true" href="#give">Give</a></li>
                                         <li class="nav-item d-none"> <a class="nav-link text-secondary" id="tradenfttab" role="tab" data-toggle="tab" aria-controls="trade" aria-expanded="true" href="#trade">Trade</a></li>
