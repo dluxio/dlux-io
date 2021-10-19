@@ -8,7 +8,6 @@
    include_once($path);
 ?>
 <!--page specific-->
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
 <style>
@@ -627,6 +626,9 @@
                           <!-- NFT img -->
                           <div class="card-img-top" dmx-bind:id="detail-image-{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}" dmx-bind:alt="{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}">{{inventory_detail.data.uid.nftDetailWell(inventory_detail.data.script, inventory_detail.data.set)}}</div>
                         </div>
+						  <div class="text-center my-3">
+						  <button class="btn btn-lg btn-outline-primary" dmx-on:click="setPFP('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}')"><i class="far fa-user-circle mr-2"></i>Set as PFP</button>
+						  </div>
                       </div>
                       <!-- NFT detail col 2 -->
                       <div class="col-lg-6 px-0 px-sm-2">
