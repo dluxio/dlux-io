@@ -1005,16 +1005,20 @@ function sellNFT(setname, uid, price, callback){
                                  set: setname,
                                  uid
                              })
-                         }]
+                         }],
+                         [
+    "account_update2",
+    {
+      "account": user,
+      "json_metadata": "",
+      "posting_json_metadata": JSON.stringify(pjm)
+    }
+  ]
                      ]
                 Dluxsession.hive_sign([user, op, 'posting'])
                      .then(r => {
-                         Dluxsession.hive_sign([user, au, 'posting'])
-                     .then(r => {
                          console.log(r)
                          callback(r)
-                     })
-                     .catch(e => { console.log(e) })
                      })
                      .catch(e => { console.log(e) })
             } else {
