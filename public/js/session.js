@@ -87,7 +87,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
          $('.no-session').addClass('d-none');
          document.getElementById('userImage').src = 'https://images.hive.blog/u/' + user + '/avatar'
          document.getElementById('userName').innerText = '@' + user;
-         document.getElementByID('userCookie').value = user;
+         document.getElementById('userCookie').value = user;
 		 let dex, stats, hive, feed
          var urls = [`https://token.dlux.io/@${user}`, 'https://token.dlux.io/dex', 'https://token.dlux.io/stats', 'https://api.coingecko.com/api/v3/simple/price?ids=hive&vs_currencies=usd'] //datasources
          let promises = urls.map(u => fetch(u))
