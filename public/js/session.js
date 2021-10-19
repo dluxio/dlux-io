@@ -973,7 +973,44 @@ function sellNFT(setname, uid, price, callback){
  }
 
  function setPFP(setname, uid, callback){
-     Dluxsession.hive_sign([user, [
+     fetch("https://api.hive.blog", {
+        body: `{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["${user}"]], "id":1}`,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: "POST"
+        })
+        .then(r=>r.json())
+        .then(json=>{
+            if(JSON.parse(json[0].posting_json_metadata).profile_image !== `https://data.dlux.io/pfp/${user}`){
+                var pjm = JSON.parse(json[0].posting_json_metadata)
+                pjm.profile_image = `https://data.dlux.io/pfp/${user}`
+                const au = [
+                    "account_update",
+                    {
+                        "account": user,
+                        "posting_json_metadata": JSON.stringify(pjm)
+                    }
+                    ],
+                op = [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_pfp",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid
+                             })
+                         }], au
+                     ]
+                Dluxsession.hive_sign([user, op, 'posting'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { console.log(e) })
+            } else {
+                Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
                              "required_posting_auths": [],
@@ -983,12 +1020,33 @@ function sellNFT(setname, uid, price, callback){
                                  uid
                              })
                          }]
-                     ], 'active'])
+                     ], 'posting'])
                      .then(r => {
                          console.log(r)
                          callback(r)
                      })
                      .catch(e => { console.log(e) })
+            }
+        })
+        .catch(e=>{
+            console.log(e)
+            Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_pfp",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid
+                             })
+                         }]
+                     ], 'posting'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { console.log(e) })
+        })
  }
 
  class Dluxsession {
