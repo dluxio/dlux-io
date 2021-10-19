@@ -88,8 +88,9 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
          document.getElementById('userImage').src = 'https://images.hive.blog/u/' + user + '/avatar'
          document.getElementById('userName').innerText = '@' + user;
          document.getElementById('userCookie').value = user;
+         
 		 let dex, stats, hive, feed
-         var urls = [`https://token.dlux.io/@${user}`, 'https://token.dlux.io/dex', 'https://token.dlux.io/stats', 'https://api.coingecko.com/api/v3/simple/price?ids=hive&vs_currencies=usd'] //datasources
+         var urls = [`https://token.dlux.io/@${user}`, 'https://token.dlux.io/dex', 'https://token.dlux.io/stats', 'https://api.coingecko.com/api/v3/simple/price?ids=hive&vs_currencies=usd', `https://token.dlux.io/api/pfp/${user}`] //datasources
          let promises = urls.map(u => fetch(u))
          promises.push(fetch("https://anyx.io", {
              body: "{\"jsonrpc\":\"2.0\", \"method\":\"condenser_api.get_dynamic_global_properties\", \"params\":[], \"id\":1}",
@@ -113,8 +114,9 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
              User.dex = jsons[1]
              User.stats = jsons[2].stats
              User.price = jsons[3].hive.usd
-             User.hstats = jsons[4].result
-             User.hive = jsons[5].result[0]
+             document.getElementById('userPFP').value = jsons[4].result[0].pfp;
+             User.hstats = jsons[5].result
+             User.hive = jsons[6].result[0]
              try { 
                 if (window.location.pathname.split('/')[1] == 'me' || window.location.pathname.split('/')[1] == 'dex'|| window.location.pathname.split('/')[1] == undefined){
                     pageSpecfic(User)
@@ -986,16 +988,6 @@ function sellNFT(setname, uid, price, callback){
             if(JSON.parse(json.result[0].posting_json_metadata).profile.profile_image !== `https://data.dlux.io/pfp/${user}?.jpg`){
                 var pjm = JSON.parse(json.result[0].posting_json_metadata)
                 pjm.profile.profile_image = `https://data.dlux.io/pfp/${user}?.jpg`
-                const au = [
-  [
-    "account_update2",
-    {
-      "account": user,
-      "json_metadata": "",
-      "posting_json_metadata": JSON.stringify(pjm)
-    }
-  ]
-]
                 const op = [
                          ['custom_json', {
                              "required_auths": [],
