@@ -115,7 +115,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
              User.stats = jsons[2].stats
              User.price = jsons[3].hive.usd
              document.getElementById('userPFP').value = jsons[4].result[0].pfp;
-             console.log(jsons[4].result[0].pfp)
+             //console.log(jsons[4].result[0].pfp)
              User.hstats = jsons[5].result
              User.hive = jsons[6].result[0]
              try { 
@@ -1017,8 +1017,8 @@ function sellNFT(setname, uid, price, callback){
             } else {
                 Dluxsession.hive_sign([user, [
                          ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
+                             "required_auths": [],
+                             "required_posting_auths": [user],
                              "id": "dlux_nft_pfp",
                              "json": JSON.stringify({
                                  set: setname,
