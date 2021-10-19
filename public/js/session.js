@@ -982,6 +982,7 @@ function sellNFT(setname, uid, price, callback){
         })
         .then(r=>r.json())
         .then(json=>{
+            console.log(json)
             if(JSON.parse(json[0].posting_json_metadata).profile_image !== `https://data.dlux.io/pfp/${user}`){
                 var pjm = JSON.parse(json[0].posting_json_metadata)
                 pjm.profile_image = `https://data.dlux.io/pfp/${user}`
@@ -991,8 +992,8 @@ function sellNFT(setname, uid, price, callback){
                         "account": user,
                         "posting_json_metadata": JSON.stringify(pjm)
                     }
-                    ],
-                op = [
+                    ]
+                const op = [
                          ['custom_json', {
                              "required_auths": [user],
                              "required_posting_auths": [],
