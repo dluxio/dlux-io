@@ -953,7 +953,7 @@ function sellNFT(setname, uid, price, callback){
                      .catch(e => { reject(e) })
  }
 
- function NFTSellCancel(setname, uid, callback){
+ function cancelNFTsell(setname, uid, callback){
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
