@@ -995,8 +995,8 @@ function sellNFT(setname, uid, price, callback){
                     ]]
                 const op = [
                          ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
+                             "required_auths": [],
+                             "required_posting_auths": [user],
                              "id": "dlux_nft_pfp",
                              "json": JSON.stringify({
                                  set: setname,
