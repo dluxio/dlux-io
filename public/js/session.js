@@ -972,6 +972,25 @@ function sellNFT(setname, uid, price, callback){
                      .catch(e => { console.log(e) })
  }
 
+ function setPFP(setname, uid, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_nft_pfp",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r)
+                     })
+                     .catch(e => { console.log(e) })
+ }
+
  class Dluxsession {
      constructor(ip) {
          const opts = ip || {}
