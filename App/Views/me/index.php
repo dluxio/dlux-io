@@ -627,7 +627,8 @@
                           <div class="card-img-top" dmx-bind:id="detail-image-{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}" dmx-bind:alt="{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}">{{inventory_detail.data.uid.nftDetailWell(inventory_detail.data.script, inventory_detail.data.set)}}</div>
                         </div>
 						  <div class="text-center my-3">
-						  <button class="btn btn-lg btn-outline-primary" dmx-on:click="setPFP('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}')"><i class="far fa-user-circle mr-2"></i>Set as PFP</button>
+						  <button class="btn btn-lg btn-outline-primary" dmx-on:click="setPFP('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}')" dmx-show="(inventory_detail.data.set + ':' + inventory_detail.data.uid != userPFP.value)"><i class="far fa-user-circle mr-2"></i>Set as PFP</button>
+						<button class="btn btn-lg btn-secondary" dmx-show="(inventory_detail.data.set + ':' + inventory_detail.data.uid == userPFP.value)"><i class="far fa-user-circle mr-2"></i>Currently set as your PFP</button>
 						  </div>
                       </div>
                       <!-- NFT detail col 2 -->
@@ -697,7 +698,7 @@
                                 <div class="d-flex align-self-end text-center">
                                   <div class="border border-info bg-darker mx-auto px-5 py-3 rounded col-12">
                                     <div class="container-fluid">
-									  <div class="border-warning border rounded p-3 my-3" dmx-show="(inventory_detail.data.set + ':' + inventory_detail.data.uid == userPFP.value)"><p class="text-warning m-0">Transferring this NFT will affect your PFP</p></div>
+									  <div class="border-warning border rounded p-3 my-3" dmx-show="(inventory_detail.data.set + ':' + inventory_detail.data.uid == userPFP.value)"><p class="text-warning m-0">Transferring this NFT will remove it from your PFP</p></div>
                                       <ul class="nav info-pills nav-pills bg-darker transfer-tabs justify-content-center" role="tablist">
                                         <li class="nav-item"> <a class="nav-link active" id="givenfttab" role="tab" data-toggle="tab" aria-controls="give" aria-expanded="true" href="#give">Give</a></li>
                                         <li class="nav-item d-none"> <a class="nav-link text-secondary" id="tradenfttab" role="tab" data-toggle="tab" aria-controls="trade" aria-expanded="true" href="#trade">Trade</a></li>
