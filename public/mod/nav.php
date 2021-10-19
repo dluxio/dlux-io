@@ -20,6 +20,7 @@
 	</ul>
     <div class="mr-5 active-session" id="userMenu">
 		<input id="userCookie" value="null" type="text" class="d-none">
+		<input id="userPFP" value="null" type="text" class="d-none">
 	  <ul class="nav navbar-nav">
 		<li class="nav-item my-auto">
 			<a class="nav-link" href="/new/" data-toggle="tooltip"  title="Create a new app">
