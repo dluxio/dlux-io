@@ -986,13 +986,13 @@ function sellNFT(setname, uid, price, callback){
             if(JSON.parse(json.result[0].posting_json_metadata).profile.profile_image !== `https://data.dlux.io/pfp/${user}`){
                 var pjm = JSON.parse(json.result[0].posting_json_metadata)
                 pjm.profile.profile_image = `https://data.dlux.io/pfp/${user}`
-                const au = [
+                const au = [[
                     "account_update",
                     {
                         "account": user,
                         "posting_json_metadata": JSON.stringify(pjm)
                     }
-                    ]
+                    ]]
                 const op = [
                          ['custom_json', {
                              "required_auths": [user],
@@ -1002,12 +1002,16 @@ function sellNFT(setname, uid, price, callback){
                                  set: setname,
                                  uid
                              })
-                         }], au
+                         }]
                      ]
                 Dluxsession.hive_sign([user, op, 'posting'])
                      .then(r => {
+                         Dluxsession.hive_sign([user, au, 'posting'])
+                     .then(r => {
                          console.log(r)
                          callback(r)
+                     })
+                     .catch(e => { console.log(e) })
                      })
                      .catch(e => { console.log(e) })
             } else {
