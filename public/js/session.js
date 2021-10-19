@@ -987,7 +987,7 @@ function sellNFT(setname, uid, price, callback){
                 var pjm = JSON.parse(json.result[0].posting_json_metadata)
                 pjm.profile.profile_image = `https://data.dlux.io/pfp/${user}`
                 const au = [[
-                    "account_update",
+                    "account_update2",
                     {
                         "account": user,
                         "posting_json_metadata": JSON.stringify(pjm)
