@@ -1058,21 +1058,9 @@ function sellNFT(setname, uid, price, callback){
      const txid = res.result.id
      const whatt = what || ''
      let node = document.createElement('div')
-        node.classList.add('alert')
-        node.classList.add('bg-dark')
-	 	node.classList.add('border')
-	 	node.classList.add('border-dark')
-	 	node.classList.add('rounded')
-        node.classList.add('alert-dismissible')
-        node.classList.add('fade')
-        node.classList.add('show')
-        node.classList.add('ml-auto')
-        node.classList.add('mr-3')
-        node.classList.add('my-3')
-        node.style['max-width'] = "700px"
-        node.role = 'alert'
         node.id = txid
-        node.innerHTML = `<div class="d-flex justify-content-between align-items-center text-white">
+        node.innerHTML = `<div class="alert bg-dark border border-dark rounded alert-dissmissible fade show ml-auto mr-3 my-3" style="max-width:500px;" role="alert">
+			<div class="d-flex justify-content-between align-items-center text-white">
            
               <div id="${txid}-spinner" class="spinner-grow text-info mr-4" role="status"></div>
             
@@ -1081,7 +1069,8 @@ function sellNFT(setname, uid, price, callback){
               <p>${whatt}</p>
             </div>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-          </div>`
+          </div>
+		</div>`
     document.getElementById('notificationholder').appendChild(node)
     updateDiv(txid)
     
