@@ -7,9 +7,11 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-<!--page specific--> 
-<script src="/js/dex.js"></script> 
+<!--page specific-->
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
 <dmx-api-datasource id="dex" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
@@ -69,23 +71,23 @@ $path .= "/mod/nav.php";
 include_once( $path );
 ?>
 <main role="main" class="flex-shrink-0">
-  <div class="container">
-	  
+  <div class="container" style="max-width: 1500px !important">
     <div class="container-fluid" style="padding: 0">
       <!-- jumbo -->
-      <div class="jumbotron text-white text-center p-4 mt-5" 
+      <div class="jumbotron text-white text-center mt-5" 
            style="background: linear-gradient(217deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),
           linear-gradient(127deg, rgba(251,0,255,.8), rgba(251,0,255,0) 70.71%),
                               linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
-        <div class="jumbotron text-white text-left bg-none m-5 p-4">
-          <div class="d-flex flex-wrap row">
-            <div class="d-flex flex-column col-lg-6">
-              <h1 class="display-4">Discover, collect, and sell NFTs</h1>
-              <div class="my-2">
+          <div class="d-flex flex-fill flex-wrap row">
+            <div class="d-flex justify-content-around col-lg-6">
+				<div class="d-flex flex-column" style="max-width:400px">
+              		<h1 class="display-4 text-left">Discover, collect, and sell NFTs</h1>
+              <div class="my-2 text-left">
                 <button id="nftexplore" class="btn btn-lg btn-primary px-4 mr-3">Explore</button>
                 <button id="nftcreate" class="btn btn-lg btn-secondary px-4 ml-3">Create</button>
               </div>
-              <div class="my-4"><a href="/about/"><i class="fas fa-info-circle"></i> Learn more about DLUX</a></div>
+              <div class="my-4 text-left"><a href="/about/"><i class="fas fa-info-circle"></i> Learn more about DLUX</a></div>
+			  </div>
             </div>
             <div class="d-flex flex-column col-lg-6">
               <div class="jumbotron" style="background: rgba(0,0,0,0.5)">
@@ -93,7 +95,7 @@ include_once( $path );
               </div>
             </div>
           </div>
-        </div>
+        
       </div>
       <!-- sealed NFTs -->
       <div class="mt-4 d-none" style="border-bottom: #FFFFFF thick solid">
@@ -139,11 +141,50 @@ include_once( $path );
         </div>
       </div>
       <!-- NFT Auction -->
-      <div style="border-bottom: #FFFFFF thick solid">
+      <div class="d-flex justify-content-between align-items-center" style="border-bottom: #FFFFFF thick solid">
         <h1 class="text-white p-0 m-0">NFT Auctions</h1>
+		
+		 <div class="d-none d-xl-block">
+		<h5 class="m-0">Max Columns (XL): 
+		 <select id="auctionNFTsizeXL" name="Max Columns">
+		  <option value="5" selected>5</option>
+		  <option value="4">4</option>
+		  <option value="3">3</option>
+		  <option value="2">2</option>
+		  <option value="1">1</option>
+		</select></h5>
+		</div>
+		   <div class="d-none d-lg-block d-xl-none">
+		<h5 class="m-0">Max Columns (LG): 
+		 <select id="auctionNFTsizeLG" name="Max Columns">
+		  <option value="4" selected>4</option>
+		  <option value="3">3</option>
+		  <option value="2">2</option>
+		  <option value="1">1</option>
+		</select></h5>
+		</div>
+		   <div class="d-none d-md-block d-lg-none">
+		<h5 class="m-0">Max Columns (MD): 
+		 <select id="auctionNFTsizeMD" name="Max Columns">
+		  <option value="3" selected>3</option>
+		  <option value="2">2</option>
+		  <option value="1">1</option>
+		</select></h5>
+		</div>
+		   <div class="d-none d-sm-block d-md-none">
+		<h5 class="m-0">Max Columns (SM): 
+		 <select id="auctionNFTsizeSM" name="Max Columns">
+		  <option value="2" selected>2</option>
+		  <option value="1">1</option>
+		</select></h5>
+		</div>
+
       </div>
-      <div class="row row-cols-xl-4 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
-        <div class="" dmx-repeat:repeatauctiontoken1="auctionsToken.data">
+      <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1"
+		   dmx-bind:class="row row-cols-xl-{{auctionNFTsizeXL.value}} row-cols-lg-{{auctionNFTsizeLG.value}} row-cols-md-{{auctionNFTsizeMD.value}} row-cols-sm-{{auctionNFTsizeSM.value}} row-cols-1"
+		   
+		   style="margin-left: -8px; margin-right: -8px">
+        <div dmx-repeat:repeatauctiontoken1="auctionsToken.data">
 			<div class="m-2  bg-dark card text-white">
           <div class="card-header d-flex" style="background: linear-gradient(dodgerblue,cornflowerblue)">
             <div class="circle">{{uid}}</div>
@@ -156,7 +197,10 @@ include_once( $path );
           </div>
           <div class="card-body d-flex flex-column text-center"> <span>High Bidder: {{bidder}}</span> <span>Bid: <u>{{price.nai()}}</u></span> </div>
           </a>
-          <div class="card-footer text-center d-flex justify-content-between align-items-center"> <span>{{bids}} Bids</span> <a href="#auctionsModal" class="a-1 btn btn-primary btn-lg" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)" role="button">Place Bid</a> </div>
+          <div class="card-footer text-center d-flex justify-content-between align-items-center">
+			  <span>{{bids}} Bids</span>
+			  <button href="#auctionsModal" class="btn btn-primary btn-lg" style="min-width:100px" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)" role="button">Bid</button>
+		  </div>
         </div>
       </div>
 		  </div>
