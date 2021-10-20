@@ -1059,7 +1059,7 @@ function sellNFT(setname, uid, price, callback){
      const whatt = what || ''
      let node = document.createElement('div')
         node.id = txid
-        node.innerHTML = `<div class="alert bg-dark border border-dark rounded alert-dissmissible fade show ml-auto mr-3 my-3" style="max-width:500px;" role="alert">
+        node.innerHTML = `<div class="alert bg-dark border border-info rounded alert-dissmissible fade show ml-auto mr-3 my-3" style="max-width:500px;" role="alert">
 			<div class="d-flex justify-content-between align-items-center text-white">
            
               <div id="${txid}-spinner" class="spinner-grow text-info mr-4" role="status"></div>
