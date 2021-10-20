@@ -910,7 +910,7 @@ function NFTDelete(setname, uid, callback){
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         callback(r, `Bidding on ${setname}:${uid} for ${parseFloat(bid_amount/1000).toFixed(3)} DLUX`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -1054,7 +1054,7 @@ function sellNFT(setname, uid, price, callback){
         })
  }
 
- function statusWaiter (res, refreshFunction){
+ function statusWaiter (res, what){
      const txid = res.result.id
      let node = document.createElement('div')
         node.classList.add('alert')
@@ -1074,6 +1074,7 @@ function sellNFT(setname, uid, price, callback){
             
             <div class="d-flex flex-fill flex-column"> <strong>Broadcast Succssful<i class="fas fa-broadcast-tower mx-2"></i></strong>
               <p id="${txid}-status" class="m-0">Awaiting DLUX L2 Confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
+              <p>${what}</p>
             </div>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
           </div>`
