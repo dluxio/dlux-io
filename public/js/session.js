@@ -1068,7 +1068,7 @@ function sellNFT(setname, uid, price, callback){
               <p id="${txid}-status" class="m-0">Awaiting DLUX L2 Confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
               <p>${whatt}</p>
             </div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+            <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
           </div>
 		</div>`
     document.getElementById('notificationholder').appendChild(node)
