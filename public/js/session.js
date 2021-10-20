@@ -563,7 +563,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         callback(r.txid)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -1052,6 +1052,66 @@ function sellNFT(setname, uid, price, callback){
                      })
                      .catch(e => { console.log(e) })
         })
+ }
+
+ function statusWaiter (txid, refreshFunction){
+     let node = document.createElement('div')
+        node.class = "card bg-dark"
+        node.id = txid
+        node.innerHTML = `<div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="flex-fill text-center">IMG</div>
+                <div class="d-flex flex-fill flex-column">
+                    <h5 class="m-0">TXID: ${txid} broadcasted.</h5>
+                    <p id="${id}-status" class="m-0">Waiting for confirmation:<span id="${id}-timer">90</span></p>
+                </div>
+            </div>
+        </div>`
+    document.getElementById('notificationholder').appendChild(node)
+    updateDiv(txid)
+    
+    // pop up a div
+    // set a spinner with a time out
+    function updateDiv(id){
+        try {
+            const time = parseInt(document.getElementById(`${id}-timer`).innerText)
+            document.getElementById(`${id}-timer`).innerText = time - 1
+            setTimeout(function(){
+                updateDiv(id)
+            }, 1000);
+            if (time < 55 && time % 5 == 0){
+                fetch(`https://token.dlux.io/api/status/${id}`)
+                .then(r => r.json())
+                .then(json => {
+                    console.log(json,json.status.slice(0,20))
+                    if(json.status.slice(0,20) != 'This TransactionID e'){
+                        changeDiv(id, json.status)
+                        setTimeout(function(){
+                            dismissDiv(id, json.status)
+                        }, 20000);
+                    }
+                })
+                .catch(e=>console.log(e))
+            } else if(!time){
+                changeDiv(id, 'This transaction has not been accepted by the network or the network is having issues.')
+                setTimeout(function(){
+                    dismissDiv(id)
+                }, 20000);
+            }
+        } catch (e) {console.log(e)}
+    }
+    function changeDiv(id, status, type){
+        document.getElementById(`${id}-status`).innerText = status
+    }
+    function dismissDiv(id){
+        try{
+            document.getElementById('notificationholder').removeChild(document.getElementById(id))
+        } catch (e){}
+    }
+    // query the status API
+    // change the div when status is availible
+    // display a fail message
+
  }
 
  class Dluxsession {
