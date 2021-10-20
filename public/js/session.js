@@ -1057,19 +1057,23 @@ function sellNFT(setname, uid, price, callback){
  function statusWaiter (res, refreshFunction){
      const txid = res.result.id
      let node = document.createElement('div')
-        node.classList.add('card')
-        node.classList.add('bg-dark')
-        node.classList.add('my-3')
+        node.classList.add('alert')
+        node.classList.add('alert-secondary')
+        node.classList.add('alert-dismissible')
+        node.classList.add('fade')
+        node.classList.add('show')
+        node.role = 'alert'
         node.id = txid
-        node.innerHTML = `<div class="card-body">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="spinner-grow text-info" role="status"></div>
-                <div class="d-flex flex-fill flex-column">
-                    <h5 class="m-0">TXID: ${txid} broadcasted.</h5>
-                    <p id="${txid}-status" class="m-0">Waiting for confirmation:<span id="${txid}-timer">90</span></p>
-                </div>
-            </div>
-        </div>`
+        node.innerHTML = `<div class="d-flex justify-content-between align-items-center">
+   <div class="spinner-grow text-info px-3" role="status"></div>
+    <div class="d-flex flex-fill flex-column">
+        <strong>Broadcasted:</strong><small class="text-muted">${txid}</small>
+        <p id="${txid}-status" class="m-0">Waiting for confirmation:<span id="${txid}-timer">90</span></p>
+     </div>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button> 
+</div>`
     document.getElementById('notificationholder').appendChild(node)
     updateDiv(txid)
     
