@@ -8,10 +8,8 @@ $path .= "/mod/header.php";
 include_once( $path );
 ?>
 <!--page specific-->
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
 <dmx-api-datasource id="dex" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
