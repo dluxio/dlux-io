@@ -35,13 +35,11 @@ include_once( $path );
 <main role="main" class="flex-shrink-0">
 
     <div class="container-fluid">
-      <div>
-        <button class="btn btn-primary d-none" id="sortbase64asc" dmx-on:click="dataView1.sort('uid.Base64toNumber()','asc')">Sort on base64 <i class="fas fa-arrow-alt-circle-up"></i></button>
-        <button class="btn btn-primary d-none" id="sortbase64desc" dmx-on:click="dataView1.sort('uid.Base64toNumber()','desc')">Sort on base64 <i class="fas fa-arrow-alt-circle-down"></i></button>
-        <button class="btn btn-primary" id="sortuidasc" dmx-on:click="dataView1.sort('uid','asc')">Sort on uid <i class="fas fa-arrow-alt-circle-up"></i></button>
-        <button class="btn btn-primary" id="sortuiddesc" dmx-on:click="dataView1.sort('uid','desc')">Sort on uid <i class="fas fa-arrow-alt-circle-down"></i></button>
-        <button class="btn btn-primary" id="sortasc" dmx-on:click="dataView1.sort('owner','asc')">Sort on owner <i class="fas fa-arrow-alt-circle-up"></i></button>
-        <button class="btn btn-primary" id="sortasc" dmx-on:click="dataView1.sort('owner','desc')">Sort on owner <i class="fas fa-arrow-alt-circle-down"></i></button>
+      <div class="text-center my-3">
+        <button class="btn btn-primary mx-2" id="sortuidasc" dmx-on:click="dataView1.sort('uid','asc')">Sort id<i class="fas fa-arrow-alt-circle-up mx-2"></i></button>
+        <button class="btn btn-primary mx-2" id="sortuiddesc" dmx-on:click="dataView1.sort('uid','desc')">Sort id<i class="fas fa-arrow-alt-circle-down mx-2"></i></button>
+        <button class="btn btn-primary mx-2" id="sortasc" dmx-on:click="dataView1.sort('owner','asc')">Sort owner <i class="fas fa-arrow-alt-circle-up mx-2"></i></button>
+        <button class="btn btn-primary mx-2" id="sortasc" dmx-on:click="dataView1.sort('owner','desc')">Sort owner <i class="fas fa-arrow-alt-circle-down mx-2"></i></button>
       </div>
       <div class="row row-cols-xl-6 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
         <div class="col mb-4" dmx-repeat:repeat1="dataView1.data">
