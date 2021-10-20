@@ -95,7 +95,7 @@ function dluxgovup(amt) {
         }
     console.log(params)
     reqsign(['custom_json', params], ['active', user])
-        .then(r => { feedback(r) })
+        .then(r => { statusWaiter (r, `Trying to gov up...`);feedback(r) })
         .catch(e => { feedback(e) })
 }
 
@@ -111,7 +111,7 @@ function govDown(amt, to, memo) {
         }
     console.log(params)
     reqsign(['custom_json', params], ['active', user])
-        .then(r => { feedback(r) })
+        .then(r => { statusWaiter (r, `Trying to gov down...`);feedback(r) })
         .catch(e => { feedback(e) })
 }
 
@@ -131,7 +131,7 @@ function powerUp(amt, tol, memol) {
         }
     console.log(params)
     reqsign(['custom_json', params], ['active', user])
-        .then(r => { feedback(r) })
+        .then(r => { statusWaiter (r, `Trying to power up...`);feedback(r) })
         .catch(e => { feedback(e) })
 }
 
@@ -156,7 +156,7 @@ function powerGrant(amt, tol) {
         }
     console.log(params)
     reqsign(['custom_json', params], ['active', user])
-        .then(r => { feedback(r) })
+        .then(r => { statusWaiter (r, `Trying to grant power...`);feedback(r) })
         .catch(e => { feedback(e) })
 }
 
@@ -176,7 +176,7 @@ function powerDown(amt, tol, memol) {
         }
     console.log(params)
     reqsign(['custom_json', params], ['active', user])
-        .then(r => { feedback(r) })
+        .then(r => { statusWaiter (r, `Trying to power down...`);feedback(r) })
         .catch(e => { feedback(e) })
 }
 
@@ -209,7 +209,7 @@ function updateNode() {
         }
         console.log(params)
         reqsign(['custom_json', params], ['active', user])
-            .then(r => { resolve(r) })
+            .then(r => { statusWaiter (r, `Trying to update node...`);resolve(r) })
             .catch(e => { reject(e) })
     });
 }

@@ -59,7 +59,7 @@ function cancel(txid) {
     }
     console.log(params)
     reqsign(['custom_json', params], ['active', user])
-        .then(r => { spinThings(txid) })
+        .then(r => { statusWaiter (r, `Trying to cancel swap...`); })
         .catch(e => { feedback(e) })
 }
 
@@ -121,7 +121,7 @@ function placeHiveAsk() {
         }
     console.log(params)
     reqsign(['custom_json', params], ['active', user])
-        .then(r => { feedback(r) })
+        .then(r => { statusWaiter (r, `Trying to place Hive ask`); })
         .catch(e => { feedback(e) })
 }
 
@@ -140,7 +140,7 @@ function placeHbdAsk() {
         }
     console.log(params)
     reqsign(['custom_json', params], ['active', user])
-        .then(r => { feedback(r) })
+        .then(r => { statusWaiter (r, `Trying to place HBD ask...`); })
         .catch(e => { feedback(e) })
 }
 
@@ -209,7 +209,7 @@ function placeHiveBuy() {
                 }
                 console.log(params)
                 reqsign(['escrow_transfer', params], ['active', user])
-                    .then(r => { feedback(r) })
+                    .then(r => { statusWaiter (r, `Trying to Hive buy...`); })
                     .catch(e => { feedback(e) })
             }
         })
@@ -262,7 +262,7 @@ function placeHbdBuy() {
                 }
                 console.log(params)
                 reqsign(['escrow_transfer', params], ['active', user])
-                    .then(r => { feedback(r) })
+                    .then(r => { statusWaiter (r, `Trying to HBD buy...`); })
                     .catch(e => { feedback(e) })
             }
         })
@@ -337,7 +337,7 @@ function getItID(txid) {
                     })
                 }
                 reqsign(['escrow_transfer', params], ['active', user])
-                    .then(r => { spinThings(txid.split(':')[1]) })
+                    .then(r => { statusWaiter (r, `Trying to purchase a swap...`); })
                     .catch(e => { feedback(e) })
             }
         });
@@ -394,7 +394,7 @@ function getSellID(txid) {
                 }
                 console.log(params)
                 reqsign(['custom_json', params], ['active', user])
-                    .then(r => { spinThings(txid.split(':')[1]) })
+                    .then(r => { statusWaiter (r, `Trying to purchase a swap...`); })
                     .catch(e => { feedback(e) })
             }
         });

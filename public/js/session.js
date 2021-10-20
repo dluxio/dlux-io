@@ -457,6 +457,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          }]
                      ], 'active'])
                      .then(r => {
+                         statusWaiter (r, `Trying to send DLUX...`);
                          resolve(r)
                      })
                      .catch(e => { reject(e) })
