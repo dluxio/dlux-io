@@ -33,8 +33,8 @@ $path .= "/mod/nav.php";
 include_once( $path );
 ?>
 <main role="main" class="flex-shrink-0">
-  <div class="container">
-    <div class="container-fluid" style="padding: 0">
+
+    <div class="container-fluid">
       <div>
         <button class="btn btn-primary d-none" id="sortbase64asc" dmx-on:click="dataView1.sort('uid.Base64toNumber()','asc')">Sort on base64 <i class="fas fa-arrow-alt-circle-up"></i></button>
         <button class="btn btn-primary d-none" id="sortbase64desc" dmx-on:click="dataView1.sort('uid.Base64toNumber()','desc')">Sort on base64 <i class="fas fa-arrow-alt-circle-down"></i></button>
@@ -43,7 +43,7 @@ include_once( $path );
         <button class="btn btn-primary" id="sortasc" dmx-on:click="dataView1.sort('owner','asc')">Sort on owner <i class="fas fa-arrow-alt-circle-up"></i></button>
         <button class="btn btn-primary" id="sortasc" dmx-on:click="dataView1.sort('owner','desc')">Sort on owner <i class="fas fa-arrow-alt-circle-down"></i></button>
       </div>
-      <div class="row row-cols-4">
+      <div class="row row-cols-xl-6 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
         <div class="col mb-4" dmx-repeat:repeat1="dataView1.data">
           <div class="card text-white bg-dark"> <a href="#itemModal" class="a-1" data-toggle="modal" dmx-on:click="iterator1.select($index);detail1.select(uid)">
             <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
@@ -53,7 +53,12 @@ include_once( $path );
             <div class="card-img-top p-1" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
             <div class="card-body d-flex flex-column text-center"> #{{uid.Base64toNumber()}} / {{api1.data.set.max}} </div>
             </a>
-            <div class="card-footer text-center d-flex justify-content-between align-items-center"> <span>Owner: <a dmx-bind:href="/@{{owner}}#inventory">{{owner}}</a> </div>
+			  <!-- user -->
+            <div class="card-footer text-center d-flex justify-content-between align-items-center" dmx-show:> <span>Owner: <a dmx-bind:href="/@{{owner}}#inventory">{{owner}}</a> </div>
+			  <!-- auction -->
+            <div class="card-footer text-center d-flex justify-content-between align-items-center" dmx-show:> <span>Owner: <a dmx-bind:href="/@{{owner}}#inventory">{{owner}}</a> </div> 
+			  <!-- sale -->
+            <div class="card-footer text-center d-flex justify-content-between align-items-center" dmx-show:> <span>Owner: <a dmx-bind:href="/@{{owner}}#inventory">{{owner}}</a> </div>
           </div>
         </div>
       </div>
