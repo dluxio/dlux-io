@@ -1069,7 +1069,7 @@ function sellNFT(setname, uid, price, callback){
         node.style['max-width'] = "700px"
         node.role = 'alert'
         node.id = txid
-        node.innerHTML = `<div class="d-flex justify-content-between align-items-center">
+        node.innerHTML = `<div class="d-flex justify-content-between align-items-center text-white">
            
               <div id="${txid}-spinner" class="spinner-grow text-info mr-4" role="status"></div>
             
