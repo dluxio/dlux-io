@@ -143,40 +143,51 @@ include_once( $path );
         <h1 class="text-white p-0 m-0">NFT Auctions</h1>
 		
 		 <div class="d-none d-xl-block">
-		<h5 class="m-0">Max Columns (XL): 
-		 <select id="auctionNFTsizeXL" name="Max Columns" class="btn btn-lg btn-secondary">
-		  <option value="5" selected>5</option>
-		  <option value="4">4</option>
-		  <option value="3">3</option>
-		  <option value="2">2</option>
-		  <option value="1">1</option>
-		</select></h5>
+			 <div class="d-flex align-items-center">
+				 <h5 class="m-0">Columns:</h5> 
+		 		 <select id="auctionNFTsizeXL" name="Max Columns" class="btn btn-secondary ml-2">
+		  			<option value="5" selected>5</option>
+		  			<option value="4">4</option>
+		  			<option value="3">3</option>
+		  			<option value="2">2</option>
+		  			<option value="1">1</option>
+				</select>
+			 </div>
 		</div>
-		   <div class="d-none d-lg-block d-xl-none">
-		<h5 class="m-0">Max Columns (LG): 
-		 <select id="auctionNFTsizeLG" name="Max Columns">
+		  
+		<div class="d-none d-lg-block d-xl-none">
+			 <div class="d-flex align-items-center">
+				 <h5 class="m-0">Columns:</h5> 
+		 <select id="auctionNFTsizeLG" name="Max Columns" class="btn btn-secondary ml-2">
 		  <option value="4" selected>4</option>
 		  <option value="3">3</option>
 		  <option value="2">2</option>
 		  <option value="1">1</option>
-		</select></h5>
+		</select>
 		</div>
+		  </div>
+		  
 		   <div class="d-none d-md-block d-lg-none">
-		<h5 class="m-0">Max Columns (MD): 
-		 <select id="auctionNFTsizeMD" name="Max Columns">
+			 <div class="d-flex align-items-center">
+				 <h5 class="m-0">Columns:</h5> 
+		 <select id="auctionNFTsizeMD" name="Max Columns" class="btn btn-secondary ml-2">
 		  <option value="3" selected>3</option>
 		  <option value="2">2</option>
 		  <option value="1">1</option>
-		</select></h5>
+		</select>
+			   </div>
 		</div>
+		  
 		   <div class="d-none d-sm-block d-md-none">
-		<h5 class="m-0">Max Columns (SM): 
-		 <select id="auctionNFTsizeSM" name="Max Columns">
+			 <div class="d-flex align-items-center">
+				 <h5 class="m-0">Columns:</h5> 
+		 <select id="auctionNFTsizeSM" name="Max Columns" class="btn btn-secondary ml-2">
 		  <option value="2" selected>2</option>
 		  <option value="1">1</option>
-		</select></h5>
+		</select>
 		</div>
-
+		  </div>
+		  
       </div>
       <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1"
 		   dmx-bind:class="row row-cols-xl-{{auctionNFTsizeXL.value}} row-cols-lg-{{auctionNFTsizeLG.value}} row-cols-md-{{auctionNFTsizeMD.value}} row-cols-sm-{{auctionNFTsizeSM.value}} row-cols-1"
