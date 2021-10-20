@@ -1054,7 +1054,8 @@ function sellNFT(setname, uid, price, callback){
         })
  }
 
- function statusWaiter (txid, refreshFunction){
+ function statusWaiter (res, refreshFunction){
+     const txid = res.result.id
      let node = document.createElement('div')
         node.class = "card bg-dark"
         node.id = txid
@@ -1063,7 +1064,7 @@ function sellNFT(setname, uid, price, callback){
                 <div class="flex-fill text-center">IMG</div>
                 <div class="d-flex flex-fill flex-column">
                     <h5 class="m-0">TXID: ${txid} broadcasted.</h5>
-                    <p id="${id}-status" class="m-0">Waiting for confirmation:<span id="${id}-timer">90</span></p>
+                    <p id="${txid}-status" class="m-0">Waiting for confirmation:<span id="${txid}-timer">90</span></p>
                 </div>
             </div>
         </div>`
