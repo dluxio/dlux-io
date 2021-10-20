@@ -1057,7 +1057,9 @@ function sellNFT(setname, uid, price, callback){
  function statusWaiter (res, refreshFunction){
      const txid = res.result.id
      let node = document.createElement('div')
-        node.class = "card bg-dark"
+        node.classList.add('card')
+        node.classList.add('bg-dark')
+        node.classList.add('my-3')
         node.id = txid
         node.innerHTML = `<div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
