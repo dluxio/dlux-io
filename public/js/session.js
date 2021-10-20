@@ -563,7 +563,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r.txid)
+                         statusWaiter (r, `Trying to open ${setname} mint token`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -588,7 +588,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to airdrop ${setname} mint tokens`)
                      })
                      .catch(e => { console.log(e) })
     })
@@ -613,7 +613,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to auction ${setname} mint token`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -634,7 +634,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to bid on ${setname}:${uid}`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -654,7 +654,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to sell ${setname} mint token`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -675,7 +675,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to buy ${setname} mint token`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -695,7 +695,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to cancel ${setname} mint token sell`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -716,7 +716,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to give ${setname} mint token to ${to}`)
                      })
                      .catch(e => { console.log(e) })
                      })
@@ -740,7 +740,7 @@ function giveNFT(setname, uid, to, callback){
         ], 'active'])
         .then(r => {
             console.log(r)
-            callback(r)
+            statusWaiter (r, `Trying to give ${setname}:${uid} to ${to}`)
         })
         .catch(e => { console.log(e) })
     })
@@ -766,7 +766,7 @@ function NFTReserveTransfer(setname, uid, to, price, callback){
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to trade ${setname}:${uid}`)
                      })
                      .catch(e => { console.log(e) })
                      })
@@ -787,7 +787,7 @@ function NFTReserveTransfer(setname, uid, to, price, callback){
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to complete ${setname}:${uid} trade`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -806,7 +806,7 @@ function NFTReserveTransfer(setname, uid, to, price, callback){
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to cancel ${setname}:${uid} trade`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -825,7 +825,7 @@ function NFTDelete(setname, uid, callback){
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to melt ${setname}:${uid}`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -865,7 +865,7 @@ function NFTDelete(setname, uid, callback){
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to define set: ${setname}`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -889,7 +889,7 @@ function NFTDelete(setname, uid, callback){
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to auction ${setname}:${uid}`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -931,7 +931,7 @@ function sellNFT(setname, uid, price, callback){
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to list ${setname}:${uid} for sell`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -951,7 +951,7 @@ function sellNFT(setname, uid, price, callback){
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to buy ${setname}:${uid}`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -970,7 +970,7 @@ function sellNFT(setname, uid, price, callback){
                      ], 'active'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to cancel ${setname}:${uid} sell`)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -1011,7 +1011,7 @@ function sellNFT(setname, uid, price, callback){
                 Dluxsession.hive_sign([user, op, 'posting'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to set ${setname}:${uid} as PFP`)
                      })
                      .catch(e => { console.log(e) })
             } else {
@@ -1028,7 +1028,7 @@ function sellNFT(setname, uid, price, callback){
                      ], 'posting'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to set ${setname}:${uid} as PFP`)
                      })
                      .catch(e => { console.log(e) })
             }
@@ -1048,7 +1048,7 @@ function sellNFT(setname, uid, price, callback){
                      ], 'posting'])
                      .then(r => {
                          console.log(r)
-                         callback(r)
+                         statusWaiter (r, `Trying to set ${setname}:${uid} as PFP`)
                      })
                      .catch(e => { console.log(e) })
         })
