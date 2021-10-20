@@ -70,10 +70,8 @@ include_once( $path );
 ?>
 <main role="main" class="flex-shrink-0">
   <div class="container">
+	  
     <div class="container-fluid" style="padding: 0">
-      <div id="notificationholder" class="fixed-bottom">
-      </div>
-      
       <!-- jumbo -->
       <div class="jumbotron text-white text-center p-4 mt-5" 
            style="background: linear-gradient(217deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),
