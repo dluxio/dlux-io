@@ -7,21 +7,23 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-	<style>	.arrow2 {
+
+<style>	
+.arrow2 {
 		position: absolute;
 		left: 50%;
     	transform: translate(-50%, -50%);
 		z-index: 1;
 	}
 	</style>
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.min.js" integrity="sha512-mZXUH8DAODwCHioWP3gltQwa953LbABMlzTYwYkKqv8eNxOk37B1HgNNuCMfFxgrpW5C34WJbxPDcM58+s1dJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.css" integrity="sha512-DGB74Gyw93qON+V0QxSRs1er6sqoPyFoy23HBL5LN7MRJBcjeCU22zega+vOEGE0XQLoVrv4ExcaesSTwZQA2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<!--page specific--> 
-<script src="/js/dex.js"></script> 
+<!--page specific-->
+<script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
 </head>
-<body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
+<body class="d-flex flex-column h-100 padme-t70 text-white" id="grid" is="dmx-app">
 
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
@@ -443,7 +445,8 @@ include_once( $path );
 			  </div>
 			  <div class="card-footer">
 			  	<div class="d-flex flex-wrap justify-content-around">
-		    		<div class="border border-primary rounded mt-2 mx-1 px-2 py-1 text-primary text-center small"> {{orderbookselect1.value}} </div>
+					
+		    		<div class="border rounded mt-2 mx-1 px-2 py-1 text-center small" dmx-class:border-success="dexapi.data.behind < 30" dmx-class:text-success="dexapi.data.behind < 30"	dmx-class:border-warning="dexapi.data.behind >= 30"	dmx-class:text-warning="dexapi.data.behind >= 30" dmx-class:border-danger="dexapi.data.behind > 100" dmx-class:text-danger="behind > 100">  {{orderbookselect1.value}} - {{dexapi.data.behind}} blocks behind HIVE</div>
             		<div class="border border-info rounded mt-2 mx-1 px-2 py-1 text-info text-center small"> {{countenabledorders.value}} Enabled </div>
             		<div class="border border-warning rounded mt-2 mx-1 px-2 py-1 text-warning text-center small">{{countdisabledorders.value}} Disabled </div>
 			  	</div>

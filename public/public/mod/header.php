@@ -7,12 +7,13 @@
 <link href="/css/bd.css" rel="stylesheet">
 <script src="/js/jquery-3.4.1.min.js"></script>
 <script src="/js/popper.min.js"></script>
-<script src="/js/bootstrap-4.4.1.js"></script>
-<script src="/js/jquery-stickytabs.js"></script>
+<!--dmxAppConnect-->
+<script src="/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/dmxAppConnect/dmxMoment.js"></script>
+<script src="/dmxAppConnect/dmxFormatter.js"></script>
+<script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 <!-- Icons -->
 <script src="https://kit.fontawesome.com/0f693ffc58.js" crossorigin="anonymous"></script>
-<!-- DLUX -->
-<script src="/js/session.js"></script>
 <!-- HIVE -->
 <script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js"></script>
 <!-- Initialization -->

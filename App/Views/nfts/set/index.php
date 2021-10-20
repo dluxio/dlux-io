@@ -7,9 +7,9 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-
-<!--page specific--> 
-<script src="/js/dex.js"></script> 
+<!--page specific-->
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
@@ -36,8 +36,8 @@ include_once( $path );
   <div class="container">
     <div class="container-fluid" style="padding: 0">
       <div>
-        <button class="btn btn-primary" id="sortbase64asc" dmx-on:click="dataView1.sort('uid.Base64toNumber()','asc')">Sort on base64 <i class="fas fa-arrow-alt-circle-up"></i></button>
-        <button class="btn btn-primary" id="sortbase64desc" dmx-on:click="dataView1.sort('uid.Base64toNumber()','desc')">Sort on base64 <i class="fas fa-arrow-alt-circle-down"></i></button>
+        <button class="btn btn-primary d-none" id="sortbase64asc" dmx-on:click="dataView1.sort('uid.Base64toNumber()','asc')">Sort on base64 <i class="fas fa-arrow-alt-circle-up"></i></button>
+        <button class="btn btn-primary d-none" id="sortbase64desc" dmx-on:click="dataView1.sort('uid.Base64toNumber()','desc')">Sort on base64 <i class="fas fa-arrow-alt-circle-down"></i></button>
         <button class="btn btn-primary" id="sortuidasc" dmx-on:click="dataView1.sort('uid','asc')">Sort on uid <i class="fas fa-arrow-alt-circle-up"></i></button>
         <button class="btn btn-primary" id="sortuiddesc" dmx-on:click="dataView1.sort('uid','desc')">Sort on uid <i class="fas fa-arrow-alt-circle-down"></i></button>
         <button class="btn btn-primary" id="sortasc" dmx-on:click="dataView1.sort('owner','asc')">Sort on owner <i class="fas fa-arrow-alt-circle-up"></i></button>
