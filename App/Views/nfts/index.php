@@ -144,7 +144,7 @@ include_once( $path );
 		
 		 <div class="d-none d-xl-block">
 		<h5 class="m-0">Max Columns (XL): 
-		 <select id="auctionNFTsizeXL" name="Max Columns">
+		 <select id="auctionNFTsizeXL" name="Max Columns" class="btn btn-lg btn-secondary">
 		  <option value="5" selected>5</option>
 		  <option value="4">4</option>
 		  <option value="3">3</option>
