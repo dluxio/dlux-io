@@ -1070,7 +1070,7 @@ function sellNFT(setname, uid, price, callback){
         node.id = txid
         node.innerHTML = `<div class="d-flex justify-content-between align-items-center">
            
-              <div class="spinner-grow text-info mr-4" role="status"></div>
+              <div id="${id}-spinner" class="spinner-grow text-info mr-4" role="status"></div>
             
             <div class="d-flex flex-fill flex-column"> <strong>Broadcast Succssful<i class="fas fa-broadcast-tower mx-2"></i></strong>
               <p id="${txid}-status" class="m-0">Awaiting DLUX L2 Confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
@@ -1096,7 +1096,7 @@ function sellNFT(setname, uid, price, callback){
                 .then(json => {
                     console.log(json,json.status.slice(0,20))
                     if(json.status.slice(0,20) != 'This TransactionID e'){
-                        changeDiv(id, json.status)
+                        changeDiv(id, json.status, true)
                         setTimeout(function(){
                             dismissDiv(id, json.status)
                         }, 20000);
@@ -1104,7 +1104,7 @@ function sellNFT(setname, uid, price, callback){
                 })
                 .catch(e=>console.log(e))
             } else if(time <= 0){
-                changeDiv(id, 'This transaction has not been accepted by the network or the network is having issues.')
+                changeDiv(id, 'This transaction has not been accepted by the network or the network is having issues.', false)
                 setTimeout(function(){
                     dismissDiv(id)
                 }, 20000);
@@ -1117,6 +1117,13 @@ function sellNFT(setname, uid, price, callback){
         if(Dindex >= 0){
             const Eindex = status.indexOf(' ', Dindex)
             status = status.slice(0, Dindex) + status.slice(Eindex + 1)
+        }
+        if(type){
+            document.getElementById(`${id}-spinner`).classList.replace('spinner-grow', 'fas')
+            document.getElementById(`${id}-spinner`).classList.replace('text-info', 'fa-check-circle')
+        } else {
+            document.getElementById(`${id}-spinner`).classList.replace('spinner-grow', 'fas')
+            document.getElementById(`${id}-spinner`).classList.replace('spinner-grow', 'fa-times-circle')
         }
         document.getElementById(`${id}-status`).innerText = status
     }
