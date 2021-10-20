@@ -1063,7 +1063,7 @@ function sellNFT(setname, uid, price, callback){
         node.id = txid
         node.innerHTML = `<div class="card-body">
             <div class="d-flex justify-content-between align-items-center">
-                <div class="flex-fill text-center">IMG</div>
+                <div class="spinner-grow text-info" role="status"></div>
                 <div class="d-flex flex-fill flex-column">
                     <h5 class="m-0">TXID: ${txid} broadcasted.</h5>
                     <p id="${txid}-status" class="m-0">Waiting for confirmation:<span id="${txid}-timer">90</span></p>
