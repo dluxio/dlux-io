@@ -54,7 +54,7 @@ include_once( $path );
             <div class="card-body d-flex flex-column text-center"> #{{uid.Base64toNumber()}} / {{api1.data.set.max}} </div>
             </a>
 			  <!-- user -->
-            <div class="card-footer text-center d-flex justify-content-between align-items-center" dmx-show:> <span>Owner: <a dmx-bind:href="/@{{owner}}#inventory">{{owner}}</a> </div>
+            <div class="card-footer text-center d-flex justify-content-between align-items-center"> <span>Owner: <a dmx-bind:href="/@{{owner}}#inventory">{{owner}}</a> </div>
 			  <!-- auction -->
             <div class="card-footer text-center d-flex justify-content-between align-items-center" dmx-show:> <span>Owner: <a dmx-bind:href="/@{{owner}}#inventory">{{owner}}</a> </div> 
 			  <!-- sale -->
@@ -62,6 +62,7 @@ include_once( $path );
           </div>
         </div>
       </div>
+			</	div>
       <dmx-data-iterator id="iterator1" dmx-bind:data="dataView1.data" loop="true"></dmx-data-iterator>
       <dmx-data-detail id="detail1" dmx-bind:data="dataView1.data" key="uid">
         <div class="modal fade " id="itemModal" tabindex="11" role="dialog" aria-hidden="true">
