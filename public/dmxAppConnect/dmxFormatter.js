@@ -220,6 +220,12 @@ dmx.Formatters("global", {
         inRange: function(t, n, r) {
             return n <= t && t <= r;
         },
+        behindWarning: function(t) {
+            var color = 'success'
+            if(t > 30)color = 'warning'
+            if(t > 100)color = 'danger'
+            return color
+        },
         abs: function(t) {
             return Math.abs(t);
         },
