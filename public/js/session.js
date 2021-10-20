@@ -1066,7 +1066,7 @@ function sellNFT(setname, uid, price, callback){
         node.id = txid
         node.innerHTML = `<div class="d-flex justify-content-between align-items-center">
    <div class="px-3">
-    <div class="spinner-grow text-info" role="status"></div>
+    <div id="${txid}-spiner" class="spinner-grow text-info" role="status"></div>
     </div>
     <div class="d-flex flex-fill flex-column">
         <strong>Broadcasted:</strong><small class="text-muted">${txid}</small>
@@ -1110,12 +1110,14 @@ function sellNFT(setname, uid, price, callback){
         } catch (e) {console.log(e)}
     }
     function changeDiv(id, status, type){
+        console.log('change',id)
         document.getElementById(`${id}-status`).innerText = status
     }
     function dismissDiv(id){
+        console.log('dismiss',{id})
         try{
             document.getElementById('notificationholder').removeChild(document.getElementById(id))
-        } catch (e){}
+        } catch (e){console.log(e)}
     }
     // query the status API
     // change the div when status is availible
