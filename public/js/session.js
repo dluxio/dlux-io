@@ -1058,7 +1058,7 @@ function sellNFT(setname, uid, price, callback){
      const txid = res.result.id
      let node = document.createElement('div')
         node.classList.add('alert')
-        node.classList.add('alert-secondary')
+        node.classList.add('bg-dark')
         node.classList.add('alert-dismissible')
         node.classList.add('fade')
         node.classList.add('show')
