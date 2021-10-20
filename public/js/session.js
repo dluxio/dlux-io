@@ -1073,7 +1073,7 @@ function sellNFT(setname, uid, price, callback){
            
               <div id="${txid}-spinner" class="spinner-grow text-info mr-4" role="status"></div>
             
-            <div class="d-flex flex-fill flex-column"> <strong>Broadcast Succssful<i class="fas fa-broadcast-tower mx-2"></i></strong>
+            <div class="d-flex flex-fill flex-column"> <strong><i class="fas fa-broadcast-tower mr-2"></i>Broadcast Succssful</strong>
               <p id="${txid}-status" class="m-0">Awaiting DLUX L2 Confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
               <p>${whatt}</p>
             </div>
