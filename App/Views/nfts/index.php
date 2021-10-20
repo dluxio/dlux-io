@@ -144,8 +144,9 @@ include_once( $path );
       <div style="border-bottom: #FFFFFF thick solid">
         <h1 class="text-white p-0 m-0">NFT Auctions</h1>
       </div>
-      <div class="card-columns my-3" id="auctions-token-cards">
-        <div class="card text-white bg-dark" dmx-repeat:repeatauctiontoken1="auctionsToken.data">
+      <div class="row row-cols-xl-4 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
+        <div class="" dmx-repeat:repeatauctiontoken1="auctionsToken.data">
+			<div class="m-2  bg-dark card text-white">
           <div class="card-header d-flex" style="background: linear-gradient(dodgerblue,cornflowerblue)">
             <div class="circle">{{uid}}</div>
             <h3 class="card-title lead border rounded p-2 ml-auto"><a href="/nfts/set/" class="text-white">{{set}} NFT</a></h3>
@@ -160,6 +161,7 @@ include_once( $path );
           <div class="card-footer text-center d-flex justify-content-between align-items-center"> <span>{{bids}} Bids</span> <a href="#auctionsModal" class="a-1 btn btn-primary btn-lg" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)" role="button">Place Bid</a> </div>
         </div>
       </div>
+		  </div>
       <!-- NFT Auction Modal --> 
       <!-- NFT Auctions Iterator -->
       <dmx-data-iterator id="auctions_iterator" dmx-bind:data="auctionsToken.data" loop="true"></dmx-data-iterator>
