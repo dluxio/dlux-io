@@ -8,6 +8,7 @@ $path .= "/mod/header.php";
 include_once( $path );
 ?>
 <!--page specific-->
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
 </head>
@@ -15,8 +16,9 @@ include_once( $path );
 <dmx-api-datasource id="dex" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
 <dmx-data-view id="dexSellOrders" dmx-bind:data="dex.data.markets.hive.sells" sorton="key" ></dmx-data-view>
 <dmx-api-datasource id="sales" is="dmx-fetch" url="https://token.dlux.io/api/sales"></dmx-api-datasource>
+<dmx-api-datasource id="mintsales" is="dmx-fetch" url="https://token.dlux.io/api/mintsales"></dmx-api-datasource>
 <dmx-data-view id="salesToken" dmx-bind:data="sales.data.result" sorton="time"></dmx-data-view>
-<dmx-data-view id="salesMint" dmx-bind:data="sales.data.mint" sorton="price.amount" pagesize="3" ></dmx-data-view>
+<dmx-data-view id="mintview" dmx-bind:data="mintsales.data.mint"></dmx-data-view>
 <dmx-api-datasource id="auctions" is="dmx-fetch" url="https://token.dlux.io/api/auctions"></dmx-api-datasource>
 <dmx-data-view id="auctionsToken" dmx-bind:data="auctions.data.result" sorton="time"></dmx-data-view>
 <style>
@@ -89,7 +91,39 @@ include_once( $path );
             </div>
             <div class="d-flex flex-column col-lg-6">
               <div class="jumbotron" style="background: rgba(0,0,0,0.5)">
-                <p class="col-12 text-center">Featured</p>
+                
+				<div class="" id="sales-mint">
+					<div id="minty" is="dmx-repeat" dmx-bind:repeat="salesMint.data">
+						{{$value}} test
+            <div class="card text-white" style="background: linear-gradient(#43C45F,lawngreen)">
+              <div class="card-header d-flex align-items-center justify-content-between" >
+                <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
+                  <div class="pr-2"><small>QTY: </small></div>
+                  <div class="px-2">
+                    <h2 class="m-0">{{qty.pad(3)}}</h2>
+                  </div>
+                </div>
+                <div> <a href="/nfts/set/">
+                  <h3 class="card-title lead shimmer rounded p-2 m-0 ml-auto" style="color: black"><b>{{set}} NFT</b></h3>
+                  </a> </div>
+              </div>
+              <div class="card-body text-center d-flex flex-column lead">
+                <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.5)">
+                  <h1 class="text-center"><i class="fas fa-gem"></i></h1>
+                  <h3 class="my-0 mx-2 p-0 p-2 ml-auto " style="color: lawngreen">sealed NFT</h3>
+                  <h5>Unwrap to see what's inside.</h5>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="d-flex flex-wrap justify-content-between">
+                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="openMintToken('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
+                  <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1 disabled" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-ellipsis-v ml-3"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+				  </div>
+				  
               </div>
             </div>
           </div>
@@ -145,7 +179,7 @@ include_once( $path );
 		 <div class="d-none d-xl-block">
 			 <div class="d-flex align-items-center">
 				 <h5 class="m-0">Columns:</h5> 
-		 		 <select id="auctionNFTsizeXL" name="Max Columns" class="btn btn-secondary ml-2">
+	 		   <select id="auctionNFTsizeXL" name="Max Columns" class="btn btn-secondary ml-2">
 		  			<option value="5" selected>5</option>
 		  			<option value="4">4</option>
 		  			<option value="3">3</option>
@@ -167,7 +201,7 @@ include_once( $path );
 		</div>
 		  </div>
 		  
-		   <div class="d-none d-md-block d-lg-none">
+	    <div class="d-none d-md-block d-lg-none">
 			 <div class="d-flex align-items-center">
 				 <h5 class="m-0">Columns:</h5> 
 		 <select id="auctionNFTsizeMD" name="Max Columns" class="btn btn-secondary ml-2">
@@ -178,7 +212,7 @@ include_once( $path );
 			   </div>
 		</div>
 		  
-		   <div class="d-none d-sm-block d-md-none">
+	    <div class="d-none d-sm-block d-md-none">
 			 <div class="d-flex align-items-center">
 				 <h5 class="m-0">Columns:</h5> 
 		 <select id="auctionNFTsizeSM" name="Max Columns" class="btn btn-secondary ml-2">
@@ -212,7 +246,7 @@ include_once( $path );
 		  </div>
         </div>
       </div>
-		  </div>
+	  </div>
       <!-- NFT Auction Modal --> 
       <!-- NFT Auctions Iterator -->
       <dmx-data-iterator id="auctions_iterator" dmx-bind:data="auctionsToken.data" loop="true"></dmx-data-iterator>
