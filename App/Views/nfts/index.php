@@ -63,15 +63,36 @@
     	transform: translate(-50%, -50%);
 		z-index: 1;
 	}
+div.notification {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  background-color: green;
+  border: 2px solid #4CAF50;
+}
 	</style>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
    $path .= "/mod/nav.php";
    include_once($path);
 ?>
+	
 <main role="main" class="flex-shrink-0">
   <div class="container">
     <div class="container-fluid" style="padding: 0">
+	<div class="ml-auto col-xl-5 col-lg-6 col-md-7 col-sm-8 col-12 fixed-bottom my-3">
+		<div class="card bg-dark">
+			<div class="card-body">
+				<div class="d-flex justify-content-between align-items-center">
+					<div class="flex-fill text-center">IMG</div>
+					<div class="d-flex flex-fill flex-column">
+						<h5 class="m-0">Notification Heading</h5>
+						<p class="m-0">I am a notification</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- jumbo -->		
       <div class="jumbotron text-white text-center p-4 mt-5" 
            style="background: linear-gradient(217deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),
