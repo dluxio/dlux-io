@@ -1059,27 +1059,19 @@ function sellNFT(setname, uid, price, callback){
      const txid = res.result.id
      const whatt = what || ''
      let node = document.createElement('div')
-        node.classList.add('alert')
-        node.classList.add('bg-dark')
-        node.classList.add('alert-dismissible')
-        node.classList.add('fade')
-        node.classList.add('show')
-        node.classList.add('ml-auto')
-        node.classList.add('mr-3')
-        node.classList.add('my-3')
-        node.style['max-width'] = "700px"
-        node.role = 'alert'
         node.id = txid
-        node.innerHTML = `<div class="d-flex justify-content-between align-items-center text-white">
+        node.innerHTML = `<div class="alert bg-dark border border-info rounded alert-dissmissible fade show ml-auto mr-3 my-3" style="max-width:500px;" role="alert">
+			<div class="d-flex justify-content-between align-items-center text-white">
            
               <div id="${txid}-spinner" class="spinner-grow text-info mr-4" role="status"></div>
             
-            <div class="d-flex flex-fill flex-column"> <strong>Broadcast Succssful<i class="fas fa-broadcast-tower mx-2"></i></strong>
+            <div class="d-flex flex-fill flex-column"> <strong><i class="fas fa-broadcast-tower mr-2"></i>Broadcast Succssful</strong>
               <p id="${txid}-status" class="m-0">Awaiting DLUX L2 Confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
               <p>${whatt}</p>
             </div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-          </div>`
+            <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+          </div>
+		</div>`
     document.getElementById('notificationholder').appendChild(node)
     updateDiv(txid)
     
