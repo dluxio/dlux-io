@@ -77,10 +77,9 @@ include_once( $path );
            
               <div class="spinner-grow text-info mr-4" role="status"></div>
             
-            <div class="d-flex flex-fill flex-column"> <strong>Broadcast TXID:</strong><small class="text-muted">${txid}</small>
-              <p id="${txid}-status" class="m-0">Waiting for confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
-				<p>@a1-shroom-spores| has placed order to sell 200.000 for 48.000 HIVE</p>
-				<small class="text-muted">DLUXQmb5j6BVFeLRHDEvUcVmUAc3hVJfCgP9m7dGTXRoYoRBCF</small>
+            <div class="d-flex flex-fill flex-column"> <strong>Broadcast Succssful<i class="fas fa-broadcast-tower mx-2"></i></strong>
+              <p id="${txid}-status" class="m-0">Awaiting DLUX L2 Confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
+				<p>@a1-shroom-spores has placed order to sell 200.000 for 48.000 HIVE</p>
             </div>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
           </div>
