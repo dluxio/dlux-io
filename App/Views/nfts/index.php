@@ -72,18 +72,6 @@ include_once( $path );
   <div class="container">
     <div class="container-fluid" style="padding: 0">
       <div id="notificationholder" class="fixed-bottom">
-        <div class="ml-auto mr-3 my-3 alert bg-dark alert-dismissible fade show" role="alert" style="max-width: 700px;">
-          <div class="d-flex justify-content-between align-items-center">
-           
-              <div class="spinner-grow text-info mr-4" role="status"></div>
-            
-            <div class="d-flex flex-fill flex-column"> <strong>Broadcast Succssful<i class="fas fa-broadcast-tower mx-2"></i></strong>
-              <p id="${txid}-status" class="m-0">Awaiting DLUX L2 Confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
-				<p>@a1-shroom-spores has placed order to sell 200.000 for 48.000 HIVE</p>
-            </div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-          </div>
-        </div>
       </div>
       
       <!-- jumbo -->

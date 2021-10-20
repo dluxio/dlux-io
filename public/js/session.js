@@ -1062,20 +1062,21 @@ function sellNFT(setname, uid, price, callback){
         node.classList.add('alert-dismissible')
         node.classList.add('fade')
         node.classList.add('show')
+        node.classList.add('ml-auto')
+        node.classList.add('mr-3')
+        node.classList.add('my-3')
+        node.style['max-width'] = "700px"
         node.role = 'alert'
         node.id = txid
         node.innerHTML = `<div class="d-flex justify-content-between align-items-center">
-   <div class="px-3">
-    <div id="${txid}-spiner" class="spinner-grow text-info" role="status"></div>
-    </div>
-    <div class="d-flex flex-fill flex-column">
-        <strong>Broadcasted:</strong><small class="text-muted">${txid}</small>
-        <p id="${txid}-status" class="m-0">Waiting for confirmation:<span id="${txid}-timer">90</span></p>
-     </div>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button> 
-</div>`
+           
+              <div class="spinner-grow text-info mr-4" role="status"></div>
+            
+            <div class="d-flex flex-fill flex-column"> <strong>Broadcast Succssful<i class="fas fa-broadcast-tower mx-2"></i></strong>
+              <p id="${txid}-status" class="m-0">Awaiting DLUX L2 Confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+          </div>`
     document.getElementById('notificationholder').appendChild(node)
     updateDiv(txid)
     
@@ -1101,7 +1102,7 @@ function sellNFT(setname, uid, price, callback){
                     }
                 })
                 .catch(e=>console.log(e))
-            } else if(!time){
+            } else if(time <= 0){
                 changeDiv(id, 'This transaction has not been accepted by the network or the network is having issues.')
                 setTimeout(function(){
                     dismissDiv(id)
@@ -1111,6 +1112,11 @@ function sellNFT(setname, uid, price, callback){
     }
     function changeDiv(id, status, type){
         console.log('change',id)
+        const Dindex = status.indexOf('DLUXQm')
+        if(Dindex >= 0){
+            const Eindex = status.indexOf(' ', Dindex)
+            status = status.slice(0, Dindex) + status.slice(Eindex + 1)
+        }
         document.getElementById(`${id}-status`).innerText = status
     }
     function dismissDiv(id){
