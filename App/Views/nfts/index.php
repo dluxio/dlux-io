@@ -7,16 +7,18 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-<!--page specific--> 
-<script src="/js/dex.js"></script> 
+<!--page specific-->
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
 <dmx-api-datasource id="dex" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
 <dmx-data-view id="dexSellOrders" dmx-bind:data="dex.data.markets.hive.sells" sorton="key" ></dmx-data-view>
 <dmx-api-datasource id="sales" is="dmx-fetch" url="https://token.dlux.io/api/sales"></dmx-api-datasource>
+<dmx-api-datasource id="mintsales" is="dmx-fetch" url="https://token.dlux.io/api/mintsales"></dmx-api-datasource>
 <dmx-data-view id="salesToken" dmx-bind:data="sales.data.result" sorton="time"></dmx-data-view>
-<dmx-data-view id="salesMint" dmx-bind:data="sales.data.mint" sorton="price.amount" pagesize="3" ></dmx-data-view>
+<dmx-data-view id="mintview" dmx-bind:data="mintsales.data.mint"></dmx-data-view>
 <dmx-api-datasource id="auctions" is="dmx-fetch" url="https://token.dlux.io/api/auctions"></dmx-api-datasource>
 <dmx-data-view id="auctionsToken" dmx-bind:data="auctions.data.result" sorton="time"></dmx-data-view>
 <style>
@@ -69,31 +71,63 @@ $path .= "/mod/nav.php";
 include_once( $path );
 ?>
 <main role="main" class="flex-shrink-0">
-  <div class="container">
-	  
+  <div class="container" style="max-width: 1500px !important">
     <div class="container-fluid" style="padding: 0">
       <!-- jumbo -->
-      <div class="jumbotron text-white text-center p-4 mt-5" 
+      <div class="jumbotron text-white text-center mt-5" 
            style="background: linear-gradient(217deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),
           linear-gradient(127deg, rgba(251,0,255,.8), rgba(251,0,255,0) 70.71%),
                               linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
-        <div class="jumbotron text-white text-left bg-none m-5 p-4">
-          <div class="d-flex flex-wrap row">
-            <div class="d-flex flex-column col-lg-6">
-              <h1 class="display-4">Discover, collect, and sell NFTs</h1>
-              <div class="my-2">
+          <div class="d-flex flex-fill flex-wrap row">
+            <div class="d-flex justify-content-around col-lg-6">
+				<div class="d-flex flex-column" style="max-width:400px">
+              		<h1 class="display-4 text-left">Discover, collect, and sell NFTs</h1>
+              <div class="my-2 text-left">
                 <button id="nftexplore" class="btn btn-lg btn-primary px-4 mr-3">Explore</button>
                 <button id="nftcreate" class="btn btn-lg btn-secondary px-4 ml-3">Create</button>
               </div>
-              <div class="my-4"><a href="/about/"><i class="fas fa-info-circle"></i> Learn more about DLUX</a></div>
+              <div class="my-4 text-left"><a href="/about/"><i class="fas fa-info-circle"></i> Learn more about DLUX</a></div>
+			  </div>
             </div>
             <div class="d-flex flex-column col-lg-6">
               <div class="jumbotron" style="background: rgba(0,0,0,0.5)">
-                <p class="col-12 text-center">Featured</p>
+                
+				<div class="" id="sales-mint">
+					<div id="minty" is="dmx-repeat" dmx-bind:repeat="salesMint.data">
+						{{$value}} test
+            <div class="card text-white" style="background: linear-gradient(#43C45F,lawngreen)">
+              <div class="card-header d-flex align-items-center justify-content-between" >
+                <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
+                  <div class="pr-2"><small>QTY: </small></div>
+                  <div class="px-2">
+                    <h2 class="m-0">{{qty.pad(3)}}</h2>
+                  </div>
+                </div>
+                <div> <a href="/nfts/set/">
+                  <h3 class="card-title lead shimmer rounded p-2 m-0 ml-auto" style="color: black"><b>{{set}} NFT</b></h3>
+                  </a> </div>
+              </div>
+              <div class="card-body text-center d-flex flex-column lead">
+                <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.5)">
+                  <h1 class="text-center"><i class="fas fa-gem"></i></h1>
+                  <h3 class="my-0 mx-2 p-0 p-2 ml-auto " style="color: lawngreen">sealed NFT</h3>
+                  <h5>Unwrap to see what's inside.</h5>
+                </div>
+              </div>
+              <div class="card-footer">
+                <div class="d-flex flex-wrap justify-content-between">
+                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="openMintToken('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
+                  <button type="button" class="btn btn-secondary mr-auto ml-auto mt-1 disabled" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-ellipsis-v ml-3"></i></button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+				  </div>
+				  
+              </div>
+            </div>
+          </div>
+        
       </div>
       <!-- sealed NFTs -->
       <div class="mt-4 d-none" style="border-bottom: #FFFFFF thick solid">
@@ -139,11 +173,61 @@ include_once( $path );
         </div>
       </div>
       <!-- NFT Auction -->
-      <div style="border-bottom: #FFFFFF thick solid">
+      <div class="d-flex justify-content-between align-items-center" style="border-bottom: #FFFFFF thick solid">
         <h1 class="text-white p-0 m-0">NFT Auctions</h1>
+		
+		 <div class="d-none d-xl-block">
+			 <div class="d-flex align-items-center">
+				 <h5 class="m-0">Columns:</h5> 
+	 		   <select id="auctionNFTsizeXL" name="Max Columns" class="btn btn-secondary ml-2">
+		  			<option value="5" selected>5</option>
+		  			<option value="4">4</option>
+		  			<option value="3">3</option>
+		  			<option value="2">2</option>
+		  			<option value="1">1</option>
+				</select>
+			 </div>
+		</div>
+		  
+		<div class="d-none d-lg-block d-xl-none">
+			 <div class="d-flex align-items-center">
+				 <h5 class="m-0">Columns:</h5> 
+		 <select id="auctionNFTsizeLG" name="Max Columns" class="btn btn-secondary ml-2">
+		  <option value="4" selected>4</option>
+		  <option value="3">3</option>
+		  <option value="2">2</option>
+		  <option value="1">1</option>
+		</select>
+		</div>
+		  </div>
+		  
+	    <div class="d-none d-md-block d-lg-none">
+			 <div class="d-flex align-items-center">
+				 <h5 class="m-0">Columns:</h5> 
+		 <select id="auctionNFTsizeMD" name="Max Columns" class="btn btn-secondary ml-2">
+		  <option value="3" selected>3</option>
+		  <option value="2">2</option>
+		  <option value="1">1</option>
+		</select>
+			   </div>
+		</div>
+		  
+	    <div class="d-none d-sm-block d-md-none">
+			 <div class="d-flex align-items-center">
+				 <h5 class="m-0">Columns:</h5> 
+		 <select id="auctionNFTsizeSM" name="Max Columns" class="btn btn-secondary ml-2">
+		  <option value="2" selected>2</option>
+		  <option value="1">1</option>
+		</select>
+		</div>
+		  </div>
+		  
       </div>
-      <div class="row row-cols-xl-4 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
-        <div class="" dmx-repeat:repeatauctiontoken1="auctionsToken.data">
+      <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1"
+		   dmx-bind:class="row row-cols-xl-{{auctionNFTsizeXL.value}} row-cols-lg-{{auctionNFTsizeLG.value}} row-cols-md-{{auctionNFTsizeMD.value}} row-cols-sm-{{auctionNFTsizeSM.value}} row-cols-1"
+		   
+		   style="margin-left: -8px; margin-right: -8px">
+        <div dmx-repeat:repeatauctiontoken1="auctionsToken.data">
 			<div class="m-2  bg-dark card text-white">
           <div class="card-header d-flex" style="background: linear-gradient(dodgerblue,cornflowerblue)">
             <div class="circle">{{uid}}</div>
@@ -156,10 +240,13 @@ include_once( $path );
           </div>
           <div class="card-body d-flex flex-column text-center"> <span>High Bidder: {{bidder}}</span> <span>Bid: <u>{{price.nai()}}</u></span> </div>
           </a>
-          <div class="card-footer text-center d-flex justify-content-between align-items-center"> <span>{{bids}} Bids</span> <a href="#auctionsModal" class="a-1 btn btn-primary btn-lg" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)" role="button">Place Bid</a> </div>
+          <div class="card-footer text-center d-flex justify-content-between align-items-center">
+			  <span>{{bids}} Bids</span>
+			  <button href="#auctionsModal" class="btn btn-primary btn-lg" style="min-width:100px" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)" role="button">Bid</button>
+		  </div>
         </div>
       </div>
-		  </div>
+	  </div>
       <!-- NFT Auction Modal --> 
       <!-- NFT Auctions Iterator -->
       <dmx-data-iterator id="auctions_iterator" dmx-bind:data="auctionsToken.data" loop="true"></dmx-data-iterator>

@@ -446,7 +446,13 @@ include_once( $path );
 			  <div class="card-footer">
 			  	<div class="d-flex flex-wrap justify-content-around">
 					
-		    		<div class="border rounded mt-2 mx-1 px-2 py-1 text-center small" dmx-class:border-success="dexapi.data.behind < 30" dmx-class:text-success="dexapi.data.behind < 30"	dmx-class:border-warning="dexapi.data.behind >= 30"	dmx-class:text-warning="dexapi.data.behind >= 30" dmx-class:border-danger="dexapi.data.behind > 100" dmx-class:text-danger="behind > 100">  {{orderbookselect1.value}} - {{dexapi.data.behind}} blocks behind HIVE</div>
+		    		<div class="border rounded mt-2 mx-1 px-2 py-1 text-center small" 
+						 dmx-class:border-success="dexapi.data.behind < 30" 
+						 dmx-class:text-success="dexapi.data.behind < 30"	
+						 dmx-class:border-warning="dexapi.data.behind >= 30"
+						 dmx-class:text-warning="dexapi.data.behind >= 30"
+						 dmx-class:border-danger="dexapi.data.behind > 100"
+						 dmx-class:text-danger="dexapi.data.behind > 100">  {{orderbookselect1.value}} - {{dexapi.data.behind}} blocks behind HIVE</div>
             		<div class="border border-info rounded mt-2 mx-1 px-2 py-1 text-info text-center small"> {{countenabledorders.value}} Enabled </div>
             		<div class="border border-warning rounded mt-2 mx-1 px-2 py-1 text-warning text-center small">{{countdisabledorders.value}} Disabled </div>
 			  	</div>
