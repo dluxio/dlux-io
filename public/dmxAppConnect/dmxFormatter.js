@@ -945,7 +945,7 @@ dmx.Formatters("global", {
             animateTime: function(t, s, u) {
                 const now = new Date()
                 const then = new Date(t)
-                const diff = Math.abs(now - then)
+                const diff = Math.abs(now - 90000 - then)
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24))
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
