@@ -427,8 +427,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
      return new Promise((resolve, reject) => {
          var weight = parseInt(document.getElementById(weightid).value) * 100
          Dluxsession.hive_sign([user, [
-                 ['vote', { voter:user, author, permlink, weight }]
-             ], 'posting'])
+                 ['vote', { voter:user, author, permlink, weight }]], 'posting'])
              .then(r => {
                  resolve(r)
              })
@@ -444,23 +443,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
         if (amount){
          checkAccount(to)
              .then(r => {
-                 Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_send",
-                             "json": JSON.stringify({
-                                 to,
-                                 amount,
-                                 memo
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         statusWaiter (r, `Trying to send DLUX...`);
-                         resolve(r)
-                     })
-                     .catch(e => { reject(e) })
+                 broadcastCJA({to, amount, memo}, 'dlux_send', `Trying to send DLUX...`)
              })
              .catch(e => { alert(e) })
         } else {
@@ -547,51 +530,34 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  function setdata(account) {
      try {
          document.getElementById('user-name').innerHTML = document.getElementById('user-name').innerHTML + ' @' + account
-
      } catch (e) { console.log(e) }
  }
 
- function openMintToken(setname, callback){
-     Dluxsession.hive_sign([user, [
+ function broadcastCJA(cj, id, msg, callback){
+    Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
                              "required_posting_auths": [],
-                             "id": "dlux_nft_mint",
-                             "json": JSON.stringify({
-                                 set: setname
-                             })
+                             "id": id,
+                             "json": JSON.stringify(cj)
                          }]
                      ], 'active'])
                      .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to open ${setname} mint token`)
+                         statusWaiter (r, msg)
                      })
                      .catch(e => { console.log(e) })
  }
 
-  function airdropMintTokens(setname, to_array,  callback){
+function openMintToken(setname, callback){
+    broadcastCJA({set:setname}, 'dlux_nft_mint', `Trying to open ${setname} mint token`)
+ }
+
+function airdropMintTokens(setname, to_array,  callback){
     var promises = []
-    for (item in to_array){
-        promises.push(checkAccount(to_array[item]))
-    }
+    for (item in to_array){ promises.push(checkAccount(to_array[item]))}
     Promise.all(promises)
     .then(r=>{
-        Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_ft_airdrop",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 to: [... new set(to_array)]
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to airdrop ${setname} mint tokens`)
-                     })
-                     .catch(e => { console.log(e) })
+        broadcastCJA({set:setname, to: [... new set(to_array)]}, 'dlux_ft_airdrop', `Trying to airdrop ${setname} mint tokens`)
     })
     .catch(e=>alert(`At least one hive account doesn't exist: ${e}`))
  }
@@ -599,151 +565,40 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  function auctionMintToken(setname, price, now, time, callback){
     time = parseInt(time)
     price = parseInt(price * 1000)
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_ft_auction",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 price,
-                                 now,
-                                 time
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to auction ${setname} mint token`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({set:setname, price, now, time}, 'dlux_ft_auction', `Trying to auction ${setname} mint tokens`)
  }
 
- function bidMintToken(setname, uid, bid_amount,  callback){
+function bidMintToken(setname, uid, bid_amount,  callback){
     bid_amount = parseInt(bid_amount * 1000)
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_ft_bid",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid,
-                                 bid_amount
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to bid on ${setname}:${uid}`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({set: setname, uid, bid_amount}, 'dlux_ft_bid', `Trying to bid on ${setname} mint token.`) 
  }
 
- function sellMintToken(setname, price,  callback){
+function sellMintToken(setname, price,  callback){
     price = parseInt(price * 1000)
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_ft_sell",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 price
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to sell ${setname} mint token`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({set: setname, price}, 'dlux_ft_sell', `Trying to sell ${setname} mint token`)
  }
 
- function buyMintToken(setname, uid, price,  callback){
+function buyMintToken(setname, uid, price,  callback){
      price = parseInt(price * 1000)
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_ft_buy",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid,
-                                 price
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to buy ${setname} mint token`)
-                     })
-                     .catch(e => { console.log(e) })
+     broadcastCJA({set: setname, uid, price}, 'dlux_ft_buy', `Trying to buy ${setname} mint token`)
  }
 
- function cancelSellMintToken(setname, uid,  callback){
-      // check that these are real hive account
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_ft_sell_cancel",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to cancel ${setname} mint token sell`)
-                     })
-                     .catch(e => { console.log(e) })
+function cancelSellMintToken(setname, uid,  callback){
+     broadcastCJA({set: setname, uid}, 'dlux_ft_cancel_sell', `Trying to cancel ${setname} mint token sell`)
  }
 
-  function giveMintToken(setname, to, callback){
+function giveMintToken(setname, to, callback){
     checkAccount(to)
-    .then(r => { 
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_ft_transfer",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 to
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to give ${setname} mint token to ${to}`)
-                     })
-                     .catch(e => { console.log(e) })
-                     })
+    .then(r => {
+        broadcastCJA({set: setname,to}, "dlux_ft_transfer", `Trying to give ${setname} mint token to ${to}`) 
+    })
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
 
 function giveNFT(setname, uid, to, callback){
     checkAccount(to)
-    .then(r => { 
-        Dluxsession.hive_sign([user, [
-            ['custom_json', {
-                "required_auths": [user],
-                "required_posting_auths": [],
-                "id": "dlux_nft_transfer",
-                "json": JSON.stringify({
-                    set: setname,
-                    uid,
-                    to
-                })
-            }]
-        ], 'active'])
-        .then(r => {
-            console.log(r)
-            statusWaiter (r, `Trying to give ${setname}:${uid} to ${to}`)
-        })
-        .catch(e => { console.log(e) })
+    .then(r => {
+        broadcastCJA({set: setname, uid, to}, "dlux_nft_transfer", `Trying to give ${setname}:${uid} to ${to}`) 
     })
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
@@ -751,336 +606,81 @@ function giveNFT(setname, uid, to, callback){
 function NFTReserveTransfer(setname, uid, to, price, callback){
     price = parseInt(price * 1000)
     checkAccount(to)
-    .then(r => {  
-    Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_reserve_transfer",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid,
-                                 to,
-                                 price
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to trade ${setname}:${uid}`)
-                     })
-                     .catch(e => { console.log(e) })
-                     })
+    .then(r => {
+        broadcastCJA({ set: setname, uid, to, price}, "dlux_nft_reserve_transfer", `Trying to trade ${setname}:${uid}`)
+    })
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
 
- function NFTReserveComplete(setname, uid, callback){
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_reserve_complete",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to complete ${setname}:${uid} trade`)
-                     })
-                     .catch(e => { console.log(e) })
+function NFTReserveComplete(setname, uid, callback){
+     broadcastCJA({ set: setname, uid}, "dlux_nft_reserve_complete", `Trying to complete ${setname}:${uid} trade`)
  }
 
- function NFTReserveCancel(setname, uid, callback){
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_transfer_cancel",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to cancel ${setname}:${uid} trade`)
-                     })
-                     .catch(e => { console.log(e) })
+function NFTReserveCancel(setname, uid, callback){
+    broadcastCJA({ set: setname, uid }, "dlux_nft_transfer_cancel", `Trying to cancel ${setname}:${uid} trade`)
  }
 
 function NFTDelete(setname, uid, callback){
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_delete",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to melt ${setname}:${uid}`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({ set: setname, uid }, "dlux_nft_delete", `Trying to melt ${setname}:${uid}`) 
  }
 
- function NFTDefine(
-    setname,
-    type,
-    script,
-    permlink,
-    start,
-    end,
-    royalty,
-    handling,
-    max_fee,
-    bond, callback){
+ function NFTDefine(setname, type, script, permlink, start, end, royalty, handling, max_fee, bond, callback){
     max_fee = parseInt(max_fee * 1000)
     royalty = parseInt(royalty * 100)
     //more validation
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_define",
-                             "json": JSON.stringify({
-                                 name: setname,
-                                 type,
-                                 script,
-                                 permlink,
-                                 start,
-                                 end,
-                                 royalty,
-                                 handling,
-                                 max_fee,
-                                 bond
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to define set: ${setname}`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({ name: setname, type, script, permlink, start, end, royalty, handling, max_fee, bond}, "dlux_nft_define", `Trying to define ${setname}`)
  }
 
  function auctionNFT(setname, uid, price, now, time, callback){
      time = parseInt(time)
     price = parseInt(price * 1000)
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_auction",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid,
-                                 price,
-                                 now,
-                                 time
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to auction ${setname}:${uid}`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({ set: setname, uid, price, now, time}, "dlux_nft_auction", `Trying to auction ${setname}:${uid}`)
  }
 
-function auctionFT(setname, uid, price, now, time, callback){
-     time = parseInt(time)
+function auctionFT(setname, price, now, time, callback){
+    time = parseInt(time)
     price = parseInt(price * 1000)
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_ft_auction",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 price,
-                                 now,
-                                 time
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to auction ${setname}:${uid}`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({ set: setname, price, now, time}, "dlux_ft_auction", `Trying to auction ${setname} mint token`)
  }
 
  function bidNFT(setname, uid, bid_amount, callback){
     bid_amount = parseInt(bid_amount * 1000)
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_bid",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid,
-                                 bid_amount
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         callback(r, `Bidding on ${setname}:${uid} for ${parseFloat(bid_amount/1000).toFixed(3)} DLUX`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({ set: setname, uid, bid_amount}, "dlux_nft_bid", `Bidding on ${setname}:${uid} for ${parseFloat(bid_amount/1000).toFixed(3)} DLUX`)
  }
 
   function bidFT(setname, uid, bid_amount, callback){
     bid_amount = parseInt(bid_amount * 1000)
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_ft_bid",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid,
-                                 bid_amount
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         callback(r, `Bidding on ${setname}:${uid} for ${parseFloat(bid_amount/1000).toFixed(3)} DLUX`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({ set: setname, uid, bid_amount}, "dlux_ft_bid", `Bidding on ${setname} mint token for ${parseFloat(bid_amount/1000).toFixed(3)} DLUX`)
  }
 
 function sellNFT(setname, uid, price, callback){
     price = parseInt(price * 1000)
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_sell",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid,
-                                 price
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to list ${setname}:${uid} for sell`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({ set: setname, uid, price}, "dlux_nft_sell", `Trying to list ${setname}:${uid} for sell`)
  }
 
- function sellFT(setname, price, callback){
+function sellFT(setname, price, callback){
     price = parseInt(price * 1000)
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_ft_sell",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 price
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to list ${setname} mint token for sell`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({ set: setname, price}, "dlux_ft_sell", `Trying to list ${setname} mint token for sell`)
  }
 
- function buyNFT(setname, uid, price, callback){
-    Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_buy",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid,
-                                 price
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to buy ${setname}:${uid}`)
-                     })
-                     .catch(e => { console.log(e) })
+function buyNFT(setname, uid, price, callback){
+    broadcastCJA({ set: setname, uid, price}, "dlux_nft_buy", `Trying to buy ${setname}:${uid}`)
  }
 
 function buyFT(setname, uid, price, callback){
-    Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_ft_buy",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid,
-                                 price
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to buy ${setname}:${uid}`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({ set: setname, uid, price}, "dlux_ft_buy", `Trying to buy ${setname} mint token`)
  }
 
  function cancelNFTsell(setname, uid, callback){
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_sell_cancel",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to cancel ${setname}:${uid} sell`)
-                     })
-                     .catch(e => { console.log(e) })
+     broadcastCJA({ set: setname, uid}, "dlux_nft_sell_cancel", `Trying to cancel ${setname}:${uid} sell`)
  }
 
  function cancelFTsell(setname, uid, callback){
-     Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_ft_sell_cancel",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid
-                             })
-                         }]
-                     ], 'active'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to cancel ${setname}:${uid} sell`)
-                     })
-                     .catch(e => { console.log(e) })
+    broadcastCJA({ set: setname, uid}, "dlux_ft_sell_cancel", `Trying to cancel ${setname} mint token sell`)
  }
 
- function setPFP(setname, uid, callback){
-     fetch("https://api.hive.blog", {
+function setPFP(setname, uid, callback){
+    fetch("https://api.hive.blog", {
         body: `{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["${user}"]], "id":1}`,
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -1089,72 +689,66 @@ function buyFT(setname, uid, price, callback){
         })
         .then(r=>r.json())
         .then(json=>{
-            console.log(json)
             if(JSON.parse(json.result[0].posting_json_metadata).profile.profile_image !== `https://data.dlux.io/pfp/${user}?.jpg`){
                 var pjm = JSON.parse(json.result[0].posting_json_metadata)
                 pjm.profile.profile_image = `https://data.dlux.io/pfp/${user}?.jpg`
-                const op = [
-                         ['custom_json', {
-                             "required_auths": [],
-                             "required_posting_auths": [user],
-                             "id": "dlux_nft_pfp",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid
-                             })
-                         }],
-                         [
-    "account_update2",
-    {
-      "account": user,
-      "json_metadata": "",
-      "posting_json_metadata": JSON.stringify(pjm)
-    }
-  ]
-                     ]
+                const op = 
+                    [
+                        ['custom_json', {
+                            "required_auths": [],
+                            "required_posting_auths": [user],
+                            "id": "dlux_nft_pfp",
+                            "json": JSON.stringify({
+                                set: setname,
+                                uid
+                            })
+                        }],
+                        ["account_update2",{
+                            "account": user,
+                            "json_metadata": "",
+                            "posting_json_metadata": JSON.stringify(pjm)}
+                        ]
+                    ]
                 Dluxsession.hive_sign([user, op, 'posting'])
                      .then(r => {
-                         console.log(r)
                          statusWaiter (r, `Trying to set ${setname}:${uid} as PFP`)
                      })
                      .catch(e => { console.log(e) })
             } else {
                 Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [],
-                             "required_posting_auths": [user],
-                             "id": "dlux_nft_pfp",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid
-                             })
-                         }]
+                    ['custom_json', {
+                        "required_auths": [],
+                        "required_posting_auths": [user],
+                        "id": "dlux_nft_pfp",
+                        "json": JSON.stringify({
+                            set: setname,
+                            uid
+                            })
+                        }]
                      ], 'posting'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to set ${setname}:${uid} as PFP`)
-                     })
-                     .catch(e => { console.log(e) })
+                .then(r => {
+                    statusWaiter (r, `Trying to set ${setname}:${uid} as PFP`)
+                })
+                .catch(e => { console.log(e) })
             }
         })
         .catch(e=>{
             console.log(e)
             Dluxsession.hive_sign([user, [
-                         ['custom_json', {
-                             "required_auths": [user],
-                             "required_posting_auths": [],
-                             "id": "dlux_nft_pfp",
-                             "json": JSON.stringify({
-                                 set: setname,
-                                 uid
-                             })
-                         }]
-                     ], 'posting'])
-                     .then(r => {
-                         console.log(r)
-                         statusWaiter (r, `Trying to set ${setname}:${uid} as PFP`)
-                     })
-                     .catch(e => { console.log(e) })
+                ['custom_json', {
+                    "required_auths": [user],
+                    "required_posting_auths": [],
+                    "id": "dlux_nft_pfp",
+                    "json": JSON.stringify({
+                        set: setname,
+                        uid
+                        })
+                    }]
+                ], 'posting'])
+            .then(r => {
+                statusWaiter (r, `Trying to set ${setname}:${uid} as PFP`)
+            })
+            .catch(e => { console.log(e) })
         })
  }
 
@@ -1165,21 +759,16 @@ function buyFT(setname, uid, price, callback){
         node.id = txid
         node.innerHTML = `<div class="alert bg-dark border border-info rounded alert-dissmissible fade show ml-auto mr-3 my-3" style="max-width:500px;" role="alert">
 			<div class="d-flex justify-content-between align-items-center text-white">
-           
-              <div id="${txid}-spinner" class="spinner-grow text-info mr-4" role="status"></div>
-            
-            <div class="d-flex flex-fill flex-column"> <strong><i class="fas fa-broadcast-tower mr-2"></i>Broadcast Succssful</strong>
-              <p id="${txid}-status" class="m-0">Awaiting DLUX L2 Confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
-              <p>${whatt}</p>
+                <div id="${txid}-spinner" class="spinner-grow text-info mr-4" role="status"></div>
+                <div class="d-flex flex-fill flex-column"> <strong><i class="fas fa-broadcast-tower mr-2"></i>Broadcast Succssful</strong>
+                <p id="${txid}-status" class="m-0">Awaiting DLUX L2 Confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
+                <p>${whatt}</p>
             </div>
             <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
           </div>
 		</div>`
     document.getElementById('notificationholder').appendChild(node)
     updateDiv(txid)
-    
-    // pop up a div
-    // set a spinner with a time out
     function updateDiv(id){
         try {
             const time = parseInt(document.getElementById(`${id}-timer`).innerText)
@@ -1230,10 +819,6 @@ function buyFT(setname, uid, price, callback){
             document.getElementById('notificationholder').removeChild(document.getElementById(id))
         } catch (e){console.log(e)}
     }
-    // query the status API
-    // change the div when status is availible
-    // display a fail message
-
  }
 
  class Dluxsession {
