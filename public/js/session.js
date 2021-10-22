@@ -895,6 +895,29 @@ function NFTDelete(setname, uid, callback){
                      .catch(e => { console.log(e) })
  }
 
+function auctionFT(setname, uid, price, now, time, callback){
+     time = parseInt(time)
+    price = parseInt(price * 1000)
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_ft_auction",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 price,
+                                 now,
+                                 time
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         statusWaiter (r, `Trying to auction ${setname}:${uid}`)
+                     })
+                     .catch(e => { console.log(e) })
+ }
+
  function bidNFT(setname, uid, bid_amount, callback){
     bid_amount = parseInt(bid_amount * 1000)
      Dluxsession.hive_sign([user, [
@@ -902,6 +925,27 @@ function NFTDelete(setname, uid, callback){
                              "required_auths": [user],
                              "required_posting_auths": [],
                              "id": "dlux_nft_bid",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid,
+                                 bid_amount
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         callback(r, `Bidding on ${setname}:${uid} for ${parseFloat(bid_amount/1000).toFixed(3)} DLUX`)
+                     })
+                     .catch(e => { console.log(e) })
+ }
+
+  function bidFT(setname, uid, bid_amount, callback){
+    bid_amount = parseInt(bid_amount * 1000)
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_ft_bid",
                              "json": JSON.stringify({
                                  set: setname,
                                  uid,
@@ -937,6 +981,26 @@ function sellNFT(setname, uid, price, callback){
                      .catch(e => { console.log(e) })
  }
 
+ function sellFT(setname, price, callback){
+    price = parseInt(price * 1000)
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_ft_sell",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 price
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         statusWaiter (r, `Trying to list ${setname} mint token for sell`)
+                     })
+                     .catch(e => { console.log(e) })
+ }
+
  function buyNFT(setname, uid, price, callback){
     Dluxsession.hive_sign([user, [
                          ['custom_json', {
@@ -957,12 +1021,51 @@ function sellNFT(setname, uid, price, callback){
                      .catch(e => { console.log(e) })
  }
 
+function buyFT(setname, uid, price, callback){
+    Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_ft_buy",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid,
+                                 price
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         statusWaiter (r, `Trying to buy ${setname}:${uid}`)
+                     })
+                     .catch(e => { console.log(e) })
+ }
+
  function cancelNFTsell(setname, uid, callback){
      Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
                              "required_posting_auths": [],
                              "id": "dlux_nft_sell_cancel",
+                             "json": JSON.stringify({
+                                 set: setname,
+                                 uid
+                             })
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         console.log(r)
+                         statusWaiter (r, `Trying to cancel ${setname}:${uid} sell`)
+                     })
+                     .catch(e => { console.log(e) })
+ }
+
+ function cancelFTsell(setname, uid, callback){
+     Dluxsession.hive_sign([user, [
+                         ['custom_json', {
+                             "required_auths": [user],
+                             "required_posting_auths": [],
+                             "id": "dlux_ft_sell_cancel",
                              "json": JSON.stringify({
                                  set: setname,
                                  uid
