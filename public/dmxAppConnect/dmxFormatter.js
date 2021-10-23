@@ -522,7 +522,7 @@ dmx.Formatters("global", {
                 fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
                 .then((data) => {
-                const code = `(//${data}\n)("00000000")`;
+                const code = `(//${data}\n)("0")`;
                 const SVG = eval(code);
                 console.log({s, o,i,a})
                 document.getElementById(`${s}${i}`)[a] = SVG.set[o]
