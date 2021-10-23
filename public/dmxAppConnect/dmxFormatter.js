@@ -523,6 +523,7 @@ dmx.Formatters("global", {
                 .then((response) => response.text())
                 .then((data) => {
                 const code = `(//${data}\n)("00000000")`;
+                console.log({o,i,a})
                 document.getElementById(i)[a] = eval(code).set[o]
                 })
             },getNFTDetails : function(s, u, c){
