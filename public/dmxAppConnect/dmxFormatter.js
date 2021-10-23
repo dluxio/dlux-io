@@ -554,7 +554,7 @@ dmx.Formatters("global", {
                 }
                 r = r.split(' ')
                 for (var j = 0; j < r.length; j++) {
-                    document.getElementById(`${s}${i}`).addClass(r[j])
+                    document.getElementById(`${s}${i}`).classList.add(r[j])
                 }
                 })
             },
