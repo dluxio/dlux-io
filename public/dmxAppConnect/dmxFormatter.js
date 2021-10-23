@@ -542,6 +542,22 @@ dmx.Formatters("global", {
                 document.getElementById(`${s}${i}`).style.background = `linear-gradient(${r})`
                 })
             },
+            getSetDetailsIcon : function(s, i, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("0")`;
+                const SVG = eval(code)
+                let r = ''
+                try{r = SVG.set.faicon}catch(e){
+                    r = 'fas fa-gem'
+                }
+                r = r.split(' ')
+                for (var j = 0; j < r.length; j++) {
+                    document.getElementById(`${s}${i}`).addClass(r[j])
+                }
+                })
+            },
             getNFTDetails : function(s, u, c){
                 fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
