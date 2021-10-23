@@ -524,7 +524,6 @@ dmx.Formatters("global", {
                 .then((data) => {
                 const code = `(//${data}\n)("0")`;
                 const SVG = eval(code);
-                console.log({s, o, i, a})
                 document.getElementById(`${s}${i}`)[b] = (SVG.set[o] || 'Not Specified')
                 })
             },
@@ -536,9 +535,9 @@ dmx.Formatters("global", {
                 const SVG = eval(code)
                 let r = ''
                 try{r=`${SVG.set.Color1},${SVG.set.Color2}`}catch(e){
-                    r = 'chartreuse,lawngreenGreen'
+                    console.log(e)
+                    r = 'chartreuse, lawngreenGreen'
                 }
-                if(r = ','){r=`chartreuse,lawngreenGreen`}
                 console.log(r)
                 document.getElementById(`${s}${i}`).style.background = `linear-gradient(${r})`
                 })
