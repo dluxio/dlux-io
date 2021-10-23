@@ -518,13 +518,14 @@ dmx.Formatters("global", {
                 document.getElementById(`detail-image-${c}-${o}`).innerHTML = SVG.HTML;
                 })
             },
-            getSetDetails : function(s, c){
+            getSetDetails : function(s, o, c){
                 fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
                 .then((data) => {
                 const code = `(//${data}\n)("0")`;
                 const SVG = eval(code);
                 //return SVG.set.Color1;
+                console.log(s, o)
                 return `Return something ${s}, ${SVG.set.Color1}`
                 })
             },getNFTDetails : function(s, u, c){
