@@ -91,6 +91,9 @@ dmx.Formatters("global", {
                 return dmx.parse(n, new dmx.DataScope(t, this));
             }, this);
         },
+        log: function(t) {
+            console.log(new dmx.DataScope(t, this))
+        },
         where: function(t, r, e, u) {
             return (
                 (u = u || "=="),
