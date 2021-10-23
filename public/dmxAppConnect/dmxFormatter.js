@@ -536,7 +536,7 @@ dmx.Formatters("global", {
                 let r = ''
                 try{r=`${SVG.set.Color1},${SVG.set.Color2}`}catch(e){
                     console.log(e)
-                    r = 'chartreuse, lawngreenGreen'
+                    r = 'chartreuse,lawngreen'
                 }
                 console.log(r)
                 document.getElementById(`${s}${i}`).style.background = `linear-gradient(${r})`
