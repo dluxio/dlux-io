@@ -518,13 +518,21 @@ dmx.Formatters("global", {
                 document.getElementById(`detail-image-${c}-${o}`).innerHTML = SVG.HTML;
                 })
             },
-            getDetails : function(s, c){
+            getSetDetails : function(s, c){
                 fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
                 .then((data) => {
                 const code = `(//${data}\n)("0")`;
                 const SVG = eval(code);
-                return SVG;
+                return SVG.set;
+                })
+            },getNFTDetails : function(s, u, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("${u}")`;
+                const SVG = eval(code);
+                return SVG.attributes;
                 })
             },
             slugify: function(t) {
