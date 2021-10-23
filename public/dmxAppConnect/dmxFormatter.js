@@ -519,7 +519,8 @@ dmx.Formatters("global", {
                 })
             },
             getSetDetails : function(s, o, c){
-                fetch(`https://ipfs.io/ipfs/${s}`)
+                return new Promise((resolve, reject) => {
+                    fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
                 .then((data) => {
                 const code = `(//${data}\n)("00000000")`;
@@ -527,7 +528,9 @@ dmx.Formatters("global", {
                 console.log(SVG.attributes)
                 let t = 'nope'
                 try{t = SVG.set[0]}catch(e){t = 'Red'}
-                return t
+                resolve(t)
+                })
+                .catch(e=>reject(e))
                 })
             },getNFTDetails : function(s, u, c){
                 fetch(`https://ipfs.io/ipfs/${s}`)
