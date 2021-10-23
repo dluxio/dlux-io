@@ -523,9 +523,11 @@ dmx.Formatters("global", {
                 .then((response) => response.text())
                 .then((data) => {
                 const code = `(//${data}\n)("0")`;
-                //const SVG = eval(code);
-                //console.log(SVG.set)
-                return eval(code).set[o]
+                const SVG = eval(code);
+                console.log(SVG.attributes)
+                let t = 'nope'
+                try{t = SVG.set[0]}catch(e){t = 'Red'}
+                return t
                 })
             },getNFTDetails : function(s, u, c){
                 fetch(`https://ipfs.io/ipfs/${s}`)
