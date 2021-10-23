@@ -527,7 +527,21 @@ dmx.Formatters("global", {
                 console.log({s, o, i, a})
                 document.getElementById(`${s}${i}`)[b] = (SVG.set[o] || 'Not Specified')
                 })
-            },getNFTDetails : function(s, u, c){
+            },
+            getSetDetailsColors : function(s, i, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("0")`;
+                const SVG = eval(code)
+                let r = 'chartreuse,lawngreenGreen', 
+                try{r=`${SVG.set.Color1},${SVG.set.Color1}`}catch(e){
+                    
+                }   
+                document.getElementById(`${s}${i}`).style = `background: linear-gradient(${r}); width: 22rem;`
+                })
+            },
+            getNFTDetails : function(s, u, c){
                 fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
                 .then((data) => {
