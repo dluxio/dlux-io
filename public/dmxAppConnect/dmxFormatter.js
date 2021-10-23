@@ -524,7 +524,7 @@ dmx.Formatters("global", {
                 .then((data) => {
                 const code = `(//${data}\n)("00000000")`;
                 console.log({o,i,a})
-                document.getElementById(i)[a] = eval(code).set[o]
+                document.getElementById(`${s}${i}`)[a] = eval(code).set[o]
                 })
             },getNFTDetails : function(s, u, c){
                 fetch(`https://ipfs.io/ipfs/${s}`)
