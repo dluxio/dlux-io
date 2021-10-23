@@ -539,7 +539,7 @@ dmx.Formatters("global", {
                     r = 'chartreuse,lawngreenGreen'
                 }
                 console.log(r)
-                document.getElementById(`${s}${i}`).style = `background: linear-gradient(${r}); width: 22rem;`
+                document.getElementById(`${s}${i}`).style.background = `linear-gradient(${r})`
                 })
             },
             getNFTDetails : function(s, u, c){
