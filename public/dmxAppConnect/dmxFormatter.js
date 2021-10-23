@@ -534,7 +534,7 @@ dmx.Formatters("global", {
                 .then((data) => {
                 const code = `(//${data}\n)("0")`;
                 const SVG = eval(code)
-                let r = 'chartreuse,lawngreenGreen', 
+                let r = 'chartreuse,lawngreenGreen'
                 try{r=`${SVG.set.Color1},${SVG.set.Color1}`}catch(e){
                     
                 }   
