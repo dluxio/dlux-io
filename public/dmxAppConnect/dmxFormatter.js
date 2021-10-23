@@ -534,10 +534,11 @@ dmx.Formatters("global", {
                 .then((data) => {
                 const code = `(//${data}\n)("0")`;
                 const SVG = eval(code)
-                let r = 'chartreuse,lawngreenGreen'
+                let r = ''
                 try{r=`${SVG.set.Color1},${SVG.set.Color1}`}catch(e){
-                    
-                }   
+                    r = 'chartreuse,lawngreenGreen'
+                }
+                console.log(r)
                 document.getElementById(`${s}${i}`).style = `background: linear-gradient(${r}); width: 22rem;`
                 })
             },
