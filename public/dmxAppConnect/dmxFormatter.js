@@ -253,6 +253,7 @@ dmx.Formatters("global", {
             return Math.round(e) / r;
         },
         pad: function(t, n) {
+            t = t || 0
             for (var r = t < 0 ? "-" : "", e = String(Math.abs(t)); e.length < n;)
                 e = "0" + e;
             return r + e;
