@@ -1577,15 +1577,14 @@ function toggleOrdersSM() {
 
 function updateVoteSubmit(id,val) {
     document.getElementById(id).innerHTML = document.getElementById(val).value + '%'; 
-}
-
-$('.nav-tabs').stickyTabs();    
+}   
 
 function pageSpecfic(usr){
 	me(usr);
 }
 
 
+$('.nav-tabs').stickyTabs(); 
 </script>
 <script>
 	$(document).ready(() => {
