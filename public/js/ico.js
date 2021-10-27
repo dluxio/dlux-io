@@ -45,16 +45,16 @@ function icoPop(usr) {
                 updateTimer(blockNum++)
             }, 3000);
         }
-        if (jsons[1].stats.icoRound) {
+        if (jsons[1].result.icoRound) {
             updateTimer(jsons[1].realtime)
-            document.getElementById('icoRound').innerText = `ROUND ${jsons[1].stats.icoRound}`
-            document.getElementById('dluxForHive').innerText = `${parseFloat(jsons[1].stats.icoPrice/1000).toFixed(3)} DLUX for 1.000 HIVE`
-            document.getElementById('icoTokensRemain').innerHTML = `<h3><span>${parseFloat(jsons[1].stats.icoPrice/1000).toFixed(3)} HIVE</span></h3>
+            document.getElementById('icoRound').innerText = `ROUND ${jsons[1].result.icoRound}`
+            document.getElementById('dluxForHive').innerText = `${parseFloat(jsons[1].result.icoPrice/1000).toFixed(3)} DLUX for 1.000 HIVE`
+            document.getElementById('icoTokensRemain').innerHTML = `<h3><span>${parseFloat(jsons[1].result.icoPrice/1000).toFixed(3)} HIVE</span></h3>
 				<div>
 					<label>Current Price</label>
 				</div>`
         }
-        if (jsons[1].stats.outOnBlock) {
+        if (jsons[1].result.outOnBlock) {
             document.getElementById('icoAuctionPanel').innerHTML = `
         <div id="icoHiveSpent" class="text-center market-info-item">
 				<h3><span>1817.438 HIVE</span></h3>

@@ -112,7 +112,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
          ).then(jsons => {
              User.dlux = jsons[0]
              User.dex = jsons[1]
-             User.stats = jsons[2].stats
+             User.stats = jsons[2].result
              User.price = jsons[3].hive.usd
              document.getElementById('userPFP').value = jsons[4].result[0].pfp;
              //console.log(jsons[4].result[0].pfp)
