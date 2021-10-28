@@ -7,7 +7,7 @@ function dex(usr, pair, type) {
     fillDelegate(usr)
     document.getElementById('jumbobal').innerHTML = `<h4>Balances: ${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3)} DLUX & ${usr[User.opts.pair].balance}</h4>`
     document.getElementById('senddluxfrom').value = user
-    document.getElementById('menupricelab').innerHTML = `Calculated Price: (<a href="#" onClick="insertBal('${parseFloat(User.dex.markets[User.opts.pair].tick)}', 'menuprice')">Market Price: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
+    document.getElementById('menupricelab').innerHTML = `Calculated Price: (<a href="#" onClick="insertBal('${parseFloat(User.stats[`${User.opts.pair.replace('h', 'H')}VWMA`].rate)}', 'menuprice')">Market Price: ${parseFloat(User.stats[`${User.opts.pair.replace('h', 'H')}VWMA`].rate).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
     document.getElementById('menupairlab').innerHTML = `For: (<a href="#" onClick="insertBal(parseFloat(User[User.opts.pair].balance),'menupair')">Balance: ${User[User.opts.pair].balance}</a>):`
     document.getElementById('buyTab').addEventListener("click", function() {
         dexview(User.opts.pair, "Buy");
@@ -540,7 +540,7 @@ function dexview(pair, type) {
 function popStats() {
     var info = document.getElementsByClassName('text-center market-info-item')
     console.log(info)
-    var ip1 = parseFloat(User.stats.tokenSupply / 1000000 * User.dex.markets[User.opts.pair].tick).toFixed(1),
+    var ip1 = parseFloat(User.stats.tokenSupply / 1000000 * parseFloat(User.stats[`${User.opts.pair.replace('h', 'H')}VWMA`].rate)).toFixed(1),
         m = 'K'
     if (ip1 > 1000) {
         ip1 = parseFloat(ip1 / 1000).toFixed(1)
@@ -686,7 +686,7 @@ function dexmodal(pair, type) {
     document.getElementById('paycoin').innerText = User.opts.pair.toUpperCase()
     document.getElementById('menupairlab').innerHTML = `Order Total (<a href="#" onClick="insertBal(parseFloat(User[User.opts.pair].balance),'menupair')">Balance: ${User[User.opts.pair].balance}</a>):`
     document.getElementById('menupair').max = parseFloat(User[User.opts.pair].balance)
-    document.getElementById('menupricelab').innerHTML = `Desired Price Each (<a href="#" onClick="insertBal('${parseFloat(User.dex.markets[User.opts.pair].tick)}', 'menuprice')">Market Price: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
+    document.getElementById('menupricelab').innerHTML = `Desired Price Each (<a href="#" onClick="insertBal('${parseFloat(User.stats[`${User.opts.pair.replace('h', 'H')}VWMA`].rate)}', 'menuprice')">Market Price: ${parseFloat(User.stats[`${User.opts.pair.replace('h', 'H')}VWMA`].rate).toFixed(4)} ${User.opts.pair.toUpperCase()}</a>):`
     let eAgentNode = document.getElementById('escrowAgentUl'),
         cAgentNode = document.getElementById('custodialAgentUl')
     lis = eAgentNode.getElementsByTagName('li')
@@ -781,7 +781,7 @@ function setCharts() {
             responsive: true,
             title: {
                 display: true,
-                text: `DLUX: ${parseFloat(User.dex.markets[User.opts.pair].tick).toFixed(4)} ${User.opts.pair.toUpperCase()}`,
+                text: `DLUX: ${parseFloat(User.stats[`${User.opts.pair.replace('h', 'H')}VWMA`].rate).toFixed(4)} ${User.opts.pair.toUpperCase()}`,
                 fontSize: 40,
                 fontColor: '#000',
             },
