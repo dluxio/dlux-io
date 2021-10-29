@@ -765,7 +765,7 @@ function setPFP(setname, uid, callback){
                 <div id="${txid}-spinner" class="spinner-grow text-info mr-4" role="status"></div>
                 <div class="d-flex flex-fill flex-column"> <strong><i class="fas fa-broadcast-tower mr-2"></i>Broadcast Succssful</strong>
                 <p id="${txid}-status" class="m-0">Awaiting DLUX L2 Confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
-                <p>${whatt}</p>
+                <p id="${txid}-trying">${whatt}</p>
             </div>
             <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
           </div>
@@ -808,7 +808,6 @@ function setPFP(setname, uid, callback){
         } catch (e) {console.log(e)}
     }
     function changeDiv(id, status, type){
-        console.log('change',id)
         const Dindex = status.indexOf('DLUXQm')
         if(Dindex >= 0){
             const Eindex = status.indexOf(' ', Dindex)
@@ -830,10 +829,11 @@ function setPFP(setname, uid, callback){
             document.getElementById(`${id}-spinner`).classList.replace('spinner-grow', 'fas')
             document.getElementById(`${id}-spinner`).classList.replace('spinner-grow', 'fa-times-circle')
         }
+        let eL = document.getElementById(`${id}-trying`)
+        eL.parentElement.removeChild(eL)
         document.getElementById(`${id}-status`).innerText = status
     }
     function dismissDiv(id){
-        console.log('dismiss',{id})
         try{
             document.getElementById('notificationholder').removeChild(document.getElementById(id))
         } catch (e){console.log(e)}
