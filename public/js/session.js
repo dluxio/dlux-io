@@ -536,7 +536,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
      } catch (e) { console.log(e) }
  }
 
- function broadcastCJA(cj, id, msg, callback){
+ function broadcastCJA(cj, id, msg){
     Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
@@ -552,7 +552,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  }
 
 function openMintToken(setname, callback){
-    broadcastCJA({set:setname}, 'dlux_nft_mint', `Trying to open ${setname} mint token`)
+    broadcastCJA({set:setname}, 'dlux_nft_mint', `Minting ${setname} token...`)
  }
 
 function airdropMintTokens(setname, to_array,  callback){
@@ -785,10 +785,17 @@ function setPFP(setname, uid, callback){
                 .then(json => {
                     console.log(json,json.status.slice(0,20))
                     if(json.status.slice(0,20) != 'This TransactionID e'){
-                        changeDiv(id, json.status, true)
-                        setTimeout(function(){
-                            dismissDiv(id, json.status)
-                        }, 20000);
+                        if (json.status.indexOf(' minted ') > -1){
+                            changeDiv(id, json.status, 'mint')
+                            setTimeout(function(){
+                                dismissDiv(id, json.status)
+                            }, 30000);
+                        } else {
+                            changeDiv(id, json.status, true)
+                            setTimeout(function(){
+                                dismissDiv(id, json.status)
+                            }, 20000);
+                        }
                     }
                 })
                 .catch(e=>console.log(e))
@@ -808,8 +815,17 @@ function setPFP(setname, uid, callback){
             status = status.slice(0, Dindex) + status.slice(Eindex + 1)
         }
         if(type){
-            document.getElementById(`${id}-spinner`).classList.replace('spinner-grow', 'fas')
-            document.getElementById(`${id}-spinner`).classList.replace('text-info', 'fa-check-circle')
+            if (type == 'mint'){
+                //${b.for} minted ${selected} from the ${b.set} set.
+                const set = status.split(' ')[5]
+                const uid = status.split(' ')[2]
+                document.getElementById(`${id}-spinner`).classList.remove('spinner-grow')
+                document.getElementById(`${id}-spinner`).classList.remove('text-info')
+                document.getElementById(`${id}-spinner`).innerHTML = `<img src="https://data.dlux.io/img/render/${set}/${uid}" alt="${set}:${uid}" width="200" height="200">`
+            } else {
+                document.getElementById(`${id}-spinner`).classList.replace('spinner-grow', 'fas')
+                document.getElementById(`${id}-spinner`).classList.replace('text-info', 'fa-check-circle')
+            }
         } else {
             document.getElementById(`${id}-spinner`).classList.replace('spinner-grow', 'fas')
             document.getElementById(`${id}-spinner`).classList.replace('spinner-grow', 'fa-times-circle')
