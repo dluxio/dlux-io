@@ -14,7 +14,9 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
   echo "<dmx-api-datasource id=\"inventoryapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
 };
 ?>
+
 <!--page specific-->
+
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
 </head>
@@ -32,7 +34,6 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 <dmx-data-view id="auctionsview" dmx-bind:data="auctionsapi.data.result" sorton="time"></dmx-data-view>
 <dmx-data-view id="mintsupplyview" dmx-bind:data="mintsupplyapi.data.result" sorton="qty" sortdir="desc"></dmx-data-view>
 <dmx-data-view id="inventoryview" dmx-bind:data="inventoryapi.data"></dmx-data-view>
-<dmx-api-datasource id="inventoryapi" is="dmx-fetch" url="https://token.dlux.io/api/nfts/robotolux"></dmx-api-datasource>
 <style>
 .circle {
   width: 50px;
