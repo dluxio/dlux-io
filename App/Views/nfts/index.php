@@ -191,7 +191,7 @@ include_once( $path );
                                   <h3 class="rainbow-text">sealed NFT</h3>
                                 </div>
                                 <h5>Unwrap to see what's inside</h5>
-                                <button class="btn btn-lg btn-outline-light" dmx-on:click="buyFT('{{set}}','{{uid}}')" dmx-text="((sales.min('price')/1000)*dluxperdollar.value).formatCurrency()"></button>
+                                <button class="btn btn-lg btn-outline-light" dmx-on:clck="buyFT('{{set}}','{{uid}}')" dmx-text="((sales.min('price')/1000)*dluxperdollar.value).formatCurrency()"></button>
                               </div>
                             </div>
                           </div>
