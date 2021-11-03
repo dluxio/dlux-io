@@ -2650,6 +2650,120 @@ dmx.config({
           }
         ]
       }
+    ],
+    "inventoryapi": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "array",
+            "name": "result",
+            "sub": [
+              {
+                "type": "text",
+                "name": "uid"
+              },
+              {
+                "type": "text",
+                "name": "set"
+              },
+              {
+                "type": "text",
+                "name": "script"
+              },
+              {
+                "type": "number",
+                "name": "type"
+              },
+              {
+                "type": "text",
+                "name": "encoding"
+              }
+            ]
+          },
+          {
+            "type": "array",
+            "name": "mint_tokens",
+            "sub": [
+              {
+                "type": "number",
+                "name": "qty"
+              },
+              {
+                "type": "text",
+                "name": "set"
+              },
+              {
+                "type": "text",
+                "name": "script"
+              },
+              {
+                "type": "number",
+                "name": "type"
+              },
+              {
+                "type": "text",
+                "name": "encoding"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "user"
+          },
+          {
+            "type": "text",
+            "name": "node"
+          },
+          {
+            "type": "number",
+            "name": "behind"
+          },
+          {
+            "type": "text",
+            "name": "VERSION"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "via"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          }
+        ]
+      }
     ]
   },
   "apps": {
