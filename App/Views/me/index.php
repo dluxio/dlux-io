@@ -104,7 +104,7 @@ if ( isset( $author ) ) {
     <!-- page tab content -->
     <div class="tab-content bg-color"> 
       <!-- blog tab -->
-      <div role="tabpanel" class="tab-pane fade show " id="blog" aria-labelledby="blogtab"> 
+      <div role="tabpanel" class="tab-pane fade show active" id="blog" aria-labelledby="blogtab"> 
         <!-- blog repeat -->
         <div class="card-columns p-3" id="blogResult" is="dmx-repeat" dmx-bind:repeat="dluxGetBlog.data.result">
           <div class="card text-white bg-dark mt-2 mb-3">
@@ -418,7 +418,7 @@ if ( isset( $author ) ) {
         </div>
       </div>
       <!-- inventory tab -->
-      <div role="tabpanel" class="tab-pane fade show active" id="inventory" aria-labelledby="inventorytab">
+      <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
         <div class="container"> 
           <!-- Mint repeat -->
           <div class="card-columns cc-3 pt-5" id="inventory-mint" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.mint_tokens">
@@ -473,14 +473,23 @@ if ( isset( $author ) ) {
                             <div class="col-12">
                               <label for="giveFTusername">Username</label>
                               <div class="input-group">
-								  
                                 <div class="input-group-prepend"> <span class="input-group-text" id="giveFTuserprep">@</span></div>
                                 <input type="text" class="form-control r-radius-hotfix" id="giveFTusername" aria-describedby="giveFTuserprep" required>
-								
                                 <div class="invalid-feedback"> Please enter the username you'd like to give to. </div>
                             	</div>
                             </div>
-                          </div>
+							  </div>
+							  <div class="form-row my-2">
+							  <div class="col-12">
+                              <label for="giveFTqty">Quantity</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="giveFTqty" aria-describedby="giveFTqtyappend" placeholder="1" step="1" min="1" required readonly>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="giveFTqtyappend">DLUX</span> </div>
+								  <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+                              </div>
+                            </div>
+							  </div>
+                          
                           <center><button id="giveFTbutton" class="btn btn-info my-2" type="submit">Give</button></center>
                         </form>
                       </div>
@@ -500,8 +509,8 @@ if ( isset( $author ) ) {
                             <div class="col-6">
                               <label for="tradeFTqty">Quantity</label>
                               <div class="input-group">
-                                <input type="number" class="form-control" id="tradeFTamount" aria-describedby="tradeFTamountappend" placeholder="1" step="1" min="1" required readonly>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTamountappend">DLUX</span> </div>
+                                <input type="number" class="form-control" id="tradeFTqty" aria-describedby="tradeFTqtyappend" placeholder="1" step="1" min="1" required readonly>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTqtyappend">DLUX</span> </div>
 								  <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
                               </div>
                             </div>
@@ -520,7 +529,15 @@ if ( isset( $author ) ) {
                       <div role="tabpanel" class="tab-pane fade show " id="sellFTtab" aria-labelledby="sellFT">
                         <form class="needs-validation mt-4" validate dmx-bind:action="javascript:sellFT('{{mint_detail.data.set}}','{{sellFTprice.value}}')">
                           <div class="form-row my-2">
-                            <div class="col-12">
+							  <div class="col-6">
+                              <label for="sellFTqty">Quantity</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="sellFTqty" aria-describedby="sellFTqtyappend" placeholder="1" step="1" min="1" required readonly>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="sellFTqtyappend">DLUX</span> </div>
+								  <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+                              </div>
+                            </div>
+                            <div class="col-6">
                               <label for="sellFTprice">Sale Price</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="sellFTprice" aria-describedby="sellFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
@@ -540,7 +557,15 @@ if ( isset( $author ) ) {
                       <div role="tabpanel" class="tab-pane fade show " id="auctionFTtab" aria-labelledby="auctionFT">
                         <form class="needs-validation mt-4" validate dmx-bind:action="javascript:auctionFT('{{mint_detail.data.set}}','{{auctionFTprice.value}}','{{Date.now()}}','{{auctionFTdays.value}}')">
                           <div class="form-row my-2">
-                            <div class="col-12">
+							  <div class="col-6">
+                              <label for="auctionFTqty">Quantity</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="auctionFTqty" aria-describedby="auctionFTqtyappend" placeholder="1" step="1" min="1" required readonly>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">DLUX</span> </div>
+								  <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+                              </div>
+                            </div>
+                            <div class="col-6">
                               <label for="auctionFTprice">Starting Bid</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="auctionFTprice" aria-describedby="auctionFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
@@ -592,10 +617,33 @@ if ( isset( $author ) ) {
 							<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and auctioned publicly. Once submitted this cannot be cancelled. If there are no bids at the end of the auction period, it will be returned to you immediately.</p>
                          </div>
                           <center><button class="btn btn-info my-2" type="submit">List Item</button></center>
-                        </fo
+							</div>
+                      <div role="tabpanel" class="tab-pane fade show " id="airdropFTtab" aria-labelledby="airdropFT">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:airdropFT('{{mint_detail.data.set}}','{{airdropFTusers.value}}')">
+                          <div class="form-row my-2">
+                            <div class="col-12">
+                              <label for="airdropFTusers">Airdrop to:</label>
+                              <div class="input-group">
+                                <textarea name="paragraph_text" cols="50" rows="2" class="form-control r-radius-hotfix" id="airdropFTusers" aria-describedby="airdropFT" required placeholder="name user-name"></textarea>
+                              <div class="invalid-feedback"> Please enter at least one user name to airdrop tokens to. </div>
+								  </div>
+                            </div>
+                          </div>
+							<div class="form-row my-2">
+							<div class="col-12">
+                              <label for="airdropFTqty">Quantity sent to each:</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="airdropFTqty" aria-describedby="airdropFTqtyappend" placeholder="1" step="1" min="1" required readonly>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="airdropFTqtyappend">DLUX</span> </div>
+								  <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+                              </div>
+                            </div>
+							</div>
+							<center><button class="btn btn-info my-2" type="submit">Airdrop Tokens</button></center>
+						  <form>
 						  
-						  <textarea name="paragraph_text" cols="50" rows="10"></textarea>
-						  rm>
+						 
+						 </form>
                       </div>
                     </div>
                   </div>
