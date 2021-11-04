@@ -246,7 +246,7 @@ include_once( $path );
                                       </tbody>
                                     </table>
                                   </div>
-                                  <div role="tabpanel" class="tab-pane fade" dmx-bind:id="{{set}}-mint-auctionstab" aria-labelledby="mintauctionstab">
+                                  <div role="tabpanel" class="tab-pane fade show" dmx-bind:id="{{set}}-mint-auctionstab" aria-labelledby="mintauctionstab">
                                     <table class="table table-sm table-dark bg-none">
                                       <thead>
                                         <tr>
