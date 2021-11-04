@@ -442,7 +442,7 @@ if ( isset( $author ) ) {
               </div>
               <div class="card-footer">
                 <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" dmx-on:click="openMintToken('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
+                  <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
                   <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-exchange-alt ml-3"></i></button>
                 </div>
               </div>
