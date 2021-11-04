@@ -617,7 +617,8 @@ if ( isset( $author ) ) {
 							<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and auctioned publicly. Once submitted this cannot be cancelled. If there are no bids at the end of the auction period, it will be returned to you immediately.</p>
                          </div>
                           <center><button class="btn btn-info my-2" type="submit">List Item</button></center>
-							</div>
+						  </form>
+						  </div>
                       <div role="tabpanel" class="tab-pane fade show " id="airdropFTtab" aria-labelledby="airdropFT">
                         <form class="needs-validation mt-4" validate dmx-bind:action="javascript:airdropFT('{{mint_detail.data.set}}','{{airdropFTusers.value}}')">
                           <div class="form-row my-2">
@@ -640,7 +641,7 @@ if ( isset( $author ) ) {
                             </div>
 							</div>
 							<center><button class="btn btn-info my-2" type="submit">Airdrop Tokens</button></center>
-						  <form>
+						  
 						  
 						 
 						 </form>
@@ -1309,7 +1310,7 @@ if ( isset( $author ) ) {
             </div>
           </div>
           <div class="form-group">
-            <label id="senddluxamountlab" for="senddluxammount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'senddluxamount')">0</a>):</label>
+            <label id="senddluxamountlab" for="senddluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'senddluxamount')">0</a>):</label>
             <div class="input-group">
               <input class="form-control" id="senddluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
               <div class="input-group-append">
@@ -1361,7 +1362,7 @@ if ( isset( $author ) ) {
             </div>
           </div>
           <div class="form-group">
-            <label id="powerdluxamountlab" for="powerupdluxammount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000), 'powerupdluxamount')"></a>):</label>
+            <label id="powerdluxamountlab" for="powerupdluxmmount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000), 'powerupdluxamount')"></a>):</label>
             <div class="input-group">
               <input class="form-control" id="powerupdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
               <div class="input-group-append">
@@ -1407,7 +1408,7 @@ if ( isset( $author ) ) {
             </div>
           </div>
           <div class="form-group">
-            <label id="dluxamountlab" for="powerdowndluxammount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerdowndluxamount')">0</a>):</label>
+            <label id="dluxamountlab" for="powerdowndluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerdowndluxamount')">0</a>):</label>
             <div class="input-group">
               <input class="form-control" id="powerdowndluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
               <div class="input-group-append">
