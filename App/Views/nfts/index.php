@@ -255,19 +255,20 @@ include_once( $path );
                                           <th scope="col" class="small">TOTAL</th>
                                           <th scope="col" class="small">HIGH BIDDER</th>
                                       <tbody is="dmx-repeat" dmx-bind:repeat="auctions" id="mintauctionsorders">
-    
+    									<tr>
+										  <th scope="row" colspan="4" style="background-color: crimson"><span dmx-bind:id="timer-{{set}}-{{uid}}">{{time.animateTime(set, uid)}}</span></th>
+										  </tr>
 										  <tr>
                                             <th scope="row">1</th>
                                             <td>{{pricenai.nai()}}</td>
-                                            <td>{{((price/1000)*dluxperdollar).formatCurrency())}}</td>
+                                            <td>&asymp; {{((price/1000)*dluxperdollar.value).formatCurrency())}}</td>
                                             <td>{{bidder}}</td>
                                           </tr>
                                           <tr>
-											  <th scope="row" colspan="2" style="background-color: crimson"><span dmx-bind:id="timer-{{set}}-{{uid}}">{{time.animateTime(set, uid)}}</span></th>
-											  <td><input dmx-bind:id="{{set}}-{{uid}}-bid" class="form-control " type="number" class="d-none" dmx-bind:placeholder="{{(price/1000+1).formatNumber('3','.',',')}}"></td>
-											  <input dmx-bind:value="{{set.concant('set')}}">
-											  <td><button id="{{set}}-cancelFTbtn1" class="btn btn-warning" dmx-show="(by == userCookie.value)" dmx-on:click="cancelFTauction('{{set}}','{{uid}}')">Cancel</button>
-                                            <button id="{{set}}-buyFTbtn1" class="btn btn-primary" dmx-show="(by != userCookie.value)" dmx-on:click="bidFT('{{set}}','{{uid}}','{{set-uid-.value}}')">Bid</button></div></td>
+											  <th scope="row" colspan="2"></th>
+											  <td><input dmx-bind:id="{{set}}-{{uid}}-bid" class="form-control " type="number" dmx-bind:placeholder="{{(price/1000+1).formatNumber('3','.',',')}}"></td>
+											  <td><button id="{{set}}-{{uid}}-cancelFTbtn" class="btn btn-warning" dmx-show="(by == userCookie.value)" dmx-on:click="cancelFTauction('{{set}}','{{uid}}')">Cancel</button>
+                                            <button id="{{set}}-{{uid}}-buyFTbtn" class="btn btn-primary" dmx-show="(by != userCookie.value)" dmx-on:click="bidFT('{{set}}','{{uid}}','document.getElementById(`{{set}}-{{uid}}-bid)`).value')">Bid</button></div></td>
                                           </tr>
                                       </tbody>
                                       <th scope="col" class="small"></th>
