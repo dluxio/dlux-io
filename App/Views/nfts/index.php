@@ -11,7 +11,7 @@ include_once( $path );
 if ( isset( $_COOKIE[ 'user' ] ) ) {
   echo "<dmx-api-datasource id=\"inventoryapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
 } else {
-  echo "<dmx-api-datasource id=\"inventoryapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"inventoryapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/\"></dmx-api-datasource>";
 };
 ?>
 <!--page specific-->
@@ -168,9 +168,8 @@ include_once( $path );
                         <div class="pr-2"><small>OWN: </small></div>
                         <div class="px-2">
                           <h2 dmx-bind:id="{{set}}-inventory" class="m-0">
+							<div dmx-bind:id="{{set}}-inventory-none2" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">000</div>
                             <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">{{qty.pad(3)}}</div>
-                            <div dmx-bind:id="{{set}}-inventory-none" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set',set,'!=')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'!=').hasItems()">000</div>
-
                           </h2>
                         </div>
                       </div>
