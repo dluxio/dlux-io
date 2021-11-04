@@ -169,7 +169,8 @@ include_once( $path );
                         <div class="px-2">
                           <h2 dmx-bind:id="{{set}}-inventory" class="m-0">
                             <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">{{qty.pad(3)}}</div>
-                            <div dmx-bind:id="{{set}}-inventory-none" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'!=')">000</div>
+                            <div dmx-bind:id="{{set}}-inventory-none" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set',set,'!=')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'!=').hasItems()">000</div>
+
                           </h2>
                         </div>
                       </div>
