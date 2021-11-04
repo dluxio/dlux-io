@@ -284,7 +284,7 @@ include_once( $path );
                     </div>
                     <div class="card-footer d-flex flex-column p-2">
                       <div class="d-flex justify-content-between align-items-center">
-                        <button type="button" class="btn btn-outline-dark mt-1 col-5" dmx-on:click="openMintToken('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
+                        <button type="button" class="btn btn-outline-dark mt-1 col-5" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
                         <button type="button" class="btn btn-outline-dark mt-1 col-5 disabled">Transfer<i class="fas fa-exchange-alt ml-3"></i></button>
                       </div>
                     </div>
