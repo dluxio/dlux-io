@@ -8,6 +8,7 @@ $path .= "/mod/header.php";
 include_once( $path );
 ?>
 <!--page specific-->
+
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
 <style>
@@ -66,7 +67,7 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
 };
 ?>
-	
+
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
@@ -440,7 +441,7 @@ if ( isset( $author ) ) {
                   <h5>Unwrap to see what's inside.</h5>
                 </div>
               </div>
-              <div class="card-footer">
+              <div class="card-footer" dmx-show="(inventorydata.data.user == userCookie.value)">
                 <div class="d-flex flex-wrap justify-content-between">
                   <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
                   <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-exchange-alt ml-3"></i></button>

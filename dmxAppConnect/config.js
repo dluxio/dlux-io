@@ -2874,6 +2874,10 @@ dmx.config({
           },
           {
             "type": "text",
+            "name": "connection"
+          },
+          {
+            "type": "text",
             "name": "content-length"
           }
         ]
