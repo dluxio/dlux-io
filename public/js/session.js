@@ -582,6 +582,7 @@ function sellFT(setname, price,  callback){
  }
 
 function airdropFT(setname, to_array,  callback){
+    let arr = to_array.split(' ')
     var promises = []
     for (item in to_array){ promises.push(checkAccount(to_array[item]))}
     Promise.all(promises)
