@@ -604,7 +604,8 @@ function buyFT(setname, uid, price,  callback){
      broadcastCJA({set: setname, uid, price}, 'dlux_ft_buy', `Trying to buy ${setname} mint token`)
  }
 
-function bidFT(setname, uid, bid_amount,  callback){
+function bidFT(setname, uid, bid_id,  callback){
+    const bid_amount = document.getElementById(bid_id).value
     bid_amount = parseInt(bid_amount * 1000)
     broadcastCJA({set: setname, uid, bid_amount}, 'dlux_ft_bid', `Trying to bid on ${setname} mint token.`) 
  }
