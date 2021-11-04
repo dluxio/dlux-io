@@ -2928,6 +2928,79 @@ dmx.config({
         }
       ],
       "outputType": "array"
+    },
+    "inventoryview": {
+      "meta": [
+        {
+          "type": "array",
+          "name": "result",
+          "sub": [
+            {
+              "type": "text",
+              "name": "uid"
+            },
+            {
+              "type": "text",
+              "name": "set"
+            },
+            {
+              "type": "text",
+              "name": "script"
+            },
+            {
+              "type": "number",
+              "name": "type"
+            },
+            {
+              "type": "text",
+              "name": "encoding"
+            }
+          ]
+        },
+        {
+          "type": "array",
+          "name": "mint_tokens",
+          "sub": [
+            {
+              "type": "number",
+              "name": "qty"
+            },
+            {
+              "type": "text",
+              "name": "set"
+            },
+            {
+              "type": "text",
+              "name": "script"
+            },
+            {
+              "type": "number",
+              "name": "type"
+            },
+            {
+              "type": "text",
+              "name": "encoding"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "user"
+        },
+        {
+          "type": "text",
+          "name": "node"
+        },
+        {
+          "type": "number",
+          "name": "behind"
+        },
+        {
+          "type": "text",
+          "name": "VERSION"
+        }
+      ],
+      "outputType": "object"
     }
   },
   "apps": {
