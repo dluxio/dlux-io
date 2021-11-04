@@ -627,6 +627,23 @@ function NFTDelete(setname, uid, callback){
     broadcastCJA({ set: setname, uid }, "dlux_nft_delete", `Trying to melt ${setname}:${uid}`) 
  }
 
+ function FTReserveTransfer(setname, uid, to, price, callback){
+    price = parseInt(price * 1000)
+    checkAccount(to)
+    .then(r => {
+        broadcastCJA({ set: setname, uid, to, price}, "dlux_ft_escrow", `Trying to trade ${setname}: Mint Token`)
+    })
+    .catch(e=>alert(`${to} is not a valid hive account`))
+ }
+
+function FTReserveComplete(setname, uid, callback){
+     broadcastCJA({ set: setname, uid}, "dlux_ft_escrow_complete", `Trying to complete ${setname} mint tokentrade`)
+ }
+
+function FTReserveCancel(setname, uid, callback){
+    broadcastCJA({ set: setname, uid }, "dlux_ft_escrow_cancel", `Trying to cancel ${setname} mint token trade`)
+ }
+
  function NFTDefine(setname, type, script, permlink, start, end, royalty, handling, max_fee, bond, callback){
     max_fee = parseInt(max_fee * 1000)
     royalty = parseInt(royalty * 100)
