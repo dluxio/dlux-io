@@ -583,11 +583,12 @@ function sellFT(setname, price,  callback){
 
 function airdropFT(setname, to_str,  callback){
     let to_array = to_str.split(' ')
+    to_array = [... new set(to_array)]
     var promises = []
     for (item in to_array){ promises.push(checkAccount(to_array[item]))}
     Promise.all(promises)
     .then(r=>{
-        broadcastCJA({set:setname, to: [... new set(to_array)]}, 'dlux_ft_airdrop', `Trying to airdrop ${setname} mint tokens`)
+        broadcastCJA({set:setname, to: to_array}, 'dlux_ft_airdrop', `Trying to airdrop ${setname} mint tokens`)
     })
     .catch(e=>alert(`At least one hive account doesn't exist: ${e}`))
  }
