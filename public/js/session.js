@@ -551,11 +551,37 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      .catch(e => { console.log(e) })
  }
 
-function openMintToken(setname, callback){
-    broadcastCJA({set:setname}, 'dlux_nft_mint', `Minting ${setname} token...`)
+// FT Transfers //
+
+function giveFT(setname, to, callback){
+    checkAccount(to)
+    .then(r => {
+        broadcastCJA({set: setname,to}, "dlux_ft_transfer", `Trying to give ${setname} mint token to ${to}`) 
+    })
+    .catch(e=>alert(`${to} is not a valid hive account`))
  }
 
-function airdropMintTokens(setname, to_array,  callback){
+function tradeFT(setname, to, price, callback){
+    price = parseInt(price * 1000)
+    checkAccount(to)
+    .then(r => {
+        broadcastCJA({ set: setname, uid, to, price}, "dlux_ft_escrow", `Trying to trade ${setname}: Mint Token`)
+    })
+    .catch(e=>alert(`${to} is not a valid hive account`))
+ }
+
+function sellFT(setname, price,  callback){
+    price = parseInt(price * 1000)
+    broadcastCJA({set: setname, price}, 'dlux_ft_sell', `Trying to sell ${setname} mint token`)
+ }
+
+ function auctionFT(setname, price, now, time, callback){
+    time = parseInt(time)
+    price = parseInt(price * 1000)
+    broadcastCJA({set:setname, price, now, time}, 'dlux_ft_auction', `Trying to auction ${setname} mint tokens`)
+ }
+
+function airdropFT(setname, to_array,  callback){
     var promises = []
     for (item in to_array){ promises.push(checkAccount(to_array[item]))}
     Promise.all(promises)
@@ -565,37 +591,32 @@ function airdropMintTokens(setname, to_array,  callback){
     .catch(e=>alert(`At least one hive account doesn't exist: ${e}`))
  }
 
- function auctionMintToken(setname, price, now, time, callback){
-    time = parseInt(time)
-    price = parseInt(price * 1000)
-    broadcastCJA({set:setname, price, now, time}, 'dlux_ft_auction', `Trying to auction ${setname} mint tokens`)
+// FT Actions //
+
+function openFT(setname, callback){
+    broadcastCJA({set:setname}, 'dlux_nft_mint', `Minting ${setname} token...`)
  }
 
-function bidMintToken(setname, uid, bid_amount,  callback){
-    bid_amount = parseInt(bid_amount * 1000)
-    broadcastCJA({set: setname, uid, bid_amount}, 'dlux_ft_bid', `Trying to bid on ${setname} mint token.`) 
- }
-
-function sellMintToken(setname, price,  callback){
-    price = parseInt(price * 1000)
-    broadcastCJA({set: setname, price}, 'dlux_ft_sell', `Trying to sell ${setname} mint token`)
- }
-
-function buyMintToken(setname, uid, price,  callback){
+function buyFT(setname, uid, price,  callback){
      price = parseInt(price * 1000)
      broadcastCJA({set: setname, uid, price}, 'dlux_ft_buy', `Trying to buy ${setname} mint token`)
  }
 
-function cancelSellMintToken(setname, uid,  callback){
+function bidFT(setname, uid, bid_amount,  callback){
+    bid_amount = parseInt(bid_amount * 1000)
+    broadcastCJA({set: setname, uid, bid_amount}, 'dlux_ft_bid', `Trying to bid on ${setname} mint token.`) 
+ }
+
+function cancelSellFT(setname, uid,  callback){
      broadcastCJA({set: setname, uid}, 'dlux_ft_cancel_sell', `Trying to cancel ${setname} mint token sell`)
  }
 
-function giveMintToken(setname, to, callback){
-    checkAccount(to)
-    .then(r => {
-        broadcastCJA({set: setname,to}, "dlux_ft_transfer", `Trying to give ${setname} mint token to ${to}`) 
-    })
-    .catch(e=>alert(`${to} is not a valid hive account`))
+function tradeFTcomplete(setname, uid, callback){
+     broadcastCJA({ set: setname, uid}, "dlux_ft_escrow_complete", `Trying to complete ${setname} mint tokentrade`)
+ }
+
+function tradeFTcancel(setname, uid, callback){
+    broadcastCJA({ set: setname, uid }, "dlux_ft_escrow_cancel", `Trying to cancel ${setname} mint token trade`)
  }
 
 function giveNFT(setname, uid, to, callback){
@@ -627,22 +648,7 @@ function NFTDelete(setname, uid, callback){
     broadcastCJA({ set: setname, uid }, "dlux_nft_delete", `Trying to melt ${setname}:${uid}`) 
  }
 
- function FTReserveTransfer(setname, uid, to, price, callback){
-    price = parseInt(price * 1000)
-    checkAccount(to)
-    .then(r => {
-        broadcastCJA({ set: setname, uid, to, price}, "dlux_ft_escrow", `Trying to trade ${setname}: Mint Token`)
-    })
-    .catch(e=>alert(`${to} is not a valid hive account`))
- }
 
-function FTReserveComplete(setname, uid, callback){
-     broadcastCJA({ set: setname, uid}, "dlux_ft_escrow_complete", `Trying to complete ${setname} mint tokentrade`)
- }
-
-function FTReserveCancel(setname, uid, callback){
-    broadcastCJA({ set: setname, uid }, "dlux_ft_escrow_cancel", `Trying to cancel ${setname} mint token trade`)
- }
 
  function NFTDefine(setname, type, script, permlink, start, end, royalty, handling, max_fee, bond, callback){
     max_fee = parseInt(max_fee * 1000)
