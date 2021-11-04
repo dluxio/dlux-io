@@ -640,10 +640,7 @@ if ( isset( $author ) ) {
                               </div>
                             </div>
 							</div>
-							<center><button class="btn btn-info my-2" type="submit">Airdrop Tokens</button></center>
-						  
-						  
-						 
+							<center><button class="btn btn-info my-2" type="submit">Airdrop Tokens</button></center>						 
 						 </form>
                       </div>
                     </div>
@@ -652,7 +649,7 @@ if ( isset( $author ) ) {
               </div>
             </div>
           </div>
-
+		</dmx-data-detail>
 		  <!-- NFT repeat -->
           <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
             <div class="card text-white bg-dark ">
