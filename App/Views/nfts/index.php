@@ -252,7 +252,7 @@ include_once( $path );
                                           <th scope="col" class="small">QTY</th>
                                           <th scope="col" class="small">BID</th>
                                           <th scope="col" class="small">TOTAL</th>
-                                          <th scope="col" class="small">HIGH BIDDERr</th>
+                                          <th scope="col" class="small">HIGH BIDDER</th>
                                       <tbody is="dmx-repeat" dmx-bind:repeat="auctions" id="mintauctionsorders">
     									<tr>
 										  <th scope="row" colspan="4" style="background-color: crimson"><span dmx-bind:id="timer-{{set}}-{{uid}}">{{time.animateTime(set, uid)}}</span></th>
