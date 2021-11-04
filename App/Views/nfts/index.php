@@ -635,7 +635,7 @@ include_once( $path );
             </div>
             <div class="card-img-top" dmx-bind:id="detail-image-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" dmx-bind:alt="{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}">{{auctions_detail.data.uid.nftDetailWell(auctions_detail.data.script, auctions_detail.data.set)}}</div>
             <div class="text-center " style="background: crimson">
-              <h5 dmx-bind:id="detail-timer-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" class="mb-0 lead">{{auctions_detail.data.time.animateTime(auctions_detail.data.set, auctions_detail.data.uid)}}{{auctions_detail.data.time}}{{auctions_detail.data.set}}{{auctions_detail.data.uid}}</h5>
+              <h5 dmx-bind:id="detail-timer-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" class="mb-0 lead">{{auctions_detail.data.time.animateTime(auctions_detail.data.set, auctions_detail.data.uid, true)}}{{auctions_detail.data.time}}{{auctions_detail.data.set}}{{auctions_detail.data.uid}}</h5>
             </div>
             <div class="card-body text-center">
               <div>{{auctions_detail.data.by}} is auctioning {{auctions_detail.data.uid}}</div>

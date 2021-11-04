@@ -912,7 +912,7 @@ $("#orderspin${i}").removeClass("d-none");
 $("#orderlabel${i}").addClass("d-none");
 }
 
-function  countdown(t, s, u){
+function  countdown(t, s, u, d){
   const x = setInterval(function() {
 
   // Get today's date and time
@@ -929,8 +929,13 @@ function  countdown(t, s, u){
 
   // Display the result in the element with id="demo"
   try{
+      if(!d){
     document.getElementById(`timer-${s}-${u}`).innerText = days + "d " + hours + "h "
   + minutes + "m " + seconds + "s ";
+      } else {
+          document.getElementById(`detail-timer-${s}-${u}`).innerText = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+      }
   } catch (e){
     console.log(s, u)
     clearInterval(x)
