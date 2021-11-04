@@ -8,7 +8,6 @@ $path .= "/mod/header.php";
 include_once( $path );
 ?>
 <!--page specific-->
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
 <style>
