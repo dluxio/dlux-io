@@ -581,8 +581,8 @@ function sellFT(setname, price,  callback){
     broadcastCJA({set:setname, price, now, time}, 'dlux_ft_auction', `Trying to auction ${setname} mint tokens`)
  }
 
-function airdropFT(setname, to_array,  callback){
-    let arr = to_array.split(' ')
+function airdropFT(setname, to_str,  callback){
+    let to_array = to_str.split(' ')
     var promises = []
     for (item in to_array){ promises.push(checkAccount(to_array[item]))}
     Promise.all(promises)
