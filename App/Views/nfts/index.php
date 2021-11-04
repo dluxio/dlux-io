@@ -238,8 +238,8 @@ include_once( $path );
                                           <td>{{pricenai.nai()}}</td>
                                           <td>&asymp; {{((price/1000)*dluxperdollar.value).formatCurrency())}}</td>
                                           <td><div>
-                                            <button class="btn btn-warning" id="cancelFTbtn1" dmx-show="(by == userCookie.value)" dmx-on:click="cancelFTsell('{{set}}','{{uid}}')">Cancel</button>
-                                            <button class="btn btn-primary" dmx-bind:id="{{set}}-buyFTbtn1" dmx-show="(by != userCookie.value)" dmx-on:click="buyFT('{{set}}','{{uid}}')">Buy</button>
+                                            <button class="btn btn-warning" dmx-bind:id="{{set}}-{{uid}}-cancelFTbtn" dmx-show="(by == userCookie.value)" dmx-on:click="cancelFTsell('{{set}}','{{uid}}')">Cancel</button>
+                                            <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyFTbtn" dmx-show="(by != userCookie.value)" dmx-on:click="buyFT('{{set}}','{{uid}}')">Buy</button>
                                           </div></td>
                                         </tr>
                                       </tbody>
@@ -266,7 +266,7 @@ include_once( $path );
                                           <tr>
 											  <th scope="row" colspan="2"></th>
 											  <td><input dmx-bind:id="{{set}}-{{uid}}-bid" class="form-control " type="number" dmx-bind:placeholder="{{(price/1000+1).formatNumber('3','.',',')}}"></td>
-											  <td><button dmx-bind:id="{{set}}-{{uid}}-cancelFTbtn" class="btn btn-warning" dmx-show="(by == userCookie.value)" dmx-on:click="cancelFTauction('{{set}}','{{uid}}')">Cancel</button>
+											  <td><button class="btn btn-secondary" dmx-show="(by == userCookie.value)">Buy</button>
                                             <button dmx-bind:id="{{set}}-{{uid}}-buyFTbtn" class="btn btn-primary" dmx-show="(by != userCookie.value)" dmx-on:click="bidFT('{{set}}','{{uid}}')">Bid</button></div></td>
                                           </tr>
                                       </tbody>
