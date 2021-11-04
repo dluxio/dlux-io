@@ -267,7 +267,7 @@ include_once( $path );
 											  <th scope="row" colspan="2"></th>
 											  <td><input dmx-bind:id="{{set}}-{{uid}}-bid" class="form-control " type="number" dmx-bind:placeholder="{{(price/1000+1).formatNumber('3','.',',')}}"></td>
 											  <td><button dmx-bind:id="{{set}}-{{uid}}-cancelFTbtn" class="btn btn-warning" dmx-show="(by == userCookie.value)" dmx-on:click="cancelFTauction('{{set}}','{{uid}}')">Cancel</button>
-                                            <button dmx-bind:id="{{set}}-{{uid}}-buyFTbtn" class="btn btn-primary" dmx-show="(by != userCookie.value)" dmx-on:click="bidFT('{{set}}','{{uid}}','{{set}}-{{uid}}-bid.value')">Bid</button></div></td>
+                                            <button dmx-bind:id="{{set}}-{{uid}}-buyFTbtn" class="btn btn-primary" dmx-show="(by != userCookie.value)" dmx-on:click="bidFT('{{set}}','{{uid}}')">Bid</button></div></td>
                                           </tr>
                                       </tbody>
                                       <th scope="col" class="small"></th>
