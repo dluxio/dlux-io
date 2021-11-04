@@ -485,7 +485,7 @@ if ( isset( $author ) ) {
                               <div class="input-group">
                                 <input type="number" class="form-control" id="giveFTqty" aria-describedby="giveFTqtyappend" placeholder="1" step="1" min="1" required readonly>
                                 <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="giveFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
                               </div>
                             </div>
 							  </div>
@@ -511,7 +511,7 @@ if ( isset( $author ) ) {
                               <div class="input-group">
                                 <input type="number" class="form-control" id="tradeFTqty" aria-describedby="tradeFTqtyappend" placeholder="1" step="1" min="1" required readonly>
                                 <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
                               </div>
                             </div>
 							  <div class="col-6">
@@ -519,7 +519,7 @@ if ( isset( $author ) ) {
                               <div class="input-group">
                                 <input type="number" class="form-control" id="tradeFTamount" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required>
                                 <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTamountappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
                               </div>
                             </div>
                           </div>
@@ -534,7 +534,7 @@ if ( isset( $author ) ) {
                               <div class="input-group">
                                 <input type="number" class="form-control" id="sellFTqty" aria-describedby="sellFTqtyappend" placeholder="1" step="1" min="1" required readonly>
                                 <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="sellFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
                               </div>
                             </div>
                             <div class="col-6">
@@ -544,7 +544,7 @@ if ( isset( $author ) ) {
                                 <div class="input-group-append">
                                   <div class="input-group-text" id="sellFTpriceappend">DLUX</div>
                                 </div>
-                              <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+                              <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
 								  </div>
                             </div>
                           </div>
@@ -562,7 +562,7 @@ if ( isset( $author ) ) {
                               <div class="input-group">
                                 <input type="number" class="form-control" id="auctionFTqty" aria-describedby="auctionFTqtyappend" placeholder="1" step="1" min="1" required readonly>
                                 <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
                               </div>
                             </div>
                             <div class="col-6">
@@ -572,7 +572,7 @@ if ( isset( $author ) ) {
                                 <div class="input-group-append">
                                   <div class="input-group-text" id="auctionFTpriceappend">DLUX</div>
                                 </div>
-                              <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to start the bidding. </div>
+                              <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
 								  </div>
                             </div>
                           </div>
@@ -635,7 +635,7 @@ if ( isset( $author ) ) {
                               <div class="input-group">
                                 <input type="number" class="form-control" id="airdropFTqty" aria-describedby="airdropFTqtyappend" placeholder="1" step="1" min="1" required readonly>
                                 <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="airdropFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
                               </div>
                             </div>
 							</div>
@@ -810,7 +810,7 @@ if ( isset( $author ) ) {
                                                   <div class="input-group-text" id="sellcoin">DLUX</div>
                                                 </div>
                                               </div>
-                                              <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to receive. </div>
+                                              <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
                                             </div>
                                           </div>
                                           <div class="form-row my-2 text-left">
@@ -836,7 +836,7 @@ if ( isset( $author ) ) {
                                                   <div class="input-group-text" id="auctioncoin">DLUX</div>
                                                 </div>
                                               </div>
-                                              <div class="invalid-feedback"> Please enter the ammount of DLUX you'd like to start the bidding. </div>
+                                              <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
                                             </div>
                                           </div>
                                           <div class="d-flex justify-content-around">
@@ -1074,8 +1074,8 @@ if ( isset( $author ) ) {
                   <hr class="my-4 bg-light">
                   <div class="clearfix">
                     <div class="float-left">
-                      <h4>DLUX Beneficiary Ammount</h4>
-                      <p class="text-white-50">Adjust the beneficiary ammount paid to dlux on new posts, 10-100</p>
+                      <h4>DLUX Beneficiary Amount</h4>
+                      <p class="text-white-50">Adjust the beneficiary amount paid to dlux on new posts, 10-100</p>
                     </div>
                     <div class="float-right">
                       <div class="input-group">
