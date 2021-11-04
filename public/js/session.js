@@ -678,11 +678,6 @@ function auctionFT(setname, price, now, time, callback){
     broadcastCJA({ set: setname, uid, bid_amount}, "dlux_nft_bid", `Bidding on ${setname}:${uid} for ${parseFloat(bid_amount/1000).toFixed(3)} DLUX`)
  }
 
-  function bidFT(setname, uid, bid_amount, callback){
-    bid_amount = parseInt(bid_amount * 1000)
-    broadcastCJA({ set: setname, uid, bid_amount}, "dlux_ft_bid", `Bidding on ${setname} mint token for ${parseFloat(bid_amount/1000).toFixed(3)} DLUX`)
- }
-
 function sellNFT(setname, uid, price, callback){
     price = parseInt(price * 1000)
     broadcastCJA({ set: setname, uid, price}, "dlux_nft_sell", `Trying to list ${setname}:${uid} for sell`)
