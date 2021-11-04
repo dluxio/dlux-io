@@ -565,7 +565,7 @@ function tradeFT(setname, to, price, callback){
     price = parseInt(price * 1000)
     checkAccount(to)
     .then(r => {
-        broadcastCJA({ set: setname, uid, to, price}, "dlux_ft_escrow", `Trying to trade ${setname}: Mint Token`)
+        broadcastCJA({ set: setname, to, price}, "dlux_ft_escrow", `Trying to trade ${setname}: Mint Token`)
     })
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
