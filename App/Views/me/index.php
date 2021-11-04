@@ -67,7 +67,7 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
 };
 ?>
-	<dmx-api-datasource id="inventorydata" is="dmx-fetch" url="https://token.dlux.io/api/nfts/robotolux"></dmx-api-datasource>
+	
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
@@ -453,7 +453,7 @@ if ( isset( $author ) ) {
 		  <dmx-data-iterator id="mint_iterator" dmx-bind:data="inventorydata.data.mint_tokens" loop="true" dmx-bind:index="1"></dmx-data-iterator>
           <!-- Mint detail modal -->
 		  <dmx-data-detail id="mint_detail" dmx-bind:data="inventorydata.data.mint_tokens" key="set" dmx-bind:value="mint_iterator.value.set">
-          <div class="modal fade show d-block" id="mintTransferModal" tabindex="11" role="dialog" aria-hidden="true">
+          <div class="modal fade show" id="mintTransferModal" tabindex="11" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-full modal-dialog-centered" role="document">
               <div class="modal-content bg-dark text-white">
                 <div class="border border-info bg-darker mx-auto px-5 py-3 rounded col-12">
@@ -592,7 +592,10 @@ if ( isset( $author ) ) {
 							<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and auctioned publicly. Once submitted this cannot be cancelled. If there are no bids at the end of the auction period, it will be returned to you immediately.</p>
                          </div>
                           <center><button class="btn btn-info my-2" type="submit">List Item</button></center>
-                        </form>
+                        </fo
+						  
+						  <textarea name="paragraph_text" cols="50" rows="10"></textarea>
+						  rm>
                       </div>
                     </div>
                   </div>
@@ -600,7 +603,7 @@ if ( isset( $author ) ) {
               </div>
             </div>
           </div>
-          </dmx-data-detail>
+
 		  <!-- NFT repeat -->
           <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
             <div class="card text-white bg-dark ">
