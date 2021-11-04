@@ -14,9 +14,8 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
   echo "<dmx-api-datasource id=\"inventoryapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
 };
 ?>
-
 <!--page specific-->
-
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
 </head>
@@ -268,7 +267,7 @@ include_once( $path );
 											  <th scope="row" colspan="2"></th>
 											  <td><input dmx-bind:id="{{set}}-{{uid}}-bid" class="form-control " type="number" dmx-bind:placeholder="{{(price/1000+1).formatNumber('3','.',',')}}"></td>
 											  <td><button id="{{set}}-{{uid}}-cancelFTbtn" class="btn btn-warning" dmx-show="(by == userCookie.value)" dmx-on:click="cancelFTauction('{{set}}','{{uid}}')">Cancel</button>
-                                            <button id="{{set}}-{{uid}}-buyFTbtn" class="btn btn-primary" dmx-show="(by != userCookie.value)" dmx-on:click="bidFT('{{set}}','{{uid}}','document.getElementById(`{{set}}-{{uid}}-bid)`).value')">Bid</button></div></td>
+                                            <button id="{{set}}-{{uid}}-buyFTbtn" class="btn btn-primary" dmx-show="(by != userCookie.value)" dmx-on:click="bidFT('{{set}}','{{uid}}','document.getElementById(`{{set}}-{{uid}}-bid)`).value')">Bid</button></td>
                                           </tr>
                                       </tbody>
                                       <th scope="col" class="small"></th>
