@@ -104,7 +104,7 @@ include_once( $path );
 		<input class="d-none" id="newNFTmaxfee" dmx-bind:value="(form.newNFTqty.value*(statsapi.data.result.nft_byte_cost/1000)+(statsapi.data.result.nft_fee_1/1000))*1.1"
     </ul>
 		  </div>
-		<div class="col-6 text-center">
+		<div class="col-6 text-center g">
 		  <button id="newNFTsubmit" type="submit" class="btn btn-primary" dmx-bind:action="javascript:defineNFT('{{newNFTname.value}}','{{newNFTtype.value}}','{{newNFTscript.value}}','{{newNFTpermlink.value}}','{{newNFTstart.value}}','{{newNFTend.value}}','{{newNFTqty.value}}','{{newNFTscript.royalty}}','{{newNFThandling.value}}','{{newNFTmaxfee.value}}','{{newNFTbond.value}}')">DO IT</button></center>
 		</div>
     </form>
