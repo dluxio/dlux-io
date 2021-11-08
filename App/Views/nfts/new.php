@@ -32,14 +32,7 @@ include_once( $path );
     </p>
     <b>You must also be logged in as @disregardfiat - restriction lifting soon</b>
     </p>
-    <p>The cost for each mint is based on the byte size of the definition.
-    <ul>
-      <li>Current Definition Fee: {{statsapi.data.result.nft_fee_1/1000}} DLUX</li>
-      <li>Current Minting Fee: {{statsapi.data.result.nft_byte_cost/1000}} DLUX each</li>
-      <li>Bond Value: {{form.newNFTbond.value}} DLUX each</li>
-      <li>Mint Purchase Qty: {{form.newNFTqty.value}}</li>
-      <li>Total: {{(form.newNFTqty.value*(statsapi.data.result.nft_byte_cost/1000)+(statsapi.data.result.nft_fee_1/1000))+100}}</li>ya
-    </ul>
+    <p>
     <form class="needs-validation mt-4" validate>
       <div class="my-4 rounded p-2 border border-primary">
         <div class="form-row">
@@ -97,7 +90,20 @@ include_once( $path );
             <small class="form-text text-muted">How many mints are you purchasing at this time?</small> </div>
         </div>
       </div>
-      <center><button id="newNFTsubmit" type="submit" class="btn btn-primary" dmx-bind:action="javascript:createNFT('{{mint_detail.data.set}}','{{tradeFTusername.value}}','{{tradeFTamount.value}}')">Submit</button></center>
+      <div class="form-row">
+		<div class="col-6">
+			The cost for each mint is based on the byte size of the definition.
+    <ul>
+      <li>Current Definition Fee: {{statsapi.data.result.nft_fee_1/1000}} DLUX</li>
+      <li>Current Minting Fee: {{statsapi.data.result.nft_byte_cost/1000}} DLUX each</li>
+      <li>Bond Value: {{form.newNFTbond.value}} DLUX each</li>
+      <li>Mint Purchase Qty: {{form.newNFTqty.value}}</li>
+      <li>Total: {{(form.newNFTqty.value*(statsapi.data.result.nft_byte_cost/1000)+(statsapi.data.result.nft_fee_1/1000))+100}}</li>
+    </ul>
+		  </div>
+		<div class="col-6 text-center">
+		  <button id="newNFTsubmit" type="submit" class="btn btn-primary" dmx-bind:action="javascript:createNFT('{{mint_detail.data.set}}','{{tradeFTusername.value}}','{{tradeFTamount.value}}')">Submit</button></center>
+		</div>
     </form>
   </div>
   </main>
