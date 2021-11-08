@@ -7,8 +7,10 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 </head>
-<body class="d-flex flex-column h-100 padme-t70 text-white" id="index">
+<body class="d-flex flex-column h-100 padme-t70 text-white" id="new" is="dmx-app">
+<dmx-api-datasource id="statsapi" is="dmx-fetch" url="https://token.dlux.io/stats/"></dmx-api-datasource>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
@@ -16,194 +18,114 @@ include_once( $path );
 ?>
 <main role="main" class="flex-shrink-0">
 <div class="container">
-<div class="container-fluid my-4">
-  <div class="row">
-    <div class="col-lg-6">
-      <form class="bg-darker p-4 border border-primary">
-        <h2>Create new collection</h2>
-        <h5>Logo image</h5>
-        <p class="text-muted">This image will also be used for navigation. 350 x 350 recommended.</p>
-        <div class="d-flex col-4 my-3 mx-0 p-1 rounded-circle cover" style="border: .3em dashed grey;">
-          <div class="flex-fill text-center rounded-circle bg-dark px-3 py-4">
-            <h1 class="m-0" style="font-size:5em"><i class="fas fa-image"></i></h1>
-          </div>
+  <div class="container-fluid bg-dark rounded my-5 py-3">
+    <h3>Create An NFT - ALPHA v0.2</h3>
+    <p class="lead">Turn a layered SVG into a set of unique, tradeable tokens!</p>
+    <p>Non Fungible Tokens are now available on DLUX, each one unique, all based on a set definition that started as an SVG (scaleable vector graphics) file.</p>
+    <p>At this time there are several manual steps that must have been done prior to using this form:
+    <ul>
+      <li>Already created an SVG file</li>
+      <li>Already preppared the HTML file with SVG description data</li>
+      <li>Already uploaded the HTML file to IPFS, and pinned the IPFS file</li>
+    </ul>
+    To proceed, you must have the IPFS hash of your file, and know the Base64 limits of your set.
+    </p>
+    <b>You must also be logged in as @disregardfiat - restriction lifting soon</b>
+    </p>
+    <p>The cost for each mint is based on the byte size of the definition.
+    <ul>
+      <li>Current Definition Fee: {{statsapi.data.result.nft_fee_1/1000}} DLUX</li>
+      <li>Current Minting Fee: {{statsapi.data.result.nft_byte_cost/1000}} DLUX each</li>
+      <li>Bond Value: {{form.newNFTbond.value}} DLUX each</li>
+      <li>Mint Purchase Qty: {{form.newNFTqty.value}}</li>
+      <li>Total: {{(form.newNFTqty.value*(statsapi.data.result.nft_byte_cost/1000)+(statsapi.data.result.nft_fee_1/1000))+100}}</li>
+    </ul>
+    <form class="needs-validation mt-4" validate>
+      <div class="my-4 rounded p-2 border border-primary">
+        <div class="form-row">
+          <div class="form-group col-6">
+            <label for="newNFTname">Set Name</label>
+            <input type="text" class="form-control" id="newNFTname" placeholder="Set Name" required>
+            <div class="invalid-feedback"> Please enter the set name</div>
+            <small class="form-text text-muted">This will be the main name of your set</small> </div>
+          <div class="form-group col-6">
+            <label for="newNFTpermlink">Set Permlink</label>
+            <input type="text" class="form-control" id="newNFTpermlink" placeholder="/user/set-name" required>
+            <div class="invalid-feedback"> Please enter the set permlink</div>
+            <small class="form-text text-muted">This should be your announcment post</small> </div>
         </div>
-        <h5>Featured image</h5>
-        <p class="text-muted">This image will be used for featuring your collection on the homepage, category pages, or other promotional areas of DLUX. 600 x 400 recommended.</p>
-        <div class="d-flex col-6 my-3 mx-0 p-1" style="border: .3em dashed grey">
-          <div class="flex-fill text-center m-0 bg-dark px-3 py-4" >
-            <h1 class="m-0" style="font-size:5em"><i class="fas fa-image"></i></h1>
-          </div>
+        <div class="form-row">
+          <div class="form-group col-4">
+            <label for="newNFTroyalty">Royalty (0-50%)</label>
+            <input type="number" class="form-control" id="newNFTroyalty" step="0.01" min="0" max="50" value="10">
+            <small class="form-text text-muted">The percent paid back to you from each future DLUX contract containing any asset from the set.</small> </div>
+          <div class="form-group col-4">
+            <label for="newNFTpermlink">Bond Value (0-?)</label>
+            <input type="number" class="form-control" id="newNFTbond" step="0.001" min="0" value="0">
+            <small class="form-text text-muted">Enter any amount of DLUX you would like to bond into each asset. The asset can be melted by the owner to receive the bond inside.</small> </div>
+          <div class="form-group col-4">
+            <label for="newNFThandling">Handling</label>
+            <input type="text" class="form-control" id="newNFThandling" value="svg" required readonly>
+            <div class="invalid-feedback">Only SVG is available at this time.</div>
+            <small class="form-text text-muted">What type of asset are you using to create this set?</small> </div>
         </div>
-        <h5>Banner image</h5>
-        <p class="text-muted">This image will appear at the top of your collection page. Avoid including too much text in this banner image, as the dimensions change on different devices. 1400 x 400 recommended.</p>
-        <div class="d-flex my-3 mx-0 p-1" style="border: .3em dashed grey">
-          <div class="flex-fill text-center m-0 bg-dark px-3 py-4" >
-            <h1 class="m-0" style="font-size:5em"><i class="fas fa-image"></i></h1>
-          </div>
+        <div class="form-row">
+          <div class="form-group col-12">
+            <label for="newNFTroyalty">Script</label>
+            <input type="number" class="form-control" id="newNFTscript" required>
+            <small class="form-text text-muted">The IPFS hash of the html file containing the SVG information and range</small> </div>
         </div>
-        <div class="form-group">
-          <h5>Name</h5>
-          <input type="text" class="form-control" id="" placeholder="Example: Treasure of the multiverse">
+      </div>
+      <div class="my-4 rounded p-2 border border-info">
+        <div class="form-row">
+          <div class="form-group col-4">
+            <label for="newNFTstart">Mint Range Start</label>
+            <input type="text" class="form-control" id="newNFTstart" placeholder="Base64 number" required>
+            <div class="invalid-feedback">You must enter the end of the possible minting range</div>
+            <small class="form-text text-muted">What is the start of the range you wish to issue mints from?<br>
+            <b>Must be in Base64</b></small> </div>
+          <div class="form-group col-4">
+            <label for="newNFTend">Mint Range End</label>
+            <input type="text" class="form-control" id="newNFTend" placeholder="Base64 number" required>
+            <div class="invalid-feedback">You must enter the end of the possible minting range</div>
+            <small class="form-text text-muted">What is the end of the range you wish to issue mints from?<br>
+            <b>Must be in Base64</b></small> </div>
+          <div class="form-group col-4">
+            <label for="newNFTqty">Mint Quantity (1-?)</label>
+            <input type="number" class="form-control" id="newNFTqty" step="1" min="1" value="1" required>
+            <div class="invalid-feedback"> Please enter the number of mints you'd like to purchase now.</div>
+            <small class="form-text text-muted">How many mints are you purchasing at this time?</small> </div>
         </div>
-        <div class="form-group">
-          <h5>URL</h5>
-          <p id="emailHelp1" class="form-text text-muted my-2">Customize your URL on DLUX. Must only contain lowercase letters, numbers, and hyphens.</p>
-          <input type="text" class="form-control" id="" placeholder="https://dlux.io/assets/treasure-of-the-multiverse">
-        </div>
-        <div class="form-group">
-          <h5>Description</h5>
-          <p class="form-text text-muted">Markdown syntax is supported. 0 of 1000 characters used.</p>
-          <textarea class="form-control" rows="2" id="validationCustomDescription" placeholder="Provide a detailed description of your collection." required></textarea>
-        </div>
-        <div class="form-group">
-          <h5>Category</h5>
-          <p id="emailHelp1" class="form-text text-muted my-2">Adding a category will help make your item discoverable on DLUX.</p>
-          <div class="dropdown show"> <a class="btn btn-lg btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Add category </a>
-            <div class="dropdown-menu"> <a class="dropdown-item" href="#">Art</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Trading Cards</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Collectibles</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Sports</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Utility</a> </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <h5>Links</h5>
-          <p id="emailHelp1" class="form-text text-muted my-2">Customize your URL on DLUX. Must only contain lowercase letters, numbers, and hyphens.</p>
-          <input type="text" class="form-control" id="" placeholder="https://dlux.io/assets/treasure-of-the-multiverse">
-        </div>
-        <div class="form-group">
-          <h5>Royalties</h5>
-          <p id="emailHelp1" class="form-text text-muted my-2">Collect a fee when a user re-sells an item you originally created. This is deducted from the final sale price and paid monthly to a payout address of your choosing.</p>
-          <label class="small">Percentage fee</label>
-          <input type="number" class="form-control" id="" placeholder="0.00">
-        </div>
-        <div class="form-group d-flex">
-          <div class="flex-fill">
-            <h5>Explicit &amp; sensitive content</h5>
-            <p id="emailHelp1" class="form-text text-muted my-2">Set this collection as explicit and sensitive content.</p>
-          </div>
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="escrowCheck" checked disabled>
-            <label class="custom-control-label" for="escrowCheck"></label>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Create</button>
-      </form>
-    </div>
-    <!-- create new item -->
-    <div class="col-lg-6">
-      <form class="bg-darker p-4 border border-info">
-        <h2>Create new item</h2>
-        <h5>Image, Video, Audio, or 3D Model</h5>
-        <p class="text-muted">File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB, GLTF. Max size: 100 MB</p>
-        <div class="d-flex my-3 mx-0 p-1" style="border: .3em dashed grey">
-          <div class="flex-fill text-center m-0 bg-dark px-3 py-4" >
-            <h1 class="m-0" style="font-size:5em"><i class="fas fa-image"></i></h1>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Name</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Item name">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">External Link</label>
-          <p id="emailHelp1" class="form-text text-muted">DLUX will include a link to this URL on this item's detail page, so that users can click to learn more about it. You are welcome to link to your own webpage with more details.</p>
-          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="https://yoursite.io/item/123">
-        </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <p class="form-text text-muted">The description will be included on the item's detail page underneath its image. Markdown syntax is supported.</p>
-          <textarea class="form-control" rows="2" id="validationCustomDescription" placeholder="Provide a detailed description of your item." required></textarea>
-        </div>
-        <div class="form-group">
-          <h5>Collection</h5>
-          <p id="emailHelp1" class="form-text text-muted my-2">This is the collection where your item will appear. </p>
-          <div class="d-flex">
-            <select class="btn btn-lg btn-secondary d-flex flex-fill">
-              <option>Collection 1</option>
-              <option>Collection 2</option>
-              <option>Collection 3</option>
-              <option>Collection 4</option>
-            </select>
-          </div>
-          <ul class="p-0">
-            <li class="d-flex justify-content-between border-bottom py-2">
-              <div class="d-flex">
-                <h4 class="mr-2"><i class="fas fa-list"></i></h4>
-                <div class="d-flex flex-column">
-                  <h4> Properties</h4>
-                  <span class="small text-muted">Textual traits that show up as rectangles</span></div>
-              </div>
-              <button class="btn btn-outline-info"><span style="font-size: 2em"><i class="fas fa-plus"></i></span></button>
-            </li>
-            <li class="d-flex justify-content-between border-bottom py-2">
-              <div class="d-flex">
-                <h4 class="mr-2"><i class="fas fa-star"></i></h4>
-                <div class="d-flex flex-column">
-                  <h4> Levels</h4>
-                  <span class="small text-muted">Numerical traits that show as a progress bar</span></div>
-              </div>
-              <button class="btn btn-outline-info"><span style="font-size: 2em"><i class="fas fa-plus"></i></span></button>
-            </li>
-            <li class="d-flex justify-content-between border-bottom py-2">
-              <div class="d-flex">
-                <h4 class="mr-2"><i class="fas fa-rotate-270 fa-align-left"></i></h4>
-                <div class="d-flex flex-column">
-                  <h4> Stats</h4>
-                  <span class="small text-muted">Numerical traits that just show as numbers</span></div>
-              </div>
-              <button class="btn btn-outline-info"><span style="font-size: 2em"><i class="fas fa-plus"></i></span></button>
-            </li>
-            <li class="border-bottom py-2 d-flex flex-column justify-content-between ">
-              <div class="d-flex">
-                <div class="d-flex">
-                  <h4 class="mr-2"><i class="fas fa-lock-open"></i></h4>
-                  <div class="d-flex flex-column">
-                    <h4> Unlockable Content</h4>
-                    <span class="small text-muted">Include unlockable content that can only be revealed by the owner of the item.</span> </div>
-                </div>
-                <div class="custom-control custom-switch">
-                  <input type="checkbox" class="custom-control-input" id="escrowCheck" checked disabled>
-                  <label class="custom-control-label" for="escrowCheck"></label>
-                </div>
-              </div>
-              <textarea class="form-control my-2" rows="2" id="validationCustomDescription" placeholder="Enter content like access key, redemption code, link to a file, etc" required></textarea>
-              <p class="form-text text-muted">Markdown syntax is supported. 0 of 1000 characters used.</p>
-            </li>
-            <li class="d-flex justify-content-between py-2">
-              <div class="d-flex">
-                <h4 class="mr-2"><i class="fas fa-exclamation-triangle"></i></h4>
-                <div class="d-flex flex-column">
-                  <h4> Explicit &amp; Sensitive Content</h4>
-                  <span class="small text-muted">Set this item as explicit and sensitive content</span></div>
-              </div>
-              <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="escrowCheck" checked disabled>
-                <label class="custom-control-label" for="escrowCheck"></label>
-              </div>
-            </li>
-          </ul>
-          <div class="form-group">
-            <h5>Supply</h5>
-            <p id="emailHelp1" class="form-text text-muted my-2">The number of copies that can be minted. </p>
-            <input type="number" class="form-control" id="" placeholder="1">
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Create</button>
-      </form>
-    </div>
+      </div>
+      <center><button id="newNFTsubmit" type="submit" class="btn btn-primary" dmx-bind:action="javascript:createNFT('{{mint_detail.data.set}}','{{tradeFTusername.value}}','{{tradeFTamount.value}}')">Submit</button></center>
+    </form>
   </div>
+  </main>
+  <?php
+  $path = $_SERVER[ 'DOCUMENT_ROOT' ];
+  $path .= "/mod/footer.php";
+  include_once( $path );
+  ?>
 </div>
-</main>
-<?php
-$path = $_SERVER[ 'DOCUMENT_ROOT' ];
-$path .= "/mod/footer.php";
-include_once( $path );
-?>
 </body>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
 </html>

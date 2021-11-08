@@ -3005,6 +3005,143 @@ dmx.config({
         }
       ],
       "outputType": "object"
+    },
+    "dluxList": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "array",
+            "name": "result",
+            "sub": [
+              {
+                "type": "text",
+                "name": "author"
+              },
+              {
+                "type": "text",
+                "name": "permlink"
+              },
+              {
+                "type": "number",
+                "name": "block"
+              },
+              {
+                "type": "number",
+                "name": "votes"
+              },
+              {
+                "type": "number",
+                "name": "voteweight"
+              },
+              {
+                "type": "number",
+                "name": "promote"
+              },
+              {
+                "type": "boolean",
+                "name": "paid"
+              },
+              {
+                "type": "text",
+                "name": "url"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "node"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "via"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          }
+        ]
+      }
+    ],
+    "dluxCards": {
+      "meta": [
+        {
+          "name": "$index",
+          "type": "number"
+        },
+        {
+          "name": "$key",
+          "type": "text"
+        },
+        {
+          "name": "$value",
+          "type": "object"
+        },
+        {
+          "type": "text",
+          "name": "author"
+        },
+        {
+          "type": "text",
+          "name": "permlink"
+        },
+        {
+          "type": "number",
+          "name": "block"
+        },
+        {
+          "type": "number",
+          "name": "votes"
+        },
+        {
+          "type": "number",
+          "name": "voteweight"
+        },
+        {
+          "type": "number",
+          "name": "promote"
+        },
+        {
+          "type": "boolean",
+          "name": "paid"
+        },
+        {
+          "type": "text",
+          "name": "url"
+        }
+      ],
+      "outputType": "array"
     }
   },
   "apps": {
@@ -10951,5 +11088,221 @@ dmx.config({
       ],
       "outputType": "object"
     }
+  },
+  "new": {
+    "statsapi": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "object",
+            "name": "result",
+            "sub": [
+              {
+                "type": "number",
+                "name": "IPFSRate"
+              },
+              {
+                "type": "number",
+                "name": "MSHeld"
+              },
+              {
+                "type": "number",
+                "name": "budgetRate"
+              },
+              {
+                "type": "number",
+                "name": "currationRate"
+              },
+              {
+                "type": "number",
+                "name": "delegationRate"
+              },
+              {
+                "type": "text",
+                "name": "dluxPerDel"
+              },
+              {
+                "type": "number",
+                "name": "gov_threshhold"
+              },
+              {
+                "type": "text",
+                "name": "hashLastIBlock"
+              },
+              {
+                "type": "number",
+                "name": "icoPrice"
+              },
+              {
+                "type": "number",
+                "name": "icoRound"
+              },
+              {
+                "type": "number",
+                "name": "interestRate"
+              },
+              {
+                "type": "text",
+                "name": "lastBlock"
+              },
+              {
+                "type": "number",
+                "name": "lastIBlock"
+              },
+              {
+                "type": "number",
+                "name": "marketingRate"
+              },
+              {
+                "type": "number",
+                "name": "maxBudget"
+              },
+              {
+                "type": "number",
+                "name": "max_transfer"
+              },
+              {
+                "type": "object",
+                "name": "movingWeight",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "dailyPool"
+                  },
+                  {
+                    "type": "number",
+                    "name": "running"
+                  }
+                ]
+              },
+              {
+                "type": "number",
+                "name": "multiSigCollateral"
+              },
+              {
+                "type": "number",
+                "name": "nft_byte_cost"
+              },
+              {
+                "type": "number",
+                "name": "nft_fee_1"
+              },
+              {
+                "type": "number",
+                "name": "nodeRate"
+              },
+              {
+                "type": "number",
+                "name": "outOnBlock"
+              },
+              {
+                "type": "number",
+                "name": "resteemReward"
+              },
+              {
+                "type": "number",
+                "name": "safetyLimit"
+              },
+              {
+                "type": "number",
+                "name": "savingsRate"
+              },
+              {
+                "type": "number",
+                "name": "tokenSupply"
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "name": "hiveVWMA",
+            "sub": [
+              {
+                "type": "number",
+                "name": "block"
+              },
+              {
+                "type": "text",
+                "name": "rate"
+              },
+              {
+                "type": "number",
+                "name": "vol"
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "name": "hbdVWMA",
+            "sub": [
+              {
+                "type": "number",
+                "name": "block"
+              },
+              {
+                "type": "text",
+                "name": "rate"
+              },
+              {
+                "type": "number",
+                "name": "vol"
+              }
+            ]
+          },
+          {
+            "type": "number",
+            "name": "behind"
+          },
+          {
+            "type": "text",
+            "name": "node"
+          },
+          {
+            "type": "text",
+            "name": "VERSION"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "via"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          }
+        ]
+      }
+    ]
   }
 });
