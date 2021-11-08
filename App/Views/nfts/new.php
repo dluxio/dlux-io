@@ -38,7 +38,7 @@ include_once( $path );
       <li>Current Minting Fee: {{statsapi.data.result.nft_byte_cost/1000}} DLUX each</li>
       <li>Bond Value: {{form.newNFTbond.value}} DLUX each</li>
       <li>Mint Purchase Qty: {{form.newNFTqty.value}}</li>
-      <li>Total: {{(form.newNFTqty.value*(statsapi.data.result.nft_byte_cost/1000)+(statsapi.data.result.nft_fee_1/1000))+100}}</li>
+      <li>Total: {{(form.newNFTqty.value*(statsapi.data.result.nft_byte_cost/1000)+(statsapi.data.result.nft_fee_1/1000))+100}}</li>ya
     </ul>
     <form class="needs-validation mt-4" validate>
       <div class="my-4 rounded p-2 border border-primary">
