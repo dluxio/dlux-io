@@ -105,7 +105,7 @@ include_once( $path );
     </ul>
 		  </div>
 		<div class="col-6 text-center">
-		  <button id="newNFTsubmit" type="submit" class="btn btn-primary" dmx-bind:action="javascript:defineNFT('{{newNFTname.value}}','{{newNFTtype.value}}','{{newNFTscript.value}}','{{newNFTpermlink.value}}','{{newNFTstart.value}}','{{newNFTend.value}}','{{newNFTqty.value}}','{{newNFTscript.royalty}}','{{newNFThandling.value}}','{{newNFTmaxfee.value}}','{{newNFTbond.value}}')">DO IT</button></center>
+		  <button id="newNFTsubmit" type="submit" class="btn btn-primary btn-lg" dmx-bind:action="javascript:defineNFT('{{newNFTname.value}}','{{newNFTtype.value}}','{{newNFTscript.value}}','{{newNFTpermlink.value}}','{{newNFTstart.value}}','{{newNFTend.value}}','{{newNFTqty.value}}','{{newNFTscript.royalty}}','{{newNFThandling.value}}','{{newNFTmaxfee.value}}','{{newNFTbond.value}}')">DO IT</button></center>
 		</div>
     </form>
   </div>
