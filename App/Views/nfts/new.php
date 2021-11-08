@@ -65,7 +65,7 @@ include_once( $path );
         <div class="form-row">
           <div class="form-group col-12">
             <label for="newNFTroyalty">Script</label>
-            <input type="number" class="form-control" id="newNFTscript" required>
+            <input type="text" class="form-control" id="newNFTscript" required>
             <small class="form-text text-muted">The IPFS hash of the html file containing the SVG information and range</small> </div>
         </div>
       </div>
