@@ -613,7 +613,9 @@ function bidFT(setname, uid, callback){
 function cancelSellFT(setname, uid,  callback){
      broadcastCJA({set: setname, uid}, 'dlux_ft_cancel_sell', `Trying to cancel ${setname} mint token sell`)
  }
-
+ function cancelFTsell(setname, uid, callback){
+    broadcastCJA({ set: setname, uid}, "dlux_ft_sell_cancel", `Trying to cancel ${setname} mint token sell`)
+ }
 function tradeFTcomplete(setname, uid, callback){
      broadcastCJA({ set: setname, uid}, "dlux_ft_escrow_complete", `Trying to complete ${setname} mint tokentrade`)
  }
@@ -621,6 +623,8 @@ function tradeFTcomplete(setname, uid, callback){
 function tradeFTcancel(setname, uid, callback){
     broadcastCJA({ set: setname, uid }, "dlux_ft_escrow_cancel", `Trying to cancel ${setname} mint token trade`)
  }
+
+// NFT Transfers //
 
 function giveNFT(setname, uid, to, callback){
     checkAccount(to)
@@ -630,7 +634,7 @@ function giveNFT(setname, uid, to, callback){
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
 
-function NFTReserveTransfer(setname, uid, to, price, callback){
+function tradeNFT(setname, uid, to, price, callback){
     price = parseInt(price * 1000)
     checkAccount(to)
     .then(r => {
@@ -639,42 +643,12 @@ function NFTReserveTransfer(setname, uid, to, price, callback){
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
 
-function NFTReserveComplete(setname, uid, callback){
+function tradeNFTcomplete(setname, uid, callback){
      broadcastCJA({ set: setname, uid}, "dlux_nft_reserve_complete", `Trying to complete ${setname}:${uid} trade`)
  }
 
-function NFTReserveCancel(setname, uid, callback){
+function tradeNFTcancel(setname, uid, callback){
     broadcastCJA({ set: setname, uid }, "dlux_nft_transfer_cancel", `Trying to cancel ${setname}:${uid} trade`)
- }
-
-function NFTDelete(setname, uid, callback){
-    broadcastCJA({ set: setname, uid }, "dlux_nft_delete", `Trying to melt ${setname}:${uid}`) 
- }
-
-
-
- function NFTDefine(setname, type, script, permlink, start, end, total,royalty, handling, max_fee, bond, callback){
-    max_fee = parseInt(max_fee * 1000)
-    royalty = parseInt(royalty * 100)
-    //more validation
-    broadcastCJA({ name: setname, type, script, permlink, start, end, total, royalty, handling, max_fee, bond}, "dlux_nft_define", `Trying to define ${setname}`)
- }
-
- function auctionNFT(setname, uid, price, now, time, callback){
-     time = parseInt(time)
-    price = parseInt(price * 1000)
-    broadcastCJA({ set: setname, uid, price, now, time}, "dlux_nft_auction", `Trying to auction ${setname}:${uid}`)
- }
-
-function auctionFT(setname, price, now, time, callback){
-    time = parseInt(time)
-    price = parseInt(price * 1000)
-    broadcastCJA({ set: setname, price, now, time}, "dlux_ft_auction", `Trying to auction ${setname} mint token`)
- }
-
- function bidNFT(setname, uid, bid_amount, callback){
-    bid_amount = parseInt(bid_amount * 1000)
-    broadcastCJA({ set: setname, uid, bid_amount}, "dlux_nft_bid", `Bidding on ${setname}:${uid} for ${parseFloat(bid_amount/1000).toFixed(3)} DLUX`)
  }
 
 function sellNFT(setname, uid, price, callback){
@@ -682,27 +656,38 @@ function sellNFT(setname, uid, price, callback){
     broadcastCJA({ set: setname, uid, price}, "dlux_nft_sell", `Trying to list ${setname}:${uid} for sell`)
  }
 
-function sellFT(setname, price, callback){
+function auctionNFT(setname, uid, price, now, time, callback){
+     time = parseInt(time)
     price = parseInt(price * 1000)
-    broadcastCJA({ set: setname, price}, "dlux_ft_sell", `Trying to list ${setname} mint token for sell`)
+    broadcastCJA({ set: setname, uid, price, now, time}, "dlux_nft_auction", `Trying to auction ${setname}:${uid}`)
+ }
+
+function NFTDelete(setname, uid, callback){
+    broadcastCJA({ set: setname, uid }, "dlux_nft_delete", `Trying to melt ${setname}:${uid}`) 
+ }
+
+
+// NFT Actions //
+
+ function defineNFT(setname, type, script, permlink, start, end, total,royalty, handling, max_fee, bond, callback){
+    max_fee = parseInt(max_fee * 1000)
+    royalty = parseInt(royalty * 100)
+    //more validation
+    broadcastCJA({ name: setname, type, script, permlink, start, end, total, royalty, handling, max_fee, bond}, "dlux_nft_define", `Trying to define ${setname}`)
+ }
+
+ function bidNFT(setname, uid, bid_amount, callback){
+    bid_amount = parseInt(bid_amount * 1000)
+    broadcastCJA({ set: setname, uid, bid_amount}, "dlux_nft_bid", `Bidding on ${setname}:${uid} for ${parseFloat(bid_amount/1000).toFixed(3)} DLUX`)
  }
 
 function buyNFT(setname, uid, price, callback){
     broadcastCJA({ set: setname, uid, price}, "dlux_nft_buy", `Trying to buy ${setname}:${uid}`)
  }
 
-function buyFT(setname, uid, price, callback){
-    broadcastCJA({ set: setname, uid, price}, "dlux_ft_buy", `Trying to buy ${setname} mint token`)
- }
-
  function cancelNFTsell(setname, uid, callback){
      broadcastCJA({ set: setname, uid}, "dlux_nft_sell_cancel", `Trying to cancel ${setname}:${uid} sell`)
  }
-
- function cancelFTsell(setname, uid, callback){
-    broadcastCJA({ set: setname, uid}, "dlux_ft_sell_cancel", `Trying to cancel ${setname} mint token sell`)
- }
-
 function setPFP(setname, uid, callback){
     fetch("https://api.hive.blog", {
         body: `{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["${user}"]], "id":1}`,

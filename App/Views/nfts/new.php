@@ -20,6 +20,7 @@ include_once( $path );
 <div class="container">
   <div class="container-fluid bg-dark rounded my-5 py-3">
     <h3>Create An NFT - ALPHA v0.2</h3>
+	<div class="form-row"><div class="m-0">Type</div><input id="newNFTtype" type="text" class="form-control mx-2" value="1" readonly style="width:2em"><div>NFT</div></div>
     <p class="lead">Turn a layered SVG into a set of unique, tradeable tokens!</p>
     <p>Non Fungible Tokens are now available on DLUX, each one unique, all based on a set definition that started as an SVG (scaleable vector graphics) file.</p>
     <p>At this time there are several manual steps that must have been done prior to using this form:
@@ -92,17 +93,19 @@ include_once( $path );
       </div>
       <div class="form-row">
 		<div class="col-6">
-			The cost for each mint is based on the byte size of the definition.
     <ul>
-      <li>Current Definition Fee: {{statsapi.data.result.nft_fee_1/1000}} DLUX</li>
-      <li>Current Minting Fee: {{statsapi.data.result.nft_byte_cost/1000}} DLUX each</li>
-      <li>Bond Value: {{form.newNFTbond.value}} DLUX each</li>
-      <li>Mint Purchase Qty: {{form.newNFTqty.value}}</li>
-      <li>Total: {{(form.newNFTqty.value*(statsapi.data.result.nft_byte_cost/1000)+(statsapi.data.result.nft_fee_1/1000))+100}}</li>
+	  <li>Mint Purchase Qty: {{form.newNFTqty.value}}</li>
+      <li>Set Definition Fee: {{(statsapi.data.result.nft_fee_1/1000).formatNumber('3','.',',')}} DLUX</li>
+      <li>Minting Fee (each): {{(statsapi.data.result.nft_byte_cost/1000).formatNumber('3','.',',')}} DLUX</li>
+      <li>Bond Value (each): {{form.newNFTbond.value}} DLUX</li>
+	  <li>Total Minting Fee: {{(statsapi.data.result.nft_byte_cost/1000)*form.newNFTqty.value}} DLUX</li>
+	  <li>Total Bond Value: {{form.newNFTbond.value*form.newNFTqty.value}} DLUX</li>
+      <li>Total: {{(form.newNFTqty.value*(statsapi.data.result.nft_byte_cost/1000)+(statsapi.data.result.nft_fee_1/1000))}}</li>
+		<input class="d-none" id="newNFTmaxfee" dmx-bind:value="(form.newNFTqty.value*(statsapi.data.result.nft_byte_cost/1000)+(statsapi.data.result.nft_fee_1/1000))*1.1"
     </ul>
 		  </div>
 		<div class="col-6 text-center">
-		  <button id="newNFTsubmit" type="submit" class="btn btn-primary" dmx-bind:action="javascript:createNFT('{{mint_detail.data.set}}','{{tradeFTusername.value}}','{{tradeFTamount.value}}')">Submit</button></center>
+		  <button id="newNFTsubmit" type="submit" class="btn btn-primary" dmx-bind:action="javascript:defineNFT('{{newNFTname.value}}','{{newNFTtype.value}}','{{newNFTscript.value}}','{{newNFTpermlink.value}}','{{newNFTstart.value}}','{{newNFTend.value}}','{{newNFTqty.value}}','{{newNFTscript.royalty}}','{{newNFThandling.value}}','{{newNFTmaxfee.value}}','{{newNFTbond.value}}')">DO IT</button></center>
 		</div>
     </form>
   </div>
