@@ -11,7 +11,7 @@ include_once( $path );
 if ( isset( $_COOKIE[ 'user' ] ) ) {
   echo "<dmx-api-datasource id=\"inventoryapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
 } else {
-  echo "<dmx-api-datasource id=\"inventoryapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"inventoryapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/\"></dmx-api-datasource>";
 };
 ?>
 <!--page specific-->
@@ -20,7 +20,6 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 <script src="/js/ico.js"></script>
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
-
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="statsapi" is="dmx-fetch" url="https://token.dlux.io/stats/"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
@@ -108,6 +107,17 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
     /* symbol for "collapsed" panels */
     content: "\f103";    /* adjust as needed, taken from bootstrap.css */
 }
+	.nav-pills > li > a.active {
+    background-color: #17a2b8 !important;
+    color: #ffffff !important;
+}
+.nav-pills > li > a {
+    color: #17a2b8 !important;
+}
+.r-radius-hotfix {
+	border-top-right-radius: 0.25rem !important;
+	border-bottom-right-radius: 0.25rem !important;
+}
 	</style>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
@@ -158,8 +168,8 @@ include_once( $path );
                         <div class="pr-2"><small>OWN: </small></div>
                         <div class="px-2">
                           <h2 dmx-bind:id="{{set}}-inventory" class="m-0">
+							<div dmx-bind:id="{{set}}-inventory-none2" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">000</div>
                             <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">{{qty.pad(3)}}</div>
-                            <div dmx-bind:id="{{set}}-inventory-none" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set',set,'!=')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'!=').hasItems()">000</div>
                           </h2>
                         </div>
                       </div>
@@ -266,7 +276,7 @@ include_once( $path );
                                           <tr>
 											  <th scope="row" colspan="2"></th>
 											  <td><input dmx-bind:id="{{set}}-{{uid}}-bid" class="form-control " type="number" dmx-bind:placeholder="{{(price/1000+1).formatNumber('3','.',',')}}"></td>
-											  <td><button class="btn btn-secondary" dmx-show="(by == userCookie.value)">Buy</button>
+											  <td><button class="btn btn-secondary" dmx-show="(by == userCookie.value)">Bid</button>
                                             <button dmx-bind:id="{{set}}-{{uid}}-buyFTbtn" class="btn btn-primary" dmx-show="(by != userCookie.value)" dmx-on:click="bidFT('{{set}}','{{uid}}')">Bid</button></div></td>
                                           </tr>
                                       </tbody>
@@ -285,7 +295,7 @@ include_once( $path );
                     <div class="card-footer d-flex flex-column p-2">
                       <div class="d-flex justify-content-between align-items-center">
                         <button type="button" class="btn btn-outline-dark mt-1 col-5" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
-                        <button type="button" class="btn btn-outline-dark mt-1 col-5 disabled">Transfer<i class="fas fa-exchange-alt ml-3"></i></button>
+                        <button type="button" class="btn btn-outline-dark mt-1 col-5" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-exchange-alt ml-3"></i></button>
                       </div>
                     </div>
                   </div>
@@ -338,6 +348,207 @@ include_once( $path );
           </div>
         </div>
       </div>
+			  <!-- Mint FT Iterator -->
+		  <dmx-data-iterator id="mint_iterator" dmx-bind:data="inventoryapi.data.mint_tokens" loop="true" dmx-bind:index="1"></dmx-data-iterator>
+          <!-- Transfer FT Mint -->
+		  <dmx-data-detail id="mint_detail" dmx-bind:data="inventoryapi.data.mint_tokens" key="set" dmx-bind:value="mint_iterator.value.set">
+          <div class="modal fade show" id="mintTransferModal" tabindex="11" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-full modal-dialog-centered" role="document">
+              <div class="modal-content bg-dark text-white">
+                <div class="border border-info bg-darker mx-auto px-5 py-3 rounded col-12">
+                  <div class="container-fluid">
+					  <h3 class="text-center">Transfer {{mint_detail.data.set}} FT</h3>
+                    <ul class="nav nav-pills bg-darker justify-content-center" role="tablist">
+                      <li class="nav-item"> <a class="nav-link active" id="giveFTlink" role="tab" data-toggle="tab" aria-controls="giveFT" aria-expanded="true" href="#giveFTtab">Give</a></li>
+                      <li class="nav-item"> <a class="nav-link" id="tradeFTlink" role="tab" data-toggle="tab" aria-controls="tradeFT" aria-expanded="true" href="#tradeFTtab">Trade</a></li>
+                      <li class="nav-item"> <a class="nav-link" id="sellFTlink" role="tab" data-toggle="tab" aria-controls="sellFT" aria-expanded="true" href="#sellFTtab">Sell</a></li>
+                      <li class="nav-item"> <a class="nav-link" id="auctionFTlink" role="tab" data-toggle="tab" aria-controls="auctionFT" aria-expanded="true" href="#auctionFTtab">Auction</a></li>
+                      <li class="nav-item"> <a class="nav-link" id="airdropFTlink" role="tab" data-toggle="tab" aria-controls="airdropFT" aria-expanded="true" href="#airdropFTtab">Airdrop</a></li>
+                    </ul>
+                    <div class="tab-content">
+						<div role="tabpanel" class="tab-pane fade show active" id="giveFTtab" aria-labelledby="giveFT">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:giveFT('{{mint_detail.data.set}}','{{giveFTusername.value}}')">
+                          <div class="form-row my-2">
+                            <div class="col-12">
+                              <label for="giveFTusername">Username</label>
+                              <div class="input-group">
+                                <div class="input-group-prepend"> <span class="input-group-text" id="giveFTuserprep">@</span></div>
+                                <input type="text" class="form-control r-radius-hotfix" id="giveFTusername" aria-describedby="giveFTuserprep" required>
+                                <div class="invalid-feedback"> Please enter the username you'd like to give to. </div>
+                            	</div>
+                            </div>
+							  </div>
+							  <div class="form-row my-2">
+							  <div class="col-12">
+                              <label for="giveFTqty">Quantity</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="giveFTqty" aria-describedby="giveFTqtyappend" placeholder="1" step="1" min="1" required readonly>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="giveFTqtyappend">DLUX</span> </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                              </div>
+                            </div>
+							  </div>
+                          
+                          <center><button id="giveFTbutton" class="btn btn-info my-2" type="submit">Give</button></center>
+                        </form>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade show" id="tradeFTtab" aria-labelledby="tradeFT">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:tradeFT('{{mint_detail.data.set}}','{{tradeFTusername.value}}','{{tradeFTamount.value}}')">
+                          <div class="form-row my-2">
+                            <div class="col-12">
+                              <label for="tradeFTusername">Username</label>
+                              <div class="input-group">
+                                <div class="input-group-prepend"> <span class="input-group-text" id="tradeFTuserprep">@</span></div>
+                                <input type="text" class="form-control r-radius-hotfix" id="tradeFTusername" aria-describedby="tradeFTuserprep" required>
+                                <div class="invalid-feedback"> Please enter the username you'd like to trade with. </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-row my-2">
+                            <div class="col-6">
+                              <label for="tradeFTqty">Quantity</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="tradeFTqty" aria-describedby="tradeFTqtyappend" placeholder="1" step="1" min="1" required readonly>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTqtyappend">DLUX</span> </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                              </div>
+                            </div>
+							  <div class="col-6">
+                              <label for="tradeFTamount">Amount</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="tradeFTamount" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTamountappend">DLUX</span> </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                              </div>
+                            </div>
+                          </div>
+                          <center><button id="tradeFTbutton" class="btn btn-info my-2" type="submit">Propose Trade</button></center>
+                        </form>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade show " id="sellFTtab" aria-labelledby="sellFT">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:sellFT('{{mint_detail.data.set}}','{{sellFTprice.value}}')">
+                          <div class="form-row my-2">
+							  <div class="col-6">
+                              <label for="sellFTqty">Quantity</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="sellFTqty" aria-describedby="sellFTqtyappend" placeholder="1" step="1" min="1" required readonly>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="sellFTqtyappend">DLUX</span> </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <label for="sellFTprice">Sale Price</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="sellFTprice" aria-describedby="sellFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
+                                <div class="input-group-append">
+                                  <div class="input-group-text" id="sellFTpriceappend">DLUX</div>
+                                </div>
+                              <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+								  </div>
+                            </div>
+                          </div>
+                          <div class="form-row my-2">
+							<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and sold publicly. Cancel anytime to return immediately.</p>
+                          </div>
+                          <center><button id="sellFTbutton" class="btn btn-info my-2" type="submit" >List Item</button>
+                        </form>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade show " id="auctionFTtab" aria-labelledby="auctionFT">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:auctionFT('{{mint_detail.data.set}}','{{auctionFTprice.value}}','{{Date.now()}}','{{auctionFTdays.value}}')">
+                          <div class="form-row my-2">
+							  <div class="col-6">
+                              <label for="auctionFTqty">Quantity</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="auctionFTqty" aria-describedby="auctionFTqtyappend" placeholder="1" step="1" min="1" required readonly>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">DLUX</span> </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <label for="auctionFTprice">Starting Bid</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="auctionFTprice" aria-describedby="auctionFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
+                                <div class="input-group-append">
+                                  <div class="input-group-text" id="auctionFTpriceappend">DLUX</div>
+                                </div>
+                              <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
+								  </div>
+                            </div>
+                          </div>
+							<div class="d-flex justify-content-around">
+                                            <div class="form-row my-2 d-flex align-items-center">
+                                              <label for="auctionFTdays" class="m-0">Duration: </label>
+                                              <select class="mx-2 btn btn-lg btn-secondary" class="form-control" id="auctionFTdays" required >
+                                              <option value="1">1 Day</option>
+                                              <option value="2">2 Days</option>
+                                              <option value="3">3 Days</option>
+                                              <option value="4">4 Days</option>
+                                              <option value="5">5 Days</option>
+                                              <option value="6">6 Days</option>
+                                              <option value="7" selected>7 Days</option>
+                                              <option value="8">8 Days</option>
+                                              <option value="9">9 Days</option>
+                                              <option value="10">10 Days</option>
+                                              <option value="11">11 Days</option>
+                                              <option value="12">12 Days</option>
+                                              <option value="13">13 Days</option>
+                                              <option value="14">14 Days</option>
+                                              <option value="15">15 Days</option>
+                                              <option value="16">16 Days</option>
+                                              <option value="17">17 Days</option>
+                                              <option value="18">18 Days</option>
+                                              <option value="19">19 Days</option>
+                                              <option value="20">20 Days</option>
+                                              <option value="21">21 Days</option>
+                                              <option value="22">22 Days</option>
+                                              <option value="23">23 Days</option>
+                                              <option value="24">24 Days</option>
+                                              <option value="25">25 Days</option>
+                                              <option value="26">26 Days</option>
+                                              <option value="27">27 Days</option>
+                                              <option value="28">28 Days</option>
+                                              <option value="29">29 Days</option>
+                                              <option value="30">30 Days</option>
+                                              </select>
+                                            </div>
+                                          </div>
+                          <div class="form-row my-2">
+							<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and auctioned publicly. Once submitted this cannot be cancelled. If there are no bids at the end of the auction period, it will be returned to you immediately.</p>
+                         </div>
+                          <center><button class="btn btn-info my-2" type="submit">List Item</button></center>
+						  </form>
+						  </div>
+                      <div role="tabpanel" class="tab-pane fade show " id="airdropFTtab" aria-labelledby="airdropFT">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:airdropFT('{{mint_detail.data.set}}','{{airdropFTusers.value}}')">
+                          <div class="form-row my-2">
+                            <div class="col-12">
+                              <label for="airdropFTusers">Airdrop to:</label>
+                              <div class="input-group">
+                                <textarea name="paragraph_text" cols="50" rows="2" class="form-control r-radius-hotfix" id="airdropFTusers" aria-describedby="airdropFT" required placeholder="name user-name"></textarea>
+                              <div class="invalid-feedback"> Please enter at least one user name to airdrop tokens to. </div>
+								  </div>
+                            </div>
+                          </div>
+							<div class="form-row my-2">
+							<div class="col-12">
+                              <label for="airdropFTqty">Quantity sent to each:</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="airdropFTqty" aria-describedby="airdropFTqtyappend" placeholder="1" step="1" min="1" required readonly>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="airdropFTqtyappend">DLUX</span> </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                              </div>
+                            </div>
+							</div>
+							<center><button class="btn btn-info my-2" type="submit">Airdrop Tokens</button></center>						 
+						 </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+		</dmx-data-detail>
       <!-- NFT Auction -->
       <div class="d-flex justify-content-between align-items-center" style="border-bottom: #FFFFFF thick solid">
         <h1 class="text-white p-0 m-0">NFT Auctions</h1>
@@ -424,7 +635,7 @@ include_once( $path );
             </div>
             <div class="card-img-top" dmx-bind:id="detail-image-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" dmx-bind:alt="{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}">{{auctions_detail.data.uid.nftDetailWell(auctions_detail.data.script, auctions_detail.data.set)}}</div>
             <div class="text-center " style="background: crimson">
-              <h5 dmx-bind:id="detail-timer-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" class="mb-0 lead">{{auctions_detail.data.time.animateTime(auctions_detail.data.set, auctions_detail.data.uid, true)}}{{auctions_detail.data.time}}{{auctions_detail.data.set}}{{auctions_detail.data.uid}}</h5>
+              <h5 dmx-bind:id="detail-timer-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" class="mb-0 lead">{{auctions_detail.data.time.animateTime(auctions_detail.data.set, auctions_detail.data.uid)}}{{auctions_detail.data.time}}{{auctions_detail.data.set}}{{auctions_detail.data.uid}}</h5>
             </div>
             <div class="card-body text-center">
               <div>{{auctions_detail.data.by}} is auctioning {{auctions_detail.data.uid}}</div>
@@ -520,29 +731,24 @@ include_once( $path );
 <script src="/dlux-io/js/popper.min.js"></script>
 <script src="/dlux-io/js/bootstrap-4.4.1.js"></script>
 <script>
-
-
-/* always keep at least 1 open by preventing the current to close itself */
-
-		function (e,s){
-	console.log(s)
-    if ( $(this).parents('.{{set}}-mint-accordion').find('.collapse.show') ){
-		
-        var idx = $(this).index('[data-toggle="collapse"]');
-
-        if (idx == $('.collapse.show').index('.collapse')) {
-
-            // prevent collapse
-
-            e.stopPropagation();
-
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
         }
-
-    }
-
-});
-
-
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
 </script>
 </body>
 </html>

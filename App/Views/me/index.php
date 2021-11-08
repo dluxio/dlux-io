@@ -8,6 +8,7 @@ $path .= "/mod/header.php";
 include_once( $path );
 ?>
 <!--page specific-->
+
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
 <style>
@@ -19,10 +20,6 @@ include_once( $path );
 .max-350 {
     max-width: 350px;
 }
-	.r-radius-hotfix {
-		border-top-right-radius: 0.25rem !important;
-border-bottom-right-radius: 0.25rem !important;
-	}
 .circle {
     width: 50px;
     height: 50px;
@@ -43,6 +40,10 @@ border-bottom-right-radius: 0.25rem !important;
 .nav-pills > li > a {
     color: #17a2b8 !important;
 }
+.r-radius-hotfix {
+	border-top-right-radius: 0.25rem !important;
+	border-bottom-right-radius: 0.25rem !important;
+}
 </style>
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="index" is="dmx-app">
@@ -53,20 +54,20 @@ include_once( $path );
 ?>
 <?php
 if ( isset( $author ) ) {
-  echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'" . $author . "'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'" . $author . "'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'" . $author . "'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/" . $author . "\"></dmx-api-datasource>";
 } else if ( isset( $_COOKIE[ 'user' ] ) ) {
-  echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'" . $_COOKIE[ 'user' ] . "'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
 } else {
-  echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog/\" dmx-param:tag=\"'robotolux'\" dmx-param:limit=\"15\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog/\" dmx-param:tag=\"'robotolux'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'robotolux'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
 };
 ?>
-	
+
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
@@ -440,17 +441,17 @@ if ( isset( $author ) ) {
                   <h5>Unwrap to see what's inside.</h5>
                 </div>
               </div>
-              <div class="card-footer">
+              <div class="card-footer" dmx-show="(inventorydata.data.user == userCookie.value)">
                 <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" dmx-on:click="openMintToken('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
+                  <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
                   <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-exchange-alt ml-3"></i></button>
                 </div>
               </div>
             </div>
           </div>
-		  <!-- Mint iterator -->
+		  <!-- Mint FT Iterator -->
 		  <dmx-data-iterator id="mint_iterator" dmx-bind:data="inventorydata.data.mint_tokens" loop="true" dmx-bind:index="1"></dmx-data-iterator>
-          <!-- Mint detail modal -->
+          <!-- Transfer FT Mint -->
 		  <dmx-data-detail id="mint_detail" dmx-bind:data="inventorydata.data.mint_tokens" key="set" dmx-bind:value="mint_iterator.value.set">
           <div class="modal fade show" id="mintTransferModal" tabindex="11" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-full modal-dialog-centered" role="document">
@@ -650,6 +651,7 @@ if ( isset( $author ) ) {
           </div>
 		</dmx-data-detail>
 		  <!-- NFT repeat -->
+			  
           <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
             <div class="card text-white bg-dark ">
               <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
