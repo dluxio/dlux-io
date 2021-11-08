@@ -653,11 +653,11 @@ function NFTDelete(setname, uid, callback){
 
 
 
- function NFTDefine(setname, type, script, permlink, start, end, royalty, handling, max_fee, bond, callback){
+ function NFTDefine(setname, type, script, permlink, start, end, total,royalty, handling, max_fee, bond, callback){
     max_fee = parseInt(max_fee * 1000)
     royalty = parseInt(royalty * 100)
     //more validation
-    broadcastCJA({ name: setname, type, script, permlink, start, end, royalty, handling, max_fee, bond}, "dlux_nft_define", `Trying to define ${setname}`)
+    broadcastCJA({ name: setname, type, script, permlink, start, end, total, royalty, handling, max_fee, bond}, "dlux_nft_define", `Trying to define ${setname}`)
  }
 
  function auctionNFT(setname, uid, price, now, time, callback){
