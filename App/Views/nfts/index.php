@@ -663,7 +663,7 @@ include_once( $path );
           </div>
         </div>
       </div>
-    </div>
+
     </dmx-data-detail>
     <!-- NFT Sales -->
     <div style="border-bottom: #FFFFFF thick solid">
