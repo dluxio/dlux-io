@@ -102,7 +102,7 @@ include_once( $path );
 	  <li>Total Bond Value: {{newNFTbond.value*newNFTqty.value}} DLUX</li>
 		<li>Total Cost Per: {{((bytecost.value.toNumber()*(39+(newNFTname.value.split("").length.toNumber())+((newNFTend.value.split("").length)*2)))+newNFTbond.value.toNumber()}}</li>
       <li>Total: {{( ( ( ( 39 + newNFTset.value.split("").length + (2*(newNFTend.value.split("").length)) ) * bytecost.value ) + (newNFTbond.value)) * newNFTqty.value ) + setfee.value }}</li>
-      <li>Total: ( ( ( ( ( {{39}} + {{newNFTname.value.split("").length}} + {{(2*(newNFTend.value.split("").length))}} ) * {{bytecost.value}} ) + {{newNFTbond.value}} ) * {{newNFTqty.value}} ) + {{setfee.value}} ) * 1.1 = {{newNFTmaxfee.value}}</li>
+      <li>Total: ((((( {{39}} + {{newNFTname.value.split("").length}} + {{(2*(newNFTend.value.split("").length))}} ) * {{bytecost.value}} ) + {{newNFTbond.value}} ) * {{newNFTqty.value}} ) + {{setfee.value}} ) * 1.1 =</li>
 		<input id="setfee" type="number" class="d-none" dmx-bind:value="{{(statsapi.data.result.nft_fee_1/1000).formatNumber('3','.',',')}}">
 		<input id="bytecost" type="number" class="d-none" dmx-bind:value="{{(statsapi.data.result.nft_byte_cost/1000).formatNumber('3','.',',')}}">
 		<input class="" id="newNFTmaxfee" dmx-bind:value="(((((( 39 + newNFTset.value.split("").length + (2*(newNFTend.value.split("").length)) ) * bytecost.value ) + (newNFTbond.value)) * newNFTqty.value ) + setfee.value ))">
