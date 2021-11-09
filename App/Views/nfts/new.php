@@ -101,10 +101,11 @@ include_once( $path );
       <div class="col-6">
 		<div class="card bg-darker text-white-50">
 			<div class="card-header">
+				<div class="text-center small"><span class="ml-0 mr-1">MARGIN</span><span class="ml-1 mr-1">DEFINITION</span><span class="ml-1 mr-1">QTY</span><span class="ml-1 mr-1">BOND</span><span class="ml-5 mr-5">FEE</span><span class="ml-3 mr-5">BYTES</div>
+				<div class="text-center">1.1 x ( {{setfee.value}} + ( {{newNFTqty.value.toNumber().formatNumber('','.',',')}} x ( {{newNFTbond.value.toNumber().formatNumber('3','.',',')}} + ( {{bytecost.value}} x ( {{39}} + {{newNFTsetname.value.split("").length}} + {{(2*(newNFTend.value.split("").length))}} )))))</div>
 		  <input id="setfee" type="number" class="d-none" dmx-bind:value="{{(statsapi.data.result.nft_fee_1/1000).formatNumber('3','.',',')}}">
           <input id="bytecost" type="number" class="d-none" dmx-bind:value="{{(statsapi.data.result.nft_byte_cost/1000).formatNumber('3','.',',')}}">
-		  <small>* Characters in set name are single weighted for byte-cost evaluation (x1)</small><br>
-		  <small>** Characters in range end are double weighted for byte-cost evaluation (x2)</small>
+
 			</div>
 			<div class="card-body">
 		  <ul>
@@ -115,7 +116,7 @@ include_once( $path );
           <li>Total Cost (each): <span class="float-right">{{((bytecost.value*(39+(newNFTsetname.value.split("").length)+((newNFTend.value.split("").length)*2)))+newNFTbond.value.toNumber()).formatNumber('3','.',',')}} DLUX</span></li>
 		  <li>Issue Qty: <span class="float-right">{{newNFTqty.value.toNumber().formatNumber('','.',',')}}</span></li>
 		  <hr>
-		<li>Set Definition Fee: <span class="float-right">{{(statsapi.data.result.nft_fee_1/1000).formatNumber('3','.',',')}} DLUX</span></li>
+		<li>Set Definition: <span class="float-right">{{(statsapi.data.result.nft_fee_1/1000).formatNumber('3','.',',')}} DLUX</span></li>
 		  <li>Minting Fee: <span class="float-right">{{(newNFTqty.value*(bytecost.value*(39+(newNFTsetname.value.split("").length)+((newNFTend.value.split("").length)*2)))).formatNumber('3','.',',')}} DLUX</span></li>
 		  <li>Bond Value: <span class="float-right">{{(newNFTbond.value*newNFTqty.value).formatNumber('3','.',',')}} DLUX</span></li>
           <li>Grand Total: <span class="float-right">{{(setfee.value.toNumber()+(newNFTqty.value*((bytecost.value*(39+(newNFTsetname.value.split("").length)+((newNFTend.value.split("").length)*2)))+newNFTbond.value.toNumber()))).formatNumber('3','.',',')}} DLUX</span></li>
@@ -123,7 +124,8 @@ include_once( $path );
         </ul>
 				</div>
 			<div class="card-footer">
-		  <div class="text-center"><p>1.1 x ( {{setfee.value}} + ( {{newNFTqty.value.toNumber().formatNumber('','.',',')}} x ( {{newNFTbond.value.toNumber().formatNumber('3','.',',')}} + ( {{bytecost.value}} x ( {{39}} + {{newNFTsetname.value.split("").length}} + {{(2*(newNFTend.value.split("").length))}} )))))</p></div>
+		  <small>* Characters in set name are single weighted for byte-cost evaluation (x1)</small><br>
+		  <small>** Characters in range end are double weighted for byte-cost evaluation (x2)</small>		  
 		</div>
       </div>
 		  </div>
@@ -132,7 +134,7 @@ include_once( $path );
 		 <div class="m-auto flex-column rounded border border-warning p-3">
 		<div class="form-group my-2">
 			<label for="newNFTmaxfee">ENTER THIS LAST<br>Max Cost Safety Measure</label>
-			<input class="form-control" id="newNFTmaxfee" type="number" placeholder="Total + 10% Margin" required>
+			<input class="form-control" id="newNFTmaxfee" type="number" placeholder="Total + 10% Margin" required step="0.001">
 			<div class="invalid-feedback">Enter the +10% Margin Total calculated on the left</div>
         	<small class="form-text text-muted">This value is calculated on the left (+10% Margin)</small>
 			</div>
