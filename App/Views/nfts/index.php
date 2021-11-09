@@ -296,6 +296,7 @@ include_once( $path );
                       <div class="d-flex justify-content-between align-items-center">
                         <button type="button" class="btn btn-outline-dark mt-1 col-5" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
                         <button type="button" class="btn btn-outline-dark mt-1 col-5" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-exchange-alt ml-3"></i></button>
+						  </div>
                       </div>
                     </div>
                   </div>
