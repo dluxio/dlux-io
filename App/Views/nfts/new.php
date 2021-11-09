@@ -19,10 +19,16 @@ include_once( $path );
 <main role="main" class="flex-shrink-0">
 <div class="container">
   <div class="container-fluid bg-dark rounded my-5 py-3">
-    <h3>Create An NFT - ALPHA v0.2</h3>
-	<div class="form-row"><div class="m-0">Type</div><input id="newNFTtype" type="text" class="form-control mx-2" value="1" readonly style="width:2em"><div>NFT</div></div>
-    <p class="lead">Turn a layered SVG into a set of unique, tradeable tokens!</p>
-    <p>Non Fungible Tokens are now available on DLUX, each one unique, all based on a set definition that started as an SVG (scaleable vector graphics) file.</p>
+	  <h1>CREATE NFT SET</h1>
+		<h4>ALPHA v0.2</h4>
+    <div class="form-row">
+		<select id="newNFTtype" class="btn btn-secondary btn-lg my-3">
+		<option value="1" selected>Type 1: LAYERS+COLORS</option>
+		</select>
+    </div>
+    <p class="lead">Turn a layered SVG into a set of unique, tradeable tokens</p>
+    <p>Non Fungible Tokens are now available on DLUX, each one unique, all based on a set definition.</p>
+	  <p>SVG (Scaleable Vector Graphic) files have layers, and output as HTML code, so it's possible to set up layers that contain multiple possible item options (such as different types of glasses), each with their own color options.</p>
     <p>At this time there are several manual steps that must have been done prior to using this form:
     <ul>
       <li>Already created an SVG file</li>
@@ -31,15 +37,15 @@ include_once( $path );
     </ul>
     To proceed, you must have the IPFS hash of your file, and know the Base64 limits of your set.
     </p>
-    <b>You must also be logged in as @disregardfiat - restriction lifting soon</b>
+    <b>You must also be logged in as @disregardfiat</b>
     </p>
     <p>
-    <form class="needs-validation mt-4" validate dmx-bind:action="javascript:defineNFT('{{newNFTname.value}}','{{newNFTtype.value}}','{{newNFTscript.value}}','{{newNFTpermlink.value}}','{{newNFTstart.value}}','{{newNFTend.value}}','{{newNFTqty.value}}','{{newNFTscript.royalty}}','{{newNFThandling.value}}','{{newNFTmaxfee.value}}','{{newNFTbond.value}}')">
+    <form class="needs-validation mt-4" validate dmx-bind:action="javascript:defineNFT('{{newNFTsetname.value}}','{{newNFTtype.value}}','{{newNFTscript.value}}','{{newNFTpermlink.value}}','{{newNFTstart.value}}','{{newNFTend.value}}','{{newNFTqty.value}}','{{newNFTroyalty.value}}','{{newNFThandling.value}}','{{newNFTmaxfee.value}}','{{newNFTbond.value}}')">
       <div class="my-4 rounded p-2 border border-primary">
         <div class="form-row">
           <div class="form-group col-6">
-            <label for="newNFTname">Set Name</label>
-            <input type="text" class="form-control" id="newNFTname" placeholder="Set Name" required>
+            <label for="newNFTsetname">Set Name*</label>
+            <input type="text" class="form-control" id="newNFTsetname" placeholder="Set Name" required>
             <div class="invalid-feedback"> Please enter the set name</div>
             <small class="form-text text-muted">This will be the main name of your set</small> </div>
           <div class="form-group col-6">
@@ -52,11 +58,11 @@ include_once( $path );
           <div class="form-group col-4">
             <label for="newNFTroyalty">Royalty (0-50%)</label>
             <input type="number" class="form-control" id="newNFTroyalty" step="0.01" min="0" max="50" value="10">
-            <small class="form-text text-muted">The percent paid back to you from each future DLUX contract containing any asset from the set.</small> </div>
+            <small class="form-text text-muted">The percent paid back to you from each future DLUX contract containing any asset from the set</small> </div>
           <div class="form-group col-4">
-            <label for="newNFTbond">Bond Value (0-?)</label>
+            <label for="newNFTbond">Bond Value (>=0)</label>
             <input type="number" class="form-control" id="newNFTbond" step="0.001" min="0" value="0">
-            <small class="form-text text-muted">Enter any amount of DLUX you would like to bond into each asset. The asset can be melted by the owner to receive the bond inside.</small> </div>
+            <small class="form-text text-muted">Enter any amount of DLUX you would like to bond into each asset - melting destroys it and deposits the value</small> </div>
           <div class="form-group col-4">
             <label for="newNFThandling">Handling</label>
             <input type="text" class="form-control" id="newNFThandling" value="svg" required readonly>
@@ -66,8 +72,8 @@ include_once( $path );
         <div class="form-row">
           <div class="form-group col-12">
             <label for="newNFTroyalty">Script</label>
-            <input type="text" class="form-control" id="newNFTscript" required>
-            <small class="form-text text-muted">The IPFS hash of the html file containing the SVG information and range</small> </div>
+            <input type="text" class="form-control" id="newNFTscript" required placeholder="QmIPFShash">
+            <small class="form-text text-muted">The IPFS hash of the HTML file containing the SVG information and attribute options, the range is the combination of all potential attributes in Base64</small> </div>
         </div>
       </div>
       <div class="my-4 rounded p-2 border border-info">
@@ -75,42 +81,65 @@ include_once( $path );
           <div class="form-group col-4">
             <label for="newNFTstart">Mint Range Start</label>
             <input type="text" class="form-control" id="newNFTstart" placeholder="Base64 number" required>
-            <div class="invalid-feedback">You must enter the end of the possible minting range</div>
-            <small class="form-text text-muted">What is the start of the range you wish to issue mints from?<br>
+            <div class="invalid-feedback">Please enter the start of the possible minting range</div>
+            <small class="form-text text-muted">What is the start of the range to issue mints from?<br>
             <b>Must be in Base64</b></small> </div>
           <div class="form-group col-4">
-            <label for="newNFTend">Mint Range End</label>
+            <label for="newNFTend">Mint Range End**</label>
             <input type="text" class="form-control" id="newNFTend" placeholder="Base64 number" required>
-            <div class="invalid-feedback">You must enter the end of the possible minting range</div>
-            <small class="form-text text-muted">What is the end of the range you wish to issue mints from?<br>
+            <div class="invalid-feedback">Please enter the end of the possible minting range</div>
+            <small class="form-text text-muted">What is the end of the range to issue mints from?<br>
             <b>Must be in Base64</b></small> </div>
           <div class="form-group col-4">
-            <label for="newNFTqty">Mint Quantity (1-?)</label>
+            <label for="newNFTqty">Mint Quantity (>=1)</label>
             <input type="number" class="form-control" id="newNFTqty" step="1" min="1" value="1" required>
             <div class="invalid-feedback"> Please enter the number of mints you'd like to purchase now.</div>
-            <small class="form-text text-muted">How many mints are you purchasing at this time?</small> </div>
+            <small class="form-text text-muted">How many mints are you issuing at this time?</small></div>
         </div>
       </div>
       <div class="form-row">
-		<div class="col-6">
-    <ul>
-	  <li>Mint Purchase Qty: {{form.newNFTqty.value}}</li>
-      <li>Set Definition Fee: {{(statsapi.data.result.nft_fee_1/1000).formatNumber('3','.',',')}} DLUX</li>
-      <li>Minting Fee (each byte): {{(statsapi.data.result.nft_byte_cost/1000).formatNumber('3','.',',')}} DLUX</li>
-	<li>Total Minting Fee (each): {{bytecost.value*(39+(newNFTname.value.split("").length)+((newNFTend.value.split("").length)*2))}} DLUX</li>
-      <li>Bond Value (each): {{newNFTbond.value}} DLUX</li>
-	  <li>Total Bond Value: {{newNFTbond.value*newNFTqty.value}} DLUX</li>
-		<li>Total Cost Per: {{((bytecost.value.toNumber()*(39+(newNFTname.value.split("").length.toNumber())+((newNFTend.value.split("").length)*2)))+newNFTbond.value.toNumber()}}</li>
-      <li>Total: {{( ( ( ( 39 + newNFTset.value.split("").length + (2*(newNFTend.value.split("").length)) ) * bytecost.value ) + (newNFTbond.value)) * newNFTqty.value ) + setfee.value }}</li>
-      <li>Total: ((((( {{39}} + {{newNFTname.value.split("").length}} + {{(2*(newNFTend.value.split("").length))}} ) * {{bytecost.value}} ) + {{newNFTbond.value}} ) * {{newNFTqty.value}} ) + {{setfee.value}} ) * 1.1 =</li>
-		<input id="setfee" type="number" class="d-none" dmx-bind:value="{{(statsapi.data.result.nft_fee_1/1000).formatNumber('3','.',',')}}">
-		<input id="bytecost" type="number" class="d-none" dmx-bind:value="{{(statsapi.data.result.nft_byte_cost/1000).formatNumber('3','.',',')}}">
-		<input class="" id="newNFTmaxfee" dmx-bind:value="(((((( 39 + newNFTset.value.split("").length + (2*(newNFTend.value.split("").length)) ) * bytecost.value ) + (newNFTbond.value)) * newNFTqty.value ) + setfee.value ))">
-    </ul>
-		  </div>
-		<div class="col-6 text-center">
-		  <button id="newNFTsubmit" type="submit" class="btn btn-primary btn-lg">DO IT</button></center>
+      <div class="col-6">
+		<div class="card bg-darker text-white-50">
+			<div class="card-header">
+		  <input id="setfee" type="number" class="d-none" dmx-bind:value="{{(statsapi.data.result.nft_fee_1/1000).formatNumber('3','.',',')}}">
+          <input id="bytecost" type="number" class="d-none" dmx-bind:value="{{(statsapi.data.result.nft_byte_cost/1000).formatNumber('3','.',',')}}">
+		  <small>* Characters in set name are single weighted for byte-cost evaluation (x1)</small><br>
+		  <small>** Characters in range end are double weighted for byte-cost evaluation (x2)</small>
+			</div>
+			<div class="card-body">
+		  <ul>
+          <li>Bytes: <span class="float-right">{{(39+(newNFTsetname.value.split("").length)+((newNFTend.value.split("").length)*2)).formatNumber('','.',',')}}</span></li>
+          <li>Minting Fee (each byte): <span class="float-right">{{(statsapi.data.result.nft_byte_cost/1000).formatNumber('3','.',',')}} DLUX</span></li>
+          <li>Minting Fee (each): <span class="float-right">{{(bytecost.value*(39+(newNFTsetname.value.split("").length)+((newNFTend.value.split("").length)*2))).formatNumber('3','.',',')}} DLUX</span></li>
+          <li>Bond Value (each): <span class="float-right">{{newNFTbond.value.toNumber().formatNumber('3','.',',')}} DLUX</span></li>
+          <li>Total Cost (each): <span class="float-right">{{((bytecost.value*(39+(newNFTsetname.value.split("").length)+((newNFTend.value.split("").length)*2)))+newNFTbond.value.toNumber()).formatNumber('3','.',',')}} DLUX</span></li>
+		  <li>Issue Qty: <span class="float-right">{{newNFTqty.value.toNumber().formatNumber('','.',',')}}</span></li>
+		  <hr>
+		<li>Set Definition Fee: <span class="float-right">{{(statsapi.data.result.nft_fee_1/1000).formatNumber('3','.',',')}} DLUX</span></li>
+		  <li>Minting Fee: <span class="float-right">{{(newNFTqty.value*(bytecost.value*(39+(newNFTsetname.value.split("").length)+((newNFTend.value.split("").length)*2)))).formatNumber('3','.',',')}} DLUX</span></li>
+		  <li>Bond Value: <span class="float-right">{{(newNFTbond.value*newNFTqty.value).formatNumber('3','.',',')}} DLUX</span></li>
+          <li>Grand Total: <span class="float-right">{{(setfee.value.toNumber()+(newNFTqty.value*((bytecost.value*(39+(newNFTsetname.value.split("").length)+((newNFTend.value.split("").length)*2)))+newNFTbond.value.toNumber()))).formatNumber('3','.',',')}} DLUX</span></li>
+          <li>+10% Margin: <span class="float-right">{{((setfee.value.toNumber()+(newNFTqty.value*((bytecost.value*(39+(newNFTsetname.value.split("").length)+((newNFTend.value.split("").length)*2)))+newNFTbond.value.toNumber())))*1.1).formatNumber('3','.',',')}} DLUX</span></li>
+        </ul>
+				</div>
+			<div class="card-footer">
+		  <div class="text-center"><p>1.1 x ( {{setfee.value}} + ( {{newNFTqty.value.toNumber().formatNumber('','.',',')}} x ( {{newNFTbond.value.toNumber().formatNumber('3','.',',')}} + ( {{bytecost.value}} x ( {{39}} + {{newNFTsetname.value.split("").length}} + {{(2*(newNFTend.value.split("").length))}} )))))</p></div>
 		</div>
+      </div>
+		  </div>
+      <div class="col-6 text-center">
+		<div class="d-flex h-100">
+		 <div class="m-auto flex-column rounded border border-warning p-3">
+		<div class="form-group my-2">
+			<label for="newNFTmaxfee">ENTER THIS LAST<br>Max Cost Safety Measure</label>
+			<input class="form-control" id="newNFTmaxfee" type="number" placeholder="Total + 10% Margin" required>
+			<div class="invalid-feedback">Enter the +10% Margin Total calculated on the left</div>
+        	<small class="form-text text-muted">This value is calculated on the left (+10% Margin)</small>
+			</div>
+        <div class="my-2"><button type="submit" class="btn btn-warning btn-lg" id="newNFTsubmit">Define Set and Issue Mints</button></div>
+        </div>
+			</div>
+      </div>
     </form>
   </div>
   </main>
