@@ -669,7 +669,7 @@ function NFTDelete(setname, uid, callback){
 
 // NFT Actions //
 
- function defineNFT(setname, type, script, permlink, start, end, total,royalty, handling, max_fee, bond, callback){
+ function defineNFT(setname, type, script, permlink, start, end, total, royalty, handling, max_fee, bond, callback){
     max_fee = parseInt(max_fee * 1000)
     royalty = parseInt(royalty * 100)
     //more validation
