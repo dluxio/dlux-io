@@ -34,7 +34,7 @@ include_once( $path );
     <b>You must also be logged in as @disregardfiat - restriction lifting soon</b>
     </p>
     <p>
-    <form class="needs-validation mt-4" validate>
+    <form class="needs-validation mt-4" validate dmx-bind:action="javascript:defineNFT('{{newNFTname.value}}','{{newNFTtype.value}}','{{newNFTscript.value}}','{{newNFTpermlink.value}}','{{newNFTstart.value}}','{{newNFTend.value}}','{{newNFTqty.value}}','{{newNFTscript.royalty}}','{{newNFThandling.value}}','{{newNFTmaxfee.value}}','{{newNFTbond.value}}')">
       <div class="my-4 rounded p-2 border border-primary">
         <div class="form-row">
           <div class="form-group col-6">
@@ -109,7 +109,7 @@ include_once( $path );
     </ul>
 		  </div>
 		<div class="col-6 text-center">
-		  <button id="newNFTsubmit" type="submit" class="btn btn-primary btn-lg" dmx-bind:action="javascript:defineNFT('{{newNFTname.value}}','{{newNFTtype.value}}','{{newNFTscript.value}}','{{newNFTpermlink.value}}','{{newNFTstart.value}}','{{newNFTend.value}}','{{newNFTqty.value}}','{{newNFTscript.royalty}}','{{newNFThandling.value}}','{{newNFTmaxfee.value}}','{{newNFTbond.value}}')">DO IT</button></center>
+		  <button id="newNFTsubmit" type="submit" class="btn btn-primary btn-lg">DO IT</button></center>
 		</div>
     </form>
   </div>
