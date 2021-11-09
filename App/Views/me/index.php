@@ -8,7 +8,7 @@ $path .= "/mod/header.php";
 include_once( $path );
 ?>
 <!--page specific-->
-
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
 <style>
@@ -44,6 +44,11 @@ include_once( $path );
 	border-top-right-radius: 0.25rem !important;
 	border-bottom-right-radius: 0.25rem !important;
 }
+		.rainbow-text {
+  background-image: linear-gradient( magenta, aqua);
+		 -webkit-background-clip: text;
+		 color: transparent;
+}
 </style>
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="index" is="dmx-app">
@@ -67,7 +72,7 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
 };
 ?>
-
+<dmx-api-datasource id="inventorydata" is="dmx-fetch" url="https://token.dlux.io/api/nfts/markegiles"></dmx-api-datasource>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
@@ -422,7 +427,7 @@ if ( isset( $author ) ) {
         <div class="container"> 
           <!-- Mint repeat -->
           <div class="card-columns cc-3 pt-5" id="inventory-mint" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.mint_tokens">
-            <div class="card text-white" style="background: linear-gradient(#43C45F,lawngreen)">
+            <div dmx-bind:id="{{script}}-card" class="card text-white"> {{script.getSetDetailsColors('-card')}}
               <div class="card-header d-flex align-items-center justify-content-between" >
                 <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
                   <div class="pr-2"><small>QTY: </small></div>
@@ -435,24 +440,22 @@ if ( isset( $author ) ) {
                   </a> </div>
               </div>
               <div class="card-body text-center d-flex flex-column lead">
-                <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.5)">
-                  <h1 class="text-center"><i class="fas fa-gem"></i></h1>
-                  <h3 class="my-0 mx-2 p-0 p-2 ml-auto " style="color: lawngreen">sealed NFT</h3>
+                <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">{{script.getSetDetailsIcon('-icon')}}
+                  <h1 class="text-center rainbow-text"><i dmx-bind:id="{{script}}-icon"></i></h1>
+                  <h3 class="my-0 mx-2 p-0 p-2 ml-auto">sealed NFT</h3>
                   <h5>Unwrap to see what's inside.</h5>
                 </div>
               </div>
-              <div class="card-footer" dmx-show="(inventorydata.data.user == userCookie.value)">
+              <div class="card-footer" dmx-show="(inventorydata.data.user != userCookie.value)">
                 <div class="d-flex flex-wrap justify-content-between">
                   <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
-                  <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-exchange-alt ml-3"></i></button>
+                  <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" data-toggle="modal" href="#mintTransferModal" dmx-on:click="mint_detail.select(set)">Transfer<i class="fas fa-exchange-alt ml-3"></i></button>
                 </div>
               </div>
             </div>
           </div>
-		  <!-- Mint FT Iterator -->
-		  <dmx-data-iterator id="mint_iterator" dmx-bind:data="inventorydata.data.mint_tokens" loop="true" dmx-bind:index="1"></dmx-data-iterator>
           <!-- Transfer FT Mint -->
-		  <dmx-data-detail id="mint_detail" dmx-bind:data="inventorydata.data.mint_tokens" key="set" dmx-bind:value="mint_iterator.value.set">
+		  <dmx-data-detail id="mint_detail" dmx-bind:data="inventorydata.data.mint_tokens" key="set">
           <div class="modal fade show" id="mintTransferModal" tabindex="11" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-full modal-dialog-centered" role="document">
               <div class="modal-content bg-dark text-white">
@@ -468,7 +471,7 @@ if ( isset( $author ) ) {
                     </ul>
                     <div class="tab-content">
 						<div role="tabpanel" class="tab-pane fade show active" id="giveFTtab" aria-labelledby="giveFT">
-                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:giveFT('{{mint_detail.data.set}}','{{giveFTusername.value}}')">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:giveFT('{{mint_detail.data.set}}','{{giveFTusername.value}}','{{giveFTqty.value}}')">
                           <div class="form-row my-2">
                             <div class="col-12">
                               <label for="giveFTusername">Username</label>
@@ -483,9 +486,9 @@ if ( isset( $author ) ) {
 							  <div class="col-12">
                               <label for="giveFTqty">Quantity</label>
                               <div class="input-group">
-                                <input type="number" class="form-control" id="giveFTqty" aria-describedby="giveFTqtyappend" placeholder="1" step="1" min="1" required readonly>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="giveFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                                <input type="number" class="form-control" id="giveFTqty" aria-describedby="giveFTqtyappend" value="1" step="1" min="1" required>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="giveFTqtyappend">{{mint_detail.data.set}} FT</span> </div>
+								  <div class="invalid-feedback"> Please enter the number of FTs to send. </div>
                               </div>
                             </div>
 							  </div>
@@ -510,8 +513,8 @@ if ( isset( $author ) ) {
                               <label for="tradeFTqty">Quantity</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="tradeFTqty" aria-describedby="tradeFTqtyappend" placeholder="1" step="1" min="1" required readonly>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTqtyappend">{{mint_detail.data.set}} FT</span> </div>
+								  <div class="invalid-feedback"> Please enter the number of FTs to trade. </div>
                               </div>
                             </div>
 							  <div class="col-6">
@@ -533,8 +536,8 @@ if ( isset( $author ) ) {
                               <label for="sellFTqty">Quantity</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="sellFTqty" aria-describedby="sellFTqtyappend" placeholder="1" step="1" min="1" required readonly>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="sellFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="sellFTqtyappend">{{mint_detail.data.set}} FT</span> </div>
+								  <div class="invalid-feedback"> Please enter the number of FTs to sell. </div>
                               </div>
                             </div>
                             <div class="col-6">
@@ -561,8 +564,8 @@ if ( isset( $author ) ) {
                               <label for="auctionFTqty">Quantity</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="auctionFTqty" aria-describedby="auctionFTqtyappend" placeholder="1" step="1" min="1" required readonly>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">{{mint_detail.data.set}} FT</span> </div>
+								  <div class="invalid-feedback"> Please enter the number of FTs to auction. </div>
                               </div>
                             </div>
                             <div class="col-6">
@@ -635,8 +638,8 @@ if ( isset( $author ) ) {
                               <label for="airdropFTqty">Quantity sent to each:</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="airdropFTqty" aria-describedby="airdropFTqtyappend" placeholder="1" step="1" min="1" required readonly>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="airdropFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="airdropFTqtyappend">{{mint_detail.data.set}} FT</span> </div>
+								  <div class="invalid-feedback"> Please enter the number of FTs to send to each account. </div>
                               </div>
                             </div>
 							</div>
@@ -654,9 +657,9 @@ if ( isset( $author ) ) {
 			  
           <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
             <div class="card text-white bg-dark ">
-              <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
-                <div class="circle">{{uid}}</div>
-                <h3 class="card-title lead border rounded p-2 ml-auto"><a href="/nfts/set/" class="text-white lead">{{set}} NFT</a></h3>
+              <div class="card-header d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-nftheader">{{script.getSetDetailsColors(uid+'-nftheader')}}
+                 <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{uid}}</h2></div>
+                <h3 class="card-title lead border rounded border-dark p-2 ml-auto mb-0 "><a href="/nfts/set/" class="lead" style="color: black">{{set}} NFT</a></h3>
               </div>
               <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
               <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
@@ -671,11 +674,12 @@ if ( isset( $author ) ) {
             <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
               <div class="modal-content bg-dark text-white">
                 <div class="card text-white bg-dark ">
-                  <div class="card-header d-flex align-items-baseline justify-content-between"  style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
-                    <h5 class="circle">{{inventory_detail.data.uid}}</h5>
-                    <h3 class="card-title lead border rounded p-2"><a href="/nfts/set/" class="text-white">{{inventory_detail.data.set}} NFT</a></h3>
+                  <div class="card-header d-flex align-items-center justify-content-between" dmx-bind:id="{{inventory_detail.data.script}}{{inventory_detail.data.uid}}-nftdetailheader">{{inventory_detail.data.script.getSetDetailsColors(inventory_detail.data.uid+'-nftdetailheader')}}
+                    <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{inventory_detail.data.uid}}</h2></div>
+                    <h3 class="card-title lead border border-dark rounded p-2 mb-0"><a href="/nfts/set/" style="color:black;">{{inventory_detail.data.set}} NFT</a></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  </div>
+                  
+					</div>
                   <div class="card-body row d-flex "> 
                     <!-- NFT detail col 1 -->
                     <div class="col-lg-6 px-0 px-sm-2">
@@ -701,7 +705,7 @@ if ( isset( $author ) ) {
                           </div>
                           <div id="collapseDescription" class="collapse show" aria-labelledby="headingDescription" data-parent="#accordion">
                             <div class="card-body">
-                              <p class="card-text">Behold! The DLUX Founders Token. Own a piece of dlux in the form of an NFT that is redeemable for 100 DLUX (your NFT will be melted and 100 DLUX will be placed in your wallet).</p>
+                             <p dmx-bind:id="{{inventory_detail.data.script}}-description-p">  {{inventory_detail.data.script.getSetDetails('Description', '-description-p', 'innerText')}} </p>
                             </div>
                           </div>
                         </div>

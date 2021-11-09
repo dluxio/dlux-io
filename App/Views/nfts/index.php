@@ -152,7 +152,7 @@ include_once( $path );
             <div class="jumbotron px-5 py-4" style="background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0))">
               <div class="d-flex justify-content-between align-items-center"></div>
               <div class="" id="sales-mint">
-                <div id="buymintcards" is="dmx-repeat" dmx-bind:repeat="mintsupplyapi.data.result.sort('set').reverse()" class="row">
+                <div id="buymintcards" is="dmx-repeat" dmx-bind:repeat="mintsupplyapi.data.result.sort('set')" class="row">
                   <div dmx-bind:id="{{script}}-card" class="card card-ft text-white m-2 " > {{script.getSetDetailsColors('-card')}}
                     <div id="hidden-detail-inputs" class="d-none">
                       <input dmx-bind:id="{{script}}-color1-text" type="text">
@@ -168,7 +168,7 @@ include_once( $path );
                         <div class="pr-2"><small>OWN: </small></div>
                         <div class="px-2">
                           <h2 dmx-bind:id="{{set}}-inventory" class="m-0">
-							<div dmx-bind:id="{{set}}-inventory-none2" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">000</div>
+							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">000</div>
                             <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">{{qty.pad(3)}}</div>
                           </h2>
                         </div>
@@ -351,7 +351,7 @@ include_once( $path );
 			  <!-- Mint FT Iterator -->
 		  <dmx-data-iterator id="mint_iterator" dmx-bind:data="inventoryapi.data.mint_tokens" loop="true" dmx-bind:index="1"></dmx-data-iterator>
           <!-- Transfer FT Mint -->
-		  <dmx-data-detail id="mint_detail" dmx-bind:data="inventoryapi.data.mint_tokens" key="set" dmx-bind:value="mint_iterator.value.set">
+		  <dmx-data-detail id="mint_detail" dmx-bind:data="inventoryapi.data.mint_tokens" key="set">
           <div class="modal fade show" id="mintTransferModal" tabindex="11" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-full modal-dialog-centered" role="document">
               <div class="modal-content bg-dark text-white">

@@ -2846,23 +2846,11 @@ dmx.config({
         "sub": [
           {
             "type": "text",
-            "name": "date"
+            "name": "access-control-allow-origin"
           },
           {
             "type": "text",
-            "name": "via"
-          },
-          {
-            "type": "text",
-            "name": "server"
-          },
-          {
-            "type": "text",
-            "name": "x-powered-by"
-          },
-          {
-            "type": "text",
-            "name": "etag"
+            "name": "content-length"
           },
           {
             "type": "text",
@@ -2870,15 +2858,23 @@ dmx.config({
           },
           {
             "type": "text",
-            "name": "access-control-allow-origin"
+            "name": "date"
           },
           {
             "type": "text",
-            "name": "connection"
+            "name": "etag"
           },
           {
             "type": "text",
-            "name": "content-length"
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "via"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
           }
         ]
       }
@@ -3139,6 +3135,43 @@ dmx.config({
         {
           "type": "text",
           "name": "url"
+        }
+      ],
+      "outputType": "array"
+    },
+    "inventory-mint": {
+      "meta": [
+        {
+          "name": "$index",
+          "type": "number"
+        },
+        {
+          "name": "$key",
+          "type": "text"
+        },
+        {
+          "name": "$value",
+          "type": "object"
+        },
+        {
+          "type": "number",
+          "name": "qty"
+        },
+        {
+          "type": "text",
+          "name": "set"
+        },
+        {
+          "type": "text",
+          "name": "script"
+        },
+        {
+          "type": "number",
+          "name": "type"
+        },
+        {
+          "type": "text",
+          "name": "encoding"
         }
       ],
       "outputType": "array"
