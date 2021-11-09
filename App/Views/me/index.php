@@ -445,7 +445,7 @@ if ( isset( $author ) ) {
                   <h5>Unwrap to see what's inside.</h5>
                 </div>
               </div>
-              <div class="card-footer" dmx-show="(inventorydata.data.user != userCookie.value)">
+              <div class="card-footer" dmx-show="(inventorydata.data.user == userCookie.value)">
                 <div class="d-flex flex-wrap justify-content-between">
                   <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
                   <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" data-toggle="modal" href="#mintTransferModal" dmx-on:click="mint_detail.select(set)">Transfer<i class="fas fa-exchange-alt ml-3"></i></button>
