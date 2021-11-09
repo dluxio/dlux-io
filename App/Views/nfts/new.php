@@ -54,7 +54,7 @@ include_once( $path );
             <input type="number" class="form-control" id="newNFTroyalty" step="0.01" min="0" max="50" value="10">
             <small class="form-text text-muted">The percent paid back to you from each future DLUX contract containing any asset from the set.</small> </div>
           <div class="form-group col-4">
-            <label for="newNFTpermlink">Bond Value (0-?)</label>
+            <label for="newNFTbond">Bond Value (0-?)</label>
             <input type="number" class="form-control" id="newNFTbond" step="0.001" min="0" value="0">
             <small class="form-text text-muted">Enter any amount of DLUX you would like to bond into each asset. The asset can be melted by the owner to receive the bond inside.</small> </div>
           <div class="form-group col-4">
@@ -96,12 +96,16 @@ include_once( $path );
     <ul>
 	  <li>Mint Purchase Qty: {{form.newNFTqty.value}}</li>
       <li>Set Definition Fee: {{(statsapi.data.result.nft_fee_1/1000).formatNumber('3','.',',')}} DLUX</li>
-      <li>Minting Fee (each): {{(statsapi.data.result.nft_byte_cost/1000).formatNumber('3','.',',')}} DLUX</li>
-      <li>Bond Value (each): {{form.newNFTbond.value}} DLUX</li>
-	  <li>Total Minting Fee: {{(statsapi.data.result.nft_byte_cost/1000)*form.newNFTqty.value}} DLUX</li>
-	  <li>Total Bond Value: {{form.newNFTbond.value*form.newNFTqty.value}} DLUX</li>
-      <li>Total: {{(form.newNFTqty.value*(statsapi.data.result.nft_byte_cost/1000)+(statsapi.data.result.nft_fee_1/1000))}}</li>
-		<input class="d-none" id="newNFTmaxfee" dmx-bind:value="(form.newNFTqty.value*(statsapi.data.result.nft_byte_cost/1000)+(statsapi.data.result.nft_fee_1/1000))*1.1"
+      <li>Minting Fee (each byte): {{(statsapi.data.result.nft_byte_cost/1000).formatNumber('3','.',',')}} DLUX</li>
+	<li>Total Minting Fee (each): {{bytecost.value*(39+(newNFTname.value.split("").length)+((newNFTend.value.split("").length)*2))}} DLUX</li>
+      <li>Bond Value (each): {{newNFTbond.value}} DLUX</li>
+	  <li>Total Bond Value: {{newNFTbond.value*newNFTqty.value}} DLUX</li>
+		<li>Total Cost Per: {{((bytecost.value.toNumber()*(39+(newNFTname.value.split("").length.toNumber())+((newNFTend.value.split("").length)*2)))+newNFTbond.value.toNumber()}}</li>
+      <li>Total: {{( ( ( ( 39 + newNFTset.value.split("").length + (2*(newNFTend.value.split("").length)) ) * bytecost.value ) + (newNFTbond.value)) * newNFTqty.value ) + setfee.value }}</li>
+      <li>Total: ( ( ( ( ( {{39}} + {{newNFTname.value.split("").length}} + {{(2*(newNFTend.value.split("").length))}} ) * {{bytecost.value}} ) + {{newNFTbond.value}} ) * {{newNFTqty.value}} ) + {{setfee.value}} ) * 1.1 = {{newNFTmaxfee.value}}</li>
+		<input id="setfee" type="number" class="d-none" dmx-bind:value="{{(statsapi.data.result.nft_fee_1/1000).formatNumber('3','.',',')}}">
+		<input id="bytecost" type="number" class="d-none" dmx-bind:value="{{(statsapi.data.result.nft_byte_cost/1000).formatNumber('3','.',',')}}">
+		<input class="" id="newNFTmaxfee" dmx-bind:value="(((((( 39 + newNFTset.value.split("").length + (2*(newNFTend.value.split("").length)) ) * bytecost.value ) + (newNFTbond.value)) * newNFTqty.value ) + setfee.value ))">
     </ul>
 		  </div>
 		<div class="col-6 text-center">
