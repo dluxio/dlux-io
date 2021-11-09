@@ -441,7 +441,7 @@ if ( isset( $author ) ) {
               <div class="card-body text-center d-flex flex-column lead">
                 <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">{{script.getSetDetailsIcon('-icon')}}
                   <h1 class="text-center rainbow-text"><i dmx-bind:id="{{script}}-icon"></i></h1>
-                  <h3 class="my-0 mx-2 p-0 p-2 ml-auto">sealed NFT</h3>
+                  <h3 class="my-0 mx-2 p-0 p-2 ml-auto rainbow-text">sealed NFT</h3>
                   <h5>Unwrap to see what's inside.</h5>
                 </div>
               </div>
