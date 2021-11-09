@@ -566,9 +566,14 @@ dmx.Formatters("global", {
                 fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
                 .then((data) => {
-                const code = `(//${data}\n)("${u}")`;
-                const SVG = eval(code);
-                return SVG.attributes;
+                    const code = `(//${data}\n)("${u}")`;
+                    const SVG = eval(code);
+                    for (var j = 0; j < r.length; j++) {
+                        let node = document.createElement('div')
+                        node.id = `${s}-${u}-attribute-${i}`
+                        node.innerHTML = `<div class="attribute-name">${Object.keys(SVG.attributes[j])[0]}</div><div class="attribute-value">${SVG.attributes[j][Object.keys(SVG.attributes[j])[0]]}</div>`
+                        document.getElementById(`${s}-${u}-attributes`).appendChild(node)
+                    }
                 })
             },
             slugify: function(t) {
