@@ -553,10 +553,10 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
 
 // FT Transfers //
 
-function giveFT(setname, to, callback){
+function giveFT(setname, to, qty, callback){
     checkAccount(to)
     .then(r => {
-        broadcastCJA({set: setname,to}, "dlux_ft_transfer", `Trying to give ${setname} mint token to ${to}`) 
+        broadcastCJA({set: setname, to, qty}, "dlux_ft_transfer", `Trying to give ${setname} mint token to ${to}`) 
     })
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
