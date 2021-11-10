@@ -50,10 +50,12 @@ include_once( $path );
 }
 
 	.attribute-name {
-		
+		text-decoration: underline;
+		margin-top: 5px;
 	}
 	.attribute-value {
-		
+		font-weight: bold;
+		margin-bottom: 5px;
 	}
 </style>
 </head>
@@ -75,7 +77,7 @@ if ( isset( $author ) ) {
 } else {
   echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog/\" dmx-param:tag=\"'robotolux'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'robotolux'\"></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/markegiles\"></dmx-api-datasource>";
 };
 ?>
 <main role="main" class="flex-shrink-0 text-white">
@@ -718,11 +720,11 @@ if ( isset( $author ) ) {
                         <div class="card bg-dark text-white">
                           <div class="card-header" id="headingAttributes">
                             <h5 class="mb-0">
-                              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseAttributes" aria-expanded="false" aria-controls="collapseAttributes"> ATTRIBUTES </button>
+                              <button class="btn btn-link collapsed text-success" data-toggle="collapse" data-target="#collapseAttributes" aria-expanded="false" aria-controls="collapseAttributes"><i class="fas fa-star mr-3"></i>ATTRIBUTES </button>
                             </h5>
                           </div>
                           <div id="collapseAttributes" class="collapse" aria-labelledby="headingAttributes" data-parent="#accordion">
-                            <div class="card-body p-0">
+                            <div class="card-body">
                      			<div dmx-bind:id="{{inventory_detail.data.script}}-{{inventory_detail.data.uid}}-attributes" class="attribute-container">  {{inventory_detail.data.script.getNFTDetails(inventory_detail.data.uid)}} </div>
                             </div>
                           </div>
