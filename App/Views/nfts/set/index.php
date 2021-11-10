@@ -15,6 +15,7 @@ include_once( $path );
 <?php
 	echo '<dmx-api-datasource id="api1" is="dmx-fetch" url="https://token.dlux.io/api/set/' . $set . '"></dmx-api-datasource>';
 ?>
+<dmx-api-datasource id="api1" is="dmx-fetch" url="https://token.dlux.io/api/set/bz"></dmx-api-datasource>
 <dmx-data-view id="dataView1" dmx-bind:data="api1.data.result" sorton="uid"></dmx-data-view>
 <style>
 .circle {
@@ -44,11 +45,12 @@ include_once( $path );
       </div>
       <div class="row row-cols-xl-6 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
         <div class="col mb-4" dmx-repeat:repeat1="dataView1.data">
-          <div class="card text-white bg-dark"> <a href="#itemModal" class="a-1" data-toggle="modal" dmx-on:click="iterator1.select($index);detail1.select(uid)">
-            <div class="card-header d-flex" style="color:;background: linear-gradient(dodgerblue,cornflowerblue)">
-              <div class="circle">{{uid}}</div>
-              <h3 class="card-title lead border rounded p-2 ml-auto">{{set}} NFT</h3>
+          <div class="card text-white bg-dark"> 
+             <div class="card-header d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-header">{{script.getSetDetailsColors(uid+'-header')}}
+              <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{uid}}</h2></div>
+              <h3 class="card-title lead border rounded border-dark p-2 ml-auto mb-0 "><a dmx-bind:href="/nfts/set/{{set}}" class="lead" style="color: black">{{set}} NFT</a></h3>
             </div>
+			  <a href="#itemModal" class="a-1" data-toggle="modal" dmx-on:click="iterator1.select($index);detail1.select(uid)">
             <div class="card-img-top p-1" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
             <div class="card-body d-flex flex-column text-center"> #{{uid.Base64toNumber()}} / {{api1.data.set.max}} </div>
             </a>
@@ -68,10 +70,10 @@ include_once( $path );
           <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
             <div class="modal-content bg-dark text-white">
               <div class="card text-white bg-dark ">
-                <div class="card-header d-flex align-items-baseline justify-content-between" style="background: #9200A6">
-                  <div></div>
-                  <h3 class="card-title lead border rounded p-2">{{detail1.data.set}} NFT</h3>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="card-header d-flex align-items-center justify-content-between" dmx-bind:id="{{detail1.data.script}}{{detail1.data.uid}}-nftdetailheader">{{detail1.data.script.getSetDetailsColors(detail1.data.uid+'-nftdetailheader')}}
+              <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{detail1.data.uid}}</h2></div>
+                <h3 class="card-title lead border border-dark rounded mb-0 p-2"><a dmx-bind:href="/nfts/set/{{detail1.data.set}}" style="color: black">{{detail1.data.set}} NFT</a></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="card-body row d-flex ">
                   <div class="order-md-last col-lg-6 px-0 px-sm-2">
