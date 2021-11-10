@@ -889,7 +889,8 @@ if ( isset( $author ) ) {
                                       <h4>Melt Value:</h4>
                                     </div>
                                     <div class="d-flex ml-1">
-                                      <h1><u>100 DLUX</u></h1>
+										
+                                      <u><h1 dmx-bind:id="{{inventory_detail.data.set}}-bond-value">{{inventory_detail.data.set.getSetDetailsBond()}}</h1></u>
                                     </div>
                                   </div>
                                   <div class="pt-2">
@@ -902,7 +903,7 @@ if ( isset( $author ) ) {
                                         <ul>
                                           <li>This action cannot be undone</li>
                                           <li>Your NFT will be deleted</li>
-                                          <li>You will receive 100 DLUX</li>
+                                          <li>You will receive the melt value</li>
                                         </ul>
                                       </div>
                                     </div>
