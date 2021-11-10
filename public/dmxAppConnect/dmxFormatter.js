@@ -568,6 +568,7 @@ dmx.Formatters("global", {
                 .then((data) => {
                     const code = `(//${data}\n)("${u}")`;
                     const SVG = eval(code);
+                    document.getElementById(`${s}-${u}-attributes`).innerHTML = ''
                     for (var j = 0; j < SVG.attributes.length; j++) {
                         let node = document.createElement('div')
                         node.id = `${s}-${u}-attribute-${j}`
