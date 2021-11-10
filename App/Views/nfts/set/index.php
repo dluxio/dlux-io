@@ -13,7 +13,9 @@ include_once( $path );
 <script src="/js/ico.js"></script>
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
-<dmx-api-datasource id="api1" is="dmx-fetch" url="https://token.dlux.io/api/set/dlux"></dmx-api-datasource>
+<?php
+	echo '<dmx-api-datasource id=\"api1\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/set/"' . $set . '\"></dmx-api-datasource>';
+?>
 <dmx-data-view id="dataView1" dmx-bind:data="api1.data.result" sorton="uid"></dmx-data-view>
 <style>
 .circle {
