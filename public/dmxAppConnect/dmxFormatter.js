@@ -562,6 +562,13 @@ dmx.Formatters("global", {
                 }
                 })
             },
+            getSetDetailsBond : function(s, c){
+                fetch(`https://token.dlux.io/api/set/${s}`)
+                .then((response) => response.json())
+                .then((data) => {
+                return `${parseFloat(data.set.bond.amount/Math.pow(10,data.set.bond.precision)).toFixed(data.set.bond.precision)}`
+                })
+            },
             getNFTDetails : function(s, u, c){
                 fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
