@@ -78,7 +78,6 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
 };
 ?>
-<dmx-api-datasource id="inventorydata" is="dmx-fetch" url="https://token.dlux.io/api/nfts/markegiles"></dmx-api-datasource>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
