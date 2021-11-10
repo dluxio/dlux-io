@@ -295,10 +295,13 @@ include_once( $path );
                     </div>
                     <div class="card-footer d-flex flex-column p-2">
                       <div class="d-flex justify-content-between align-items-center">
-                        <button type="button" class="btn btn-outline-dark mt-1 col-5" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
-                        <div class="col-5">
-						  <div dmx-bind:id="{{set}}-none-btn" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark mt-1" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-exchange-alt ml-3"></i></button></div>
-                            <div dmx-bind:id="{{set}}-any-btn" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark mt-1" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-exchange-alt ml-3"></i></button></div>
+                        <div class="col-5 px-0">
+						  <div dmx-bind:id="{{set}}-open-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark w-100 disabled">Open<i class="fas fa-box-open ml-3"></i></button></div>
+                            <div dmx-bind:id="{{set}}-open-some" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark w-100" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button></div>
+						  </div>
+						  <div class="col-5 px-0">
+						  <div dmx-bind:id="{{set}}-transfer-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark w-100 disabled">Transfer<i class="fas fa-exchange-alt ml-3"></i></button></div>
+                            <div dmx-bind:id="{{set}}-transfer-some" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark w-100" data-toggle="modal" href="#mintTransferModal" dmx-on:click="mint_detail.select(set)">Transfer<i class="fas fa-exchange-alt ml-3"></i></button></div>
 						  </div>
                       </div>
                     </div>
@@ -371,7 +374,7 @@ include_once( $path );
                     </ul>
                     <div class="tab-content">
 						<div role="tabpanel" class="tab-pane fade show active" id="giveFTtab" aria-labelledby="giveFT">
-                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:giveFT('{{mint_detail.data.set}}','{{giveFTusername.value}}')">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:giveFT('{{mint_detail.data.set}}','{{giveFTusername.value}}','{{giveFTqty.value}}')">
                           <div class="form-row my-2">
                             <div class="col-12">
                               <label for="giveFTusername">Username</label>
@@ -386,9 +389,9 @@ include_once( $path );
 							  <div class="col-12">
                               <label for="giveFTqty">Quantity</label>
                               <div class="input-group">
-                                <input type="number" class="form-control" id="giveFTqty" aria-describedby="giveFTqtyappend" placeholder="1" step="1" min="1" required readonly>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="giveFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                                <input type="number" class="form-control" id="giveFTqty" aria-describedby="giveFTqtyappend" value="1" step="1" min="1" required>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="giveFTqtyappend">{{mint_detail.data.set}} FT</span> </div>
+								  <div class="invalid-feedback"> Please enter the number of FTs to send. </div>
                               </div>
                             </div>
 							  </div>
@@ -413,8 +416,8 @@ include_once( $path );
                               <label for="tradeFTqty">Quantity</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="tradeFTqty" aria-describedby="tradeFTqtyappend" placeholder="1" step="1" min="1" required readonly>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTqtyappend">{{mint_detail.data.set}} FT</span> </div>
+								  <div class="invalid-feedback"> Please enter the number of FTs to trade. </div>
                               </div>
                             </div>
 							  <div class="col-6">
@@ -436,8 +439,8 @@ include_once( $path );
                               <label for="sellFTqty">Quantity</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="sellFTqty" aria-describedby="sellFTqtyappend" placeholder="1" step="1" min="1" required readonly>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="sellFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="sellFTqtyappend">{{mint_detail.data.set}} FT</span> </div>
+								  <div class="invalid-feedback"> Please enter the number of FTs to sell. </div>
                               </div>
                             </div>
                             <div class="col-6">
@@ -464,8 +467,8 @@ include_once( $path );
                               <label for="auctionFTqty">Quantity</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="auctionFTqty" aria-describedby="auctionFTqtyappend" placeholder="1" step="1" min="1" required readonly>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">{{mint_detail.data.set}} FT</span> </div>
+								  <div class="invalid-feedback"> Please enter the number of FTs to auction. </div>
                               </div>
                             </div>
                             <div class="col-6">
@@ -538,8 +541,8 @@ include_once( $path );
                               <label for="airdropFTqty">Quantity sent to each:</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="airdropFTqty" aria-describedby="airdropFTqtyappend" placeholder="1" step="1" min="1" required readonly>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="airdropFTqtyappend">DLUX</span> </div>
-								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="airdropFTqtyappend">{{mint_detail.data.set}} FT</span> </div>
+								  <div class="invalid-feedback"> Please enter the number of FTs to send to each account. </div>
                               </div>
                             </div>
 							</div>
