@@ -77,7 +77,7 @@ if ( isset( $author ) ) {
 } else {
   echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog/\" dmx-param:tag=\"'robotolux'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'robotolux'\"></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/markegiles\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
 };
 ?>
 <main role="main" class="flex-shrink-0 text-white">

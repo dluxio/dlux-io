@@ -15,7 +15,6 @@ include_once( $path );
 <?php
 	echo '<dmx-api-datasource id="api1" is="dmx-fetch" url="https://token.dlux.io/api/set/' . $set . '"></dmx-api-datasource>';
 ?>
-<dmx-api-datasource id="api1" is="dmx-fetch" url="https://token.dlux.io/api/set/bz"></dmx-api-datasource>
 <dmx-data-view id="dataView1" dmx-bind:data="api1.data.result" sorton="uid"></dmx-data-view>
 <style>
 .circle {
