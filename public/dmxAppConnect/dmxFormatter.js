@@ -566,7 +566,7 @@ dmx.Formatters("global", {
                 fetch(`https://token.dlux.io/api/set/${s}`)
                 .then((response) => response.json())
                 .then((data) => {
-                document.getElementById(`${s}-bond-value`).innerText = `${parseFloat(data.set.bond.amount/Math.pow(10,data.set.bond.precision)).toFixed(data.set.bond.precision)}`
+                document.getElementById(`${s}-bond-value`).innerText = `${parseFloat(data.set.bond.amount/Math.pow(10,data.set.bond.precision)).toFixed(data.set.bond.precision)} ${data.set.bond.token}`
                 })
             },
             getNFTDetails : function(s, u, c){
