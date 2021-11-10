@@ -440,7 +440,7 @@ if ( isset( $author ) ) {
                     <h2 class="m-0">{{qty.pad(3)}}</h2>
                   </div>
                 </div>
-                <div> <a href="/nfts/set/">
+                <div> <a dmx-bind:href="/nfts/set/{{set}}">
                   <h3 class="card-title lead shimmer rounded p-2 m-0 ml-auto" style="color: black"><b>{{set}} NFT</b></h3>
                   </a> </div>
               </div>
@@ -664,7 +664,7 @@ if ( isset( $author ) ) {
             <div class="card text-white bg-dark ">
               <div class="card-header d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-nftheader">{{script.getSetDetailsColors(uid+'-nftheader')}}
                  <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{uid}}</h2></div>
-                <h3 class="card-title lead border rounded border-dark p-2 ml-auto mb-0 "><a href="/nfts/set/" class="lead" style="color: black">{{set}} NFT</a></h3>
+                <h3 class="card-title lead border rounded border-dark p-2 ml-auto mb-0 "><a dmx-bind:href="/nfts/set/{{set}}" class="lead" style="color: black">{{set}} NFT</a></h3>
               </div>
               <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
               <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
@@ -681,7 +681,7 @@ if ( isset( $author ) ) {
                 <div class="card text-white bg-dark ">
                   <div class="card-header d-flex align-items-center justify-content-between" dmx-bind:id="{{inventory_detail.data.script}}{{inventory_detail.data.uid}}-nftdetailheader">{{inventory_detail.data.script.getSetDetailsColors(inventory_detail.data.uid+'-nftdetailheader')}}
                     <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{inventory_detail.data.uid}}</h2></div>
-                    <h3 class="card-title lead border border-dark rounded p-2 mb-0"><a href="/nfts/set/" style="color:black;">{{inventory_detail.data.set}} NFT</a></h3>
+                    <h3 class="card-title lead border border-dark rounded p-2 mb-0"><a dmx-bind:href="/nfts/set/{{set}}" style="color:black;">{{inventory_detail.data.set}} NFT</a></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   
 					</div>

@@ -636,7 +636,7 @@ include_once( $path );
             <div class="card text-white bg-dark ">
               <div class="card-header d-flex align-items-baseline justify-content-between" style="background: linear-gradient(dodgerblue,cornflowerblue)">
                 <div class="circle">{{auctions_detail.data.uid}}</div>
-                <h3 class="card-title lead border rounded p-2"><a href="/nfts/set/" class="text-white">{{auctions_detail.data.set}} NFT</a></h3>
+                <h3 class="card-title lead border rounded p-2"><a dmx-bind:href="/nfts/set/{{set}}" class="text-white">{{auctions_detail.data.set}} NFT</a></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
             </div>
@@ -752,7 +752,7 @@ include_once( $path );
           <div class="card text-white bg-dark ">
             <div class="card-header d-flex align-items-baseline justify-content-between" style="background: linear-gradient(blueviolet,darkorchid)">
               <div class="circle">{{sales_detail.data.uid}}</div>
-              <h3 class="card-title lead border rounded p-2"><a href="/nfts/set/" class="text-white">{{sales_detail.data.set}} NFT</a></h3>
+              <h3 class="card-title lead border rounded p-2"><a dmx-bind:href="/nfts/set/{{set}}" class="text-white">{{sales_detail.data.set}} NFT</a></h3>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
           </div>
