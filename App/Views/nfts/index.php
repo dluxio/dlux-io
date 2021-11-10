@@ -634,9 +634,9 @@ include_once( $path );
         <div class="modal-dialog modal-full modal modal-dialog-centered" role="document">
           <div class="modal-content bg-dark text-white">
             <div class="card text-white bg-dark ">
-              <div class="card-header d-flex align-items-baseline justify-content-between" style="background: linear-gradient(dodgerblue,cornflowerblue)">
-                <div class="circle">{{auctions_detail.data.uid}}</div>
-                <h3 class="card-title lead border rounded p-2"><a dmx-bind:href="/nfts/set/{{set}}" class="text-white">{{auctions_detail.data.set}} NFT</a></h3>
+              <div class="card-header d-flex align-items-center justify-content-between" dmx-bind:id="{{auctions_detail.data.script}}{{auctions_detail.data.uid}}-nftauctiondetailheader">{{auctions_detail.data.script.getSetDetailsColors(auctions_detail.data.uid+'-nftauctiondetailheader')}}
+              <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{auctions_detail.data.uid}}</h2></div>
+                <h3 class="card-title lead border border-dark rounded mb-0 p-2"><a dmx-bind:href="/nfts/set/{{auctions_detail.data.set}}" style="color: black">{{auctions_detail.data.set}} NFT</a></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
             </div>
@@ -723,11 +723,12 @@ include_once( $path );
 		   
 		   style="margin-left: -8px; margin-right: -8px">
 		<div dmx-repeat:repeatsalesview1="salesview.data">
-      <div class="card text-white bg-dark m-2" > <a href="#salesModal" class="a-1" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)">
+      <div class="card text-white bg-dark m-2" > 
         <div class="card-header d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-nftauctionheader">{{script.getSetDetailsColors(uid+'-nftauctionheader')}}
               <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{uid}}</h2></div>
               <h3 class="card-title lead border rounded border-dark p-2 ml-auto mb-0 "><a dmx-bind:href="/nfts/set/{{set}}" class="lead" style="color: black">{{set}} NFT</a></h3>
         </div>
+		<a href="#salesModal" class="a-1" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)">
         <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
         <div class="card-body">
           <p class="card-text text-center">Price: <u>{{price.nai()}}</u></p>
@@ -750,10 +751,10 @@ include_once( $path );
       <div class="modal-dialog modal-full modal modal-dialog-centered" role="document">
         <div class="modal-content bg-dark text-white">
           <div class="card text-white bg-dark ">
-            <div class="card-header d-flex align-items-baseline justify-content-between" style="background: linear-gradient(blueviolet,darkorchid)">
-              <div class="circle">{{sales_detail.data.uid}}</div>
-              <h3 class="card-title lead border rounded p-2"><a dmx-bind:href="/nfts/set/{{set}}" class="text-white">{{sales_detail.data.set}} NFT</a></h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <div class="card-header d-flex align-items-center justify-content-between" dmx-bind:id="{{sales_detail.data.script}}{{sales_detail.data.uid}}-nftsalesdetailheader">{{sales_detail.data.script.getSetDetailsColors(sales_detail.data.uid+'-nftsalesdetailheader')}}
+              <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{sales_detail.data.uid}}</h2></div>
+                <h3 class="card-title lead border border-dark rounded mb-0 p-2"><a dmx-bind:href="/nfts/set/{{sales_detail.data.set}}" style="color: black">{{sales_detail.data.set}} NFT</a></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
           </div>
           <div class="card-img-top" dmx-bind:id="detail-image-{{sales_detail.data.set}}-{{sales_detail.data.uid}}" dmx-bind:alt="{{sales_detail.data.set}}-{{sales_detail.data.uid}}">{{sales_detail.data.uid.nftDetailWell(sales_detail.data.script, sales_detail.data.set)}}</div>
