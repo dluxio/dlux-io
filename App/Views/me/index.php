@@ -48,6 +48,13 @@ include_once( $path );
 		 -webkit-background-clip: text;
 		 color: transparent;
 }
+
+	.attribute-name {
+		
+	}
+	.attribute-value {
+		
+	}
 </style>
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="index" is="dmx-app">
@@ -71,7 +78,7 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
 };
 ?>
-
+<dmx-api-datasource id="inventorydata" is="dmx-fetch" url="https://token.dlux.io/api/nfts/markegiles"></dmx-api-datasource>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
@@ -709,7 +716,7 @@ if ( isset( $author ) ) {
                           </div>
                         </div>
                         <!-- NFT ATTRIBUTES -->
-                        <div class="card bg-dark text-white d-none">
+                        <div class="card bg-dark text-white">
                           <div class="card-header" id="headingAttributes">
                             <h5 class="mb-0">
                               <button class="btn btn-link" data-toggle="collapse" data-target="#collapseAttributes" aria-expanded="false" aria-controls="collapseAttributes"> ATTRIBUTES </button>
@@ -717,32 +724,7 @@ if ( isset( $author ) ) {
                           </div>
                           <div id="collapseAttributes" class="collapse" aria-labelledby="headingAttributes" data-parent="#accordion">
                             <div class="card-body p-0">
-                              <div class="d-flex flex-wrap rounded bg-darker" style="border: 1px solid #9200A6">
-                                <div class="d-flex col-12 justify-content-center pt-2">
-                                  <h2 style="color: #9200A6">Legendary</h2>
-                                </div>
-                                <div class="d-flex flex-wrap flex-sm-nowrap  justify-content-around py-3 my-0 col-12">
-                                  <div class="d-flex flex-wrap justify-content-center m-1" style="border: 4px solid #6C1112 !important; border-radius: .5em;">
-                                    <div class="d-flex m-2">COLOR 01</div>
-                                    <div class="d-flex col-12" style="background-color: #6C1112">&nbsp;</div>
-                                    <div class="d-flex m-2">#6C1112</div>
-                                  </div>
-                                  <div class="d-flex flex-wrap justify-content-center m-1" style="border: 4px solid #E7F742 !important; border-radius: .5em;">
-                                    <div class="d-flex m-2">COLOR 02</div>
-                                    <div class="d-flex col-12" style="background-color: #E7F742">&nbsp;</div>
-                                    <div class="d-flex m-2">#E7F742</div>
-                                  </div>
-                                  <div class="d-flex flex-wrap justify-content-center m-1" style="border: 4px solid #774323 !important; border-radius: .5em;">
-                                    <div class="d-flex m-2">COLOR 03</div>
-                                    <div class="d-flex col-12" style="background-color: #774323">&nbsp;</div>
-                                    <div class="d-flex m-2">#774323</div>
-                                  </div>
-                                </div>
-                                <div class="d-flex"></div>
-                                <div class="d-flex ml-auto px-3 py-1">
-                                  <h3>#348</h3>
-                                  <span class="ml-3 small">/4096</span></div>
-                              </div>
+                     			<div dmx-bind:id="{{inventory_detail.data.script}}-{{inventory_detail.data.uid}}-attributes" class="attribute-container">  {{inventory_detail.data.script.getNFTDetails(inventory_detail.data.uid)}} </div>
                             </div>
                           </div>
                         </div>
