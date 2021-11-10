@@ -890,7 +890,7 @@ if ( isset( $author ) ) {
                                     </div>
                                     <div class="d-flex ml-1">
 										
-                                      <u><h1 dmx-bind:id="{{inventory_detail.data.set}}-bond-value">{{inventory_detail.data.set.getSetDetailsBond()}}</h1></u>
+                                      <u><h1 dmx-bind:id="{{inventory_detail.data.set}}-bond-value">{{inventory_detail.data.set.getSetDetailsBond()}} DLUX</h1></u>
                                     </div>
                                   </div>
                                   <div class="pt-2">
