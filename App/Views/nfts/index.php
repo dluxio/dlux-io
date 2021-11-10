@@ -32,6 +32,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 <dmx-data-view id="auctionsview" dmx-bind:data="auctionsapi.data.result" sorton="time"></dmx-data-view>
 <dmx-data-view id="mintsupplyview" dmx-bind:data="mintsupplyapi.data.result" sorton="qty" sortdir="desc"></dmx-data-view>
 <dmx-data-view id="inventoryview" dmx-bind:data="inventoryapi.data"></dmx-data-view>
+<dmx-api-datasource id="inventoryapi" is="dmx-fetch" url="https://token.dlux.io/api/nfts/markegiles"></dmx-api-datasource>	
 <style>
 .circle {
   width: 50px;
@@ -295,7 +296,9 @@ include_once( $path );
                     <div class="card-footer d-flex flex-column p-2">
                       <div class="d-flex justify-content-between align-items-center">
                         <button type="button" class="btn btn-outline-dark mt-1 col-5" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button>
-                        <button type="button" class="btn btn-outline-dark mt-1 col-5" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-exchange-alt ml-3"></i></button>
+                        <div class="col-5">
+						  <div dmx-bind:id="{{set}}-none-btn" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark mt-1" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-exchange-alt ml-3"></i></button></div>
+                            <div dmx-bind:id="{{set}}-any-btn" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark mt-1" data-toggle="modal" href="#mintTransferModal">Transfer<i class="fas fa-exchange-alt ml-3"></i></button></div>
 						  </div>
                       </div>
                     </div>
