@@ -700,9 +700,9 @@ function setPFP(setname, uid, callback){
         })
         .then(r=>r.json())
         .then(json=>{
-            if(JSON.parse(json.result[0].posting_json_metadata).profile.profile_image !== `https://data.dlux.io/pfp/${user}?.jpg`){
+            if(JSON.parse(json.result[0].posting_json_metadata).profile.profile_image !== `https://data.dlux.io/pfp/${user}?${setname}-${uid}.jpg`){
                 var pjm = JSON.parse(json.result[0].posting_json_metadata)
-                pjm.profile.profile_image = `https://data.dlux.io/pfp/${user}?.jpg`
+                pjm.profile.profile_image = `https://data.dlux.io/pfp/${user}?${setname}-${uid}.jpg`
                 const op = 
                     [
                         ['custom_json', {
