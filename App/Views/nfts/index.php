@@ -146,11 +146,82 @@ include_once( $path );
                 <button id="nftexplore" class="btn btn-lg btn-primary px-4 mr-3">Explore</button>
                 <button id="nftcreate" class="btn btn-lg btn-secondary px-4 ml-3" href="/nfts/new">Create</button>
               </div>
-              <div class="my-4 text-left rounded px-2 py-1" style="background-color: rgba(255,255,255,0.75)"><a href="/about/"><i class="fas fa-info-circle"></i> Learn more about DLUX</a></div>
+              <div class="my-4 text-left rounded px-2 py-1 d-flex flex-column flex-wrap" style="background-color: rgba(255,255,255,0.75)">
+				  <p>Your DLUX balance is: 12345.678 DLUX</p>
+
+				  <button class="btn btn-lg btn-outline-primary" href="#buyDluxModal" class="a-1" data-toggle="modal">GET DLUX</button>
+
+				  <a href="/about/"><i class="fas fa-info-circle"></i> Learn more about DLUX</a>
+				</div>
+				 <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header d-flex flex-fill justify-content-between" style="border-bottom-color: #333; background:radial-gradient(gold,orange)">
+        <h3 class="ml-auto lead" id="buyDluxTitle" style="color: black">COIN TRADE</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">x</span></button>
+      </div>
+      <div class="modal-body">
+      <div class="d-flex flex-column">
+		<div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 bg-darker" >
+		  <div class="d-flex flex-row flex-fill align-items-center">
+			<p style="font-size: 18px;" class="p-0 m-0 font-weight-light">From</p>
+			<div class="d-flex ml-auto align-items-baseline">
+				<div class="d-flex align-items-center"><p class="m-0 p-0">Available</p><span class="m-0 p-0 ml-2 text-primary" style="font-size: 20px;"> 1234 HIVE</span></div><button class="btn btn-sm btn-secondary ml-3 py-0">MAX</button>
+			</div>
+		</div>
+			<div class="d-flex flex-row flex-fill mt-1">
+			<div class="d-flex align-items-center">
+				<div class="circle2"><i class="fab fa-hive"></i></div>
+				<h2 class="p-0 m-0 ml-2 font-weight-bold">HIVE</h2>
+			</div>
+			<div class="d-flex ml-auto flex-column">
+				<p class="ml-auto my-0 text-white-50 font-weight-bolder" style="font-size: 30px;">0</p>
+				<p class="ml-auto my-0 text-muted font-weight-bold" style="font-size: 16px;">&asymp; &#36;0</p>
+				</div>
+			</div>
+		  </div>
+		  <div class"p-0 m-0 bg-dark"><h1 class="text-white-50 p-0 m-0 p-1"><p class="arrow bg-dark rounded text-center"  style="border: #333 1px solid;"><i class="fas fa-exchange-alt fa-rotate-90"></i></p></h1></div>
+		  <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 bg-darker">
+		  <div class="d-flex flex-row flex-fill align-items-center">
+			<p style="font-size: 18px;" class="p-0 m-0 font-weight-light">To</p>
+			</div>
+			<div class="d-flex flex-row flex-fill mt-1 align-items-center">
+			<div class="d-flex align-items-center">
+				<div class="circle2 d-flex align-items-center justify-content-around"><img src="/img/dlux-hive-logo-alpha.svg" width="70%"></div>
+				<h2 class="p-0 m-0 ml-2 font-weight-bold">DLUX</h2>
+			</div>
+			<div class="d-flex ml-auto">
+				<p class="ml-auto my-0 text-white-50 font-weight-bolder" style="font-size: 30px;">&asymp; 0 DLUX</p>
+				</div>
+			</div>
+		  </div>
+		  
+		  <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1" style="background:linear-gradient(#191C1F,#272C31); border: #333 1px solid;">
+				<div class="d-flex">
+					<p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Rate</p>
+					<p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">1 HIVE = 4.111 DLUX</p>
+				</div>
+			  	<div class="d-flex">
+			  		<p style="font-size: 12px;" class="p-0 m-0 text-muted ml-auto">1 DLUX = 0.251 HIVE</p>
+			  	</div>
+			  <hr width="100%" style="border: #333 thin solid">
+			    <div class="d-flex">
+					<p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Swap Fee</p>
+					<p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">0.25%</p>
+				</div>
+			</div>
+		 
+		  <div class="d-flex justify-content-around my-1 py-3"><button class="btn btn-lg btn-primary">Swap Tokens</button></div>
+		  
+	  </div>
+      </div>
+    </div>
+  </div>
+</div>
             </div>
           </div>
           <div class="d-flex flex-column">
-            <div class="jumbotron px-5 py-4" style="background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0))">
+            <div class="jumbotron px-5 py-4" style="background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0)), border: none;">
               <div class="d-flex justify-content-between align-items-center"></div>
               <div class="" id="sales-mint">
                 <div id="buymintcards" is="dmx-repeat" dmx-bind:repeat="mintsupplyapi.data.result.sort('set')" class="row">
