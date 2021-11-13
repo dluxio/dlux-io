@@ -149,7 +149,7 @@ include_once( $path );
               <div class="my-4 text-left rounded px-2 py-1 d-flex flex-column flex-wrap" style="background-color: rgba(255,255,255,0.75)">
 				  <p>Your DLUX balance is: 12345.678 DLUX</p>
 
-				  <button class="btn btn-lg btn-outline-primary" href="#buyDluxModal" class="a-1" data-toggle="modal">GET DLUX</button>
+				  <button class="btn btn-lg btn-outline-primary" href="#buyDluxModalnew" class="a-1" data-toggle="modal">GET DLUX</button>
 
 				  <a href="/about/"><i class="fas fa-info-circle"></i> Learn more about DLUX</a>
 				</div>
@@ -218,10 +218,94 @@ include_once( $path );
     </div>
   </div>
 </div>
+            <div class="modal fade" id="buyDluxModalnew" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
+          <div class="modal-content bg-dark text-white">
+            <div class="modal-header d-flex flex-fill justify-content-between align-items-center" style="border-bottom-color: #333; background:linear-gradient(darkorange,yellow)">
+              <div></div>
+              <h3 class="ml-auto lead" id="buyDluxTitle" style="color: black">GET DLUX</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">x</span></button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex flex-column">
+                <div class="d-flex justify-content-between">
+                  <h2><a href="#" class="text-muted p-3" dmx-on:click="dexOrders.prev()"><i class="fas fa-caret-square-left"></i></a></h2>
+                  <h2 style="color: greenyellow">{{value.amount}}{{$value}}<i class="fab fa-hive"></i></h2>
+                  <h2 class=""><a href="#" class="text-muted p-3" dmx-on:click="dexOrders.next()"><i class="fas fa-caret-square-right"></i></a></h2>
+                </div>
+                <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 bg-darker" >
+                  <div class="d-flex flex-row flex-fill align-items-center">
+                    <p style="font-size: 18px;" class="p-0 m-0 font-weight-light">From</p>
+                    <div class="d-flex ml-auto align-items-baseline">
+                      <div class="d-flex small justify-content-between">
+                        <p class="my-0 text-white-50" >Available<i class="fab fa-hive mx-1"></i></p>
+                        <p class="my-0 text-primary">1,256.234{{value.hive}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row flex-fill mt-1">
+                    <div class="d-flex align-items-center">
+                      <div class="circle2"><i class="fab fa-hive"></i></div>
+                      <h2 class="p-0 m-0 ml-2 font-weight-bold">HIVE</h2>
+                    </div>
+                    <div class="d-flex ml-auto flex-column">
+                      <p class="ml-auto my-0 text-white-50 font-weight-bolder" style="font-size: 30px;">25.000{{value.hive}}</p>
+                      <p class="ml-auto my-0 text-muted font-weight-bold" style="font-size: 16px;">&asymp; &#36;15.33</p>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <div></div>
+                    <div>
+                      <button class="btn btn-outline-secondary btn-sm text-muted" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-info-circle"></i></button>
+                    </div>
+                  </div>
+                  <div class="collapse" id="collapseExample">
+                    <div class="d-flex">
+                      <p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Rate</p>
+                      <p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">1 HIVE = 4.111 DLUX</p>
+                    </div>
+                    <div class="d-flex">
+                      <p style="font-size: 12px;" class="p-0 m-0 text-muted ml-auto text-success">1 DLUX = 0.251 HIVE</p>
+                    </div>
+                    <hr width="100%" style="border: #333 thin solid">
+                    <div class="d-flex">
+                      <p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Swap Fee<small class="rounded-pill border border-secondary p-1 ml-2">0.25&#37;</small></p>
+                      <p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">2.5 DLUX</p>
+                    </div>
+                  </div>
+                </div>
+                <div class"p-0 m-0 bg-dark">
+                  <div class="arrow2 rounded-circle border border-warning bg-darker text-warning">
+                    <h1 class="m-2 px-3 py-1"><i class="fas fa-angle-double-down"></i></h1>
+                  </div>
+                </div>
+                <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 border border-warning" style="background: radial-gradient(#222,#111);">
+                  <div class="d-flex flex-row flex-fill align-items-center">
+                    <p style="font-size: 18px;" class="p-0 m-0 font-weight-light">To</p>
+                  </div>
+                  <div class="d-flex flex-row flex-fill mt-1 align-items-center">
+                    <div class="d-flex align-items-center">
+                      <div class="circle2 d-flex align-items-center justify-content-around"><img src="/img/dlux-hive-logo-alpha.svg" width="70%"></div>
+                      <h2 class="p-0 m-0 ml-2 font-weight-bold">DLUX</h2>
+                    </div>
+                    <div class="d-flex ml-auto">
+                      <p class="ml-auto my-0 text-warning font-weight-bolder" style="font-size: 30px;">100.000</p>
+                    </div>
+                  </div>
+                  <p class="pt-3">DLUX is your ticket to the metaverse. Purchase NFTs, power-up to vote on proposals, and use it across a variety of XR games and apps.</p>
+                </div>
+              </div>
+              <div class="d-flex justify-content-around my-1 py-3">
+                <button class="btn btn-lg btn-primary">Trade Tokens</button>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+			  </div>
+          </div>
           <div class="d-flex flex-column">
-            <div class="jumbotron px-5 py-4" style="background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0)), border: none;">
+            <div class="jumbotron px-5 py-4" style="background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0)); border: none;">
               <div class="d-flex justify-content-between align-items-center"></div>
               <div class="" id="sales-mint">
                 <div id="buymintcards" is="dmx-repeat" dmx-bind:repeat="mintsupplyapi.data.result.sort('set')" class="row">
