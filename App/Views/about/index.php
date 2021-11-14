@@ -89,6 +89,10 @@
 			   	 <p>As the project grew, the need for an oracle arose to control how user assets can be packaged, pinned, and distributed. Now much more than a decentralized metaverse, DLUX is a full DeFi (decentralized finance) solution. The DLUX token architecture includes the ability to time lock tokens for vote power or governance collateral, and a DEX (decentralized exchange) enables atomic swaps of assets between users. No central authority exists, instead the novel use of a DAO (decentralized autonomous organization) with governance collateral held in escrow by smart contracts ensures orders placed on the DEX are safe. The users maintain consensus in a deterministic way by reading the Hive chain block-by-block and broadcasting their response.</p>
 			   </div>
 			   <div class="py-3" style="border-bottom: solid; border-bottom-width: 2.5px; border-bottom-color: #191C20;">
+			   	<h3 style="color:#FB00FF">S-NFTs: Smart Non Fungible Tokens</h3>
+			   	 <p>Transcend current media limitations with Smart NFTs, tokens that can be distributed to users that are interactive. Build Generative NFT sets with SVG layers (Scaleable Vector Graphics) as attributes. Issue awards, trophies, and achievements. Users can set their SNFTs as their PFP (ProFile Picture) which are verifiable by any front end choosing to recognize them.</p>
+			   </div>
+			   <div class="py-3" style="border-bottom: solid; border-bottom-width: 2.5px; border-bottom-color: #191C20;">
 			   <h3 style="color: #E31337;">Hive: Social Blockchain</h3>
 			   	 <p>Building on the blazing fast blockchain foundation of Hive, DLUX has been first to market with many exciting L2 (layer two) features already in public beta. Updates in closed alpha that are coming soon include a community controlled multi-signature wallet that will enable bridges to other cryptocurrencies, partial fill orders on the DEX (nonatomic swaps), and community proposals. Accounts holding DLUX Governance will be able to vote on code changes and how various community funds are spent.</p>
 			   </div>
