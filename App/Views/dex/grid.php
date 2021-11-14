@@ -33,7 +33,7 @@ include_once( $path );
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
 <dmx-data-view id="orderbookmath1" dmx-bind:data="dexapi.data.markets.hive.sells"></dmx-data-view>
-<dmx-data-view id="orderbookview1" dmx-bind:data="dexapi.data.markets.hive.sells" filter="(amount >= 1000) && (amount <= 900000)" sorton="" sortdir="" pagesize=""></dmx-data-view>
+<dmx-data-view id="orderbookview1" dmx-bind:data="dexapi.data.markets.hive.sells" filter="(amount >= 1) && (amount <= 999999999)" sorton="" sortdir="" pagesize=""></dmx-data-view>
 <!-- hidden orderbook math -->
 <div class="col d-none">
   <div class="form-group">
