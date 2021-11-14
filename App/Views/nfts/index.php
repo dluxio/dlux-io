@@ -145,7 +145,7 @@ include_once( $path );
 				<h1 class="display-4 text-left">Discover, collect, and sell NFTs</h1>
 				  <p class="lead">All with no gas fees at near cost</p>
               <div class="my-2 text-left">
-                <a id="nftexplore" class="btn btn-lg btn-primary px-4 mr-3" href="/nfts/set/?=bz">Explore</a>
+                <a id="nftexplore" class="btn btn-lg btn-primary px-4 mr-3" href="/nfts/set/bz">Explore</a>
                 <a id="nftcreate" class="btn btn-lg btn-secondary px-4 ml-3" href="/nfts/new">Create</a>
               </div>
 			</div>	
