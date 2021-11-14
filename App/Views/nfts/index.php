@@ -134,34 +134,36 @@ include_once( $path );
   <div class="container" style="max-width: 1800px !important">
     <div class="container-fluid" style="padding: 0">
       <!-- jumbo -->
-      <div class="jumbotron text-white text-center mt-5" 
+      <div class="jumbotron text-white mt-5" 
            style="background: linear-gradient(217deg, rgba(33,255,181,.8), rgba(33,255,181,0) 70.71%),
           linear-gradient(127deg, rgba(251,0,255,.8), rgba(251,0,255,0) 70.71%),
                               linear-gradient(336deg, rgba(3,62,253,.8), rgba(3,62,253,0) 70.71%);">
         <div class="d-flex flex-fill flex-wrap justify-content-around">
           <div class="d-flex justify-content-around align-items-center mx-3">
             <div class="d-flex p-2 rounded flex-column mx-3" style="max-width:400px;">
-              <h1 class="display-4 text-left">Discover, collect, and sell NFTs</h1>
+              <div class="mb-5">
+				<h1 class="display-4 text-left">Discover, collect, and sell NFTs</h1>
+				  <p class="lead">All with no gas fees at near cost</p>
               <div class="my-2 text-left">
-                <button id="nftexplore" class="btn btn-lg btn-primary px-4 mr-3">Explore</button>
-                <button id="nftcreate" class="btn btn-lg btn-secondary px-4 ml-3" href="/nfts/new">Create</button>
+                <a id="nftexplore" class="btn btn-lg btn-primary px-4 mr-3" href="/nfts/set/?=bz">Explore</a>
+                <a id="nftcreate" class="btn btn-lg btn-secondary px-4 ml-3" href="/nfts/new">Create</a>
               </div>
-				
-              <div class="my-4 rounded-lg py-1 px-4 d-flex flex-column flex-wrap" style="background-color: rgba(0,0,0,0.75)">
+			</div>	
+              <div class="my-4 py-1 px-4 d-flex flex-column flex-wrap" style="background-color: rgba(0,0,0,0.75); border-radius: 15px;">
 				 
 				<div class="d-flex flex-row flex-fill align-items-center mt-2 mb-2">
                     <div class="d-flex align-items-center">
                       <div class="circle2 d-flex align-items-center justify-content-around"><img src="/img/dlux-hive-logo-alpha.svg" width="70%"></div>
-                      <h2 class="p-0 m-0 ml-2 font-weight-bold">DLUX</h2>
+                      <h2 class="p-0 m-0 ml-2 font-weight-bold" >DLUX</h2>
                     </div>
-					<div class="ml-auto"><a href="/about/" class="text-info">About<i class="fas fa-info-circle ml-2"></i></a></div>
+					<div class="ml-auto"><a href="/about/" style="color:silver">About<i class="fas fa-info-circle ml-2"></i></a></div>
 					
                   </div>
 				   
-				  <div class="d-flex justify-content-around my-2">
-		<div class="d-flex align-items-center p-3"><p class="small my-0 py-0 mr-2">BAL:</p><h3 class="my-0 py-0 text-warning font-weight-bolder"><u>1,234,567.890</u></h3></div>
+				  <div class="d-flex justify-content-around my-0">
+		<div class="d-flex align-items-center p-3"><p class="small my-0 py-0 mr-2 text-white-50">BAL:</p><h3 class="my-0 py-0 font-weight-bolder" style="color:#21FFB5"><u>0.000</u></h3></div>
                     </div>
-				<div class="mt-4 text-right"><button class="btn btn-outline-primary my-0 w-50" href="#buyDluxModal" class="a-1" data-toggle="modal">Get DLUX</button></div>
+				<div class="mt-4 text-right"><button class="btn btn-outline-primary mb-3" href="#buyDluxModal" class="a-1" data-toggle="modal">Get DLUX</button></div>
 				</div>
 				
             <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
