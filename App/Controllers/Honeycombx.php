@@ -22,3 +22,4 @@ class Honeycomb extends \Core\Controller
         View::render('honeycomb/index.php');
     }
 }
+
