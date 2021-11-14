@@ -170,11 +170,12 @@ include_once( $path );
         <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
           <div class="modal-content bg-dark text-white">
             <div class="card-header d-flex flex-fill justify-content-between align-items-center">
-              <div></div>
-              <h3 class="ml-auto lead" id="buyDluxTitle" style="color: black">MARKET ORDER</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">x</span></button>
+              <div>&nbsp;</div>
+              <h3 class="lead m-0">MARKET ORDER</h3>
+              <button type="button" class="close m-0 p-0" data-dismiss="modal" aria-label="Close"> <span class="close text-white m-0 p-0"><i class="fas fa-times"></i></span></button>
             </div>
             <div class="card-body">
+				<p class="small text-white-50">Market Orders utilize multisig to complete partial fills of open orders on the DEX, starting with the lowest rate to ensure you're getting the best price.</p><p class="small text-white-50"> If no orders are available, the ICO price of 1 HIVE per 1 DLUX is in effect.</p>
               <div class="d-flex flex-column">
                 <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 bg-darker" >
                   <div class="d-flex flex-row flex-fill align-items-center">
@@ -240,8 +241,8 @@ include_once( $path );
               </div>
               
             </div>
-			  <div class="card-footer"><div class="d-flex justify-content-around my-1 py-3">
-                <button class="btn btn-lg btn-primary">Trade Tokens</button>
+			  <div class="card-footer"><div class="d-flex justify-content-around">
+                <button class="btn btn-lg btn-primary">Convert</button>
               </div></div>
           </div>
         </div>
