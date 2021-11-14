@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div id="accordion">
-                    <div class="card">
+                    <div class="card bg-dark ">
                         <div class="card-header" id="headingAbout">
                             <h5 class="mb-0">
                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAbout" aria-expanded="false" aria-controls="collapseAbout"><i class="fas fa-info-circle fa-fw mr-2"></i>About<i class="fas fa-angle-down fa-fw ml-1"></i></button>
@@ -51,14 +51,14 @@
                         <div id="collapseAbout" class="collapse show" aria-labelledby="headingAbout">
                             <div class="card-body">
                                 <ul class="nav flex-column">
-                                    <li class="nav-item"><a class="nav-link scrollto" href="#introduction">Introduction</a></li>
-                                    <li class="nav-item"><a class="nav-link scrollto" href="#faq">FAQ</a></li>
-                                    <li class="nav-item"><a class="nav-link scrollto" href="#whitepaper">Whitepaper</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto text-white" href="#introduction">Introduction</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto text-white" href="#faq">FAQ</a></li>
+                                    <li class="nav-item"><a class="nav-link scrollto text-white" href="#whitepaper">Whitepaper</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card bg-dark">
                         <div class="card-header" id="headingCreate">
                             <h5 class="mb-0 d-inline">
                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseCreate" aria-expanded="true" aria-controls="collapseCreate"><i class="fas fa-drafting-compass fa-fw mr-2"></i>Create<i class="fas fa-angle-down fa-fw ml-1"></i></button>
@@ -66,65 +66,65 @@
                         </div>
                         <div id="collapseCreate" class="collapse" aria-labelledby="headingCreate">
                             <div class="card-body p-2" id="createContainer">
-                                <div class="card">
+                                <div class="card bg-dark">
                                     <div class="card-header">
                                         <a href="#" data-toggle="collapse" data-target="#collapseCreateInfo"><i class="fas fa-plus fa-fw mr-2"></i>Publishing<i class="fas fa-angle-down fa-fw ml-1"></i></a>
                                     </div>
                                     <div class="card-body collapse show" id="collapseCreateInfo">
                                         <ul class="nav flex-column">
-                                            <li class="nav-item"><a class="nav-link" href="#supercraft">Supercraft VR</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#builder">VR Builder</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#uploader">App Uploader</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#supercraft">Supercraft VR</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#builder">VR Builder</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#uploader">App Uploader</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="card">
+                                <div class="card bg-dark">
                                     <div class="card-header">
                                         <a href="#" data-toggle="collapse" data-target="#collapseCreateAssets"><i class="fas fa-shapes fa-fw mr-2"></i>Assets<i class="fas fa-angle-down fa-fw ml-1"></i></a>
                                     </div>
                                     <div class="card-body collapse" id="collapseCreateAssets">
                                         <ul class="nav flex-column">
-                                            <li class="nav-item"><a class="nav-link" href="#3d-models">3D Models</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#images">Images</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#text">Text</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#shapes">Shapes</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#audio">Audio</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#video">Video</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#3d-models">3D Models</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#images">Images</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#text">Text</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#shapes">Shapes</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#audio">Audio</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#video">Video</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="card">
+                                <div class="card bg-dark">
                                     <div class="card-header">
                                         <a href="#" data-toggle="collapse" data-target="#collapseCreateComponents"><i class="fas fa-cogs fa-fw mr-2"></i>Components<i class="fas fa-angle-down fa-fw ml-1"></i></a>
                                     </div>
                                     <div class="card-body collapse" id="collapseCreateComponents">
                                         <ul class="nav flex-column">
-                                            <li class="nav-item"><a class="nav-link" href="#environment">Environment</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#collisions">Collisions</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#physics">Physics</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#navmesh">Navmesh</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#player-rig">Player Rig</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#controls">Controls</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#ar-marker">AR Marker</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#ui-overlay">UI Overlay</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#environment">Environment</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#collisions">Collisions</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#physics">Physics</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#navmesh">Navmesh</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#player-rig">Player Rig</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#controls">Controls</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#ar-marker">AR Marker</a></li>
+                                            <li class="nav-item"><a class="nav-link text-white" href="#ui-overlay">UI Overlay</a></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="card">
+                                <div class="card bg-dark">
                                     <div class="card-header">
                                         <a href="#" data-toggle="collapse" data-target="#collapseCreateSDK"><i class="fas fa-layer-group fa-fw mr-2"></i>SDK<i class="fas fa-angle-down fa-fw ml-1"></i></a>
                                     </div>
                                     <div class="card-body collapse" id="collapseCreateSDK">
                                         <ul class="nav flex-column">
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#blockchain-ops">Blockchain Operations</a></li>
-                                            <li class="nav-item scrollto"><a class="nav-link" href="#second-layer">Second Layer</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link text-white" href="#blockchain-ops">Blockchain Operations</a></li>
+                                            <li class="nav-item scrollto"><a class="nav-link text-white" href="#second-layer">Second Layer</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card bg-dark">
                         <div class="card-header" id="headingExchange">
                             <h5 class="mb-0">
                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseExchange" aria-expanded="false" aria-controls="collapseThree"><i class="fas fa-store fa-fw mr-2"></i>Market<i class="fas fa-angle-down fa-fw ml-1"></i></button>
@@ -133,16 +133,16 @@
                         <div id="collapseExchange" class="collapse" aria-labelledby="headingExchange">
                             <div class="card-body">
                                 <ul class="nav flex-column">
-                                    <li class="nav-item"><a class="nav-link" href="#token">DLUX Token</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#dex">Exchange</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#nft-smt">NFT / SMT</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#accounts">Account Creation</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#pinning">Asset Pinning</a></li>
+									<li class="nav-item"><a class="nav-link text-white" href="#token">Token</a></li>
+								  <li class="nav-item"><a class="nav-link text-white" href="#nft">NFT</a></li>
+                                    <li class="nav-item"><a class="nav-link text-white" href="#dex">DEX</a></li>
+                                    <li class="nav-item"><a class="nav-link text-white" href="#accounts">Account Creation</a></li>
+                                    <li class="nav-item"><a class="nav-link text-white" href="#pinning">Asset Pinning</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card bg-dark">
                         <div class="card-header" id="headingBlockchain">
                             <h5 class="mb-0">
                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseBlockchain" aria-expanded="false" aria-controls="collapseBlockchain"><i class="fas fa-link fa-fw mr-2"></i>Blockchain<i class="fas fa-angle-down fa-fw ml-1"></i></button>
@@ -151,10 +151,10 @@
                         <div id="collapseBlockchain" class="collapse" aria-labelledby="headingBlockchain">
                             <div class="card-body">
                                 <ul class="nav flex-column">
-                                    <li class="nav-item"><a class="nav-link" href="#nodes">Nodes</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#api">API</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#ipfs">IPFS</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#hive">Hive</a></li>
+                                    <li class="nav-item"><a class="nav-link text-white" href="#nodes">Nodes</a></li>
+                                    <li class="nav-item"><a class="nav-link text-white" href="#api">APIs</a></li>
+                                    <li class="nav-item"><a class="nav-link text-white" href="#ipfs">IPFS</a></li>
+                                    <li class="nav-item"><a class="nav-link text-white" href="#hive">HIVE</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -165,6 +165,8 @@
 <main class="col-md-9 col-xl-10 py-md-3 pl-md-5 bd-content" role="main">
 <article class="docs-article" id="introduction">
     <h1 class="bd-title" id="content">Welcome to dlux! Start building anything.</h1>
+  <h3 class="bd-lead">This page is technical documentation for creating on or with dlux decentralized infrastructure.</h3>
+	<center><h5 class="col-8">Looking for a more general overview of the project? Check out the About page!</h5><br><a href="/about/" class="btn btn-outline-info">About Page</a></center>
     <p class="bd-lead">The goal of this project is to incentivize XR adoption in the best possible way we can imagine: open-source and on-chain.</p>
     <p>The economics of this are possible. By combining WebVR, AR.js, and HIVE, we buildd a platform free for everyone to use that rewards good content with real cryptocurrency you can spend or transfer.</p>
     <p>We recognize that in order for vr to take off, its creation needs to reach a point of enabling everyone to participate, so we lowered the barrier to entry as far as we possibly could.</p>
@@ -177,10 +179,36 @@
 <article class="docs-article" id="faq">
     <h1 class="bd-title">FAQ</h1>
     <p class="bd-lead">Find answers to Frequently Asked Questions</p>
+    <div id="accordion1" role="tablist">
+      <div class="card bg-dark">
+        <div class="card-header" role="tab" id="headingOne1">
+          <h5 class="mb-0"> <a data-toggle="collapse" href="#collapseOne1" role="button" aria-expanded="true" aria-controls="collapseOne1"> What is HIVE? </a> </h5>
+        </div>
+        <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordion1">
+          <div class="card-body">Hive is a delegated-proof-of-stake social media blockchain. Users have a wallet that holds Hive crypto, and by staking some of their crypto in a process called powering up they get vote power. There is built-in inflation that funds a reward pool, which is paid out to content creators that earn it via upvotes from users with Hive Power.</div>
+        </div>
+      </div>
+      <div class="card bg-dark">
+        <div class="card-header" role="tab" id="headingTwo1">
+          <h5 class="mb-0"> <a class="collapsed" data-toggle="collapse" href="#collapseTwo1" role="button" aria-expanded="false" aria-controls="collapseTwo1"> What are dApps? </a> </h5>
+        </div>
+        <div id="collapseTwo1" class="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordion1">
+          <div class="card-body">Decentralized Applications are pieces of software that can run outside of centralized servers and app stores. They are resiliant in their ability to be distributed peer-to-peer, and their minimization on external dependencies.</div>
+        </div>
+      </div>
+      <div class="card bg-dark">
+        <div class="card-header" role="tab" id="headingThree1">
+          <h5 class="mb-0"> <a class="collapsed" data-toggle="collapse" href="#collapseThree1" role="button" aria-expanded="false" aria-controls="collapseThree1"> What is a DEX? </a> </h5>
+        </div>
+        <div id="collapseThree1" class="collapse" role="tabpanel" aria-labelledby="headingThree1" data-parent="#accordion1">
+          <div class="card-body">A Decentralized EXchange is a market to swap assets that has no centralized account holding the assets or user keys, and instead escrows agent collateral to cover the cost of trades.</div>
+        </div>
+      </div>
+    </div>
     <p></p>
 </article>
 <article class="docs-article" id="whitepaper">
-    <h1 class="bd-title">Whitepaper</h1>
+  <h1 class="bd-title">Whitepaper</h1>
     <p class="bd-lead">The original dlux whitepaper was written by Steven Ettinger and Mark Giles.</p>
     <h3><a href="https://docs.google.com/document/d/1_jHIJsX0BRa5ujX0s-CQg3UoQC2CBW4wooP2lSSh3n0/" target="_blank">Read it here.</a></h3>
     <p>It details the philosophy and design principles behind the dlux-io platform. Back then, HIVE was called STEEM.</p>
@@ -188,11 +216,12 @@
 </article>
 <article class="docs-article" id="supercraft">
     <h1 class="bd-title">Supercraft VR Publishing</h1>
-    <p class="bd-lead"></p>
+    <p class="bd-lead">Unfortunately <a href="https://supermedium.com/supercraft/" target="_blank">this service</a> has been depreciated.</p>
+	<p>It was a very simple way to make a VR scene inside a headset. We maintain the Supercraft uploader for anyone who may have used this service in the past.</p>
 </article>
 <article class="docs-article" id="builder">
     <h1 class="bd-title">DLUX Glitch VR Boilerplate</h1>
-    <p class="bd-lead">dlux Builder is integrated with Glitch for free & easy remixing, prototyping, and publishing.</p>
+    <p class="bd-lead">dlux Builder is integrated with Glitch for free &amp; easy remixing, prototyping, and publishing.</p>
     <h2 class="bd-content-title">Add 3D Model</h2>
     <p>Models must be in <code class="highlighter-rouge">glTF</code> format (unpacked .gltf, embedded .gltf, binary .glb), Use <a href="https://blackthread.io/gltf-converter/" target="_blank">blackthread.io/gltf-converter</a> to convert other formats to glTF.</p>
     <ul>
@@ -354,11 +383,11 @@ Click the + New File button in the left sidepanel
     you can set it up in index.html</ul>
     <h3>Add Animation</h3>
     <p>Animation mixer does not work for OBJs.</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     &lt;a-entity gltf-model=&quot;#object&quot; animation-mixer&gt;&lt;/a-entity&gt;
     </code></pre></figure>
     <p>If your model wasn't exported with animation, you can still animate it using A-Frame. This works for both OBJ and glTF:</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     &lt;a-obj-model src="#some-obj" 
              mtl="#some-mtl" 
              rotation="0 -135 0" 
@@ -384,7 +413,7 @@ Click the + New File button in the left sidepanel
     <h3>OBJ</h3>
     <p>Objects can use .MTL to define their material, including texture files. They may also use A-Frame's material component.</p>
     <h3>Example 1</h3>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     &lt;a-assets&gt;
         &lt;a-assetsitem id=&quot;window-obj&quot; src=&quot;url...&quot;&gt;&lt;/a-assetsitem&gt;
         &lt;a-assetsitem id=&quot;window-mtl&quot; src=&quot;url...&quot;&gt;&lt;/a-assetsitem&gt;
@@ -393,7 +422,7 @@ Click the + New File button in the left sidepanel
      &lt;a-obj-model src=&quot;#window-obj&quot; mtl=&quot;#window-mtl&quot; material=&quot;transparent: true&quot;&gt;&lt;/a-obj-model&gt;
     </code></pre></figure>
     <h3>Example 2</h3>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
      &lt;a-assets&gt;
         &lt;a-assetsitem id=&quot;tree&quot; src=&quot;url...&quot;&gt;&lt;/a-assetsitem&gt;
      &lt;/a-assets&gt;
@@ -571,7 +600,7 @@ Change the environment to any of the predefined ones
         <li>A-Frame Physics System</li>
         <li>A-Frame Teleport Controls</li>
     </ul>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     &lt;head&gt;
     &lt;script src=&quot;https://aframe.io/releases/0.8.2/aframe.min.js&quot;&gt;&lt;/script&gt;
     &lt;script src=&quot;https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.js&quot;&gt;&lt;/script&gt;
@@ -592,7 +621,7 @@ Add a kinematic-body camera rig</p>
     <p>A navmesh is a simplified version of the floor, and can be used for collision detection with teleportation controls, as well as constraining movement controls.</p>
     <h3>Built into dlux</h3>
     <p>Navmesh comes built into dlux boilerplates, and should be updated as the scene changes. Once you build your scene, create a navmesh, then reference it in the scene by linking to it in this line of code:</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     &lt;a-entity gltf-model=&quot;navmesh.gltf&quot; nav-mesh&gt;&lt;/a-entity&gt;
     </code></pre></figure>
     <h3>How to Create a Navmesh</h3>
@@ -604,11 +633,11 @@ Add a kinematic-body camera rig</p>
         <li>Create your scene</li>
         <li>Use this plugin to create and test a navigation mesh</li>
         <li>Add the script to your scene head:</li>
-        <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+        <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
         &lt;script src=&quot;https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js&quot;&gt;&lt;/script&gt;
         </code></pre></figure>
         <li>Add inspector-plugin-recast to your &lt;a-scene&gt; tag:</li>
-        <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+        <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
         &lt;a-scene inspector-plugin-recast&gt;
         </code></pre></figure>
         <li>Press Ctl-Alt-I to access the inspector</li>
@@ -616,7 +645,7 @@ Add a kinematic-body camera rig</p>
         <li>Adjust parameters and click Build until desired mesh is achieved</li>
         <li>Export the navigation mesh as a glTF file</li>
         <li>Load the final navigation mesh into your scene as a normal model</li>
-        <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+        <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
         &lt;a-entity gltf-model=&quot;navmesh.gltf&quot; nav-mesh&gt;&lt;/a-entity&gt;
         </code></pre></figure>
     </ul>
@@ -624,7 +653,7 @@ Add a kinematic-body camera rig</p>
     <p>See Don McCurdy's post here: <a href="https://medium.com/@donmccurdy/creating-a-nav-mesh-for-a-webvr-scene-b3fdb6bed918" target="_blank">https://medium.com/@donmccurdy/creating-a-nav-mesh-for-a-webvr-scene-b3fdb6bed918</a></p>
     <h3>Using A-Frame Primitives</h3>
     <p>You can make a navigation mesh in A-Frame using a primitive, but only one navmesh is supported in a scene. This works fine for a big flat floor, but being limited to one primitive doesn't work for building varied terrain, which instead requires one of the other methods of generating a glTF to use for the navmesh.</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     &lt;a-scene renderer=&quot;gammaOutput: true&quot; background=&quot;color: lightblue;&quot;&gt;
       &lt;!-- CAMERA --&gt;
       &lt;!--&lt;a-entity id=&quot;rig&quot; movement-controls=&quot;constrainToNavMesh: true;&quot;&gt;
@@ -647,7 +676,7 @@ Add a kinematic-body camera rig</p>
     <p>Now that you have created a navmesh for your scene, you must reference it in your scene.</p>
     <h4>Built in to dlux</h4>
     <p>If you're working from a dlux boilerplate, this is as simple as linking to it in the line</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     &lt;a-entity gltf-model=&quot;navmesh.gltf&quot; nav-mesh&gt;&lt;/a-entity&gt;
     </code></pre></figure>
     <h4>Start from scratch</h4>
@@ -657,7 +686,7 @@ Add a kinematic-body camera rig</p>
         <li>Controls in A-Frame Extras by Don McCurdy (GitHub Source)</li>
         <li>A-Frame Teleport Controls by Fernando Serrano (GitHub Source)</li>
     </ul>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     &lt;html&gt;
     &lt;head&gt;
     &lt;script src=&quot;https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.js&quot;&gt;&lt;/script&gt;
@@ -665,13 +694,13 @@ Add a kinematic-body camera rig</p>
     &lt;/head&gt;
     </code></pre></figure>
     <p>Define the navmesh in your scene</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     &lt;body&gt;
       &lt;a-scene&gt;
         &lt;a-entity gltf-model=&quot;navmesh.gltf&quot; nav-mesh&gt;&lt;/a-entity&gt;
     </code></pre></figure>
     <p>Your player should be set up as a camera rig, with the head being your camera, and look something like this:</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
 &lt;a-entity id=&quot;player&quot;
      position=&quot;0 0 0&quot;
      movement-controls=&quot;constrainToNavMesh: true&quot;&gt;
@@ -693,7 +722,7 @@ Add a kinematic-body camera rig</p>
 &lt;/html&gt;
 </code></pre></figure>
 <p>Finally, you need to add a bit of script for nav-pointer. This is already done in dlux.js, and can be added to an existing file, or inline:</p>
-<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
 &lt;head&gt;
 ...
 &lt;script&gt;
@@ -762,14 +791,14 @@ AFRAME.registerComponent('nav-pointer', {
     <p>New nodes are elected if their addition to the group will improve the collateral conditions of the group.</p>
     <p>Since consensus is determined by IPFS hash, replays are near instant. Ensuring the network remains current with the main layer, Hive.</p>
     <p>Configuration: env vars:</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     posting posting key
     active active key Can perform escrow transactions for rewards
     ACCOUNT hive account ie dlux-io
     DOMAIN Public / ie https://token.dlux.io
     </code></pre></figure>
     <p>API: Read:</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     /@username -> DLUX balances
     /stats -> Current Info
     /state -> State dump, for testing
@@ -778,7 +807,7 @@ AFRAME.registerComponent('nav-pointer', {
     /dex -> DEX Info
     </code></pre></figure>
     <p>Write: CURRENTLY dlux_ is the token prefix Custom JSON:</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     send | to (account to not checked) & amount (integer, no float)
     power_up | amount (dlux to power up for voting)
     power_down | amount to schedule for power down 1
@@ -788,7 +817,7 @@ AFRAME.registerComponent('nav-pointer', {
     node_delete
     </code></pre></figure>
     <p>Operations</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     Setting bennifactor rewards to @dlux-io >= 10% to make post votable 1
     Transfers to @robotolux automatically distributes ICO auction
     Delegations to @dlux-io paid daily and tracked automaticly
@@ -796,22 +825,8 @@ AFRAME.registerComponent('nav-pointer', {
     </code></pre></figure>
     </p>
 </article>
-<article class="docs-article" id="exchange">
-    <h1 class="bd-title">Decentralized Exchange</h1>
-    <p>The Hive accounts running DLUX software in consensus are able to facilitate token swaps utilizing the following protocol.</p>
-    <p>Alice has 10 Hive, and wants to buy  10 DLUX. There are no buyers yet, so Alice checks the network to see which nodes are active(fills out escrow fields in advanced area of form), and selects Charlie as an escrow agent, and David to forward the transaction to a buyer, A collateralized escrow agent as well.</p>
-    <p>Alice signs an 'escrow_transaction' to Charlie and David. The Hive blockchain will ensure all the security around accepting this transaction. The DLUX network will read the transaction, verify it's acceptable, and let all nodes know that Charlie and David both have enough collateral to hold this trade.</p>
-    <p>Charlie and David will autonomously sign and broadcast the expected 'escrow_approve' transactions. Hive is in escrow between Charlie and David, each of whom have collateralized 20 DLUX. Bob sees the contract: 10 Hive for 10 DLUX, and buys it, That is sends a 'custom_json' transaction on hive with dlux header information.</p>
-    <p>The dlux network sees this transaction and the 10 DLUX is sent to Alice, and the 10 Hive is released from escrow to David, (David autonomously signs 'escrow_dispute', and charlie autonomously signs 'escrow_release'). The Dlux network withholds 10 more DLUX from each as the custody changes. Once David recieves the Hive Charlie has his dlux retruned plus a fee. David sends the 10 Hive to Bob and then has his dlux returned plus his fee.</p>
-    <p>At any time the trade will be 100% garanteed by the network. Since any one actor can hold any number of accounts some of the held escrow would be burned(sent to null) to prevent attacks that could withdraw dlux governance power early. On inflow trades like this holding a trade will be more costly as the escrow must be held longer.</p>
-    <p>While nearly the same chain of custody happens in the reverse direction, the order sits on the dlux side with out the need to collateralize the trade until execution.</p>
-    <p>Because collateralizing these trades requires liquidity, these trades can not be free. Especially inflow  and fees are being implemented: 0.25% + 0.003 DLUX. 1/3 of which goes to each node fascilitating the trade, and the other third to the node reward pool which gets spread evenly over all creditable transactions daily.</p>
-    <p>This fee structure is to encourage larger balances to handle larger swaps, as well as to reward the network for enabling the trust required for the larger accounts.</p>
-    <p>Collateralization is also a finite resource, as such the network itself must regulate acceptable trades and autonomously cancel orders that fall out of acceptable bands to free liquidity at market prices.</p>
-    <p>No information asymmetry either way, all transactions on the DEX are open.</p>
-</article>
 <article class="docs-article" id="token">
-    <h1 class="bd-title">DLUX OpenToken</h1>
+    <h1 class="bd-title">DLUX Fungible Token</h1>
     <p>Tokens are being issued for hive donations in the exchange area.</p>
     <p>dlux tokens allow us to reward user actions like content discovery, performing swaps, determining consensus, and services like content storage and relay servers(streaming audio/video).</p>
     <ul>
@@ -830,9 +845,25 @@ AFRAME.registerComponent('nav-pointer', {
     </ul>
     <p>The reward pool is used to incentivize others to run dlux nodes to verify integrity and that we're running our code fairly and correctly, provable through the hash.</p>
 </article>
+<article class="docs-article" id="nft">
+    <h1 class="bd-title">Smart Non Fungible Tokens (NFTs)</h1>
+    <p>Smart NFTs are here! And there's so much you can do with them, like generatively deciding attributes, leveraging scaleable vector graphics as visual layers with color options, user input games where each choice is a competition for the prize, trophies and achievements, music videos and art, NFTs that mint subsequent NFTs like levels or episodes or seasons, and anything else you may be able to conceive!</p>
+	<p>We are actively working on UI (user interface) to make this as approachable as possible for everyone.</p>
+</article>
 <article class="docs-article" id="dex">
     <h1 class="bd-title">Decentralized Exchange (DEX)</h1>
-    <p></p>
+    <p>The Hive accounts running DLUX software in consensus are able to facilitate token swaps utilizing the following protocol.</p>
+    <p>Alice has 10 Hive, and wants to buy  10 DLUX. There are no buyers yet, so Alice checks the network to see which nodes are active(fills out escrow fields in advanced area of form), and selects Charlie as an escrow agent, and David to forward the transaction to a buyer, A collateralized escrow agent as well.</p>
+    <p>Alice signs an 'escrow_transaction' to Charlie and David. The Hive blockchain will ensure all the security around accepting this transaction. The DLUX network will read the transaction, verify it's acceptable, and let all nodes know that Charlie and David both have enough collateral to hold this trade.</p>
+    <p>Charlie and David will autonomously sign and broadcast the expected 'escrow_approve' transactions. Hive is in escrow between Charlie and David, each of whom have collateralized 20 DLUX. Bob sees the contract: 10 Hive for 10 DLUX, and buys it, That is sends a 'custom_json' transaction on hive with dlux header information.</p>
+    <p>The dlux network sees this transaction and the 10 DLUX is sent to Alice, and the 10 Hive is released from escrow to David, (David autonomously signs 'escrow_dispute', and charlie autonomously signs 'escrow_release'). The Dlux network withholds 10 more DLUX from each as the custody changes. Once David recieves the Hive Charlie has his dlux retruned plus a fee. David sends the 10 Hive to Bob and then has his dlux returned plus his fee.</p>
+    <p>At any time the trade will be 100% garanteed by the network. Since any one actor can hold any number of accounts some of the held escrow would be burned(sent to null) to prevent attacks that could withdraw dlux governance power early. On inflow trades like this holding a trade will be more costly as the escrow must be held longer.</p>
+    <p>While nearly the same chain of custody happens in the reverse direction, the order sits on the dlux side with out the need to collateralize the trade until execution.</p>
+    <p>Because collateralizing these trades requires liquidity, these trades can not be free. Especially inflow  and fees are being implemented: 0.25% + 0.003 DLUX. 1/3 of which goes to each node fascilitating the trade, and the other third to the node reward pool which gets spread evenly over all creditable transactions daily.</p>
+    <p>This fee structure is to encourage larger balances to handle larger swaps, as well as to reward the network for enabling the trust required for the larger accounts.</p>
+    <p>Collateralization is also a finite resource, as such the network itself must regulate acceptable trades and autonomously cancel orders that fall out of acceptable bands to free liquidity at market prices.</p>
+    <p>No information asymmetry either way, all transactions on the DEX are open.</p>
+</article>
 <article class="docs-article" id="accounts">
     <h1 class="bd-title">Account Creation Tokens</h1>
     <p>Utilizing delegation of Hive Power and multi-signature. An Account Creation Market can be deveoped to exchange ACTs between members of the network at fair cost.</p>
@@ -932,7 +963,7 @@ AFRAME.registerComponent('nav-pointer', {
     <h3>Post API</h3>
     <p>The following API allows users of your dApp to request to post new content to dlux:</p>
     <p>Triggering the following code from the XR container will prompt the dApp user to make a Hive post</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     window.parent.postMessage({
             'func': 'advPost',
             'message': postData
@@ -985,7 +1016,7 @@ Others are encouraged to build competing pinning services and bid in Open Market
 
 IPFS API
 js-ipfs-api (GitHub Source)
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     const ipfs = window.IpfsApi({ host: 'ipfs.infura.io', port: '5001', protocol: 'https'}) // Connect to IPFS
         const buf = buffer.Buffer(reader.result) // Convert data into buffer
         ipfs.files.add(buf, (err, result) => { // Upload buffer to IPFS
@@ -999,7 +1030,7 @@ js-ipfs-api (GitHub Source)
     <p>IPFS Oracles are hosting nodes that pin assets to storage.</p>
     <p>Others are encouraged to provide services and bid the cost down, just like on AWS (Amazon Web Services).</p>
     <p>Here is a data structure for our IPFS pinning service:</p>
-    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight"><pre><code class="language-html" data-lang="html">
+    <div class="bd-clipboard"><button type="button" class="btn-clipboard" title="" data-original-title="Copy to clipboard">Copy</button></div><figure class="highlight bg-dark"><pre><code class="language-html text-white-50" data-lang="html">
     stats: {
         hashLastIBlock: '',
         tokensSupply: 100000000000,
