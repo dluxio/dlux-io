@@ -50,5 +50,7 @@ $router->respondWithController('GET', '/new/360-tour', 'Newpost@threesixtytour')
 $router->respondWithController('GET', '/new/360-tour/', 'Newpost@threesixtytour');
 $router->respondWithController('GET', '/about/', 'About@index');
 $router->respondWithController('GET', '/about', 'About@index');
+$router->respondWithController('GET', '/honeycomb/', 'Honeycomb@index');
+$router->respondWithController('GET', '/honeycomb', 'Honeycomb@index');
 // Dispatch the router
 $router->dispatch();
