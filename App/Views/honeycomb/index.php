@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<title>DLUX - HoneyComb</title>
+<title>DLUX - Honeycomb</title>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
@@ -58,8 +58,9 @@ include_once( $path );
               <h1 class="text-center">Build your community</h1>
 				<hr>
               <p class="text-center">A honeycomb is a mass of hexagonal prismatic wax cells built by honey bees in their nests to contain their stores of honey and pollen.</p>
-              <p>&nbsp;</p>
-              <p class="text-center"><a class="btn btn-info btn-lg" href="#" role="button">Coming Soon</a> </p>
+              <p class="text-center">Hive Honeycomb allows your community to run a constellation network around the HIVE blockchain.</p>
+              <p class="text-center">Own every aspect of your community, on HIVE, powered by DLUX.</p>
+              <p class="text-center"><a class="btn btn-info btn-lg" href="#" role="button"><i class="fas fa-project-diagram fa-flip-horizontal"></i><i class="fas fa-project-diagram fa-rotate-90 fa-flip-both"></i><i class="fas fa-project-diagram fa-flip-horizontal"></i><br><i class="fas fa-project-diagram"></i> <i class="fab fa-hive"></i> <i class="fas fa-project-diagram fa-flip-both"></i><br><i class="fas fa-project-diagram fa-flip-vertical"></i><i class="fas fa-project-diagram"></i><i class="fas fa-project-diagram fa-flip-vertical"></i></a><br><u class="text-info">Get Started now</u></p>
             </div>
           </div>
         </div>
