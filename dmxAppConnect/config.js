@@ -634,41 +634,35 @@ dmx.config({
       "meta": [
         {
           "type": "text",
-          "name": "uid"
+          "name": "author"
         },
         {
           "type": "text",
-          "name": "set"
+          "name": "permlink"
         },
         {
-          "type": "object",
-          "name": "price",
-          "sub": [
-            {
-              "type": "number",
-              "name": "amount"
-            },
-            {
-              "type": "number",
-              "name": "precision"
-            },
-            {
-              "type": "text",
-              "name": "token"
-            }
-          ]
+          "type": "number",
+          "name": "block"
         },
         {
-          "type": "text",
-          "name": "time"
+          "type": "number",
+          "name": "votes"
         },
         {
-          "type": "text",
-          "name": "by"
+          "type": "number",
+          "name": "voteweight"
+        },
+        {
+          "type": "number",
+          "name": "promote"
+        },
+        {
+          "type": "boolean",
+          "name": "paid"
         },
         {
           "type": "text",
-          "name": "script"
+          "name": "url"
         }
       ],
       "outputType": "array"
@@ -1268,115 +1262,41 @@ dmx.config({
             "sub": [
               {
                 "type": "text",
-                "name": "uid"
-              },
-              {
-                "type": "text",
-                "name": "set"
-              },
-              {
-                "type": "text",
-                "name": "script"
-              },
-              {
-                "type": "text",
-                "name": "owner"
-              }
-            ]
-          },
-          {
-            "type": "object",
-            "name": "set",
-            "sub": [
-              {
-                "type": "text",
-                "name": "set"
-              },
-              {
-                "type": "text",
-                "name": "link"
-              },
-              {
-                "type": "object",
-                "name": "fee",
-                "sub": [
-                  {
-                    "type": "number",
-                    "name": "amount"
-                  },
-                  {
-                    "type": "number",
-                    "name": "precision"
-                  },
-                  {
-                    "type": "text",
-                    "name": "token"
-                  }
-                ]
-              },
-              {
-                "type": "object",
-                "name": "bond",
-                "sub": [
-                  {
-                    "type": "number",
-                    "name": "amount"
-                  },
-                  {
-                    "type": "number",
-                    "name": "precision"
-                  },
-                  {
-                    "type": "text",
-                    "name": "token"
-                  }
-                ]
+                "name": "author"
               },
               {
                 "type": "text",
                 "name": "permlink"
               },
               {
-                "type": "text",
-                "name": "author"
-              },
-              {
-                "type": "text",
-                "name": "script"
-              },
-              {
-                "type": "text",
-                "name": "encoding"
+                "type": "number",
+                "name": "block"
               },
               {
                 "type": "number",
-                "name": "type"
-              },
-              {
-                "type": "text",
-                "name": "royalty"
-              },
-              {
-                "type": "text",
-                "name": "name"
+                "name": "votes"
               },
               {
                 "type": "number",
-                "name": "minted"
+                "name": "voteweight"
               },
               {
                 "type": "number",
-                "name": "max"
+                "name": "promote"
+              },
+              {
+                "type": "boolean",
+                "name": "paid"
+              },
+              {
+                "type": "text",
+                "name": "url"
               }
             ]
           },
           {
             "type": "text",
             "name": "node"
-          },
-          {
-            "type": "text",
-            "name": "VERSION"
           }
         ]
       },
@@ -1386,23 +1306,11 @@ dmx.config({
         "sub": [
           {
             "type": "text",
-            "name": "date"
+            "name": "access-control-allow-origin"
           },
           {
             "type": "text",
-            "name": "via"
-          },
-          {
-            "type": "text",
-            "name": "server"
-          },
-          {
-            "type": "text",
-            "name": "x-powered-by"
-          },
-          {
-            "type": "text",
-            "name": "etag"
+            "name": "content-length"
           },
           {
             "type": "text",
@@ -1410,11 +1318,23 @@ dmx.config({
           },
           {
             "type": "text",
-            "name": "access-control-allow-origin"
+            "name": "date"
           },
           {
             "type": "text",
-            "name": "content-length"
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "via"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
           }
         ]
       }
