@@ -52,5 +52,7 @@ $router->respondWithController('GET', '/about/', 'About@index');
 $router->respondWithController('GET', '/about', 'About@index');
 $router->respondWithController('GET', '/honeycomb/', 'Honeycomb@index');
 $router->respondWithController('GET', '/honeycomb', 'Honeycomb@index');
+$router->respondWithController('GET', '/apps/new/', 'Apps@new');
+$router->respondWithController('GET', '/apps/new', 'Apps@new');
 // Dispatch the router
 $router->dispatch();
