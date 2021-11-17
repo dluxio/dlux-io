@@ -3,9 +3,9 @@
 <head>
 <title>DLUX - Apps</title>
 
-<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script>
-<script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
-<script type="text/javascript" src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
+<script type="text/javascript" src="/js/dmxAppConnect/dmxAppConnect.js"></script>
+<script type="text/javascript" src="/js/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<script type="text/javascript" src="/js/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
 
 <body class="d-flex flex-column h-100 padme-t70" id="new" is="dmx-app">
