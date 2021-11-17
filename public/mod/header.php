@@ -3,6 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 <!-- Bootstrap -->
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
 <link href="/css/bootstrap-4.4.1.css" rel="stylesheet">
 <link href="/css/bd.css" rel="stylesheet">
 <!--dmxAppConnect-->
