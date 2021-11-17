@@ -1,8 +1,1120 @@
 /*!
  DMXzone Formatter
- Version: 1.2.6
- (c) 2020 DMXzone.com
- @build 2020-06-09 15:56:10
+ Version: 1.1.5
+ (c) 2018 DMXzone.com
+ @build 2018-09-19 13:17:27
+ THIS ONE
  */
-dmx.Formatters("global",{default:function(e,t){return null==e?t:e},string:function(e){return String(e)},number:function(e){return Number(e)},date:function(e){"number"==typeof e&&(e*=1e3),"string"==typeof e&&"now"==e.toLowerCase()&&(e=null);var t=e?new Date(e):new Date;return"Invalid Date"==t.toString()?null:t.toISOString()}}),dmx.propCheck=/^\w+$/,dmx.Formatters("array",{toKeyedObject:function(e,t,n){for(var r={},a=dmx.propCheck.test(t),u=dmx.propCheck.test(n),c=0;c<e.length;c++){var i=e[c];r[a?i[t]:dmx.parse(t,new dmx.DataScope(i,this))]=u?i[n]:dmx.parse(n,new dmx.DataScope(i,this))}return r},hasItems:function(e){return!!e.length},contains:function(e,t){return-1<e.indexOf(t)},join:function(e,t){return e.join(t)},count:function(e){return e.length},top:function(e,t){return e.slice(0,t)},last:function(e,t){return null==t?e[e.length-1]:e.slice(-t)},first:function(e){return e[0]},get:function(e,t){return e[t]},slice:function(e,t,n){return e.slice(t,n)},reverse:function(e){return e.slice(0).reverse()},randomize:function(e){var t,n,r=dmx.randomizer(this.seed*dmx.hashCode(e)),a=e.length;for(e=e.slice(0);0!==a;)n=Math.floor(r()*a--),t=e[a],e[a]=e[n],e[n]=t;return e},filter:function(e,t){var n=this;return"$"==t[0]&&(e=dmx.repeatItems(e)),e.filter(function(e){return dmx.parse(t,new dmx.DataScope(e,n))})},map:function(e,t){var n=this;return"$"==t[0]&&(e=dmx.repeatItems(e)),e.map(function(e){return dmx.parse(t,new dmx.DataScope(e,n))})},where:function(e,n,r,a){var u=this;return a=a||"==","$"==n[0]&&(e=dmx.repeatItems(e)),e.filter(function(e){var t=dmx.propCheck.test(n)?e[n]:dmx.parse(n,new dmx.DataScope(e,u));switch(a){case"startsWith":return 0===String(t).indexOf(r);case"endsWith":return String(t).substr(-r.length)===r;case"contains":return-1!==String(t).indexOf(r);case"notContains":return-1===String(t).indexOf(r);case"inArray":return-1!==r.indexOf(t);case"notInArray":return-1===r.indexOf(t);case"fuzzySearch":return function(e,t){var n=e.length,r=t.length;if(n<r)return!1;if(r===n)return e===t;e:for(var a=0,u=0;a<r;a++){for(var c=t.charCodeAt(a);u<n;)if(e.charCodeAt(u++)===c)continue e;return!1}return!0}(String(t),r);case"==":return t==r;case"===":return t===r;case"!=":return t!=r;case"!==":return t!==r;case"<":return t<r;case"<=":return t<=r;case">":return r<t;case">=":return r<=t}return!0})},values:function(e,t){var n=this,r=dmx.propCheck.test(t);return e.map(function(e){return r?e[t]:dmx.parse(t,new dmx.DataScope(e,n))})},groupBy:function(e,r){var a=this,u=dmx.propCheck.test(r);return e.reduce(function(e,t){var n=u?t[r]:dmx.parse(r,new dmx.DataScope(t,a));return e[n]||(e[n]=[]),e[n].push(t),e},{})},unique:function(e,t){if(t){var n=this,r=dmx.propCheck.test(t);e=e.map(function(e){return r?e[t]:dmx.parse(t,new dmx.DataScope(e,n))})}return Object.keys(e.reduce(function(e,t){return e[JSON.stringify(t)]=1,e},{})).map(function(e){return JSON.parse(e)})},sort:function(e,n){var r=this,a=!n||dmx.propCheck.test(n);return e.slice(0).sort(function(e,t){return n&&(e=a?e[n]:dmx.parse(n,new dmx.DataScope(e,r)),t=a?t[n]:dmx.parse(n,new dmx.DataScope(t,r))),e<t?-1:t<e?1:0})},min:function(e,n){var r=this,a=!n||dmx.propCheck.test(n);return e.reduce(function(e,t){return n&&(t=a?t[n]:dmx.parse(n,new dmx.DataScope(t,r))),(t=Number(t))<e?t:e},1/0)},max:function(e,n){var r=this,a=!n||dmx.propCheck.test(n);return e.reduce(function(e,t){return n&&(t=a?t[n]:dmx.parse(n,new dmx.DataScope(t,r))),e<(t=Number(t))?t:e},-1/0)},sum:function(e,n){var r=this,a=!n||dmx.propCheck.test(n);return e.reduce(function(e,t){return n&&(t=a?t[n]:dmx.parse(n,new dmx.DataScope(t,r))),e+(t=Number(t))},0)},avg:function(e,n){var r=this,a=!n||dmx.propCheck.test(n);return e.reduce(function(e,t){return n&&(t=a?t[n]:dmx.parse(n,new dmx.DataScope(t,r))),e+(t=Number(t))},0)/e.length},default:function(e){return e}}),dmx.Formatters("number",{inRange:function(e,t,n){return t<=e&&e<=n},abs:function(e){return Math.abs(e)},ceil:function(e){return Math.ceil(e)},floor:function(e){return Math.floor(e)},max:function(e,t){return Math.max(e,t)},min:function(e,t){return Math.min(e,t)},pow:function(e,t){return Math.pow(e,t)},per:function(e,t){return e*t/100},perOf:function(e,t){return e/t},round:function(e,t){var n=Math.pow(10,t||0),r=e*n;return Math.round(r)/n},pad:function(e,t){for(var n=e<0?"-":"",r=String(Math.abs(e));r.length<t;)r="0"+r;return n+r},toFixed:function(e,t){return e.toFixed(t)},formatNumber:function(e,t,n,r){if(isNaN(e))return"Invalid Number";if(!isFinite(e))return(e<0?"-":"")+"infinite";n=n||".",r=r||"";var a=e<0;e=Math.abs(e);var u=(null!=t&&0<=t?e.toFixed(t):e.toString()).split("."),c=u[0],i=1<u.length?n+u[1]:"";if(r)for(var o=/(\d+)(\d{3})/;o.test(c);)c=c.replace(o,"$1"+r+"$2");return(a?"-":"")+c+i},formatPercentage:function(e,t){var n=Math.pow(10,t);return Math.round(e*n*100)/n+"%"},formatCurrency:function(e,t,n,r,a){if(isNaN(e)||!isFinite(e))return"Invalid Amount";t=t||"$",n=n||".",r=r||",",a=null!=a?a:2;var u=e<0,c=Math.abs(e).toFixed(a).split("."),i=c[0],o=1<c.length?n+c[1]:"";if(r)for(var f=/(\d+)(\d{3})/;f.test(i);)i=i.replace(f,"$1"+r+"$2");return(u?"-":"")+t+i+o},formatSize:function(e,t,n){if(isNaN(e)||!isFinite(e))return"Invalid Size";t=t||2;for(var r=n?1024:1e3,a=n?["KiB","MiB","GiB","TiB"]:["KB","MB","GB","TB"],u=3;0<=u;u--){var c=Math.pow(r,u+1);if(c<=e){e/=c;var i=Math.pow(10,t);return(e=Math.round(e*i)/i)+a[u]}}return e+"B"},default:function(e){return e},toString:function(e){return String(e)},toDate:function(e){return new Date(1e3*e).toISOString()}}),function(){function r(e){var t=function(e){return("00"+e).substr(-2)};return("0000"+e.getFullYear()).substr(-4)+"-"+t(e.getMonth()+1)+"-"+t(e.getDate())+" "+t(e.getHours())+":"+t(e.getMinutes())+":"+t(e.getSeconds())}function h(e){var t,n,r=0,a=[1,4,5,6,7,10,11];if("now"==(e+="").toLowerCase())return new Date;if(t=/^(\d{4}|[+\-]\d{6})(?:-(\d{2})(?:-(\d{2}))?)?(?:[T ](\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{3}))?)?(?:(Z)|([+\-])(\d{2})(?::(\d{2}))?)?)?$/.exec(e)){for(var u,c=0;u=a[c];++c)t[u]=+t[u]||0;return t[2]=(+t[2]||1)-1,t[3]=+t[3]||1,void 0===t[8]?new Date(t[1],t[2],t[3],t[4],t[5],t[6],t[7]):("Z"!==t[8]&&void 0!==t[9]&&(r=60*t[10]+t[11],"+"===t[9]&&(r=0-r)),new Date(Date.UTC(t[1],t[2],t[3],t[4],t[5]+r,t[6],t[7])))}return(t=/^(\d{2}):(\d{2})(?::(\d{2}))?$/.exec(e))?((n=new Date).setHours(+t[1]||0),n.setMinutes(+t[2]||0),n.setSeconds(+t[3]||0),n):new Date(e)}function a(e){return e.setHours(0),e.setMinutes(0),e.setSeconds(0),e.setMilliseconds(0),e}dmx.Formatters("string",{startsWith:function(e,t){return 0===e.indexOf(t)},endsWith:function(e,t){var n=e.length-t.length,r=e.lastIndexOf(t);return-1!==r&&r===n},contains:function(e,t){return-1!==e.indexOf(t)},notContains:function(e,t){return-1===e.indexOf(t)},search:function(t,e,n){return String(e).split(/\s+/)[n?"every":"some"](function(e){return-1!==t.indexOf(e)})},fuzzySearch:function(e,t){var n=e.length,r=t.length;if(n<r)return!1;if(r===n)return e===t;e:for(var a=0,u=0;a<r;a++){for(var c=t.charCodeAt(a);u<n;)if(e.charCodeAt(u++)===c)continue e;return!1}return!0},test:function(e,t){return t.test(e)},lowercase:function(e){return e.toLowerCase()},uppercase:function(e){return e.toUpperCase()},slugify:function(e){for(var t={"2d":"-",20:"-",24:"s",26:"and",30:"0",31:"1",32:"2",33:"3",34:"4",35:"5",36:"6",37:"7",38:"8",39:"9",41:"A",42:"B",43:"C",44:"D",45:"E",46:"F",47:"G",48:"H",49:"I",50:"P",51:"Q",52:"R",53:"S",54:"T",55:"U",56:"V",57:"W",58:"X",59:"Y",61:"a",62:"b",63:"c",64:"d",65:"e",66:"f",67:"g",68:"h",69:"i",70:"p",71:"q",72:"r",73:"s",74:"t",75:"u",76:"v",77:"w",78:"x",79:"y",100:"A",101:"a",102:"A",103:"a",104:"A",105:"a",106:"C",107:"c",108:"C",109:"c",110:"D",111:"d",112:"E",113:"e",114:"E",115:"e",116:"E",117:"e",118:"E",119:"e",120:"G",121:"g",122:"G",123:"g",124:"H",125:"h",126:"H",127:"h",128:"I",129:"i",130:"I",131:"i",132:"IJ",133:"ij",134:"J",135:"j",136:"K",137:"k",138:"k",139:"L",140:"l",141:"L",142:"l",143:"N",144:"n",145:"N",146:"n",147:"N",148:"n",149:"n",150:"O",151:"o",152:"OE",153:"oe",154:"R",155:"r",156:"R",157:"r",158:"R",159:"r",160:"S",161:"s",162:"T",163:"t",164:"T",165:"t",166:"T",167:"t",168:"U",169:"u",170:"U",171:"u",172:"U",173:"u",174:"W",175:"w",176:"Y",177:"y",178:"Y",179:"Z",180:"b",181:"B",182:"b",183:"b",184:"b",185:"b",186:"C",187:"C",188:"c",189:"D",190:"E",191:"F",192:"f",193:"G",194:"Y",195:"h",196:"i",197:"I",198:"K",199:"k",200:"A",201:"a",202:"A",203:"a",204:"E",205:"e",206:"E",207:"e",208:"I",209:"i",210:"R",211:"r",212:"R",213:"r",214:"U",215:"u",216:"U",217:"u",218:"S",219:"s",220:"n",221:"d",222:"8",223:"8",224:"Z",225:"z",226:"A",227:"a",228:"E",229:"e",230:"O",231:"o",232:"Y",233:"y",234:"l",235:"n",236:"t",237:"j",238:"db",239:"qp",240:"<",241:"?",242:"?",243:"B",244:"U",245:"A",246:"E",247:"e",248:"J",249:"j",250:"a",251:"a",252:"a",253:"b",254:"c",255:"e",256:"d",257:"d",258:"e",259:"e",260:"g",261:"g",262:"g",263:"Y",264:"x",265:"u",266:"h",267:"h",268:"i",269:"i",270:"w",271:"m",272:"n",273:"n",274:"N",275:"o",276:"oe",277:"m",278:"o",279:"r",280:"R",281:"R",282:"S",283:"f",284:"f",285:"f",286:"f",287:"t",288:"t",289:"u",290:"Z",291:"Z",292:"3",293:"3",294:"?",295:"?",296:"5",297:"C",298:"O",299:"B",363:"a",364:"e",365:"i",366:"o",367:"u",368:"c",369:"d",386:"A",388:"E",389:"H",390:"i",391:"A",392:"B",393:"r",394:"A",395:"E",396:"Z",397:"H",398:"O",399:"I",400:"E",401:"E",402:"T",403:"r",404:"E",405:"S",406:"I",407:"I",408:"J",409:"jb",410:"A",411:"B",412:"V",413:"G",414:"D",415:"E",416:"ZH",417:"Z",418:"I",419:"Y",420:"R",421:"S",422:"T",423:"U",424:"F",425:"H",426:"TS",427:"CH",428:"SH",429:"SCH",430:"a",431:"b",432:"v",433:"g",434:"d",435:"e",436:"zh",437:"z",438:"i",439:"y",440:"r",441:"s",442:"t",443:"u",444:"f",445:"h",446:"ts",447:"ch",448:"sh",449:"sch",450:"e",451:"e",452:"h",453:"r",454:"e",455:"s",456:"i",457:"i",458:"j",459:"jb",460:"W",461:"w",462:"Tb",463:"tb",464:"IC",465:"ic",466:"A",467:"a",468:"IA",469:"ia",470:"Y",471:"y",472:"O",473:"o",474:"V",475:"v",476:"V",477:"v",478:"Oy",479:"oy",480:"C",481:"c",490:"R",491:"r",492:"F",493:"f",494:"H",495:"h",496:"X",497:"x",498:"3",499:"3",500:"d",501:"d",502:"d",503:"d",504:"R",505:"R",506:"R",507:"R",508:"JT",509:"JT",510:"E",511:"e",512:"JT",513:"jt",514:"JX",515:"JX",531:"U",532:"D",533:"Q",534:"N",535:"T",536:"2",537:"F",538:"r",539:"p",540:"z",541:"2",542:"n",543:"x",544:"U",545:"B",546:"j",547:"t",548:"n",549:"C",550:"R",551:"8",552:"R",553:"O",554:"P",555:"O",556:"S",561:"w",562:"f",563:"q",564:"n",565:"t",566:"q",567:"t",568:"n",569:"p",570:"h",571:"a",572:"n",573:"a",574:"u",575:"j",576:"u",577:"2",578:"n",579:"2",580:"n",581:"g",582:"l",583:"uh",584:"p",585:"o",586:"S",587:"u","4a":"J","4b":"K","4c":"L","4d":"M","4e":"N","4f":"O","5a":"Z","6a":"j","6b":"k","6c":"l","6d":"m","6e":"n","6f":"o","7a":"z",a2:"c",a3:"f",a5:"Y",a7:"s",a9:"c",aa:"a",ae:"r",b2:"2",b3:"3",b5:"u",b6:"p",b9:"1",c0:"A",c1:"A",c2:"A",c3:"A",c4:"A",c5:"A",c6:"AE",c7:"C",c8:"E",c9:"E",ca:"E",cb:"E",cc:"I",cd:"I",ce:"I",cf:"I",d0:"D",d1:"N",d2:"O",d3:"O",d4:"O",d5:"O",d6:"O",d7:"X",d8:"O",d9:"U",da:"U",db:"U",dc:"U",dd:"Y",de:"p",df:"b",e0:"a",e1:"a",e2:"a",e3:"a",e4:"a",e5:"a",e6:"ae",e7:"c",e8:"e",e9:"e",ea:"e",eb:"e",ec:"i",ed:"i",ee:"i",ef:"i",f0:"o",f1:"n",f2:"o",f3:"o",f4:"o",f5:"o",f6:"o",f8:"o",f9:"u",fa:"u",fb:"u",fc:"u",fd:"y",ff:"y","10a":"C","10b":"c","10c":"C","10d":"c","10e":"D","10f":"d","11a":"E","11b":"e","11c":"G","11d":"g","11e":"G","11f":"g","12a":"I","12b":"i","12c":"I","12d":"i","12e":"I","12f":"i","13a":"l","13b":"L","13c":"l","13d":"L","13e":"l","13f":"L","14a":"n","14b":"n","14c":"O","14d":"o","14e":"O","14f":"o","15a":"S","15b":"s","15c":"S","15d":"s","15e":"S","15f":"s","16a":"U","16b":"u","16c":"U","16d":"u","16e":"U","16f":"u","17a":"z","17b":"Z","17c":"z","17d":"Z","17e":"z","17f":"f","18a":"D","18b":"d","18c":"d","18d":"q","18e":"E","18f":"e","19a":"l","19b":"h","19c":"w","19d":"N","19e":"n","19f":"O","1a0":"O","1a1":"o","1a2":"P","1a3":"P","1a4":"P","1a5":"p","1a6":"R","1a7":"S","1a8":"s","1a9":"E","1aa":"l","1ab":"t","1ac":"T","1ad":"t","1ae":"T","1af":"U","1b0":"u","1b1":"U","1b2":"U","1b3":"Y","1b4":"y","1b5":"Z","1b6":"z","1b7":"3","1b8":"3","1b9":"3","1ba":"3","1bb":"2","1bc":"5","1bd":"5","1be":"5","1bf":"p","1c4":"DZ","1c5":"Dz","1c6":"dz","1c7":"Lj","1c8":"Lj","1c9":"lj","1ca":"NJ","1cb":"Nj","1cc":"nj","1cd":"A","1ce":"a","1cf":"I","1d0":"i","1d1":"O","1d2":"o","1d3":"U","1d4":"u","1d5":"U","1d6":"u","1d7":"U","1d8":"u","1d9":"U","1da":"u","1db":"U","1dc":"u","1dd":"e","1de":"A","1df":"a","1e0":"A","1e1":"a","1e2":"AE","1e3":"ae","1e4":"G","1e5":"g","1e6":"G","1e7":"g","1e8":"K","1e9":"k","1ea":"Q","1eb":"q","1ec":"Q","1ed":"q","1ee":"3","1ef":"3","1f0":"J","1f1":"dz","1f2":"dZ","1f3":"DZ","1f4":"g","1f5":"G","1f6":"h","1f7":"p","1f8":"N","1f9":"n","1fa":"A","1fb":"a","1fc":"AE","1fd":"ae","1fe":"O","1ff":"o","20a":"I","20b":"i","20c":"O","20d":"o","20e":"O","20f":"o","21a":"T","21b":"t","21c":"3","21d":"3","21e":"H","21f":"h","22a":"O","22b":"o","22c":"O","22d":"o","22e":"O","22f":"o","23a":"A","23b":"C","23c":"c","23d":"L","23e":"T","23f":"s","24a":"Q","24b":"q","24c":"R","24d":"r","24e":"Y","24f":"y","25a":"e","25b":"3","25c":"3","25d":"3","25e":"3","25f":"j","26a":"i","26b":"I","26c":"I","26d":"I","26e":"h","26f":"w","27a":"R","27b":"r","27c":"R","27d":"R","27e":"r","27f":"r","28a":"u","28b":"v","28c":"A","28d":"M","28e":"Y","28f":"Y","29a":"B","29b":"G","29c":"H","29d":"j","29e":"K","29f":"L","2a0":"q","2a1":"?","2a2":"c","2a3":"dz","2a4":"d3","2a5":"dz","2a6":"ts","2a7":"tf","2a8":"tc","2a9":"fn","2aa":"ls","2ab":"lz","2ac":"ww","2ae":"u","2af":"u","2b0":"h","2b1":"h","2b2":"j","2b3":"r","2b4":"r","2b5":"r","2b6":"R","2b7":"W","2b8":"Y","2df":"x","2e0":"Y","2e1":"1","2e2":"s","2e3":"x","2e4":"c","36a":"h","36b":"m","36c":"r","36d":"t","36e":"v","36f":"x","37b":"c","37c":"c","37d":"c","38a":"I","38c":"O","38e":"Y","38f":"O","39a":"K","39b":"A","39c":"M","39d":"N","39e":"E","39f":"O","3a0":"TT","3a1":"P","3a3":"E","3a4":"T","3a5":"Y","3a6":"O","3a7":"X","3a8":"Y","3a9":"O","3aa":"I","3ab":"Y","3ac":"a","3ad":"e","3ae":"n","3af":"i","3b0":"v","3b1":"a","3b2":"b","3b3":"y","3b4":"d","3b5":"e","3b6":"c","3b7":"n","3b8":"0","3b9":"1","3ba":"k","3bb":"j","3bc":"u","3bd":"v","3be":"c","3bf":"o","3c0":"tt","3c1":"p","3c2":"s","3c3":"o","3c4":"t","3c5":"u","3c6":"q","3c7":"X","3c8":"Y","3c9":"w","3ca":"i","3cb":"u","3cc":"o","3cd":"u","3ce":"w","3d0":"b","3d1":"e","3d2":"Y","3d3":"Y","3d4":"Y","3d5":"O","3d6":"w","3d7":"x","3d8":"Q","3d9":"q","3da":"C","3db":"c","3dc":"F","3dd":"f","3de":"N","3df":"N","3e2":"W","3e3":"w","3e4":"q","3e5":"q","3e6":"h","3e7":"e","3e8":"S","3e9":"s","3ea":"X","3eb":"x","3ec":"6","3ed":"6","3ee":"t","3ef":"t","3f0":"x","3f1":"e","3f2":"c","3f3":"j","3f4":"O","3f5":"E","3f6":"E","3f7":"p","3f8":"p","3f9":"C","3fa":"M","3fb":"M","3fc":"p","3fd":"C","3fe":"C","3ff":"C","40a":"Hb","40b":"Th","40c":"K","40d":"N","40e":"Y","40f":"U","41a":"K","41b":"L","41c":"M","41d":"N","41e":"O","41f":"P","42a":"","42b":"Y","42c":"","42d":"E","42e":"U","42f":"YA","43a":"k","43b":"l","43c":"m","43d":"n","43e":"o","43f":"p","44a":"","44b":"y","44c":"","44d":"e","44e":"u","44f":"ya","45a":"Hb","45b":"h","45c":"k","45d":"n","45e":"y","45f":"u","46a":"mY","46b":"my","46c":"Im","46d":"Im","46e":"3","46f":"3","47a":"O","47b":"o","47c":"W","47d":"w","47e":"W","47f":"W","48a":"H","48b":"H","48c":"B","48d":"b","48e":"P","48f":"p","49a":"K","49b":"k","49c":"K","49d":"k","49e":"K","49f":"k","4a0":"K","4a1":"k","4a2":"H","4a3":"h","4a4":"H","4a5":"h","4a6":"Ih","4a7":"ih","4a8":"O","4a9":"o","4aa":"C","4ab":"c","4ac":"T","4ad":"t","4ae":"Y","4af":"y","4b0":"Y","4b1":"y","4b2":"X","4b3":"x","4b4":"TI","4b5":"ti","4b6":"H","4b7":"h","4b8":"H","4b9":"h","4ba":"H","4bb":"h","4bc":"E","4bd":"e","4be":"E","4bf":"e","4c0":"I","4c1":"X","4c2":"x","4c3":"K","4c4":"k","4c5":"jt","4c6":"jt","4c7":"H","4c8":"h","4c9":"H","4ca":"h","4cb":"H","4cc":"h","4cd":"M","4ce":"m","4cf":"l","4d0":"A","4d1":"a","4d2":"A","4d3":"a","4d4":"AE","4d5":"ae","4d6":"E","4d7":"e","4d8":"e","4d9":"e","4da":"E","4db":"e","4dc":"X","4dd":"X","4de":"3","4df":"3","4e0":"3","4e1":"3","4e2":"N","4e3":"n","4e4":"N","4e5":"n","4e6":"O","4e7":"o","4e8":"O","4e9":"o","4ea":"O","4eb":"o","4ec":"E","4ed":"e","4ee":"Y","4ef":"y","4f0":"Y","4f1":"y","4f2":"Y","4f3":"y","4f4":"H","4f5":"h","4f6":"R","4f7":"r","4f8":"bI","4f9":"bi","4fa":"F","4fb":"f","4fc":"X","4fd":"x","4fe":"X","4ff":"x","50a":"H","50b":"h","50c":"G","50d":"g","50e":"T","50f":"t","51a":"Q","51b":"q","51c":"W","51d":"w","53a":"d","53b":"r","53c":"L","53d":"Iu","53e":"O","53f":"y","54a":"m","54b":"o","54c":"N","54d":"U","54e":"Y","54f":"S","56a":"d","56b":"h","56c":"l","56d":"lu","56e":"d","56f":"y","57a":"w","57b":"2","57c":"n","57d":"u","57e":"y","57f":"un"},n="",r=0;r<e.length;r++)n+=t[e.charCodeAt(r).toString(16)]||"";return n.toLowerCase().replace(/-+/g,"-").replace(/^-|-$/,"")},camelize:function(e){return e.trim().replace(/(\-|_|\s)+(.)?/g,function(e,t,n){return n?n.toUpperCase():""})},capitalize:function(e){return e.substr(0,1).toUpperCase()+e.substr(1).toLowerCase()},dasherize:function(e){return e.replace(/[_\s]+/g,"-").replace(/([A-Z])/g,"-$1").replace(/-+/g,"-").toLowerCase()},humanize:function(e){var t=e.replace(/([a-z\d])([A-Z+])/g,"$1_$2").replace(/[-\s]+/g,"_").replace(/_+/g," ").trim();return t.substr(0,1).toUpperCase()+t.substr(1).toLowerCase()},underscore:function(e){return e.trim().replace(/([a-z\d])([A-Z]+)/g,"$1_$1").replace(/[-\s]+/g,"_").toLowerCase()},titlecase:function(e){return e.replace(/(?:^|\s)\S/g,function(e){return e.toUpperCase()})},camelcase:function(e){return e.toLowerCase().replace(/\s+(\S)/g,function(e,t){return t.toUpperCase()})},substr:function(e,t,n){return e.substr(t,n)},substring:function(e,t,n){return e.substring(t,n)},replace:function(e,t,n){return"string"==typeof t&&(t=new RegExp(dmx.escapeRegExp(t),"g")),e.replace(t,n)},trim:function(e){return e.trim()},trimLeft:function(e){return e.replace(/^[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]*/,"")},trimRight:function(e){return e.replace(/[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]*$/,"")},concat:function(e,t){return e.concat(t)},trunc:function(e,t,n,r){return n=!!n,r=r||"…",e.length>t&&(e=e.substr(0,t),n&&-1!==e.indexOf(" ")&&(e=e.substr(0,e.lastIndexOf(" "))),e+=r),e},stripTags:function(e){return e.replace(/<[^>]+>/g,"")},padStart:function(e,t,n){if(n=n||" ",t<=e.length)return e;for(var r=t-e.length;n.length<r;)n+=n;return n.substr(0,r)+e},padEnd:function(e,t,n){if(n=n||" ",t<=e.length)return e;for(var r=t-e.length;n.length<r;)n+=n;return e+n.substr(0,r)},repeat:function(e,t){for(var n="",r=0;r<t;r++)n+=e;return n},wordCount:function(e){return e.trim().split(/\s+/).length},length:function(e){return e.length},split:function(e,t){return e.split(t)},default:function(e){return e},toNumber:function(e){return Number(e)},toDate:function(e){var t=h(e);return"Invalid Date"==t.toString()?null:r(t)},toUTCDate:function(e){var t=h(e);return"Invalid Date"==t.toString()?null:t.toISOString()},getYear:function(e){var t=h(e);return"Invalid Date"==t.toString()?null:t.getFullYear()},getMonth:function(e){var t=h(e);return"Invalid Date"==t.toString()?null:t.getMonth()},getDate:function(e){var t=h(e);return"Invalid Date"==t.toString()?null:t.getDate()},getDay:function(e){var t=h(e);return"Invalid Date"==t.toString()?null:t.getDay()},addYears:function(e,t){var n=h(e);return"Invalid Date"==n.toString()?null:(n.setFullYear(n.getFullYear()+t),r(n))},addMonths:function(e,t){var n=h(e);return"Invalid Date"==n.toString()?null:(n.setMonth(n.getMonth()+t),r(n))},addWeeks:function(e,t){var n=h(e);return"Invalid Date"==n.toString()?null:(n.setDate(n.getDate()+7*t),r(n))},addDays:function(e,t){var n=h(e);return"Invalid Date"==n.toString()?null:(n.setDate(n.getDate()+t),r(n))},addHours:function(e,t){var n=h(e);return"Invalid Date"==n.toString()?null:(n.setHours(n.getHours()+t),r(n))},addMinutes:function(e,t){var n=h(e);return"Invalid Date"==n.toString()?null:(n.setMinutes(n.getMinutes()+t),r(n))},addSeconds:function(e,t){var n=h(e);return"Invalid Date"==n.toString()?null:(n.setSeconds(n.getSeconds()+t),r(n))},yearsUntil:function(e,t){var n=h(e),r=h(t);return"Invalid"==n.toString()||"Invalid"==r.toString()?null:r.getFullYear()-n.getFullYear()},monthsUntil:function(e,t){var n=h(e),r=h(t);return"Invalid"==n.toString()||"Invalid"==r.toString()?null:12*r.getFullYear()+r.getMonth()-(12*n.getFullYear()+n.getMonth())},weeksUntil:function(e,t){var n=h(e),r=h(t);return"Invalid"==n.toString()||"Invalid"==r.toString()?null:Math.floor((r-n)/6048e5)},daysUntil:function(e,t){var n=a(h(e)),r=a(h(t));return"Invalid"==n.toString()||"Invalid"==r.toString()?null:Math.round((r-n)/864e5)},hoursUntil:function(e,t){var n=h(e),r=h(t);return"Invalid"==n.toString()||"Invalid"==r.toString()?null:Math.floor((r-n)/36e5)},minutesUntil:function(e,t){var n=h(e),r=h(t);return"Invalid"==n.toString()||"Invalid"==r.toString()?null:Math.floor((r-n)/6e4)},secondsUntil:function(e,t){var n=h(e),r=h(t);return"Invalid"==n.toString()||"Invalid"==r.toString()?null:Math.floor((r-n)/1e3)},timeUntil:function(e,t,n){var r=function(e){return(e<10?"0":"")+e},a=h(e),u=h(t);if("Invalid"==a.toString()||"Invalid"==u.toString())return null;var c=Math.floor((u-a)/1e3),i=Math.floor(c/60),o=Math.floor(i/60);return c-=60*i,n?(i-=60*o,r(o)+":"+r(i)+":"+r(c)):r(i)+":"+r(c)},toISODate:function(e){var t=h(e);if("Invalid Date"==t.toString())return null;var n=function(e){return("00"+e).substr(-2)};return("0000"+t.getFullYear()).substr(-4)+"-"+n(t.getMonth()+1)+"-"+n(t.getDate())},toISOTime:function(e){var t=h(e);if("Invalid Date"==t.toString())return null;var n=function(e){return("00"+e).substr(-2)};return n(t.getHours())+":"+n(t.getMinutes())+":"+n(t.getSeconds())},formatDate:function(e,t){var n=h(e);if("Invalid Date"==n.toString())return null;var r=function(e){return("00"+e).substr(-2)},a=["January","February","March","April","May","June","July","August","September","October","November","December"],u=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],c=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],i=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],o=n.getFullYear(),f=n.getMonth(),d=n.getDate(),s=n.getDay(),l=n.getHours(),b=n.getMinutes(),g=n.getSeconds();return t.replace(/([yMdHhmsaA])(\1+)?/g,function(e){switch(e){case"yyyy":return function(e){return("0000"+e).substr(-4)}(o);case"yy":return r(o);case"y":return o;case"MMMM":return a[f];case"MMM":return u[f];case"MM":return r(f+1);case"M":return f+1;case"dddd":return c[s];case"ddd":return i[s];case"dd":return r(d);case"d":return d;case"HH":return r(l);case"H":return l;case"hh":return r(l%12||12);case"h":return l%12||12;case"mm":return r(b);case"m":return b;case"ss":return r(g);case"s":return g;case"a":return l<12?"am":"pm";case"A":return l<12?"AM":"PM"}return e})},toTimestamp:function(e){var t=h(e);return"Invalid Date"==t.toString()?null:Math.floor(t.getTime()/1e3)}})}(),dmx.Formatters("object",{keys:function(e){return Object.keys(e)},values:function(t){return Object.keys(t).map(function(e){return t[e]})},hasKey:function(e,t){return-1!==Object.keys(e).indexOf(t)},hasValue:function(t,e){return-1!==Object.keys(t).map(function(e){return t[e]}).indexOf(e)},getValueOrKey:function(e,t){return null!=e[t]?e[t]:t},default:function(e){return e}}),dmx.Formatters("boolean",{default:function(e){return e},toString:function(e){return String(e)},toNumber:function(e){return Number(e)},then:function(e,t,n){return e?t:n}}),dmx.Formatters("undefined",{default:function(e,t){return t}}),dmx.Formatters("null",{default:function(e,t){return t}});
+dmx.Formatters("global", {
+        default: function(t, n) {
+            return null == t ? n : t;
+        },
+        string: function(t) {
+            return String(t);
+        },
+        number: function(t) {
+            return Number(t);
+        },
+        date: function(t) {
+            "number" == typeof t && (t *= 1e3),
+                "string" == typeof t && "now" == t.toLowerCase() && (t = null);
+            var n = t ? new Date(t) : new Date();
+            return "Invalid Date" == n.toString() ? null : n.toISOString();
+        }
+    }),
+    dmx.Formatters("array", {
+        hasItems: function(t) {
+            return !!t.length;
+        },
+        contains: function(t, n) {
+            return -1 < t.indexOf(n);
+        },
+        join: function(t, n) {
+            return t.join(n);
+        },
+        count: function(t) {
+            return t.length;
+        },
+        top: function(t, n) {
+            return t.slice(0, n);
+        },
+        last: function(t, n) {
+            return t.slice(-n);
+        },
+        slice: function(t, n, r) {
+            return t.slice(n, r);
+        },
+        reverse: function(t) {
+            return t.slice(0).reverse();
+        },
+        countUpVotes(a) {
+            let b = 0
+            for (let i = 0; i < a.length; i++) {
+                if (parseInt(a[i].percent) > 0) {
+                    b++
+                }
+            }
+            return b
+        },
+        countDownVotes(a) {
+            let b = 0
+            for (let i = 0; i < a.length; i++) {
+                if (parseInt(a[i].percent) < 0) {
+                    b++
+                }
+            }
+            return b
+        },
+        hasVoted(a, u) {
+            for (let i = 0; i < a.length; i++) {
+                if (a[i].voter == u) {
+                    return 'blue'
+                }
+            }
+            return 'black'
+        },
+        randomize: function(t) {
+            var n,
+                r,
+                e = dmx.randomizer(this.seed * dmx.hashCode(t)),
+                u = t.length;
+            for (t = t.slice(0); 0 !== u;)
+                (r = Math.floor(e() * u--)), (n = t[u]), (t[u] = t[r]), (t[r] = n);
+            return t;
+        },
+        filter: function(t, n) {
+            return t.filter(function(t) {
+                return dmx.parse(n, new dmx.DataScope(t, this));
+            }, this);
+        },
+        map: function(t, n) {
+            return t.map(function(t) {
+                return dmx.parse(n, new dmx.DataScope(t, this));
+            }, this);
+        },
+        log: function(t) {
+            console.log(new dmx.DataScope(t, this))
+        },
+        where: function(t, r, e, u) {
+            return (
+                (u = u || "=="),
+                t.filter(function(t) {
+                    var n = dmx.parse(r, new dmx.DataScope(t, this));
+                    switch (u) {
+                        case "startsWith":
+                            return 0 === String(n).indexOf(e);
+                        case "endsWith":
+                            return String(n).substr(-e.length) === e;
+                        case "contains":
+                            return -1 !== String(n).indexOf(e);
+                        case "inArray":
+                            return -1 !== e.indexOf(n);
+                        case "fuzzySearch":
+                            return (function(t, n) {
+                                var r = t.length,
+                                    e = n.length;
+                                if (r < e) return !1;
+                                if (e === r) return t === n;
+                                t: for (var u = 0, a = 0; u < e; u++) {
+                                    for (var i = n.charCodeAt(u); a < r;)
+                                        if (t.charCodeAt(a++) === i) continue t;
+                                    return !1;
+                                }
+                                return !0;
+                            })(String(n), e);
+                        case "==":
+                            return n == e;
+                        case "===":
+                            return n === e;
+                        case "!=":
+                            return n != e;
+                        case "!==":
+                            return n !== e;
+                        case "<":
+                            return n < e;
+                        case "<=":
+                            return n <= e;
+                        case ">":
+                            return e < n;
+                        case ">=":
+                            return e <= n;
+                    }
+                    return !0;
+                })
+            );
+        },
+        values: function(t, n) {
+            return t.map(function(t) {
+                return dmx.parse(n, new dmx.DataScope(t, this));
+            });
+        },
+        groupBy: function(t, e) {
+            return t.reduce(function(t, n) {
+                var r = dmx.parse(e, new dmx.DataScope(n, this));
+                return t[r] || (t[r] = []), t[r].push(n), t;
+            }, {});
+        },
+        unique: function(t, n) {
+            return (
+                n &&
+                (t = t.map(function(t) {
+                    return dmx.parse(n, new dmx.DataScope(t, this));
+                })),
+                Object.keys(
+                    t.reduce(function(t, n) {
+                        return (t[JSON.stringify(n)] = 1), t;
+                    }, {})
+                ).map(function(t) {
+                    return JSON.parse(t);
+                })
+            );
+        },
+        toString: function (i){
+            return JSON.stringify(i).replace(/"/g, '\&QO').replace(/'/g, '\&SQO');
+        },
+        sort: function(t, r) {
+            return t.slice(0).sort(function(t, n) {
+                return (
+                    r &&
+                    ((t = dmx.parse(r, new dmx.DataScope(t, this))),
+                        (n = dmx.parse(r, new dmx.DataScope(n, this)))),
+                    t < n ? -1 : n < t ? 1 : 0
+                );
+            });
+        },
+        min: function(t, r) {
+            return t.reduce(function(t, n) {
+                return (
+                    r && (n = dmx.parse(r, new dmx.DataScope(n, this))),
+                    (n = Number(n)) < t ? n : t
+                );
+            }, 1 / 0);
+        },
+        max: function(t, r) {
+            return t.reduce(function(t, n) {
+                return (
+                    r && (n = dmx.parse(r, new dmx.DataScope(n, this))),
+                    t < (n = Number(n)) ? n : t
+                );
+            }, -1 / 0);
+        },
+        sum: function(t, r) {
+            return t.reduce(function(t, n) {
+                return (
+                    r && (n = dmx.parse(r, new dmx.DataScope(n, this))),
+                    t + (n = Number(n))
+                );
+            }, 0);
+        },
+        avg: function(t, r) {
+            return (
+                t.reduce(function(t, n) {
+                    return (
+                        r && (n = dmx.parse(r, new dmx.DataScope(n, this))),
+                        t + (n = Number(n))
+                    );
+                }, 0) / t.length
+            );
+        },
+        default: function(t) {
+            return t;
+        }
+    }),
+    dmx.Formatters("number", {
+        inRange: function(t, n, r) {
+            return n <= t && t <= r;
+        },
+        behindWarning: function(t) {
+            var color = 'success'
+            if(t > 30)color = 'warning'
+            if(t > 100)color = 'danger'
+            return color
+        },
+        abs: function(t) {
+            return Math.abs(t);
+        },
+        ceil: function(t) {
+            return Math.ceil(t);
+        },
+        floor: function(t) {
+            return Math.floor(t);
+        },
+        max: function(t, n) {
+            return Math.max(t, n);
+        },
+        min: function(t, n) {
+            return Math.min(t, n);
+        },
+        pow: function(t, n) {
+            return Math.pow(t, n);
+        },
+        round: function(t, n) {
+            var r = Math.pow(10, n || 0),
+                e = t * r;
+            return Math.round(e) / r;
+        },
+        pad: function(t, n) {
+            t = t || 0
+            for (var r = t < 0 ? "-" : "", e = String(Math.abs(t)); e.length < n;)
+                e = "0" + e;
+            return r + e;
+        },
+        toFixed: function(t, n) {
+            return t.toFixed(n);
+        },
+        rep: function(rep2) {
+            console.log('ip ' + rep2)
+            if (rep2 == null) return rep2;
+            let rep = String(rep2);
+            const neg = rep.charAt(0) === '-';
+            rep = neg ? rep.substring(1) : rep;
+            console.log('new ' + rep)
+            let out = log10(rep);
+            if (isNaN(out)) out = 0;
+            out = Math.max(out - 9, 0); // @ -9, $0.50 earned is approx magnitude 1
+            out = (neg ? -1 : 1) * out;
+            out = out * 9 + 25; // 9 points per magnitude. center at 25
+            // base-line 0 to darken and < 0 to auto hide (grep rephide)
+            out = parseInt(out);
+            return out;
+
+            function log10(str) {
+                console.log('trigger log10: ' + str)
+                const leadingDigits = parseInt(str.substring(0, 4));
+                const log = Math.log(leadingDigits) / Math.LN10 + 0.00000001;
+                const n = str.length - 1;
+                return n + (log - parseInt(log));
+            }
+        },
+        formatNumber: function(t, n, r, e) {
+            if (isNaN(t)) return "Invalid Number";
+            if (!isFinite(t)) return (t < 0 ? "-" : "") + "infinite";
+            (r = r || "."), (e = e || "");
+            var u = t < 0;
+            t = Math.abs(t);
+            var a = (null != n && 0 <= n ? t.toFixed(n) : t.toString()).split("."),
+                i = a[0],
+                o = 1 < a.length ? r + a[1] : "";
+            if (e)
+                for (var c = /(\d+)(\d{3})/; c.test(i);)
+                    i = i.replace(c, "$1" + e + "$2");
+            return (u ? "-" : "") + i + o;
+        },
+        formatCurrency: function(t, n, r, e, u) {
+            if (isNaN(t) || !isFinite(t)) return "Invalid Amount";
+            (n = n || "$"), (r = r || "."), (e = e || ","), (u = null != u ? u : 2);
+            var a = t < 0,
+                i = Math.abs(t)
+                .toFixed(u)
+                .split("."),
+                o = i[0],
+                c = 1 < i.length ? r + i[1] : "";
+            if (e)
+                for (var s = /(\d+)(\d{3})/; s.test(o);)
+                    o = o.replace(s, "$1" + e + "$2");
+            return (a ? "-" : "") + n + o + c;
+        },
+        formatSize: function(t, n, r) {
+            if (isNaN(t) || !isFinite(t)) return "Invalid Size";
+            n = n || 2;
+            for (
+                var e = r ? 1024 : 1e3,
+                    u = r ? ["KiB", "MiB", "GiB", "TiB"] : ["KB", "MB", "GB", "TB"],
+                    a = 3; 0 <= a; a--
+            ) {
+                var i = Math.pow(e, a + 1);
+                if (i <= t) {
+                    t /= i;
+                    var o = Math.pow(10, n);
+                    return (t = Math.round(t * o) / o) + u[a];
+                }
+            }
+            return t + "B";
+        },
+        default: function(t) {
+            return t;
+        },
+        toString: function(t) {
+            return String(t);
+        },
+        toDate: function(t) {
+            return new Date(1e3 * t).toISOString();
+        }
+    }),
+    (function() {
+        function e(t) {
+            var n = function(t) {
+                return ("00" + t).substr(-2);
+            };
+            return (
+                ("0000" + t.getFullYear()).substr(-4) +
+                "-" +
+                n(t.getMonth() + 1) +
+                "-" +
+                n(t.getDate()) +
+                " " +
+                n(t.getHours()) +
+                ":" +
+                n(t.getMinutes()) +
+                ":" +
+                n(t.getSeconds())
+            );
+        }
+
+        function h(t) {
+            var n,
+                r,
+                e = 0,
+                u = [1, 4, 5, 6, 7, 10, 11];
+            if ("now" == t.toLowerCase()) return new Date();
+            if (
+                (n = /^(\d{4}|[+\-]\d{6})(?:-(\d{2})(?:-(\d{2}))?)?(?:[T ](\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{3}))?)?(?:(Z)|([+\-])(\d{2})(?::(\d{2}))?)?)?$/.exec(
+                    t
+                ))
+            ) {
+                for (var a, i = 0;
+                    (a = u[i]); ++i) n[a] = +n[a] || 0;
+                return (
+                    (n[2] = (+n[2] || 1) - 1),
+                    (n[3] = +n[3] || 1),
+                    void 0 === n[8] ?
+                    new Date(n[1], n[2], n[3], n[4], n[5], n[6], n[7]) :
+                    ("Z" !== n[8] &&
+                        void 0 !== n[9] &&
+                        ((e = 60 * n[10] + n[11]), "+" === n[9] && (e = 0 - e)),
+                        new Date(Date.UTC(n[1], n[2], n[3], n[4], n[5] + e, n[6], n[7])))
+                );
+            }
+            return (n = /^(\d{2}):(\d{2})(?::(\d{2}))?$/.exec(t)) ?
+                ((r = new Date()).setHours(+n[1] || 0),
+                    r.setMinutes(+n[2] || 0),
+                    r.setSeconds(+n[3] || 0),
+                    r) :
+                new Date(t);
+        }
+
+        function u(t) {
+            return (
+                t.setHours(0), t.setMinutes(0), t.setSeconds(0), t.setMilliseconds(0), t
+            );
+        }
+        dmx.Formatters("string", {
+            startsWith: function(t, n) {
+                return 0 === t.indexOf(n);
+            },
+            Base64toNumber: function(chars){ 
+                var result = 0, glyphs = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+="
+                chars = chars.split('');
+                for (var e = 0; e < chars.length; e++) {
+                    result = (result * 64) + glyphs.indexOf(chars[e]);
+                }
+                return parseInt(result);
+            },
+            Base64toNumberString: function(chars){ 
+                var result = 0, glyphs = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+="
+                chars = chars.split('');
+                for (var e = 0; e < chars.length; e++) {
+                    result = (result * 64) + glyphs.indexOf(chars[e]);
+                }
+                return result;
+            },
+            endsWith: function(t, n) {
+                var r = t.length - n.length,
+                    e = t.lastIndexOf(n);
+                return -1 !== e && e === r;
+            },
+            contains: function(t, n) {
+                return -1 !== t.indexOf(n);
+            },
+            notContains: function(t, n) {
+                return -1 === t.indexOf(n);
+            },
+            search: function(n, t, r) {
+                return String(t)
+                    .split(/\s+/)[r ? "every" : "some"](function(t) {
+                        return -1 !== n.indexOf(t);
+                    });
+            },
+            fuzzySearch: function(t, n) {
+                var r = t.length,
+                    e = n.length;
+                if (r < e) return !1;
+                if (e === r) return t === n;
+                t: for (var u = 0, a = 0; u < e; u++) {
+                    for (var i = n.charCodeAt(u); a < r;)
+                        if (t.charCodeAt(a++) === i) continue t;
+                    return !1;
+                }
+                return !0;
+            },
+            test: function(t, n) {
+                return n.test(t);
+            },
+            lowercase: function(t) {
+                return t.toLowerCase();
+            },
+            uppercase: function(t) {
+                return t.toUpperCase();
+            },
+            localStorage: function(s) {
+                let t = JSON.parse(s)
+                if (t.vrHash) return 'VR'
+                else if (t.arHash) return 'AR'
+                else if (t.appHash) return 'dAPP'
+                else return 'BLOG'
+            },
+            removeQuotes: function (i){
+                return i.replace(/"/g, '\&QO').replace(/'/g, '\&SQO').replace(/\(/g, '\&OPR').replace(/\)/g, '\&CPR');
+            },
+            encodeURI: function(i){
+                return encodeURIComponent(i)
+            },
+            parseJSON: function(g) {
+                return JSON.parse(g)
+            },
+            toString: function(n) {
+                return toString(n)
+            },
+            rep: function(rep2) {
+                if (rep2 == null) return rep2;
+                let rep = String(rep2);
+                const neg = rep.charAt(0) === '-';
+                rep = neg ? rep.substring(1) : rep;
+                let out = log10(rep);
+                if (isNaN(out)) out = 0;
+                out = Math.max(out - 9, 0); // @ -9, $0.50 earned is approx magnitude 1
+                out = (neg ? -1 : 1) * out;
+                out = out * 9 + 25; // 9 points per magnitude. center at 25
+                // base-line 0 to darken and < 0 to auto hide (grep rephide)
+                out = parseInt(out);
+                return out;
+
+                function log10(str) {
+                    const leadingDigits = parseInt(str.substring(0, 4));
+                    const log = Math.log(leadingDigits) / Math.LN10 + 0.00000001;
+                    const n = str.length - 1;
+                    return n + (log - parseInt(log));
+                }
+            },
+            callScript : function(o, s, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("${o}")`;
+                const SVG = eval(code);
+                document.getElementById(`image-${c}-${o}`).innerHTML = SVG.HTML;
+                })
+            },
+            nftImageWell : function(o, s, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("${o}")`;
+                const SVG = eval(code);
+                document.getElementById(`image-${c}-${o}`).innerHTML = SVG.HTML;
+                })
+            },
+            nftDetailWell : function(o, s, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("${o}")`;
+                const SVG = eval(code);
+                document.getElementById(`detail-image-${c}-${o}`).innerHTML = SVG.HTML;
+                })
+            },
+            getSetDetails : function(s, o, i, b, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("0")`;
+                const SVG = eval(code);
+                document.getElementById(`${s}${i}`)[b] = (SVG.set[o] || 'Not Specified')
+                })
+            },
+            getSetDetailsColors : function(s, i, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("0")`;
+                const SVG = eval(code)
+                let r = ''
+                try{r=`${SVG.set.Color1},${SVG.set.Color2}`}catch(e){
+                    console.log(e)
+                    r = 'chartreuse,lawngreen'
+                }
+                console.log(r)
+                document.getElementById(`${s}${i}`).style.background = `linear-gradient(${r})`
+                })
+            },
+            getSetDetailsIcon : function(s, i, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("0")`;
+                const SVG = eval(code)
+                let r = ''
+                try{r = SVG.set.faicon}catch(e){
+                    r = 'fas fa-gem'
+                }
+                r = r.split(' ')
+                for (var j = 0; j < r.length; j++) {
+                    document.getElementById(`${s}${i}`).classList.add(r[j])
+                }
+                })
+            },
+            getSetDetailsBond : function(s, c){
+                fetch(`https://token.dlux.io/api/set/${s}`)
+                .then((response) => response.json())
+                .then((data) => {
+                document.getElementById(`${s}-bond-value`).innerText = `${parseFloat(data.set.bond.amount/Math.pow(10,data.set.bond.precision)).toFixed(data.set.bond.precision)} ${data.set.bond.token}`
+                })
+            },
+            getNFTDetails : function(s, u, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                    const code = `(//${data}\n)("${u}")`;
+                    const SVG = eval(code);
+                    document.getElementById(`${s}-${u}-attributes`).innerHTML = ''
+                    for (var j = 0; j < SVG.attributes.length; j++) {
+                        let node = document.createElement('div')
+                        node.id = `${s}-${u}-attribute-${j}`
+                        node.innerHTML = `<div class="attribute-name">${Object.keys(SVG.attributes[j])[0]}</div><div class="attribute-value">${SVG.attributes[j][Object.keys(SVG.attributes[j])[0]]}</div>`
+                        document.getElementById(`${s}-${u}-attributes`).appendChild(node)
+                    }
+                })
+            },
+            slugify: function(t) {
+                return t
+                    .toLowerCase()
+                    .replace(/[^\w\s]/g, "")
+                    .replace(/[_\s]+/g, "-")
+                    .replace(/-+/g, "-")
+                    .replace(/^-/, "");
+            },
+            camelize: function(t) {
+                return t.trim().replace(/(\-|_|\s)+(.)?/g, function(t, n, r) {
+                    return r ? r.toUpperCase() : "";
+                });
+            },
+            capitalize: function(t) {
+                return t.substr(0, 1).toUpperCase() + t.substr(1).toLowerCase();
+            },
+            dasherize: function(t) {
+                return t
+                    .replace(/[_\s]+/g, "-")
+                    .replace(/([A-Z])/g, "-$1")
+                    .replace(/-+/g, "-")
+                    .toLowerCase();
+            },
+            humanize: function(t) {
+                var n = t
+                    .replace(/([a-z\d])([A-Z+])/g, "$1_$2")
+                    .replace(/[-\s]+/g, "_")
+                    .replace(/_+/g, " ")
+                    .trim();
+                return n.substr(0, 1).toUpperCase() + n.substr(1).toLowerCase();
+            },
+            underscore: function(t) {
+                return t
+                    .trim()
+                    .replace(/([a-z\d])([A-Z]+)/g, "$1_$1")
+                    .replace(/[-\s]+/g, "_")
+                    .toLowerCase();
+            },
+            titlecase: function(t) {
+                return t.toLowerCase().replace(/(?:^|\s)\S/g, function(t) {
+                    return t.toUpperCase();
+                });
+            },
+            camelcase: function(t) {
+                return t.toLowerCase().replace(/\s+(\S)/g, function(t, n) {
+                    return n.toUpperCase();
+                });
+            },
+            substr: function(t, n, r) {
+                return t.substr(n, r);
+            },
+            substring: function(t, n, r) {
+                return t.substring(n, r);
+            },
+            replace: function(t, n, r) {
+                return (
+                    "string" == typeof n && (n = new RegExp(dmx.escapeRegExp(n), "g")),
+                    t.replace(n, r)
+                );
+            },
+            removeMD: function(md, options) {
+                options = options || {};
+                options.listUnicodeChar = options.hasOwnProperty('listUnicodeChar') ? options.listUnicodeChar : false;
+                options.stripListLeaders = options.hasOwnProperty('stripListLeaders') ? options.stripListLeaders : true;
+                options.gfm = options.hasOwnProperty('gfm') ? options.gfm : true;
+                options.useImgAltText = options.hasOwnProperty('useImgAltText') ? options.useImgAltText : false;
+                var output = md || '';
+                output = output.replace(/^(-\s*?|\*\s*?|_\s*?){3,}\s*$/gm, '');
+                try {
+                    if (options.stripListLeaders) {
+                        if (options.listUnicodeChar)
+                            output = output.replace(/^([\s\t]*)([\*\-\+]|\d+\.)\s+/gm, options.listUnicodeChar + ' $1');
+                        else
+                            output = output.replace(/^([\s\t]*)([\*\-\+]|\d+\.)\s+/gm, '$1');
+                    }
+                    if (options.gfm) {
+                        output = output
+                            .replace(/\n={2,}/g, '\n')
+                            .replace(/~{3}.*\n/g, '')
+                            .replace(/~~/g, '')
+                            .replace(/`{3}.*\n/g, '');
+                    }
+                    output = output
+                        .replace(/<[^>]*>/g, '')
+                        .replace(/^[=\-]{2,}\s*$/g, '')
+                        .replace(/\[\^.+?\](\: .*?$)?/g, '')
+                        .replace(/\s{0,2}\[.*?\]: .*?$/g, '')
+                        .replace(/\!\[(.*?)\][\[\(].*?[\]\)]/g, options.useImgAltText ? '$1' : '')
+                        .replace(/\[(.*?)\][\[\(].*?[\]\)]/g, '$1')
+                        .replace(/^\s{0,3}>\s?/g, '')
+                        .replace(/^\s{1,2}\[(.*?)\]: (\S+)( ".*?")?\s*$/g, '')
+                        .replace(/^(\n)?\s{0,}#{1,6}\s+| {0,}(\n)?\s{0,}#{0,} {0,}(\n)?\s{0,}$/gm, '$1$2$3')
+                        .replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, '$2')
+                        .replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, '$2')
+                        .replace(/(`{3,})(.*?)\1/gm, '$2')
+                        .replace(/`(.+?)`/g, '$1')
+                        .replace(/\n{2,}/g, '\n\n');
+                } catch (e) {
+                    console.error(e);
+                    return md;
+                }
+                return output;
+            },
+            trim: function(t) {
+                return t.trim();
+            },
+            trimLeft: function(t) {
+                return t.replace(
+                    /^[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]*/,
+                    ""
+                );
+            },
+            trimRight: function(t) {
+                return t.replace(
+                    /[\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF]*$/,
+                    ""
+                );
+            },
+            concat: function(t, n) {
+                return t.concat(n);
+            },
+            trunc: function(t, n, r, e) {
+                return (
+                    (r = !!r),
+                    (e = e || "…"),
+                    t.length > n &&
+                    ((t = t.substr(0, n)),
+                        r && -1 !== t.indexOf(" ") && (t = t.substr(0, t.lastIndexOf(" "))),
+                        (t += e)),
+                    t
+                );
+            },
+            stripTags: function(t) {
+                return t.replace(/<[^>]+>/g, "");
+            },
+            padStart: function(t, n, r) {
+                if (((r = r || " "), n <= t.length)) return t;
+                for (var e = n - t.length; r.length < e;) r += r;
+                return r.substr(0, e) + t;
+            },
+            padEnd: function(t, n, r) {
+                if (((r = r || " "), n <= t.length)) return t;
+                for (var e = n - t.length; r.length < e;) r += r;
+                return t + r.substr(0, e);
+            },
+            repeat: function(t, n) {
+                for (var r = "", e = 0; e < n; e++) r += t;
+                return r;
+            },
+            wordCount: function(t) {
+                return t.trim().split(/\s+/).length;
+            },
+            split: function(t, n) {
+                return t.split(n);
+            },
+            default: function(t) {
+                return t;
+            },
+            toNumber: function(t) {
+                return Number(t);
+            },
+            toDate: function(t) {
+                var n = h(t);
+                return "Invalid Date" == n.toString() ? null : e(n);
+            },
+            toUTCDate: function(t) {
+                var n = h(t);
+                return "Invalid Date" == n.toString() ? null : n.toISOString();
+            },
+            getYear: function(t) {
+                var n = h(t);
+                return "Invalid Date" == n.toString() ? null : n.getFullYear();
+            },
+            getMonth: function(t) {
+                var n = h(t);
+                return "Invalid Date" == n.toString() ? null : n.getMonth();
+            },
+            getDate: function(t) {
+                var n = h(t);
+                return "Invalid Date" == n.toString() ? null : n.getDate();
+            },
+            getDay: function(t) {
+                var n = h(t);
+                return "Invalid Date" == n.toString() ? null : n.getDay();
+            },
+            addYears: function(t, n) {
+                var r = h(t);
+                return "Invalid Date" == r.toString() ?
+                    null :
+                    (r.setFullYear(r.getFullYear() + n), e(r));
+            },
+            addMonths: function(t, n) {
+                var r = h(t);
+                return "Invalid Date" == r.toString() ?
+                    null :
+                    (r.setMonth(r.getMonth() + n), e(r));
+            },
+            addWeeks: function(t, n) {
+                var r = h(t);
+                return "Invalid Date" == r.toString() ?
+                    null :
+                    (r.setDate(r.getDate() + 7 * n), e(r));
+            },
+            addDays: function(t, n) {
+                var r = h(t);
+                return "Invalid Date" == r.toString() ?
+                    null :
+                    (r.setDate(r.getDate() + n), e(r));
+            },
+            addHours: function(t, n) {
+                var r = h(t);
+                return "Invalid Date" == r.toString() ?
+                    null :
+                    (r.setHours(r.getHours() + n), e(r));
+            },
+            addMinutes: function(t, n) {
+                var r = h(t);
+                return "Invalid Date" == r.toString() ?
+                    null :
+                    (r.setMinutes(r.getMinutes() + n), e(r));
+            },
+            addSeconds: function(t, n) {
+                var r = h(t);
+                return "Invalid Date" == r.toString() ?
+                    null :
+                    (r.setSeconds(r.getSeconds() + n), e(r));
+            },
+            yearsUntil: function(t, n) {
+                var r = h(t),
+                    e = h(n);
+                return "Invalid" == r.toString() || "Invalid" == e.toString() ?
+                    null :
+                    e.getFullYear() - r.getFullYear();
+            },
+            monthsUntil: function(t, n) {
+                var r = h(t),
+                    e = h(n);
+                return "Invalid" == r.toString() || "Invalid" == e.toString() ?
+                    null :
+                    12 * e.getFullYear() +
+                    e.getMonth() -
+                    (12 * r.getFullYear() + r.getMonth());
+            },
+            weeksUntil: function(t, n) {
+                var r = h(t),
+                    e = h(n);
+                return "Invalid" == r.toString() || "Invalid" == e.toString() ?
+                    null :
+                    Math.floor((e - r) / 6048e5);
+            },
+            daysUntil: function(t, n) {
+                var r = u(h(t)),
+                    e = u(h(n));
+                return "Invalid" == r.toString() || "Invalid" == e.toString() ?
+                    null :
+                    Math.round((e - r) / 864e5);
+            },
+            hoursUntil: function(t, n) {
+                var r = h(t),
+                    e = h(n);
+                return "Invalid" == r.toString() || "Invalid" == e.toString() ?
+                    null :
+                    Math.floor((e - r) / 36e5);
+            },
+            minutesUntil: function(t, n) {
+                var r = h(t),
+                    e = h(n);
+                return "Invalid" == r.toString() || "Invalid" == e.toString() ?
+                    null :
+                    Math.floor((e - r) / 6e4);
+            },
+            secondsUntil: function(t, n) {
+                var r = h(t),
+                    e = h(n);
+                return "Invalid" == r.toString() || "Invalid" == e.toString() ?
+                    null :
+                    Math.floor((e - r) / 1e3);
+            },
+            timeUntil: function(t, n, r) {
+                var e = function(t) {
+                        return (t < 10 ? "0" : "") + t;
+                    },
+                    u = h(t),
+                    a = h(n);
+                if ("Invalid" == u.toString() || "Invalid" == a.toString()) return null;
+                var i = Math.floor((a - u) / 1e3),
+                    o = Math.floor(i / 60),
+                    c = Math.floor(o / 60);
+                return (
+                    (i -= 60 * o),
+                    r ?
+                    ((o -= 60 * c), e(c) + ":" + e(o) + ":" + e(i)) :
+                    e(o) + ":" + e(i)
+                );
+            },
+            toISODate: function(t) {
+                var n = h(t);
+                if ("Invalid Date" == n.toString()) return null;
+                var r = function(t) {
+                    return ("00" + t).substr(-2);
+                };
+                return (
+                    ("0000" + n.getFullYear()).substr(-4) +
+                    "-" +
+                    r(n.getMonth() + 1) +
+                    "-" +
+                    r(n.getDate())
+                );
+            },
+            toISOTime: function(t) {
+                var n = h(t);
+                if ("Invalid Date" == n.toString()) return null;
+                var r = function(t) {
+                    return ("00" + t).substr(-2);
+                };
+                return (
+                    r(n.getHours()) + ":" + r(n.getMinutes()) + ":" + r(n.getSeconds())
+                );
+            },
+            formatDate: function(t, n) {
+                var r = h(t);
+                if ("Invalid Date" == r.toString()) return null;
+                var e = function(t) {
+                        return ("00" + t).substr(-2);
+                    },
+                    u = [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December"
+                    ],
+                    a = [
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                        "Jun",
+                        "Jul",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Nov",
+                        "Dec"
+                    ],
+                    i = [
+                        "Sunday",
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday"
+                    ],
+                    o = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+                    c = r.getFullYear(),
+                    s = r.getMonth(),
+                    l = r.getDate(),
+                    f = r.getDay(),
+                    d = r.getHours(),
+                    g = r.getMinutes(),
+                    m = r.getSeconds();
+                return n.replace(/[yMdHhmsaA]+/g, function(t) {
+                    switch (t) {
+                        case "yyyy":
+                            return ("0000" + c).substr(-4);
+                        case "yy":
+                            return e(c);
+                        case "y":
+                            return c;
+                        case "MMMM":
+                            return u[s];
+                        case "MMM":
+                            return a[s];
+                        case "MM":
+                            return e(s + 1);
+                        case "M":
+                            return s + 1;
+                        case "dddd":
+                            return i[f];
+                        case "ddd":
+                            return o[f];
+                        case "dd":
+                            return e(l);
+                        case "d":
+                            return l;
+                        case "HH":
+                            return e(d);
+                        case "H":
+                            return d;
+                        case "hh":
+                            return e(d % 12 || 12);
+                        case "h":
+                            return d % 12 || 12;
+                        case "mm":
+                            return e(g);
+                        case "m":
+                            return g;
+                        case "ss":
+                            return e(m);
+                        case "s":
+                            return m;
+                        case "a":
+                            return d < 12 ? "am" : "pm";
+                        case "A":
+                            return d < 12 ? "AM" : "PM";
+                    }
+                    return t;
+                });
+            },
+            toTimestamp: function(t) {
+                var n = h(t);
+                return "Invalid Date" == n.toString() ?
+                    null :
+                    Math.floor(n.getTime() / 1e3);
+            },
+            animateTime: function(t, s, u, d) {
+                const now = new Date()
+                const then = new Date(t)
+                const diff = Math.abs(now + 90000 - then)
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+                var time = ``
+                if(days)time += `${days}d `
+                if(hours)time += `${hours}h `
+                if(minutes)time += `${minutes}m `
+                if(seconds)time += `${seconds}s `
+                countdown(t, s, u, d)
+                return time
+            }
+        });
+    })(),
+    dmx.Formatters("object", {
+        keys: function(t) {
+            return Object.keys(t);
+        },
+        nai: function(o) {
+            return `${parseFloat(o.amount/Math.pow(10, o.precision)).toFixed(o.precision).replace(/(^|[^\w.])(\d{4,})/g, function($0, $1, $2) {
+        return $1 + $2.replace(/\d(?=(?:\d\d\d)+(?!\d))/g, "$&,");
+    })} ${o.token}`
+        },
+        values: function(n) {
+            return Object.keys(n).map(function(t) {
+                return n[t];
+            });
+        },
+        hasKey: function(t, n) {
+            return -1 !== Object.keys(t).indexOf(n);
+        },
+        hasValue: function(n, t) {
+            return (-1 !==
+                Object.keys(n)
+                .map(function(t) {
+                    return n[t];
+                })
+                .indexOf(t)
+            );
+        },
+        default: function(t) {
+            return t;
+        },
+        picFind: function(json) {
+            var arr
+            try {
+                arr = json.image[0]
+            } catch (e) {
+
+            }
+            if (typeof json.image == 'string') {
+                return json.image
+            } else if (typeof arr == 'string') {
+                return arr
+            } else if (typeof json.Hash360 == 'string') {
+                return `https://ipfs.io/ipfs/${json.Hash360}`
+            } else {
+                /*
+                var looker
+                try {
+                    looker = body.split('![')[1]
+                    looker = looker.split('(')[1]
+                    looker = looker.split(')')[0]
+                } catch (e) {
+                    */
+                return '/img/dluxdefault.svg'
+            }
+        },
+        callScript : function(o) {
+            fetch(`https://ipfs.io/ipfs/${o.script}`)
+            .then((response) => response.text())
+            .then((data) => {
+            const code = `(//${data}\n)("${o.uid}")`;
+            return eval(code);
+            })
+        },
+        toString: function (i){
+            return JSON.stringify(i).replace(/"/g, '\&QO').replace(/'/g, '\&SQO');
+        }
+    }),
+    dmx.Formatters("boolean", {
+        default: function(t) {
+            return t;
+        },
+        toString: function(t) {
+            return String(t);
+        },
+        toNumber: function(t) {
+            return Number(t);
+        },
+        then: function(t, n, r) {
+            return t ? n : r;
+        }
+    }),
+    dmx.Formatters("undefined", {
+        default: function(t, n) {
+            return n;
+        }
+    }),
+    dmx.Formatters("null", {
+        default: function(t, n) {
+            return n;
+        }
+    });
 //# sourceMappingURL=../maps/dmxFormatter.js.map

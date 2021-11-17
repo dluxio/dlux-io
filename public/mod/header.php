@@ -10,7 +10,7 @@
 <!--dmxAppConnect-->
 <script src="/js/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dmxAppConnect/dmxMoment.js"></script>
-<script src="/js/dmxAppConnect/dmxFormatter.js"></script>
+<script src="/js/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script src="/js/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 <!-- Icons -->
 <script src="https://kit.fontawesome.com/0f693ffc58.js" crossorigin="anonymous"></script>
