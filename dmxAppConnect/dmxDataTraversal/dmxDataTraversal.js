@@ -58,7 +58,7 @@ dmx.Component("data-view", {
       this.setPage(Number(t))
     },
     setPageSize: function (t) {
-      this.pageSize = Number(t)
+      this.props.pageSize = Number(t)
     },
     first: function () {
       this.page = 1, this.setPage(1)
