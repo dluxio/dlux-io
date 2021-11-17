@@ -4,6 +4,7 @@
 <title>DLUX - Apps</title>
 
 <script src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/js/jquery-3.4.1.min.js"></script>
 <script src="/dlux-io/dmxAppConnect/dmxMoment.js"></script>
 <script src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
@@ -65,7 +66,7 @@
 			<img dmx-bind:src="https://images.hive.blog/u/{{author}}/avatar" dmx-bind:alt="{{author}} pfp" class="rounded-circle bg-light img-fluid mr-2 cover author-img">
 			<h3 class="m-0 text-primary">{{author}}</h3><div class="ml-2"><span class="badge badge-pill badge-light">{{api1load.data.result.author_reputation.toString().rep()}}</span></div>
 	</div></a>
-	<span class="badge badge-secondary ml-auto">Type{{api1load.data.result.json_metadata.scat()}}</span>
+	<span class="badge badge-danger ml-auto mr-4">VR{{api1load.data.result.json_metadata.scat()}}</span>
 	</div>
 	
 	<div class="mt-2">
@@ -185,7 +186,6 @@
    include_once($path);
 ?>
 
-<script src="/js/jquery-3.4.1.min.js"></script>
 <script src="/js/popper.min.js"></script>
 <script src="/js/bootstrap-4.4.1.js"></script>
 </body></html>
