@@ -121,6 +121,9 @@ dmx.Component("data-view", {
       next: t < this.data.pages,
       last: t < this.data.pages
     })
+  },
+  setPageSize: function (t) {
+    this.props.pageSize = Number(t), this.setPage(1)
   }
 }), dmx.Component("data-detail", {
   initialData: function () {
