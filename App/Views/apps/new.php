@@ -3,9 +3,6 @@
 <head>
 <title>DLUX - Apps</title>
 
-<script type="text/javascript" src="/js/dmxAppConnect/dmxAppConnect.js"></script>
-<script type="text/javascript" src="/js/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
-<script type="text/javascript" src="/js/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
