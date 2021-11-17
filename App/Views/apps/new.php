@@ -7,8 +7,7 @@
    $path .= "/mod/header.php";
    include_once($path);
 ?>
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
+
 </head>
 
 <body class="d-flex flex-column h-100 padme-t70" id="index" is="dmx-app">
