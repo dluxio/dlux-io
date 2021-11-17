@@ -131,12 +131,12 @@
 		
 <div class="card bg-none mt-2">
 	<div class="d-flex">
-  		<a dmx-bind:href="{{url}}" class="p-0 m-0" type="button">
+  		<a dmx-bind:href="{{url}}" target="_blank" class="p-0 m-0" type="button">
 	  		<div id="imagesMain">
              <div class="imagebox">
                 <img src="..."  alt="Card image cap" class="card-img-top img-fluid image" dmx-bind:src="{{api1load.data.result.json_metadata.parseJSON().picFind()}}" style="width: 640px; height: 360px; object-fit: cover;"/>
                  <div class="caption text-white w-100 h-100 d-flex">
-					 <div class="m-auto"><button class="btn btn-lg btn-info" style="border-radius: 5rem;">Launch App</button></div>
+					 <div class="m-auto"><button class="btn btn-lg btn-info px-4" style="border-radius: 5rem;">Launch App <i class="ml-2 fas fa-external-link-alt"></i></button></div>
 				  </div>
 			    </div>             
              </div>
