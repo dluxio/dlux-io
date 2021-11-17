@@ -2,11 +2,9 @@
 <html lang="en" class="h-100">
 <head>
 <title>DLUX - Apps</title>
-<?php 
-   $path = $_SERVER['DOCUMENT_ROOT'];
-   $path .= "/mod/header.php";
-   include_once($path);
-?>
+
+<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script>
+<script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script type="text/javascript" src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
 
