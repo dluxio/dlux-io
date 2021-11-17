@@ -8,37 +8,38 @@
 <script src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 <style>
-	.img-wrap{
-    position: relative;
-    .img-content{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        > img{
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-        }
-    }
-    &.ratio-4-3{
-        padding-top: 75%;
-    }
-    &.ratio-16-9{
-        padding-top: 56.25%;
-    }
-    &.ratio-3-2{
-        padding-top: 66.66%;
-    }
-    &.ratio-8-5{
-        padding-top: 62.5%;
-    }
-}
-	</style>
+
+#imagesMain {
+              padding: 0;
+              margin-left: auto;
+              margin-right: auto;
+              margin-top: auto;
+              text-align: center;
+            }
+ 
+
+            .caption{
+                top: 50%;
+  				left: 50%;
+                background:rgba(0,0,0,0.75);
+				transition: .5s ease;
+                opacity:0;   
+                position: absolute;
+                transform: translate(-50%, -50%);
+  				-ms-transform: translate(-50%, -50%);
+  				text-align: center; 
+            }
+            .imagebox:hover .caption
+            { 
+                opacity: 1;
+                text-align:justify;
+                color:#000000;
+                font-size:20px;
+                font-weight:700;
+                
+                padding:30px;
+            }
+</style>
 </head>
 <?php 
    $path = $_SERVER['DOCUMENT_ROOT'];
@@ -56,29 +57,25 @@
 <dmx-data-view id="data_view1" dmx-bind:data="api1.data.result"></dmx-data-view>
 <div class="row row-cols-md-2 row-cols-1" >
 <div dmx-repeat:repeat1="data_view1.data" class="text-white">
-	
-<div class="card bg-none m-2">
-	<div class="card-header">
-	<a dmx-bind:href="/@{{author}}">
-	<div class="d-flex">
+<dmx-api-datasource id="api1load" is="dmx-fetch" dmx-bind:url="https://dluxdata.herokuapp.com/api/condenser_api/get_content?author={{author}}&permlink={{permlink}}"></dmx-api-datasource>	
+<div class="m-3">
+	<div class="d-flex align-items-center">
+		<a dmx-bind:href="/@{{author}}">
+	<div class="d-flex align-items-center">
 			<img dmx-bind:src="https://images.hive.blog/u/{{author}}/avatar" dmx-bind:alt="{{author}} pfp" class="rounded-circle bg-light img-fluid mr-2 cover author-img">
-			<h3 class="text-primary">{{author}}</h3>
+			<h3 class="m-0 text-primary">{{author}}</h3><div class="ml-2"><span class="badge badge-pill badge-light">{{api1load.data.result.author_reputation.toString().rep()}}</span></div>
 	</div></a>
+	<span class="badge badge-secondary ml-auto">Type{{api1load.data.result.json_metadata.scat()}}</span>
+	</div>
 	
-	<h2 class="d-none">Author: {{author}} | Permlink: {{permlink}} | Block: {{block}} | Votes: {{votes}} | Vote Weight: {{voteweight}} | Promote: {{promote}} | Paid: {{paid}} | URL: {{url}}</h2>
-  <dmx-api-datasource id="api1load" is="dmx-fetch" dmx-bind:url="https://dluxdata.herokuapp.com/api/condenser_api/get_content?author={{author}}&permlink={{permlink}}"></dmx-api-datasource>
+	<div class="mt-2">
 		<a href="#">
-		<h3 class="lead">{{api1load.data.result.title.trunc(50,true,"... ")}}</h3>
+		<h3 class="lead text-white">{{api1load.data.result.title.trunc(50,true,"... ")}}</h3>
 		<div class="text-white-50">{{api1load.data.result.body.removeMD().trunc(50,true,"... ")}}<span class="small text-primary">Read More</span></div>
 		</a>
-</div>
-  <div class="card-body p-0">
-	 
-  <div class=""><span class="badge badge-secondary">{{api1load.data.result.json_metadata.scat()}}</span>
-	  <a dmx-bind:href="{{url}}" type="button"><img src="..."  alt="Card image cap" class="card-img-top img-fluid" dmx-bind:src="{{api1load.data.result.json_metadata.parseJSON().picFind()}}" style="width: 640px; height: 360px; object-fit: cover;"/></a>
-		  </div>
-
-	  <div class="d-none" dmx-bind:id="{{api1load.data.result.author}}{{api1load.data.result.permlink}}dataload">
+	</div>
+	<h2 class="d-none">Author: {{author}} | Permlink: {{permlink}} | Block: {{block}} | Votes: {{votes}} | Vote Weight: {{voteweight}} | Promote: {{promote}} | Paid: {{paid}} | URL: {{url}}</h2>
+	 <div class="d-none" dmx-bind:id="{{api1load.data.result.author}}{{api1load.data.result.permlink}}dataload">
 		<div>Author: {{api1load.data.result.author}}</div>
 		<div>Permlink: {{api1load.data.result.permlink}}</div>
 		<div>Category: {{api1load.data.result.category}}</div>
@@ -131,11 +128,48 @@
 			<div>Weight: {{weight}}</div>
 		</div>
   </div>
+		
+<div class="card bg-none mt-2">
+	<div class="d-flex">
+  		<a dmx-bind:href="{{url}}" class="p-0 m-0" type="button">
+	  		<div id="imagesMain">
+             <div class="imagebox">
+                <img src="..."  alt="Card image cap" class="card-img-top img-fluid image" dmx-bind:src="{{api1load.data.result.json_metadata.parseJSON().picFind()}}" style="width: 640px; height: 360px; object-fit: cover;"/>
+                 <div class="caption text-white w-100 h-100 d-flex">
+					 <div class="m-auto"><button class="btn btn-lg btn-info" style="border-radius: 5rem;">Launch App</button></div>
+				  </div>
+			    </div>             
+             </div>
+		</a> 
+	  </div>
 </div>
-	<div class="card-footer">
-		Launch
-	</div>
-		</div>
+	  <div class="card-footer bg-darker text-white-50">
+        <div class="collapse" dmx-bind:id="vote{{api1load.data.result.id}}">
+          <form id="voteForm">
+            <div class="d-flex align-items-center text-white-50">
+              <div>
+                <button type="button" class="btn btn-primary" dmx-bind:id="voteBtn{{api1load.data.result.id}}" dmx-bind:onclick="vote('{{api1load.data.result.author}}','{{api1load.data.result.permlink}}','slider{{api1load.data.result.id}}');">100%</button>
+                <button type="button" class="btn btn-secondary" data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{api1load.data.result.id}}"><span class="close text-white">×</span></button>
+              </div>
+              <div class="flex-fill mx-2">
+                <p class="my-1">
+                  <input type="range" class="form-control-range" step="0.01" value="100" dmx-bind:id="slider{{api1load.data.result.id}}" dmx-bind:onchange="updateVoteSubmit('voteBtn{{api1load.data.result.id}}','slider{{api1load.data.result.id}}');">
+                </p>
+              </div>
+              <div>
+                <p class="my-0"><span class="mr-1"  id="commentVal">0</span><i class="ml-1 fab fa-fw fa-hive"></i></p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="d-flex align-items-center my-2">
+          <div><a data-toggle="collapse" dmx-bind:data-target="{{&quot;#&quot;}}vote{{api1load.data.result.id}}"><i class="fas fa-heart fa-fw mr-1"></i></a>{{api1load.data.result.active_votes.countUpVotes()}} <i class="fas fa-comment fa-fw ml-2 mr-1"></i>{{api1load.data.result.children}}</div>
+          <div class="ml-auto">{{api1load.data.result.total_payout_value}}<i class="ml-1 fab fa-fw fa-hive"></i></div>
+        </div>
+      </div>
+
+	</div>	
+	
 	  </div>
     </div>
 	</div>
