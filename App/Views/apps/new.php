@@ -11,7 +11,8 @@
 </head>
 
 <body class="d-flex flex-column h-100 padme-t70" id="index" is="dmx-app">
-<button id="btn1" dmx-on:click="data_view1.pageSize(1)">Button</button>
+<button id="btn1" dmx-on:click="data_view1.setPageSize(1)">pageSize(1)</button>
+<button id="btn2" dmx-on:click="data_view1.sort(,asc)">Button</button>
 <dmx-api-datasource id="api1" is="dmx-fetch" url="https://dluxdata.herokuapp.com/new"></dmx-api-datasource>
 <dmx-data-view id="data_view1" dmx-bind:data="api1.data.result"></dmx-data-view>
 <div dmx-repeat:repeat1="data_view1.data" class="text-white">
