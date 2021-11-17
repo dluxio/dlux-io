@@ -7,7 +7,11 @@
 <script type="text/javascript" src="/js/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script type="text/javascript" src="/js/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
-
+<?php 
+   $path = $_SERVER['DOCUMENT_ROOT'];
+   $path .= "/mod/header.php";
+   include_once($path);
+?>
 <body class="d-flex flex-column h-100 padme-t70" id="new" is="dmx-app">
 <button id="btn1" dmx-on:click="data_view1.size('1')">size('1')</button>
 <button id="btn2" dmx-on:click="data_view1.sort('author','asc')">sort('author','asc')</button>

@@ -5,13 +5,11 @@
 <!-- Bootstrap -->
 <link href="/css/bootstrap-4.4.1.css" rel="stylesheet">
 <link href="/css/bd.css" rel="stylesheet">
-<script src="/js/jquery-3.4.1.min.js"></script>
-<script src="/js/popper.min.js"></script>
 <!--dmxAppConnect-->
-<script src="/dmxAppConnect/dmxAppConnect.js"></script>
-<script src="/dmxAppConnect/dmxMoment.js"></script>
-<script src="/dmxAppConnect/dmxFormatter.js"></script>
-<script src="/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
+<script src="/js/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/js/dmxAppConnect/dmxMoment.js"></script>
+<script src="/js/dmxAppConnect/dmxFormatter.js"></script>
+<script src="/js/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 <!-- Icons -->
 <script src="https://kit.fontawesome.com/0f693ffc58.js" crossorigin="anonymous"></script>
 <!-- HIVE -->
