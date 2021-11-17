@@ -73,33 +73,17 @@
 				</div>
 		<div class="col-6">
 			
-<div id="accordion1" role="tablist">
-  <div class="card">
-    <div class="card-header" role="tab" id="headingOne1">
-      <h5 class="mb-0"> <a data-toggle="collapse" href="#collapseOne1" role="button" aria-expanded="true" aria-controls="collapseOne1"> Collapsible Group 1 </a> </h5>
-    </div>
-    <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordion1">
-      <div class="card-body">Content for Accordion Panel 1</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab" id="headingTwo1">
-      <h5 class="mb-0"> <a class="collapsed" data-toggle="collapse" href="#collapseTwo1" role="button" aria-expanded="false" aria-controls="collapseTwo1"> Collapsible Group 2 </a> </h5>
-    </div>
-    <div id="collapseTwo1" class="collapse" role="tabpanel" aria-labelledby="headingTwo1" data-parent="#accordion1">
-      <div class="card-body">Content for Accordion Panel 2</div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab" id="headingThree1">
-      <h5 class="mb-0"> <a class="collapsed" data-toggle="collapse" href="#collapseThree1" role="button" aria-expanded="false" aria-controls="collapseThree1"> Collapsible Group 3 </a> </h5>
-    </div>
-    <div id="collapseThree1" class="collapse" role="tabpanel" aria-labelledby="headingThree1" data-parent="#accordion1">
-      <div class="card-body">Content for Accordion Panel 3</div>
-    </div>
-  </div>
-</div>
-<div id="repeat_active_votes" is="dmx-repeat" dmx-bind:repeat="api1load.data.result.active_votes">
+<p>
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Link with href
+  </a>
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Button with data-bs-target
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <div id="repeat_active_votes" is="dmx-repeat" dmx-bind:repeat="api1load.data.result.active_votes">
 	    <div>Percent: {{percent}}</div>
 			<div>Reputation: {{reputation}}</div>
 			<div>Rshares: {{rshares}}</div>
@@ -107,6 +91,10 @@
 			<div>Voter: {{voter}}</div>
 			<div>Weight: {{weight}}</div>
 			</div>
+  </div>
+</div>
+			
+
 	  </div>
 	</div>
 </div>
