@@ -3,6 +3,7 @@
  Version: 1.0.9
  (c) 2020 DMXzone.com
  @build 2020-02-27 17:10:16
+ THIS ONE
  */
 dmx.Component("data-view", {
   initialData: function () {

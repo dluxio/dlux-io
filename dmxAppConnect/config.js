@@ -722,19 +722,35 @@ dmx.config({
       "meta": [
         {
           "type": "text",
-          "name": "uid"
+          "name": "author"
         },
         {
           "type": "text",
-          "name": "set"
+          "name": "permlink"
+        },
+        {
+          "type": "number",
+          "name": "block"
+        },
+        {
+          "type": "number",
+          "name": "votes"
+        },
+        {
+          "type": "number",
+          "name": "voteweight"
+        },
+        {
+          "type": "number",
+          "name": "promote"
+        },
+        {
+          "type": "boolean",
+          "name": "paid"
         },
         {
           "type": "text",
-          "name": "script"
-        },
-        {
-          "type": "text",
-          "name": "owner"
+          "name": "url"
         }
       ],
       "outputType": "array"
