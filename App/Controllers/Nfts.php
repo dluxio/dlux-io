@@ -21,15 +21,23 @@ class Nfts extends \Core\Controller
     {
         View::render('nfts/index.php');
     }
-    public function new($request, $response, $service)
-    {
-        View::render('nfts/new.php');
-    }
 	public function set($request, $response, $service)
     {
         View::render('nfts/set/index.php', [
             'set'    => $request->set
         ]);
+    }
+	    public function new($request, $response, $service)
+    {
+        View::render('nfts/new/index.php');
+    }
+	    public function newscript($request, $response, $service)
+    {
+        View::render('nfts/new/script.php');
+    }
+	    public function newset($request, $response, $service)
+    {
+        View::render('nfts/new/set.php');
     }
 
 }
