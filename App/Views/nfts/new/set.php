@@ -56,13 +56,17 @@ include_once( $path );
         </div>
         <div class="form-row">
           <div class="form-group col-4">
-            <label for="newNFTroyalty">Royalty (0-50%)</label>
-            <input type="number" class="form-control" id="newNFTroyalty" step="0.01" min="0" max="50" value="10">
-            <small class="form-text text-muted">The percent paid back to you from each future DLUX contract containing any asset from the set</small> </div>
+            <label for="newNFTstart">Mint Range Start</label>
+            <input type="text" class="form-control" id="newNFTstart" placeholder="Base64 number" required>
+            <div class="invalid-feedback">Please enter the start of the possible minting range</div>
+            <small class="form-text text-muted">What is the start of the range to issue mints from?<br>
+            <b>Must be in Base64</b></small> </div>
           <div class="form-group col-4">
-            <label for="newNFTbond">Bond Value (>=0)</label>
-            <input type="number" class="form-control" id="newNFTbond" step="0.001" min="0" value="0">
-            <small class="form-text text-muted">Enter any amount of DLUX you would like to bond into each asset - melting destroys it and deposits the value</small> </div>
+            <label for="newNFTend">Mint Range End**</label>
+            <input type="text" class="form-control" id="newNFTend" placeholder="Base64 number" required>
+            <div class="invalid-feedback">Please enter the end of the possible minting range</div>
+            <small class="form-text text-muted">What is the end of the range to issue mints from?<br>
+            <b>Must be in Base64</b></small> </div>
           <div class="form-group col-4">
             <label for="newNFThandling">Handling</label>
             <input type="text" class="form-control" id="newNFThandling" value="svg" required readonly>
@@ -79,17 +83,13 @@ include_once( $path );
       <div class="my-4 rounded p-2 border border-info">
         <div class="form-row">
           <div class="form-group col-4">
-            <label for="newNFTstart">Mint Range Start</label>
-            <input type="text" class="form-control" id="newNFTstart" placeholder="Base64 number" required>
-            <div class="invalid-feedback">Please enter the start of the possible minting range</div>
-            <small class="form-text text-muted">What is the start of the range to issue mints from?<br>
-            <b>Must be in Base64</b></small> </div>
+            <label for="newNFTroyalty">Royalty (0-50%)</label>
+            <input type="number" class="form-control" id="newNFTroyalty" step="0.01" min="0" max="50" value="10">
+            <small class="form-text text-muted">The percent paid back to you from each future DLUX contract containing any asset from the set</small> </div>
           <div class="form-group col-4">
-            <label for="newNFTend">Mint Range End**</label>
-            <input type="text" class="form-control" id="newNFTend" placeholder="Base64 number" required>
-            <div class="invalid-feedback">Please enter the end of the possible minting range</div>
-            <small class="form-text text-muted">What is the end of the range to issue mints from?<br>
-            <b>Must be in Base64</b></small> </div>
+            <label for="newNFTbond">Bond Value (>=0)</label>
+            <input type="number" class="form-control" id="newNFTbond" step="0.001" min="0" value="0">
+            <small class="form-text text-muted">Enter any amount of DLUX you would like to bond into each asset - melting destroys it and deposits the value</small> </div>
           <div class="form-group col-4">
             <label for="newNFTqty">Mint Quantity (>=1)</label>
             <input type="number" class="form-control" id="newNFTqty" step="1" min="1" value="1" required>
