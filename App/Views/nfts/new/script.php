@@ -118,20 +118,15 @@ include_once( $path );
           <p id="emailHelp1" class="form-text text-muted my-2">Customize your URL on DLUX. Must only contain lowercase letters, numbers, and hyphens.</p>
           <input type="text" class="form-control" id="" placeholder="https://dlux.io/assets/treasure-of-the-multiverse">
         </div>
-        <div class="form-group">
-          <h5>Royalties</h5>
-          <p id="emailHelp1" class="form-text text-muted my-2">Collect a fee when a user re-sells an item you originally created. This is deducted from the final sale price and paid monthly to a payout address of your choosing.</p>
-          <label class="small">Percentage fee</label>
-          <input type="number" class="form-control" id="" placeholder="0.00">
-        </div>
+
         <div class="form-group d-flex">
           <div class="flex-fill">
             <h5>Explicit &amp; sensitive content</h5>
             <p id="emailHelp1" class="form-text text-muted my-2">Set this collection as explicit and sensitive content.</p>
           </div>
           <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="escrowCheck" checked disabled>
-            <label class="custom-control-label" for="escrowCheck"></label>
+            <input type="checkbox" class="custom-control-input" id="nsfwset">
+            <label class="custom-control-label" for="nsfwset"></label>
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
@@ -199,7 +194,7 @@ include_once( $path );
               </div>
               <button class="btn btn-outline-info"><span style="font-size: 2em"><i class="fas fa-plus"></i></span></button>
             </li>
-            <li class="border-bottom py-2 d-flex flex-column justify-content-between ">
+            <li class="d-flex flex-column">
               <div class="d-flex">
                 <div class="d-flex">
                   <h4 class="mr-2"><i class="fas fa-lock-open"></i></h4>
@@ -207,9 +202,9 @@ include_once( $path );
                     <h4> Unlockable Content</h4>
                     <span class="small text-muted">Include unlockable content that can only be revealed by the owner of the item.</span> </div>
                 </div>
-                <div class="custom-control custom-switch">
-                  <input type="checkbox" class="custom-control-input" id="escrowCheck" checked disabled>
-                  <label class="custom-control-label" for="escrowCheck"></label>
+                <div class="custom-control custom-switch ml-auto">
+                  <input type="checkbox" class="custom-control-input" id="unlockable">
+                  <label class="custom-control-label" for="unlockable"></label>
                 </div>
               </div>
               <textarea class="form-control my-2" rows="2" id="validationCustomDescription" placeholder="Enter content like access key, redemption code, link to a file, etc" required></textarea>
@@ -223,8 +218,8 @@ include_once( $path );
                   <span class="small text-muted">Set this item as explicit and sensitive content</span></div>
               </div>
               <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="escrowCheck" checked disabled>
-                <label class="custom-control-label" for="escrowCheck"></label>
+                <input type="checkbox" class="custom-control-input" id="nsfwitem">
+                <label class="custom-control-label" for="nsfwitem"></label>
               </div>
             </li>
           </ul>
