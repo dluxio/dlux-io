@@ -15,7 +15,6 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 };
 ?>
 <!--page specific-->
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
 </head>
