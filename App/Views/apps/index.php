@@ -20,7 +20,8 @@
 ?>
 <main role="main" class="flex-shrink-0">
   <div class="container-fluid">
-    <div class="row mt-3">
+    <div class="container">  <div class="alert alert-danger alert-dismissible"> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> <a href="/apps/new">Preview the new APPS</a></div></div>
+<div class="row mt-3">
 		<div class="col-md-6 text-white text-center order-md-2">
         <div class="display-4">Virtual Reality</div>
         <p class="lead">Responsive WebXR across mobile, desktop, and headset.<br>
