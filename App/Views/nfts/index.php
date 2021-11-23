@@ -547,7 +547,7 @@ include_once( $path );
                               <div class="input-group">
                                 <input type="number" class="form-control" id="sellFTprice" aria-describedby="sellFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
                                 <div class="input-group-append">
-                                  <div class="input-group-text" id="sellFTpriceappend">DLUX</div>
+                                  <div class="input-group-text r-radius-hotfix" id="sellFTpriceappend">DLUX</div>
                                 </div>
                               <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
 								  </div>
@@ -575,7 +575,7 @@ include_once( $path );
                               <div class="input-group">
                                 <input type="number" class="form-control" id="auctionFTprice" aria-describedby="auctionFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
                                 <div class="input-group-append">
-                                  <div class="input-group-text" id="auctionFTpriceappend">DLUX</div>
+                                  <div class="input-group-text r-radius-hotfix" id="auctionFTpriceappend">DLUX</div>
                                 </div>
                               <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
 								  </div>
