@@ -835,7 +835,7 @@ include_once( $path );
         </a>
         <div class="card-footer text-center">
           <p class="lead">
-            <button id="cancelNFTbtn1" class="btn btn-warning btn-lg" dmx-show="(by == userCookie.value)" dmx-on:click="cancelNFTsell('{{set}}','{{uid}}')">Take Back</button>
+            <button id="cancelNFTbtn1" class="btn btn-warning btn-lg" dmx-show="(by == userCookie.value)" dmx-on:click="sellNFTcancel('{{set}}','{{uid}}')">Take Back</button>
             <button id="buyNFTbtn1" class="btn btn-primary btn-lg" dmx-show="(by != userCookie.value)" href="#salesModal" data-toggle="modal" dmx-on:click="sales_iterator.select($index);sales_detail.select(uid)">Buy NFT</button>
           </p>
         </div>
