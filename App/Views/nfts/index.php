@@ -348,7 +348,7 @@ include_once( $path );
                                           <td>{{pricenai.nai()}}</td>
                                           <td>&asymp; {{((price/1000)*dluxperdollar.value).formatCurrency())}}</td>
                                           <td><div>
-                                            <button class="btn btn-warning" dmx-bind:id="{{set}}-{{uid}}-cancelFTbtn" dmx-show="(by == userCookie.value)" dmx-on:click="cancelFTsell('{{set}}','{{uid}}')">Cancel</button>
+                                            <button class="btn btn-warning" dmx-bind:id="{{set}}-{{uid}}-cancelFTbtn" dmx-show="(by == userCookie.value)" dmx-on:click="sellFTcancel('{{set}}','{{uid}}')">Cancel</button>
                                             <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyFTbtn" dmx-show="(by != userCookie.value)" dmx-on:click="buyFT('{{set}}','{{uid}}')">Buy</button>
                                           </div></td>
                                         </tr>
