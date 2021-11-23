@@ -810,7 +810,7 @@ if ( isset( $author ) ) {
                         </form>
                       </div>
                       <div role="tabpanel" class="tab-pane fade show" id="tradeNFTtab" aria-labelledby="tradeNFT">
-                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:tradeNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{tradeNFTamount.value}}')">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:tradeNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{tradeNFTusername.value}}','{{tradeNFTamount.value}}')">
                           <div class="form-row my-2">
                             <div class="col-12">
                               <label for="tradeNFTusername">Username</label>
