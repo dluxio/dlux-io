@@ -109,7 +109,7 @@ if ( isset( $author ) ) {
           <li class="nav-item"> <a class="nav-link" id="wallettab" role="tab" data-toggle="tab" aria-controls="wallet" aria-expanded="true" href="#wallet">Wallet</a></li>
           <li class="nav-item"> <a class="nav-link" id="inventorytab" role="tab" data-toggle="tab" aria-controls="inventory" aria-expanded="true" href="#inventory">Inventory</a></li>
           <li class="nav-item"> <a class="nav-link" id="nodetab" role="tab" data-toggle="tab" aria-controls="node" aria-expanded="true" href="#node">Node</a></li>
-          <li class="nav-item d-none"> <a class="nav-link" id="settingstab" role="tab" data-toggle="tab" aria-controls="settings" aria-expanded="true" href="#settings">Settings</a></li>
+          <li class="nav-item"> <a class="nav-link" id="settingstab" role="tab" data-toggle="tab" aria-controls="settings" aria-expanded="true" href="#settings">Settings</a></li>
         </ul>
       </div>
     </div>
@@ -1289,6 +1289,16 @@ if ( isset( $author ) ) {
                     </div>
                   </div>
                 </div>
+                  <div class="form-row">
+                  <div class="form-group col-4">
+                      <label for="mswitpubkey">Dlux MS Witness Pub Key</label>
+                      <input type="text" class="form-control" id="mswitpubkey">
+                      </div>
+                    <div class="form-group col-4">
+                        <label for="bytecost">byte cost</label>
+                      <input type="number" class="form-control" id="bytecost" min=".001" step=".001">
+                      </div>
+                  </div>
                 <div class="form-group"> <br>
                   <center>
                     <button id="updateNode" type="submit" class="btn btn-primary">Update Node</button>
