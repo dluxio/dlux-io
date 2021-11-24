@@ -617,7 +617,7 @@ function tradeFTaccept(setname, uid, callback){
      broadcastCJA({ set: setname, uid}, "dlux_ft_escrow_complete", `Trying to complete ${setname} mint tokentrade`)
  }
 
-function tradeFTdecline(setname, uid, callback){
+function tradeFTreject(setname, uid, callback){
     broadcastCJA({ set: setname, uid }, "dlux_ft_escrow_cancel", `Trying to cancel ${setname} mint token trade`)
  }
 
@@ -674,7 +674,7 @@ function deleteNFT(setname, uid, callback){
 function tradeNFTaccept(setname, uid, callback){
      broadcastCJA({ set: setname, uid}, "dlux_nft_reserve_complete", `Trying to complete ${setname}:${uid} trade`)
  }
-function tradeNFTdecline(setname, uid, callback){
+function tradeNFTreject(setname, uid, callback){
     broadcastCJA({ set: setname, uid }, "dlux_nft_transfer_cancel", `Trying to cancel ${setname}:${uid} trade`)
  }
 function tradeNFTcancel(setname, uid, callback){

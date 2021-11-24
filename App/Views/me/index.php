@@ -8,6 +8,7 @@ $path .= "/mod/header.php";
 include_once( $path );
 ?>
 <!--page specific-->
+<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
 <style>
@@ -77,9 +78,11 @@ if ( isset( $author ) ) {
 } else {
   echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog/\" dmx-param:tag=\"'robotolux'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'robotolux'\"></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/disregardfiat\"></dmx-api-datasource>";
 };
 ?>
+<dmx-api-datasource id="tradefts" is="dmx-fetch" url="https://token.dlux.io/api/trades/fts/disregardfiat"></dmx-api-datasource>
+<dmx-api-datasource id="tradenfts" is="dmx-fetch" url="https://token.dlux.io/api/trades/nfts/disregardfiat"></dmx-api-datasource>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
@@ -433,13 +436,13 @@ if ( isset( $author ) ) {
       <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
         <div class="container">
          <!-- Trade FT repeat -->
-          <div class="card-columns cc-3 pt-5" id="inventory-trades" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.inventory_trades">
-            <div dmx-bind:id="{{script}}-card" class="card text-white"> {{script.getSetDetailsColors('-card')}}
+          <div class="card-columns cc-3 pt-5" id="trade-ft-cards" is="dmx-repeat" dmx-bind:repeat="tradefts.data.result">
+            <div dmx-bind:id="{{script}}-trade-card" class="card text-white" style="border: none;"> {{script.getSetDetailsColors('-trade-card')}}
               <div class="card-header d-flex align-items-center justify-content-between" >
                 <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
                   <div class="pr-2"><small>QTY: </small></div>
                   <div class="px-2">
-                    <h2 class="m-0">{{qty.pad(3)}}</h2>
+                    <h2 class="m-0">{{1.pad(3)}}</h2>
                   </div>
                 </div>
                 <div> <a dmx-bind:href="/nfts/set/{{set}}">
@@ -447,22 +450,22 @@ if ( isset( $author ) ) {
                   </a> </div>
               </div>
               <div class="card-body text-center d-flex flex-column lead">
-                <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">{{script.getSetDetailsIcon('-icon')}}
-                  <h1 class="text-center rainbow-text"><i dmx-bind:id="{{script}}-icon"></i></h1>
+                <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">{{script.getSetDetailsIcon('-trade-icon')}}
+                  <h1 class="text-center rainbow-text"><i dmx-bind:id="{{script}}-trade-icon"></i></h1>
                   <h3 class="my-0 mx-2 p-0 p-2 ml-auto rainbow-text">sealed NFT</h3>
                   <h5>Unwrap to see what's inside.</h5>
                 </div>
               </div>
-              <div class="card-footer" dmx-show="(inventorydata.data.user == userCookie.value)">
+              <div class="card-footer" dmx-sho="(inventorydata.data.user == userCookie.value)" style="background: rgba(0,0,0,0.8)">
                 <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" dmx-on:click="tradeFTaccept('{{set}}','{{uid}}')">Accept<i class="fas fa-box-open ml-3"></i></button>
-                  <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" data-toggle="modal" dmx-on:click="tradeFTdecline('{{set}}','{{uid}}')">Decline<i class="fas fa-exchange-alt ml-3"></i></button>
+                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="tradeFTaccept('{{set}}','{{uid}}')">Accept<i class="fas fa-check-square ml-3"></i></button>
+                  <button type="button" class="btn btn-danger mr-auto ml-auto mt-1" data-toggle="modal" dmx-on:click="tradeFTreject('{{set}}','{{uid}}')">Reject<i class="fas fa-window-close ml-3"></i></button>
                 </div>
               </div>
             </div>
           </div>
             <!-- Trade NFT repeat -->
-          <div class="card-columns cc-3 pt-5" id="trade-nft-cards" is="dmx-repeat" dmx-bind:repeat="inventorytrade.data.inventory_trades">
+          <div class="card-columns cc-3 pt-5" id="trade-nft-cards" is="dmx-repeat" dmx-bind:repeat="tradenfts.data.result">
             <div class="card text-white bg-dark ">
               <div class="card-header d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-nftheader">{{script.getSetDetailsColors(uid+'-nftheader')}}
                  <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{uid}}</h2></div>
@@ -470,13 +473,14 @@ if ( isset( $author ) ) {
               </div>
               <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
               <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
-              </a> </div>
-              <div class="card-footer" dmx-show="(inventorydata.data.user == userCookie.value)">
+              </a> 
+              <div class="card-footer" dmx-sho="(inventorydata.data.user == userCookie.value)">
                 <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" dmx-on:click="tradeFTaccept('{{set}}','{{uid}}')">Accept<i class="fas fa-box-open ml-3"></i></button>
-                  <button type="button" class="btn btn-outline-dark mr-auto ml-auto mt-1" data-toggle="modal" dmx-on:click="tradeFTdecline('{{set}}','{{uid}}')">Decline<i class="fas fa-exchange-alt ml-3"></i></button>
+                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="tradeNFTaccept('{{set}}','{{uid}}')">Accept<i class="fas fa-check-square ml-3"></i></button>
+                  <button type="button" class="btn btn-danger mr-auto ml-auto mt-1" data-toggle="modal" dmx-on:click="tradeNFTreject('{{set}}','{{uid}}')">Reject<i class="fas fa-window-close ml-3"></i></button>
                 </div>
               </div>
+                </div>
           </div>
           <!-- Mint repeat -->
           <div class="card-columns cc-3 pt-5" id="inventory-mint" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.mint_tokens">
