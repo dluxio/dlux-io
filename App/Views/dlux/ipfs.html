@@ -99,6 +99,8 @@
         function sendLink(link) {
             if (link == 'back()') {
                 window.history.back();
+            } else if (link.split(';').length > 1){
+                window.open(link.split(';')[0], link.split(';')[1]);
             } else {
                 location.href = link;
             }
