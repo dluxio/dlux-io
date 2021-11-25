@@ -8,6 +8,7 @@ $path .= "/mod/header.php";
 include_once( $path );
 ?>
 <!--page specific-->
+<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
 <style>
@@ -77,9 +78,11 @@ if ( isset( $author ) ) {
 } else {
   echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog/\" dmx-param:tag=\"'robotolux'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'robotolux'\"></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/robotolux\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/disregardfiat\"></dmx-api-datasource>";
 };
 ?>
+<dmx-api-datasource id="tradefts" is="dmx-fetch" url="https://token.dlux.io/api/trades/fts/disregardfiat"></dmx-api-datasource>
+<dmx-api-datasource id="tradenfts" is="dmx-fetch" url="https://token.dlux.io/api/trades/nfts/disregardfiat"></dmx-api-datasource>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
@@ -109,7 +112,7 @@ if ( isset( $author ) ) {
           <li class="nav-item"> <a class="nav-link" id="wallettab" role="tab" data-toggle="tab" aria-controls="wallet" aria-expanded="true" href="#wallet">Wallet</a></li>
           <li class="nav-item"> <a class="nav-link" id="inventorytab" role="tab" data-toggle="tab" aria-controls="inventory" aria-expanded="true" href="#inventory">Inventory</a></li>
           <li class="nav-item"> <a class="nav-link" id="nodetab" role="tab" data-toggle="tab" aria-controls="node" aria-expanded="true" href="#node">Node</a></li>
-          <li class="nav-item d-none"> <a class="nav-link" id="settingstab" role="tab" data-toggle="tab" aria-controls="settings" aria-expanded="true" href="#settings">Settings</a></li>
+          <li class="nav-item"> <a class="nav-link" id="settingstab" role="tab" data-toggle="tab" aria-controls="settings" aria-expanded="true" href="#settings">Settings</a></li>
         </ul>
       </div>
     </div>
@@ -431,7 +434,54 @@ if ( isset( $author ) ) {
       </div>
       <!-- inventory tab -->
       <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
-        <div class="container"> 
+        <div class="container">
+         <!-- Trade FT repeat -->
+          <div class="card-columns cc-3 pt-5" id="trade-ft-cards" is="dmx-repeat" dmx-bind:repeat="tradefts.data.result">
+            <div dmx-bind:id="{{script}}-trade-card" class="card text-white" style="border: none;"> {{script.getSetDetailsColors('-trade-card')}}
+              <div class="card-header d-flex align-items-center justify-content-between" >
+                <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
+                  <div class="pr-2"><small>QTY: </small></div>
+                  <div class="px-2">
+                    <h2 class="m-0">{{1.pad(3)}}</h2>
+                  </div>
+                </div>
+                <div> <a dmx-bind:href="/nfts/set/{{set}}">
+                  <h3 class="card-title lead shimmer rounded p-2 m-0 ml-auto" style="color: black"><b>{{set}} NFT</b></h3>
+                  </a> </div>
+              </div>
+              <div class="card-body text-center d-flex flex-column lead">
+                <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">{{script.getSetDetailsIcon('-trade-icon')}}
+                  <h1 class="text-center rainbow-text"><i dmx-bind:id="{{script}}-trade-icon"></i></h1>
+                  <h3 class="my-0 mx-2 p-0 p-2 ml-auto rainbow-text">sealed NFT</h3>
+                  <h5>Unwrap to see what's inside.</h5>
+                </div>
+              </div>
+              <div class="card-footer" dmx-sho="(inventorydata.data.user == userCookie.value)" style="background: rgba(0,0,0,0.8)">
+                <div class="d-flex flex-wrap justify-content-between">
+                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="tradeFTaccept('{{set}}','{{uid}}')">Accept<i class="fas fa-check-square ml-3"></i></button>
+                  <button type="button" class="btn btn-danger mr-auto ml-auto mt-1" data-toggle="modal" dmx-on:click="tradeFTreject('{{set}}','{{uid}}')">Reject<i class="fas fa-window-close ml-3"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+            <!-- Trade NFT repeat -->
+          <div class="card-columns cc-3 pt-5" id="trade-nft-cards" is="dmx-repeat" dmx-bind:repeat="tradenfts.data.result">
+            <div class="card text-white bg-dark ">
+              <div class="card-header d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-nftheader">{{script.getSetDetailsColors(uid+'-nftheader')}}
+                 <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{uid}}</h2></div>
+                <h3 class="card-title lead border rounded border-dark p-2 ml-auto mb-0 "><a dmx-bind:href="/nfts/set/{{set}}" class="lead" style="color: black">{{set}} NFT</a></h3>
+              </div>
+              <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
+              <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
+              </a> 
+              <div class="card-footer" dmx-sho="(inventorydata.data.user == userCookie.value)">
+                <div class="d-flex flex-wrap justify-content-between">
+                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="tradeNFTaccept('{{set}}','{{uid}}')">Accept<i class="fas fa-check-square ml-3"></i></button>
+                  <button type="button" class="btn btn-danger mr-auto ml-auto mt-1" data-toggle="modal" dmx-on:click="tradeNFTreject('{{set}}','{{uid}}')">Reject<i class="fas fa-window-close ml-3"></i></button>
+                </div>
+              </div>
+                </div>
+          </div>
           <!-- Mint repeat -->
           <div class="card-columns cc-3 pt-5" id="inventory-mint" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.mint_tokens">
             <div dmx-bind:id="{{script}}-card" class="card text-white"> {{script.getSetDetailsColors('-card')}}
@@ -650,7 +700,7 @@ if ( isset( $author ) ) {
                               </div>
                             </div>
 							</div>
-							<center><button class="btn btn-info my-2" type="submit">Airdrop Tokens</button></center>						 
+                            <center><button class="btn btn-info my-2" type="submit">Airdrop Tokens</button></center>
 						 </form>
                       </div>
                     </div>
@@ -661,7 +711,6 @@ if ( isset( $author ) ) {
           </div>
 		</dmx-data-detail>
 		  <!-- NFT repeat -->
-			  
           <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
             <div class="card text-white bg-dark ">
               <div class="card-header d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-nftheader">{{script.getSetDetailsColors(uid+'-nftheader')}}
@@ -673,11 +722,10 @@ if ( isset( $author ) ) {
               </a> </div>
           </div>
           <!-- NFT iterator -->
-          
           <dmx-data-iterator id="inventory_iterator" dmx-bind:data="inventorydata.data.result" loop="true"></dmx-data-iterator>
           <!-- NFT detail modal -->
           <dmx-data-detail id="inventory_detail" dmx-bind:data="inventorydata.data.result" key="uid">
-          <div class="modal fade " id="inventoryModal" tabindex="11" role="dialog" aria-hidden="true">
+          <div class="modal fade show" id="inventoryModal" tabindex="11" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
               <div class="modal-content bg-dark text-white">
                 <div class="card text-white bg-dark ">
@@ -685,7 +733,6 @@ if ( isset( $author ) ) {
                     <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{inventory_detail.data.uid}}</h2></div>
                     <h3 class="card-title lead border border-dark rounded p-2 mb-0"><a dmx-bind:href="/nfts/set/{{inventory_detail.data.set}}" style="color:black;">{{inventory_detail.data.set}} NFT</a></h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  
 					</div>
                   <div class="card-body row d-flex "> 
                     <!-- NFT detail col 1 -->
@@ -710,7 +757,7 @@ if ( isset( $author ) ) {
                               <button class="btn btn-link" data-toggle="collapse" data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseDescription"><i class="fas fa-list mr-3"></i>DESCRIPTION</button>
                             </h5>
                           </div>
-                          <div id="collapseDescription" class="collapse show" aria-labelledby="headingDescription" data-parent="#accordion">
+                          <div id="collapseDescription" class="collapse" aria-labelledby="headingDescription" data-parent="#accordion">
                             <div class="card-body">
                              <p dmx-bind:id="{{inventory_detail.data.script}}-description-p">  {{inventory_detail.data.script.getSetDetails('Description', '-description-p', 'innerText')}} </p>
                             </div>
@@ -723,7 +770,7 @@ if ( isset( $author ) ) {
                               <button class="btn btn-link collapsed text-success" data-toggle="collapse" data-target="#collapseAttributes" aria-expanded="false" aria-controls="collapseAttributes"><i class="fas fa-star mr-3"></i>ATTRIBUTES </button>
                             </h5>
                           </div>
-                          <div id="collapseAttributes" class="collapse" aria-labelledby="headingAttributes" data-parent="#accordion">
+                          <div id="collapseAttributes" class="collapse show" aria-labelledby="headingAttributes" data-parent="#accordion">
                             <div class="card-body">
                      			<div dmx-bind:id="{{inventory_detail.data.script}}-{{inventory_detail.data.uid}}-attributes" class="attribute-container">  {{inventory_detail.data.script.getNFTDetails(inventory_detail.data.uid)}} </div>
                             </div>
@@ -737,94 +784,89 @@ if ( isset( $author ) ) {
                             </h5>
                           </div>
                           <div id="collapseMarket" class="collapse" aria-labelledby="headingMarket" data-parent="#accordion">
-                            <div class="card-body p-0">
-                              <div class="d-flex align-self-end text-center">
-                                <div class="border border-info bg-darker mx-auto px-5 py-3 rounded col-12">
-                                  <div class="container-fluid">
-                                    <div class="border-warning border rounded p-3 my-3" dmx-show="(inventory_detail.data.set + ':' + inventory_detail.data.uid == userPFP.value)">
+               
+                            <div class="card-body p-0 bg-dark text-white">
+                    <div class="border-warning border rounded p-3 my-3" dmx-show="(inventory_detail.data.set + ':' + inventory_detail.data.uid == userPFP.value)">
                                       <p class="text-warning m-0">Transferring this NFT will remove it from your PFP</p>
                                     </div>
-                                    <ul class="nav info-pills nav-pills bg-darker transfer-tabs justify-content-center" role="tablist">
-                                      <li class="nav-item"> <a class="nav-link active" id="givenfttab" role="tab" data-toggle="tab" aria-controls="give" aria-expanded="true" href="#give">Give</a></li>
-                                      <li class="nav-item d-none"> <a class="nav-link text-secondary" id="tradenfttab" role="tab" data-toggle="tab" aria-controls="trade" aria-expanded="true" href="#trade">Trade</a></li>
-                                      <li class="nav-item"> <a class="nav-link" id="sellnfttab" role="tab" data-toggle="tab" aria-controls="sell" aria-expanded="true" href="#sell">Sell</a></li>
-                                      <li class="nav-item"> <a class="nav-link" id="auctionnfttab" role="tab" data-toggle="tab" aria-controls="auction" aria-expanded="true" href="#auction">Auction</a></li>
-                                    </ul>
-                                    <div class="tab-content"> 
-                                      <!-- Give NFT tab -->
-                                      <div role="tabpanel" class="tab-pane fade show active" id="give" aria-labelledby="givetab">
-                                        <form class="needs-validation mt-4" novalidate>
-                                          <div class="form-row my-2">
-                                            <div class="col-12">
-                                              <label for="giveNFTuser">Username</label>
-                                              <div class="input-group">
-                                                <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">@</span></div>
-                                                <input type="text" class="form-control" id="giveNFTuser" aria-describedby="inputGroupPrepend" required>
-                                                <div class="invalid-feedback"> Please enter the username you'd like to send this to.</div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <button class="btn btn-outline-info my-2" dmx-on:click="giveNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{giveNFTuser.value}}')">Send Gift</button>
-                                        </form>
-                                      </div>
-                                      <!-- Trade NFT Tab -->
-                                      <div role="tabpanel" class="tab-pane fade" id="trade" aria-labelledby="tradetab">
-                                        <form class="needs-validation mt-4" novalidate>
-                                          <div class="form-row my-2">
-                                            <div class="col-12">
-                                              <label for="validationSendUsername">Username</label>
-                                              <div class="input-group">
-                                                <div class="input-group-prepend"> <span class="input-group-text" id="inputGroupPrepend">@</span></div>
-                                                <input type="text" class="form-control" id="validationSendUsername" aria-describedby="inputGroupPrepend" required>
-                                                <div class="invalid-feedback"> Please enter the username you'd like to trade with. </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <button class="btn btn-outline-info my-2" type="submit">Send Gift</button>
-                                        </form>
-                                      </div>
-                                      <!-- Sell NFT Tab -->
-                                      <div role="tabpanel" class="tab-pane fade show " id="sell" aria-labelledby="selltab">
-                                        <form class="needs-validation mt-4" novalidate>
-                                          <div class="form-row my-2">
-                                            <div class="col-12">
-                                              <label for="sellNFTprice">Sale Price</label>
-                                              <div class="input-group">
-                                                <input type="number" class="form-control" id="sellNFTprice" aria-describedby="sellcoin" required  placeholder="0.000" step="0.001">
-                                                <div class="input-group-append">
-                                                  <div class="input-group-text" id="sellcoin">DLUX</div>
-                                                </div>
-                                              </div>
-                                              <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
-                                            </div>
-                                          </div>
-                                          <div class="form-row my-2 text-left">
-                                            <div class="form-group form-check">
-                                              <input type="checkbox" class="form-check-input" id="sellOwnership">
-                                              <label class="form-check-label" for="sellOwnership">I agree to transfer ownership to the DAO Listing Service.<br>
-                                                <small class="text-muted">Cancel before the item sells to have it returned immediately.</small></label>
-                                              <div class="invalid-feedback"> You must agree before submitting. </div>
-                                            </div>
-                                          </div>
-                                          <button class="btn btn-outline-info my-2" dmx-on:click="sellNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{sellNFTprice.value}}')">List Item</button>
-                                        </form>
-                                      </div>
-                                      <!-- Auction NFT Tab -->
-                                      <div role="tabpanel" class="tab-pane fade show " id="auction" aria-labelledby="auctiontab">
-                                        <form class="needs-validation mt-4" novalidate>
-                                          <div class="form-row my-2">
-                                            <div class="col-12">
-                                              <label for="auctionNFTprice">Starting Bid</label>
-                                              <div class="input-group">
-                                                <input type="number" class="form-control" id="auctionNFTprice" aria-describedby="auctioncoin" required placeholder="0.000"  step="0.001">
-                                                <div class="input-group-append">
-                                                  <div class="input-group-text" id="auctioncoin">DLUX</div>
-                                                </div>
-                                              </div>
-                                              <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
-                                            </div>
-                                          </div>
-                                          <div class="d-flex justify-content-around">
+                        <div class="border border-info bg-darker mx-auto px-5 py-3 rounded col-12">
+                  <div class="container-fluid">
+                    <ul class="nav nav-pills bg-darker justify-content-center" role="tablist">
+                      <li class="nav-item"> <a class="nav-link active" id="giveNFTlink" role="tab" data-toggle="tab" aria-controls="giveNFT" aria-expanded="true" href="#giveNFTtab">Give</a></li>
+                      <li class="nav-item"> <a class="nav-link" id="tradeNFTlink" role="tab" data-toggle="tab" aria-controls="tradeNFT" aria-expanded="true" href="#tradeNFTtab">Trade</a></li>
+                      <li class="nav-item"> <a class="nav-link" id="sellNFTlink" role="tab" data-toggle="tab" aria-controls="sellNFT" aria-expanded="true" href="#sellNFTtab">Sell</a></li>
+                      <li class="nav-item"> <a class="nav-link" id="auctionNFTlink" role="tab" data-toggle="tab" aria-controls="auctionNFT" aria-expanded="true" href="#auctionNFTtab">Auction</a></li>
+                    </ul>
+                    <div class="tab-content">
+						<div role="tabpanel" class="tab-pane fade show active" id="giveNFTtab" aria-labelledby="giveNFT">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:giveNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{giveNFTusername.value}}')">
+                          <div class="form-row my-2">
+                            <div class="col-12">
+                              <label for="giveNFTusername">Username</label>
+                              <div class="input-group">
+                                <div class="input-group-prepend"> <span class="input-group-text" id="giveNFTuserprep">@</span></div>
+                                <input type="text" class="form-control r-radius-hotfix" id="giveNFTusername" aria-describedby="giveNFTuserprep" required>
+                                <div class="invalid-feedback"> Please enter the username you'd like to give to. </div>
+                            	</div>
+                            </div>
+							  </div>
+                          <center><button id="giveNFTbutton" class="btn btn-info my-2" type="submit">Give</button></center>
+                        </form>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade show" id="tradeNFTtab" aria-labelledby="tradeNFT">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:tradeNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{tradeNFTusername.value}}','{{tradeNFTamount.value}}')">
+                          <div class="form-row my-2">
+                            <div class="col-12">
+                              <label for="tradeNFTusername">Username</label>
+                              <div class="input-group">
+                                <div class="input-group-prepend"> <span class="input-group-text" id="tradeNFTuserprep">@</span></div>
+                                <input type="text" class="form-control r-radius-hotfix" id="tradeNFTusername" aria-describedby="tradeNFTuserprep" required>
+                                <div class="invalid-feedback"> Please enter the username you'd like to trade with. </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-row my-2">
+                              <label for="tradeNFTamount">Amount</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="tradeNFTamount" aria-describedby="tradeNFTamountappend" placeholder="0.000" step="0.001" min="0.001" required>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeNFTamountappend">DLUX</span> </div>
+								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+                              </div>
+                            </div>
+                          <center><button id="tradeNFTbutton" class="btn btn-info my-2" type="submit">Propose Trade</button></center>
+                        </form>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade show " id="sellNFTtab" aria-labelledby="sellNFT">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:sellNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{sellNFTprice.value}}')">
+                          <div class="form-row my-2">
+                              <label for="sellNFTprice">Sale Price</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="sellNFTprice" aria-describedby="sellNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
+                                <div class="input-group-append">
+                                  <div class="input-group-text" id="sellNFTpriceappend">DLUX</div>
+                                </div>
+                              <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
+								  </div>
+                            </div>
+                          <div class="form-row my-2">
+							<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and sold publicly. Cancel anytime to return immediately.</p>
+                          </div>
+                          <center><button id="sellNFTbutton" class="btn btn-info my-2" type="submit" >List Item</button>
+                        </form>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade show " id="auctionNFTtab" aria-labelledby="auctionNFT">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:auctionNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{auctionNFTprice.value}}','{{Date.now()}}','{{auctionNFTdays.value}}')">
+                          <div class="form-row my-2">
+                              <label for="auctionNFTprice">Starting Bid</label>
+                              <div class="input-group">
+                                <input type="number" class="form-control" id="auctionNFTprice" aria-describedby="auctionNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
+                                <div class="input-group-append">
+                                  <div class="input-group-text" id="auctionNFTpriceappend">DLUX</div>
+                                </div>
+                              <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
+                            </div>
+                          </div>
+							<div class="d-flex justify-content-around">
                                             <div class="form-row my-2 d-flex align-items-center">
                                               <label for="auctionNFTdays" class="m-0">Duration: </label>
                                               <select class="mx-2 btn btn-lg btn-secondary" class="form-control" id="auctionNFTdays" required >
@@ -861,18 +903,17 @@ if ( isset( $author ) ) {
                                               </select>
                                             </div>
                                           </div>
-                                          <div>
-                                          <div class="form-row my-2 text-left">
-											<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and sold publicly. Cancel anytime to have it returned immediately.</p>
-                                          </div>
-                                          <button class="btn btn-outline-info my-2" dmx-on:click="auctionNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{auctionNFTprice.value}}','{{Date.now()}}','{{auctionNFTdays.value}}')">List Item</button>
-                                        </form>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                          <div class="form-row my-2">
+							<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and auctioned publicly. Once submitted this cannot be cancelled. If there are no bids at the end of the auction period, it will be returned to you immediately.</p>
+                         </div>
+                          <center><button class="btn btn-info my-2" type="submit">List Item</button></center>
+						  </form>
+						  </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
                           </div>
                         </div>
                         <!-- MELT NFT -->
@@ -919,7 +960,7 @@ if ( isset( $author ) ) {
                                       </div>
                                       <div class="d-flex justify-content-around p-3">
                                         <button class="btn btn-secondary" data-toggle="collapse" href="#melt-confirmation">CANCEL <i class="fas fa-running"></i></button>
-                                        <button class="btn btn-danger border-white" dmx-on:click="NFTDelete('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}')">DESTROY <i class="fas fa-bomb"></i> <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span> </button>
+                                        <button class="btn btn-danger border-white" dmx-on:click="deleteNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}')">DESTROY <i class="fas fa-bomb"></i> <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span> </button>
                                       </div>
                                     </div>
                                   </div>
@@ -942,7 +983,7 @@ if ( isset( $author ) ) {
               </div>
             </div>
           </div>
-        </div>
+     
         </dmx-data-detail>
       </div>
     </div>
@@ -1252,6 +1293,16 @@ if ( isset( $author ) ) {
                     </div>
                   </div>
                 </div>
+                  <div class="form-row">
+                  <div class="form-group col-4">
+                      <label for="mswitpubkey">Dlux MS Witness Pub Key</label>
+                      <input type="text" class="form-control" id="mswitpubkey">
+                      </div>
+                    <div class="form-group col-4">
+                        <label for="bytecost">byte cost</label>
+                      <input type="number" class="form-control" id="bytecost" min=".001" step=".001">
+                      </div>
+                  </div>
                 <div class="form-group"> <br>
                   <center>
                     <button id="updateNode" type="submit" class="btn btn-primary">Update Node</button>
