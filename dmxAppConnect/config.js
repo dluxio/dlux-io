@@ -1009,6 +1009,137 @@ dmx.config({
         }
       ],
       "outputType": "array"
+    },
+    "buyorders": {
+      "meta": [
+        {
+          "name": "$key",
+          "type": "text"
+        },
+        {
+          "name": "$value",
+          "type": "array",
+          "sub": [
+            {
+              "type": "number",
+              "name": "amount"
+            },
+            {
+              "type": "number",
+              "name": "block"
+            },
+            {
+              "type": "text",
+              "name": "expire_path"
+            },
+            {
+              "type": "number",
+              "name": "fee"
+            },
+            {
+              "type": "text",
+              "name": "from"
+            },
+            {
+              "type": "number",
+              "name": "hbd"
+            },
+            {
+              "type": "number",
+              "name": "hive"
+            },
+            {
+              "type": "number",
+              "name": "rate"
+            },
+            {
+              "type": "text",
+              "name": "txid"
+            },
+            {
+              "type": "text",
+              "name": "type"
+            },
+            {
+              "type": "text",
+              "name": "key"
+            },
+            {
+              "type": "object",
+              "name": "hivenai",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "amount"
+                },
+                {
+                  "type": "number",
+                  "name": "precision"
+                },
+                {
+                  "type": "text",
+                  "name": "token"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "name": "hbdnai",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "amount"
+                },
+                {
+                  "type": "number",
+                  "name": "precision"
+                },
+                {
+                  "type": "text",
+                  "name": "token"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "name": "amountnai",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "amount"
+                },
+                {
+                  "type": "number",
+                  "name": "precision"
+                },
+                {
+                  "type": "text",
+                  "name": "token"
+                }
+              ]
+            },
+            {
+              "type": "object",
+              "name": "feenai",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "amount"
+                },
+                {
+                  "type": "number",
+                  "name": "precision"
+                },
+                {
+                  "type": "text",
+                  "name": "token"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "outputType": "object"
     }
   }
 });

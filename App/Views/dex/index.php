@@ -7,12 +7,14 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
+<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script>
+<script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
-<dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells"></dmx-data-view>
-<dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys"></dmx-data-view>
+<dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="asc"></dmx-data-view>
+<dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="desc"></dmx-data-view>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
@@ -44,7 +46,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-price-label">Price</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input type="number" required class="form-control" id="buyPrice" placeholder="0" min="0" step="any" aria-required="true" dmx-bind:readonly="buymarket.checked">
+                <input type="number" required class="form-control" id="buyPrice" placeholder="0" min="0.001" step="any" aria-required="true" dmx-bind:readonly="buymarket.checked">
                 <div class="input-group-append">
                   <div class="input-group-text">HIVE/DLUX</div>
                 </div>
@@ -57,7 +59,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input type="number" required class="form-control" id="buyQuantity" placeholder="0" min="0" step="any" aria-required="true" dmx-bind:readonly="buymarket.checked">
+                <input type="number" required class="form-control" id="buyQuantity" placeholder="0" min="0.001" step="any" aria-required="true" dmx-bind:readonly="buymarket.checked">
                 <div class="input-group-append">
                   <div class="input-group-text">DLUX</div>
                 </div>
@@ -70,7 +72,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Total</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input type="number" required class="form-control" id="buyTotal" placeholder="0" step="any" aria-required="true" dmx-bind:readonly="buylimit.checked" dmx-bind:value="buyPrice.value*buyQuantity.value">
+                <input type="number" required class="form-control" id="buyTotal" placeholder="0" min="0.001" step="any" aria-required="true" dmx-bind:readonly="buylimit.checked" dmx-bind:value="buyPrice.value*buyQuantity.value">
                 <div class="input-group-append">
                   <div class="input-group-text">HIVE</div>
                 </div>
@@ -117,7 +119,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-price-label">Price</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input type="number" required class="form-control readonly" id="sellPrice" placeholder="0" min="0" step="any" aria-required="true" dmx-bind:readonly="sellmarket.checked">
+                <input type="number" required class="form-control readonly" id="sellPrice" placeholder="0" min="0.001" step="any" aria-required="true" dmx-bind:readonly="sellmarket.checked">
                 <div class="input-group-append">
                   <div class="input-group-text">HIVE/DLUX</div>
                 </div>
@@ -130,7 +132,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-qty-label">Quantity</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input type="number" required class="form-control" id="sellQuantity" placeholder="0" min="0" step="any" aria-required="true" dmx-bind:readonly="sellmarket.checked">
+                <input type="number" required class="form-control" id="sellQuantity" placeholder="0" min="0.001" step="any" aria-required="true" dmx-bind:readonly="sellmarket.checked">
                 <div class="input-group-append">
                   <div class="input-group-text">DLUX</div>
                 </div>
@@ -143,7 +145,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Total</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input type="number" required class="form-control" id="sellTotal" placeholder="0" step="any" aria-required="true" dmx-bind:readonly="selllimit.checked" dmx-bind:value="sellPrice.value*sellQuantity.value">
+                <input type="number" required class="form-control" id="sellTotal" placeholder="0" min="0.001" step="any" aria-required="true" dmx-bind:readonly="selllimit.checked" dmx-bind:value="sellPrice.value*sellQuantity.value">
                 <div class="input-group-append">
                   <div class="input-group-text">HIVE</div>
                 </div>
@@ -179,7 +181,6 @@ include_once( $path );
         <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="buy-order-table">
 
           <thead role="rowgroup" class="">
-            <!---->
             <tr role="row" class="">
               <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HIVE</th>
               <th role="columnheader" scope="col" aria-colindex="2" class=""><div>HIVE</div></th>
@@ -189,14 +190,13 @@ include_once( $path );
           </thead>
           <tbody role="rowgroup">
             <!--repeat region-->
-            <tr class="" role="row" dmx-repeat:buyorders="hivebuys.data">
+            <tr class="" role="row" dmx-repeat:buyorders="hivebuys.data.groupBy('rate')">
               <td aria-colindex="1" role="cell" class="">?</td>
-              <td aria-colindex="2" role="cell" class="">{{hive}}</td>
-              <td aria-colindex="3" role="cell" class="">{{amount}}</td>
-              <td aria-colindex="4" role="cell" class=""><a href="#">{{rate}}</a></td>
+              <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
+              <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
+              <td aria-colindex="4" role="cell" class=""><a href="#">{{$key}}</a></td>
             </tr>
           </tbody>
-          <!---->
         </table>
       </div>
     </div>
@@ -204,9 +204,7 @@ include_once( $path );
       <h4>Sell Orders</h4>
       <div class="table-responsive">
         <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="sell-orders-table">
-          <!----><!---->
           <thead role="rowgroup" class="">
-            <!---->
             <tr role="row" class="">
               <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
               <th role="columnheader" scope="col" aria-colindex="2" class="">DLUX</th>
@@ -216,10 +214,10 @@ include_once( $path );
           </thead>
           <tbody role="rowgroup">
             <!--repeat region-->
-            <tr role="row" class="" dmx-repeat:buyorders="hivesells.data">
-              <td aria-colindex="1" role="cell" class=""><a href="#">{{rate}}</a></td>
-              <td aria-colindex="2" role="cell" class="">{{amount}}</td>
-              <td aria-colindex="3" role="cell" class="">{{hive}}</td>
+            <tr class="" role="row" dmx-repeat:sellorders="hivesells.data.groupBy('rate')">
+              <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
+              <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
+              <td aria-colindex="3" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
               <td aria-colindex="4" role="cell" class="">?</td>
             </tr>
           </tbody>
@@ -262,7 +260,7 @@ include_once( $path );
   </div>
 </div>
 </div>
-    </div>
+  </div>
 </main>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
