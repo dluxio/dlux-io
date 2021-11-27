@@ -7,24 +7,25 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script> 
-<script type="text/javascript" src="market.js"></script> 
-<script type="text/javascript" src="history.js"></script> 
-<script type="text/javascript" src="chunk.js"></script> 
-<script type="text/javascript" src="vendor.js"></script> 
-<script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
 <dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells"></dmx-data-view>
 <dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys"></dmx-data-view>
-<div class="container text-white">
+<?php
+$path = $_SERVER[ 'DOCUMENT_ROOT' ];
+$path .= "/mod/nav.php";
+include_once( $path );
+?>
+<main role="main" class="flex-shrink-0 text-white">
+  <div class="container-fluid px-0 "> 
+    <div class="container text-white">
 <div id="tradeForms">
     <div class="row">
     <div class="mt-3 col-md-6">
       <h4>Buy DLUX</h4>
-      <form class="form-horizontal" dmx-bind:action="javascript:buyDEX('{{buyPrice.value}}','{{buyTotal.value}}','{{buyQuantity.value}}','{{buyHours.value}}'">
+      <form class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyPrice.value}}','{{buyTotal.value}}','{{buyQuantity.value}}','{{buyHours.value}}'">
         <fieldset class="form-group" id="buy-type" aria-labelledby="buy-type-label">
           <div class="form-row">
             <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
@@ -43,7 +44,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-price-label">Price</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input type="number" required="required" class="form-control readonly" id="buyPrice" placeholder="0" min="0" step="any" aria-required="true" dmx-bind:readonly="buymarket.checked">
+                <input type="number" required class="form-control" id="buyPrice" placeholder="0" min="0" step="any" aria-required="true" dmx-bind:readonly="buymarket.checked">
                 <div class="input-group-append">
                   <div class="input-group-text">HIVE/DLUX</div>
                 </div>
@@ -56,7 +57,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input type="number" required="required" class="form-control" id="buyQuantity" placeholder="0" min="0" step="any" aria-required="true" dmx-bind:readonly="buymarket.checked">
+                <input type="number" required class="form-control" id="buyQuantity" placeholder="0" min="0" step="any" aria-required="true" dmx-bind:readonly="buymarket.checked">
                 <div class="input-group-append">
                   <div class="input-group-text">DLUX</div>
                 </div>
@@ -69,7 +70,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Total</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input type="number" required="required" class="form-control" id="buyTotal" placeholder="0" step="any" aria-required="true" dmx-bind:readonly="buylimit.checked" dmx-bind:value="buyPrice.value*buyQuantity.value">
+                <input type="number" required class="form-control" id="buyTotal" placeholder="0" step="any" aria-required="true" dmx-bind:readonly="buylimit.checked" dmx-bind:value="buyPrice.value*buyQuantity.value">
                 <div class="input-group-append">
                   <div class="input-group-text">HIVE</div>
                 </div>
@@ -82,7 +83,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Time</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input id="buyHours" type="number" value="720" required="required" step="any" aria-required="true" class="form-control">
+                <input id="buyHours" type="number" value="720" required step="any" aria-required="true" class="form-control">
                 <div class="input-group-append">
                   <div class="input-group-text">Hours</div>
                 </div>
@@ -97,7 +98,7 @@ include_once( $path );
     </div>
     <div class="mt-3 col-md-6">
       <h4>Sell DLUX</h4>
-      <form class="form-horizontal" dmx-bind:action="javascript:sellDEX('{{sellPrice.value}}','{{sellTotal.value}}','{{sellQuantity.value}}','{{sellHours.value}}'">
+      <form class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX('{{sellPrice.value}}','{{sellTotal.value}}','{{sellQuantity.value}}','{{sellHours.value}}'">
         <fieldset class="form-group" id="sell-type" aria-labelledby="sell-type-label">
           <div class="form-row">
             <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
@@ -116,7 +117,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-price-label">Price</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input type="number" required="required" class="form-control readonly" id="sellPrice" placeholder="0" min="0" step="any" aria-required="true" dmx-bind:readonly="sellmarket.checked">
+                <input type="number" required class="form-control readonly" id="sellPrice" placeholder="0" min="0" step="any" aria-required="true" dmx-bind:readonly="sellmarket.checked">
                 <div class="input-group-append">
                   <div class="input-group-text">HIVE/DLUX</div>
                 </div>
@@ -129,7 +130,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-qty-label">Quantity</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input type="number" required="required" class="form-control" id="sellQuantity" placeholder="0" min="0" step="any" aria-required="true" dmx-bind:readonly="sellmarket.checked">
+                <input type="number" required class="form-control" id="sellQuantity" placeholder="0" min="0" step="any" aria-required="true" dmx-bind:readonly="sellmarket.checked">
                 <div class="input-group-append">
                   <div class="input-group-text">DLUX</div>
                 </div>
@@ -142,7 +143,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Total</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input type="number" required="required" class="form-control" id="sellTotal" placeholder="0" step="any" aria-required="true" dmx-bind:readonly="selllimit.checked" dmx-bind:value="sellPrice.value*sellQuantity.value">
+                <input type="number" required class="form-control" id="sellTotal" placeholder="0" step="any" aria-required="true" dmx-bind:readonly="selllimit.checked" dmx-bind:value="sellPrice.value*sellQuantity.value">
                 <div class="input-group-append">
                   <div class="input-group-text">HIVE</div>
                 </div>
@@ -155,7 +156,7 @@ include_once( $path );
             <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Time</legend>
             <div tabindex="-1" role="group" class="col">
               <div role="group" class="input-group">
-                <input id="sellHours" type="number" value="720" required="required" step="any" aria-required="true" class="form-control">
+                <input id="sellHours" type="number" value="720" required step="any" aria-required="true" class="form-control">
                 <div class="input-group-append">
                   <div class="input-group-text">Hours</div>
                 </div>
@@ -261,13 +262,7 @@ include_once( $path );
   </div>
 </div>
 </div>
-<?php
-$path = $_SERVER[ 'DOCUMENT_ROOT' ];
-$path .= "/mod/nav.php";
-include_once( $path );
-?>
-<main role="main" class="flex-shrink-0 text-white">
-  <div class="container-fluid px-0 "> </div>
+    </div>
 </main>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
@@ -275,4 +270,24 @@ $path .= "/mod/footer.php";
 include_once( $path );
 ?>
 </body>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
 </html>
