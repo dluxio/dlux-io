@@ -556,7 +556,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          ['transfer', {
                              to: cj.to,
                              from: user,
-                             amount: `${cj.amount} ${cj.pair}`,
+                             amount: `${parseFloat((cj.hive || cj.hbd)/1000).toFixed(3)} ${cj.hive?'HIVE':'HBD'}`,
                              memo: cj.memo
                          }]
                      ], 'active'])
@@ -577,12 +577,12 @@ function sellDEX(dlux, hive, hbd, hours, callback){
  }
 
  function buyDEX(hive, hbd, dlux, hours, callback){
-    var andthen = ' at market rate', rate = undefined
+    var andthen = ' at market rate', rate = undefined, hours = 720
     if (dlux){
         rate = parseFloat(dlux/(hive||hbd)).toFixed(6)
         andthen = ` at ${rate} ${hive?'HIVE':'HBD'} per DLUX`
     }
-     broadcastCJA({ to: 'dlux-cc', hive, hbd, rate, hours}, "dlux_dex_sell", `Buying DLUX with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
+     broadcastTransfer({ to: 'dlux-cc', hive, hbd, memo:{rate, hours}}, "dlux_dex_sell", `Buying DLUX with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
  }
 
  function cancelDEX(txid) {
