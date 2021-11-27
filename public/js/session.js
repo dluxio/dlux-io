@@ -551,6 +551,49 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                      .catch(e => { console.log(e) })
  }
 
+ function broadcastTransfer(cj, msg){
+    Dluxsession.hive_sign([user, [
+                         ['transfer', {
+                             to: cj.to,
+                             from: user,
+                             amount: `${cj.amount} ${cj.pair}`,
+                             memo: cj.memo
+                         }]
+                     ], 'active'])
+                     .then(r => {
+                         statusWaiter (r, msg)
+                     })
+                     .catch(e => { console.log(e) })
+ }
+// DEX Actions //
+
+function sellDEX(dlux, hive, hbd, hours, callback){
+    var andthen = ' at market rate'
+    if (hive || hbd){
+        const price = parseFloat(dlux/(hive||hbd)).toFixed(6)
+        andthen = ` at ${price} ${hive?'HIVE':'HBD'} per DLUX`
+    }
+     broadcastCJA({ dlux, hive, hbd, hours}, "dlux_dex_sell", `Selling ${parseFloat(dlux/1000).toFixed(3)} DLUX${andthen}`)
+ }
+
+ function buyDEX(hive, hbd, dlux, hours, callback){
+    var andthen = ' at market rate', rate = undefined
+    if (dlux){
+        rate = parseFloat(dlux/(hive||hbd)).toFixed(6)
+        andthen = ` at ${rate} ${hive?'HIVE':'HBD'} per DLUX`
+    }
+     broadcastCJA({ to: 'dlux-cc', hive, hbd, rate, hours}, "dlux_dex_sell", `Buying DLUX with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
+ }
+
+ function cancelDEX(txid) {
+    var txidstring = txid
+    if (typeof txid === 'array'){
+        txidstring = txid.join(',')
+    }
+    broadcastCJA({ txid}, "dlux_dex_clear", `Canceling: ${txidstring}`)
+}
+
+
 // FT Transfers //
 
 function giveFT(setname, to, qty, callback){

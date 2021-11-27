@@ -48,21 +48,6 @@ function dex(usr, pair, type) {
         .catch(e => { console.log(e) })
 }
 
-function cancel(txid) {
-    var params = {
-        "required_auths": [user],
-        "required_posting_auths": 0,
-        "id": "dlux_dex_clear",
-        "json": JSON.stringify({
-            txid
-        })
-    }
-    console.log(params)
-    reqsign(['custom_json', params], ['active', user])
-        .then(r => { statusWaiter (r, `Trying to cancel swap...`); })
-        .catch(e => { feedback(e) })
-}
-
 
 function dexsend(type, pair) {
     const dlux = parseFloat(document.getElementById('menudlux').value)
