@@ -568,6 +568,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
 // DEX Actions //
 //buyFTHive('{{set}}','{{uid}}',{{price}},{{pricenai.token}})
 function buyFTHive(set, uid, price, token){
+    console.log(set, uid, price, token)
     broadcastTransfer({to:'dlux-cc',amount:`${parseFloat(price/1000).toFixed(3)} ${token}`, memo: `NFT ${set}:${uid}`}, `Buying a ${set} mint token`)
 }
 function sellDEX(dlux, hive, hbd, hours, callback){
