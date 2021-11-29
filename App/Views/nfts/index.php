@@ -344,7 +344,7 @@ include_once( $path );
 
                                       <tbody id="salesrepeat" is="dmx-repeat" dmx-bind:repeat="sales.reverse()" >
                                         <tr>
-                                          <th scope="row">1</th>
+                                          <th scope="row">{{qty}}</th>
                                           <td>{{pricenai.nai()}}</td>
                                           <td>&asymp; {{((price/1000)*dluxperdollar.value).formatCurrency())}}</td>
                                           <td><div>
