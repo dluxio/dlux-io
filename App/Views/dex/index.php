@@ -83,7 +83,7 @@ include_once( $path );
         <div class="row">
           <div class="mt-3 col-md-6">
             <h4>Buy DLUX</h4>
-            <form class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyQuantity.value}','{{buyHiveTotal.value}}','{{buyHiveTotal.value}}','{{buyHours.value}}'">
+            <form class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyQuantity.value}','{{buyHiveTotal.value}}','{{buyHiveTotal.value}}','{{buyHours.value}}')">
               <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
