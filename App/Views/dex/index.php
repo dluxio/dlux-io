@@ -135,7 +135,7 @@ include_once( $path );
               <div class=""></div>
             </div>
           </div>
-          <canvas id="candlestick-chart" width="1020" height="800" style="display: block; height: 400px; width: 510px;" class="chartjs-render-monitor"></canvas>
+          <canvas id="candlestick-chart" width="1020" height="800" style="display: block; height: 400px; width: 510px;"></canvas>
         </div>
         <!---->
         <div class="mt-2 text-center">
