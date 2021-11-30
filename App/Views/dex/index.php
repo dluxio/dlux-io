@@ -30,16 +30,16 @@ include_once( $path );
         <div class="mt-2 col-lg-3">
           <h5>Market</h5>
           <div class="container-fluid">
-\
+
 			  <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-outline-warning active">
-                      <input type="radio" name="buyhive" id="buy-hive" checked>
+                      <input name="buypair" type="radio" id="buyhive" checked dmx-on:click="buy.buyHBDTotal.setValue('0');sell.sellHBDTotal.setValue('0')">
                       HIVE </label>
                     <label class="btn btn-outline-warning">
-                      <input type="radio" name="buyhbd" id="buy-hbd">
+                      <input type="radio" name="buypair" id="buyhbd" dmx-on:click="buy.buyHiveTotal.setValue('0');sell.sellHiveTotal.setValue('0')">
                       HBD </label>
                   </div>
-			
+
           </div>
         </div>
         <div class="col-lg-9">
@@ -70,21 +70,21 @@ include_once( $path );
         <div class="row">
           <div class="mt-3 col-md-6">
             <h4>Buy DLUX</h4>
-            <form class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyHiveTotal.value}}','{{buyHBDTotal.value}}','{{buyQuantity.value}','{{buyHours.value}}')">
+            <form name="buy" class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyHiveTotal.value}}','{{buyHBDTotal.value}}','{{buyQuantity.value}','{{buyHours.value}}')">
               <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-outline-warning active">
-                      <input type="radio" name="buyType" id="buy-limit" checked>
+                      <input type="radio" name="buyType" id="buylimit" checked dmx-on:click="buyHours.setValue('720')">
                       LIMIT </label>
                     <label class="btn btn-outline-warning">
-                      <input type="radio" name="buyType" id="buy-market" dmx-on:click="buyHiveTotal.setValue('0');buyHBDTotal.setValue('0');buyHours.setValue('0')">
+                      <input type="radio" name="buyType" id="buymarket" dmx-on:click="buyQuantity.setValue('0');buyHours.setValue('0')">
                       MARKET </label>
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label">
+              <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" dmx-hide="buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -97,7 +97,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyHiveTotal" id="buy-hive-total" aria-labelledby="buy-hive-total-label">
+              <div class="form-group" id="buy-hive-total" aria-labelledby="buy-hive-total-label" for="buyHiveTotal" dmx-show="buyhive.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -110,7 +110,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-			  <div class="form-group" for="buyHBDTotal" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label">
+			  <div class="form-group" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" for="buyHBDTotal" dmx-show="buyhbd.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -123,7 +123,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label">
+              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" dmx-hide="buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Time</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -143,21 +143,21 @@ include_once( $path );
           </div>
           <div class="mt-3 col-md-6">
             <h4>Sell DLUX</h4>
-            <form class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX({{sellQuantity.value.toNumber()}},{{sellTotal.value.toNumber()}},0,{{sellHours.value.toNumber()}})">
+            <form name="sell" class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX({{sellQuantity.value.toNumber()}},{{sellTotal.value.toNumber()}},0,{{sellHours.value.toNumber()}})">
               <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-outline-warning active">
-                      <input type="radio" name="sellType" id="sell-limit" checked>
+                      <input type="radio" name="sellType" id="selllimit" checked dmx-on:click="sellHours.setValue('720')">
                       LIMIT </label>
                     <label class="btn btn-outline-warning">
-                      <input name="sellType" type="radio" id="sell-market" dmx-on:click="form.sellTotal.setValue('0');form.sellHours.setValue('0')">
+                      <input name="sellType" type="radio" id="sellmarket" dmx-on:click="sellHiveTotal.setValue('0');sellHBDTotal.setValue('0');sellHours.setValue('0')">
                       MARKET </label>
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellQuantity" id="sell-qty" aria-labelledby="sell-qty-label">
+              <div class="form-group" for="sellQuantity" id="sellqty" aria-labelledby="sell-qty-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -170,12 +170,12 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellTotal" id="sell-total" aria-labelledby="sell-total-label">
+			  <div class="form-group" for="sellHiveTotal" id="sellhivetotal" aria-labelledby="sell-hive-total-label" dmx-show="buyhive.checked && selllimit.checked" >
                 <div class="form-row">
-                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Total</legend>
+                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="sellTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:readonly="sellmarket.checked">
+                      <input type="number" required class="form-control" id="sellHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:readonly="buyhbd.checked || sellmarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text">HIVE</div>
                       </div>
@@ -183,7 +183,20 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellHours" id="sell-hours" aria-labelledby="sell-hours-label">
+              <div class="form-group" for="sellTotal" id="sellhbdtotal" aria-labelledby="sell-hbd-total-label" dmx-show="buyhbd.checked && selllimit.checked">
+                <div class="form-row">
+                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hbd-total-label">Total</legend>
+                  <div tabindex="-1" role="group" class="col">
+                    <div role="group" class="input-group">
+                      <input type="number" required class="form-control" id="sellHBDTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:readonly="buyhive.checked || sellmarket.checked">
+                      <div class="input-group-append">
+                        <div class="input-group-text">HBD</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" for="sellHours" id="sell-hours" aria-labelledby="sell-hours-label" dmx-hide="sellmarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Time</legend>
                   <div tabindex="-1" role="group" class="col">
