@@ -573,6 +573,9 @@ function buyFTHive(set, uid, price, token){
 }
 function sellDEX(dlux, hive, hbd, hours, callback){
     var andthen = ' at market rate'
+    dlux = parseInt(parseFloat(dlux)*1000)
+    hive = parseInt(parseFloat(hive)*1000)
+    hbd = parseInt(parseFloat(hbd)*1000)
     if (hive || hbd){
         const price = parseFloat(dlux/(hive||hbd)).toFixed(6)
         andthen = ` at ${price} ${hive?'HIVE':'HBD'} per DLUX`
@@ -581,6 +584,9 @@ function sellDEX(dlux, hive, hbd, hours, callback){
  }
 
  function buyDEX(hive, hbd, dlux, hours, callback){
+    dlux = parseInt(parseFloat(dlux)*1000)
+    hive = parseInt(parseFloat(hive)*1000)
+    hbd = parseInt(parseFloat(hbd)*1000)
     var andthen = ' at market rate', rate = undefined, hours = 720
     if (dlux){
         rate = parseFloat(dlux/(hive||hbd)).toFixed(6)

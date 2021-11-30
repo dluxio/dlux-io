@@ -129,6 +129,26 @@ function placeHbdAsk() {
         .catch(e => { feedback(e) })
 }
 
+function chartPop(id,pair){
+    fetch(`https://token.dlux.io/api/historical/${pair.toUpperCase()}_DLUX?depth=200`)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(myJson) {
+            let data = json.sell
+            for (var i = 0; i < data.length; i++) {
+                for(var j = 0; j < json.buy.length; j++){
+                    if(data[i].trade_timstamp < json.buy[j].trade_timstamp){
+                        data.splice(i,0,json.buy.shift())
+                        j--
+                        break
+                    }
+                }
+            }
+            console.log(data)
+        })
+    }
+
 function checkAccount(name) {
     return new Promise((r, e) => {
         fetch("https://anyx.io", {
