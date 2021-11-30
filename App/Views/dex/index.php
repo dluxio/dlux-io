@@ -92,7 +92,7 @@ include_once( $path );
                       <input type="radio" name="buyType" id="buy-limit" checked>
                       LIMIT </label>
                     <label class="btn btn-outline-warning">
-                      <input type="radio" name="buyType" id="buy-market" dmx-on:click="form.buyTotal.setValue('0');form.buyHBDTotal.setValue('0');form.buyHours.setValue('0')">
+                      <input type="radio" name="buyType" id="buy-market" dmx-on:click="form.buyHiveTotal.setValue('0');form.buyHBDTotal.setValue('0');form.buyHours.setValue('0')">
                       MARKET </label>
                   </div>
                 </div>
