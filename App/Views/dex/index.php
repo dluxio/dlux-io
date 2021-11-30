@@ -83,8 +83,8 @@ include_once( $path );
         <div class="row">
           <div class="mt-3 col-md-6">
             <h4>Buy DLUX</h4>
-            <form class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyPrice.value}}','{{buyTotal.value}}','{{buyQuantity.value}}','{{buyHours.value}}'">
-              <fieldset class="form-group" id="buy-type" aria-labelledby="buy-type-label">
+            <form class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyQuantity.value}','{{'null'}}','{{buyTotal.value}}','{{buyHours.value}}'">
+              <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -96,59 +96,46 @@ include_once( $path );
                       MARKET </label>
                   </div>
                 </div>
-              </fieldset>
-              <fieldset class="form-group" for="buyPrice" id="buy-price" aria-labelledby="buy-price-label">
-                <div class="form-row">
-                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-price-label">Price</legend>
-                  <div tabindex="-1" role="group" class="col">
-                    <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="buyPrice" placeholder="0" min="0.001" step="any" aria-required="true" dmx-bind:readonly="buymarket.checked">
-                      <div class="input-group-append">
-                        <div class="input-group-text">HIVE/DLUX</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-              <fieldset class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label">
+              </div>
+              <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="buyQuantity" placeholder="0" min="0.001" step="any" aria-required="true" dmx-bind:readonly="buymarket.checked">
+                      <input type="number" required class="form-control" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text">DLUX</div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </fieldset>
-              <fieldset class="form-group" for="buyTotal" id="buy-total" aria-labelledby="buy-total-label">
+              </div>
+              <div class="form-group" for="buyTotal" id="buy-total" aria-labelledby="buy-total-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="buyTotal" placeholder="0" min="0.001" step="any" aria-required="true" dmx-bind:readonly="buylimit.checked" dmx-bind:value="buyPrice.value*buyQuantity.value">
+                      <input type="number" required class="form-control" id="buyTotal" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text">HIVE</div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </fieldset>
-              <fieldset class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label">
+              </div>
+              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Time</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="buyHours" type="number" value="720" required step="any" aria-required="true" class="form-control">
+                      <input id="buyHours" type="number" value="720" required step="1" min="0" aria-required="true" class="form-control"  dmx-bind:readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text">Hours</div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </fieldset>
+              </div>
               <div class="text-right">
                 <button type="submit" class="btn btn-success">Buy</button>
               </div>
@@ -156,8 +143,8 @@ include_once( $path );
           </div>
           <div class="mt-3 col-md-6">
             <h4>Sell DLUX</h4>
-            <form class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX('{{sellPrice.value}}','{{sellTotal.value}}','{{sellQuantity.value}}','{{sellHours.value}}'">
-              <fieldset class="form-group" id="sell-type" aria-labelledby="sell-type-label">
+            <form class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX('{{sellQuantity.value}}','{{'null'}}','{{sellTotal.value}}','{{sellHours.value}}'">
+              <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -169,59 +156,46 @@ include_once( $path );
                       MARKET </label>
                   </div>
                 </div>
-              </fieldset>
-              <fieldset class="form-group" for="sellPrice" id="sell-price" aria-labelledby="sell-price-label">
-                <div class="form-row">
-                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-price-label">Price</legend>
-                  <div tabindex="-1" role="group" class="col">
-                    <div role="group" class="input-group">
-                      <input type="number" required class="form-control readonly" id="sellPrice" placeholder="0" min="0.001" step="any" aria-required="true" dmx-bind:readonly="sellmarket.checked">
-                      <div class="input-group-append">
-                        <div class="input-group-text">HIVE/DLUX</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-              <fieldset class="form-group" for="sellQuantity" id="sell-qty" aria-labelledby="sell-qty-label">
+              </div>
+              <div class="form-group" for="sellQuantity" id="sell-qty" aria-labelledby="sell-qty-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="sellQuantity" placeholder="0" min="0.001" step="any" aria-required="true">
+                      <input type="number" required class="form-control" id="sellQuantity" placeholder="0" min="0.002" step="0.001" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text">DLUX</div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </fieldset>
-              <fieldset class="form-group" for="sellTotal" id="sell-total" aria-labelledby="sell-total-label">
+              </div>
+              <div class="form-group" for="sellTotal" id="sell-total" aria-labelledby="sell-total-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="sellTotal" placeholder="0" min="0.001" step="any" aria-required="true" dmx-bind:readonly="sellmarket.checked" dmx-bind:value="sellPrice.value*sellQuantity.value">
+                      <input type="number" required class="form-control" id="sellTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:readonly="sellmarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text">HIVE</div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </fieldset>
-              <fieldset class="form-group" for="sellHours" id="sell-hours" aria-labelledby="sell-hours-label">
+              </div>
+              <div class="form-group" for="sellHours" id="sell-hours" aria-labelledby="sell-hours-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Time</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="sellHours" type="number" value="720" required step="any" aria-required="true" class="form-control">
+                      <input id="sellHours" type="number" value="720" required step="1" min="0" aria-required="true" class="form-control"  dmx-bind:readonly="sellmarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text">Hours</div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </fieldset>
+              </div>
               <div class="text-right">
                 <button type="submit" class="btn btn-danger">Sell</button>
               </div>
