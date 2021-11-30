@@ -30,29 +30,16 @@ include_once( $path );
         <div class="mt-2 col-lg-3">
           <h5>Market</h5>
           <div class="container-fluid">
-            <ul id="clothingnav1" class="nav nav-tabs" role="tablist">
-              <li class="nav-item"> <a class="nav-link active" href="#home1" id="hometab1" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Tab 1</a> </li>
-              <li class="nav-item"> <a class="nav-link" href="#paneTwo1" role="tab" id="hatstab1" data-toggle="tab" aria-controls="hats">Tab 2</a> </li>
-              <!-- Dropdown -->
-              <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> Tab 3 Dropdown </a>
-                <div class="dropdown-menu"> <a class="dropdown-item" href="#tabDropDownOne1" role="tab" id="dropdownshoestab1" data-toggle="tab" aria-controls="dropdownShoes">Dropdown Link 1</a> <a class="dropdown-item" href="#tabDropDownTwo1" role="tab" id="dropdownbootstab1" data-toggle="tab" aria-controls="dropdownBoots">Dropdown Link 2</a> </div>
-              </li>
-            </ul>
-            <!-- Content Panel -->
-            <div id="clothingnavcontent1" class="tab-content">
-              <div role="tabpanel" class="tab-pane fade show active" id="home1" aria-labelledby="hometab1">
-                <p>Content in <b>Tab Panel 1</b></p>
-              </div>
-              <div role="tabpanel" class="tab-pane fade" id="paneTwo1" aria-labelledby="hatstab1">
-                <p>Content 2</p>
-              </div>
-              <div role="tabpanel" class="tab-pane fade" id="tabDropDownOne1" aria-labelledby="dropdownshoestab1">
-                <p>Dropdown content#1</p>
-              </div>
-              <div role="tabpanel" class="tab-pane fade" id="tabDropDownTwo1" aria-labelledby="dropdownbootstab1">
-                <p>Dropdown content#2</p>
-              </div>
-            </div>
+\
+			  <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-outline-warning active">
+                      <input type="radio" name="buyhive" id="buy-hive" checked>
+                      HIVE </label>
+                    <label class="btn btn-outline-warning">
+                      <input type="radio" name="buyhbd" id="buy-hbd">
+                      HBD </label>
+                  </div>
+			
           </div>
         </div>
         <div class="col-lg-9">
@@ -92,7 +79,7 @@ include_once( $path );
                       <input type="radio" name="buyType" id="buy-limit" checked>
                       LIMIT </label>
                     <label class="btn btn-outline-warning">
-                      <input type="radio" name="buyType" id="buy-market" dmx-on:click="form.buyHiveTotal.setValue('0');form.buyHBDTotal.setValue('0');form.buyHours.setValue('0')">
+                      <input type="radio" name="buyType" id="buy-market" dmx-on:click="buyHiveTotal.setValue('0');buyHBDTotal.setValue('0');buyHours.setValue('0')">
                       MARKET </label>
                   </div>
                 </div>
@@ -115,7 +102,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
+                      <input type="number" required class="form-control" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="" dmx-bind:readonly="buyhbd.checked">
                       <div class="input-group-append">
                         <div class="input-group-text">HIVE</div>
                       </div>
@@ -128,7 +115,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="buyHBDTotal" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
+                      <input type="number" required class="form-control" id="buyHBDTotal" value="0" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true" dmx-bind:readonly="buyhive.checked">
                       <div class="input-group-append">
                         <div class="input-group-text">HBD</div>
                       </div>
