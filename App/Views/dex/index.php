@@ -83,7 +83,7 @@ include_once( $path );
         <div class="row">
           <div class="mt-3 col-md-6">
             <h4>Buy DLUX</h4>
-            <form class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyQuantity.value}','{{'null'}}','{{buyTotal.value}}','{{buyHours.value}}'">
+            <form class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyQuantity.value}','{{buyHiveTotal.value}}','{{buyHiveTotal.value}}','{{buyHours.value}}'">
               <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
@@ -92,7 +92,7 @@ include_once( $path );
                       <input type="radio" name="buyType" id="buy-limit" checked>
                       LIMIT </label>
                     <label class="btn btn-outline-warning">
-                      <input type="radio" name="buyType" id="buy-market">
+                      <input type="radio" name="buyType" id="buy-market" dmx-on:click="form.buyTotal.setValue('0');form.buyHBDTotal.setValue('0');form.buyHours.setValue('0')">
                       MARKET </label>
                   </div>
                 </div>
@@ -110,14 +110,27 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyTotal" id="buy-total" aria-labelledby="buy-total-label">
+              <div class="form-group" for="buyHiveTotal" id="buy-hive-total" aria-labelledby="buy-hive-total-label">
                 <div class="form-row">
-                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Total</legend>
+                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="buyTotal" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
+                      <input type="number" required class="form-control" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text">HIVE</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+			  <div class="form-group" for="buyHBDTotal" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label">
+                <div class="form-row">
+                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
+                  <div tabindex="-1" role="group" class="col">
+                    <div role="group" class="input-group">
+                      <input type="number" required class="form-control" id="buyHBDTotal" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
+                      <div class="input-group-append">
+                        <div class="input-group-text">HBD</div>
                       </div>
                     </div>
                   </div>
