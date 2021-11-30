@@ -9,56 +9,7 @@ include_once( $path );
 ?>
 <script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script> 
 <script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
-<script type="text/javascript" src="market.js"></script>
-    <style type="text/css">/* Chart.js */
-/*
- * DOM element rendering detection
- * https://davidwalsh.name/detect-node-insertion
- */
-@keyframes chartjs-render-animation {
-	from { opacity: 0.99; }
-	to { opacity: 1; }
-}
 
-.chartjs-render-monitor {
-	animation: chartjs-render-animation 0.001s;
-}
-
-/*
- * DOM element resizing detection
- * https://github.com/marcj/css-element-queries
- */
-.chartjs-size-monitor,
-.chartjs-size-monitor-expand,
-.chartjs-size-monitor-shrink {
-	position: absolute;
-	direction: ltr;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	overflow: hidden;
-	pointer-events: none;
-	visibility: hidden;
-	z-index: -1;
-}
-
-.chartjs-size-monitor-expand > div {
-	position: absolute;
-	width: 1000000px;
-	height: 1000000px;
-	left: 0;
-	top: 0;
-}
-
-.chartjs-size-monitor-shrink > div {
-	position: absolute;
-	width: 200%;
-	height: 200%;
-	left: 0;
-	top: 0;
-}
-</style>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
@@ -125,25 +76,9 @@ include_once( $path );
           </div>
         </div>
       </div>
-      <div class="marketChart mt-3 mb-3"><!---->
-        <div class="">
-          <div class="chartjs-size-monitor">
-            <div class="chartjs-size-monitor-expand">
-              <div class=""></div>
-            </div>
-            <div class="chartjs-size-monitor-shrink">
-              <div class=""></div>
-            </div>
-          </div>
-          <canvas id="candlestick-chart" width="1020" height="800" style="display: block; height: 400px; width: 510px;"></canvas>
+      <div class="marketChart mt-3 mb-3">
+          <div id="chart" style="height: 440px"></div>
         </div>
-        <!---->
-        <div class="mt-2 text-center">
-          <button type="button" class="btn btn-info btn-sm">Candlestick</button>
-          <button type="button" class="btn btn-info btn-sm">Depth</button>
-          <button type="button" class="btn btn-info btn-sm">Volume</button>
-        </div>
-      </div>
       <div id="tradeForms">
         <div class="row">
           <div class="mt-3 col-md-6">
