@@ -46,20 +46,20 @@ include_once( $path );
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              0.09007400 <br>
-              $0.203 </div>
+              ? <br>
+              $? </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
-              0.10635200 <br>
-              $0.239 </div>
+              ? <br>
+              $? </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              0.11000200 <br>
-              $0.248 </div>
+              ? <br>
+              $? </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
-              903.15937252 <br>
-              $2032.109 </div>
+              ? <br>
+              $? </div>
           </div>
         </div>
       </div>
@@ -233,9 +233,7 @@ include_once( $path );
                 <tbody role="rowgroup">
                   <!--repeat region-->
                   <tr class="" role="row" dmx-repeat:buyorders="hivebuys.data.groupBy('rate')">
-                    <td aria-colindex="1" role="cell" class=""> {{(('buyTable'+($index-1)).value)}}
-                      <input dmx-bind:id="buyTable{{$index}}" dmx-bind:value="$value.sum('hive')">
-                      {{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
+                    <td aria-colindex="1" role="cell" class="">?</td>
                     <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
                     <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                     <td aria-colindex="4" role="cell" class=""><a href="#">{{$key}}</a></td>
