@@ -13,10 +13,12 @@ include_once( $path );
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
-<dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="asc"></dmx-data-view>
-<dmx-data-view id="hbdsells" dmx-bind:data="dexapi.data.markets.hbd.sells" sorton="rate" sortdir="asc"></dmx-data-view>
 <dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="desc"></dmx-data-view>
+<dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="asc"></dmx-data-view>
 <dmx-data-view id="hbdbuys" dmx-bind:data="dexapi.data.markets.hbd.buys" sorton="rate" sortdir="desc"></dmx-data-view>
+<dmx-data-view id="hbdsells" dmx-bind:data="dexapi.data.markets.hbd.sells" sorton="rate" sortdir="asc"></dmx-data-view>
+
+
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
@@ -73,10 +75,26 @@ include_once( $path );
           <canvas id="chart" width="2220" height="800" class="chartjs-render-monitor" style="display: block; height: 400px; width: 1110px;"></canvas>
         </div>
 
-        <div class="mt-2 text-center d-none">
-          <button type="button" class="btn btn-info btn-sm">Candlestick</button>
-          <button type="button" class="btn btn-info btn-sm">Depth</button>
-          <button type="button" class="btn btn-info btn-sm">Volume</button>
+        <div class="mt-2 text-center d-flex justify-content-between">
+			<div><button class="d-none">&nbsp;</button></div>
+          <div id="settimescale" class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-info active">
+                      <input type="radio" name="timescale" id="hourbtn" is="dmx-radio">
+                      1H </label>
+                    <label class="btn btn-info">
+                      <input type="radio" name="timescale" id="daybtn" is="dmx-radio">
+                      1D </label>
+                    <label class="btn btn-info">
+                      <input type="radio" name="timescale" id="weekbtn" is="dmx-radio" checked>
+                      1W </label>
+                    <label class="btn btn-info">
+                      <input type="radio" name="timescale" id="monthbtn" is="dmx-radio">
+                      1M </label>
+                    <label class="btn btn-info">
+                      <input type="radio" name="timescale" id="yearbtn" is="dmx-radio">
+                      1Y </label>
+                  </div>
+			<div><button class="btn btn-secondary"><i class="fas fa-redo-alt"></i></button></div>
         </div>
       </div>
       <div id="tradeForms">
