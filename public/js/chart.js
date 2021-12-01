@@ -29,7 +29,7 @@ function getHistorical(pair, width){
         let thisbar = []
         const now = new Date()
         for (var i = 0; i < arr.length; i++) {
-            while(!(now - arr[1].trade_timestamp > (width * barnum))){barnum++}
+            while(!(now - arr[1].trade_timestamp > (width * barnum)) && barnum <= barCount){barnum++}
             if(now - arr[1].trade_timestamp > (width * barnum)){
                 thisbar.push(arr.shift())
             } else {
