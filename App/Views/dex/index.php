@@ -9,6 +9,7 @@ include_once( $path );
 ?>
 <script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script> 
 <script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<script type="text/javascript" src="/js/chart.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
