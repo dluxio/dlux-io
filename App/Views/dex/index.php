@@ -322,9 +322,6 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/footer.php";
 include_once( $path );
 ?>
-<script src="/js/jquery-3.4.1.min.js"></script> 
-<script src="/js/popper.min.js"></script> 
-<script src="/js/bootstrap-4.4.1.js"></script>
 </body>
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
