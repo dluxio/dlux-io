@@ -81,7 +81,7 @@ include_once( $path );
         </div>
 
         <div class="mt-2 text-center d-flex justify-content-between">
-			<div><button class="d-none">&nbsp;</button></div>
+			<div><button class="btn btn-outline-secondary">Refresh<i class="fas fa-redo-alt ml-2"></i></button></div>
           <div id="settimescale" class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-info active">
                       <input type="radio" name="timescale" id="hourbtn" is="dmx-radio">
@@ -99,7 +99,7 @@ include_once( $path );
                       <input type="radio" name="timescale" id="yearbtn" is="dmx-radio">
                       1Y </label>
                   </div>
-			<div><button class="btn btn-secondary"><i class="fas fa-redo-alt"></i></button></div>
+			<div><button class="btn btn-outline-primary">My Orders<i class="fas fa-book-reader ml-2"></i></button></div>
         </div>
       </div>
       <div id="tradeForms">
