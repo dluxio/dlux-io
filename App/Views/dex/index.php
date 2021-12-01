@@ -179,7 +179,7 @@ include_once( $path );
           </div>
           <div class="mt-3 col-md-6">
             <h4>Sell DLUX</h4>
-            <form name="sell" class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX({{sellQuantity.value.toNumber()}},{{sellTotal.value.toNumber()}},0,{{sellHours.value.toNumber()}})">
+            <form name="sell" class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX('{{sellQuantity.value}}','{{sellHiveTotal.value}}','{{sellHBDTotal.value}}','{{sellHours.value}}')">
               <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
