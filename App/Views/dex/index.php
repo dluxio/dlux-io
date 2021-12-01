@@ -9,7 +9,6 @@ include_once( $path );
 ?>
 <script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script> 
 <script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
-
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
@@ -30,16 +29,14 @@ include_once( $path );
         <div class="mt-2 col-lg-3">
           <h5>Market</h5>
           <div class="container-fluid">
-
-			  <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-outline-warning active">
-                      <input name="buypair" type="radio" id="buyhive" checked dmx-on:click="buy.buyHBDTotal.setValue('0');sell.sellHBDTotal.setValue('0')">
-                      HIVE </label>
-                    <label class="btn btn-outline-warning">
-                      <input type="radio" name="buypair" id="buyhbd" dmx-on:click="buy.buyHiveTotal.setValue('0');sell.sellHiveTotal.setValue('0')">
-                      HBD </label>
-                  </div>
-
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-outline-warning active">
+                <input name="buypair" type="radio" id="buyhive" checked dmx-on:click="buy.buyHBDTotal.setValue('0');sell.sellHBDTotal.setValue('0')">
+                HIVE </label>
+              <label class="btn btn-outline-warning">
+                <input type="radio" name="buypair" id="buyhbd" dmx-on:click="buy.buyHiveTotal.setValue('0');sell.sellHiveTotal.setValue('0')">
+                HBD </label>
+            </div>
           </div>
         </div>
         <div class="col-lg-9">
@@ -64,8 +61,24 @@ include_once( $path );
         </div>
       </div>
       <div class="marketChart mt-3 mb-3">
-          <div id="chart" style="height: 440px"></div>
+        <div class="">
+          <div class="chartjs-size-monitor">
+            <div class="chartjs-size-monitor-expand">
+              <div class=""></div>
+            </div>
+            <div class="chartjs-size-monitor-shrink">
+              <div class=""></div>
+            </div>
+          </div>
+          <canvas id="chart" width="2220" height="800" class="chartjs-render-monitor" style="display: block; height: 400px; width: 1110px;"></canvas>
         </div>
+
+        <div class="mt-2 text-center d-none">
+          <button type="button" class="btn btn-info btn-sm">Candlestick</button>
+          <button type="button" class="btn btn-info btn-sm">Depth</button>
+          <button type="button" class="btn btn-info btn-sm">Volume</button>
+        </div>
+      </div>
       <div id="tradeForms">
         <div class="row">
           <div class="mt-3 col-md-6">
@@ -110,7 +123,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-			  <div class="form-group" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" for="buyHBDTotal" dmx-show="buyhbd.checked">
+              <div class="form-group" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" for="buyHBDTotal" dmx-show="buyhbd.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -170,7 +183,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-			  <div class="form-group" for="sellHiveTotal" id="sellhivetotal" aria-labelledby="sell-hive-total-label" dmx-show="buyhive.checked && selllimit.checked" >
+              <div class="form-group" for="sellHiveTotal" id="sellhivetotal" aria-labelledby="sell-hive-total-label" dmx-show="buyhive.checked && selllimit.checked" >
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
