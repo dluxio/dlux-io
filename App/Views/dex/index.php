@@ -198,7 +198,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="sellQuantity" placeholder="0" min="0.002" step="0.001" aria-required="true">
+                      <input type="number" required class="form-control" id="sellQuantity" placeholder="0" min="0.004" step="0.001" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text">DLUX</div>
                       </div>
