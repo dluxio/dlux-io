@@ -9,10 +9,10 @@ include_once( $path );
 ?>
 <script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script> 
 <script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
-<script type="text/javascript" src="/js/chartf.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
+<script type="text/javascript" src="/js/chartf.js"></script>
 
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
