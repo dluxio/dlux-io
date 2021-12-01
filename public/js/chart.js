@@ -60,6 +60,7 @@ function getHistorical(pair, width){
             }
             barnum++
         }
+        console.log(arr)
         return arr;
     })
 }
