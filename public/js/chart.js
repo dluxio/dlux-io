@@ -20,12 +20,13 @@ function getHistorical(pair, width, bc){
         console.log(data.buy, data.sell)
         for (var i = 0; i < arr.length; i++) {
             for(var j = 0; j < data.buy.length; j++){
-                if(data.buy[j].trade_timestamp > arr[i].trade_timestamp){
+                if(arr[i].trade_timestamp < data.buy[j].trade_timestamp){
                     arr.splice(i, 0, data.buy.shift())
                     j--
                 }
             }
         }
+        if (!arr.length)arr = data.buy
         console.log(arr)
         var bars = []
         var barnum = 1
