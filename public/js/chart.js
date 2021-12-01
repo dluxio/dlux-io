@@ -164,9 +164,11 @@ var update = function() {
 	chart.update();
 };
 
+/*
 document.getElementById('update').addEventListener('click', update);
 
 document.getElementById('randomizeData').addEventListener('click', function() {
 	barData = getRandomData(initialDateStr, barCount);
 	update();
 });
+*/
