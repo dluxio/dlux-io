@@ -17,6 +17,7 @@ function getHistorical(pair, width, bc){
     .then(res => res.json())
     .then(data => {
         var arr = data.sell
+        console.log(data.buy, data.sell)
         for (var i = 0; i < arr.length; i++) {
             for(var j = 0; j < data.buy.length; j++){
                 if(data.buy[j].trade_timestamp > arr[i].trade_timestamp){
