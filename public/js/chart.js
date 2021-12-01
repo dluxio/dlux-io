@@ -60,8 +60,8 @@ function getHistorical(pair, width){
             }
             barnum++
         }
-        console.log(arr)
-        return arr;
+        console.log(bars)
+        return bars;
     })
 }
 
