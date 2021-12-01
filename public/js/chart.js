@@ -12,6 +12,7 @@ var barData = getHistorical(pair, width);
 function lineData() { return barData.map(d => { return { x: d.x, y: d.c} }) };
 
 function getHistorical(pair, width){
+    console.log('fetching history...')
     fetch(`https://token.dlux.io/api/historical/${pair.toUpperCase()}_DLUX?depth=200`)
     .then(res => res.json())
     .then(data => {
