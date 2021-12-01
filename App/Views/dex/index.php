@@ -32,6 +32,14 @@ include_once( $path );
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 ">
     <div class="container text-white">
+		<center>
+		<div class="col-md-6 border rounded mt-2 mx-1 px-2 py-1 text-center small" 
+						 dmx-class:border-success="dexapi.data.behind < 30" 
+						 dmx-class:text-success="dexapi.data.behind < 30"	
+						 dmx-class:border-warning="dexapi.data.behind >= 30"
+						 dmx-class:text-warning="dexapi.data.behind >= 30"
+						 dmx-class:border-danger="dexapi.data.behind > 100"
+						 dmx-class:text-danger="dexapi.data.behind > 100"> DLUX is currently {{dexapi.data.behind}} blocks behind HIVE</div></center>
       <div id="market" class="row text-center">
         <div class="mt-2 col-lg-3">
           <h5>Market</h5>
