@@ -8,10 +8,10 @@ var ctx = document.getElementById('chart').getContext('2d');
 ctx.canvas.width = 1000;
 ctx.canvas.height = 250;
 
-var barData = getHistorical(pair, width);
+var barData = getHistorical(pair, width, barCount);
 function lineData() { return barData.map(d => { return { x: d.x, y: d.c} }) };
 
-function getHistorical(pair, width){
+function getHistorical(pair, width, bc){
     console.log('fetching history...')
     fetch(`https://token.dlux.io/api/historical/${pair.toUpperCase()}_DLUX?depth=200`)
     .then(res => res.json())
@@ -25,12 +25,16 @@ function getHistorical(pair, width){
                 }
             }
         }
+        console.log(arr)
         var bars = []
         var barnum = 1
         let thisbar = []
         const now = new Date()
         for (var i = 0; i < arr.length; i++) {
-            while(!(now - arr[1].trade_timestamp > (width * barnum)) && barnum <= barCount){barnum++}
+            while(!(now - arr[i].trade_timestamp > (width * barnum)) && barnum <= barCount){
+                console.log(barcount)
+                barnum++
+            }
             if(now - arr[1].trade_timestamp > (width * barnum)){
                 thisbar.push(arr.shift())
             } else {
