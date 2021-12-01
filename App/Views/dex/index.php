@@ -146,7 +146,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="" dmx-bind:readonly="buyhbd.checked">
+                      <input type="number" required class="form-control" value="0" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="" dmx-bind:readonly="buyhbd.checked">
                       <div class="input-group-append">
                         <div class="input-group-text">HIVE</div>
                       </div>
@@ -219,7 +219,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="sellHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:readonly="buyhbd.checked || sellmarket.checked">
+                      <input type="number" required class="form-control" id="sellHiveTotal" value="0" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:readonly="buyhbd.checked || sellmarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text">HIVE</div>
                       </div>
