@@ -21,7 +21,9 @@ function getHistorical(pair, width, bc){
         var barnum = 1
         let thisbar = []
         const now = new Date()
+        console.log(arr)
         for (var i = arr.length -1; i >= 0 ; i++) {
+            console.log(i, arr[i])
             while(!(now - arr[i].trade_timestamp > (width * barnum)) && barnum <= barCount){
                 console.log(barcount)
                 barnum++
