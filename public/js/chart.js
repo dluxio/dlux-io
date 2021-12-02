@@ -30,7 +30,7 @@ function getHistorical(pair, width, bc){
         buckets.sort(function (a,b){return parseInt(a) - parseInt(b)})
         var bars = []
         for (var i = 0; i < buckets.length; i++) {
-            console.log(Date(now.valueOf() - (3000 * (current_block - parseInt(buckets[i])))), startdate.valueOf())
+            console.log(Date(now.valueOf() - (3000 * (current_block - parseInt(buckets[i])))).valueOf(), startdate.valueOf())
             if (Date(now.valueOf() - (3000 * (current_block - parseInt(buckets[i])))) > startdate.valueOf()) {
                 if(!bars.length){
                     while(Date(now.valueOf() - (3000 * (current_block - parseInt(buckets[i]))).valueOf()) > currentBucket.valueOf() + period){
