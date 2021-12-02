@@ -27,7 +27,7 @@ function getHistorical(pair, width, bc){
             while(!(now - arr[i].trade_timestamp > (width * (bars.length + 1))) && bars.length <= barCount){
                 console.log(`len:`, bars.length)
                 bars.push({
-                        date: new Date(now - (width * (bars.length + 1))),
+                        x: Date(now - (width * (bars.length + 1))).valueOf(),
                         o: parseFloat(close),
                         h: parseFloat(close),
                         l: parseFloat(close),
@@ -45,7 +45,7 @@ function getHistorical(pair, width, bc){
                     if(thisbar[j].price < low)low = thisbar[j].price
                 }
                 bars.push({
-                    date: new Date(now - (width * (bars.length + 1))),
+                    x: Date(now - (width * (bars.length + 1))).valueOf(),
                     o: parseFloat(open),
                     h: parseFloat(high),
                     l: parseFloat(low),
@@ -58,7 +58,7 @@ function getHistorical(pair, width, bc){
         console.log(bars)
         while(bars.length <= barCount){
                 bars.push({
-                        date: new Date(now - (width * (bars.length + 1))),
+                        x: Date(now - (width * (bars.length + 1))).valueOf(),
                         o: parseFloat(close),
                         h: parseFloat(close),
                         l: parseFloat(close),
