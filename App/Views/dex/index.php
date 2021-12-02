@@ -45,13 +45,13 @@ include_once( $path );
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
 						 dmx-class:border-danger="dexapi.data.behind > 100"
 						 dmx-class:text-danger="dexapi.data.behind > 100"> DLUX is currently {{dexapi.data.behind}} blocks behind HIVE</div>
-			<div class="d-flex justify-content-around my-2"><div>Current price of HIVE: {{hiveprice.data.hive.usd.formatCurrency()}}</div><div> Current price of HBD: {{hbdprice.data.hive_dollar.usd.formatCurrency()}}</div></div>
+			<div class="d-flex justify-content-around my-2"><div>Current price of HIVE: ${{hiveprice.data.hive.usd.formatNumber(6,.,,,)}}</div><div> Current price of HBD: ${{hbdprice.data.hive_dollar.usd.formatNumber(6,.,,,)}}</div></div>
 			<div><input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none"><input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none"></div>
 		</center>
       <div id="market" class="row text-center">
         <div class="mt-2 col-lg-3">
           <h5>Market</h5>
-          <div class="container-fluid">
+          <div class="container-fluid mt-3">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-outline-warning active">
                 <input name="buypair" type="radio" id="buyhive" checked dmx-on:click="buy.buyHBDTotal.setValue('0');sell.sellHBDTotal.setValue('0')">
