@@ -489,13 +489,17 @@ include_once( $path );
         Hive24 = 0,
         HBDH = '', HBDB = '', HBDS = '', HIVEH = '', HIVEB = '', HIVES = ''
       try {
-        HBDH = document.getElementById('hbdtradehistorytable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
-        HBDB = document.getElementById('hbdbuyorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
-        HBDS = document.getElementById('hbdsellorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
-        HIVEH = document.getElementById('hivetradehistorytable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
-        HIVEB = document.getElementById('hivebuyorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
+        // HBDH = document.getElementById('hbdtradehistorytable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
+        // HBDB = document.getElementById('hbdbuyorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
+        // HBDS = document.getElementById('hbdsellorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
+        // HIVEH = document.getElementById('hivetradehistorytable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
+        // HIVEB = document.getElementById('hivebuyorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
         HIVES = document.getElementById('hivesellorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
-      } catch (e) {console.log(e)}
+      } catch (e) {console.log(e);
+      setTimeout(() => {
+          totals()
+        }, 1000);
+      }
       console.log(HIVES)
       if(HIVES.length ){
         for(var i = 0; i < HIVES.length; i++){
