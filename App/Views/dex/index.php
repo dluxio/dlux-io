@@ -7,8 +7,7 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script> 
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
@@ -336,7 +335,7 @@ include_once( $path );
                   <tr class="" role="row" dmx-repeat:orderhistory="recenthive.data">
                     <td aria-colindex="1" role="cell" class="" dmx-class:text-danger="type == 'sell'" dmx-class:text-success="type == 'buy'">{{price}}</td>
                     <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
-					<td aria-colindex="3" role="cell" class="">{{trade_timestamp}}</td>
+					<td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
                   </tr>
                 </tbody>
               </table>
