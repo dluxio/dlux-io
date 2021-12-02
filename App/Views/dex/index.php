@@ -497,6 +497,7 @@ include_once( $path );
       console.log(HIVES)
     }, 10000);
 })();
+})()
 </script>
 	<script type="text/javascript" src="/js/chart.js"></script>
 </html>
