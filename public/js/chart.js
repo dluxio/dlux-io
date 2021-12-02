@@ -16,7 +16,7 @@ function getHistorical(pair, width, bc){
     fetch(`https://token.dlux.io/api/historical/${pair.toUpperCase()}_DLUX?depth=200`)
     .then(res => res.json())
     .then(data => {
-        var arr = data.sell.concat(data.buy)
+        var arr = [...data.sell, ...data.buy]
         arr.sort((x, y) => { return x.trade_timestamp - y.trade_timestamp })
         console.log(arr)
         var bars = []
