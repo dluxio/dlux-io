@@ -36,22 +36,13 @@ function getHistorical(pair, width, bc){
             }
             if(i && now - arr[i-1].trade_timestamp > (width * barnum)){
                 thisbar.push(arr[i])
+                open = arr[i].price, close = arr[i].price, high = arr[i].price, low = arr[i].price
             } else {
-                let open = 0, close = 0, high = 0, low = 0, vol = 0
                 for(var j = thisbar.length - 1; j >= 0; j--){
                     if(j == thisbar.length)close = thisbar[j].price
                     if(j == 0)open = thisbar[j].price
                     if(thisbar[j].price > high)high = thisbar[j].price
                     if(thisbar[j].price < low)low = thisbar[j].price
-                }
-                while(bars.length < barnum - 2){
-                    bars.push({
-                        x: now - (width * bars.length),
-                        o: close,
-                        h: close,
-                        l: close,
-                        c: close
-                    })
                 }
                 bars.push({
                     x: now - (width * (barnum)),
@@ -98,7 +89,7 @@ var update = function(pr, wd, bc) {
 };
 
 
-document.getElementById('refreshChart').addEventListener('click', update);
+document.getElementById('refreshChart').addEventListener('click', update(pair, width, barCount));
 /*
 document.getElementById('randomizeData').addEventListener('click', function() {
 	barData = getRandomData(initialDateStr, barCount);
