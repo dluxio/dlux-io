@@ -25,6 +25,7 @@ function getHistorical(pair, width, bc){
         makechart: for (var i = arr.length -1; i >= 0 ; i--) {
             console.log(now, arr[i].trade_timestamp , (width * (bars.length + 1)) , bars.length , barCount)
             while(!(now - arr[i].trade_timestamp > (width * (bars.length + 1))) && bars.length <= barCount){
+                console.log(`len:`, bars.length)
                 bars.push({
                         x: now - (width * (bars.length + 1)),
                         o: close,
@@ -55,6 +56,16 @@ function getHistorical(pair, width, bc){
             barnum++
         }
         console.log(bars)
+        while(bars.length <= barCount){
+                bars.push({
+                        x: now - (width * (bars.length + 1)),
+                        o: close,
+                        h: close,
+                        l: close,
+                        c: close
+                    })
+                if(bars.length <= barCount)break makechart
+            }
         return bars;
     })
 }
