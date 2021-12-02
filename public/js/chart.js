@@ -134,7 +134,12 @@ var update = function(pr, wd, bc) {
         chart.config.data.datasets = [
 			{
 				label: `DLUX/${pair}`,
-				data: bars
+				data: bars,
+                color: {
+                    up: '#21ffb5',
+                    down: '#fb00ff',
+                    unchanged: '#033efd'
+                }
 			}	
 		]
 

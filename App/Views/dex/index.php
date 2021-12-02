@@ -478,7 +478,24 @@ include_once( $path );
         form.classList.add('was-validated');
       }, false);
     });
-  }, false);
+    setTimeout(function(){ 
+      var HBDBTotal = 0,
+        HBDSTotal = 0,
+        HBD24 = 0,
+        HiveBTotal = 0,
+        HiveSTotal = 0,
+        Hive24 = 0,
+        HBDH = '', HBDB = '', HBDS = '', HIVEH = '', HIVEB = '', HIVES = ''
+      try {
+        HBDH = document.getElementById('hbdtradehistorytable')
+        HBDB = document.getElementById('hbdbuyorderstable')
+        HBDS = document.getElementById('hbdsellorderstable')
+        HIVEH = document.getElementById('hivetradehistorytable')
+        HIVEB = document.getElementById('hivebuyorderstable')
+        HIVES = document.getElementById('hivesellorderstable')
+      } catch (e) {console.log(e)}
+      console.log(HIVES)
+    }, 10000);
 })();
 </script>
 	<script type="text/javascript" src="/js/chart.js"></script>
