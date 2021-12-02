@@ -351,9 +351,9 @@ include_once( $path );
                 <thead role="rowgroup" class="">
                   <tr role="row">
                     
-                    <th role="columnheader" scope="col" aria-colindex="1" class="" >Price</th>
-                    <th role="columnheader" scope="col" aria-colindex="2" class="">Qty</th>
-					  <th role="columnheader" scope="col" aria-colindex="3" class="">Timestamp</th>
+                    <th role="columnheader" scope="col" aria-colindex="1" class="" >PRICE</th>
+                    <th role="columnheader" scope="col" aria-colindex="2" class="">QTY</th>
+					  <th role="columnheader" scope="col" aria-colindex="3" class="">TIME</th>
                   </tr>
                 </thead>
                 <tbody role="rowgroup">
