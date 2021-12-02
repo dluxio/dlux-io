@@ -117,7 +117,7 @@ barData.then(bars=>{
 			label: `DLUX/${pair}`,
 			data: bars,
             color: {
-                up: '21ffb5',
+                up: '#21ffb5',
                 down: '#fb00ff',
                 unchanged: '#033efd'
             }
