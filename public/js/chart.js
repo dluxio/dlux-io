@@ -29,9 +29,8 @@ function getHistorical(pair, width, bc){
         const current_block = dex.stats.lastIBlock
         const buckets = Object.keys(dex.markets[pair.toLowerCase()].days)
         buckets.sort(function (a,b){return parseInt(a) - parseInt(b)})
-        var bars = []
+        var bars = [], current = {o:0, h:0, l:0, c:0, v:0}
         for (var i = 0; i < buckets.length; i++) {
-            console.log(new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime(), currentBucket)
             if (new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime() > currentBucket) {
                 if(!bars.length){
                     while(new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime() > currentBucket + period){
@@ -44,7 +43,24 @@ function getHistorical(pair, width, bc){
                         currentBucket = new Date(currentBucket + period).getTime()
                     }
                 }
-                bars.push({x: currentBucket, o: dex.markets[pair.toLowerCase()].days[buckets[i]].o, h: dex.markets[pair.toLowerCase()].days[buckets[i]].t, l: dex.markets[pair.toLowerCase()].days[buckets[i]].b, c: dex.markets[pair.toLowerCase()].days[buckets[i]].c, v: dex.markets[pair.toLowerCase()].days[buckets[i]].v})
+                if(current.o){
+                    if(dex.markets[pair.toLowerCase()].days[buckets[i]].t > current.h)current.h = dex.markets[pair.toLowerCase()].days[buckets[i]].t
+                    if(dex.markets[pair.toLowerCase()].days[buckets[i]].b < current.l)current.l = dex.markets[pair.toLowerCase()].days[buckets[i]].b
+                    current.c = dex.markets[pair.toLowerCase()].days[buckets[i]].c
+                    current.v += dex.markets[pair.toLowerCase()].days[buckets[i]].v
+                } else {
+                    current.o = dex.markets[pair.toLowerCase()].days[buckets[i]].c
+                    current.h = dex.markets[pair.toLowerCase()].days[buckets[i]].c
+                    current.l = dex.markets[pair.toLowerCase()].days[buckets[i]].c
+                    current.v = dex.markets[pair.toLowerCase()].days[buckets[i]].v
+                }
+                if(buckets[i+1] && new Date(now - (3000 * (current_block - parseInt(buckets[i+1])))).getTime() > currentBucket + period){
+                    bars.push({x: currentBucket, o: current.o, h: current.h, l: current.l, c: current.c, v: current.v})
+                    currentBucket = new Date(currentBucket + period).getTime()
+                    current = {o:0, h:0, l:0, c:0, v:0}
+                } else if (!buckets[i+1]) {
+                    bars.push({x: currentBucket, o: current.o, h: current.h, l: current.l, c: current.c, v: current.v})
+                }
             } else {
                 console.log(new Date(now - (3000 * (current_block - parseInt(buckets[i])))), new Date(currentBucket))
             }
