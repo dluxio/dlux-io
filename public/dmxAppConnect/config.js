@@ -433,11 +433,247 @@ dmx.config({
                   },
                   {
                     "type": "array",
-                    "name": "sells"
+                    "name": "sells",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "amount"
+                      },
+                      {
+                        "type": "number",
+                        "name": "block"
+                      },
+                      {
+                        "type": "text",
+                        "name": "expire_path"
+                      },
+                      {
+                        "type": "number",
+                        "name": "fee"
+                      },
+                      {
+                        "type": "text",
+                        "name": "from"
+                      },
+                      {
+                        "type": "number",
+                        "name": "hbd"
+                      },
+                      {
+                        "type": "number",
+                        "name": "hive"
+                      },
+                      {
+                        "type": "text",
+                        "name": "rate"
+                      },
+                      {
+                        "type": "text",
+                        "name": "txid"
+                      },
+                      {
+                        "type": "text",
+                        "name": "type"
+                      },
+                      {
+                        "type": "text",
+                        "name": "key"
+                      },
+                      {
+                        "type": "object",
+                        "name": "hivenai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "hbdnai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "amountnai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "feenai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "type": "array",
-                    "name": "buys"
+                    "name": "buys",
+                    "sub": [
+                      {
+                        "type": "text",
+                        "name": "amount"
+                      },
+                      {
+                        "type": "number",
+                        "name": "block"
+                      },
+                      {
+                        "type": "text",
+                        "name": "expire_path"
+                      },
+                      {
+                        "type": "number",
+                        "name": "fee"
+                      },
+                      {
+                        "type": "text",
+                        "name": "from"
+                      },
+                      {
+                        "type": "number",
+                        "name": "hbd"
+                      },
+                      {
+                        "type": "number",
+                        "name": "hive"
+                      },
+                      {
+                        "type": "text",
+                        "name": "rate"
+                      },
+                      {
+                        "type": "text",
+                        "name": "txid"
+                      },
+                      {
+                        "type": "text",
+                        "name": "type"
+                      },
+                      {
+                        "type": "text",
+                        "name": "key"
+                      },
+                      {
+                        "type": "object",
+                        "name": "hivenai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "hbdnai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "amountnai",
+                        "sub": [
+                          {
+                            "type": "text",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "feenai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               },
@@ -448,62 +684,6 @@ dmx.config({
                   {
                     "type": "text",
                     "name": "buyBook"
-                  },
-                  {
-                    "type": "object",
-                    "name": "buyOrders",
-                    "sub": [
-                      {
-                        "type": "object",
-                        "name": "0.999001:DLUXQmSPWMuYLAYk5Wwhpswm2Z6wkKHpuY8vN1yuGPzsjq5AGT",
-                        "sub": [
-                          {
-                            "type": "number",
-                            "name": "amount"
-                          },
-                          {
-                            "type": "number",
-                            "name": "block"
-                          },
-                          {
-                            "type": "text",
-                            "name": "expire_path"
-                          },
-                          {
-                            "type": "number",
-                            "name": "fee"
-                          },
-                          {
-                            "type": "text",
-                            "name": "from"
-                          },
-                          {
-                            "type": "number",
-                            "name": "hbd"
-                          },
-                          {
-                            "type": "number",
-                            "name": "hive"
-                          },
-                          {
-                            "type": "number",
-                            "name": "rate"
-                          },
-                          {
-                            "type": "text",
-                            "name": "txid"
-                          },
-                          {
-                            "type": "text",
-                            "name": "type"
-                          },
-                          {
-                            "type": "text",
-                            "name": "key"
-                          }
-                        ]
-                      }
-                    ]
                   },
                   {
                     "type": "key_array",
@@ -536,8 +716,242 @@ dmx.config({
                     ]
                   },
                   {
+                    "type": "key_array",
+                    "name": "his",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "base_vol"
+                      },
+                      {
+                        "type": "number",
+                        "name": "block"
+                      },
+                      {
+                        "type": "text",
+                        "name": "id"
+                      },
+                      {
+                        "type": "text",
+                        "name": "price"
+                      },
+                      {
+                        "type": "number",
+                        "name": "t"
+                      },
+                      {
+                        "type": "text",
+                        "name": "target"
+                      },
+                      {
+                        "type": "number",
+                        "name": "target_vol"
+                      },
+                      {
+                        "type": "text",
+                        "name": "type"
+                      }
+                    ]
+                  },
+                  {
                     "type": "text",
                     "name": "sellBook"
+                  },
+                  {
+                    "type": "object",
+                    "name": "sellOrders",
+                    "sub": [
+                      {
+                        "type": "object",
+                        "name": "0.990000:DLUXQmUzjUidqXadLVxjQPjjPT5DGqN8YzNDM4PPyzb9vJ75Jv",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "expire_path"
+                          },
+                          {
+                            "type": "number",
+                            "name": "fee"
+                          },
+                          {
+                            "type": "text",
+                            "name": "from"
+                          },
+                          {
+                            "type": "number",
+                            "name": "hbd"
+                          },
+                          {
+                            "type": "number",
+                            "name": "hive"
+                          },
+                          {
+                            "type": "object",
+                            "name": "partial",
+                            "sub": [
+                              {
+                                "type": "object",
+                                "name": "1b78df812e7f51ad9c28adf0e445ec14ca24a20b",
+                                "sub": [
+                                  {
+                                    "type": "number",
+                                    "name": "coin"
+                                  },
+                                  {
+                                    "type": "number",
+                                    "name": "token"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "text",
+                            "name": "rate"
+                          },
+                          {
+                            "type": "text",
+                            "name": "txid"
+                          },
+                          {
+                            "type": "text",
+                            "name": "type"
+                          },
+                          {
+                            "type": "text",
+                            "name": "key"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "0.999000:DLUXQmPwVnRDnqVrN7SeYEHEoaMRrYyHWfuQTFANcisCtX6W1G",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "expire_path"
+                          },
+                          {
+                            "type": "number",
+                            "name": "fee"
+                          },
+                          {
+                            "type": "text",
+                            "name": "from"
+                          },
+                          {
+                            "type": "number",
+                            "name": "hbd"
+                          },
+                          {
+                            "type": "number",
+                            "name": "hive"
+                          },
+                          {
+                            "type": "text",
+                            "name": "rate"
+                          },
+                          {
+                            "type": "text",
+                            "name": "txid"
+                          },
+                          {
+                            "type": "text",
+                            "name": "type"
+                          },
+                          {
+                            "type": "text",
+                            "name": "key"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "0.99:DLUXQmUzjUidqXadLVxjQPjjPT5DGqN8YzNDM4PPyzb9vJ75Jv",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "expire_path"
+                          },
+                          {
+                            "type": "number",
+                            "name": "fee"
+                          },
+                          {
+                            "type": "text",
+                            "name": "from"
+                          },
+                          {
+                            "type": "number",
+                            "name": "hbd"
+                          },
+                          {
+                            "type": "number",
+                            "name": "hive"
+                          },
+                          {
+                            "type": "object",
+                            "name": "partial",
+                            "sub": [
+                              {
+                                "type": "object",
+                                "name": "1b78df812e7f51ad9c28adf0e445ec14ca24a20b",
+                                "sub": [
+                                  {
+                                    "type": "number",
+                                    "name": "coin"
+                                  },
+                                  {
+                                    "type": "number",
+                                    "name": "token"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "text",
+                            "name": "rate"
+                          },
+                          {
+                            "type": "text",
+                            "name": "txid"
+                          },
+                          {
+                            "type": "text",
+                            "name": "type"
+                          },
+                          {
+                            "type": "text",
+                            "name": "key"
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "type": "text",
@@ -545,7 +959,125 @@ dmx.config({
                   },
                   {
                     "type": "array",
-                    "name": "sells"
+                    "name": "sells",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "amount"
+                      },
+                      {
+                        "type": "number",
+                        "name": "block"
+                      },
+                      {
+                        "type": "text",
+                        "name": "expire_path"
+                      },
+                      {
+                        "type": "number",
+                        "name": "fee"
+                      },
+                      {
+                        "type": "text",
+                        "name": "from"
+                      },
+                      {
+                        "type": "number",
+                        "name": "hbd"
+                      },
+                      {
+                        "type": "number",
+                        "name": "hive"
+                      },
+                      {
+                        "type": "text",
+                        "name": "rate"
+                      },
+                      {
+                        "type": "text",
+                        "name": "txid"
+                      },
+                      {
+                        "type": "text",
+                        "name": "type"
+                      },
+                      {
+                        "type": "text",
+                        "name": "key"
+                      },
+                      {
+                        "type": "object",
+                        "name": "hivenai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "hbdnai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "amountnai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "feenai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "type": "array",
@@ -580,7 +1112,7 @@ dmx.config({
                         "name": "hive"
                       },
                       {
-                        "type": "number",
+                        "type": "text",
                         "name": "rate"
                       },
                       {
@@ -670,6 +1202,24 @@ dmx.config({
                     ]
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "type": "key_array",
+            "name": "stats",
+            "sub": [
+              {
+                "type": "number",
+                "name": "block"
+              },
+              {
+                "type": "text",
+                "name": "rate"
+              },
+              {
+                "type": "number",
+                "name": "vol"
               }
             ]
           },
@@ -1171,10 +1721,6 @@ dmx.config({
           {
             "type": "text",
             "name": "access-control-allow-origin"
-          },
-          {
-            "type": "text",
-            "name": "connection"
           },
           {
             "type": "text",

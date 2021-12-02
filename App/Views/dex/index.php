@@ -8,7 +8,7 @@ $path .= "/mod/header.php";
 include_once( $path );
 ?>
 <script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script> 
-<script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
@@ -46,6 +46,7 @@ include_once( $path );
 						 dmx-class:border-danger="dexapi.data.behind > 100"
 						 dmx-class:text-danger="dexapi.data.behind > 100"> DLUX is currently {{dexapi.data.behind}} blocks behind HIVE</div>
 		<div>Current price of HIVE: ${{hiveprice.data.hive.usd}}</div>
+			<div><input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none"></div>
 		</center>
       <div id="market" class="row text-center">
         <div class="mt-2 col-lg-3">
@@ -65,16 +66,16 @@ include_once( $path );
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              ? <br>
-              $? </div>
+              {{hivebuyorders[0].$key}}<br>
+              {{(hivebuyorders[0].$key*hiveusd.value).formatCurrency()}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
-              ? <br>
-              $? </div>
+              {{hivesellorders[0].$key}}<br>
+              {{(hivesellorders[0].$key*hiveusd.value).formatCurrency()}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              ? <br>
-              $? </div>
+              {{hiveorderhistory[0].price}} <br>
+              {{(hiveorderhistory[0].price*hiveusd.value).formatCurrency()}} </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
               ? <br>
@@ -284,7 +285,7 @@ include_once( $path );
                 </thead>
                 <tbody role="rowgroup">
                   <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:buyorders="hivebuys.data.groupBy('rate')">
+                  <tr class="" role="row" dmx-repeat:hivebuyorders="hivebuys.data.groupBy('rate')">
                     <td aria-colindex="1" role="cell" class=""></td>
                     <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
                     <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
@@ -308,7 +309,7 @@ include_once( $path );
                 </thead>
                 <tbody role="rowgroup">
                   <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:sellorders="hivesells.data.groupBy('rate')">
+                  <tr class="" role="row" dmx-repeat:hivesellorders="hivesells.data.groupBy('rate')">
                     <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
                     <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                     <td aria-colindex="3" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
@@ -337,7 +338,7 @@ include_once( $path );
                 </thead>
                 <tbody role="rowgroup">
                   <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:orderhistory="recenthive.data">
+                  <tr class="" role="row" dmx-repeat:hiveorderhistory="recenthive.data">
                     <td aria-colindex="1" role="cell" class="" dmx-class:text-danger="type == 'sell'" dmx-class:text-success="type == 'buy'">{{price}}</td>
                     <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
 					<td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
@@ -366,7 +367,7 @@ include_once( $path );
                 </thead>
                 <tbody role="rowgroup">
                   <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:buyorders="hbdbuys.data.groupBy('rate')">
+                  <tr class="" role="row" dmx-repeat:hbdbuyorders="hbdbuys.data.groupBy('rate')">
                     <td aria-colindex="1" role="cell" class=""></td>
                     <td aria-colindex="2" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
                     <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
@@ -390,7 +391,7 @@ include_once( $path );
                 </thead>
                 <tbody role="rowgroup">
                   <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:sellorders="hbdsells.data.groupBy('rate')">
+                  <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.data.groupBy('rate')">
                     <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
                     <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                     <td aria-colindex="3" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
@@ -419,7 +420,7 @@ include_once( $path );
                 </thead>
                 <tbody role="rowgroup">
                   <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:orderhistory="recenthbd.data">
+                  <tr class="" role="row" dmx-repeat:hbdorderhistory="recenthbd.data">
                     <td aria-colindex="1" role="cell" class="" dmx-class:text-danger="type == 'sell'" dmx-class:text-success="type == 'buy'">{{price}}</td>
                     <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
 					<td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
