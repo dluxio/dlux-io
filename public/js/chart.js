@@ -14,15 +14,12 @@ function lineData() { return barData.map(d => { return { x: d.x, y: d.c} }) };
 function getHistorical(pair, width, bc){
     const numbars = bc || 100
     const period = width || 3600000 * 24 //days
-    console.log('fetching history...')
     promises = [fetch(`https://token.dlux.io/dex`)]
     Promise.all(promises).then(res =>
     Promise.all(res.map(res => res.json()))
     ).then(jsons => {
         const now = new Date().getTime()
-        console.log({now})
         var startdate = new Date(now - (period * numbars)).getTime()
-        console.log({startdate}, {now})
         var currentBucket = startdate
         const dex = jsons[0]
         const current_block = dex.stats.lastIBlock
@@ -104,6 +101,7 @@ function getHistorical(pair, width, bc){
                 }
             }
         }
+        console.log('Chart data:', bars)
         return bars
     })
 }
