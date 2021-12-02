@@ -64,7 +64,6 @@ function getHistorical(pair, width, bc){
                         l: close,
                         c: close
                     })
-                if(bars.length <= barCount)break makechart
             }
         return bars;
     })
