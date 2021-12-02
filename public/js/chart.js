@@ -16,17 +16,8 @@ function getHistorical(pair, width, bc){
     fetch(`https://token.dlux.io/api/historical/${pair.toUpperCase()}_DLUX?depth=200`)
     .then(res => res.json())
     .then(data => {
-        var arr = data.sell
-        console.log(data.buy, data.sell)
-        for (var i = 0; i < arr.length; i++) {
-            for(var j = 0; j < data.buy.length; j++){
-                if(arr[i].trade_timestamp < data.buy[j].trade_timestamp){
-                    arr.splice(i, 0, data.buy.shift())
-                    j--
-                }
-            }
-        }
-        if (!arr.length)arr = data.buy
+        var arr = data.sell.concat(data.buy)
+        arr.sort((x, y) => { return x.trade_timestamp - y.trade_timestamp })
         console.log(arr)
         var bars = []
         var barnum = 1
@@ -76,104 +67,33 @@ var chart = new Chart(ctx, {
 	data: {
 		datasets: [{
 			label: `DLUX/${pair}`,
-			data: barData
+			data: barData,
+            color: {
+                up: '21ffb5',
+                down: '#fb00ff',
+                unchanged: '#033efd'
+            }
 		}]
 	}
 });
 
-function randomBar(date, lastClose) {
-	var open = +randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
-	var close = +randomNumber(open * 0.95, open * 1.05).toFixed(2);
-	var high = +randomNumber(Math.max(open, close), Math.max(open, close) * 1.1).toFixed(2);
-	var low = +randomNumber(Math.min(open, close) * 0.9, Math.min(open, close)).toFixed(2);
-	return {
-		x: date.valueOf(),
-		o: open,
-		h: high,
-		l: low,
-		c: close
-	};
-
-}
-
-function getRandomData(dateStr, count) {
-	var date = luxon.DateTime.fromRFC2822(dateStr);
-	var data = [randomBar(date, 30)];
-	while (data.length < count) {
-		date = date.plus({days: 1});
-		if (date.weekday <= 5) {
-			data.push(randomBar(date, data[data.length - 1].c));
-		}
-	}
-	return data;
-}
-
-var update = function() {
-	var dataset = chart.config.data.datasets[0];
-
-	// candlestick vs ohlc
-	var type = document.getElementById('type').value;
-	dataset.type = type;
-
-	// linear vs log
-	var scaleType = document.getElementById('scale-type').value;
-	chart.config.options.scales.y.type = scaleType;
-
-	// color
-	var colorScheme = document.getElementById('color-scheme').value;
-	if (colorScheme === 'dlux') {
-		dataset.color = {
-			up: '21ffb5',
-			down: '#fb00ff',
-			unchanged: '#033efd',
-		};
-	} else {
-		delete dataset.color;
-	}
-
-	// border
-	var border = document.getElementById('border').value;
-	var defaultOpts = Chart.defaults.elements[type];
-	if (border === 'true') {
-		dataset.borderColor = defaultOpts.borderColor;
-	} else {
-		dataset.borderColor = {
-			up: defaultOpts.color.up,
-			down: defaultOpts.color.down,
-			unchanged: defaultOpts.color.up
-		};
-	}
-
-	// mixed charts
-	var mixed = document.getElementById('mixed').value;
-	if(mixed === 'true') {
-		chart.config.data.datasets = [
+var update = function(pr, wd, bc) {
+    pair = pr
+    width = wd
+    barCount = bc
+	chart.config.data.datasets = [
 			{
-				label: 'CHRT - Chart.js Corporation',
-				data: barData
-			},
-			{
-				label: 'Close price',
-				type: 'line',
-				data: lineData()
+				label: `DLUX/${pair}`,
+				data: getHistorical(pair, width, barCount)
 			}	
 		]
-	}
-	else {
-		chart.config.data.datasets = [
-			{
-				label: 'CHRT - Chart.js Corporation',
-				data: barData
-			}	
-		]
-	}
 
 	chart.update();
 };
 
-/*
-document.getElementById('update').addEventListener('click', update);
 
+document.getElementById('refreshChart').addEventListener('click', update);
+/*
 document.getElementById('randomizeData').addEventListener('click', function() {
 	barData = getRandomData(initialDateStr, barCount);
 	update();
