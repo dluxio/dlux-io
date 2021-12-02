@@ -84,16 +84,16 @@ function getHistorical(pair, width, bc){
                     }
                 }
                 if(current.o){
-                    if(dex.markets[pair.toLowerCase()].his[items[i]].price > current.h)current.h = dex.markets[pair.toLowerCase()].his[items[i]].price
-                    if(dex.markets[pair.toLowerCase()].his[items[i]].price < current.l)current.l = dex.markets[pair.toLowerCase()].his[items[i]].price
-                    current.c = dex.markets[pair.toLowerCase()].his[items[i]].price
-                    current.v += dex.markets[pair.toLowerCase()].his[items[i]].target_vol
+                    if(parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price) > current.h)current.h = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                    if(parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price) < current.l)current.l = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                    current.c = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                    current.v += parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].target_vol)
                 } else {
-                    current.o = dex.markets[pair.toLowerCase()].his[items[i]].price
-                    current.h = dex.markets[pair.toLowerCase()].his[items[i]].price
-                    current.l = dex.markets[pair.toLowerCase()].his[items[i]].price
-                    current.c = dex.markets[pair.toLowerCase()].his[items[i]].price
-                    current.v = dex.markets[pair.toLowerCase()].his[items[i]].varget_vol
+                    current.o = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                    current.h = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                    current.l = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                    current.c = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                    current.v = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].target_vol)
                 }
                 if(items[i+1] && new Date(now - (3000 * (current_block - parseInt(items[i+1].split(':')[0])))).getTime() > currentBucket + period){
                     bars.push({x: currentBucket, o: current.o, h: current.h, l: current.l, c: current.c, v: current.v})
