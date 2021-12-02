@@ -23,6 +23,7 @@ function getHistorical(pair, width, bc){
         const now = new Date().getTime()
         console.log({now})
         var startdate = new Date(now - (period * numbars)).getTime()
+        console.log({startdate}, {now})
         var currentBucket = startdate
         const dex = jsons[1], recent = jsons[0]
         const current_block = dex.stats.lastIBlock
