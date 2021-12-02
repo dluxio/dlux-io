@@ -496,7 +496,7 @@ include_once( $path );
       } catch (e) {console.log(e)}
       console.log(HIVES)
     }, 10000);
-})();
+});
 })()
 </script>
 	<script type="text/javascript" src="/js/chart.js"></script>
