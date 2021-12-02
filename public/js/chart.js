@@ -26,7 +26,7 @@ function getHistorical(pair, width, bc){
                 console.log(barcount)
                 barnum++
             }
-            if(i && now - arr[-1].trade_timestamp > (width * barnum)){
+            if(i && now - arr[i-1].trade_timestamp > (width * barnum)){
                 thisbar.push(arr.shift())
             } else {
                 let open = 0, close = 0, high = 0, low = 0, vol = 0
