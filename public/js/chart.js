@@ -30,15 +30,15 @@ function getHistorical(pair, width, bc){
         buckets.sort(function (a,b){return parseInt(a) - parseInt(b)})
         var bars = []
         for (var i = 0; i < buckets.length; i++) {
-            console.log(Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i])))).getTime(), startdate.getTime())
-            if (Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i])))) > startdate.getTime()) {
+            console.log(new Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i])))).getTime(), startdate.getTime())
+            if (new Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i])))) > startdate.getTime()) {
                 if(!bars.length){
-                    while(Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i]))).getTime()) > currentBucket.getTime() + period){
+                    while(new Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i]))).getTime()) > currentBucket.getTime() + period){
                         bars.push({x: currentBucket, o: 0, h: 0, l: 0, c: 0, v: 0})
                         currentBucket = new Date(currentBucket.getTime() + period)
                     }
                 } else {
-                    while(Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i]))).getTime()) > currentBucket.getTime() + period){
+                    while(new Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i]))).getTime()) > currentBucket.getTime() + period){
                         bars.push({x: currentBucket, o: bars[bars.length - 1].c, h: bars[bars.length - 1].c, l: bars[bars.length - 1].c, c: bars[bars.length - 1].c, v: 0})
                         currentBucket = new Date(currentBucket.getTime() + period)
                     }
