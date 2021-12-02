@@ -27,17 +27,16 @@ function getHistorical(pair, width, bc){
             while(!(now - arr[i].trade_timestamp > (width * (bars.length + 1))) && bars.length <= barCount){
                 console.log(`len:`, bars.length)
                 bars.push({
-                        x: now - (width * (bars.length + 1)),
-                        o: close,
-                        h: close,
-                        l: close,
-                        c: close
+                        date: new Date(now - (width * (bars.length + 1))),
+                        o: parseFloat(close),
+                        h: parseFloat(close),
+                        l: parseFloat(close),
+                        c: parseFloat(close)
                     })
                 if(bars.length <= barCount)break makechart
             }
             if(i && now - arr[i-1].trade_timestamp > (width * barnum)){
                 thisbar.push(arr[i])
-                open = arr[i].price, close = arr[i].price, high = arr[i].price, low = arr[i].price
             } else {
                 for(var j = thisbar.length - 1; j >= 0; j--){
                     if(j == thisbar.length)close = thisbar[j].price
@@ -46,23 +45,24 @@ function getHistorical(pair, width, bc){
                     if(thisbar[j].price < low)low = thisbar[j].price
                 }
                 bars.push({
-                    x: now - (width * (barnum)),
-                    o: open,
-                    h: high,
-                    l: low,
-                    c: close
+                    date: new Date(now - (width * (bars.length + 1))),
+                    o: parseFloat(open),
+                    h: parseFloat(high),
+                    l: parseFloat(low),
+                    c: parseFloat(close)
                 })
+                open = arr[i].price, close = arr[i].price, high = arr[i].price, low = arr[i].price
             }
             barnum++
         }
         console.log(bars)
         while(bars.length <= barCount){
                 bars.push({
-                        x: now - (width * (bars.length + 1)),
-                        o: close,
-                        h: close,
-                        l: close,
-                        c: close
+                        date: new Date(now - (width * (bars.length + 1))),
+                        o: parseFloat(close),
+                        h: parseFloat(close),
+                        l: parseFloat(close),
+                        c: parseFloat(close)
                     })
             }
         return bars;

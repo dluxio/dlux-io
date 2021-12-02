@@ -339,6 +339,9 @@ dmx.Formatters("global", {
         },
         toDate: function(t) {
             return new Date(1e3 * t).toISOString();
+        },
+        toBetterDate: function(t) {
+            return new Date(t).toISOString().substr(5,11);
         }
     }),
     (function() {
