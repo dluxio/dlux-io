@@ -21,6 +21,7 @@ function getHistorical(pair, width, bc){
     Promise.all(res.map(res => res.json()))
     ).then(jsons => {
         const now = new Date()
+        console.log(now, now.toValue())
         var startdate = Date(now - (period * numbars))
         var currentBucket = startdate
         const dex = jsons[1], recent = jsons[0]
