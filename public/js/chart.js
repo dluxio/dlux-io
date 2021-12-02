@@ -45,7 +45,7 @@ function getHistorical(pair, width, bc){
                 }
                 bars.push({x: currentBucket, o: dex.markets[pair.toLowerCase()].days[buckets[i]].o, h: dex.markets[pair.toLowerCase()].days[buckets[i]].t, l: dex.markets[pair.toLowerCase()].days[buckets[i]].b, c: dex.markets[pair.toLowerCase()].days[buckets[i]].c, v: dex.markets[pair.toLowerCase()].days[buckets[i]].v})
             } else {
-                console.log(new Date(now - (3000 * (current_block - parseInt(buckets[i])))))
+                console.log(new Date(now - (3000 * (current_block - parseInt(buckets[i])))), new Date(currentBucket))
             }
         }
         console.log(bars)
