@@ -52,6 +52,7 @@ function getHistorical(pair, width, bc){
                     current.o = dex.markets[pair.toLowerCase()].days[buckets[i]].c
                     current.h = dex.markets[pair.toLowerCase()].days[buckets[i]].c
                     current.l = dex.markets[pair.toLowerCase()].days[buckets[i]].c
+                    current.c = dex.markets[pair.toLowerCase()].days[buckets[i]].c
                     current.v = dex.markets[pair.toLowerCase()].days[buckets[i]].v
                 }
                 if(buckets[i+1] && new Date(now - (3000 * (current_block - parseInt(buckets[i+1])))).getTime() > currentBucket + period){
