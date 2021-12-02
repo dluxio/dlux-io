@@ -8,7 +8,7 @@ $path .= "/mod/header.php";
 include_once( $path );
 ?>
 <script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script> 
-<script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
@@ -218,7 +218,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellHiveTotal" id="sellhivetotal" aria-labelledby="sell-hive-total-label" dmx-show="buyhive.checked && selllimit.checked" >
+              <div class="form-group" id="sellhivetotal" aria-labelledby="sell-hive-total-label" for="sellHiveTotal" dmx-show="buyhive.checked && selllimit.checked" >
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -320,28 +320,23 @@ include_once( $path );
 		 <div id="tradeHistory">
         <div class="row">
           <div class="mt-3 col-12">
-            <h4>Trade History</h4>
+            <h4>Trade History (DLUX:HIVE)</h4>
             <div class="table-responsive">
               <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="tradehistorytable">
                 <thead role="rowgroup" class="">
-                  <tr role="row" class="">
-                    <th role="columnheader" scope="col" aria-colindex="1" class="">ID</th>
-                    <th role="columnheader" scope="col" aria-colindex="2" class="">Price</th>
-                    <th role="columnheader" scope="col" aria-colindex="3" class="">Base Volume</th>
-                    <th role="columnheader" scope="col" aria-colindex="4" class="">Target Volume</th>
-                    <th role="columnheader" scope="col" aria-colindex="5" class=""><div>Timestamp</div></th>
-                    <th role="columnheader" scope="col" aria-colindex="6" class=""><div>Type</div></th>
+                  <tr role="row">
+                    
+                    <th role="columnheader" scope="col" aria-colindex="1" class="" >Price</th>
+                    <th role="columnheader" scope="col" aria-colindex="2" class="">Qty</th>
+					  <th role="columnheader" scope="col" aria-colindex="3" class="">Timestamp</th>
                   </tr>
                 </thead>
                 <tbody role="rowgroup">
                   <!--repeat region-->
                   <tr class="" role="row" dmx-repeat:orderhistory="recenthive.data">
-                    <td aria-colindex="1" role="cell" class="">{{trade_id}}</td>
-                    <td aria-colindex="2" role="cell" class="">{{price}}</td>
-                    <td aria-colindex="3" role="cell" class="">{{base_volume}}</td>
-                    <td aria-colindex="4" role="cell" class="">{{target_volume}}</td>
-                    <td aria-colindex="5" role="cell" class="">{{trade_timestamp}}</td>
-                    <td aria-colindex="5" role="cell" class="">{{type}}</td>
+                    <td aria-colindex="1" role="cell" class="" dmx-class:text-danger="type == 'sell'" dmx-class:text-success="type == 'buy'">{{price}}</td>
+                    <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
+					<td aria-colindex="3" role="cell" class="">{{trade_timestamp}}</td>
                   </tr>
                 </tbody>
               </table>
