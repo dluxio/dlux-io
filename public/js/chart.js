@@ -21,11 +21,18 @@ function getHistorical(pair, width, bc){
         var barnum = 1
         let thisbar = []
         const now = new Date()
-        for (var i = arr.length -1; i >= 0 ; i--) {
+        let open = arr[arr.length -1].price, close = arr[arr.length -1].price, high = arr[arr.length -1].price, low = arr[arr.length -1].price, vol = 0
+        makechart: for (var i = arr.length -1; i >= 0 ; i--) {
             console.log(thisbar)
-            while(!(now - arr[i].trade_timestamp > (width * barnum)) && barnum <= barCount){
-                console.log(barcount)
-                barnum++
+            while(!(now - arr[i].trade_timestamp > (width * (bars.length + 1))) && bars.length <= barCount){
+                bars.push({
+                        x: now - (width * (bars.length + 1)),
+                        o: close,
+                        h: close,
+                        l: close,
+                        c: close
+                    })
+                if(bars.length <= barCount)break makechart
             }
             if(i && now - arr[i-1].trade_timestamp > (width * barnum)){
                 thisbar.push(arr[i])
