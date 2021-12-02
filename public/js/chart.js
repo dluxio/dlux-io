@@ -1,7 +1,7 @@
-var barCount = 60;
+var barCount = 100;
 var now = new Date()
 var pair = 'HIVE'
-var width = 3600000
+var width = 3600000 * 24
 var initialDateStr = new Date(now - (width * barCount)).toISOString()
 
 var ctx = document.getElementById('chart').getContext('2d');
