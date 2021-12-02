@@ -13,24 +13,20 @@ function lineData() { return barData.map(d => { return { x: d.x, y: d.c} }) };
 
 function getHistorical(pair, width, bc){
     console.log('fetching history...')
-    fetch(`https://token.dlux.io/api/historical/${pair.toUpperCase()}_DLUX?depth=200`)
+    fetch(`https://token.dlux.io/api/recent/${pair.toUpperCase()}_DLUX?depth=200`)
     .then(res => res.json())
     .then(data => {
-        console.log(data.sell,data.buy)
-        var arr = [...data.sell, ...data.buy]
-        console.log(arr)
-        arr.sort((x, y) => { return x.trade_timestamp - y.trade_timestamp })
-        console.log(arr)
+        var arr = data.recent_trades
         var bars = []
         var barnum = 1
         let thisbar = []
         const now = new Date()
-        for (var i = 0; i < arr.length; i++) {
+        for (var i = arr.length -1; i >= 0 ; i++) {
             while(!(now - arr[i].trade_timestamp > (width * barnum)) && barnum <= barCount){
                 console.log(barcount)
                 barnum++
             }
-            if(now - arr[1].trade_timestamp > (width * barnum)){
+            if(i && now - arr[-1].trade_timestamp > (width * barnum)){
                 thisbar.push(arr.shift())
             } else {
                 let open = 0, close = 0, high = 0, low = 0, vol = 0
@@ -50,7 +46,7 @@ function getHistorical(pair, width, bc){
                     })
                 }
                 bars.push({
-                    x: now - (width * (barnum - 1)),
+                    x: now - (width * (barnum)),
                     o: open,
                     h: high,
                     l: low,
