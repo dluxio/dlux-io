@@ -17,6 +17,7 @@ include_once( $path );
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
+<dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hbd&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/" ></dmx-api-datasource>
 <dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://token.dlux.io/api/recent/HIVE_DLUX" dmx-param:depth="200"></dmx-api-datasource>
 <dmx-api-datasource id="recenthbdapi" is="dmx-fetch" url="https://token.dlux.io/api/recent/HBD_DLUX" dmx-param:depth="200"></dmx-api-datasource>
@@ -43,7 +44,9 @@ include_once( $path );
 						 dmx-class:border-warning="dexapi.data.behind >= 30"
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
 						 dmx-class:border-danger="dexapi.data.behind > 100"
-						 dmx-class:text-danger="dexapi.data.behind > 100"> DLUX is currently {{dexapi.data.behind}} blocks behind HIVE</div></center>
+						 dmx-class:text-danger="dexapi.data.behind > 100"> DLUX is currently {{dexapi.data.behind}} blocks behind HIVE</div>
+		<div>Current price of HIVE: ${{hiveprice.data.hive.usd}}</div>
+		</center>
       <div id="market" class="row text-center">
         <div class="mt-2 col-lg-3">
           <h5>Market</h5>

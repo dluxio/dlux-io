@@ -1235,6 +1235,106 @@ dmx.config({
         }
       ],
       "outputType": "array"
-    }
+    },
+    "hiveprice": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "object",
+            "name": "hive",
+            "sub": [
+              {
+                "type": "number",
+                "name": "usd"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "access-control-allow-headers"
+          },
+          {
+            "type": "text",
+            "name": "access-control-allow-methods"
+          },
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "access-control-expose-headers"
+          },
+          {
+            "type": "text",
+            "name": "access-control-max-age"
+          },
+          {
+            "type": "text",
+            "name": "access-control-request-method"
+          },
+          {
+            "type": "text",
+            "name": "alternate-protocol"
+          },
+          {
+            "type": "text",
+            "name": "cache-control"
+          },
+          {
+            "type": "text",
+            "name": "cf-cache-status"
+          },
+          {
+            "type": "text",
+            "name": "cf-ray"
+          },
+          {
+            "type": "text",
+            "name": "content-encoding"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "expect-ct"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "vary"
+          },
+          {
+            "type": "text",
+            "name": "x-request-id"
+          },
+          {
+            "type": "text",
+            "name": "x-runtime"
+          }
+        ]
+      }
+    ]
   }
 });
