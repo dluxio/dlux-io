@@ -7,7 +7,8 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-
+<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script> 
+<script type="text/javascript" src="/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
@@ -263,12 +264,13 @@ include_once( $path );
           </div>
         </div>
       </div>
-      <div id="marketOrders">
+	<div id="hiveData"  dmx-show="buyhive.checked">
+      <div id="hiveMarketOrders">
         <div class="row">
           <div class="mt-3 col-md-6">
             <h4>Buy Orders</h4>
             <div class="table-responsive">
-              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="buy-order-table">
+              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivebuyordertable">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
                     <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HIVE</th>
@@ -280,7 +282,7 @@ include_once( $path );
                 <tbody role="rowgroup">
                   <!--repeat region-->
                   <tr class="" role="row" dmx-repeat:buyorders="hivebuys.data.groupBy('rate')">
-                    <td aria-colindex="1" role="cell" class="">?</td>
+                    <td aria-colindex="1" role="cell" class=""></td>
                     <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
                     <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                     <td aria-colindex="4" role="cell" class=""><a href="#">{{$key}}</a></td>
@@ -292,7 +294,7 @@ include_once( $path );
           <div class="mt-3 col-md-6">
             <h4>Sell Orders</h4>
             <div class="table-responsive">
-              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="sell-orders-table">
+              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivesellorderstable">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
                     <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
@@ -307,7 +309,7 @@ include_once( $path );
                     <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
                     <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                     <td aria-colindex="3" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
-                    <td aria-colindex="4" role="cell" class="">?</td>
+                    <td aria-colindex="4" role="cell" class=""></td>
                   </tr>
                 </tbody>
                 <!---->
@@ -316,12 +318,12 @@ include_once( $path );
           </div>
         </div>
       </div>
-		 <div id="tradeHistory">
+		 <div id="hiveTradeHistory">
         <div class="row">
           <div class="mt-3 col-12">
-            <h4>Trade History (DLUX:HIVE)</h4>
+            <h4>Trade History</h4>
             <div class="table-responsive">
-              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="tradehistorytable">
+              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivetradehistorytable">
                 <thead role="rowgroup" class="">
                   <tr role="row">
                     
@@ -344,38 +346,89 @@ include_once( $path );
         </div>
       </div>
     </div>
-    <div class="d-none">
-      <div dmx-repeat:repeat1="hivebuys.data" >
-        <div class="d-flex text-white flex-column flex-wrap">
-          <div>Amount: {{amount}} </div>
-          <div>Block: {{block}} </div>
-          <div>Expire Path: {{expire_path}} </div>
-          <div>Fee: {{fee}} </div>
-          <div>From: {{from}} </div>
-          <div>HBD: {{hbd}} </div>
-          <div>HIVE: {{hive}} </div>
-          <div>Rate: {{rate}} </div>
-          <div>Txid: {{txid}} </div>
-          <div>Type: {{type}} </div>
-          <div>Key: {{key}} </div>
+	<div id="hbdData"  dmx-show="buyhbd.checked">
+      <div id="hbdMarketOrders">
+        <div class="row">
+          <div class="mt-3 col-md-6">
+            <h4>Buy Orders</h4>
+            <div class="table-responsive">
+              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdbuyordertable">
+                <thead role="rowgroup" class="">
+                  <tr role="row" class="">
+                    <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HBD</th>
+                    <th role="columnheader" scope="col" aria-colindex="2" class=""><div>HBD</div></th>
+                    <th role="columnheader" scope="col" aria-colindex="3" class="">DLUX</th>
+                    <th role="columnheader" scope="col" aria-colindex="4" class=""><div>BID</div></th>
+                  </tr>
+                </thead>
+                <tbody role="rowgroup">
+                  <!--repeat region-->
+                  <tr class="" role="row" dmx-repeat:buyorders="hbdbuys.data.groupBy('rate')">
+                    <td aria-colindex="1" role="cell" class=""></td>
+                    <td aria-colindex="2" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
+                    <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
+                    <td aria-colindex="4" role="cell" class=""><a href="#">{{$key}}</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="mt-3 col-md-6">
+            <h4>Sell Orders</h4>
+            <div class="table-responsive">
+              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdsellorderstable">
+                <thead role="rowgroup" class="">
+                  <tr role="row" class="">
+                    <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
+                    <th role="columnheader" scope="col" aria-colindex="2" class="">DLUX</th>
+                    <th role="columnheader" scope="col" aria-colindex="3" class=""><div>HBD</div></th>
+                    <th role="columnheader" scope="col" aria-colindex="4" class="">TOTAL HBD</th>
+                  </tr>
+                </thead>
+                <tbody role="rowgroup">
+                  <!--repeat region-->
+                  <tr class="" role="row" dmx-repeat:sellorders="hbdsells.data.groupBy('rate')">
+                    <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
+                    <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
+                    <td aria-colindex="3" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
+                    <td aria-colindex="4" role="cell" class=""></td>
+                  </tr>
+                </tbody>
+                <!---->
+              </table>
+            </div>
+          </div>
         </div>
       </div>
-      <div dmx-repeat:repeat2="hivesells.data" >
-        <div class="d-flex text-white flex-column flex-wrap">
-          <div>Amount: {{amount}} </div>
-          <div>Block: {{block}} </div>
-          <div>Expire Path: {{expire_path}} </div>
-          <div>Fee: {{fee}} </div>
-          <div>From: {{from}} </div>
-          <div>HBD: {{hbd}} </div>
-          <div>HIVE: {{hive}} </div>
-          <div>Rate: {{rate}} </div>
-          <div>Txid: {{txid}} </div>
-          <div>Type: {{type}} </div>
-          <div>Key: {{key}} </div>
+		 <div id="hbdTradeHistory">
+        <div class="row">
+          <div class="mt-3 col-12">
+            <h4>Trade History</h4>
+            <div class="table-responsive">
+              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdtradehistorytable">
+                <thead role="rowgroup" class="">
+                  <tr role="row">
+                    
+                    <th role="columnheader" scope="col" aria-colindex="1" class="" >Price</th>
+                    <th role="columnheader" scope="col" aria-colindex="2" class="">Qty</th>
+					  <th role="columnheader" scope="col" aria-colindex="3" class="">Timestamp</th>
+                  </tr>
+                </thead>
+                <tbody role="rowgroup">
+                  <!--repeat region-->
+                  <tr class="" role="row" dmx-repeat:orderhistory="recenthbd.data">
+                    <td aria-colindex="1" role="cell" class="" dmx-class:text-danger="type == 'sell'" dmx-class:text-success="type == 'buy'">{{price}}</td>
+                    <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
+					<td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+	  </div>
   </div>
 </main>
 <?php
