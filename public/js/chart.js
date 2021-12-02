@@ -12,60 +12,41 @@ var barData = getHistorical(pair, width, barCount);
 function lineData() { return barData.map(d => { return { x: d.x, y: d.c} }) };
 
 function getHistorical(pair, width, bc){
+    const numbars = bc || 100
+    const period = width || 3600000 * 24 //days
     console.log('fetching history...')
-    fetch(`https://token.dlux.io/api/recent/${pair.toUpperCase()}_DLUX?depth=200`)
-    .then(res => res.json())
-    .then(data => {
-        var arr = data.recent_trades
+    promises = [fetch(`https://token.dlux.io/api/recent/${pair.toUpperCase()}_DLUX?depth=200`)]
+    promises.push(fetch(`https://token.dlux.io/dex`))
+    Promise.all(promises).then(res =>
+    Promise.all(res.map(res => res.json()))
+    ).then(jsons => {
+        const now = new Date()
+        var startdate = Date(now - (period * numbars))
+        var currentBucket = startdate
+        const dex = jsons[1], recent = jsons[0]
+        const current_block = dex.stats.lastIBlock
+        const buckets = Object.keys(dex.markets[pair.toLowerCase()].days)
+        buckets.sort(function (a,b){return parseInt(a) - parseInt(b)})
         var bars = []
-        var barnum = 1
-        let thisbar = []
-        const now = Date.now()
-        let open = arr[arr.length -1].price, close = arr[arr.length -1].price, high = arr[arr.length -1].price, low = arr[arr.length -1].price, vol = 0
-        makechart: for (var i = arr.length -1; i >= 0 ; i--) {
-            console.log(now, arr[i].trade_timestamp , (width * (bars.length + 1)) , bars.length , barCount)
-            while(!(now - arr[i].trade_timestamp > (width * (bars.length + 1))) && bars.length <= barCount){
-                console.log(`len:`, bars.length)
-                bars.push({
-                        x: Date(now - (width * (bars.length + 1))).valueOf(),
-                        o: parseFloat(close),
-                        h: parseFloat(close),
-                        l: parseFloat(close),
-                        c: parseFloat(close)
-                    })
-                if(bars.length <= barCount)break makechart
-            }
-            if(i && now - arr[i-1].trade_timestamp > (width * barnum)){
-                thisbar.push(arr[i])
-            } else {
-                for(var j = thisbar.length - 1; j >= 0; j--){
-                    if(j == thisbar.length)close = thisbar[j].price
-                    if(j == 0)open = thisbar[j].price
-                    if(thisbar[j].price > high)high = thisbar[j].price
-                    if(thisbar[j].price < low)low = thisbar[j].price
+        for (var i = 0; i < buckets.length; i++) {
+            console.log(Date(now - (3000 * (current_block - parseInt(buckets[i])))), startdate)
+            if (Date(now - (3000 * (current_block - parseInt(buckets[i])))) > startdate) {
+                if(!bars.length){
+                    while(Date(now - (3000 * (current_block - parseInt(buckets[i])))) > currentBucket + period){
+                        bars.push({x: currentBucket, o: 0, h: 0, l: 0, c: 0, v: 0})
+                        currentBucket = new Date(currentBucket.getTime() + period)
+                    }
+                } else {
+                    while(Date(now - (3000 * (current_block - parseInt(buckets[i])))) > currentBucket + period){
+                        bars.push({x: currentBucket, o: bars[bars.length - 1].c, h: bars[bars.length - 1].c, l: bars[bars.length - 1].c, c: bars[bars.length - 1].c, v: 0})
+                        currentBucket = new Date(currentBucket.getTime() + period)
+                    }
                 }
-                bars.push({
-                    x: Date(now - (width * (bars.length + 1))).valueOf(),
-                    o: parseFloat(open),
-                    h: parseFloat(high),
-                    l: parseFloat(low),
-                    c: parseFloat(close)
-                })
-                open = arr[i].price, close = arr[i].price, high = arr[i].price, low = arr[i].price
+                bars.push({x: currentBucket, o: dex.markets[pair.toLowerCase()].days[buckets[i]].o, h: dex.markets[pair.toLowerCase()].days[buckets[i]].t, l: dex.markets[pair.toLowerCase()].days[buckets[i]].b, c: dex.markets[pair.toLowerCase()].days[buckets[i]].c, v: dex.markets[pair.toLowerCase()].days[buckets[i]].v})
             }
-            barnum++
         }
         console.log(bars)
-        while(bars.length <= barCount){
-                bars.push({
-                        x: Date(now - (width * (bars.length + 1))).valueOf(),
-                        o: parseFloat(close),
-                        h: parseFloat(close),
-                        l: parseFloat(close),
-                        c: parseFloat(close)
-                    })
-            }
-        return bars;
+        return bars
     })
 }
 
