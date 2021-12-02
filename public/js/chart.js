@@ -22,7 +22,7 @@ function getHistorical(pair, width, bc){
     ).then(jsons => {
         const now = new Date()
         console.log({now})
-        var startdate = Date(now.getTime() - (period * numbars))
+        var startdate = new Date(now.getTime() - (period * numbars)).getTime()
         var currentBucket = startdate
         const dex = jsons[1], recent = jsons[0]
         const current_block = dex.stats.lastIBlock
@@ -30,17 +30,17 @@ function getHistorical(pair, width, bc){
         buckets.sort(function (a,b){return parseInt(a) - parseInt(b)})
         var bars = []
         for (var i = 0; i < buckets.length; i++) {
-            console.log(new Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i])))).getTime(), startdate.getTime())
+            console.log(new Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i])))).getTime(), startdate)
             if (new Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i])))) > startdate.getTime()) {
                 if(!bars.length){
-                    while(new Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i]))).getTime()) > currentBucket.getTime() + period){
+                    while(new Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i]))).getTime()) > currentBucket + period){
                         bars.push({x: currentBucket, o: 0, h: 0, l: 0, c: 0, v: 0})
-                        currentBucket = new Date(currentBucket.getTime() + period)
+                        currentBucket = new Date(currentBucket + period).getTime()
                     }
                 } else {
-                    while(new Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i]))).getTime()) > currentBucket.getTime() + period){
+                    while(new Date(now.getTime() - (3000 * (current_block - parseInt(buckets[i]))).getTime()) > currentBucket + period){
                         bars.push({x: currentBucket, o: bars[bars.length - 1].c, h: bars[bars.length - 1].c, l: bars[bars.length - 1].c, c: bars[bars.length - 1].c, v: 0})
-                        currentBucket = new Date(currentBucket.getTime() + period)
+                        currentBucket = new Date(currentBucket + period).getTime()
                     }
                 }
                 bars.push({x: currentBucket, o: dex.markets[pair.toLowerCase()].days[buckets[i]].o, h: dex.markets[pair.toLowerCase()].days[buckets[i]].t, l: dex.markets[pair.toLowerCase()].days[buckets[i]].b, c: dex.markets[pair.toLowerCase()].days[buckets[i]].c, v: dex.markets[pair.toLowerCase()].days[buckets[i]].v})
