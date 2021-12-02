@@ -57,7 +57,10 @@ function getHistorical(pair, width, bc){
                 if(buckets[i+1] && new Date(now - (3000 * (current_block - parseInt(buckets[i+1])))).getTime() > currentBucket + period){
                     bars.push({x: currentBucket, o: current.o, h: current.h, l: current.l, c: current.c, v: current.v})
                     currentBucket = new Date(currentBucket + period).getTime()
-                    current = {o:0, h:0, l:0, c:0, v:0}
+                    current.o = 0
+                    current.h = current.c
+                    current.l = current.c
+                    current.v = 0
                 } else if (!buckets[i+1]) {
                     bars.push({x: currentBucket, o: current.o, h: current.h, l: current.l, c: current.c, v: current.v})
                 }
