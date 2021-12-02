@@ -23,7 +23,7 @@ function getHistorical(pair, width, bc){
         const now = new Date()
         let open = arr[arr.length -1].price, close = arr[arr.length -1].price, high = arr[arr.length -1].price, low = arr[arr.length -1].price, vol = 0
         makechart: for (var i = arr.length -1; i >= 0 ; i--) {
-            console.log(thisbar)
+            console.log(now, arr[i].trade_timestamp , (width * (bars.length + 1)) , bars.length , barCount)
             while(!(now - arr[i].trade_timestamp > (width * (bars.length + 1))) && bars.length <= barCount){
                 bars.push({
                         x: now - (width * (bars.length + 1)),
