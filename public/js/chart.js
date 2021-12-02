@@ -21,15 +21,14 @@ function getHistorical(pair, width, bc){
         var barnum = 1
         let thisbar = []
         const now = new Date()
-        console.log(arr)
-        for (var i = arr.length -1; i >= 0 ; i++) {
-            console.log(i, arr[i])
+        for (var i = arr.length -1; i >= 0 ; i--) {
+            console.log(thisbar)
             while(!(now - arr[i].trade_timestamp > (width * barnum)) && barnum <= barCount){
                 console.log(barcount)
                 barnum++
             }
             if(i && now - arr[i-1].trade_timestamp > (width * barnum)){
-                thisbar.push(arr.shift())
+                thisbar.push(arr[i])
             } else {
                 let open = 0, close = 0, high = 0, low = 0, vol = 0
                 for(var j = thisbar.length - 1; j >= 0; j--){
