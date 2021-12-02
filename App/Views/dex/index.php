@@ -479,7 +479,9 @@ include_once( $path );
       }, false);
     });
     setTimeout(function(){ 
-      var HBDBTotal = 0,
+      totals()
+      function totals (){
+        var HBDBTotal = 0,
         HBDSTotal = 0,
         HBD24 = 0,
         HiveBTotal = 0,
@@ -487,15 +489,26 @@ include_once( $path );
         Hive24 = 0,
         HBDH = '', HBDB = '', HBDS = '', HIVEH = '', HIVEB = '', HIVES = ''
       try {
-        HBDH = document.getElementById('hbdtradehistorytable')
-        HBDB = document.getElementById('hbdbuyorderstable')
-        HBDS = document.getElementById('hbdsellorderstable')
-        HIVEH = document.getElementById('hivetradehistorytable')
-        HIVEB = document.getElementById('hivebuyorderstable')
-        HIVES = document.getElementById('hivesellorderstable')
+        HBDH = document.getElementById('hbdtradehistorytable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
+        HBDB = document.getElementById('hbdbuyorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
+        HBDS = document.getElementById('hbdsellorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
+        HIVEH = document.getElementById('hivetradehistorytable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
+        HIVEB = document.getElementById('hivebuyorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
+        HIVES = document.getElementById('hivesellorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
       } catch (e) {console.log(e)}
       console.log(HIVES)
-    }, 10000);
+      if(HIVES.length ){
+        for(var i = 0; i < HIVES.length; i++){
+          HiveSTotal += parseFloat(HIVES[i].getElementsByTagName('td')[2].innerText)
+          HIVES[i].getElementsByTagName('td')[2].innerText = parseFloat(HiveSTotal).formatNumber('3','.',',')
+        }
+      } else {
+        setTimeout(() => {
+          totals()
+        }, 1000);
+      }
+    }
+  }, 1000);
 });
 })()
 </script>
