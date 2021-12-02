@@ -12,6 +12,7 @@ var barData = getHistorical(pair, width, barCount);
 function lineData() { return barData.map(d => { return { x: d.x, y: d.c} }) };
 
 function getHistorical(pair, width, bc){
+    return new Promise(function(resolve, reject) {
     const numbars = bc || 100
     const period = width || 3600000 * 24 //days
     promises = [fetch(`https://token.dlux.io/dex`)]
@@ -102,16 +103,19 @@ function getHistorical(pair, width, bc){
             }
         }
         console.log('Chart data:', bars)
-        return bars
+        resolve(bars)
     })
+    .catch(e=>reject(e))
+})
 }
-
-var chart = new Chart(ctx, {
+var chart
+barData.then(bars=>{
+    chart = new Chart(ctx, {
 	type: 'candlestick',
 	data: {
 		datasets: [{
 			label: `DLUX/${pair}`,
-			data: barData,
+			data: bars,
             color: {
                 up: '21ffb5',
                 down: '#fb00ff',
@@ -120,19 +124,22 @@ var chart = new Chart(ctx, {
 		}]
 	}
 });
+})
 
 var update = function(pr, wd, bc) {
     pair = pr
     width = wd
     barCount = bc
-	chart.config.data.datasets = [
+    getHistorical(pair, width, barCount).then(bars=>{
+        chart.config.data.datasets = [
 			{
 				label: `DLUX/${pair}`,
-				data: getHistorical(pair, width, barCount)
+				data: bars
 			}	
 		]
 
 	chart.update();
+    })
 };
 
 
