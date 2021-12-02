@@ -15,8 +15,7 @@ function getHistorical(pair, width, bc){
     const numbars = bc || 100
     const period = width || 3600000 * 24 //days
     console.log('fetching history...')
-    promises = [fetch(`https://token.dlux.io/api/recent/${pair.toUpperCase()}_DLUX?depth=200`)]
-    promises.push(fetch(`https://token.dlux.io/dex`))
+    promises = [fetch(`https://token.dlux.io/dex`)]
     Promise.all(promises).then(res =>
     Promise.all(res.map(res => res.json()))
     ).then(jsons => {
@@ -25,7 +24,7 @@ function getHistorical(pair, width, bc){
         var startdate = new Date(now - (period * numbars)).getTime()
         console.log({startdate}, {now})
         var currentBucket = startdate
-        const dex = jsons[1], recent = jsons[0]
+        const dex = jsons[0]
         const current_block = dex.stats.lastIBlock
         const buckets = Object.keys(dex.markets[pair.toLowerCase()].days)
         buckets.sort(function (a,b){return parseInt(a) - parseInt(b)})
@@ -46,14 +45,14 @@ function getHistorical(pair, width, bc){
                 if(current.o){
                     if(dex.markets[pair.toLowerCase()].days[buckets[i]].t > current.h)current.h = dex.markets[pair.toLowerCase()].days[buckets[i]].t
                     if(dex.markets[pair.toLowerCase()].days[buckets[i]].b < current.l)current.l = dex.markets[pair.toLowerCase()].days[buckets[i]].b
-                    current.c = dex.markets[pair.toLowerCase()].days[buckets[i]].c
-                    current.v += dex.markets[pair.toLowerCase()].days[buckets[i]].v
+                    current.c = dex.markets[pair.toLowerCase()].days[buckets[i]].c || current.c
+                    current.v += dex.markets[pair.toLowerCase()].days[buckets[i]].v || 0
                 } else {
-                    current.o = dex.markets[pair.toLowerCase()].days[buckets[i]].o
-                    current.h = dex.markets[pair.toLowerCase()].days[buckets[i]].h
-                    current.l = dex.markets[pair.toLowerCase()].days[buckets[i]].l
-                    current.c = dex.markets[pair.toLowerCase()].days[buckets[i]].c
-                    current.v = dex.markets[pair.toLowerCase()].days[buckets[i]].v
+                    current.o = dex.markets[pair.toLowerCase()].days[buckets[i]].o  || current.c
+                    current.h = dex.markets[pair.toLowerCase()].days[buckets[i]].h  || current.c
+                    current.l = dex.markets[pair.toLowerCase()].days[buckets[i]].l  || current.c
+                    current.c = dex.markets[pair.toLowerCase()].days[buckets[i]].c  || current.c
+                    current.v = dex.markets[pair.toLowerCase()].days[buckets[i]].v  || current.c
                 }
                 if(buckets[i+1] && new Date(now - (3000 * (current_block - parseInt(buckets[i+1])))).getTime() > currentBucket + period){
                     bars.push({x: currentBucket, o: current.o, h: current.h, l: current.l, c: current.c, v: current.v})
@@ -65,8 +64,6 @@ function getHistorical(pair, width, bc){
                 } else if (!buckets[i+1]) {
                     bars.push({x: currentBucket, o: current.o, h: current.h, l: current.l, c: current.c, v: current.v})
                 }
-            } else {
-                console.log(new Date(now - (3000 * (current_block - parseInt(buckets[i])))), new Date(currentBucket))
             }
         }
         let items = Object.keys(dex.markets[pair.toLowerCase()].his)
@@ -105,11 +102,8 @@ function getHistorical(pair, width, bc){
                 } else if (!items[i+1]) {
                     bars.push({x: currentBucket, o: current.o, h: current.h, l: current.l, c: current.c, v: current.v})
                 }
-            } else {
-                console.log(new Date(now - (3000 * (current_block - parseInt(buckets[i])))), new Date(currentBucket))
             }
         }
-        console.log(bars)
         return bars
     })
 }
