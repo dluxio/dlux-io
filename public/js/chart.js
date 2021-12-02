@@ -31,7 +31,7 @@ function getHistorical(pair, width, bc){
         var bars = []
         for (var i = 0; i < buckets.length; i++) {
             console.log(new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime(), startdate)
-            if (new Date(now - (3000 * (current_block - parseInt(buckets[i])))) > currentBucket) {
+            if (new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime() > currentBucket) {
                 if(!bars.length){
                     while(new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime() > currentBucket + period){
                         bars.push({x: currentBucket, o: 0, h: 0, l: 0, c: 0, v: 0})
