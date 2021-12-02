@@ -17,7 +17,11 @@ include_once( $path );
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
-<dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/"></dmx-api-datasource>
+<dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/" ></dmx-api-datasource>
+<dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://token.dlux.io/api/recent/HIVE_DLUX" dmx-param:depth="200"></dmx-api-datasource>
+<dmx-api-datasource id="recenthbdapi" is="dmx-fetch" url="https://token.dlux.io/api/recent/HBD_DLUX" dmx-param:depth="200"></dmx-api-datasource>
+<dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="rate" sortdir="desc"></dmx-data-view>
+<dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="rate" sortdir="desc"></dmx-data-view>
 <dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="desc"></dmx-data-view>
 <dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="asc"></dmx-data-view>
 <dmx-data-view id="hbdbuys" dmx-bind:data="dexapi.data.markets.hbd.buys" sorton="rate" sortdir="desc"></dmx-data-view>
@@ -308,6 +312,38 @@ include_once( $path );
                   </tr>
                 </tbody>
                 <!---->
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+		 <div id="tradeHistory">
+        <div class="row">
+          <div class="mt-3 col-12">
+            <h4>Trade History</h4>
+            <div class="table-responsive">
+              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="tradehistorytable">
+                <thead role="rowgroup" class="">
+                  <tr role="row" class="">
+                    <th role="columnheader" scope="col" aria-colindex="1" class="">ID</th>
+                    <th role="columnheader" scope="col" aria-colindex="2" class="">Price</th>
+                    <th role="columnheader" scope="col" aria-colindex="3" class="">Base Volume</th>
+                    <th role="columnheader" scope="col" aria-colindex="4" class="">Target Volume</th>
+                    <th role="columnheader" scope="col" aria-colindex="5" class=""><div>Timestamp</div></th>
+                    <th role="columnheader" scope="col" aria-colindex="6" class=""><div>Type</div></th>
+                  </tr>
+                </thead>
+                <tbody role="rowgroup">
+                  <!--repeat region-->
+                  <tr class="" role="row" dmx-repeat:orderhistory="recenthive.data">
+                    <td aria-colindex="1" role="cell" class="">{{trade_id}}</td>
+                    <td aria-colindex="2" role="cell" class="">{{price}}</td>
+                    <td aria-colindex="3" role="cell" class="">{{base_volume}}</td>
+                    <td aria-colindex="4" role="cell" class="">{{target_volume}}</td>
+                    <td aria-colindex="5" role="cell" class="">{{trade_timestamp}}</td>
+                    <td aria-colindex="5" role="cell" class="">{{type}}</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
