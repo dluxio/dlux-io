@@ -509,15 +509,15 @@ include_once( $path );
         }
         for(var i = 0; i < HBDS.length; i++){
           HBDSTotal += parseFloat(HBDS[i].getElementsByTagName('td')[2].innerText.replace(/,/g, ''))
-          HBDS[i].getElementsByTagName('td')[3].innerText = parseFloat(HiveSTotal).toFixed(3)
+          HBDS[i].getElementsByTagName('td')[3].innerText = parseFloat(HBDSTotal).toFixed(3)
         }
         for(var i = 0; i < HIVEB.length; i++){
           HiveBTotal += parseFloat(HIVEB[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
-          HIVEB[i].getElementsByTagName('td')[0].innerText = parseFloat(HiveSTotal).toFixed(3)
+          HIVEB[i].getElementsByTagName('td')[0].innerText = parseFloat(HiveBTotal).toFixed(3)
         }
         for(var i = 0; i < HBDB.length; i++){
           HBDBTotal += parseFloat(HBDB[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
-          HBDB[i].getElementsByTagName('td')[0].innerText = parseFloat(HiveSTotal).toFixed(3)
+          HBDB[i].getElementsByTagName('td')[0].innerText = parseFloat(HBDBTotal).toFixed(3)
         }
         for(var i = 0; i < HIVEH.length; i++){
           Hive24 += parseFloat(HIVEH[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
