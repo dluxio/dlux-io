@@ -49,7 +49,7 @@
 ?>
 <main role="main" class="flex-shrink-0 text-white bg-color h-100">
   <div class="container-fluid px-0 text-center">
-	  <div class="container-fluid fixed-top bg-dark" style="margin-top: 66px;">
+	  <div class="container-fluid fixed-top bg-dark" style="margin-top: 66px; z-index: 900;">
 
 		  <nav class="navbar navbar-dark navbar-expand-lg">
 			  <div class="m-auto">
