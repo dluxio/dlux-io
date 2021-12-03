@@ -148,7 +148,7 @@ include_once( $path );
         </div>
         <div id="openordersdrawer">
 		<div class="table-responsive">
-		 <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="useropenorders">
+		 <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless" id="useropenorders">
           <thead role="rowgroup" class="">
 			<tr role="row" class="">
 			<th role="columnheader" class="" aria-colindex="1">BLOCK</th>
@@ -156,6 +156,7 @@ include_once( $path );
 			<th role="columnheader" class="" aria-colindex="3">HBD</th>
 			<th role="columnheader" class="" aria-colindex="4">HIVE</th>
 			<th role="columnheader" class="" aria-colindex="5">RATE</th>
+			<th role="columnheader" class="" aria-colindex="6">TYPE</th>
 				</tr>
 			  </thread>
 			  <tbody role="rowgroup">
@@ -165,8 +166,9 @@ include_once( $path );
 			<td role="cell" class="" aria-colindex="2">{{amount}}</td>
 			<td role="cell" class="" aria-colindex="3">{{hbd}}</td>
 			<td role="cell" class="" aria-colindex="4">{{hive}}</td>
-			<td role="cell" class="" aria-colindex="5">{{rate}}</td>
-			<td role="cell" class="text-right" aria-colindex="6"><button class="btn btn-sm btn-outline-warning">CANCEL</button></td>
+			<td role="cell" class="" aria-colindex="5" dmx-class:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" dmx-class:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{rate}}</td>
+			<td role="cell" class="" aria-colindex="6" dmx-class:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" dmx-class:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{type}}</td>
+			<td role="cell" class="text-right" aria-colindex="7"><button class="btn btn-sm btn-outline-warning">CANCEL</button></td>
 			</tr>
 			 </tbody>
 			</table>
