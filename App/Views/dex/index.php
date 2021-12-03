@@ -504,9 +504,9 @@ include_once( $path );
       console.log(HIVES)
       if(HIVES.length ){
         for(var i = 0; i < HIVES.length; i++){
-          HiveSTotal += parseFloat(HIVES[i].getElementsByTagName('td')[2].innerText)
+          HiveSTotal += parseFloat(HIVES[i].getElementsByTagName('td')[2].innerText.replace(/,/g, ''))
           console.log(HIVES[i].getElementsByTagName('td')[2].innerText)
-          HIVES[i].getElementsByTagName('td')[2].innerText = parseFloat(HiveSTotal).toFixed(3)
+          HIVES[i].getElementsByTagName('td')[3].innerText = parseFloat(HiveSTotal).toFixed(3)
         }
       } else {
         setTimeout(() => {
