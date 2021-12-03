@@ -149,6 +149,6 @@ var updateChart = function(pr, wd, bc) {
 };
 
 
-document.getElementById('refreshChart').addEventListener('click', updateChart(pair, width, barCount));
-document.getElementById('buyhive').addEventListener('click', updateChart('HIVE', width, barCount));
-document.getElementById('buyhbd').addEventListener('click', updateChart('HBD', width, barCount));
+document.getElementById('refreshChart').addEventListener('click', ()=>{updateChart(pair, width, barCount)});
+document.getElementById('buyhive').addEventListener('click', ()=>{updateChart('HIVE', width, barCount)});
+document.getElementById('buyhbd').addEventListener('click', ()=>{updateChart('HBD', width, barCount)});
