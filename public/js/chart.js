@@ -130,6 +130,7 @@ var updateChart = function(pr, wd, bc) {
     pair = pr || pair
     width = wd || width
     barCount = bc || barCount
+    console.log({pair, width, barCount})
     getHistorical(pair, width, barCount).then(bars=>{
         chart.config.data.datasets = [
 			{
