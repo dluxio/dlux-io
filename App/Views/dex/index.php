@@ -494,7 +494,12 @@ include_once( $path );
         // HBDS = document.getElementById('hbdsellorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
         // HIVEH = document.getElementById('hivetradehistorytable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
         // HIVEB = document.getElementById('hivebuyorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
-        HIVES = document.getElementById('hivesellorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
+        HIVES = document.getElementById('hivesellorderstable') //.getElementsByClassName('tbody')[0].getElementsByTagName('tr')
+        console.log(HIVES)
+        HIVES = HIVE.getElementsByClassName('tbody')[0]
+        console.log(HIVES)
+        HIVES = HIVES.getElementsByTagName('tr')
+        console.log(HIVES)
       } catch (e) {console.log(e);
       setTimeout(() => {
           totals()
