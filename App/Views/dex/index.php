@@ -22,7 +22,7 @@ include_once( $path );
 <dmx-api-datasource id="openordersapi" is="dmx-fetch" url="https://token.dlux.io/@disregardfiat" ></dmx-api-datasource>
 <dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://token.dlux.io/api/recent/HIVE_DLUX" dmx-param:depth="200"></dmx-api-datasource>
 <dmx-api-datasource id="recenthbdapi" is="dmx-fetch" url="https://token.dlux.io/api/recent/HBD_DLUX" dmx-param:depth="200"></dmx-api-datasource>
-<dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block"></dmx-data-view>
+<dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="5"></dmx-data-view>
 <dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="rate" sortdir="desc"></dmx-data-view>
 <dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="rate" sortdir="desc"></dmx-data-view>
 <dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="desc"></dmx-data-view>
@@ -174,6 +174,16 @@ include_once( $path );
 			 </tbody>
 			</table>
 			 </div>
+			        <!-- pagination -->
+        <div class="d-flex card-footer mt-3">
+          <div class="d-flex flex-fill justify-content-between align-items-center mt-2">
+            <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="openorders.prev()" dmx-show="openorders.has.prev"><i class="fa fa-angle-left"></i></a></div>
+            <div class="d-flex">
+              <p class="m-0 p-0 text-muted">Page {{openorders.page}} of {{openorders.pages}}</p>
+            </div>
+            <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="openorders.next()" dmx-show="openorders.has.next"><i class="fa fa-angle-right"></i></a></div>
+          </div>
+        </div>
 		  </div>
       </div>
       <div id="tradeForms">
