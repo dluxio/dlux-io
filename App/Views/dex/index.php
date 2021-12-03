@@ -489,11 +489,11 @@ include_once( $path );
         Hive24 = 0,
         HBDH = '', HBDB = '', HBDS = '', HIVEH = '', HIVEB = '', HIVES = ''
       try {
-        // HBDH = document.getElementById('hbdtradehistorytable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        // HBDB = document.getElementById('hbdbuyorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        // HBDS = document.getElementById('hbdsellorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        // HIVEH = document.getElementById('hivetradehistorytable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        // HIVEB = document.getElementById('hivebuyorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
+        HBDH = document.getElementById('hbdtradehistorytable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
+        HBDB = document.getElementById('hbdbuyorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
+        HBDS = document.getElementById('hbdsellorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
+        HIVEH = document.getElementById('hivetradehistorytable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
+        HIVEB = document.getElementById('hivebuyorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
         HIVES = document.getElementById('hivesellorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
         console.log(HIVES)
       } catch (e) {console.log(e);
@@ -505,8 +505,23 @@ include_once( $path );
       if(HIVES.length ){
         for(var i = 0; i < HIVES.length; i++){
           HiveSTotal += parseFloat(HIVES[i].getElementsByTagName('td')[2].innerText.replace(/,/g, ''))
-          console.log(HIVES[i].getElementsByTagName('td')[2].innerText)
           HIVES[i].getElementsByTagName('td')[3].innerText = parseFloat(HiveSTotal).toFixed(3)
+        }
+        for(var i = 0; i < HBDS.length; i++){
+          HiveSTotal += parseFloat(HBDS[i].getElementsByTagName('td')[2].innerText.replace(/,/g, ''))
+          HBDS[i].getElementsByTagName('td')[3].innerText = parseFloat(HiveSTotal).toFixed(3)
+        }
+        for(var i = 0; i < HIVEB.length; i++){
+          HiveSTotal += parseFloat(HIVEB[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
+          HIVEB[i].getElementsByTagName('td')[0].innerText = parseFloat(HiveSTotal).toFixed(3)
+        }
+        for(var i = 0; i < HBDB.length; i++){
+          HiveSTotal += parseFloat(HBDB[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
+          HBDB[i].getElementsByTagName('td')[0].innerText = parseFloat(HiveSTotal).toFixed(3)
+        }
+        for(var i = 0; i < HIVEH.length; i++){
+          console.log(new Date(HIVEH[i].getElementsByTagName('td')[1].innerText).valueOf())
+          Hive24 += parseFloat(HIVEH[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
         }
       } else {
         setTimeout(() => {
