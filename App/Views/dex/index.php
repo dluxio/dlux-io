@@ -123,7 +123,7 @@ include_once( $path );
         </div>
         <div class="mt-2 text-center d-flex justify-content-between">
           <div>
-            <button id="refreshChart" class="btn btn-outline-secondary" >REFRESH<i class="fas fa-redo-alt ml-2"></i></button>
+            <button id="refreshChart" class="btn btn-outline-secondary" onClick="updateChart()">REFRESH<i class="fas fa-redo-alt ml-2"></i></button>
           </div>
           <div id="settimescale" class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-info active">
