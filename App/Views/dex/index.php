@@ -46,8 +46,8 @@ include_once( $path );
 						 dmx-class:border-danger="dexapi.data.behind > 100"
 						 dmx-class:text-danger="dexapi.data.behind > 100"> DLUX is currently {{dexapi.data.behind}} blocks behind HIVE</div>
         <div class="d-flex justify-content-around my-2">
-          <div id="hivequote">Current price of HIVE: ${{hiveprice.data.hive.usd.formatNumber(6,.,,,)}}</div>
-          <div id="hbdquote"> Current price of HBD: ${{hbdprice.data.hive_dollar.usd.formatNumber(6,.,,,)}}</div>
+          <div id="hivequote">Current price of HIVE: ${{hiveprice.data.hive.usd}}</div>
+          <div id="hbdquote"> Current price of HBD: ${{hbdprice.data.hive_dollar.usd}}</div>
         </div>
         <div>
           <input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none">
@@ -147,20 +147,21 @@ include_once( $path );
           </div>
         </div>
         <div id="openordersdrawer">
-		<table>
-			<tr class="row">
-			<th>BLOCK</th>
-			<th>DLUX</th>
-			<th>HBD</th>
-			<th>HIVE</th>
-			<th>RATE</th>
+		 <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="useropenorders">
+          <thead role="rowgroup" class="">
+			<tr role="row">
+			<th role="columnheader" aria-colindex="1">BLOCK</th>
+			<th role="columnheader" aria-colindex="2">DLUX</th>
+			<th role="columnheader" aria-colindex="3">HBD</th>
+			<th role="columnheader" aria-colindex="4">HIVE</th>
+			<th role="columnheader" aria-colindex="5">RATE</th>
 				</tr>
-		  <tr class="row" dmx-repeat:openordersrepeat="openorders.data">
-			<td>{{block}}</td>
-			<td>{{amount}}</td>
-			<td>{{hbd}}</td>
-			<td>{{hive}}</td>
-			<td>{{rate}}</td>
+		  <tr role="row" dmx-repeat:openordersrepeat="openorders.data">
+			<td role="cell" aria-colindex="1">{{block}}</td>
+			<td role="cell" aria-colindex="2">{{amount}}</td>
+			<td role="cell" aria-colindex="3">{{hbd}}</td>
+			<td role="cell" aria-colindex="4">{{hive}}</td>
+			<td role="cell" aria-colindex="5">{{rate}}</td>
 			</tr>
 			</table>
 		  </div>
