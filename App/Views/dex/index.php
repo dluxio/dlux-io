@@ -521,7 +521,7 @@ function totals (){
           HBDB[i].getElementsByTagName('td')[0].innerText = parseFloat(HBDBTotal).toFixed(3)
         }
         for(var i = 0; i < HIVEH.length; i++){
-          console.log(Date.now() , Date(HIVEH[i].getElementsByTagName('td')[2].innerText + ':00.000Z') , 86400000)
+          console.log(Date.now() , new Date(HIVEH[i].getElementsByTagName('td')[2].innerText + ':00.000Z') , 86400000)
           try{
             if (Date.now() - Date(HIVEH[i].getElementsByTagName('td')[2].innerText + ':00.000Z') < 86400000)
               Hive24 += parseFloat(HIVEH[i].getElementsByTagName('td')[1].innerText)
