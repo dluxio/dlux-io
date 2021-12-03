@@ -147,7 +147,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         </div>
         <div class="mt-2 text-center d-flex justify-content-between">
           <div>
-           <button class="btn btn-outline-primary">OPEN ORDERS ({{openorders.data.count()}}) <i class="fas fa-book-reader ml-2"></i></button>
+           <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.data.count()}}) <i class="fas fa-book-reader ml-2"></i></button>
           </div>
           <div id="settimescale" class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-info active">
@@ -171,8 +171,10 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
             
           </div>
         </div>
-        <div id="openordersdrawer " class="my-5">
-		<div class="table-responsive rounded border border-dark">
+        <div id="openordersdrawer" class="collapse ">
+			<div class="py-5">
+		<div dmx-show="openorders.data.count() == 0" class="text-center text-white-50"><h5>No open orders</h5></div>
+		<div class="table-responsive rounded border border-dark" dmx-show="openorders.data.count() > 0">
 		 <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
           <thead role="rowgroup" class="">
 			<tr role="row" class="">
@@ -276,6 +278,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 			 </div>
 		
 		  </div>
+			</div>
       </div>
       <div id="tradeForms">
         <div class="row">
@@ -448,7 +451,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <td aria-colindex="1" role="cell" class=""></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="4" role="cell" class=""><a href="#">{{$key}}</a></td>
+                      <td aria-colindex="4" role="cell" class="text-primary">{{$key}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -469,7 +472,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <tbody role="rowgroup">
                     <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hivesellorders="hivesells.data.groupBy('rate')">
-                      <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
+                      <td aria-colindex="1" role="cell" class="text-primary">{{$key}}</td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
