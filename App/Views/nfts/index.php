@@ -172,7 +172,7 @@ include_once( $path );
             <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
           <div class="modal-content bg-dark text-white">
-			  <form id="marketorderform" action="javascript:buyDEX('{{'0',markethive.value}}','0','0')" >
+			  <form id="marketorderform" action="javascript:buyDEX('0','{{markethive.value}}','0','0')" >
             <div class="card-header d-flex flex-fill justify-content-between align-items-center">
               <div>&nbsp;</div>
               <h3 class="lead m-0">MARKET ORDER</h3>
