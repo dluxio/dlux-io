@@ -148,4 +148,4 @@ var updateChart = function(pr, wd, bc) {
 };
 
 
-document.getElementById('refreshChart').addEventListener('click', update(pair, width, barCount));
+//document.getElementById('refreshChart').addEventListener('click', update(pair, width, barCount));
