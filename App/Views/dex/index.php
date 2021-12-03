@@ -133,7 +133,7 @@ include_once( $path );
               <input type="radio" name="timescale" id="daybtn" is="dmx-radio">
               1D </label>
             <label class="btn btn-info">
-              <input type="radio" name="timescale" id="weekbtn" is="dmx-radio" checked>
+              <input type="radio" name="timescale" id="weekbtn" is="dmx-radio">
               1W </label>
             <label class="btn btn-info">
               <input type="radio" name="timescale" id="monthbtn" is="dmx-radio">
