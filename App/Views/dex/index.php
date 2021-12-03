@@ -76,7 +76,7 @@ include_once( $path );
               <h5>Last</h5>
               {{hiveorderhistory[0].price}} <br>
               {{(hiveorderhistory[0].price*hiveusd.value).formatCurrency()}} </div>
-            <div class="mt-2 col">
+            <div id="hive24" class="mt-2 col">
               <h5>24h Volume</h5>
                <br>
                </div>
@@ -96,7 +96,7 @@ include_once( $path );
               <h5>Last</h5>
               {{hbdorderhistory[0].price}} <br>
               {{(hbdorderhistory[0].price*hbdusd.value).formatCurrency()}} </div>
-            <div class="mt-2 col">
+            <div id="hbd24" class="mt-2 col">
               <h5>24h Volume</h5>
                <br>
                </div>
@@ -534,7 +534,9 @@ function totals (){
             }
           } catch (e){}
         }
-        console.log({Hive24, HBD24})
+        document.getElementById('hbd24').innerText = `<h5>24h Volume</h5>${parseFloat(HBD24).toFixed(3)} HBD<br>`
+        document.getElementById('hive24').innerText = `<h5>24h Volume</h5>${parseFloat(Hive24).toFixed(3)} HIVE<br>`
+        //console.log({Hive24, HBD24})
       } else {
         setTimeout(() => {
           totals()
