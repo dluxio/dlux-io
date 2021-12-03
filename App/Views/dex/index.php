@@ -494,11 +494,7 @@ include_once( $path );
         // HBDS = document.getElementById('hbdsellorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
         // HIVEH = document.getElementById('hivetradehistorytable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
         // HIVEB = document.getElementById('hivebuyorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        HIVES = document.getElementById('hivesellorderstable') //.getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        console.log(HIVES)
-        HIVES = HIVES.getElementsByTagName('tbody')[0]
-        console.log(HIVES)
-        HIVES = HIVES.getElementsByTagName('tr')
+        HIVES = document.getElementById('hivesellorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
         console.log(HIVES)
       } catch (e) {console.log(e);
       setTimeout(() => {
@@ -509,7 +505,8 @@ include_once( $path );
       if(HIVES.length ){
         for(var i = 0; i < HIVES.length; i++){
           HiveSTotal += parseFloat(HIVES[i].getElementsByTagName('td')[2].innerText)
-          HIVES[i].getElementsByTagName('td')[2].innerText = parseFloat(HiveSTotal).formatNumber('3','.',',')
+          
+          HIVES[i].getElementsByTagName('td')[2].innerText = parseFloat(HiveSTotal).toFixed(3)
         }
       } else {
         setTimeout(() => {
