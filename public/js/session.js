@@ -576,11 +576,13 @@ function sellDEX(dlux, hive, hbd, hours, callback){
     dlux = parseInt(parseFloat(dlux)*1000)
     hive = parseInt(parseFloat(hive)*1000)
     hbd = parseInt(parseFloat(hbd)*1000)
+    hours = parseInt(hours)
     if (hive || hbd){
         const price = parseFloat(dlux/(hive||hbd)).toFixed(6)
         andthen = ` at ${price} ${hive?'HIVE':'HBD'} per DLUX`
     }
-     broadcastCJA({ dlux, hive, hbd, hours}, "dlux_dex_sell", `Selling ${parseFloat(dlux/1000).toFixed(3)} DLUX${andthen}`)
+    if(!hbd) broadcastCJA({ dlux, hive, hours}, "dlux_dex_sell", `Selling ${parseFloat(dlux/1000).toFixed(3)} DLUX${andthen}`)
+    else broadcastCJA({ dlux, hbd, hours}, "dlux_dex_sell", `Selling ${parseFloat(dlux/1000).toFixed(3)} DLUX${andthen}`)
  }
 
  function buyDEX(hive, hbd, dlux, hours, callback){
