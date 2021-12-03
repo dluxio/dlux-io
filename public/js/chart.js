@@ -150,3 +150,5 @@ var updateChart = function(pr, wd, bc) {
 
 
 document.getElementById('refreshChart').addEventListener('click', updateChart(pair, width, barCount));
+document.getElementById('buyhive').addEventListener('click', updateChart('hive', width, barCount));
+document.getElementById('buyhbd').addEventListener('click', updateChart('hbd', width, barCount));
