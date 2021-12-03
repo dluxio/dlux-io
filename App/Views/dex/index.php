@@ -60,10 +60,10 @@ include_once( $path );
           <div class="container-fluid mt-3">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-outline-warning active">
-                <input name="buypair" type="radio" id="buyhive" checked dmx-on:click="pair='hive';refresChart();buy.buyHBDTotal.setValue('0');sell.sellHBDTotal.setValue('0')">
+                <input name="buypair" type="radio" id="buyhive" checked dmx-on:click="refresChart('hive');buy.buyHBDTotal.setValue('0');sell.sellHBDTotal.setValue('0')">
                 HIVE </label>
               <label class="btn btn-outline-warning">
-                <input type="radio" name="buypair" id="buyhbd" dmx-on:click="pair='hbd';refreshChart();buy.buyHiveTotal.setValue('0');sell.sellHiveTotal.setValue('0')">
+                <input type="radio" name="buypair" id="buyhbd" dmx-on:click="refreshChart('hbd');buy.buyHiveTotal.setValue('0');sell.sellHiveTotal.setValue('0')">
                 HBD </label>
             </div>
           </div>
