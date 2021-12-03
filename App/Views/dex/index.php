@@ -76,6 +76,12 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
           <input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none">
 			</div>
 				</div>
+			<div class="col-4">
+			<div class="jumbotron p-3 bg-dark">
+				<div id="dluxquote"><h2 class="lead my-0"><b>DLUX: $</b></h2></div>
+          <input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none">
+			</div>
+				</div>
         </div>
       </center>
       <div id="market" class="row text-center">
@@ -147,7 +153,8 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         </div>
         <div class="mt-2 text-center d-flex justify-content-between">
           <div>
-           <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.data.count()}}) <i class="fas fa-book-reader ml-2"></i></button>
+			  <button id="refreshChart" class="btn btn-outline-secondary" onClick="updateChart()">CHART REFRESH<i class="fas fa-redo-alt ml-2"></i></button>
+           
           </div>
           <div id="settimescale" class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-info active">
@@ -167,7 +174,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
               1Y </label>
           </div>
           <div>
-			   <button id="refreshChart" class="btn btn-outline-secondary" onClick="updateChart()">REFRESH CHART<i class="fas fa-redo-alt ml-2"></i></button>
+			  <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.data.count()}}) <i class="fas fa-book-reader ml-2"></i></button> 
             
           </div>
         </div>
