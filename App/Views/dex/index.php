@@ -534,8 +534,8 @@ function totals (){
             }
           } catch (e){}
         }
-        document.getElementById('hbd24').innerText = `<h5>24h Volume</h5>${parseFloat(HBD24).toFixed(3)} HBD<br>`
-        document.getElementById('hive24').innerText = `<h5>24h Volume</h5>${parseFloat(Hive24).toFixed(3)} HIVE<br>`
+        document.getElementById('hbd24').innerHTML = `<h5>24h Volume</h5>${parseFloat(HBD24).toFixed(3)} HBD<br>`
+        document.getElementById('hive24').innerHTML = `<h5>24h Volume</h5>${parseFloat(Hive24).toFixed(3)} HIVE<br>`
         //console.log({Hive24, HBD24})
       } else {
         setTimeout(() => {
