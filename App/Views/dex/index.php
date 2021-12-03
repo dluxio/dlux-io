@@ -490,10 +490,10 @@ include_once( $path );
         HBDH = '', HBDB = '', HBDS = '', HIVEH = '', HIVEB = '', HIVES = ''
       try {
         HBDH = document.getElementById('hbdtradehistorytable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        HBDB = document.getElementById('hbdbuyorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
+        HBDB = document.getElementById('hbdbuyordertable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
         HBDS = document.getElementById('hbdsellorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
         HIVEH = document.getElementById('hivetradehistorytable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        HIVEB = document.getElementById('hivebuyorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
+        HIVEB = document.getElementById('hivebuyordertable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
         HIVES = document.getElementById('hivesellorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
         console.log(HIVES)
       } catch (e) {console.log(e);
