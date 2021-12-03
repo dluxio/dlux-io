@@ -1981,6 +1981,246 @@ dmx.config({
           }
         ]
       }
-    ]
+    ],
+    "openordersapi": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "number",
+            "name": "balance"
+          },
+          {
+            "type": "number",
+            "name": "poweredUp"
+          },
+          {
+            "type": "number",
+            "name": "granted"
+          },
+          {
+            "type": "number",
+            "name": "granting"
+          },
+          {
+            "type": "number",
+            "name": "heldCollateral"
+          },
+          {
+            "type": "array",
+            "name": "contracts",
+            "sub": [
+              {
+                "type": "number",
+                "name": "amount"
+              },
+              {
+                "type": "number",
+                "name": "block"
+              },
+              {
+                "type": "text",
+                "name": "expire_path"
+              },
+              {
+                "type": "number",
+                "name": "fee"
+              },
+              {
+                "type": "text",
+                "name": "from"
+              },
+              {
+                "type": "number",
+                "name": "hbd"
+              },
+              {
+                "type": "number",
+                "name": "hive"
+              },
+              {
+                "type": "text",
+                "name": "rate"
+              },
+              {
+                "type": "text",
+                "name": "txid"
+              },
+              {
+                "type": "text",
+                "name": "type"
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "name": "up",
+            "sub": [
+              {
+                "type": "number",
+                "name": "last"
+              },
+              {
+                "type": "number",
+                "name": "max"
+              },
+              {
+                "type": "number",
+                "name": "power"
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "name": "down"
+          },
+          {
+            "type": "number",
+            "name": "gov"
+          },
+          {
+            "type": "text",
+            "name": "node"
+          },
+          {
+            "type": "number",
+            "name": "behind"
+          },
+          {
+            "type": "text",
+            "name": "VERSION"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "via"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          }
+        ]
+      }
+    ],
+    "openorders": {
+      "meta": [
+        {
+          "type": "number",
+          "name": "amount"
+        },
+        {
+          "type": "number",
+          "name": "block"
+        },
+        {
+          "type": "text",
+          "name": "expire_path"
+        },
+        {
+          "type": "number",
+          "name": "fee"
+        },
+        {
+          "type": "text",
+          "name": "from"
+        },
+        {
+          "type": "number",
+          "name": "hbd"
+        },
+        {
+          "type": "number",
+          "name": "hive"
+        },
+        {
+          "type": "text",
+          "name": "rate"
+        },
+        {
+          "type": "text",
+          "name": "txid"
+        },
+        {
+          "type": "text",
+          "name": "type"
+        }
+      ],
+      "outputType": "array"
+    },
+    "openordersrepeat": {
+      "meta": [
+        {
+          "type": "number",
+          "name": "amount"
+        },
+        {
+          "type": "number",
+          "name": "block"
+        },
+        {
+          "type": "text",
+          "name": "expire_path"
+        },
+        {
+          "type": "number",
+          "name": "fee"
+        },
+        {
+          "type": "text",
+          "name": "from"
+        },
+        {
+          "type": "number",
+          "name": "hbd"
+        },
+        {
+          "type": "number",
+          "name": "hive"
+        },
+        {
+          "type": "text",
+          "name": "rate"
+        },
+        {
+          "type": "text",
+          "name": "txid"
+        },
+        {
+          "type": "text",
+          "name": "type"
+        }
+      ],
+      "outputType": "array"
+    }
   }
 });

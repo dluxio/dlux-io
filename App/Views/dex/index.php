@@ -19,16 +19,16 @@ include_once( $path );
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/" ></dmx-api-datasource>
+<dmx-api-datasource id="openordersapi" is="dmx-fetch" url="https://token.dlux.io/@disregardfiat" ></dmx-api-datasource>
 <dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://token.dlux.io/api/recent/HIVE_DLUX" dmx-param:depth="200"></dmx-api-datasource>
 <dmx-api-datasource id="recenthbdapi" is="dmx-fetch" url="https://token.dlux.io/api/recent/HBD_DLUX" dmx-param:depth="200"></dmx-api-datasource>
+<dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block"></dmx-data-view>
 <dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="rate" sortdir="desc"></dmx-data-view>
 <dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="rate" sortdir="desc"></dmx-data-view>
 <dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="desc"></dmx-data-view>
 <dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="asc"></dmx-data-view>
 <dmx-data-view id="hbdbuys" dmx-bind:data="dexapi.data.markets.hbd.buys" sorton="rate" sortdir="desc"></dmx-data-view>
 <dmx-data-view id="hbdsells" dmx-bind:data="dexapi.data.markets.hbd.sells" sorton="rate" sortdir="asc"></dmx-data-view>
-
-
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
@@ -37,17 +37,23 @@ include_once( $path );
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 ">
     <div class="container text-white">
-		<center>
-		<div class="col-md-6 border rounded mt-2 mx-1 px-2 py-1 text-center small" 
+      <center>
+        <div class="col-md-6 border rounded mt-2 mx-1 px-2 py-1 text-center small" 
 						 dmx-class:border-success="dexapi.data.behind < 30" 
 						 dmx-class:text-success="dexapi.data.behind < 30"	
 						 dmx-class:border-warning="dexapi.data.behind >= 30"
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
 						 dmx-class:border-danger="dexapi.data.behind > 100"
 						 dmx-class:text-danger="dexapi.data.behind > 100"> DLUX is currently {{dexapi.data.behind}} blocks behind HIVE</div>
-			<div class="d-flex justify-content-around my-2"><div id="hivequote">Current price of HIVE: ${{hiveprice.data.hive.usd.formatNumber(6,.,,,)}}</div><div id="hbdquote"> Current price of HBD: ${{hbdprice.data.hive_dollar.usd.formatNumber(6,.,,,)}}</div></div>
-			<div><input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none"><input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none"></div>
-		</center>
+        <div class="d-flex justify-content-around my-2">
+          <div id="hivequote">Current price of HIVE: ${{hiveprice.data.hive.usd.formatNumber(6,.,,,)}}</div>
+          <div id="hbdquote"> Current price of HBD: ${{hbdprice.data.hive_dollar.usd.formatNumber(6,.,,,)}}</div>
+        </div>
+        <div>
+          <input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none">
+          <input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none">
+        </div>
+      </center>
       <div id="market" class="row text-center">
         <div class="mt-2 col-lg-3">
           <h5>Market</h5>
@@ -78,11 +84,11 @@ include_once( $path );
               {{(hiveorderhistory[0].price*hiveusd.value).formatCurrency()}} </div>
             <div id="hive24" class="mt-2 col">
               <h5>24h Volume</h5>
-               <br>
-               </div>
+              <br>
+            </div>
           </div>
         </div>
-		  <div class="col-lg-9" dmx-show="buyhbd.checked">
+        <div class="col-lg-9" dmx-show="buyhbd.checked">
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
@@ -98,8 +104,8 @@ include_once( $path );
               {{(hbdorderhistory[0].price*hbdusd.value).formatCurrency()}} </div>
             <div id="hbd24" class="mt-2 col">
               <h5>24h Volume</h5>
-               <br>
-               </div>
+              <br>
+            </div>
           </div>
         </div>
       </div>
@@ -115,28 +121,49 @@ include_once( $path );
           </div>
           <canvas id="chart" width="2220" height="800" class="chartjs-render-monitor" style="display: block; height: 400px; width: 1110px;"></canvas>
         </div>
-
         <div class="mt-2 text-center d-flex justify-content-between">
-			<div><button id="refreshChart" class="btn btn-outline-secondary">Refresh<i class="fas fa-redo-alt ml-2"></i></button></div>
+          <div>
+            <button id="refreshChart" class="btn btn-outline-secondary">Refresh<i class="fas fa-redo-alt ml-2"></i></button>
+          </div>
           <div id="settimescale" class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-info active">
-                      <input type="radio" name="timescale" id="hourbtn" is="dmx-radio">
-                      1H </label>
-                    <label class="btn btn-info">
-                      <input type="radio" name="timescale" id="daybtn" is="dmx-radio">
-                      1D </label>
-                    <label class="btn btn-info">
-                      <input type="radio" name="timescale" id="weekbtn" is="dmx-radio" checked>
-                      1W </label>
-                    <label class="btn btn-info">
-                      <input type="radio" name="timescale" id="monthbtn" is="dmx-radio">
-                      1M </label>
-                    <label class="btn btn-info">
-                      <input type="radio" name="timescale" id="yearbtn" is="dmx-radio">
-                      1Y </label>
-                  </div>
-			<div><button class="btn btn-outline-primary">My Orders<i class="fas fa-book-reader ml-2"></i></button></div>
+            <label class="btn btn-info active">
+              <input type="radio" name="timescale" id="hourbtn" is="dmx-radio">
+              1H </label>
+            <label class="btn btn-info">
+              <input type="radio" name="timescale" id="daybtn" is="dmx-radio">
+              1D </label>
+            <label class="btn btn-info">
+              <input type="radio" name="timescale" id="weekbtn" is="dmx-radio" checked>
+              1W </label>
+            <label class="btn btn-info">
+              <input type="radio" name="timescale" id="monthbtn" is="dmx-radio">
+              1M </label>
+            <label class="btn btn-info">
+              <input type="radio" name="timescale" id="yearbtn" is="dmx-radio">
+              1Y </label>
+          </div>
+          <div>
+            <button class="btn btn-outline-primary">My Orders<i class="fas fa-book-reader ml-2"></i></button>
+          </div>
         </div>
+        <div id="openordersdrawer">
+		<table>
+			<tr class="row">
+			<th>BLOCK</th>
+			<th>DLUX</th>
+			<th>HBD</th>
+			<th>HIVE</th>
+			<th>RATE</th>
+				</tr>
+		  <tr class="row" dmx-repeat:openordersrepeat="openorders.data">
+			<td>{{block}}</td>
+			<td>{{amount}}</td>
+			<td>{{hbd}}</td>
+			<td>{{hive}}</td>
+			<td>{{rate}}</td>
+			</tr>
+			</table>
+		  </div>
       </div>
       <div id="tradeForms">
         <div class="row">
@@ -288,171 +315,169 @@ include_once( $path );
           </div>
         </div>
       </div>
-	<div id="hiveData"  dmx-show="buyhive.checked">
-      <div id="hiveMarketOrders">
-        <div class="row">
-          <div class="mt-3 col-md-6">
-            <h4>Buy Orders</h4>
-            <div class="table-responsive">
-              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivebuyordertable">
-                <thead role="rowgroup" class="">
-                  <tr role="row" class="">
-                    <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HIVE</th>
-                    <th role="columnheader" scope="col" aria-colindex="2" class=""><div>HIVE</div></th>
-                    <th role="columnheader" scope="col" aria-colindex="3" class="">DLUX</th>
-                    <th role="columnheader" scope="col" aria-colindex="4" class=""><div>BID</div></th>
-                  </tr>
-                </thead>
-                <tbody role="rowgroup">
-                  <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:hivebuyorders="hivebuys.data.groupBy('rate')">
-                    <td aria-colindex="1" role="cell" class=""></td>
-                    <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
-                    <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                    <td aria-colindex="4" role="cell" class=""><a href="#">{{$key}}</a></td>
-                  </tr>
-                </tbody>
-              </table>
+      <div id="hiveData"  dmx-show="buyhive.checked">
+        <div id="hiveMarketOrders">
+          <div class="row">
+            <div class="mt-3 col-md-6">
+              <h4>Buy Orders</h4>
+              <div class="table-responsive">
+                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivebuyordertable">
+                  <thead role="rowgroup" class="">
+                    <tr role="row" class="">
+                      <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HIVE</th>
+                      <th role="columnheader" scope="col" aria-colindex="2" class=""><div>HIVE</div></th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class="">DLUX</th>
+                      <th role="columnheader" scope="col" aria-colindex="4" class=""><div>BID</div></th>
+                    </tr>
+                  </thead>
+                  <tbody role="rowgroup">
+                    <!--repeat region-->
+                    <tr class="" role="row" dmx-repeat:hivebuyorders="hivebuys.data.groupBy('rate')">
+                      <td aria-colindex="1" role="cell" class=""></td>
+                      <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
+                      <td aria-colindex="4" role="cell" class=""><a href="#">{{$key}}</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="mt-3 col-md-6">
+              <h4>Sell Orders</h4>
+              <div class="table-responsive">
+                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivesellorderstable">
+                  <thead role="rowgroup" class="">
+                    <tr role="row" class="">
+                      <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
+                      <th role="columnheader" scope="col" aria-colindex="2" class="">DLUX</th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class=""><div>HIVE</div></th>
+                      <th role="columnheader" scope="col" aria-colindex="4" class="">TOTAL HIVE</th>
+                    </tr>
+                  </thead>
+                  <tbody role="rowgroup">
+                    <!--repeat region-->
+                    <tr class="" role="row" dmx-repeat:hivesellorders="hivesells.data.groupBy('rate')">
+                      <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
+                      <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
+                      <td aria-colindex="4" role="cell" class=""></td>
+                    </tr>
+                  </tbody>
+                  <!---->
+                </table>
+              </div>
             </div>
           </div>
-          <div class="mt-3 col-md-6">
-            <h4>Sell Orders</h4>
-            <div class="table-responsive">
-              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivesellorderstable">
-                <thead role="rowgroup" class="">
-                  <tr role="row" class="">
-                    <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
-                    <th role="columnheader" scope="col" aria-colindex="2" class="">DLUX</th>
-                    <th role="columnheader" scope="col" aria-colindex="3" class=""><div>HIVE</div></th>
-                    <th role="columnheader" scope="col" aria-colindex="4" class="">TOTAL HIVE</th>
-                  </tr>
-                </thead>
-                <tbody role="rowgroup">
-                  <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:hivesellorders="hivesells.data.groupBy('rate')">
-                    <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
-                    <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                    <td aria-colindex="3" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
-                    <td aria-colindex="4" role="cell" class=""></td>
-                  </tr>
-                </tbody>
-                <!---->
-              </table>
+        </div>
+        <div id="hiveTradeHistory">
+          <div class="row">
+            <div class="mt-3 col-12">
+              <h4>Trade History</h4>
+              <div class="table-responsive">
+                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivetradehistorytable">
+                  <thead role="rowgroup" class="">
+                    <tr role="row">
+                      <th role="columnheader" scope="col" aria-colindex="1" class="" >PRICE</th>
+                      <th role="columnheader" scope="col" aria-colindex="2" class="">QTY</th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class="">TIME</th>
+                    </tr>
+                  </thead>
+                  <tbody role="rowgroup">
+                    <!--repeat region-->
+                    <tr class="" role="row" dmx-repeat:hiveorderhistory="recenthive.data">
+                      <td aria-colindex="1" role="cell" class="" dmx-class:text-danger="type == 'sell'" dmx-class:text-success="type == 'buy'">{{price}}</td>
+                      <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-		 <div id="hiveTradeHistory">
-        <div class="row">
-          <div class="mt-3 col-12">
-            <h4>Trade History</h4>
-            <div class="table-responsive">
-              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivetradehistorytable">
-                <thead role="rowgroup" class="">
-                  <tr role="row">
-                    
-                    <th role="columnheader" scope="col" aria-colindex="1" class="" >PRICE</th>
-                    <th role="columnheader" scope="col" aria-colindex="2" class="">QTY</th>
-					  <th role="columnheader" scope="col" aria-colindex="3" class="">TIME</th>
-                  </tr>
-                </thead>
-                <tbody role="rowgroup">
-                  <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:hiveorderhistory="recenthive.data">
-                    <td aria-colindex="1" role="cell" class="" dmx-class:text-danger="type == 'sell'" dmx-class:text-success="type == 'buy'">{{price}}</td>
-                    <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
-					<td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
-                  </tr>
-                </tbody>
-              </table>
+      <div id="hbdData"  dmx-show="buyhbd.checked">
+        <div id="hbdMarketOrders">
+          <div class="row">
+            <div class="mt-3 col-md-6">
+              <h4>Buy Orders</h4>
+              <div class="table-responsive">
+                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdbuyordertable">
+                  <thead role="rowgroup" class="">
+                    <tr role="row" class="">
+                      <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HBD</th>
+                      <th role="columnheader" scope="col" aria-colindex="2" class=""><div>HBD</div></th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class="">DLUX</th>
+                      <th role="columnheader" scope="col" aria-colindex="4" class=""><div>BID</div></th>
+                    </tr>
+                  </thead>
+                  <tbody role="rowgroup">
+                    <!--repeat region-->
+                    <tr class="" role="row" dmx-repeat:hbdbuyorders="hbdbuys.data.groupBy('rate')">
+                      <td aria-colindex="1" role="cell" class=""></td>
+                      <td aria-colindex="2" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
+                      <td aria-colindex="4" role="cell" class=""><a href="#">{{$key}}</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="mt-3 col-md-6">
+              <h4>Sell Orders</h4>
+              <div class="table-responsive">
+                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdsellorderstable">
+                  <thead role="rowgroup" class="">
+                    <tr role="row" class="">
+                      <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
+                      <th role="columnheader" scope="col" aria-colindex="2" class="">DLUX</th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class=""><div>HBD</div></th>
+                      <th role="columnheader" scope="col" aria-colindex="4" class="">TOTAL HBD</th>
+                    </tr>
+                  </thead>
+                  <tbody role="rowgroup">
+                    <!--repeat region-->
+                    <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.data.groupBy('rate')">
+                      <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
+                      <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
+                      <td aria-colindex="4" role="cell" class=""></td>
+                    </tr>
+                  </tbody>
+                  <!---->
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="hbdTradeHistory">
+          <div class="row">
+            <div class="mt-3 col-12">
+              <h4>Trade History</h4>
+              <div class="table-responsive">
+                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdtradehistorytable">
+                  <thead role="rowgroup" class="">
+                    <tr role="row">
+                      <th role="columnheader" scope="col" aria-colindex="1" class="" >PRICE</th>
+                      <th role="columnheader" scope="col" aria-colindex="2" class="">QTY</th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class="">TIME</th>
+                    </tr>
+                  </thead>
+                  <tbody role="rowgroup">
+                    <!--repeat region-->
+                    <tr class="" role="row" dmx-repeat:hbdorderhistory="recenthbd.data">
+                      <td aria-colindex="1" role="cell" class="" dmx-class:text-danger="type == 'sell'" dmx-class:text-success="type == 'buy'">{{price}}</td>
+                      <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-	<div id="hbdData"  dmx-show="buyhbd.checked">
-      <div id="hbdMarketOrders">
-        <div class="row">
-          <div class="mt-3 col-md-6">
-            <h4>Buy Orders</h4>
-            <div class="table-responsive">
-              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdbuyordertable">
-                <thead role="rowgroup" class="">
-                  <tr role="row" class="">
-                    <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HBD</th>
-                    <th role="columnheader" scope="col" aria-colindex="2" class=""><div>HBD</div></th>
-                    <th role="columnheader" scope="col" aria-colindex="3" class="">DLUX</th>
-                    <th role="columnheader" scope="col" aria-colindex="4" class=""><div>BID</div></th>
-                  </tr>
-                </thead>
-                <tbody role="rowgroup">
-                  <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:hbdbuyorders="hbdbuys.data.groupBy('rate')">
-                    <td aria-colindex="1" role="cell" class=""></td>
-                    <td aria-colindex="2" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
-                    <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                    <td aria-colindex="4" role="cell" class=""><a href="#">{{$key}}</a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="mt-3 col-md-6">
-            <h4>Sell Orders</h4>
-            <div class="table-responsive">
-              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdsellorderstable">
-                <thead role="rowgroup" class="">
-                  <tr role="row" class="">
-                    <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
-                    <th role="columnheader" scope="col" aria-colindex="2" class="">DLUX</th>
-                    <th role="columnheader" scope="col" aria-colindex="3" class=""><div>HBD</div></th>
-                    <th role="columnheader" scope="col" aria-colindex="4" class="">TOTAL HBD</th>
-                  </tr>
-                </thead>
-                <tbody role="rowgroup">
-                  <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.data.groupBy('rate')">
-                    <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
-                    <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                    <td aria-colindex="3" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
-                    <td aria-colindex="4" role="cell" class=""></td>
-                  </tr>
-                </tbody>
-                <!---->
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-		 <div id="hbdTradeHistory">
-        <div class="row">
-          <div class="mt-3 col-12">
-            <h4>Trade History</h4>
-            <div class="table-responsive">
-              <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdtradehistorytable">
-                <thead role="rowgroup" class="">
-                  <tr role="row">
-                    
-                    <th role="columnheader" scope="col" aria-colindex="1" class="" >PRICE</th>
-                    <th role="columnheader" scope="col" aria-colindex="2" class="">QTY</th>
-					  <th role="columnheader" scope="col" aria-colindex="3" class="">TIME</th>
-                  </tr>
-                </thead>
-                <tbody role="rowgroup">
-                  <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:hbdorderhistory="recenthbd.data">
-                    <td aria-colindex="1" role="cell" class="" dmx-class:text-danger="type == 'sell'" dmx-class:text-success="type == 'buy'">{{price}}</td>
-                    <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
-					<td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-	  </div>
   </div>
 </main>
 <?php
