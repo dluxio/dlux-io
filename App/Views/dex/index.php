@@ -57,11 +57,11 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 			<span>{{dexapi.data.behind}} BBH</span>
 			</div>
 			<div class="d-flex text-white-50">
-			<div id="userdlux" class="mx-4"> DLUX: {{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}}</div>
-          <div id="userdpwr" class="mx-4"> DPWR: {{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}}</div>
-          <div id="userdgov" class="mx-4"> DGOV: {{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}}</div>
-          <div id="userhive" class="mx-4"> HIVE: {{accountapi.data.result[0].balance}}</div>
-          <div id="userhive" class="mx-4"> HBD: {{accountapi.data.result[0].hbd_balance}}</div>
+			<div id="userdlux" class="mx-4">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} DLUX</div>
+          <div id="userdpwr" class="mx-4">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} DPWR</div>
+          <div id="userdgov" class="mx-4">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} DGOV</div>
+          <div id="userhive" class="mx-4">{{accountapi.data.result[0].balance}}</div>
+          <div id="userhive" class="mx-4">{{accountapi.data.result[0].hbd_balance}}</div>
           </div>
         </div>
 </div>
