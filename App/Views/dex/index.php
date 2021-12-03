@@ -43,8 +43,8 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 ?>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 ">
-    <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px;">
-      <div class="d-flex justify-content-between align-items-center px-3 py-1" style="background-color: black; z-index: 0" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
+    <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
+      <div class="d-flex justify-content-between align-items-center px-3 py-1" style="background-color: black;" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
         <div class="text-center small" 
 						 dmx-class:text-success="dexapi.data.behind < 30"	
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
