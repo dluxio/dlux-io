@@ -127,9 +127,9 @@ barData.then(bars=>{
 })
 
 var updateChart = function(pr, wd, bc) {
-    pair = pr
-    width = wd
-    barCount = bc
+    pair = pr || pair
+    width = wd || width
+    barCount = bc || barCount
     getHistorical(pair, width, barCount).then(bars=>{
         chart.config.data.datasets = [
 			{
