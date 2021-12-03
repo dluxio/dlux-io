@@ -521,15 +521,15 @@ function totals (){
           HBDB[i].getElementsByTagName('td')[0].innerText = parseFloat(HBDBTotal).toFixed(3)
         }
         for(var i = 0; i < HIVEH.length; i++){
-          console.log(Date.now() - (new Date(HIVEH[i].getElementsByTagName('td')[2].innerText + ':00.000Z').valueOf()) , 86400000)
+          //console.log(Date.now() - (new Date(HIVEH[i].getElementsByTagName('td')[2].innerText + ':00.000Z').valueOf()) , 86400000)
           try{
-            if (Date.now() - Date(HIVEH[i].getElementsByTagName('td')[2].innerText + ':00.000Z') < 86400000)
+            if (Date.now() - (new Date(HIVEH[i].getElementsByTagName('td')[2].innerText + ':00.000Z').valueOf()) < 86400000)
               Hive24 += parseFloat(HIVEH[i].getElementsByTagName('td')[1].innerText)
           } catch (e){}
         }
         for(var i = 0; i < HBDH.length; i++){
           try {
-            if(Date.now() - Date(HIVEH[i].getElementsByTagName('td')[2].innerText + ':00.000Z') < 86400000){
+            if(Date.now() - (new Date(HBDH[i].getElementsByTagName('td')[2].innerText + ':00.000Z').valueOf()) < 86400000){
               HBD24 += parseFloat(HBDH[i].getElementsByTagName('td')[1].innerText)
             }
           } catch (e){}
