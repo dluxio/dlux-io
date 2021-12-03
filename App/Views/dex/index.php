@@ -166,7 +166,7 @@ include_once( $path );
 			<td role="cell" class="" aria-colindex="3">{{hbd}}</td>
 			<td role="cell" class="" aria-colindex="4">{{hive}}</td>
 			<td role="cell" class="" aria-colindex="5">{{rate}}</td>
-			<td role="cell" class="text-right" aria-colindex="6"><button class="btn btn-outline-warning">CANCEL</button></td>
+			<td role="cell" class="text-right" aria-colindex="6"><button class="btn btn-sm btn-outline-warning">CANCEL</button></td>
 			</tr>
 			 </tbody>
 			</table>
