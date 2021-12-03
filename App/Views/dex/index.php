@@ -480,7 +480,10 @@ include_once( $path );
     });
     setTimeout(function(){ 
       totals()
-      function totals (){
+  }, 1000);
+});
+})()
+function totals (){
         var HBDBTotal = 0,
         HBDSTotal = 0,
         HBD24 = 0,
@@ -495,13 +498,11 @@ include_once( $path );
         HIVEH = document.getElementById('hivetradehistorytable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
         HIVEB = document.getElementById('hivebuyordertable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
         HIVES = document.getElementById('hivesellorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        console.log(HIVES)
       } catch (e) {console.log(e);
       setTimeout(() => {
           totals()
         }, 1000);
       }
-      console.log(HIVES)
       if(HIVES.length ){
         for(var i = 0; i < HIVES.length; i++){
           HiveSTotal += parseFloat(HIVES[i].getElementsByTagName('td')[2].innerText.replace(/,/g, ''))
@@ -520,7 +521,7 @@ include_once( $path );
           HBDB[i].getElementsByTagName('td')[0].innerText = parseFloat(HBDBTotal).toFixed(3)
         }
         for(var i = 0; i < HIVEH.length; i++){
-          console.log(Date.now() - Date.UTC(HIVEH[i].getElementsByTagName('td')[2].innerText) < 86400000)
+          //console.log(Date.now() - Date.UTC(HIVEH[i].getElementsByTagName('td')[2].innerText) < 86400000)
           try{
             if (Date.now() - Date.UTC(HIVEH[i].getElementsByTagName('td')[2].innerText) < 86400000)
               Hive24 += parseFloat(HIVEH[i].getElementsByTagName('td')[1].innerText)
@@ -540,9 +541,6 @@ include_once( $path );
         }, 1000);
       }
     }
-  }, 1000);
-});
-})()
 </script>
 	<script type="text/javascript" src="/js/chart.js"></script>
 </html>
