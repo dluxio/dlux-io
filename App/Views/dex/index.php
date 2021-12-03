@@ -168,7 +168,7 @@ include_once( $path );
 			<td role="cell" class="" aria-colindex="4">{{hive}}</td>
 			<td role="cell" class="" aria-colindex="5" dmx-class:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" dmx-class:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{rate}}</td>
 			<td role="cell" class="" aria-colindex="6" dmx-class:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" dmx-class:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{type.uppercase()}}</td>
-			<td role="cell" class="text-right" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" dmx-onclick="cancelDEX({{txid}})">CANCEL</button></td>
+			<td role="cell" class="text-right" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" dmx-on:click="cancelDEX({{txid}})">CANCEL</button></td>
 			</tr>
 			 </tbody>
 			</table>
