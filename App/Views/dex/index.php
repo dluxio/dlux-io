@@ -520,12 +520,17 @@ include_once( $path );
           HBDB[i].getElementsByTagName('td')[0].innerText = parseFloat(HBDBTotal).toFixed(3)
         }
         for(var i = 0; i < HIVEH.length; i++){
-          Hive24 += parseFloat(HIVEH[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
+          console.log(Date.now() - Date.UTC(HIVEH[i].getElementsByTagName('td')[2].innerText) < 86400000)
+          Hive24 += parseFloat(HIVEH[i].getElementsByTagName('td')[1].innerText)
           console.log(Hive24)
         }
         for(var i = 0; i < HBDH.length; i++){
-          HBD24 += parseFloat(HBDH[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
-          console.log(HBD24)
+          try {
+            if(Date.now() - Date.UTC(HIVEH[i].getElementsByTagName('td')[2].innerText) < 86400000){
+              HBD24 += parseFloat(HBDH[i].getElementsByTagName('td')[1].innerText)
+            }
+          } catch (e){}
+          
         }
       } else {
         setTimeout(() => {
