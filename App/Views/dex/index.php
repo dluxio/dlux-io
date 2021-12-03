@@ -7,18 +7,16 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script> 
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script> 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script> 
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script> 
 <script type="text/javascript" src="/js/chartf.js"></script>
 <style>
-	.col-sort {
-		background-color: cornflowerblue;
-		color:#282828;
-	}
-	</style>
+.col-sort {
+    background-color: cornflowerblue;
+    color: #282828;
+}
+</style>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
@@ -39,57 +37,60 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
 include_once( $path );
 if ( isset( $_COOKIE[ 'user' ] ) ) {
-	echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
-	echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
 };
 ?>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 ">
-	  	  <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px;">
-<div class="d-flex justify-content-between align-items-center px-3 py-1" style="background-color: black" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
-          <div class="text-center small" 
+    <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px;">
+      <div class="d-flex justify-content-between align-items-center px-3 py-1" style="background-color: black" z-index="0" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
+        <div class="text-center small" 
 						 dmx-class:text-success="dexapi.data.behind < 30"	
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
-						 dmx-class:text-danger="dexapi.data.behind > 100">
-			<span dmx-show="dexapi.data.behind < 30">ONLINE:</span>
-			<span dmx-show="dexapi.data.behind >= 30">LAGGING:</span>
-			<span dmx-show="dexapi.data.behind > 100">OFFLINE:</span>
-			<span>{{dexapi.data.behind}} BBH</span>
-			</div>
-			<div class="d-flex text-white-50">
-			<div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} DLUX</div>
+						 dmx-class:text-danger="dexapi.data.behind > 100"> <span dmx-show="dexapi.data.behind < 30">ONLINE:</span> <span dmx-show="dexapi.data.behind >= 30">LAGGING:</span> <span dmx-show="dexapi.data.behind > 100">OFFLINE:</span> <span>{{dexapi.data.behind}} BBH</span> </div>
+        <div class="d-flex text-white-50">
+          <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} DLUX</div>
           <div id="userdpwr" class="mx-4 text-info">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} DPWR</div>
           <div id="userdgov" class="mx-4 text-primary">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} DGOV</div>
           <div id="userhive" class="mx-4 text-danger">{{accountapi.data.result[0].balance}}</div>
           <div id="userhive" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="container text-white" style="margin-top: 50px;">
+      <div class="row">
+        <div class="col-4">
+          <div class="jumbotron p-3 bg-dark">
+            <div id="hivequote">
+              <h2 class="lead my-0"><b>HIVE: ${{hiveprice.data.hive.usd}}</b></h2>
+            </div>
+            <input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none">
           </div>
         </div>
-</div>
-    <div class="container text-white" style="margin-top: 50px;">
-        <div class="row">
-			<div class="col-4">
-			<div class="jumbotron p-3 bg-dark">
-				 <div id="hivequote"><h2 class="lead my-0"><b>HIVE: ${{hiveprice.data.hive.usd}}</b></h2></div>
-          <input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none">
-				</div>
-		  </div>
-			<div class="col-4">
-			<div class="jumbotron p-3 bg-dark">
-				<div id="hbdquote"><h2 class="lead my-0"><b>HBD: ${{hbdprice.data.hive_dollar.usd}}</b></h2></div>
-          <input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none">
-			</div>
-				</div>
-			<div class="col-4">
-			<div class="jumbotron p-3 bg-dark" dmx-show="buyhive.checked">
-				<div id="dluxhivequote"><h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hive.tick}}</b></h2></div>
-          <input id="dluxhiveusd" dmx-bind:value="{{dexapi.data.markets.hive.tick}}" class="d-none">
-			</div>
-				<div class="jumbotron p-3 bg-dark" dmx-show="buyhbd.checked">
-				<div id="dluxhbdquote"><h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hbd.tick}}</b></h2></div>
-          <input id="dluxhbdusd" dmx-bind:value="{{dexapi.data.markets.hbd.tick}}" class="d-none">
-			</div>
-				</div>
+        <div class="col-4">
+          <div class="jumbotron p-3 bg-dark">
+            <div id="hbdquote">
+              <h2 class="lead my-0"><b>HBD: ${{hbdprice.data.hive_dollar.usd}}</b></h2>
+            </div>
+            <input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none">
+          </div>
         </div>
+        <div class="col-4">
+          <div class="jumbotron p-3 bg-dark" dmx-show="buyhive.checked">
+            <div id="dluxhivequote">
+              <h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hive.tick}}</b></h2>
+            </div>
+            <input id="dluxhiveusd" dmx-bind:value="{{dexapi.data.markets.hive.tick}}" class="d-none">
+          </div>
+          <div class="jumbotron p-3 bg-dark" dmx-show="buyhbd.checked">
+            <div id="dluxhbdquote">
+              <h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hbd.tick}}</b></h2>
+            </div>
+            <input id="dluxhbdusd" dmx-bind:value="{{dexapi.data.markets.hbd.tick}}" class="d-none">
+          </div>
+        </div>
+      </div>
       </center>
       <div id="market" class="row text-center">
         <div class="mt-2 col-lg-3">
@@ -160,8 +161,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         </div>
         <div class="mt-2 text-center d-flex justify-content-between">
           <div>
-			  <button id="refreshChart" class="btn btn-outline-secondary" onClick="updateChart()"><i class="fas fa-sync-alt mr-2"></i>REFRESH CHART</button>
-           
+            <button id="refreshChart" class="btn btn-outline-secondary" onClick="updateChart()"><i class="fas fa-sync-alt mr-2"></i>REFRESH CHART</button>
           </div>
           <div id="settimescale" class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-info active">
@@ -181,118 +181,86 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
               1Y </label>
           </div>
           <div>
-			  <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.data.count()}}) <i class="fas fa-book-reader ml-2"></i></button> 
-            
+            <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.data.count()}}) <i class="fas fa-book-reader ml-2"></i></button>
           </div>
         </div>
         <div id="openordersdrawer" class="collapse ">
-			<div class="py-5">
-		<div dmx-show="openorders.data.count() == 0" class="text-center text-white-50"><h5>No open orders</h5></div>
-		<div class="table-responsive rounded border border-dark" dmx-show="openorders.data.count() > 0">
-		 <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
-          <thead role="rowgroup" class="">
-			<tr role="row" class="">
-			<th role="columnheader" class="" aria-colindex="1" dmx-class:col-sort="openorders.sort.on == 'block'">
-				<div class="d-flex align-items-center">
-					<div class="mr-3">BLOCK</div>
-                    <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('block','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'block'">
-						<i class="fas fa-caret-up"></i>
-					</button>
-                    <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('block','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'block'">
-						<i class="fas fa-caret-down"></i>
-					</button>
-                </div>
-			</th>
-			<th role="columnheader" class="" aria-colindex="2" dmx-class:col-sort="openorders.sort.on == 'amount'">
-				<div class="d-flex align-items-center">
-					<div class="mr-3">DLUX</div>
-                    <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('amount','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'amount'">
-						<i class="fas fa-caret-up"></i>
-					</button>
-                    <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('amount','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'amount'">
-						<i class="fas fa-caret-down"></i>
-					</button>
-                </div>
-			</th>
-			<th role="columnheader" class="" aria-colindex="3" dmx-class:col-sort="openorders.sort.on == 'hbd'">
-				<div class="d-flex align-items-center">
-					<div class="mr-3">HBD</div>
-                    <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('hbd','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hbd'">
-						<i class="fas fa-caret-up"></i>
-					</button>
-                    <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('hbd','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hbd'">
-						<i class="fas fa-caret-down"></i>
-					</button>
-                </div>
-			</th>
-			<th role="columnheader" class="" aria-colindex="4" dmx-class:col-sort="openorders.sort.on == 'hive'">
-				<div class="d-flex align-items-center">
-					<div class="mr-3">HIVE</div>
-                    <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('hive','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hive'">
-						<i class="fas fa-caret-up"></i>
-					</button>
-                    <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('hive','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hive'">
-						<i class="fas fa-caret-down"></i>
-					</button>
-                </div>
-			</th>
-			<th role="columnheader" class="" aria-colindex="5" dmx-class:col-sort="openorders.sort.on == 'rate'">
-				<div class="d-flex align-items-center">
-					<div class="mr-3">RATE</div>
-                    <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('rate','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'rate'">
-						<i class="fas fa-caret-up"></i>
-					</button>
-                    <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('rate','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'rate'">
-						<i class="fas fa-caret-down"></i>
-					</button>
-                </div>
-			</th>
-			<th role="columnheader" class="" aria-colindex="6" dmx-class:col-sort="openorders.sort.on == 'type'">
-				<div class="d-flex align-items-center">
-					<div class="mr-3">TYPE</div>
-                    <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('type','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'type'">
-						<i class="fas fa-caret-up"></i>
-					</button>
-                    <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('type','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'type'">
-						<i class="fas fa-caret-down"></i>
-					</button>
-                </div>
-			</th>
-				</tr>
-			  </thread>
-			  <tbody role="rowgroup">
-                    <!--repeat region-->
-		  <tr role="row" class="" dmx-repeat:openordersrepeat="openorders.data">
-			<td role="cell" class="" aria-colindex="1">{{block}}</td>
-			<td role="cell" class="" aria-colindex="2">{{amount}}</td>
-			<td role="cell" class="" aria-colindex="3">{{hbd}}</td>
-			<td role="cell" class="" aria-colindex="4">{{hive}}</td>
-			<td role="cell" class="" aria-colindex="5" dmx-class:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" dmx-class:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{rate}}</td>
-			<td role="cell" class="" aria-colindex="6" dmx-class:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" dmx-class:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{type.uppercase()}}</td>
-			<td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" dmx-on:click="cancelDEX('{{txid}}')">CANCEL</button></td>
-			</tr>
-			 </tbody>
-			 <tfoot>
-			 	<tr role="row" class="" >
-				<td role="cell" class="" colspan="7" aria-colindex="1">
-					<!-- pagination -->
-    
-          <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="openorders.pages > 1">
-            <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="openorders.prev()" dmx-show="openorders.has.prev"><i class="fa fa-angle-left"></i></a></div>
-            <div class="d-flex">
-              <p class="m-0 p-0 text-muted">Page {{openorders.page}} of {{openorders.pages}}</p>
+          <div class="py-5">
+            <div dmx-show="openorders.data.count() == 0" class="text-center text-white-50">
+              <h5>No open orders</h5>
             </div>
-            <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="openorders.next()" dmx-show="openorders.has.next"><i class="fa fa-angle-right"></i></a></div>
+            <div class="table-responsive rounded border border-dark" dmx-show="openorders.data.count() > 0">
+              <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
+                <thead role="rowgroup" class="">
+                  <tr role="row" class="">
+                    <th role="columnheader" class="" aria-colindex="1" dmx-class:col-sort="openorders.sort.on == 'block'"> <div class="d-flex align-items-center">
+                        <div class="mr-3">BLOCK</div>
+                        <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('block','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'block'"> <i class="fas fa-caret-up"></i> </button>
+                        <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('block','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'block'"> <i class="fas fa-caret-down"></i> </button>
+                      </div>
+                    </th>
+                    <th role="columnheader" class="" aria-colindex="2" dmx-class:col-sort="openorders.sort.on == 'amount'"> <div class="d-flex align-items-center">
+                        <div class="mr-3">DLUX</div>
+                        <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('amount','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-up"></i> </button>
+                        <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('amount','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-down"></i> </button>
+                      </div>
+                    </th>
+                    <th role="columnheader" class="" aria-colindex="3" dmx-class:col-sort="openorders.sort.on == 'hbd'"> <div class="d-flex align-items-center">
+                        <div class="mr-3">HBD</div>
+                        <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('hbd','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hbd'"> <i class="fas fa-caret-up"></i> </button>
+                        <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('hbd','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hbd'"> <i class="fas fa-caret-down"></i> </button>
+                      </div>
+                    </th>
+                    <th role="columnheader" class="" aria-colindex="4" dmx-class:col-sort="openorders.sort.on == 'hive'"> <div class="d-flex align-items-center">
+                        <div class="mr-3">HIVE</div>
+                        <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('hive','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hive'"> <i class="fas fa-caret-up"></i> </button>
+                        <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('hive','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hive'"> <i class="fas fa-caret-down"></i> </button>
+                      </div>
+                    </th>
+                    <th role="columnheader" class="" aria-colindex="5" dmx-class:col-sort="openorders.sort.on == 'rate'"> <div class="d-flex align-items-center">
+                        <div class="mr-3">RATE</div>
+                        <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('rate','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'rate'"> <i class="fas fa-caret-up"></i> </button>
+                        <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('rate','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'rate'"> <i class="fas fa-caret-down"></i> </button>
+                      </div>
+                    </th>
+                    <th role="columnheader" class="" aria-colindex="6" dmx-class:col-sort="openorders.sort.on == 'type'"> <div class="d-flex align-items-center">
+                        <div class="mr-3">TYPE</div>
+                        <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('type','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-up"></i> </button>
+                        <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('type','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-down"></i> </button>
+                      </div>
+                    </th>
+                  </tr>
+                  </thread>
+                  
+                <tbody role="rowgroup">
+                  <!--repeat region-->
+                  <tr role="row" class="" dmx-repeat:openordersrepeat="openorders.data">
+                    <td role="cell" class="" aria-colindex="1">{{block}}</td>
+                    <td role="cell" class="" aria-colindex="2">{{amount}}</td>
+                    <td role="cell" class="" aria-colindex="3">{{hbd}}</td>
+                    <td role="cell" class="" aria-colindex="4">{{hive}}</td>
+                    <td role="cell" class="" aria-colindex="5" dmx-class:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" dmx-class:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{rate}}</td>
+                    <td role="cell" class="" aria-colindex="6" dmx-class:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" dmx-class:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{type.uppercase()}}</td>
+                    <td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" dmx-on:click="cancelDEX('{{txid}}')">CANCEL</button></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="openorders.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="openorders.prev()" dmx-show="openorders.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{openorders.page}} of {{openorders.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="openorders.next()" dmx-show="openorders.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
           </div>
-
-					</td>
-				 </tr>
-			 </tfoot>
-			</table>
-			 </div>
-		
-		  </div>
-			</div>
+        </div>
       </div>
       <div id="tradeForms">
         <div class="row">
@@ -698,5 +666,5 @@ function totals (){
       }
     }
 </script>
-	<script type="text/javascript" src="/js/chart.js"></script>
+<script type="text/javascript" src="/js/chart.js"></script>
 </html>
