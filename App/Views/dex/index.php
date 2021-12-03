@@ -508,20 +508,24 @@ include_once( $path );
           HIVES[i].getElementsByTagName('td')[3].innerText = parseFloat(HiveSTotal).toFixed(3)
         }
         for(var i = 0; i < HBDS.length; i++){
-          HiveSTotal += parseFloat(HBDS[i].getElementsByTagName('td')[2].innerText.replace(/,/g, ''))
+          HBDSTotal += parseFloat(HBDS[i].getElementsByTagName('td')[2].innerText.replace(/,/g, ''))
           HBDS[i].getElementsByTagName('td')[3].innerText = parseFloat(HiveSTotal).toFixed(3)
         }
         for(var i = 0; i < HIVEB.length; i++){
-          HiveSTotal += parseFloat(HIVEB[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
+          HiveBTotal += parseFloat(HIVEB[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
           HIVEB[i].getElementsByTagName('td')[0].innerText = parseFloat(HiveSTotal).toFixed(3)
         }
         for(var i = 0; i < HBDB.length; i++){
-          HiveSTotal += parseFloat(HBDB[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
+          HBDBTotal += parseFloat(HBDB[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
           HBDB[i].getElementsByTagName('td')[0].innerText = parseFloat(HiveSTotal).toFixed(3)
         }
         for(var i = 0; i < HIVEH.length; i++){
-          console.log(new Date(HIVEH[i].getElementsByTagName('td')[1].innerText).valueOf())
           Hive24 += parseFloat(HIVEH[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
+          console.log(Hive24)
+        }
+        for(var i = 0; i < HBDH.length; i++){
+          HBD24 += parseFloat(HBDH[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
+          console.log(HBD24)
         }
       } else {
         setTimeout(() => {
