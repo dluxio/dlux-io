@@ -24,10 +24,10 @@ include_once( $path );
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/" ></dmx-api-datasource>
-
 <dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://token.dlux.io/api/recent/HIVE_DLUX" dmx-param:depth="200"></dmx-api-datasource>
 <dmx-api-datasource id="recenthbdapi" is="dmx-fetch" url="https://token.dlux.io/api/recent/HBD_DLUX" dmx-param:depth="200"></dmx-api-datasource>
 <dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
+<dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
 <dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="rate" sortdir="desc"></dmx-data-view>
 <dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="rate" sortdir="desc"></dmx-data-view>
 <dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="desc"></dmx-data-view>
@@ -40,6 +40,7 @@ $path .= "/mod/nav.php";
 include_once( $path );
 if ( isset( $_COOKIE[ 'user' ] ) ) {
 	echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
+	echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
 };
 ?>
 <main role="main" class="flex-shrink-0 text-white">
@@ -59,6 +60,8 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 			<div id="userdlux" class="mx-4"> DLUX: {{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}}</div>
           <div id="userdpwr" class="mx-4"> DPWR: {{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}}</div>
           <div id="userdgov" class="mx-4"> DGOV: {{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}}</div>
+          <div id="userhive" class="mx-4"> HIVE: {{accountapi.data.result[0].balance}}</div>
+          <div id="userhive" class="mx-4"> HBD: {{accountinfo.data.hbd_balance}}</div>
           </div>
         </div>
 </div>
