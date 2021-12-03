@@ -72,7 +72,7 @@
 	  
 				  </ul></div></nav>
 </div>
-	<div id="pagecontent" class="tab-content padme-t70 pb-5 text-whited-flex">
+	<div id="pagecontent" class="tab-content padme-t70 pb-5 text-white">
 		
        <div role="tabpanel" class="tab-pane fade show active" id="about" aria-labelledby="aboutTab">
 		   <div class="jumbotron container bg-darker text-left">
