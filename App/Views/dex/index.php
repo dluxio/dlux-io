@@ -61,7 +61,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
           <div id="userdpwr" class="mx-4"> DPWR: {{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}}</div>
           <div id="userdgov" class="mx-4"> DGOV: {{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}}</div>
           <div id="userhive" class="mx-4"> HIVE: {{accountapi.data.result[0].balance}}</div>
-          <div id="userhive" class="mx-4"> HBD: {{accountinfo.data.hbd_balance}}</div>
+          <div id="userhive" class="mx-4"> HBD: {{accountinfo.data.result.hbd_balance}}</div>
           </div>
         </div>
 </div>
@@ -156,7 +156,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         </div>
         <div class="mt-2 text-center d-flex justify-content-between">
           <div>
-			  <button id="refreshChart" class="btn btn-outline-secondary" onClick="updateChart()">CHART REFRESH<i class="fas fa-redo-alt ml-2"></i></button>
+			  <button id="refreshChart" class="btn btn-outline-secondary" onClick="updateChart()">CHART REFRESH<i class="fas fa-sync-alt ml-2"></i></button>
            
           </div>
           <div id="settimescale" class="btn-group btn-group-toggle" data-toggle="buttons">
