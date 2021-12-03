@@ -126,7 +126,7 @@ barData.then(bars=>{
 });
 })
 
-var update = function(pr, wd, bc) {
+var updateChart = function(pr, wd, bc) {
     pair = pr
     width = wd
     barCount = bc
@@ -149,9 +149,3 @@ var update = function(pr, wd, bc) {
 
 
 document.getElementById('refreshChart').addEventListener('click', update(pair, width, barCount));
-/*
-document.getElementById('randomizeData').addEventListener('click', function() {
-	barData = getRandomData(initialDateStr, barCount);
-	update();
-});
-*/
