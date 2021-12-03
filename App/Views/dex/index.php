@@ -45,7 +45,7 @@ include_once( $path );
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
 						 dmx-class:border-danger="dexapi.data.behind > 100"
 						 dmx-class:text-danger="dexapi.data.behind > 100"> DLUX is currently {{dexapi.data.behind}} blocks behind HIVE</div>
-			<div class="d-flex justify-content-around my-2"><div>Current price of HIVE: ${{hiveprice.data.hive.usd.formatNumber(6,.,,,)}}</div><div> Current price of HBD: ${{hbdprice.data.hive_dollar.usd.formatNumber(6,.,,,)}}</div></div>
+			<div class="d-flex justify-content-around my-2"><div id="hivequote">Current price of HIVE: ${{hiveprice.data.hive.usd.formatNumber(6,.,,,)}}</div><div id="hbdquote"> Current price of HBD: ${{hbdprice.data.hive_dollar.usd.formatNumber(6,.,,,)}}</div></div>
 			<div><input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none"><input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none"></div>
 		</center>
       <div id="market" class="row text-center">
@@ -534,8 +534,8 @@ function totals (){
             }
           } catch (e){}
         }
-        document.getElementById('hbd24').innerHTML = `<h5>24h Volume</h5>${parseFloat(HBD24).toFixed(3)} HBD<br>`
-        document.getElementById('hive24').innerHTML = `<h5>24h Volume</h5>${parseFloat(Hive24).toFixed(3)} HIVE<br>`
+        document.getElementById('hbd24').innerHTML = `<h5>24h Volume</h5>${parseFloat(HBD24).toFixed(3)} HBD<br>$${parseFloat(parseFloat(document.getElementById('hbdquote').innerText.split('$')[1]) * HBD24).toFixed(2))}`
+        document.getElementById('hive24').innerHTML = `<h5>24h Volume</h5>${parseFloat(Hive24).toFixed(3)} HIVE<br>$${parseFloat(parseFloat(document.getElementById('hbdquote').innerText.split('$')[1]) * Hive24).toFixed(2))}`
         //console.log({Hive24, HBD24})
       } else {
         setTimeout(() => {
