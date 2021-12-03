@@ -123,7 +123,7 @@ include_once( $path );
         </div>
         <div class="mt-2 text-center d-flex justify-content-between">
           <div>
-            <button id="refreshChart" class="btn btn-outline-secondary">Refresh<i class="fas fa-redo-alt ml-2"></i></button>
+            <button id="refreshChart" class="btn btn-outline-secondary">REFRESH<i class="fas fa-redo-alt ml-2"></i></button>
           </div>
           <div id="settimescale" class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-info active">
@@ -143,27 +143,34 @@ include_once( $path );
               1Y </label>
           </div>
           <div>
-            <button class="btn btn-outline-primary">My Orders<i class="fas fa-book-reader ml-2"></i></button>
+            <button class="btn btn-outline-primary">OPEN ORDERS<i class="fas fa-book-reader ml-2"></i></button>
           </div>
         </div>
         <div id="openordersdrawer">
-		 <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="useropenorders">
+		<div class="table-responsive">
+		 <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="useropenorders">
           <thead role="rowgroup" class="">
-			<tr role="row">
-			<th role="columnheader" aria-colindex="1">BLOCK</th>
-			<th role="columnheader" aria-colindex="2">DLUX</th>
-			<th role="columnheader" aria-colindex="3">HBD</th>
-			<th role="columnheader" aria-colindex="4">HIVE</th>
-			<th role="columnheader" aria-colindex="5">RATE</th>
+			<tr role="row" class="">
+			<th role="columnheader" class="" aria-colindex="1">BLOCK</th>
+			<th role="columnheader" class="" aria-colindex="2">DLUX</th>
+			<th role="columnheader" class="" aria-colindex="3">HBD</th>
+			<th role="columnheader" class="" aria-colindex="4">HIVE</th>
+			<th role="columnheader" class="" aria-colindex="5">RATE</th>
 				</tr>
-		  <tr role="row" dmx-repeat:openordersrepeat="openorders.data">
-			<td role="cell" aria-colindex="1">{{block}}</td>
-			<td role="cell" aria-colindex="2">{{amount}}</td>
-			<td role="cell" aria-colindex="3">{{hbd}}</td>
-			<td role="cell" aria-colindex="4">{{hive}}</td>
-			<td role="cell" aria-colindex="5">{{rate}}</td>
+			  </thread>
+			  <tbody role="rowgroup">
+                    <!--repeat region-->
+		  <tr role="row" class="" dmx-repeat:openordersrepeat="openorders.data">
+			<td role="cell" class="" aria-colindex="1">{{block}}</td>
+			<td role="cell" class="" aria-colindex="2">{{amount}}</td>
+			<td role="cell" class="" aria-colindex="3">{{hbd}}</td>
+			<td role="cell" class="" aria-colindex="4">{{hive}}</td>
+			<td role="cell" class="" aria-colindex="5">{{rate}}</td>
+			<td role="cell" class="text-right" aria-colindex="6"><button class="btn btn-outline-warning">CANCEL</button></td>
 			</tr>
+			 </tbody>
 			</table>
+			 </div>
 		  </div>
       </div>
       <div id="tradeForms">
