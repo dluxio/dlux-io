@@ -496,7 +496,7 @@ include_once( $path );
         // HIVEB = document.getElementById('hivebuyorderstable').getElementsByClassName('tbody')[0].getElementsByTagName('tr')
         HIVES = document.getElementById('hivesellorderstable') //.getElementsByClassName('tbody')[0].getElementsByTagName('tr')
         console.log(HIVES)
-        HIVES = HIVE.getElementsByClassName('tbody')[0]
+        HIVES = HIVES.getElementsByClassName('tbody')[0]
         console.log(HIVES)
         HIVES = HIVES.getElementsByTagName('tr')
         console.log(HIVES)
