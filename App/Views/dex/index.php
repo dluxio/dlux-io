@@ -57,11 +57,11 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 			<span>{{dexapi.data.behind}} BBH</span>
 			</div>
 			<div class="d-flex text-white-50">
-			<div id="userdlux" class="mx-4">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} DLUX</div>
-          <div id="userdpwr" class="mx-4">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} DPWR</div>
-          <div id="userdgov" class="mx-4">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} DGOV</div>
-          <div id="userhive" class="mx-4">{{accountapi.data.result[0].balance}}</div>
-          <div id="userhive" class="mx-4">{{accountapi.data.result[0].hbd_balance}}</div>
+			<div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} DLUX</div>
+          <div id="userdpwr" class="mx-4 text-primary">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} DPWR</div>
+          <div id="userdgov" class="mx-4 text-info">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} DGOV</div>
+          <div id="userhive" class="mx-4 text-danger">{{accountapi.data.result[0].balance}}</div>
+          <div id="userhive" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
           </div>
         </div>
 </div>
@@ -69,23 +69,23 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         <div class="row">
 			<div class="col-4">
 			<div class="jumbotron p-3 bg-dark">
-				 <div id="hivequote"><h2 class="lead my-0" dmx-class:text-warning="buyhive.checked"><b>HIVE: ${{hiveprice.data.hive.usd}}</b></h2></div>
+				 <div id="hivequote"><h2 class="lead my-0"><b>HIVE: ${{hiveprice.data.hive.usd}}</b></h2></div>
           <input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none">
 				</div>
 		  </div>
 			<div class="col-4">
 			<div class="jumbotron p-3 bg-dark">
-				<div id="hbdquote"><h2 class="lead my-0" dmx-class:text-warning="buyhbd.checked"><b>HBD: ${{hbdprice.data.hive_dollar.usd}}</b></h2></div>
+				<div id="hbdquote"><h2 class="lead my-0"><b>HBD: ${{hbdprice.data.hive_dollar.usd}}</b></h2></div>
           <input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none">
 			</div>
 				</div>
 			<div class="col-4">
 			<div class="jumbotron p-3 bg-dark" dmx-show="buyhive.checked">
-				<div id="dluxhivequote"><h2 class="lead my-0 text-warning"><b>DLUX: ${{dexapi.data.markets.hive.tick}}</b></h2></div>
+				<div id="dluxhivequote"><h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hive.tick}}</b></h2></div>
           <input id="dluxhiveusd" dmx-bind:value="{{dexapi.data.markets.hive.tick}}" class="d-none">
 			</div>
 				<div class="jumbotron p-3 bg-dark" dmx-show="buyhbd.checked">
-				<div id="dluxhbdquote"><h2 class="lead my-0 text-warning"><b>DLUX: ${{dexapi.data.markets.hbd.tick}}</b></h2></div>
+				<div id="dluxhbdquote"><h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hbd.tick}}</b></h2></div>
           <input id="dluxhbdusd" dmx-bind:value="{{dexapi.data.markets.hbd.tick}}" class="d-none">
 			</div>
 				</div>
