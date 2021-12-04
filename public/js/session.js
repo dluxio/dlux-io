@@ -569,7 +569,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
 // DEX Actions //
 //buyFTHive('{{set}}','{{uid}}',{{price}},{{pricenai.token}})
 function buyFTHive(set, uid, price, token, qty){
-    qty = qty || 1
+    qty = parseInt(document.getElementById(qty).value) || 1
     console.log(set, uid, price, token)
     broadcastTransfer({to:'dlux-cc',[`${token.toLowerCase()}`]:price * qty , memo: `NFT ${set}:${uid}`}, `Buying a ${set} mint token`)
 }
