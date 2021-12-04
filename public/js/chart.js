@@ -103,9 +103,9 @@ function getHistorical(pair, width, bc){
                 if(items[i+1] && new Date(now - (3000 * (current_block - parseInt(items[i+1].split(':')[0])))).getTime() > currentBucket + period){
                     bars.push({x: currentBucket, o: current.o, h: current.h, l: current.l, c: current.c, v: current.v})
                     currentBucket = new Date(currentBucket + period).getTime()
-                    current.o = current.c
-                    current.h = current.c
-                    current.l = current.c
+                    current.o = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                    current.h = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                    current.l = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
                     current.v = 0
                 } else if (!items[i+1]) {
                     bars.push({x: currentBucket, o: current.o, h: current.h, l: current.l, c: current.c, v: current.v})
