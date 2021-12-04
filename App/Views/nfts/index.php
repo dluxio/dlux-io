@@ -361,8 +361,8 @@ include_once( $path );
                                           <td>{{pricenai.nai()}}</td>
                                           <td>&asymp; {{((price/1000)*dluxperdollar.value).formatCurrency())}}</td>
                                           <td><div>
-                                            <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyfthivebtn" dmx-show="(pricenai.token != 'DLUX')" dmx-on:click="buyFTHive('{{set}}','{{uid}}',{{price}},'{{pricenai.token}}')">Buy</button>
-                                            <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyftbtn" dmx-show="(pricenai.token == 'DLUX')" dmx-on:click="buyFT('{{set}}','{{uid}}',{{price}})">Buy</button>
+                                            <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyfthivebtn" dmx-show="(pricenai.token != 'DLUX') && (by != userCookie.value)" dmx-on:click="buyFTHive('{{set}}','{{uid}}',{{price}},'{{pricenai.token}}')">Buy</button>
+                                            <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyftbtn" dmx-show="(pricenai.token == 'DLUX') && (by != userCookie.value)" dmx-on:click="buyFT('{{set}}','{{uid}}',{{price}})">Buy</button>
 											  <button class="btn btn-warning" dmx-bind:id="{{set}}-{{uid}}-sellftcancelbtn" dmx-show="(by == userCookie.value)" dmx-on:click="sellFTcancel('{{set}}','{{uid}}')">Cancel</button>
                                           </div></td>
                                         </tr>
