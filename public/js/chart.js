@@ -33,10 +33,10 @@ function getHistorical(pair, width, bc){
                     while(new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime() > currentBucket + period){
                         bars.push({
                             x: currentBucket, 
-                            o: dex.markets[pair.toLowerCase()].days[buckets[i]].c, 
-                            h: dex.markets[pair.toLowerCase()].days[buckets[i]].c, 
-                            l: dex.markets[pair.toLowerCase()].days[buckets[i]].c, 
-                            c: dex.markets[pair.toLowerCase()].days[buckets[i]].c, 
+                            o: dex.markets[pair.toLowerCase()].days[buckets[i]].o, 
+                            h: dex.markets[pair.toLowerCase()].days[buckets[i]].o, 
+                            l: dex.markets[pair.toLowerCase()].days[buckets[i]].o, 
+                            c: dex.markets[pair.toLowerCase()].days[buckets[i]].o, 
                             v: 0})
                         currentBucket = new Date(currentBucket + period).getTime()
                     }
@@ -52,7 +52,6 @@ function getHistorical(pair, width, bc){
                     current.c = dex.markets[pair.toLowerCase()].days[buckets[i]].c
                     current.v += dex.markets[pair.toLowerCase()].days[buckets[i]].v
                 } else {
-                    current.o = dex.markets[pair.toLowerCase()].days[buckets[i]].o
                     current.h = dex.markets[pair.toLowerCase()].days[buckets[i]].h
                     current.l = dex.markets[pair.toLowerCase()].days[buckets[i]].l
                     current.c = dex.markets[pair.toLowerCase()].days[buckets[i]].c
