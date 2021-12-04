@@ -556,7 +556,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          ['transfer', {
                              to: cj.to,
                              from: user,
-                             amount: `${parseFloat((cj.hive || cj.hbd)/1000).toFixed(3)} ${cj.hive?'HIVE':'HBD'}`,
+                             amount: `${parseFloat((cj.hive ? cj.hive : cj.hbd)/1000).toFixed(3)} ${cj.hive?'HIVE':'HBD'}`,
                              memo: cj.memo
                          }]
                      ], 'active'])
