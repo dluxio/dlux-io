@@ -202,7 +202,7 @@ include_once( $path );
                     </div>
                     <div class="d-flex ml-auto flex-column">
                       <p class="ml-auto my-0 text-white-50 font-weight-bolder" style="font-size: 30px;">
-						  <input class="form-control text-white" style="background-color: rgba(0,0,0,0.5); max-width: 150px" id="markethive" value="1" placeholder="0" type="number" min="0.004" step="0.001" required dmx-bind:max="{{accountapi.data.result[0].balance}}"></p>
+						  <input class="form-control text-white" style="background-color: rgba(0,0,0,0.5); max-width: 150px" id="markethive" value="1" placeholder="0" type="number" min="0.004" step="0.001" required dmx-bind:max="{{accountapi.data.result[0].balance.split(' ')[0]}}"></p>
                       <p class="ml-auto my-0 text-muted font-weight-bold" style="font-size: 16px;">&asymp; {{(markethive.value*hiveprice.data.hive.usd).formatCurrency()}}</p>
                     </div>
                   </div>
