@@ -242,7 +242,7 @@ include_once( $path );
                       <h2 class="p-0 m-0 ml-2 font-weight-bold">DLUX</h2>
                     </div>
                     <div class="d-flex ml-auto">
-                      <p class="ml-auto my-0 text-warning font-weight-bolder" style="font-size: 30px;">&asymp; {{(((markethive.value/dexview1.data[0].rate).toNumber())-(marketfee.value.toNumber())).formatNumber(3,'.',',')}}</p>
+                      <p class="ml-auto my-0 text-warning font-weight-bolder" style="font-size: 30px;">&asymp; {{((parseFloat(markethive.value)/parseFloat(dexview1.data[0].rate)).toNumber()-(marketfee.value.toNumber())).formatNumber(3,'.',',')}}</p>
                     </div>
                   </div>
                   <p class="pt-3">DLUX is your ticket to the metaverse. Purchase NFTs, power-up to vote on proposals, and use it across a variety of XR games and apps.</p>
