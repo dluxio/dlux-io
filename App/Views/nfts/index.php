@@ -266,7 +266,7 @@ include_once( $path );
               <div class="d-flex justify-content-between align-items-center"></div>
               <div class="" id="sales-mint">
                 <div id="buymintcards" is="dmx-repeat" dmx-bind:repeat="mintsupplyapi.data.result.sort('set')" class="row">
-                  <div dmx-bind:id="{{script}}-card" class="card card-ft text-white m-2 " > {{script.getSetDetailsColors('-card')}}
+                  <div dmx-bind:id="{{script}}-card" class="card card-ft text-white m-2 " style="border: none;"> {{script.getSetDetailsColors('-card')}}
                     <div id="hidden-detail-inputs" class="d-none">
                       <input dmx-bind:id="{{script}}-color1-text" type="text">
                       {{script.getSetDetails('Color1', '-color1-text', 'value')}}
@@ -315,7 +315,7 @@ include_once( $path );
                                 </div>
                                 <h5>Unwrap to see what's inside</h5>
 								  
-                                <div class="btn btn-outline-light btn-lg" dmx-on:clck="buyFT('{{set}}','{{uid}}')">&asymp; {{((sales.min('price')/1000)*dluxperdollar.value).formatCurrency()}}</div>
+                                <div class="btn btn-outline-light btn-lg d-none" dmx-on:clck="buyFT('{{set}}','{{uid}}')">&asymp; {{((sales.min('price')/1000)*dluxperdollar.value).formatCurrency()}}</div>
                               </div>
                             </div>
                           </div>
