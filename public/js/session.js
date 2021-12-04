@@ -552,6 +552,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  }
 
  function broadcastTransfer(cj, msg){
+     console.log('bT', cj)
     Dluxsession.hive_sign([user, [
                          ['transfer', {
                              to: cj.to,
