@@ -587,6 +587,7 @@ function sellDEX(dlux, hive, hbd, hours, callback){
  }
 
  function buyDEX(hive, hbd, dlux, hours, callback){
+     console.log({hive,hbd,dlux})
     dlux = parseInt(parseFloat(dlux)*1000)
     hive = parseInt(parseFloat(hive)*1000)
     hbd = parseInt(parseFloat(hbd)*1000)
