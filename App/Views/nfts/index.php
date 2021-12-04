@@ -172,7 +172,7 @@ include_once( $path );
             <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
           <div class="modal-content bg-dark text-white">
-			  <form id="marketorderform" dmx-bind:action="javascript:buyDEX('{{markethive.value}}','{{markethbd.value}}','{{marketqty.value}}','{{markettime.value}}')" >
+			  <form class="needs-validation" validate id="marketorderform" dmx-bind:action="javascript:buyDEX('{{markethive.value}}','{{markethbd.value}}','{{marketqty.value}}','{{markettime.value}}')" >
 				  <input id="markethbd" value="0" class="d-none">
 				  <input id="marketqty" value="0" class="d-none">
 				  <input id="markettime" value="0" class="d-none">
@@ -202,7 +202,7 @@ include_once( $path );
                     </div>
                     <div class="d-flex ml-auto flex-column">
                       <p class="ml-auto my-0 text-white-50 font-weight-bolder" style="font-size: 30px;">
-						  <input class="form-control" id="markethive" value="1" placeholder="0" type="number" min="0.004" step="0.001" required dmx-bind:max="{{accountapi.data.result[0].balance}}"></p>
+						  <input class="form-control text-white" style="background-color: rgba(0,0,0,0.5); max-width: 150px" id="markethive" value="1" placeholder="0" type="number" min="0.004" step="0.001" required dmx-bind:max="{{accountapi.data.result[0].balance}}"></p>
                       <p class="ml-auto my-0 text-muted font-weight-bold" style="font-size: 16px;">&asymp; {{(markethive.value*hiveprice.data.hive.usd).formatCurrency()}}</p>
                     </div>
                   </div>
@@ -223,7 +223,7 @@ include_once( $path );
                     <hr width="100%" style="border: #333 thin solid">
                     <div class="d-flex">
                       <p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Swap Fee<small class="rounded-pill border border-secondary p-1 ml-2">0.1%</small></p>
-                      <p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">&asymp; {{((markethive.value/dexview1.data[0].rate)*0.001).formatNumber(3,'.',',')}} DLUX</p>
+                      <p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">&asymp; <input id="marketfee" class="d-none" dmx-bind:value="{{((markethive.value/dexview1.data[0].rate)*0.001).formatNumber(3,'.',',')}}">{{marketfee.value}} DLUX</p>
                     </div>
                   </div>
                 </div>
@@ -242,7 +242,7 @@ include_once( $path );
                       <h2 class="p-0 m-0 ml-2 font-weight-bold">DLUX</h2>
                     </div>
                     <div class="d-flex ml-auto">
-                      <p class="ml-auto my-0 text-warning font-weight-bolder" style="font-size: 30px;">&asymp; {{(markethive.value/dexview1.data[0].rate).formatNumber(3,'.',',')}}</p>
+                      <p class="ml-auto my-0 text-warning font-weight-bolder" style="font-size: 30px;">&asymp; {{(((markethive.value/dexview1.data[0].rate).toNumber())-(marketfee.value.toNumber())).formatNumber(3,'.',',')}}</p>
                     </div>
                   </div>
                   <p class="pt-3">DLUX is your ticket to the metaverse. Purchase NFTs, power-up to vote on proposals, and use it across a variety of XR games and apps.</p>
