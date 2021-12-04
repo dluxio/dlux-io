@@ -568,9 +568,10 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  }
 // DEX Actions //
 //buyFTHive('{{set}}','{{uid}}',{{price}},{{pricenai.token}})
-function buyFTHive(set, uid, price, token){
+function buyFTHive(set, uid, price, token, qty){
+    qty = qty || 1
     console.log(set, uid, price, token)
-    broadcastTransfer({to:'dlux-cc',[`${token.toLowerCase()}`]:price , memo: `NFT ${set}:${uid}`}, `Buying a ${set} mint token`)
+    broadcastTransfer({to:'dlux-cc',[`${token.toLowerCase()}`]:price * qty , memo: `NFT ${set}:${uid}`}, `Buying a ${set} mint token`)
 }
 function sellDEX(dlux, hive, hbd, hours, callback){
     var andthen = ' at market rate'
