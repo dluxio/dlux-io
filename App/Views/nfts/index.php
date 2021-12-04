@@ -202,7 +202,7 @@ include_once( $path );
                     </div>
                     <div class="d-flex ml-auto flex-column">
                       <p class="ml-auto my-0 text-white-50 font-weight-bolder" style="font-size: 30px;">
-						  <input class="form-control text-white" style="background-color: rgba(0,0,0,0.5); max-width: 150px" id="markethive" value="1" placeholder="0" type="number" min="0.004" step="0.001" required dmx-bind:max="{{accountapi.data.result[0].balance}}"></p>
+						  <input class="form-control text-white" style="background-color: rgba(0,0,0,0.5); max-width: 150px" id="markethive" value="1" placeholder="0" type="number" min="0.004" step="0.001" required dmx-bind:max="{{accountapi.data.result[0].balance.split(' ')[0]}}"></p>
                       <p class="ml-auto my-0 text-muted font-weight-bold" style="font-size: 16px;">&asymp; {{(markethive.value*hiveprice.data.hive.usd).formatCurrency()}}</p>
                     </div>
                   </div>
@@ -242,7 +242,7 @@ include_once( $path );
                       <h2 class="p-0 m-0 ml-2 font-weight-bold">DLUX</h2>
                     </div>
                     <div class="d-flex ml-auto">
-                      <p class="ml-auto my-0 text-warning font-weight-bolder" style="font-size: 30px;">&asymp; {{((markethive.value/dexview1.data[0].rate).toNumber()- marketfee.value.toNumber()).formatNumber(3,'.',',')}}</p>
+                      <p class="ml-auto my-0 text-warning font-weight-bolder" style="font-size: 30px;">&asymp; {{((markethive.value/dexview1.data[0].rate)-(marketfee.value.toNumber())).formatNumber(3,'.',',')}}</p>
                     </div>
                   </div>
                   <p class="pt-3">DLUX is your ticket to the metaverse. Purchase NFTs, power-up to vote on proposals, and use it across a variety of XR games and apps.</p>
@@ -266,7 +266,7 @@ include_once( $path );
               <div class="d-flex justify-content-between align-items-center"></div>
               <div class="" id="sales-mint">
                 <div id="buymintcards" is="dmx-repeat" dmx-bind:repeat="mintsupplyapi.data.result.sort('set')" class="row">
-                  <div dmx-bind:id="{{script}}-card" class="card card-ft text-white m-2 " > {{script.getSetDetailsColors('-card')}}
+                  <div dmx-bind:id="{{script}}-card" class="card card-ft text-white m-2 " style="border: none;"> {{script.getSetDetailsColors('-card')}}
                     <div id="hidden-detail-inputs" class="d-none">
                       <input dmx-bind:id="{{script}}-color1-text" type="text">
                       {{script.getSetDetails('Color1', '-color1-text', 'value')}}
@@ -315,7 +315,7 @@ include_once( $path );
                                 </div>
                                 <h5>Unwrap to see what's inside</h5>
 								  
-                                <div class="btn btn-outline-light btn-lg" dmx-on:clck="buyFT('{{set}}','{{uid}}')">&asymp; {{((sales.min('price')/1000)*dluxperdollar.value).formatCurrency()}}</div>
+                                <div class="btn btn-outline-light btn-lg d-none" dmx-on:clck="buyFT('{{set}}','{{uid}}')">&asymp; {{((sales.min('price')/1000)*dluxperdollar.value).formatCurrency()}}</div>
                               </div>
                             </div>
                           </div>
@@ -361,8 +361,8 @@ include_once( $path );
                                           <td>{{pricenai.nai()}}</td>
                                           <td>&asymp; {{((price/1000)*dluxperdollar.value).formatCurrency())}}</td>
                                           <td><div>
-                                            <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyfthivebtn" dmx-show="(pricenai.token != 'DLUX')" dmx-on:click="buyFTHive('{{set}}','{{uid}}',{{price}},'{{pricenai.token}}')">Buy</button>
-                                            <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyftbtn" dmx-show="(pricenai.token == 'DLUX')" dmx-on:click="buyFT('{{set}}','{{uid}}',{{price}})">Buy</button>
+                                            <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyfthivebtn" dmx-show="(pricenai.token != 'DLUX') && (by != userCookie.value)" dmx-on:click="buyFTHive('{{set}}','{{uid}}',{{price}},'{{pricenai.token}}')">Buy</button>
+                                            <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyftbtn" dmx-show="(pricenai.token == 'DLUX') && (by != userCookie.value)" dmx-on:click="buyFT('{{set}}','{{uid}}',{{price}})">Buy</button>
 											  <button class="btn btn-warning" dmx-bind:id="{{set}}-{{uid}}-sellftcancelbtn" dmx-show="(by == userCookie.value)" dmx-on:click="sellFTcancel('{{set}}','{{uid}}')">Cancel</button>
                                           </div></td>
                                         </tr>
