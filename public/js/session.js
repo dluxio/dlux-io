@@ -578,7 +578,7 @@ function sellDEX(dlux, hive, hbd, hours, callback){
     hbd = parseInt(parseFloat(hbd)*1000)
     hours = parseInt(hours)
     if (hive || hbd){
-        const price = parseFloat(dlux/(hive||hbd)).toFixed(6)
+        const price = parseFloat(dlux/(hive? hive : hbd)).toFixed(6)
         andthen = ` at ${price} ${hive?'HIVE':'HBD'} per DLUX`
     }
     if(!hbd) broadcastCJA({ dlux, hive, hours}, "dlux_dex_sell", `Selling ${parseFloat(dlux/1000).toFixed(3)} DLUX${andthen}`)
@@ -591,11 +591,11 @@ function sellDEX(dlux, hive, hbd, hours, callback){
     hbd = parseInt(parseFloat(hbd)*1000)
     var andthen = ' at market rate', rate = undefined, hours = 720
     if (dlux){
-        rate = parseFloat(dlux/(hive||hbd)).toFixed(6)
+        rate = parseFloat(dlux/(hive? hive : hbd)).toFixed(6)
         andthen = ` at ${rate} ${hive?'HIVE':'HBD'} per DLUX`
     }
-    if(!hbd) broadcastTransfer({ to: 'dlux-cc', hive, memo:JSON.stringify({rate, hours})}, "dlux_dex_sell", `Buying DLUX with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
-    else broadcastTransfer({ to: 'dlux-cc', hbd, memo:JSON.stringify({rate, hours})}, "dlux_dex_sell", `Buying DLUX with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
+    if(!hbd) broadcastTransfer({ to: 'dlux-cc', hive, memo:JSON.stringify({rate, hours})}, `Buying DLUX with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
+    else broadcastTransfer({ to: 'dlux-cc', hbd, memo:JSON.stringify({rate, hours})}, `Buying DLUX with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
  }
 
  function cancelDEX(txid) {
