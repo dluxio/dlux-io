@@ -435,6 +435,30 @@ if ( isset( $author ) ) {
       <!-- inventory tab -->
       <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
         <div class="container">
+			         <!-- Test FT repeat -->
+          <div class="card-columns cc-3 pt-5" id="test-ft-cards" >
+			  <input id="testscript" value="QmeTuHpbaXzME11vnf2oRuhEt4UoGv7nmdVGVS3abi8PZ8">
+ 			<input id="testuid" value="300">
+            <div dmx-bind:id="{{testscript.value}}-test-card" class="card text-white" style="border: none;"> {{testscript.value.getSetDetailsColors('-trade-card')}}
+              <div class="card-header d-flex align-items-center justify-content-between" >
+                <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
+                  <div class="pr-2"><small>QTY: </small></div>
+                  <div class="px-2">
+                    <h2 class="m-0">{{1.pad(3)}}</h2>
+                  </div>
+                </div>
+                <div>
+                  <div class="card-img-top" dmx-bind:id="image-{{testuid.value}}" dmx-bind:alt="{{testscript.value}}">{{testuid.value.nftImageWell(script, set)}}</div>
+                   </div>
+              </div>
+              <div class="card-body text-center d-flex flex-column lead">
+                <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">{{testscript.value.getSetDetailsIcon('-trade-icon')}}
+                  <h1 class="text-center rainbow-text"><i dmx-bind:id="{{testscript.value}}-test-icon"></i></h1>
+                </div>
+              </div>
+             
+            </div>
+          </div>
          <!-- Trade FT repeat -->
           <div class="card-columns cc-3 pt-5" id="trade-ft-cards" is="dmx-repeat" dmx-bind:repeat="tradefts.data.result">
             <div dmx-bind:id="{{script}}-trade-card" class="card text-white" style="border: none;"> {{script.getSetDetailsColors('-trade-card')}}
@@ -456,7 +480,7 @@ if ( isset( $author ) ) {
                   <h5>Unwrap to see what's inside.</h5>
                 </div>
               </div>
-              <div class="card-footer" dmx-sho="(inventorydata.data.user == userCookie.value)" style="background: rgba(0,0,0,0.8)">
+              <div class="card-footer" dmx-show="(inventorydata.data.user == userCookie.value)" style="background: rgba(0,0,0,0.8)">
                 <div class="d-flex flex-wrap justify-content-between">
                   <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="tradeFTaccept('{{set}}','{{uid}}')">Accept<i class="fas fa-check-square ml-3"></i></button>
                   <button type="button" class="btn btn-danger mr-auto ml-auto mt-1" data-toggle="modal" dmx-on:click="tradeFTreject('{{set}}','{{uid}}')">Reject<i class="fas fa-window-close ml-3"></i></button>
@@ -587,7 +611,7 @@ if ( isset( $author ) ) {
                         </form>
                       </div>
                       <div role="tabpanel" class="tab-pane fade show " id="sellFTtab" aria-labelledby="sellFT">
-                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:sellFT('{{mint_detail.data.set}}','{{sellFTprice.value}}')">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:sellFT('{{mint_detail.data.set}}','{{sellFTprice.value}}'),'{{sellFTprice.value}}')">
                           <div class="form-row my-2">
 							  <div class="col-6">
                               <label for="sellFTqty">Quantity</label>
