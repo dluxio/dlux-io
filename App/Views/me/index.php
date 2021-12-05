@@ -437,10 +437,10 @@ if ( isset( $author ) ) {
         <div class="container">
 			         <!-- Test FT repeat -->
           <div class="card-columns cc-3 pt-5" id="test-ft-cards" >
-			  <input id="testscript" value="QmeTuHpbaXzME11vnf2oRuhEt4UoGv7nmdVGVS3abi8PZ8">
+			  <input id="testscript" value="QmYSRLiGaEmucSXoNiq9RqazmDuEZmCELRDg4wyE7Fo8kXGk">
  			<input id="testuid" value="8X">
  			<input id="testset" value="test">
-            <div dmx-bind:id="{{testscript.value}}-test-card" class="card text-white" style="border: none;"> {{testscript.value.getSetDetailsColors('-trade-card')}}
+            <div dmx-bind:id="{{testscript.value}}-test-card" class="card text-white" style="border: none;"> {{testscript.value.getSetDetailsColors('-test-card')}}
               <div class="card-header d-flex align-items-center justify-content-between" >
                 <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
                   <div class="pr-2"><small>QTY: </small></div>
@@ -449,11 +449,11 @@ if ( isset( $author ) ) {
                   </div>
                 </div>
                 <div>
-                  <div class="card-img-top" dmx-bind:id="image-{{testset.value}}-{{testuid.value}}" dmx-bind:alt="{{testscript.value}}">{{testuid.value.nftImageWell(script, set)}}</div>
+                  <div class="card-img-top" dmx-bind:id="image-{{testset.value}}-{{testuid.value}}" dmx-bind:alt="{{testscript.value}}">{{testuid.value.nftImageWell(testscript.value, testset.value)}}</div>
                    </div>
               </div>
               <div class="card-body text-center d-flex flex-column lead">
-                <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">{{testscript.value.getSetDetailsIcon('-trade-icon')}}
+                <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">{{testscript.value.getSetDetailsIcon('-test-icon')}}
                   <h1 class="text-center rainbow-text"><i dmx-bind:id="{{testscript.value}}-test-icon"></i></h1>
                 </div>
               </div>
