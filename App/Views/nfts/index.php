@@ -354,7 +354,7 @@ include_once( $path );
                                         <tr>
                                           <th scope="row">{{qty}}</th>
                                           <td>{{pricenai.nai()}}</td>
-                                          <td><span dmx-show="(pricenai.token != 'DLUX')"><input value="1" dmx-bind:id="{{set}}{{uid}}buyftqty" class="bg-none border-light rounded text-white text-center" style="max-width: 50px"></span><span dmx-show="(pricenai.token == 'DLUX')">{{qty}}</span></td>
+                                          <td><span dmx-show="(pricenai.token != 'DLUX')"><input value="1" dmx-bind:id="{{set}}{{uid}}buyftqty" class="bg-none border-light rounded text-white text-center" style="max-width: 40px"></span><span dmx-show="(pricenai.token == 'DLUX')">{{qty}}</span></td>
                                           <td><div>
                                             <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyfthivebtn" dmx-show="(pricenai.token != 'DLUX') && (by != userCookie.value)" dmx-on:click="buyFTHive('{{set}}','{{uid}}',{{price}},'{{pricenai.token}}','{{set}}{{uid}}buyftqty')">Buy</button>
                                             <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyftbtn" dmx-show="(pricenai.token == 'DLUX') && (by != userCookie.value)" dmx-on:click="buyFT('{{set}}','{{uid}}',{{price}})">Buy</button>
