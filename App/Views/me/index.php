@@ -435,10 +435,10 @@ if ( isset( $author ) ) {
       <!-- inventory tab -->
       <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
         <div class="container">
-			         <!-- Test FT repeat -->
+		<!-- Test FT repeat -->
           <div class="card-columns cc-3 pt-5" id="test-ft-cards" >
-			  <input id="testscript" value="QmYSRLiGaEmucSXoNiq9RqazmDuEZmCELRDg4wyE7Fo8kX">
- 			<input id="testuid" value="Gk">
+			  <input id="testscript" value="QmeTuHpbaXzME11vnf2oRuhEt4UoGv7nmdVGVS3abi8PZ8">
+ 			<input id="testuid" value="8X">
  			<input id="testset" value="test">
             <div dmx-bind:id="{{testscript.value}}-test-card" class="card text-white" style="border: none;"> {{testscript.value.getSetDetailsColors('-test-card')}}
               <div class="card-header d-flex align-items-center justify-content-between" >
