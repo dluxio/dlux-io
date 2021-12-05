@@ -351,16 +351,22 @@ include_once( $path );
 
 
                                       <tbody id="salesrepeat" is="dmx-repeat" dmx-bind:repeat="sales.reverse()" >
+										 
                                         <tr>
+											 <form dmx-bind:id="{{set}}{{uid}}form" class="needs-validation" validate>
                                           <th scope="row">{{qty}}</th>
                                           <td>{{pricenai.nai()}}</td>
-                                          <td><span dmx-show="(pricenai.token != 'DLUX')"><input value="1" dmx-bind:id="{{set}}{{uid}}buyftqty" class="bg-none border-light rounded text-white text-center" style="max-width: 40px"></span><span dmx-show="(pricenai.token == 'DLUX')">{{qty}}</span></td>
+                                          <td><span dmx-show="(pricenai.token != 'DLUX')">
+											  <input value="1" required max="3" dmx-bind:id="{{set}}{{uid}}buyftqty" class="bg-none border-light rounded text-white text-center form-control" style="max-width: 40px"></span><span dmx-show="(pricenai.token == 'DLUX')">{{qty}}</span>
+											</td>
                                           <td><div>
-                                            <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyfthivebtn" dmx-show="(pricenai.token != 'DLUX') && (by != userCookie.value)" dmx-on:click="buyFTHive('{{set}}','{{uid}}',{{price}},'{{pricenai.token}}','{{set}}{{uid}}buyftqty')">Buy</button>
+                                            <button type="submit" class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyfthivebtn" dmx-show="(pricenai.token != 'DLUX') && (by != userCookie.value)" dmx-on:click="buyFTHive('{{set}}','{{uid}}',{{price}},'{{pricenai.token}}','{{set}}{{uid}}buyftqty')">Buy</button>
                                             <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyftbtn" dmx-show="(pricenai.token == 'DLUX') && (by != userCookie.value)" dmx-on:click="buyFT('{{set}}','{{uid}}',{{price}})">Buy</button>
 											  <button class="btn btn-warning" dmx-bind:id="{{set}}-{{uid}}-sellftcancelbtn" dmx-show="(by == userCookie.value)" dmx-on:click="sellFTcancel('{{set}}','{{uid}}')">Cancel</button>
                                           </div></td>
+												  </form>
                                         </tr>
+											 
                                       </tbody>
                                     </table>
                                   </div>
