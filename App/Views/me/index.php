@@ -438,7 +438,8 @@ if ( isset( $author ) ) {
 			         <!-- Test FT repeat -->
           <div class="card-columns cc-3 pt-5" id="test-ft-cards" >
 			  <input id="testscript" value="QmeTuHpbaXzME11vnf2oRuhEt4UoGv7nmdVGVS3abi8PZ8">
- 			<input id="testuid" value="300">
+ 			<input id="testuid" value="8X">
+ 			<input id="testset" value="test">
             <div dmx-bind:id="{{testscript.value}}-test-card" class="card text-white" style="border: none;"> {{testscript.value.getSetDetailsColors('-trade-card')}}
               <div class="card-header d-flex align-items-center justify-content-between" >
                 <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
@@ -448,7 +449,7 @@ if ( isset( $author ) ) {
                   </div>
                 </div>
                 <div>
-                  <div class="card-img-top" dmx-bind:id="image-{{testuid.value}}" dmx-bind:alt="{{testscript.value}}">{{testuid.value.nftImageWell(script, set)}}</div>
+                  <div class="card-img-top" dmx-bind:id="image-{{testset.value}}-{{testuid.value}}" dmx-bind:alt="{{testscript.value}}">{{testuid.value.nftImageWell(script, set)}}</div>
                    </div>
               </div>
               <div class="card-body text-center d-flex flex-column lead">
