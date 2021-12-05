@@ -435,25 +435,6 @@ if ( isset( $author ) ) {
       <!-- inventory tab -->
       <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
         <div class="container">
-		<!-- Test FT repeat -->
-          <div class="card-columns cc-3 pt-5" id="test-ft-cards" >
-			  <input id="testscript" value="QmYSRLiGaEmucSXoNiq9RqazmDuEZmCELRDg4wyE7Fo8kX">
- 			<input id="testuid" value="8X">
- 			<input id="testset" value="test">
-            <div dmx-bind:id="{{testscript.value}}-test-card" class="card text-white" style="border: none;"> {{testscript.value.getSetDetailsColors('-test-card')}}
-              <div class="card-header d-flex align-items-center justify-content-between" >
-                <div>
-                  <div class="card-img-top" dmx-bind:id="image-{{testset.value}}-{{testuid.value}}" dmx-bind:alt="{{testscript.value}}">{{testuid.value.nftImageWell(testscript.value, testset.value)}}</div>
-                   </div>
-              </div>
-              <div class="card-body text-center d-flex flex-column lead">
-                <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">{{testscript.value.getSetDetailsIcon('-test-icon')}}
-                  <h1 class="text-center rainbow-text"><i dmx-bind:id="{{testscript.value}}-test-icon"></i></h1>
-                </div>
-              </div>
-             
-            </div>
-          </div>
          <!-- Trade FT repeat -->
           <div class="card-columns cc-3 pt-5" id="trade-ft-cards" is="dmx-repeat" dmx-bind:repeat="tradefts.data.result">
             <div dmx-bind:id="{{script}}-trade-card" class="card text-white" style="border: none;"> {{script.getSetDetailsColors('-trade-card')}}
