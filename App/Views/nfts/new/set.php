@@ -42,7 +42,7 @@ include_once( $path );
 	<div id="preview">
 				<!-- Test FT repeat -->
           <div class="card-columns cc-3 pt-5" id="test-ft-cards" >
-			  <input id="testscript" value="QmYSRLiGaEmucSXoNiq9RqazmDuEZmCELRDg4wyE7Fo8kX">
+			  <input id="testscript" value="QmRGMg6VoqyvLnETtDpgQjm3LWQWfyjN7QhsrCnmXeHbP9">
  			<input id="testuid" value="8X">
  			<input id="testset" value="test">
             <div dmx-bind:id="{{testscript.value}}-test-card" class="card text-white" style="border: none;"> {{testscript.value.getSetDetailsColors('-test-card')}}
