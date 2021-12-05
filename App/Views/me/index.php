@@ -437,7 +437,7 @@ if ( isset( $author ) ) {
         <div class="container">
 		<!-- Test FT repeat -->
           <div class="card-columns cc-3 pt-5" id="test-ft-cards" >
-			  <input id="testscript" value="QmeTuHpbaXzME11vnf2oRuhEt4UoGv7nmdVGVS3abi8PZ8">
+			  <input id="testscript" value="QmfSnSCghG2E9zkpZr9pgofVT5x5jnhYxoDgXmgKeD4116">
  			<input id="testuid" value="8X">
  			<input id="testset" value="test">
             <div dmx-bind:id="{{testscript.value}}-test-card" class="card text-white" style="border: none;"> {{testscript.value.getSetDetailsColors('-test-card')}}
