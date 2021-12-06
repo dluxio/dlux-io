@@ -10,6 +10,13 @@ include_once( $path );
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="new" is="dmx-app">
+<style>
+  .img {
+    width: 100%;
+    height: 100%; 
+    object-fit: contain;
+}
+</style>
 <dmx-api-datasource id="statsapi" is="dmx-fetch" url="https://token.dlux.io/stats/"></dmx-api-datasource>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
