@@ -236,9 +236,9 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <!--repeat region-->
                   <tr role="row" class="" dmx-repeat:openordersrepeat="openorders.data">
                     <td role="cell" class="" aria-colindex="1">{{block}}</td>
-                    <td role="cell" class="" aria-colindex="2">{{amount}}</td>
-                    <td role="cell" class="" aria-colindex="3">{{hbd}}</td>
-                    <td role="cell" class="" aria-colindex="4">{{hive}}</td>
+                    <td role="cell" class="" aria-colindex="2">{{amount/1000}}</td>
+                    <td role="cell" class="" aria-colindex="3">{{hbd/1000}}</td>
+                    <td role="cell" class="" aria-colindex="4">{{hive/1000}}</td>
                     <td role="cell" class="" aria-colindex="5" dmx-class:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" dmx-class:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{rate}}</td>
                     <td role="cell" class="" aria-colindex="6" dmx-class:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" dmx-class:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{type.uppercase()}}</td>
                     <td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" dmx-on:click="cancelDEX('{{txid}}')">CANCEL</button></td>
