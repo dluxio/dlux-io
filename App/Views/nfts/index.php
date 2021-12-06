@@ -146,24 +146,32 @@ include_once( $path );
                 <a id="nftexplore" class="btn btn-lg btn-primary px-4 mr-3" href="/nfts/set/bz">Explore</a>
                 <a id="nftcreate" class="btn btn-lg btn-secondary px-4 ml-3" href="/nfts/new">Create</a>
               </div>
-			</div>	
-              <div class="my-4 py-1 px-4 d-flex flex-column flex-wrap" style="background-color: rgba(0,0,0,0.75); border-radius: 15px;">
-				 
+			</div>
+				
+				
+              <div class="my-0 py-1 px-4 d-flex flex-column flex-wrap" style="background-color: rgba(0,0,0,1); border-radius: 15px 15px 0px 0px;">
 				<div class="d-flex flex-row flex-fill align-items-center mt-2 mb-2">
                     <div class="d-flex align-items-center">
                       <div class="circle2 d-flex align-items-center justify-content-around"><img src="/img/dlux-hive-logo-alpha.svg" width="70%"></div>
                       <h2 class="p-0 m-0 ml-2 font-weight-bold" >DLUX</h2>
                     </div>
 					<div class="ml-auto"><a href="/about/" style="color:silver">About<i class="fas fa-info-circle ml-2"></i></a></div>
-					
                   </div>
-				   
 				  <div class="d-flex justify-content-around my-0">
 		<div class="d-flex align-items-center p-3"><p class="small my-0 py-0 mr-2 text-white-50">BAL:</p><h3 class="my-0 py-0 font-weight-bolder" style="color:#21FFB5"><u>{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}}</u></h3></div>
                     </div>
-				<div class="mt-4 text-right"><button class="btn btn-outline-primary mb-3" href="#buyDluxModal" class="a-1" data-toggle="modal">Get DLUX</button></div>
+				<div class="mt-4 text-right"><button class="btn btn-outline-primary" href="#buyDluxModal" class="a-1" data-toggle="modal">Get DLUX</button></div>
 				</div>
 				
+				<div style="border-radius: 0px 0px 15px 15px; background-color: black">
+				
+					
+					<div class="" style="background-color: rgba(227, 19, 55, 0.6 ); border-radius: 0px 0px 15px 15px; border: 2px solid black; color:#e7e7f1">
+						<div style="border-radius: 0px 0px 15px 15px; background-color: black">&nbsp;</div>
+					<div class="my-2 mx-5"><p class="m-0"><b>HIVE BAL:</b>{{accountapi.data.result[0].hbd_balance}}</p></div>
+				</div>
+					</div>
+					
             <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
           <div class="modal-content bg-dark text-white">
