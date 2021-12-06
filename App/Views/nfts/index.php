@@ -173,7 +173,7 @@ include_once( $path );
 					<div class="" style="background-color: rgba(0, 150, 15, 1); border-radius: 0px 0px 15px 15px;  border-left: 2px solid black; border-right: 2px solid black; border-bottom: 2px solid black;">
 						<div style="border-radius: 0px 0px 15px 15px; background-color: black">
 						<div style="border-radius: 0px 0px 15px 15px; background-color: rgba(227, 19, 55, 0.6 ); border-left: 2px solid black; border-right: 2px solid black; border-bottom: 2px solid black; color:#e7e7f1; line-height: 10px;">&nbsp;</div></div>
-						<div class="my-2 mx-5 d-flex"><p class="m-0"><b><i class="fab fa-hive"></i> HBD</b></p><p class="ml-auto small my-0 py-0 mr-2 text-white-50">BAL: {{accountapi.data.result[0].balance}}</span></p></div>
+						<div class="my-2 mx-5 d-flex"><p class="m-0"><b><i class="fab fa-hive"></i> HBD</b></p><p class="ml-auto small my-0 py-0 mr-2 text-white-50">BAL: {{accountapi.data.result[0].hbd_balance}}</span></p></div>
 				</div>
 				
 					
