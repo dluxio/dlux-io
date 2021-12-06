@@ -669,8 +669,8 @@ function bidFT(setname, uid, callback){
     broadcastCJA({set: setname, uid, bid_amount}, 'dlux_ft_bid', `Trying to bid on ${setname} mint token.`) 
  }
 
-function sellFTcancel(setname, uid,  callback){
-     broadcastCJA({set: setname, uid}, 'dlux_ft_cancel_sell', `Trying to cancel ${setname} mint token sell`)
+function sellFTcancel(setname, uid, token,  callback){
+     broadcastCJA({set: setname, uid}, token == 'DLUX' ? 'dlux_ft_cancel_sell' : 'dlux_fts_sell_hcancel', `Trying to cancel ${setname} mint token sell`)
  }
 function tradeFTaccept(setname, uid, callback){
      broadcastCJA({ set: setname, uid}, "dlux_ft_escrow_complete", `Trying to complete ${setname} mint tokentrade`)
