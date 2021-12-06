@@ -168,7 +168,7 @@ include_once( $path );
 					
 					<div class="" style="background-color: rgba(227, 19, 55, 0.6 ); border-radius: 0px 0px 15px 15px; border: 2px solid black; color:#e7e7f1">
 						<div style="border-radius: 0px 0px 15px 15px; background-color: black">&nbsp;</div>
-					<div class="my-2 mx-5"><p class="m-0"><b>HIVE BAL:</b>{{accountapi.data.result[0].hbd_balance}}</p></div>
+						<div class="my-2 mx-5 d-flex"><p class="m-0"><b>HIVE</b></p><p class="ml-auto small my-0 py-0 mr-2 text-white-50">BAL: {{accountapi.data.result[0].balance}}</span></p></div>
 				</div>
 					</div>
 					
@@ -372,7 +372,7 @@ include_once( $path );
                                           <td><div>
                                             <button type="submit" class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyfthivebtn" dmx-show="(pricenai.token != 'DLUX') && (by != userCookie.value)" dmx-on:click="buyFTHive('{{set}}','{{uid}}',{{price}},'{{pricenai.token}}','{{set}}{{uid}}buyftqty')">Buy</button>
                                             <button class="btn btn-primary" dmx-bind:id="{{set}}-{{uid}}-buyftbtn" dmx-show="(pricenai.token == 'DLUX') && (by != userCookie.value)" dmx-on:click="buyFT('{{set}}','{{uid}}',{{price}})">Buy</button>
-											  <button class="btn btn-warning" dmx-bind:id="{{set}}-{{uid}}-sellftcancelbtn" dmx-show="(by == userCookie.value)" dmx-on:click="sellFTcancel('{{set}}','{{uid}}')">Cancel</button>
+											  <button class="btn btn-warning" dmx-bind:id="{{set}}-{{uid}}-sellftcancelbtn" dmx-show="(by == userCookie.value)" dmx-on:click="sellFTcancel('{{set}}','{{uid}}','{{token.nai()}}')">Cancel</button>
                                           </div></td>
 												  </form>
                                         </tr>
