@@ -46,8 +46,9 @@ include_once( $path );
     </p>
     <b>You must also be logged in as @disregardfiat </b>
     </p>
+    <!--
 	<div id="preview">
-				<!-- Test FT repeat -->
+				<!-- Test FT repeat --><!--
           <div class="card-columns cc-3 pt-5" id="test-ft-cards" >
 			  <input id="testscript" value="QmSPm13knazJsN4C8b7mWqT8tG2CeFCRvbW1PifYZV9dVN">
  			<input id="testuid" value="7S">
@@ -67,6 +68,7 @@ include_once( $path );
             </div>
           </div>
 	</div>
+    -->
     <p>
     <form class="needs-validation mt-4" validate dmx-bind:action="javascript:defineNFT('{{newNFTsetname.value}}','{{newNFTtype.value}}','{{newNFTscript.value}}','{{newNFTpermlink.value}}','{{newNFTstart.value}}','{{newNFTend.value}}','{{newNFTqty.value}}','{{newNFTroyalty.value}}','{{newNFThandling.value}}','{{newNFTmaxfee.value}}','{{newNFTbond.value}}')">
       <div class="my-4 rounded p-2 border border-primary">
