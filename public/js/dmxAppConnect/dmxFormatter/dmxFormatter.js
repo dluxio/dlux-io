@@ -561,6 +561,7 @@ dmx.Formatters("global", {
                 try{r = SVG.set[c]}catch(e){
                     r = ''
                 }
+                console.log({s,i,c,r})
                 document.getElementById(`${s}${i}${c}`).innerHTML = `<img class="img-fluid" src="https://ipfs.io/ipfs/${r}"></img>`
                 })
             },
