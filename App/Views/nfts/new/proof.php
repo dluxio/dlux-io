@@ -11,6 +11,12 @@ include_once( $path );
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="new" is="dmx-app">
 <style>
+		.arrow2 {
+		position: absolute;
+		left: 50%;
+    	transform: translate(-50%, -50%);
+		z-index: 1;
+	}
   .img {
     width: 100%;
     height: 100%; 
@@ -32,10 +38,22 @@ include_once( $path );
 
 	<div id="preview">
 			<div dmx-bind:id="{{testscript.value}}banner"> {{testscript.value.getSetPhotos('','banner')}}</div>
-          <div class="card-columns cc-3 pt-5" id="testftcards" >
-			  <input id="testscript" value="QmSPm13knazJsN4C8b7mWqT8tG2CeFCRvbW1PifYZV9dVN">
+		<div>	
+		<div dmx-bind:id="{{testscript.value}}featured"> {{testscript.value.getSetPhotos('','featured')}}</div>
+			<div class="arrow2 rounded-circle border border-warning bg-darker text-warning">
+                   <div dmx-bind:id="{{testscript.value}}logo" class="img-fluid rounded-circle" style="width: 100px"> {{testscript.value.getSetPhotos('','logo')}}</div>
+                  </div>
+		</div>
+			<di class="row">
+			<div class="col-md-6">
+				<div dmx-bind:id="{{testscript.value}}wrapped"> {{testscript.value.getSetPhotos('','wrapped')}}</div>
+		 <input id="testscript" value="QmSPm13knazJsN4C8b7mWqT8tG2CeFCRvbW1PifYZV9dVN">
  			<input id="testuid" value="7S">
  			<input id="testset" value="test">
+		</div>
+			<div class="col-md-6">
+          <div class="cc-3 pt-5" id="testftcards" >
+			 
             <div dmx-bind:id="{{testscript.value}}testcard" class="card text-white" style="border: none;"> {{testscript.value.getSetDetailsColors('testcard')}}
               <div class="card-header d-flex align-items-center justify-content-between" >
 			 </div>
@@ -51,6 +69,8 @@ include_once( $path );
              
             </div>
           </div>
+				</div>
+				</div>
 	</div>
     <p>
  
