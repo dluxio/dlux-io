@@ -49,8 +49,8 @@ include_once( $path );
 	<div id="preview">
 				<!-- Test FT repeat -->
           <div class="card-columns cc-3 pt-5" id="test-ft-cards" >
-			  <input id="testscript" value="QmPRcAK5qbfQ7xhzwts7Vq2Vfyk1Gq6fooQSzWjqTJawGc">
- 			<input id="testuid" value="8X">
+			  <input id="testscript" value="QmSPm13knazJsN4C8b7mWqT8tG2CeFCRvbW1PifYZV9dVN">
+ 			<input id="testuid" value="7S">
  			<input id="testset" value="test">
             <div dmx-bind:id="{{testscript.value}}-test-card" class="card text-white" style="border: none;"> {{testscript.value.getSetDetailsColors('-test-card')}}
               <div class="card-header d-flex align-items-center justify-content-between" >
