@@ -371,7 +371,11 @@ include_once( $path );
                                           <td>{{pricenai.nai()}}</td>
                                           <td>
 											  <span dmx-show="(pricenai.token != 'DLUX')">
-											 <center><input value="1" required max="3" dmx-bind:id="{{set}}{{uid}}buyftqty" class="bg-none border-light rounded text-white text-center form-control" style="max-width: 40px"></span><span dmx-show="(pricenai.token == 'DLUX')">{{qty}}</center>
+											 <center>
+												 <input value="1" required max="3" dmx-bind:id="{{set}}{{uid}}buyftqty" class="bg-none border-light rounded text-white text-center form-control" style="max-width: 40px">
+											 </center>
+											 </span>
+											<span dmx-show="(pricenai.token == 'DLUX')">{{qty}}
 											  </span>
 											</td>
                                           <td><div>
