@@ -560,7 +560,6 @@ dmx.Formatters("global", {
                 try{r = SVG.set[c]}catch(e){
                     r = ''
                 }
-                r = r.split(' ')
                 document.getElementById(`${s}${i}${c}`).innerHTML = `<img class="img-fluid" src="https://ipfs.io/ipfs/${r}"></img>`
                 })
             },
