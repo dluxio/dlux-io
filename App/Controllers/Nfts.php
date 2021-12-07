@@ -39,5 +39,8 @@ class Nfts extends \Core\Controller
     {
         View::render('nfts/new/set.php');
     }
-
+		public function newproof($request, $response, $service)
+    {
+		View::render('nfts/new/proof.php');
+    }
 }
