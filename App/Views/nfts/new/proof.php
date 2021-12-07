@@ -31,7 +31,7 @@ include_once( $path );
     <p class="lead">Proof your set before publishing</p>
 
 	<div id="preview">
-			<div dmx-bind:id="{{testscript.value}}{{testuid.value}}testbanner"> {{testscript.value.getSetPhotos(testuid.value,'testbanner')}}</div>
+			<div dmx-bind:id="{{testscript.value}}{{testuid.value}}banner"> {{testscript.value.getSetPhotos(testuid.value,'banner')}}</div>
           <div class="card-columns cc-3 pt-5" id="testftcards" >
 			  <input id="testscript" value="QmSPm13knazJsN4C8b7mWqT8tG2CeFCRvbW1PifYZV9dVN">
  			<input id="testuid" value="7S">
