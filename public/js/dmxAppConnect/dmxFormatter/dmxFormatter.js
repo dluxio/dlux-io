@@ -551,6 +551,7 @@ dmx.Formatters("global", {
                 })
             },
             getSetPhotos : function(s, i, c){
+                console.log({s,i,c})
                 fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
                 .then((data) => {
