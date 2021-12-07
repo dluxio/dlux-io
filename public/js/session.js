@@ -594,7 +594,7 @@ function sellDEX(dlux, hive, hbd, hours, callback){
     hbd = parseInt(parseFloat(hbd)*1000)
     var andthen = ' at market rate', rate = undefined, hours = 720
     if (dlux){
-        rate = parseFloat(dlux/(hive? hive : hbd)).toFixed(6)
+        rate = parseFloat((hive? hive : hbd)/dlux).toFixed(6)
         andthen = ` at ${rate} ${hive?'HIVE':'HBD'} per DLUX`
     }
     if(!hbd) broadcastTransfer({ to: 'dlux-cc', hive, memo:JSON.stringify({rate, hours})}, `Buying DLUX with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
