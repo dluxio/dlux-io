@@ -550,7 +550,7 @@ dmx.Formatters("global", {
                 document.getElementById(`${s}${i}`).style.background = `linear-gradient(${r})`
                 })
             },
-            getSetPhotos : function(s, i, c){
+            getSetPhotos : function(s, i, c, t){
                 console.log({s,i,c})
                 fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
@@ -562,7 +562,7 @@ dmx.Formatters("global", {
                     r = ''
                 }
                 console.log({s,i,c,r})
-                document.getElementById(`${s}${i}${c}`).innerHTML = `<img class="img-fluid" src="https://ipfs.io/ipfs/${r}"></img>`
+                document.getElementById(`${s}${i}${c}`).innerHTML = `<img class="img-fluid ${t}" src="https://ipfs.io/ipfs/${r}"></img>`
                 })
             },
             getSetDetailsIcon : function(s, i, c){
