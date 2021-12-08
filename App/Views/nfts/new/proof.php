@@ -37,17 +37,27 @@ include_once( $path );
     <p class="lead">Proof your set before publishing</p>
 
 	<div id="preview">
+
+  <div class="form-group row">
+    <label for="testscript" class="col-sm-2 col-form-label">Script</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="testscript" value="QmSPm13knazJsN4C8b7mWqT8tG2CeFCRvbW1PifYZV9dVN">
+    </div>
+  </div>
+
 			<div dmx-bind:id="{{testscript.value}}banner"> {{testscript.value.getSetPhotos('','banner')}}</div>
+		
 		<div>	
 		<div dmx-bind:id="{{testscript.value}}featured"> {{testscript.value.getSetPhotos('','featured')}}</div>
 			<div class="arrow2 rounded-circle border border-warning bg-darker text-warning">
-                   <div dmx-bind:id="{{testscript.value}}logo" class="img-fluid rounded-circle" style="width: 100px"> {{testscript.value.getSetPhotos('','logo')}}</div>
+                   <div dmx-bind:id="{{testscript.value}}logo" class="rounded-circle" style="width: 100px"> {{testscript.value.getSetPhotos('','logo','rounded-circle')}}</div>
                   </div>
 		</div>
 			<di class="row">
 			<div class="col-md-6">
 				<div dmx-bind:id="{{testscript.value}}wrapped"> {{testscript.value.getSetPhotos('','wrapped')}}</div>
-		 <input id="testscript" value="QmSPm13knazJsN4C8b7mWqT8tG2CeFCRvbW1PifYZV9dVN">
+				<p dmx-bind:id="{{testscript.value}}descriptionp"> {{testscript.value.getSetDetails('Description', 'descriptionp', 'innerText')}} </p>
+		 
  			<input id="testuid" value="7S">
  			<input id="testset" value="test">
 		</div>
