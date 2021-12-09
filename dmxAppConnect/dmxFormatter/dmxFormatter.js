@@ -544,7 +544,7 @@ dmx.Formatters("global", {
                     r = 'chartreuse,lawngreen'
                 }
                 console.log(r)
-                document.getElementById(`${s}${i}`).style.background = `linear-gradient(${r})`
+                document.getElementById(`${s}${i}`).style['background-image'] = `linear-gradient(${r})`
                 })
             },
             getSetDetailsIcon : function(s, i, c){
