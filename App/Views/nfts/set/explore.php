@@ -8,13 +8,11 @@ $path .= "/mod/header.php";
 include_once( $path );
 ?>
 <!--page specific-->
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
-</head>
-<body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
-
-<dmx-data-view id="dataView1" dmx-bind:data="api1.data.result" sorton="uid"></dmx-data-view>
-<style>
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
+	<style>
 .circle {
   width: 50px;
   height: 50px;
@@ -31,22 +29,33 @@ include_once( $path );
     object-fit: contain;
 }
 </style>
+</head>
+<body class="d-flex flex-column h-100 padme-t70 text-white" id="explore" is="dmx-app">
+<dmx-api-datasource id="setsapi" is="dmx-fetch" url="https://token.dlux.io/api/sets"></dmx-api-datasource>
+<dmx-data-view id="setsview" dmx-bind:data="setsapi.data.result" sorton="set"></dmx-data-view>
+
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
 include_once( $path );
 ?>
 <main role="main" class="flex-shrink-0">
-    <div class="container-fluid">
-		<div class="container">
-       <h1>Explore NFTs</h1>
-			
-		<div class="card-columns">
-		<div class="card col-md-6">
-			
-			</div>
-			</div>
-		</div>
+  <div class="container-fluid">
+    <div class="container">
+      <h1>Explore NFTs</h1>
+     
+       
+      <div class="row row-cols-1 row-cols-md-2">
+  <div class="col mb-4" dmx-repeat:setsrepeat="setsview.data">
+    <div class="card bg-dark text-white">
+      <div dmx-bind:id="{{script}}featured">{{script.getSetPhotos('','featured')}}</div>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+    </div>
   </div>
 </main>
 <?php
