@@ -41,12 +41,12 @@ include_once( $path );
 ?>
 <main role="main" class="flex-shrink-0">
   <div class="container-fluid">
-    <div class="container">
+<div class="container" style="max-width: 1600px;">
 		<div class="my-4">
       <h1>Explore NFTs</h1>
      </div>
        
-      <div class="row row-cols-1 row-cols-md-2">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
   <div class="col mb-4" dmx-repeat:setsrepeat="setsview.data">
 	  <a dmx-bind:href="/nfts/set/{{set}}" style="text-decoration: none">
     <div class="card bg-dark text-white">
@@ -77,6 +77,8 @@ include_once( $path );
 		</a>
     </div>
   </div>
+	</div>
+	</div>
 </main>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
