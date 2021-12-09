@@ -371,7 +371,6 @@ include_once( $path );
 										  <th scope="row" class="" colspan="4">
 											  <p class="my-2"><span class="small bg-warning text-dark rounded px-2 py-1">ACCOUNT COMMENT OR POST BETWEEN</span></p>
 											  <p>{{pb}}</p>
-											  <p>MAX: {{max}}</p>
 											  </th>
 										  </tr>
                                         <tr>
