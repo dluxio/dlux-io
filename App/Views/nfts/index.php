@@ -324,8 +324,8 @@ include_once( $path );
 								
 								<div dmx-bind:id="{{script}}header"  style="background-image: linear-gradient(magenta,aqua);-webkit-background-clip: text;color: transparent;">{{script.getSetDetailsColorsTxt('header')}}
                               		<div class="mt-3"><h1 class="text-center">sealed NFT<i dmx-bind:id="{{script}}icon" class="ml-3"></i></h1>{{script.getSetDetailsIcon('icon')}}</div>
-                                	<h5>Unwrap to see what's inside</h5>
                             	</div>
+								<h5>Unwrap to see what's inside</h5>
 								
                           </div>
                         </div>
