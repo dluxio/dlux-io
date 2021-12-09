@@ -42,11 +42,13 @@ include_once( $path );
 <main role="main" class="flex-shrink-0">
   <div class="container-fluid">
     <div class="container">
+		<div class="my-4">
       <h1>Explore NFTs</h1>
-     
+     </div>
        
       <div class="row row-cols-1 row-cols-md-2">
   <div class="col mb-4" dmx-repeat:setsrepeat="setsview.data">
+	  <a dmx-bind:href="/set/{{set}}" style="text-decoration: none">
     <div class="card bg-dark text-white">
 		<div>
       <div dmx-bind:id="{{script}}featured">{{script.getSetPhotos('','featured')}}</div>
@@ -54,11 +56,11 @@ include_once( $path );
             <div dmx-bind:id="{{script}}logo" class="rounded-circle" style="width: 100px"> {{script.getSetPhotos('','logo','rounded-circle')}}</div>
           </div>
 			</div>
-      <div class="card-body p-0" dmx-bind:id="{{script}}body" style="border: none"> {{script.getSetDetailsColors('body')}}
+      <div class="card-footer p-0" dmx-bind:id="{{script}}body" style="border: none; "> {{script.getSetDetailsColors('body')}}
         
 		  <div class="m-3 p-2 rounded" style="background-color: rgba(0,0,0,0.7)">
-			  <h2 class="card-title">{{set}} NFT</h2>
-        <div class="m-2 d-flex align-items-center " >
+			  <h2 class="card-title my-2 mx-3">{{set}}</h2>
+        <div class="my-2 mx-3 d-flex align-items-center " >
 			
 			<div><p class="text-white-50" dmx-bind:id="{{script}}descriptionp" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
    -webkit-line-clamp: 2; /* number of lines to show */
@@ -70,7 +72,9 @@ include_once( $path );
       </div>
 
     </div>
+		
   </div>
+		</a>
     </div>
   </div>
 </main>
