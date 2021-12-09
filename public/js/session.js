@@ -831,7 +831,7 @@ function setPFP(setname, uid, callback){
         node.innerHTML = `<div class="alert bg-dark border border-info rounded alert-dissmissible fade show ml-auto mr-3 my-3" style="max-width:500px;" role="alert">
 			<div class="d-flex justify-content-between align-items-center text-white">
                 <div id="${txid}-spinner" class="spinner-grow text-info mr-4" role="status"></div>
-                <div class="d-flex flex-fill flex-column"> <strong><i class="fas fa-broadcast-tower mr-2"></i>Broadcast Succssful</strong>
+                <div class="d-flex flex-fill flex-column"> <strong><i class="fas fa-broadcast-tower mr-2"></i>Broadcast Successful</strong>
                 <p id="${txid}-status" class="m-0">Awaiting DLUX L2 Confirmation:<span id="${txid}-timer" class="mx-1">90</span></p>
                 <p id="${txid}-trying">${whatt}</p>
             </div>
