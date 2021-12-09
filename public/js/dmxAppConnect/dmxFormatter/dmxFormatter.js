@@ -562,9 +562,7 @@ dmx.Formatters("global", {
                     r = 'lawngreen,chartreuse'
                 }
                 console.log(r)
-                document.getElementById(`${s}${i}`).style.background-image = 'linear-gradient(${r})';
-                document.getElementById(`${s}${i}`).style.-webkit-background-clip = 'text';
-                document.getElementById(`${s}${i}`).style.color = 'transparent';
+                document.getElementById(`${s}${i}`).style.background = `linear-gradient(${r})`
                 })
             },
             getSetPhotos : function(s, i, c, t){
