@@ -144,7 +144,7 @@ include_once( $path );
 				  <p class="lead">All with no gas fees at near cost</p>
               <div class="my-2 text-left">
                 <a id="nftexplore" class="btn btn-lg btn-primary px-4 mr-3" href="/nfts/explore">Explore</a>
-                <a id="nftcreate" class="btn btn-lg btn-secondary px-4 ml-3" href="/nfts/new">Create</a>
+                <a id="nftcreate" class="btn btn-lg btn-secondary px-4 ml-3 disabled" href="#">Create</a>
               </div>
 			</div>
 				
@@ -372,7 +372,7 @@ include_once( $path );
                                           <td>
 											  <span dmx-show="(pricenai.token != 'DLUX')">
 											 <center>
-												 <input value="1" required max="3" dmx-bind:id="{{set}}{{uid}}buyftqty" class="bg-none border-light rounded text-white text-center form-control" style="max-width: 40px">
+												 <input value="1" required max="3" dmx-bind:id="{{set}}{{uid}}buyftqty" class="bg-none border-light rounded text-white text-center form-control" style="max-width: 50px">
 											 </center>
 											 </span>
 											<span dmx-show="(pricenai.token == 'DLUX')">{{qty}}
