@@ -48,7 +48,7 @@ include_once( $path );
        
       <div class="row row-cols-1 row-cols-md-2">
   <div class="col mb-4" dmx-repeat:setsrepeat="setsview.data">
-	  <a dmx-bind:href="/set/{{set}}" style="text-decoration: none">
+	  <a dmx-bind:href="/nfts/set/{{set}}" style="text-decoration: none">
     <div class="card bg-dark text-white">
 		<div>
       <div dmx-bind:id="{{script}}featured">{{script.getSetPhotos('','featured')}}</div>
