@@ -12,27 +12,27 @@ include_once( $path );
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
-	<style>
-.circle {
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  border-radius: 50%;
-  font-size: 25px;
-  color: #fff;
-  text-align: center;
-  background: #000
-}
+<style>
+.center-circle {
+		position: absolute;
+		left: 50%;
+    	transform: translate(-50%, -50%);
+		z-index: 1;
+	}
+	.max-80 {
+		max-width: 80px;
+	}
 .img {
     width: 100%;
     height: 100%; 
     object-fit: contain;
 }
 </style>
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="explore" is="dmx-app">
 <dmx-api-datasource id="setsapi" is="dmx-fetch" url="https://token.dlux.io/api/sets"></dmx-api-datasource>
-<dmx-data-view id="setsview" dmx-bind:data="setsapi.data.result" sorton="set"></dmx-data-view>
+<dmx-data-view id="setsview" dmx-bind:data="setsapi.data.result"></dmx-data-view>
 
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
@@ -48,11 +48,27 @@ include_once( $path );
       <div class="row row-cols-1 row-cols-md-2">
   <div class="col mb-4" dmx-repeat:setsrepeat="setsview.data">
     <div class="card bg-dark text-white">
+		<div>
       <div dmx-bind:id="{{script}}featured">{{script.getSetPhotos('','featured')}}</div>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+		<div class="center-circle rounded-circle bg-darker" style="border: solid black 3px;">
+            <div dmx-bind:id="{{script}}logo" class="rounded-circle" style="width: 100px"> {{script.getSetPhotos('','logo','rounded-circle')}}</div>
+          </div>
+			</div>
+      <div class="card-body p-0" dmx-bind:id="{{script}}body" style="border: none"> {{script.getSetDetailsColors('body')}}
+        
+		  <div class="m-3 p-2 rounded" style="background-color: rgba(0,0,0,0.7)">
+			  <h2 class="card-title">{{set}} NFT</h2>
+        <div class="m-2 d-flex align-items-center " >
+			
+			<div><p class="text-white-50" dmx-bind:id="{{script}}descriptionp" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2; 
+   -webkit-box-orient: vertical;"> {{script.getSetDetails('Description', 'descriptionp', 'innerText')}} </p></div>
+		
+			  <div dmx-bind:id="{{script}}wrapped"> {{script.getSetPhotos('','wrapped','rounded max-80')}}</div>
+			  </div>
       </div>
+
     </div>
   </div>
     </div>
