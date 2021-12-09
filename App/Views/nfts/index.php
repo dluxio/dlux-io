@@ -321,7 +321,7 @@ include_once( $path );
                             <div class="card-body">
 								
 								<div dmx-bind:id="{{script}}wrapped"> {{script.getSetPhotos('','wrapped','rounded max-160')}}</div>
-								<div dmx-bind:id="{{script}}header"  style="background-image: linear-gradient(magenta,aqua);-webkit-background-clip: text;color: transparent;"> 
+								<div dmx-bind:id="{{script}}header"  style="background-image: linear-gradient(magenta,aqua);-webkit-background-clip: text;color: transparent;"> {{script.getSetDetailsColorsTxt('header')}}
                               <div class="px-2 py-5 text-center rounded" >{{script.getSetDetailsIcon('icon')}}
                                 <h1 class="text-center">sealed NFT<i dmx-bind:id="{{script}}icon" class="ml-3"></i></h1>
                                 <h5>Unwrap to see what's inside</h5>
