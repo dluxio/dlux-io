@@ -3090,7 +3090,155 @@ dmx.config({
         }
       ],
       "outputType": "array"
-    }
+    },
+    "mintsupplyapi": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "array",
+            "name": "result",
+            "sub": [
+              {
+                "type": "text",
+                "name": "set"
+              },
+              {
+                "type": "text",
+                "name": "script"
+              },
+              {
+                "type": "array",
+                "name": "auctions"
+              },
+              {
+                "type": "array",
+                "name": "sales",
+                "sub": [
+                  {
+                    "type": "text",
+                    "name": "uid"
+                  },
+                  {
+                    "type": "text",
+                    "name": "set"
+                  },
+                  {
+                    "type": "number",
+                    "name": "price"
+                  },
+                  {
+                    "type": "number",
+                    "name": "qty"
+                  },
+                  {
+                    "type": "object",
+                    "name": "pricenai",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "amount"
+                      },
+                      {
+                        "type": "number",
+                        "name": "precision"
+                      },
+                      {
+                        "type": "text",
+                        "name": "token"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "name": "by"
+                  },
+                  {
+                    "type": "text",
+                    "name": "script"
+                  },
+                  {
+                    "type": "number",
+                    "name": "max"
+                  },
+                  {
+                    "type": "text",
+                    "name": "pb"
+                  }
+                ]
+              },
+              {
+                "type": "number",
+                "name": "qty_sales"
+              },
+              {
+                "type": "number",
+                "name": "qty_auctions"
+              },
+              {
+                "type": "number",
+                "name": "qty"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "node"
+          },
+          {
+            "type": "number",
+            "name": "behind"
+          },
+          {
+            "type": "text",
+            "name": "VERSION"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "connection"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "via"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          }
+        ]
+      }
+    ]
   },
   "explore": {
     "setsapi": [

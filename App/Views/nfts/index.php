@@ -327,6 +327,7 @@ include_once( $path );
                             	</div>
 								<h5>Unwrap to see what's inside</h5>
 								
+								
                           </div>
                         </div>
 						  </div>
@@ -366,15 +367,22 @@ include_once( $path );
 
 
                                       <tbody id="salesrepeat" is="dmx-repeat" dmx-bind:repeat="sales.reverse()" >
-										 
+										  <tr dmx-show="pb.length > 0">
+										  <th scope="row" class="" colspan="4">
+											  <p class="my-2"><span class="small bg-warning text-dark rounded px-2 py-1">ACCOUNT COMMENT OR POST BETWEEN</span></p>
+											  <p>{{pb}}</p>
+											  <p>MAX: {{max}}</p>
+											  </th>
+										  </tr>
                                         <tr>
-											 <form dmx-bind:id="{{set}}{{uid}}form" class="needs-validation" validate>
-                                          <th scope="row" style="vertical-align: middle">{{qty}}</th>
+											
+											 <form dmx-bind:id="{{set}}{{uid}}form" class="needs-validation" novalidate>
+                                          <th scope="row" style="vertical-align: middle">{{qty}} </th>
                                           <td style="vertical-align: middle">{{pricenai.nai()}}</td>
                                           <td>
 											  <span dmx-show="(pricenai.token != 'DLUX')">
 											 <center>
-												 <input value="1" required max="3" dmx-bind:id="{{set}}{{uid}}buyftqty" class="bg-none border-light rounded text-white text-center form-control" style="max-width: 50px">
+												 <input value="1" required dmx-bind:max="{{max}}" dmx-bind:id="{{set}}{{uid}}buyftqty" class="bg-none border-light rounded text-white text-center form-control" style="max-width: 50px">
 											 </center>
 											 </span>
 											<span dmx-show="(pricenai.token == 'DLUX')">{{qty}}
