@@ -11,7 +11,7 @@ include_once( $path );
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="new" is="dmx-app">
 <style>
-		.arrow2 {
+		.center-circle {
 		position: absolute;
 		left: 50%;
     	transform: translate(-50%, -50%);
@@ -67,7 +67,7 @@ include_once( $path );
         <div dmx-bind:id="{{testscript.value}}banner" class="my-3"> {{testscript.value.getSetPhotos('','banner','rounded')}}</div>
         <div>
           <div dmx-bind:id="{{testscript.value}}featured"> {{testscript.value.getSetPhotos('','featured')}}</div>
-          <div class="arrow2 rounded-circle border border-warning bg-darker text-warning">
+          <div class="center-circle rounded-circle bg-darker" style="border: solid black 3px;">
             <div dmx-bind:id="{{testscript.value}}logo" class="rounded-circle" style="width: 100px"> {{testscript.value.getSetPhotos('','logo','rounded-circle')}}</div>
           </div>
         </div>
