@@ -122,6 +122,9 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 	border-top-right-radius: 0.25rem !important;
 	border-bottom-right-radius: 0.25rem !important;
 }
+		.max-160 {
+		max-width: 160px;
+	}
 	</style>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
@@ -316,11 +319,11 @@ include_once( $path );
                           </div>
                           <div class="panel-collapse collapse show" dmx-bind:id="{{set}}-info-collapse">
                             <div class="card-body">
-                              <div class="px-2 py-5 text-center rounded" >{{script.getSetDetailsIcon('-icon')}}
-                                <h1 class="text-center rainbow-text"><i dmx-bind:id="{{script}}-icon"></i></h1>
-                                <div class="d-flex justify-content-around">
-                                  <h3 class="rainbow-text">sealed NFT</h3>
-                                </div>
+								
+								<div dmx-bind:id="{{script}}wrapped"> {{script.getSetPhotos('','wrapped','rounded max-160')}}</div>
+								<div dmx-bind:id="{{script}}header"> {{script.getSetDetailsColorsTxt('header')}} </div>
+                              <div class="px-2 py-5 text-center rounded" >{{script.getSetDetailsIcon('icon')}}
+                                <h1 class="text-center">sealed NFT<i dmx-bind:id="{{script}}icon" class="ml-3"></i></h1>
                                 <h5>Unwrap to see what's inside</h5>
 								  
                                 <div class="btn btn-outline-light btn-lg d-none" dmx-on:clck="buyFT('{{set}}','{{uid}}')">&asymp; {{((sales.min('price')/1000)*dluxperdollar.value).formatCurrency()}}</div>
@@ -355,9 +358,9 @@ include_once( $path );
                                     <table class="table table-sm table-dark bg-none">
                                       <thead>
                                         <tr>
-                                          <th scope="col" class="small">QTY</th>
+                                          <th scope="col" class="small">AVAIL</th>
                                           <th scope="col" class="small">PRICE</th>
-                                          <th scope="col" class="small">TOTAL</th>
+                                          <th scope="col" class="small">QTY</th>
                                           <th scope="col"></th>
                                         </tr>
                                       </thead>
@@ -367,8 +370,8 @@ include_once( $path );
 										 
                                         <tr>
 											 <form dmx-bind:id="{{set}}{{uid}}form" class="needs-validation" validate>
-                                          <th scope="row">{{qty}}</th>
-                                          <td>{{pricenai.nai()}}</td>
+                                          <th scope="row" style="vertical-align: middle">{{qty}}</th>
+                                          <td style="vertical-align: middle">{{pricenai.nai()}}</td>
                                           <td>
 											  <span dmx-show="(pricenai.token != 'DLUX')">
 											 <center>

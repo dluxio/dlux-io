@@ -550,6 +550,21 @@ dmx.Formatters("global", {
                 document.getElementById(`${s}${i}`).style.background = `linear-gradient(${r})`
                 })
             },
+			getSetDetailsColorsTxt : function(s, i, c){
+                fetch(`https://ipfs.io/ipfs/${s}`)
+                .then((response) => response.text())
+                .then((data) => {
+                const code = `(//${data}\n)("0")`;
+                const SVG = eval(code)
+                let r = ''
+                try{r=`${SVG.set.Color2},${SVG.set.Color1}`}catch(e){
+                    console.log(e)
+                    r = 'lawngreen,chartreuse'
+                }
+                console.log(r)
+                document.getElementById(`${s}${i}`).style.color = `linear-gradient(${r})`
+                })
+            },
             getSetPhotos : function(s, i, c, t){
                 console.log({s,i,c})
                 fetch(`https://ipfs.io/ipfs/${s}`)
