@@ -27,6 +27,9 @@ include_once( $path );
     height: 100%; 
     object-fit: contain;
 }
+	.featured-img {
+		width: 600px; height: 320px; object-fit: cover;
+	}
 </style>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
@@ -51,7 +54,7 @@ include_once( $path );
 	  <a dmx-bind:href="/nfts/set/{{set}}" style="text-decoration: none">
     <div class="card bg-dark text-white">
 		<div>
-      <div dmx-bind:id="{{script}}featured">{{script.getSetPhotos('','featured')}}</div>
+      <div dmx-bind:id="{{script}}featured">{{script.getSetPhotos('','featured','featured-img')}}</div>
 		<div class="center-circle rounded-circle bg-darker" style="border: solid black 3px;">
             <div dmx-bind:id="{{script}}logo" class="rounded-circle" style="width: 100px"> {{script.getSetPhotos('','logo','rounded-circle')}}</div>
           </div>
