@@ -289,12 +289,11 @@ include_once( $path );
                       {{script.getSetDetails('faicon', '-icon-text', 'value')}} </div>
                     <div class="card-header d-flex align-items-center justify-content-between" >
                       <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
-                        <div class="pr-2"><small>OWN: </small></div>
+                        <div class="pr-2"><small>AVAIL: </small></div>
                         <div class="px-2">
                           <h2 dmx-bind:id="{{set}}-inventory" class="m-0">
-							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">000</div>
-                            <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">{{qty.pad(3)}}</div>
-                          </h2>
+							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">{{qty_sales+qty_auctions}}</div>
+                            </h2>
                         </div>
                       </div>
                       <div> <a dmx-bind:href="/nfts/set/{{set}}">
@@ -436,6 +435,15 @@ include_once( $path );
                       </div>
                     </div>
                     <div class="card-footer d-flex flex-column p-2">
+						<div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
+                        <div class="pr-2"><small>YOU OWN: </small></div>
+                        <div class="px-2">
+                          <h2 dmx-bind:id="{{set}}-inventory" class="m-0">
+							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">000</div>
+                            <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">{{qty.pad(3)}}</div>
+                          </h2>
+                        </div>
+                      </div>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="col-5 px-0">
 						  <div dmx-bind:id="{{set}}-open-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark w-100 disabled">Open<i class="fas fa-box-open ml-3"></i></button></div>
