@@ -28,7 +28,7 @@ include_once( $path );
     object-fit: contain;
 }
 	.featured-img {
-		width: 600px; height: 320px; object-fit: cover;
+		width: 600px; height: 330px; object-fit: cover;
 	}
 </style>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
