@@ -27,6 +27,10 @@ class Nfts extends \Core\Controller
             'set'    => $request->set
         ]);
     }
+	public function explore($request, $response, $service)
+    {
+        View::render('nfts/set/explore.php');
+    }
 	    public function new($request, $response, $service)
     {
         View::render('nfts/new/index.php');

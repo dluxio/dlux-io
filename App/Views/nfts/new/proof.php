@@ -30,6 +30,12 @@ include_once( $path );
 		font-weight: bold;
 		margin-bottom: 5px;
 	}
+	.max-content{
+		width: max-content;
+	}
+	.shimmer {
+    background-image: linear-gradient( to right, rgb(194, 255, 182), rgb(255, 163, 182), rgb(221, 169, 255), rgb(162, 209, 255) )
+	}
 </style>
 <dmx-api-datasource id="statsapi" is="dmx-fetch" url="https://token.dlux.io/stats/"></dmx-api-datasource>
 <?php
@@ -44,6 +50,14 @@ include_once( $path );
       <h4>ALPHA v0.2</h4>
       <p class="lead">Proof your set before publishing</p>
       <div id="preview">
+		  <!-- name -->
+		  <div class="form-group row">
+          <label for="testname" class="col-sm-2 col-form-label">Set</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="testset" value="Hive Folks">
+          </div>
+        </div>
+		  <!-- script -->
         <div class="form-group row">
           <label for="testscript" class="col-sm-2 col-form-label">Script</label>
           <div class="col-sm-10">
@@ -62,12 +76,14 @@ include_once( $path );
           <div dmx-bind:id="{{testscript.value}}wrapped"> {{testscript.value.getSetPhotos('','wrapped')}}</div>
           <p dmx-bind:id="{{testscript.value}}descriptionp"> {{testscript.value.getSetDetails('Description', 'descriptionp', 'innerText')}} </p>
           <input id="testuid" value="7S">
-          <input id="testset" value="test">
         </div>
         <div class="col-md-6">
           <div class="cc-3 pt-5" id="testftcards" >
             <div dmx-bind:id="{{testscript.value}}testcard" class="card text-white" style="border: none;"> {{testscript.value.getSetDetailsColors('testcard')}}
-              <div class="card-header d-flex align-items-center justify-content-between" > </div>
+              <div class="card-header d-flex align-items-center justify-content-between" > 
+				<div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{testuid.value}}</h2></div>
+				<h3 class="card-title lead shimmer rounded p-2 m-0 ml-auto" style="color: black"><b>{{testset.value}} NFT</b></h3>
+				</div>
               <div>
                 <div class="card-img-top" dmx-bind:id="image-{{testset.value}}-{{testuid.value}}" dmx-bind:alt="{{testscript.value}}">{{testuid.value.nftImageWell(testscript.value, testset.value)}}</div>
               </div>
