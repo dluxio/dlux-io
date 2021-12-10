@@ -161,7 +161,7 @@ include_once( $path );
 					<div class="ml-auto"><a href="/about/" style="color:silver">About<i class="fas fa-info-circle ml-2"></i></a></div>
                   </div>
 				  <div class="d-flex justify-content-around my-0">
-		<div class="d-flex align-items-center p-3"><p class="small my-0 py-0 mr-2 text-white-50">BAL:</p><h3 class="my-0 py-0 font-weight-bolder" style="color:#21FFB5"><u>{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}}</u></h3></div>
+		<div class="d-flex align-items-center p-3"><p class="small my-0 py-0 mr-2 text-white-50">BALANCE:</p><h3 class="my-0 py-0 font-weight-bolder" style="color:#21FFB5"><u>{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}}</u></h3></div>
                     </div>
 				<div class="mt-4 text-right"><button class="btn btn-outline-primary" href="#buyDluxModal" class="a-1" data-toggle="modal">Get DLUX</button></div>
 				</div>
@@ -169,14 +169,14 @@ include_once( $path );
 				<div style="border-radius: 0px 0px 0px 0px; background-color: black">
 					<div class="" style="background-color: rgba(227, 19, 55, 0.6 ); border-radius: 0px 0px 0px 0px; border-left: 2px solid black; border-right: 2px solid black; color:#e7e7f1">
 						<div style="border-radius: 0px 0px 15px 15px; background-color: black">&nbsp;</div>
-						<div class="mx-5 mt-2 d-flex"><p class="m-0"><b><i class="fab fa-hive"></i> HIVE</b></p><p class="ml-auto small my-0 py-0 mr-2 text-white-50">BAL: {{accountapi.data.result[0].balance}}</span></p></div>
+						<div class="mx-5 mt-2 d-flex"><p class="m-0"><b><i class="fab fa-hive"></i> HIVE</b></p><p class="ml-auto small my-0 py-0 mr-2 text-white-50">BALANCE: {{accountapi.data.result[0].balance}}</span></p></div>
 				</div>
 					</div>
 	
 					<div class="" style="background-color: rgba(0, 150, 15, 1); border-radius: 0px 0px 15px 15px;  border-left: 2px solid black; border-right: 2px solid black; border-bottom: 2px solid black;">
 						<div style="border-radius: 0px 0px 15px 15px; background-color: black">
 						<div style="border-radius: 0px 0px 15px 15px; background-color: rgba(227, 19, 55, 0.6 ); border-left: 2px solid black; border-right: 2px solid black; border-bottom: 2px solid black; color:#e7e7f1; line-height: 10px;">&nbsp;</div></div>
-						<div class="my-2 mx-5 d-flex"><p class="m-0"><b><i class="fab fa-hive"></i> HBD</b></p><p class="ml-auto small my-0 py-0 mr-2 text-white-50">BAL: {{accountapi.data.result[0].hbd_balance}}</span></p></div>
+						<div class="my-2 mx-5 d-flex"><p class="m-0"><b><i class="fab fa-hive"></i> HBD</b></p><p class="ml-auto small my-0 py-0 mr-2 text-white-50">BALANCE: {{accountapi.data.result[0].hbd_balance}}</span></p></div>
 				</div>
 				
 					
@@ -289,7 +289,7 @@ include_once( $path );
                       {{script.getSetDetails('faicon', '-icon-text', 'value')}} </div>
                     <div class="card-header d-flex align-items-center justify-content-between" >
                       <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
-                        <div class="pr-2"><small>AVAIL: </small></div>
+                        <div class="pr-2"><small>SUPPLY: </small></div>
                         <div class="px-2">
                           <h2 dmx-bind:id="{{set}}-inventory" class="m-0">
 							<div>{{qty}}</div>
@@ -357,7 +357,7 @@ include_once( $path );
                                     <table class="table table-sm table-dark bg-none">
                                       <thead>
                                         <tr>
-                                          <th scope="col" class="small">AVAIL</th>
+                                          <th scope="col" class="small">SUPPLY</th>
                                           <th scope="col" class="small">PRICE</th>
                                           <th scope="col" class="small">QTY</th>
                                           <th scope="col"></th>
@@ -437,18 +437,19 @@ include_once( $path );
                     <div class="card-footer p-2">
 						
 						<div class="rounded p-2" style="background-color: rgba(0,0,0,0.7)">
-							
+							<div class="d-flex justify-content-around">
                          <div class="d-flex align-items-center">
 							<div class="pr-2">
 							<small>YOU OWN: </small>
 							</div>
                         <div class="px-2">
                           <h2 dmx-bind:id="{{set}}-inventory" class="m-0">
-							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">000</div>
-                            <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">{{qty.pad(3)}}</div>
+							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><u>0</u></div>
+                            <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><u>{{qty}}</u></div>
                           </h2>
                         </div>
 							 </div>
+							</div>
                      
                       <div class="d-flex mt-3 justify-content-between align-items-center">
                         <div class="col-5 px-0">
