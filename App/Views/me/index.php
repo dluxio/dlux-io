@@ -473,12 +473,16 @@ if ( isset( $author ) ) {
               <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
 				  From: {{from}} To: {{to}} Price: {{price}}
               </a> 
-              <div class="card-footer" dmx-show="(inventorydata.data.user == userCookie.value)">
+              <div class="card-footer" dmx-show="(to == userCookie.value)">
                 <div class="d-flex flex-wrap justify-content-between">
                   <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="tradeNFTaccept('{{set}}','{{uid}}')">Accept<i class="fas fa-check-square ml-3"></i></button>
                   <button type="button" class="btn btn-danger mr-auto ml-auto mt-1" data-toggle="modal" dmx-on:click="tradeNFTreject('{{set}}','{{uid}}')">Reject<i class="fas fa-window-close ml-3"></i></button>
                 </div>
               </div>
+				<div class="card-footer" dmx-show="(from == userCookie.value)">
+					<div class="d-flex flex-wrap justify-content-around">
+					<button type="button" class="btn btn-warning mr-auto ml-auto mt-1" data-toggle="modal" dmx-on:click="tradeNFTcancel('{{set}}','{{uid}}')">Cancel<i class="fas fa-window-close ml-3"></i></button>
+					</div>
                 </div>
           </div>
           <!-- Mint repeat -->
