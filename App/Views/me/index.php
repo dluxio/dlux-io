@@ -471,7 +471,7 @@ if ( isset( $author ) ) {
               </div>
               <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
               <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
-				  From: {{from}} To: {{to}} Amount: {{amount}}
+				  From: {{from}} To: {{to}} Price: {{price}}
               </a> 
               <div class="card-footer" dmx-show="(inventorydata.data.user == userCookie.value)">
                 <div class="d-flex flex-wrap justify-content-between">
