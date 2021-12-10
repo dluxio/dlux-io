@@ -471,8 +471,9 @@ if ( isset( $author ) ) {
               </div>
               <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
               <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
+				  From: {{from}} To: {{to}} Amount: {{amount}}
               </a> 
-              <div class="card-footer" dmx-sho="(inventorydata.data.user == userCookie.value)">
+              <div class="card-footer" dmx-show="(inventorydata.data.user == userCookie.value)">
                 <div class="d-flex flex-wrap justify-content-between">
                   <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="tradeNFTaccept('{{set}}','{{uid}}')">Accept<i class="fas fa-check-square ml-3"></i></button>
                   <button type="button" class="btn btn-danger mr-auto ml-auto mt-1" data-toggle="modal" dmx-on:click="tradeNFTreject('{{set}}','{{uid}}')">Reject<i class="fas fa-window-close ml-3"></i></button>
