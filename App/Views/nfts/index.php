@@ -292,7 +292,7 @@ include_once( $path );
                         <div class="pr-2"><small>AVAIL: </small></div>
                         <div class="px-2">
                           <h2 dmx-bind:id="{{set}}-inventory" class="m-0">
-							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">{{qty_sales}}</div>
+							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">{{inventoryapi.data.mint_tokens.qty_sales}}</div>
                             </h2>
                         </div>
                       </div>
