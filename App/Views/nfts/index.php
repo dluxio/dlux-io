@@ -434,26 +434,35 @@ include_once( $path );
                         </div>
                       </div>
                     </div>
-                    <div class="card-footer d-flex flex-column p-2">
-						<div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
-                        <div class="pr-2"><small>YOU OWN: </small></div>
+                    <div class="card-footer p-2">
+						
+						<div class="rounded p-2" style="background-color: rgba(0,0,0,0.7)">
+							
+                         <div class="d-flex align-items-center">
+							<div class="pr-2">
+							<small>YOU OWN: </small>
+							</div>
                         <div class="px-2">
                           <h2 dmx-bind:id="{{set}}-inventory" class="m-0">
 							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">000</div>
                             <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()">{{qty.pad(3)}}</div>
                           </h2>
                         </div>
-                      </div>
-                      <div class="d-flex justify-content-between align-items-center">
+							 </div>
+                     
+                      <div class="d-flex mt-3 justify-content-between align-items-center">
                         <div class="col-5 px-0">
-						  <div dmx-bind:id="{{set}}-open-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark w-100 disabled">Open<i class="fas fa-box-open ml-3"></i></button></div>
-                            <div dmx-bind:id="{{set}}-open-some" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark w-100" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button></div>
+						  <div dmx-bind:id="{{set}}-open-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-light w-100 disabled">Open<i class="fas fa-box-open ml-3"></i></button></div>
+                            <div dmx-bind:id="{{set}}-open-some" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-light w-100" dmx-on:click="openFT('{{set}}')">Open<i class="fas fa-box-open ml-3"></i></button></div>
 						  </div>
 						  <div class="col-5 px-0">
-						  <div dmx-bind:id="{{set}}-transfer-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark w-100 disabled">Transfer<i class="fas fa-exchange-alt ml-3"></i></button></div>
-                            <div dmx-bind:id="{{set}}-transfer-some" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-dark w-100" data-toggle="modal" href="#mintTransferModal" dmx-on:click="mint_detail.select(set)">Transfer<i class="fas fa-exchange-alt ml-3"></i></button></div>
+						  <div dmx-bind:id="{{set}}-transfer-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-light w-100 disabled">Transfer<i class="fas fa-exchange-alt ml-3"></i></button></div>
+                            <div dmx-bind:id="{{set}}-transfer-some" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><button type="button" class="btn btn-outline-light w-100" data-toggle="modal" href="#mintTransferModal" dmx-on:click="mint_detail.select(set)">Transfer<i class="fas fa-exchange-alt ml-3"></i></button></div>
 						  </div>
                       </div>
+							
+							 </div>
+						
                     </div>
                   </div>
                 </div>
