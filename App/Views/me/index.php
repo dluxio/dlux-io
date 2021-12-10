@@ -453,6 +453,7 @@ if ( isset( $author ) ) {
                   <h3 class="my-0 mx-2 p-0 p-2 ml-auto rainbow-text">sealed NFT</h3>
                   <h5>Unwrap to see what's inside.</h5>
                 </div>
+				  From: {{from}} To: {{to}} Price: {{price}}
               </div>
               <div class="card-footer" dmx-show="(to == userCookie.value)" style="background: rgba(0,0,0,0.8)">
                 <div class="d-flex flex-wrap justify-content-between">
