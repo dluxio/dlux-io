@@ -463,7 +463,7 @@ if ( isset( $author ) ) {
               </div>
 				<div class="card-footer" dmx-show="(from == userCookie.value)">
 					<div class="d-flex flex-wrap justify-content-around">
-					<button type="button" class="btn btn-warning mr-auto ml-auto mt-1" ddmx-on:click="tradeFTcancel('{{set}}','{{uid}}')">Cancel<i class="fas fa-window-close ml-3"></i></button>
+					<button type="button" class="btn btn-warning mr-auto ml-auto mt-1" dmx-on:click="tradeFTcancel('{{set}}','{{uid}}')">Cancel<i class="fas fa-window-close ml-3"></i></button>
 					</div>
                 </div>
             </div>
@@ -487,7 +487,7 @@ if ( isset( $author ) ) {
               </div>
 				<div class="card-footer" dmx-show="(from == userCookie.value)">
 					<div class="d-flex flex-wrap justify-content-around">
-					<button type="button" class="btn btn-warning mr-auto ml-auto mt-1" ddmx-on:click="tradeNFTcancel('{{set}}','{{uid}}')">Cancel<i class="fas fa-window-close ml-3"></i></button>
+					<button type="button" class="btn btn-warning mr-auto ml-auto mt-1" dmx-on:click="tradeNFTcancel('{{set}}','{{uid}}')">Cancel<i class="fas fa-window-close ml-3"></i></button>
 					</div>
                 </div>
           </div>
