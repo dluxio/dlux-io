@@ -436,7 +436,7 @@ include_once( $path );
                     </div>
                     <div class="card-footer p-2">
 						
-						<div class="rounded p-2" style="background-color: rgba(0,0,0,0.7)">
+						<div class="rounded p-2" style="background-color: rgba(0,0,0,0.8)">
 							<div class="d-flex justify-content-around">
                          <div class="d-flex align-items-center">
 							<div class="pr-2">
@@ -444,8 +444,8 @@ include_once( $path );
 							</div>
                         <div class="px-2">
                           <h2 dmx-bind:id="{{set}}-inventory" class="m-0">
-							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><u>0</u></div>
-                            <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><u>{{qty}}</u></div>
+							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><span style="color: aqua">0</span></div>
+                            <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><span style="color: aqua">{{qty}}</span></div>
                           </h2>
                         </div>
 							 </div>
