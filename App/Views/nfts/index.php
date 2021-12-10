@@ -439,13 +439,13 @@ include_once( $path );
 						<div class="rounded p-2" style="background-color: rgba(0,0,0,0.8)">
 							<div class="d-flex justify-content-around">
                          <div class="d-flex align-items-center">
-							<div class="pr-2 d-none">
-							<small>YOU OWN: </small>
+							<div class="pr-2">
+							<small>OWNED: </small>
 							</div>
                         <div class="px-2">
                           <h2 dmx-bind:id="{{set}}-inventory" class="m-0">
-							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><span style="color: aqua">0 <i class="ml-2 fas fa-box"></i></span></div>
-                            <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><span style="color: aqua">{{qty}}<i class="ml-4 fas fa-box"></i></span></div>
+							<div dmx-bind:id="{{set}}-inventory-none" dmx-class:d-none="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><span style="color: aqua">0</span></div>
+                            <div dmx-bind:id="{{set}}-inventory-any" is="dmx-repeat" dmx-bind:repeat="inventoryapi.data.mint_tokens.where('set', set, '==')" dmx-show="inventoryapi.data.mint_tokens.where('set',set,'==').hasItems()"><span style="color: aqua">{{qty}}</span></div>
                           </h2>
                         </div>
 							 </div>
