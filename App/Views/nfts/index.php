@@ -301,7 +301,7 @@ include_once( $path );
                       </a></div>
                     </div>
                     <div class="card-body text-center d-flex flex-column p-2">
-                      <div class="card panel-group" dmx-bind:id="{{set}}-panel" style="background-color: rgba(0,0,0,0.8)">
+                      <div class="card panel-group h-100" dmx-bind:id="{{set}}-panel" style="background-color: rgba(0,0,0,0.8)">
                         <div class="panel panel-default">
                           <div class="card-heading mint-panel-heading-top">
                             <p class="card-title mb-0 p-1"> <a class="collapsed accordion-toggle" data-toggle="collapse" dmx-bind:data-parent="#{{set}}-panel" dmx-bind:href="#{{set}}-description-collapse" dmx-on:click="toggleMintDescription('{{set}}')"><i class="far fa-list-alt mr-3"></i>Description</a></p>
