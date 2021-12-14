@@ -8,15 +8,10 @@ $path .= "/mod/header.php";
 include_once( $path );
 ?>
 <!--page specific-->
+<script type="text/javascript" src="/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
-</head>
-<body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
-<?php
-	echo '<dmx-api-datasource id="api1" is="dmx-fetch" url="https://token.dlux.io/api/set/' . $set . '"></dmx-api-datasource>';
-?>
-<dmx-data-view id="dataView1" dmx-bind:data="api1.data.result" sorton="uid"></dmx-data-view>
-<style>
+    <style>
 .circle {
   width: 50px;
   height: 50px;
@@ -33,6 +28,14 @@ include_once( $path );
     object-fit: contain;
 }
 </style>
+</head>
+<body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
+<?php
+	echo '<dmx-api-datasource id="setview" is="dmx-fetch" url="https://token.dlux.io/api/set/' . $set . '"></dmx-api-datasource>';
+?>
+<dmx-api-datasource id="setapi" is="dmx-fetch" url="https://token.dlux.io/api/set/dlux"></dmx-api-datasource>
+<dmx-data-view id="setview" dmx-bind:data="setapi.data.result" sorton="uid"></dmx-data-view>
+
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
@@ -41,14 +44,20 @@ include_once( $path );
 <main role="main" class="flex-shrink-0">
 
     <div class="container-fluid">
+         <div dmx-bind:id="{{script}}banner">{{setapi.data.set.script.getSetPhotos('','banner','')}}</div>
+
+         <div dmx-bind:id="{{script}}logo" class="rounded-circle" style="width: 100px"> {{script.getSetPhotos('','logo','rounded-circle')}}</div>
+          </div>
+        {{setapi.data.set.script}}
+        {{setapi.data.set.permlink}}
       <div class="text-center my-3">
-        <button class="btn btn-primary mx-2" id="sortuidasc" dmx-on:click="dataView1.sort('uid','asc')">Sort id<i class="fas fa-arrow-alt-circle-up mx-2"></i></button>
-        <button class="btn btn-primary mx-2" id="sortuiddesc" dmx-on:click="dataView1.sort('uid','desc')">Sort id<i class="fas fa-arrow-alt-circle-down mx-2"></i></button>
-        <button class="btn btn-primary mx-2" id="sortasc" dmx-on:click="dataView1.sort('owner','asc')">Sort owner <i class="fas fa-arrow-alt-circle-up mx-2"></i></button>
-        <button class="btn btn-primary mx-2" id="sortasc" dmx-on:click="dataView1.sort('owner','desc')">Sort owner <i class="fas fa-arrow-alt-circle-down mx-2"></i></button>
+        <button class="btn btn-primary mx-2" id="sortuidasc" dmx-on:click="setview.sort('uid','asc')">Sort id<i class="fas fa-arrow-alt-circle-up mx-2"></i></button>
+        <button class="btn btn-primary mx-2" id="sortuiddesc" dmx-on:click="setview.sort('uid','desc')">Sort id<i class="fas fa-arrow-alt-circle-down mx-2"></i></button>
+        <button class="btn btn-primary mx-2" id="sortasc" dmx-on:click="setview.sort('owner','asc')">Sort owner <i class="fas fa-arrow-alt-circle-up mx-2"></i></button>
+        <button class="btn btn-primary mx-2" id="sortasc" dmx-on:click="setview.sort('owner','desc')">Sort owner <i class="fas fa-arrow-alt-circle-down mx-2"></i></button>
       </div>
       <div class="row row-cols-xl-6 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
-        <div class="col mb-4" dmx-repeat:repeat1="dataView1.data">
+        <div class="col mb-4" dmx-repeat:repeat1="setview.data">
           <div class="card text-white bg-dark"> 
              <div class="card-header d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-header">{{script.getSetDetailsColors(uid+'-header')}}
               <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{uid}}</h2></div>
@@ -68,8 +77,8 @@ include_once( $path );
         </div>
       </div>
 			</	div>
-      <dmx-data-iterator id="iterator1" dmx-bind:data="dataView1.data" loop="true"></dmx-data-iterator>
-      <dmx-data-detail id="detail1" dmx-bind:data="dataView1.data" key="uid">
+      <dmx-data-iterator id="iterator1" dmx-bind:data="setview.data" loop="true"></dmx-data-iterator>
+      <dmx-data-detail id="detail1" dmx-bind:data="setview.data" key="uid">
         <div class="modal fade " id="itemModal" tabindex="11" role="dialog" aria-hidden="true">
           <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
             <div class="modal-content bg-dark text-white">
