@@ -12,28 +12,30 @@ include_once( $path );
 <script src="/js/dex.js"></script>
 <script src="/js/ico.js"></script>
     <style>
-.circle {
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  border-radius: 50%;
-  font-size: 25px;
-  color: #fff;
-  text-align: center;
-  background: #000
-}
+.center-circle {
+		position: absolute;
+		left: 50%;
+    	transform: translate(-50%, -50%);
+		z-index: 1;
+	}
+        .max-80 {
+		max-width: 80px;
+	}
 .img {
     width: 100%;
     height: 100%; 
     object-fit: contain;
 }
+.bannner-img {
+		width: 1400px; height: 230px; object-fit: cover;
+	}
 </style>
 </head>
 <body class="d-flex flex-column h-100 padme-t70 text-white" id="index" is="dmx-app">
 <?php
-	echo '<dmx-api-datasource id="setview" is="dmx-fetch" url="https://token.dlux.io/api/set/' . $set . '"></dmx-api-datasource>';
+	echo '<dmx-api-datasource id="setapi" is="dmx-fetch" url="https://token.dlux.io/api/set/' . $set . '"></dmx-api-datasource>';
 ?>
-<dmx-api-datasource id="setapi" is="dmx-fetch" url="https://token.dlux.io/api/set/dlux"></dmx-api-datasource>
+
 <dmx-data-view id="setview" dmx-bind:data="setapi.data.result" sorton="uid"></dmx-data-view>
 
 <?php
@@ -44,12 +46,52 @@ include_once( $path );
 <main role="main" class="flex-shrink-0">
 
     <div class="container-fluid">
-         <div dmx-bind:id="{{script}}banner">{{setapi.data.set.script.getSetPhotos('','banner','')}}</div>
 
-         <div dmx-bind:id="{{script}}logo" class="rounded-circle" style="width: 100px"> {{script.getSetPhotos('','logo','rounded-circle')}}</div>
+    <div class="card bg-dark text-white">
+		<div>
+      <div dmx-bind:id="{{setapi.data.set.script}}banner">{{setapi.data.set.script.getSetPhotos('','banner','banner-img w-100 img-fluid')}}</div>
+		<div class="center-circle rounded-circle bg-darker" style="border: solid black 3px;">
+            <div dmx-bind:id="{{setapi.data.set.script}}logo" class="rounded-circle" style="width: 100px"> {{setapi.data.set.script.getSetPhotos('','logo','rounded-circle')}}</div>
           </div>
-        {{setapi.data.set.script}}
-        {{setapi.data.set.permlink}}
+			</div>
+      <div class="card-body p-0" dmx-bind:id="{{setapi.data.set.script}}body" style="border: none; "> {{setapi.data.set.script.getSetDetailsColors('body')}}
+        
+		  <div class="m-3 p-3 rounded" style="background-color: rgba(0,0,0,0.7)">
+              <div class="d-flex justify-content-between align-items-center">
+			  <h2 class="card-title">{{setapi.data.set.set}}</h2>
+              <p class="m-0"><a dmx-bind:href="/@{{setapi.data.set.author}}">@{{setapi.data.set.author}}</a></p>
+                  </div>
+        <div class="mb-3 d-flex align-items-center " >
+			
+			<div class="mr-3"><p class="text-white-50 m-0" dmx-bind:id="{{setapi.data.set.script}}descriptionp" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2; 
+   -webkit-box-orient: vertical;"> {{setapi.data.set.script.getSetDetails('Description', 'descriptionp', 'innerText')}} </p></div>
+		
+			  <div dmx-bind:id="{{setapi.data.set.script}}wrapped"> {{setapi.data.set.script.getSetPhotos('','wrapped','rounded max-80')}}</div>
+            
+      </div>
+             <div class="d-flex justify-content-between align-items-center">
+            <span class="small bg-secondary rounded text-white px-2 py-1">Royalty: {{setapi.data.set.royalty}}</span>
+            <span class="small mx-2"><a dmx-bind:href="/blog/@{{setapi.data.set.link}}">{{setapi.data.set.permlink}}</a></span>
+                 <span class="small bg-secondary rounded text-white px-2 py-1">Bond: {{setapi.data.set.bond.amount}}</span>
+        </div>    
+    </div>
+  </div>
+        <div class="card-footer">
+             <div class="d-flex justify-content-between align-items-center">
+             <div class="flex-grow-1 mr-3">
+                 <div class="progress">
+                
+  <div class="progress-bar" role="progressbar" dmx-bind:style="width: {{(setapi.data.set.minted/setapi.data.set.max)*100}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{((setapi.data.set.minted/setapi.data.set.max)*100).formatNumber(2,','.',')}}% minted</div>
+</div></div>
+                 <div class="">
+            <p class="m-0">{{setapi.data.set.minted}} of {{setapi.data.set.max}} minted</p>
+        </div>
+                 </div>
+            </div>
+            </div>
+
       <div class="text-center my-3">
         <button class="btn btn-primary mx-2" id="sortuidasc" dmx-on:click="setview.sort('uid','asc')">Sort id<i class="fas fa-arrow-alt-circle-up mx-2"></i></button>
         <button class="btn btn-primary mx-2" id="sortuiddesc" dmx-on:click="setview.sort('uid','desc')">Sort id<i class="fas fa-arrow-alt-circle-down mx-2"></i></button>
