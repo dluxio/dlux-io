@@ -63,10 +63,7 @@ include_once( $path );
                   </div>
         <div class="mb-3 d-flex align-items-center " >
 			
-			<div class="mr-3"><p class="text-white-50 m-0" dmx-bind:id="{{setapi.data.set.script}}descriptionp" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
-   -webkit-line-clamp: 2; /* number of lines to show */
-           line-clamp: 2; 
-   -webkit-box-orient: vertical;"> {{setapi.data.set.script.getSetDetails('Description', 'descriptionp', 'innerText')}} </p></div>
+			<div class="mr-3"><p class="text-white-50 m-0" dmx-bind:id="{{setapi.data.set.script}}descriptionp"> {{setapi.data.set.script.getSetDetails('Description', 'descriptionp', 'innerText')}} </p></div>
 		
 			  <div dmx-bind:id="{{setapi.data.set.script}}wrapped"> {{setapi.data.set.script.getSetPhotos('','wrapped','rounded max-80')}}</div>
             
