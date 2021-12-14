@@ -61,7 +61,7 @@ include_once( $path );
 			  <h2 class="card-title">{{setapi.data.set.set}}</h2>
               <p class="m-0"><a dmx-bind:href="/@{{setapi.data.set.author}}">@{{setapi.data.set.author}}</a></p>
                   </div>
-        <div class="mb-3 d-flex align-items-center " >
+        <div class="mb-3 d-flex align-items-center justify-content-between" >
 			
 			<div class="mr-3"><p class="text-white-50 m-0" dmx-bind:id="{{setapi.data.set.script}}descriptionp"> {{setapi.data.set.script.getSetDetails('Description', 'descriptionp', 'innerText')}} </p></div>
 		
