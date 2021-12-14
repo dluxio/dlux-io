@@ -69,7 +69,7 @@ include_once( $path );
             
       </div>
              <div class="d-flex justify-content-between align-items-center">
-            <span class="small bg-secondary rounded text-white px-2 py-1">Royalty: {{setapi.data.set.royalty}}</span>
+            <span class="small bg-secondary rounded text-white px-2 py-1">Royalty: {{setapi.data.set.royalty/100}}%</span>
             <span class="small mx-2"><a dmx-bind:href="/blog/@{{setapi.data.set.link}}">{{setapi.data.set.permlink}}</a></span>
                  <span class="small bg-secondary rounded text-white px-2 py-1">Bond: {{setapi.data.set.bond.amount/1000}} {{setapi.data.set.bond.token}}</span>
         </div>    
