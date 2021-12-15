@@ -109,10 +109,10 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
           <div class="container-fluid mt-3">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-outline-warning active">
-                <input name="buypair" type="radio" id="buyhive" checked dmx-on:click="buy.buyHBDTotal.setValue('0');sell.sellHBDTotal.setValue('0')">
+                <input name="buypair" type="radio" id="buyhive" checked dmx-on:click="buy.buyHiveTotal.setValue('');sell.sellHiveTotal.setValue('');buy.buyHBDTotal.setValue('0');sell.sellHBDTotal.setValue('0')">
                 HIVE </label>
               <label class="btn btn-outline-warning">
-                <input type="radio" name="buypair" id="buyhbd" dmx-on:click="buy.buyHiveTotal.setValue('0');sell.sellHiveTotal.setValue('0')">
+                <input type="radio" name="buypair" id="buyhbd" dmx-on:click="buy.buyHBDTotal.setValue('');sell.sellHBDTotal.setValue('');buy.buyHiveTotal.setValue('0');sell.sellHiveTotal.setValue('0')">
                 HBD </label>
             </div>
           </div>
@@ -289,7 +289,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="buyType" id="buylimit" checked dmx-on:click="buyHours.setValue('720')">
+                          <input type="radio" name="buyType" id="buylimit" checked dmx-on:click="buyQuantity.setValue('');buyHours.setValue('720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
                           <input type="radio" name="buyType" id="buymarket" dmx-on:click="buyQuantity.setValue('0');buyHours.setValue('0')">
@@ -381,7 +381,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="sellType" id="selllimit" checked dmx-on:click="sellHours.setValue('720')">
+                          <input type="radio" name="sellType" id="selllimit" checked dmx-on:click="sellQuantity.setValue('');sellHours.setValue('720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
                           <input type="radio" name="sellType" id="sellmarket" dmx-on:click="sellQuantity.setValue('0');sellHours.setValue('0')">
