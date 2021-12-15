@@ -79,13 +79,13 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" dmx-show="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hive.tick}}</b></h2>
+              <h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hive.tick*hiveprice.data.hive.usd}}</b></h2>
             </div>
             <input id="dluxhiveusd" dmx-bind:value="{{dexapi.data.markets.hive.tick}}" class="d-none">
           </div>
           <div class="jumbotron p-3 bg-dark" dmx-show="buyhbd.checked">
             <div id="dluxhbdquote">
-              <h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hbd.tick}}</b></h2>
+              <h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hbd.tick*hbdprice.data.hive_dollar.usd}}</b></h2>
             </div>
             <input id="dluxhbdusd" dmx-bind:value="{{dexapi.data.markets.hbd.tick}}" class="d-none">
           </div>
@@ -229,6 +229,10 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                         <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('type','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-down"></i> </button>
                       </div>
                     </th>
+					  <th role="columnheader" class="" aria-colindex="7"> <div class="d-flex align-items-center">
+                        <div class="mr-3">&nbsp;</div>
+                      </div>
+                    </th>
                   </tr>
                   </thread>
                   
@@ -280,6 +284,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   </div>
                 </div>
               </div>
+				
               <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" dmx-hide="buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
@@ -293,35 +298,24 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   </div>
                 </div>
               </div>
-              <div class="form-group" id="buy-hive-total" aria-labelledby="buy-hive-total-label" for="buyHiveTotal" dmx-show="buyhive.checked">
+			  
+			 <div class="form-group" for="buyPrice" id="buy-price" aria-labelledby="buy-price-label" dmx-hide="buymarket.checked">
                 <div class="form-row">
-                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
+                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control" value="0" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="" dmx-bind:readonly="buyhbd.checked">
+                      <input id="buyPrice" type="number" placeholder="0" required step="0.001" min="0" aria-required="true" class="form-control"  dmx-bind:readonly="buymarket.checked">
                       <div class="input-group-append">
-                        <div class="input-group-text">HIVE</div>
+                        <div class="input-group-text"><span dmx-show="buyhive.checked">HIVE</span><span dmx-show="buyhbd.checked">HBD</span>/DLUX</div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="form-group" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" for="buyHBDTotal" dmx-show="buyhbd.checked">
+              </div>	
+				
+			  <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" dmx-hide="buymarket.checked">
                 <div class="form-row">
-                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
-                  <div tabindex="-1" role="group" class="col">
-                    <div role="group" class="input-group">
-                      <input type="number" required class="form-control" id="buyHBDTotal" value="0" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true" dmx-bind:readonly="buyhive.checked">
-                      <div class="input-group-append">
-                        <div class="input-group-text">HBD</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" dmx-hide="buymarket.checked">
-                <div class="form-row">
-                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Time</legend>
+                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input id="buyHours" type="number" value="720" required step="1" min="0" aria-required="true" class="form-control"  dmx-bind:readonly="buymarket.checked">
@@ -332,6 +326,37 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   </div>
                 </div>
               </div>
+				
+              <div class="form-group" id="buy-hive-total" aria-labelledby="buy-hive-total-label" for="buyHiveTotal" dmx-show="buyhive.checked">
+                <div class="form-row">
+                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
+                  <div tabindex="-1" role="group" class="col">
+                    <div role="group" class="input-group">
+                      <input type="number" class="form-control" dmx-bind:value="buyPrice.value*buyQuantity.value" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="">
+                      <div class="input-group-append">
+                        <div class="input-group-text">HIVE</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+				
+              <div class="form-group" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" for="buyHBDTotal" dmx-show="buyhbd.checked">
+                <div class="form-row">
+                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
+                  <div tabindex="-1" role="group" class="col">
+                    <div role="group" class="input-group">
+                      <input type="number" class="form-control" id="buyHBDTotal" dmx-bind:value="buyPrice.value*buyQuantity.value" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
+                      <div class="input-group-append">
+                        <div class="input-group-text">HBD</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+				
+              
+				
               <div class="text-right">
                 <button type="submit" class="btn btn-success">Buy</button>
               </div>
