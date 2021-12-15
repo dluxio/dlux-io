@@ -23,6 +23,7 @@ include_once( $path );
   opacity: 1;
 }
 </style>
+	
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
@@ -342,7 +343,10 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <input type="number" class="form-control disabled-input" dmx-bind:readonly="buyhbd.checked" dmx-bind:value="buyhive.checked.then(buyPrice.value*buyQuantity.value,'0')" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="">
                       <div class="input-group-append">
                         <div class="input-group-text">HIVE</div>
-                      </div>
+						  </div>
+						   <div class="invalid-feedback"> Minimum total is 0.001 - increase the quantity or price. </div>
+                      
+						  
                     </div>
                   </div>
                 </div>
@@ -356,7 +360,9 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <input type="number" class="form-control disabled-input" dmx-bind:readonly="buyhive.checked" id="buyHBDTotal" dmx-bind:value="buyhbd.checked.then(buyPrice.value*buyQuantity.value,'0')" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text">HBD</div>
-                      </div>
+						  </div>
+						   <div class="invalid-feedback"> Minimum total is 0.001 - increase the quantity or price. </div>
+                      
                     </div>
                   </div>
                 </div>
@@ -616,6 +622,7 @@ include_once( $path );
 ?>
 </body>
 <script>
+	
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
   'use strict';
@@ -698,5 +705,9 @@ function totals (){
       }
     }
 </script>
+<script>
+	$('input.disabled-input').each ->
+    $(this).attr('tabindex', '-1')
+	</script>
 <script type="text/javascript" src="/js/chart.js"></script>
 </html>
