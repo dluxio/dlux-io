@@ -439,11 +439,11 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
 							 dmx-bind:readonly="buyhbd.checked || sellmarket.checked" id="sellHiveTotal" 
 							 dmx-bind:value="buyhive.checked.then((sellPrice.value*sellQuantity.value).toFixed(3),'0')" 
-							  placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="">
+							  placeholder="0" min="0.004" step="0.001" aria-required="true" dmx-bind:max="">
                       <div class="input-group-append">
                         <div class="input-group-text r-radius-hotfix bg-dark border-dark text-white-50">HIVE</div>
                       </div>
-                      <div class="invalid-feedback"> Minimum total is 0.001 - increase the quantity or price. </div>
+                      <div class="invalid-feedback"> Minimum total is 0.004 - increase the quantity or price. </div>
                     </div>
                   </div>
                 </div>
@@ -456,11 +456,11 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
 							 dmx-bind:readonly="buyhive.checked || sellmarket.checked" id="sellHBDTotal" 
 							 dmx-bind:value="buyhbd.checked.then((sellPrice.value*sellQuantity.value).toFixed(3),'0')" 
-							 placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
+							 placeholder="0" min="0.004" step="0.001" dmx-bind:max="" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text r-radius-hotfix bg-dark border-dark text-white-50">HBD</div>
                       </div>
-                      <div class="invalid-feedback"> Minimum total is 0.001 - increase the quantity or price. </div>
+                      <div class="invalid-feedback"> Minimum total is 0.004 - increase the quantity or price. </div>
                     </div>
                   </div>
                 </div>
