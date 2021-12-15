@@ -316,7 +316,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="buyPrice" type="number" placeholder="0" required step="0.001" min="0" aria-required="true" class="form-control"  dmx-bind:readonly="buymarket.checked">
+                      <input id="buyPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control"  dmx-bind:readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text"><span dmx-show="buyhive.checked">HIVE</span><span dmx-show="buyhbd.checked">HBD</span>/DLUX</div>
                       </div>
