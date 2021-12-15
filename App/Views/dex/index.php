@@ -593,7 +593,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   </thead>
                   <tbody role="rowgroup">
                     <!--repeat region-->
-                    <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.data.groupBy('rate')">
+                    <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.data.groupBy('rate')" dmx-class:border-warning="txid == 'DLUXICO'">
                       <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
