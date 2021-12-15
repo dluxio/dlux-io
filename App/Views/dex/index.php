@@ -706,8 +706,8 @@ function totals (){
     }
 </script>
 <script>
-	$('input.disabled-input').each ->
-    $(this).attr('tabindex', '-1')
+var disabletab = document.getElementByClass('input.disabled-input')
+for (var i = 0; i < disabletab.length;i++){disabletab[i].setAttribute('tabindex', '-1')}
 	</script>
 <script type="text/javascript" src="/js/chart.js"></script>
 </html>
