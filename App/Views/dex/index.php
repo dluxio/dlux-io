@@ -281,7 +281,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         <div class="row">
           <div class="mt-3 col-md-6">
             <h4>Buy DLUX</h4>
-            <form name="buy" class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyHiveTotal.value}}','{{buyHBDTotal.value}}','{{buyQuantity.value}','{{buyHours.value}}')">
+            <form name="buy" class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyHiveTotal.value}}','{{buyHBDTotal.value}}','{{buyQuantity.value}}','{{buyHours.value}}')">
               <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
@@ -381,10 +381,10 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="sellType" id="selllimit" checked dmx-on:click="sellQuantity.setValue('');sellHours.setValue('720')">
+                          <input type="radio" name="sellType" id="selllimit" checked dmx-on:click="sellPrice.setValue('');sellHours.setValue('720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="sellType" id="sellmarket" dmx-on:click="sellQuantity.setValue('0');sellHours.setValue('0')">
+                          <input type="radio" name="sellType" id="sellmarket" dmx-on:click="sellPrice.setValue('0');sellHours.setValue('0')">
                           MARKET </label>
                       </div>
                     </div>
