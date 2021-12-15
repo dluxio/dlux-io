@@ -373,7 +373,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
           </div>
           <div class="mt-3 col-md-6">
             <h4>Sell DLUX</h4>
-            <form name="sell" class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX('{{sellQuantity.value}','{{sellHiveTotal.value}}','{{sellHBDTotal.value}}','{{sellHours.value}}')">
+            <form name="sell" class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX('{{sellQuantity.value}','{{sellHiveTotal2.value}}','{{sellHBDTotal.value}}','{{sellHours.value}}')">
               <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
@@ -430,13 +430,13 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   </div>
                 </div>
               </div>
-              <div class="form-group" id="sell-hive-total" aria-labelledby="sell-hive-total-label" for="sellHiveTotal" dmx-show="buyhive.checked && selllimit.checked">
+              <div class="form-group" id="sell-hive-total" aria-labelledby="sell-hive-total-label" for="sellHiveTotal2" dmx-show="buyhive.checked && selllimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
-							 dmx-bind:readonly="sellhbd.checked" id="sellHiveTotal" 
+							 dmx-bind:readonly="sellhbd.checked" id="sellHiveTotal2" 
 							 dmx-bind:value="buyhbd.checked.then((sellPrice.value*sellQuantity.value).toFixed(3),'0')" 
 							  placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="">
                       <div class="input-group-append">
