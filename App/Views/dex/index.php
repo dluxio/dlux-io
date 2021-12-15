@@ -292,7 +292,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                           <input type="radio" name="buyType" id="buylimit" checked dmx-on:click="buyHours.setValue('720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="buyType" id="buymarket" dmx-on:click="buyQuantity.setValue('0');buyHours.setValue('0')">
+                          <input type="radio" name="buyType" id="buymarket" dmx-on:click="buyQuantity.setValue('');buyHours.setValue('')">
                           MARKET </label>
                       </div>
                     </div>
@@ -384,7 +384,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                           <input type="radio" name="sellType" id="selllimit" checked dmx-on:click="sellHours.setValue('720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="sellType" id="sellmarket" dmx-on:click="sellQuantity.setValue('0');sellHours.setValue('0')">
+                          <input type="radio" name="sellType" id="sellmarket" dmx-on:click="sellQuantity.setValue('');sellHours.setValue('')">
                           MARKET </label>
                       </div>
                     </div>
