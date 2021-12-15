@@ -284,6 +284,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   </div>
                 </div>
               </div>
+				
               <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" dmx-hide="buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
@@ -331,7 +332,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" readonly class="form-control" dmx-bind:value="buyPrice.value*buyQuantity.value" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="" dmx-bind:readonly="buylimit.checked">
+                      <input type="number" class="form-control" dmx-bind:value="buyPrice.value*buyQuantity.value" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="" dmx-bind:readonly="buylimit.checked">
                       <div class="input-group-append">
                         <div class="input-group-text">HIVE</div>
                       </div>
@@ -345,7 +346,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" readonly class="form-control" id="buyHBDTotal" dmx-bind:value="buyPrice.value*buyQuantity.value" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true" dmx-bind:readonly="buylimit.checked">
+                      <input type="number" class="form-control" id="buyHBDTotal" dmx-bind:value="buyPrice.value*buyQuantity.value" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true" dmx-bind:readonly="buylimit.checked">
                       <div class="input-group-append">
                         <div class="input-group-text">HBD</div>
                       </div>
