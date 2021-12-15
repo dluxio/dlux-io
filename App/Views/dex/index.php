@@ -437,7 +437,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
 							 dmx-bind:readonly="sellhbd.checked" id="sellHiveTotal" 
-							 dmx-bind:value="buyhbd.checked.then((sellPrice.value*sellQuantity.value).toFixed(3),'0')" 
+							 dmx-bind:value="buyhive.checked.then((sellPrice.value*sellQuantity.value).toFixed(3),'0')" 
 							  placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="">
                       <div class="input-group-append">
                         <div class="input-group-text r-radius-hotfix bg-dark border-dark text-white-50">HIVE</div>
