@@ -478,6 +478,13 @@ dmx.Formatters("global", {
             toString: function(n) {
                 return toString(n)
             },
+            toRoyalty: function(n) {
+                var nn = n.split(','), out = ''
+                for (var i = 0; i < nn.length; i++) {
+                    out += `<span class="royaltypercent">@${nn[i].split('_')[0]} ${parseFloat(parseInt(nn[i].split('_')[1])/100).toFixed(2)}%</span>`
+                }
+                return out
+            },
             rep: function(rep2) {
                 if (rep2 == null) return rep2;
                 let rep = String(rep2);
