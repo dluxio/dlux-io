@@ -22,6 +22,10 @@ include_once( $path );
   background-color: #e9ecef;
   opacity: 1;
 }
+	.r-radius-hotfix {
+	border-top-right-radius: 0.25rem !important;
+	border-bottom-right-radius: 0.25rem !important;
+}
 </style>
 	
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
@@ -335,14 +339,14 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                 </div>
               </div>
 				
-              <div class="form-group" id="buy-hive-total" aria-labelledby="buy-hive-total-label" for="buyHiveTotal" dmx-shw="buyhive.checked">
+              <div class="form-group" id="buy-hive-total" aria-labelledby="buy-hive-total-label" for="buyHiveTotal" dmx-show="buyhive.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control disabled-input" dmx-bind:readonly="buyhbd.checked" dmx-bind:value="buyhive.checked.then(buyPrice.value*buyQuantity.value,'0')" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="">
+                      <input type="number" class="form-control disabled-input" dmx-bind:readonly="buyhbd.checked" dmx-bind:value="buyhive.checked.then((buyPrice.value*buyQuantity.value).formatNumber(3,'.',','),'0')" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="">
                       <div class="input-group-append">
-                        <div class="input-group-text">HIVE</div>
+                        <div class="input-group-text r-radius-hotfix">HIVE</div>
 						  </div>
 						   <div class="invalid-feedback"> Minimum total is 0.001 - increase the quantity or price. </div>
                       
@@ -352,14 +356,14 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                 </div>
               </div>
 				
-              <div class="form-group" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" for="buyHBDTotal" dmx-shw="buyhbd.checked">
+              <div class="form-group" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" for="buyHBDTotal" dmx-show="buyhbd.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input type="number" class="form-control disabled-input" dmx-bind:readonly="buyhive.checked" id="buyHBDTotal" dmx-bind:value="buyhbd.checked.then(buyPrice.value*buyQuantity.value,'0')" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
                       <div class="input-group-append">
-                        <div class="input-group-text">HBD</div>
+                        <div class="input-group-text r-radius-hotfix">HBD</div>
 						  </div>
 						   <div class="invalid-feedback"> Minimum total is 0.001 - increase the quantity or price. </div>
                       
@@ -706,7 +710,7 @@ function totals (){
     }
 </script>
 <script>
-var disabletab = document.getElementByClass('input.disabled-input')
+var disabletab = document.getElementsByClassName("disabled-input");
 for (var i = 0; i < disabletab.length;i++){disabletab[i].setAttribute('tabindex', '-1')}
 	</script>
 <script type="text/javascript" src="/js/chart.js"></script>
