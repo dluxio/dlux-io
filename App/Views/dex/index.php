@@ -373,7 +373,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
           </div>
           <div class="mt-3 col-md-6">
             <h4>Sell DLUX</h4>
-            <form name="sell" class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX('{{sellHiveTotal.value}}','{{sellHBDTotal.value}}','{{sellQuantity.value}','{{sellHours.value}}')">
+            <form name="sell" class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX('{{sellQuantity.value}','{{sellHiveTotal.value}}','{{sellHBDTotal.value}}','{{sellHours.value}}')">
               <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
@@ -391,12 +391,12 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellQuantity" id="sell-qty" aria-labelledby="sell-qty-label" dmx-hide="sellmarket.checked">
+              <div class="form-group" for="sellQuantity" id="sell-qty" aria-labelledby="sell-qty-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control bg-dark border-dark text-white-50" id="sellQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:readonly="sellmarket.checked">
+                      <input type="number" required class="form-control bg-dark border-dark text-white-50" id="sellQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" >
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50">DLUX</div>
                       </div>
@@ -430,7 +430,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   </div>
                 </div>
               </div>
-              <div class="form-group" id="sell-hive-total" aria-labelledby="sell-hive-total-label" for="sellHiveTotal" dmx-show="buyhive.checked">
+              <div class="form-group" id="sell-hive-total" aria-labelledby="sell-hive-total-label" for="sellHiveTotal" dmx-show="buyhive.checked && selllimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
