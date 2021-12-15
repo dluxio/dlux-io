@@ -161,7 +161,7 @@ function checkAccount(name) {
             .then(r => { return r.json() })
             .then(re => {
                 if (re.result.length) r(re.result[0])
-                else { e('No account by that name') }
+                else { e(name + ` doesn't exist`) }
             })
             .catch(re => { e(re) })
     })
