@@ -597,7 +597,7 @@ if ( isset( $author ) ) {
                         </form>
                       </div>
                       <div role="tabpanel" class="tab-pane fade show " id="sellFTtab" aria-labelledby="sellFT">
-                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:sellFT('{{mint_detail.data.set}}','{{sellFTprice.value}}'),'{{sellFTprice.value}}')">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:sellFT('{{mint_detail.data.set}}','{{sellFTprice.value}}')">
                           <div class="form-row my-2">
 							  <div class="col-6">
                               <label for="sellFTqty">Quantity</label>
