@@ -332,7 +332,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                     <div role="group" class="input-group">
                       <input id="buyHours" type="number" value="720" required step="1" min="0" aria-required="true" class="form-control"  dmx-bind:readonly="buymarket.checked">
                       <div class="input-group-append">
-                        <div class="input-group-text">Hours</div>
+                        <div class="input-group-text">HOURS</div>
                       </div>
                     </div>
                   </div>
@@ -344,7 +344,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control disabled-input" dmx-bind:readonly="buyhbd.checked" dmx-bind:value="buyhive.checked.then((buyPrice.value*buyQuantity.value).toFixed(3),'0')" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="">
+                      <input type="number" class="form-control" dmx-class:disabled-input="buylimit.checked" dmx-bind:readonly="buyhbd.checked" dmx-bind:value="buyhive.checked.then((buyPrice.value*buyQuantity.value).toFixed(3),'0')" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="">
                       <div class="input-group-append">
                         <div class="input-group-text r-radius-hotfix">HIVE</div>
 						  </div>
@@ -361,7 +361,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control disabled-input" dmx-bind:readonly="buyhive.checked" id="buyHBDTotal" dmx-bind:value="buyhbd.checked.then((buyPrice.value*buyQuantity.value).toFixed(3),'0')" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
+                      <input type="number" class="form-control" dmx-class:disabled-input="buylimit.checked" dmx-bind:readonly="buyhive.checked" id="buyHBDTotal" dmx-bind:value="buyhbd.checked.then((buyPrice.value*buyQuantity.value).toFixed(3),'0')" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text r-radius-hotfix">HBD</div>
 						  </div>
