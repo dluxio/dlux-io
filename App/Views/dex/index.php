@@ -459,7 +459,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                 </div>
               </div>
               <div class="text-right">
-                <button type="submit" class="btn btn-danger">sell</button>
+                <button type="submit" class="btn btn-danger">Sell</button>
               </div>
             </form>
           </div>
