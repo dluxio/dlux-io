@@ -309,6 +309,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50">DLUX</div>
                       </div>
+						<div class="invalid-feedback"> Minimum quantity is 0.001 </div>
                     </div>
                   </div>
                 </div>
@@ -322,6 +323,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50"><span dmx-show="buyhive.checked">HIVE</span><span dmx-show="buyhbd.checked">HBD</span>/DLUX</div>
                       </div>
+						<div class="invalid-feedback"> Minimum price is 0.000001 </div>
                     </div>
                   </div>
                 </div>
@@ -331,10 +333,11 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="buyHours" type="number" value="720" required step="1" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  dmx-bind:readonly="buymarket.checked">
+                      <input id="buyHours" type="number" value="720" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  dmx-bind:readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50">HOURS</div>
                       </div>
+						<div class="invalid-feedback"> Expiration must be between 1 and 720 hours </div>
                     </div>
                   </div>
                 </div>
@@ -348,7 +351,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <div class="input-group-append">
                         <div class="input-group-text r-radius-hotfix bg-dark border-dark text-white-50">HIVE</div>
                       </div>
-                      <div class="invalid-feedback"> Minimum total is 0.001 - increase the quantity or price. </div>
+                      <div class="invalid-feedback"> Minimum total is 0.001 - increase the quantity or price </div>
                     </div>
                   </div>
                 </div>
@@ -362,7 +365,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <div class="input-group-append">
                         <div class="input-group-text r-radius-hotfix bg-dark border-dark text-white-50">HBD</div>
                       </div>
-                      <div class="invalid-feedback"> Minimum total is 0.001 - increase the quantity or price. </div>
+                      <div class="invalid-feedback"> Minimum total is 0.001 - increase the quantity or price </div>
                     </div>
                   </div>
                 </div>
@@ -397,10 +400,11 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control bg-dark border-dark text-white-50" id="sellQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" >
+                      <input type="number" required class="form-control bg-dark border-dark text-white-50" id="sellQuantity" placeholder="0" min="0.004" step="0.001" aria-required="true" >
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50">DLUX</div>
                       </div>
+						<div class="invalid-feedback"> Minimum quantity is 0.004 </div>
                     </div>
                   </div>
                 </div>
@@ -414,6 +418,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50"><span dmx-show="buyhive.checked">HIVE</span><span dmx-show="buyhbd.checked">HBD</span>/DLUX</div>
                       </div>
+						<div class="invalid-feedback"> Minimum price is 0.000001 </div>
                     </div>
                   </div>
                 </div>
@@ -423,10 +428,11 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="sellHours" type="number" value="720" required step="1" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  dmx-bind:readonly="sellmarket.checked">
+                      <input id="sellHours" type="number" value="720" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  dmx-bind:readonly="sellmarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50">HOURS</div>
                       </div>
+						<div class="invalid-feedback"> Expiration must be between 1 and 720 hours </div>
                     </div>
                   </div>
                 </div>
@@ -443,7 +449,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <div class="input-group-append">
                         <div class="input-group-text r-radius-hotfix bg-dark border-dark text-white-50">HIVE</div>
                       </div>
-                      <div class="invalid-feedback"> Minimum total is 0.004 - increase the quantity or price. </div>
+                      <div class="invalid-feedback"> Minimum total is 0.004 - increase the quantity or price </div>
                     </div>
                   </div>
                 </div>
@@ -460,7 +466,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <div class="input-group-append">
                         <div class="input-group-text r-radius-hotfix bg-dark border-dark text-white-50">HBD</div>
                       </div>
-                      <div class="invalid-feedback"> Minimum total is 0.004 - increase the quantity or price. </div>
+                      <div class="invalid-feedback"> Minimum total is 0.004 - increase the quantity or price </div>
                     </div>
                   </div>
                 </div>
