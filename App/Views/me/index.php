@@ -824,8 +824,8 @@ if ( isset( $author ) ) {
                                             <div class="col-12">
                                               <label for="giveNFTusername">Username</label>
                                               <div class="input-group">
-                                                <div class="input-group-prepend"> <span class="input-group-text" id="giveNFTuserprep">@</span></div>
-                                                <input type="text" class="form-control r-radius-hotfix" id="giveNFTusername" aria-describedby="giveNFTuserprep" required>
+                                                <div class="input-group-prepend"> <span class="input-group-text bg-dark border-dark" id="giveNFTuserprep">@</span></div>
+                                                <input type="text" class="form-control bg-dark border-dark text-info r-radius-hotfix" id="giveNFTusername" aria-describedby="giveNFTuserprep" required>
                                                 <div class="invalid-feedback"> Please enter the username you'd like to give to. </div>
                                               </div>
                                             </div>
@@ -841,8 +841,8 @@ if ( isset( $author ) ) {
                                             <div class="col-12">
                                               <label for="tradeNFTusername">Username</label>
                                               <div class="input-group">
-                                                <div class="input-group-prepend"> <span class="input-group-text" id="tradeNFTuserprep">@</span></div>
-                                                <input type="text" class="form-control r-radius-hotfix" id="tradeNFTusername" aria-describedby="tradeNFTuserprep" required>
+                                                <div class="input-group-prepend"> <span class="input-group-text bg-dark border-dark" id="tradeNFTuserprep">@</span></div>
+                                                <input type="text" class="form-control bg-dark border-dark text-info r-radius-hotfix" id="tradeNFTusername" aria-describedby="tradeNFTuserprep" required>
                                                 <div class="invalid-feedback"> Please enter the username you'd like to trade with. </div>
                                               </div>
                                             </div>
