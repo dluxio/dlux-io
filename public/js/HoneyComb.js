@@ -1,10 +1,15 @@
 class HoneyComb {
-    constructor(domain, user){
+    constructor(domain, user, Optimize){
         this.domain = domain.substr(domain.length-2) === '/' ? domain : `${domain}/`
         this.ready = false
         this.fallbacks = []
         this.user = user || ''
-        this.init();
+        this.opt = Optimize || true
+        this.User = {}
+        this.NFTs = {}
+        this.FTs = {}
+        this.init()
+        this.pop_user()
     }
     init(){
         fetch(`${this.domain}api/protocol`).then(res => res.json()).then(res => {
@@ -14,8 +19,15 @@ class HoneyComb {
             this.prefix = res.prefix
             this.consensus = res.consensus
             this.ready = true
+            this.status = []
+            this.nfts_enabled = res.nfts_enabled || true
+            if(this.nfts_enabled)this.nfts()
             this.ping(this.consensus)
         })
+    }
+    refresh(){
+        this.pop_user()
+        this.nfts()
     }
     ping(consensus){
         const now = new Date()
@@ -30,10 +42,18 @@ class HoneyComb {
                 }
             })
         }
+        setTimeout(() => {
+            this.optimize()
+        }, 2000)
     }
     get fallbacks(){
         this.fallbacks.sort((a,b) => a.ping - b.ping)
         return this.fallbacks
+    }
+    optimize(){
+        if()
+        this.fallbacks.sort((a,b) => a.ping - b.ping)
+        this.domain = this.fallbacks[0].domain
     }
     set domain(domain){
         this.domain = domain.substr(domain.length-2) === '/' ? domain : `${domain}/`
@@ -58,17 +78,45 @@ class HoneyComb {
             ready: this.ready
         }
     }
+    pop_user(){
+        return new Promise((resolve, reject) => {
+            fetch(`${this.domain}@${this.user}`).then(r => r.json()).then(r => {
+                this.User = r
+                resolve(r)
+            })
+            .catch(e=>reject(e))
+        })
+    }
+    get user(){
+        return this.User
+    }
+    nfts(){
+        return new Promise((resolve, reject) => {
+            fetch(`${this.domain}api/nfts/${this.user}`).then(r => r.json()).then(r => {
+                delete this.NFTs
+                for(var i = 0; i < r.result.length;i++){
+                    this.NFTs[`${r.result[i].set}:${r.result[i].uid}`] = r.result[i]
+                }
+                for(var i = 0; i < r.mint_tokens.length;i++){
+                    this.FTs[r.mint_tokens[i].set] = r.mint_tokens[i]
+                }
+                resolve(r)
+            })
+            .catch(e=>reject(e))
+        })
+    }
     broadcastTransfer(cj, msg){
         return new Promise((resolve, reject) => {
             this.hive_sign([this.user, [
                         ['transfer', {
-                            to: cj.to,
+                            to: this.multisig,
                             from: this.user,
                             amount: `${parseFloat((cj.hive ? cj.hive : cj.hbd)/1000).toFixed(3)} ${cj.hive?'HIVE':'HBD'}`,
                             memo: cj.memo
                         }]
                     ], 'active'])
                 .then(r => {
+                    this.status.push([r.result.id, new Date(), msg])
                     resolve(r)
                 })
                 .catch(e => { reject(e) })
@@ -80,11 +128,12 @@ class HoneyComb {
                         ['custom_json', {
                             "required_auths": [this.user],
                             "required_posting_auths": [],
-                            "id": id,
+                            "id": this.prefix + id,
                             "json": JSON.stringify(cj)
                         }]
                     ], 'active'])
                 .then(r => {
+                    this.status.push([r.result.id, new Date(), msg])
                     resolve(r)
                 })
                 .catch(e => { reject(e) })
@@ -104,5 +153,22 @@ class HoneyComb {
                  reject({ "error": "Hive Keychain is not installed." })
              }
          })
+    }
+    status(){
+        setTimeout(() => {
+            this.status.sort((a,b) => a[1] - b[1])
+            for(var i = 0; i < this.status.length;i++){
+                if(this.status[i].length == 3){
+                    check(this.status[i][0], i)
+                }
+            }
+        }, 30000)
+        function check(id, int){
+            fetch(this.domain + `api/status/${id}`).then(r => r.json()).then(r => {
+                        if(json.status.slice(0,20) != 'This TransactionID e'){
+                            this.status[int].push(r.status)
+                        }
+                    })
+        }
     }
 }
