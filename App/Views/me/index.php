@@ -847,14 +847,18 @@ if ( isset( $author ) ) {
                         </form>
                       </div>
                       <div role="tabpanel" class="tab-pane fade show " id="sellNFTtab" aria-labelledby="sellNFT">
-                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:sellNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{sellNFTprice.value}}')">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:sellNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{sellNFTprice.value}}','{{sellNFTpriceType.value}}')">
                           <div class="form-row my-2">
                               <label for="sellNFTprice">Sale Price</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="sellNFTprice" aria-describedby="sellNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
-                                <div class="input-group-append">
-                                  <div class="input-group-text" id="sellNFTpriceappend">DLUX</div>
-                                </div>
+                                <span class="input-group-text r-radius-hotfix p-0 m-0" id="sellNFTpriceappend">
+ 										<select class="form-select border-0 bg-none w-100 h-100" id="sellNFTpriceType" aria-label="Sell price type select">
+   											<option value="DLUX" selected>DLUX</option>
+   											<option value="HIVE">HIVE</option>
+   											<option value="HBD">HBD</option>
+ 										</select>
+ 									</span>
                               <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
 								  </div>
                             </div>
@@ -871,8 +875,8 @@ if ( isset( $author ) ) {
                               <div class="input-group">
                                 <input type="number" class="form-control" id="auctionNFTprice" aria-describedby="auctionNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
                                 <div class="input-group-append">
-                                  <span class="input-group-text r-radius-hotfix p-0 m-0" id="auctionFTNpriceappend">
- 										<select class="form-select border-0 ml-2 my-1 bg-none" id="auctionNFTpriceType" aria-label="Default select example">
+                                  <span class="input-group-text r-radius-hotfix p-0 m-0" id="auctionNFTpriceappend">
+ 										<select class="form-select border-0 bg-none w-100 h-100" id="auctionNFTpriceType" aria-label="Auction price type select">
    											<option value="DLUX" selected>DLUX</option>
    											<option value="HIVE">HIVE</option>
    											<option value="HBD">HBD</option>
