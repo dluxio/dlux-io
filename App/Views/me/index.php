@@ -888,6 +888,8 @@ if ( isset( $author ) ) {
                               <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
                             </div>
                           </div>
+							<div class="d-flex">
+							<div class="flex-grow-1">
 							<div class="d-flex justify-content-around">
                                             <div class="form-row my-2 d-flex align-items-center">
                                               <label for="auctionNFTdays" class="m-0">Duration: </label>
@@ -924,9 +926,12 @@ if ( isset( $author ) ) {
                                               <option value="30" dmx-hide="auctionNFTpriceType.value != 'DLUX'">30 Days</option>
                                               </select>
                                             </div>
-								<center><span class="small" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</span><span class="small" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</span></center>
+								
                                           </div>
-                          <div class="form-row my-2">
+                          </div>
+							<div><span class="small" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</span><span class="small" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</span></div>	
+							</div>
+								<div class="form-row my-2">
 							<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and auctioned publicly. Once submitted this cannot be cancelled. If there are no bids at the end of the auction period, it will be returned to you immediately.</p>
                          </div>
                           <center><button class="btn btn-info my-2" type="submit">List Item</button></center>
