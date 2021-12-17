@@ -876,7 +876,9 @@ if ( isset( $author ) ) {
                               <label for="auctionNFTprice">Starting Bid</label>
                               <div class="input-group">
                                 <input type="number" class="form-control bg-dark border-dark" id="auctionNFTprice" aria-describedby="auctionNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
-                                <div class="input-group-append">
+                                <small id="auctionNFTfeeDlux" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</small>
+								  <small id="auctionNFTfeeHive" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</small>
+								  <div class="input-group-append">
                                   <span class="input-group-text bg-dark border-dark r-radius-hotfix m-0" id="auctionNFTpriceappend">
  										<select class="form-select border-0 text-white-50 bg-none w-100 h-100" id="auctionNFTpriceType" aria-label="Auction price type select" dmx-on:updated="inventory_detail.form.auctionNFTdays.setValue('7')">
    											<option value="DLUX" selected>DLUX</option>
@@ -886,8 +888,7 @@ if ( isset( $author ) ) {
  									</span>
                                 </div>
                               <div class="invalid-feedback"> Please enter the amount of {{auctionNFTpriceType.value}} you'd like to start the bidding. </div>
-								  <small id="auctionNFTfeeDlux" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</small>
-								  <small id="auctionNFTfeeHive" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</small>
+								  
                             </div>
 							  
                           </div>
