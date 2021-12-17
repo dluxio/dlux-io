@@ -900,28 +900,28 @@ if ( isset( $author ) ) {
                                               <option value="6">6 Days</option>
                                               <option value="7" selected>7 Days</option>
                                               <option value="8" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">8 Days</option>
-                                              <option value="9">9 Days</option>
-                                              <option value="10">10 Days</option>
-                                              <option value="11">11 Days</option>
-                                              <option value="12">12 Days</option>
-                                              <option value="13">13 Days</option>
-                                              <option value="14">14 Days</option>
-                                              <option value="15">15 Days</option>
-                                              <option value="16">16 Days</option>
-                                              <option value="17">17 Days</option>
-                                              <option value="18">18 Days</option>
-                                              <option value="19">19 Days</option>
-                                              <option value="20">20 Days</option>
-                                              <option value="21">21 Days</option>
-                                              <option value="22">22 Days</option>
-                                              <option value="23">23 Days</option>
-                                              <option value="24">24 Days</option>
-                                              <option value="25">25 Days</option>
-                                              <option value="26">26 Days</option>
-                                              <option value="27">27 Days</option>
-                                              <option value="28">28 Days</option>
-                                              <option value="29">29 Days</option>
-                                              <option value="30">30 Days</option>
+                                              <option value="9" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">9 Days</option>
+                                              <option value="10" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">10 Days</option>
+                                              <option value="11" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">11 Days</option>
+                                              <option value="12" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">12 Days</option>
+                                              <option value="13" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">13 Days</option>
+                                              <option value="14" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">14 Days</option>
+                                              <option value="15" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">15 Days</option>
+                                              <option value="16" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">16 Days</option>
+                                              <option value="17" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">17 Days</option>
+                                              <option value="18" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">18 Days</option>
+                                              <option value="19" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">19 Days</option>
+                                              <option value="20" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">20 Days</option>
+                                              <option value="21" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">21 Days</option>
+                                              <option value="22" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">22 Days</option>
+                                              <option value="23" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">23 Days</option>
+                                              <option value="24" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">24 Days</option>
+                                              <option value="25" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">25 Days</option>
+                                              <option value="26" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">26 Days</option>
+                                              <option value="27" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">27 Days</option>
+                                              <option value="28" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">28 Days</option>
+                                              <option value="29" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">29 Days</option>
+                                              <option value="30" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">30 Days</option>
                                               </select>
                                             </div>
                                           </div>
