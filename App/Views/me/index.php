@@ -878,7 +878,7 @@ if ( isset( $author ) ) {
                                 <input type="number" class="form-control" id="auctionNFTprice" aria-describedby="auctionNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
                                 <div class="input-group-append">
                                   <span class="input-group-text r-radius-hotfix m-0" id="auctionNFTpriceappend">
- 										<select class="form-select border-0 bg-none w-100 h-100" id="auctionNFTpriceType" aria-label="Auction price type select" dmx-on:updated="inventory_detail.form.auctionNFTdays.setValue(7)">
+ 										<select class="form-select border-0 bg-none w-100 h-100" id="auctionNFTpriceType" aria-label="Auction price type select" dmx-on:updated="inventory_detail.form.auctionNFTdays.setValue('7')">
    											<option value="DLUX" selected>DLUX</option>
    											<option value="HIVE">HIVE</option>
    											<option value="HBD">HBD</option>
@@ -924,7 +924,7 @@ if ( isset( $author ) ) {
                                               <option value="30" dmx-hide="auctionNFTpriceType.value != 'DLUX'">30 Days</option>
                                               </select>
                                             </div>
-								<span class="small" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</span><span class="small" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</span>
+								<center><span class="small" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</span><span class="small" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</span></center>
                                           </div>
                           <div class="form-row my-2">
 							<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and auctioned publicly. Once submitted this cannot be cancelled. If there are no bids at the end of the auction period, it will be returned to you immediately.</p>
