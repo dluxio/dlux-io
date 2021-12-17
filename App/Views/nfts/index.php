@@ -660,7 +660,7 @@ include_once( $path );
 							<div class="d-flex justify-content-around">
                                             <div class="form-row my-2 d-flex align-items-center">
                                               <label for="auctionFTpriceType" class="m-0">Duration: </label>
-							<select class="form-select border-0" id="auctionFTpriceType" required aria-label="Default select example">
+							<select class="form-control border-0" id="auctionFTpriceType" required aria-label="Default select example">
   											<option value="DLUX" selected>DLUX</option>
   											<option value="HIVE">HIVE</option>
   											<option value="HBD">HBD</option>
