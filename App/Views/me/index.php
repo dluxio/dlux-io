@@ -872,7 +872,7 @@ if ( isset( $author ) ) {
                                 <input type="number" class="form-control" id="auctionNFTprice" aria-describedby="auctionNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
                                 <div class="input-group-append">
                                   <span class="input-group-text r-radius-hotfix p-0 m-0" id="auctionFTNpriceappend">
- 										<select class="form-select border-0 ml-2 my-1" id="auctionNFTpriceType" aria-label="Default select example">
+ 										<select class="form-select border-0 ml-2 my-1 bg-none" id="auctionNFTpriceType" aria-label="Default select example">
    											<option value="DLUX" selected>DLUX</option>
    											<option value="HIVE">HIVE</option>
    											<option value="HBD">HBD</option>
