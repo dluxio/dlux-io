@@ -875,10 +875,10 @@ if ( isset( $author ) ) {
                           <div class="form-row my-2">
                               <label for="auctionNFTprice">Starting Bid</label>
                               <div class="input-group">
-                                <input type="number" class="form-control" id="auctionNFTprice" aria-describedby="auctionNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
+                                <input type="number" class="form-control bg-dark border-dark" id="auctionNFTprice" aria-describedby="auctionNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
                                 <div class="input-group-append">
-                                  <span class="input-group-text r-radius-hotfix m-0" id="auctionNFTpriceappend">
- 										<select class="form-select border-0 bg-none w-100 h-100" id="auctionNFTpriceType" aria-label="Auction price type select" dmx-on:updated="inventory_detail.form.auctionNFTdays.setValue('7')">
+                                  <span class="input-group-text bg-dark border-dark r-radius-hotfix m-0" id="auctionNFTpriceappend">
+ 										<select class="form-select border-0 text-white-50 bg-none w-100 h-100" id="auctionNFTpriceType" aria-label="Auction price type select" dmx-on:updated="inventory_detail.form.auctionNFTdays.setValue('7')">
    											<option value="DLUX" selected>DLUX</option>
    											<option value="HIVE">HIVE</option>
    											<option value="HBD">HBD</option>
@@ -886,10 +886,10 @@ if ( isset( $author ) ) {
  									</span>
                                 </div>
                               <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
+								<div><span class="small" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</span><span class="small" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</span></div>	
                             </div>
                           </div>
-							<div class="d-flex">
-							<div class="flex-grow-1">
+
 							<div class="d-flex justify-content-around">
                                             <div class="form-row my-2 d-flex align-items-center">
                                               <label for="auctionNFTdays" class="m-0">Duration: </label>
@@ -928,9 +928,7 @@ if ( isset( $author ) ) {
                                             </div>
 								
                                           </div>
-                          </div>
-							<div><span class="small" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</span><span class="small" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</span></div>	
-							</div>
+                     
 								<div class="form-row my-2">
 							<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and auctioned publicly. Once submitted this cannot be cancelled. If there are no bids at the end of the auction period, it will be returned to you immediately.</p>
                          </div>
