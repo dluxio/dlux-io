@@ -715,8 +715,10 @@ function auctionNFT(setname, uid, price, now, time, type, callback){
         type = 'HIVE'
     } else if(type.toUpperCase() == 'HBD'){
         type = 'HBD'
+    } else {
+        type = 0
     }
-    if(type)broadcastCJA({ set: setname, uid, price, now, time}, "dlux_nft_auction", `Trying to auction ${setname}:${uid} for DLUX`)
+    if(!type)broadcastCJA({ set: setname, uid, price, now, time}, "dlux_nft_auction", `Trying to auction ${setname}:${uid} for DLUX`)
     else broadcastCJA({ set: setname, uid, price, type, now, time}, "dlux_nft_hauction", `Trying to auction ${setname}:${uid} for ${type}`)
  }
 
