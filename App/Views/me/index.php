@@ -872,12 +872,11 @@ if ( isset( $author ) ) {
                       </div>
                       <div role="tabpanel" class="tab-pane fade show " id="auctionNFTtab" aria-labelledby="auctionNFT">
                         <form class="needs-validation mt-4" validate dmx-bind:action="javascript:auctionNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{auctionNFTprice.value}}','{{Date.now()}}','{{auctionNFTdays.value}}','{{auctionNFTpriceType.value}}')">
-                          <div class="form-row my-2">
+                          <div class="form-group form-row my-2">
                               <label for="auctionNFTprice">Starting Bid</label>
                               <div class="input-group">
                                 <input type="number" class="form-control bg-dark border-dark" id="auctionNFTprice" aria-describedby="auctionNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
-                                <small id="auctionNFTfeeDlux" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</small>
-								  <small id="auctionNFTfeeHive" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</small>
+                                
 								  <div class="input-group-append">
                                   <span class="input-group-text bg-dark border-dark r-radius-hotfix m-0" id="auctionNFTpriceappend">
  										<select class="form-select border-0 text-white-50 bg-none w-100 h-100" id="auctionNFTpriceType" aria-label="Auction price type select" dmx-on:updated="inventory_detail.form.auctionNFTdays.setValue('7')">
@@ -890,7 +889,8 @@ if ( isset( $author ) ) {
                               <div class="invalid-feedback"> Please enter the amount of {{auctionNFTpriceType.value}} you'd like to start the bidding. </div>
 								  
                             </div>
-							  
+							 <small id="auctionNFTfeeDlux" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</small>
+								  <small id="auctionNFTfeeHive" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</small> 
                           </div>
 
 							<div class="d-flex justify-content-around">
