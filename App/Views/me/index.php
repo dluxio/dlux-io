@@ -865,13 +865,19 @@ if ( isset( $author ) ) {
                         </form>
                       </div>
                       <div role="tabpanel" class="tab-pane fade show " id="auctionNFTtab" aria-labelledby="auctionNFT">
-                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:auctionNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{auctionNFTprice.value}}','{{Date.now()}}','{{auctionNFTdays.value}}')">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:auctionNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{auctionNFTprice.value}}','{{Date.now()}}','{{auctionNFTdays.value}}','{{auctionNFTpriceType.value}}')">
                           <div class="form-row my-2">
                               <label for="auctionNFTprice">Starting Bid</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="auctionNFTprice" aria-describedby="auctionNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
                                 <div class="input-group-append">
-                                  <div class="input-group-text" id="auctionNFTpriceappend">DLUX</div>
+                                  <span class="input-group-text r-radius-hotfix p-0 m-0" id="auctionFTNpriceappend">
+ 										<select class="form-select border-0 ml-2 my-1" id="auctionNFTpriceType" aria-label="Default select example">
+   											<option value="DLUX" selected>DLUX</option>
+   											<option value="HIVE">HIVE</option>
+   											<option value="HBD">HBD</option>
+ 										</select>
+ 									</span>
                                 </div>
                               <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
                             </div>
