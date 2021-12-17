@@ -899,7 +899,7 @@ if ( isset( $author ) ) {
                                               <option value="5">5 Days</option>
                                               <option value="6">6 Days</option>
                                               <option value="7" selected>7 Days</option>
-                                              <option value="8" dmx-bind:enabled="auctionNFTpriceType.value == 'DLUX'">8 Days</option>
+                                              <option value="8" dmx-bind:disabled="auctionNFTpriceType.value != 'DLUX'">8 Days</option>
                                               <option value="9">9 Days</option>
                                               <option value="10">10 Days</option>
                                               <option value="11">11 Days</option>
