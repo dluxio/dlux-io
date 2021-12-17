@@ -886,7 +886,8 @@ if ( isset( $author ) ) {
  									</span>
                                 </div>
                               <div class="invalid-feedback"> Please enter the amount of {{auctionNFTpriceType.value}} you'd like to start the bidding. </div>
-								  <br><div class=""><span class="small" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</span><span class="small" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</span></div>
+								  <small id="auctionNFTfeeDlux" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</small>
+								  <small id="auctionNFTfeeHive" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</small>
                             </div>
 							  
                           </div>
