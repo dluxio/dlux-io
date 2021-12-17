@@ -874,6 +874,8 @@ if ( isset( $author ) ) {
                         <form class="needs-validation mt-4" validate dmx-bind:action="javascript:auctionNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{auctionNFTprice.value}}','{{Date.now()}}','{{auctionNFTdays.value}}','{{auctionNFTpriceType.value}}')">
                           <div class="form-group form-row my-2">
                               <label for="auctionNFTprice">Starting Bid</label>
+							  <small class="ml-auto" id="auctionNFTfeeDlux" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</small>
+							<small class="ml-auto" id="auctionNFTfeeHive" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</small> 
                               <div class="input-group">
                                 <input type="number" class="form-control bg-dark border-dark" id="auctionNFTprice" aria-describedby="auctionNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
                                 
@@ -889,8 +891,7 @@ if ( isset( $author ) ) {
                               <div class="invalid-feedback"> Please enter the amount of {{auctionNFTpriceType.value}} you'd like to start the bidding. </div>
 								  
                             </div>
-							 <small id="auctionNFTfeeDlux" dmx-show="auctionNFTpriceType.value == 'DLUX'">0% FEE</small>
-								  <small id="auctionNFTfeeHive" dmx-show="auctionNFTpriceType.value != 'DLUX'">1% FEE</small> 
+							
                           </div>
 
 							<div class="d-flex justify-content-around">
