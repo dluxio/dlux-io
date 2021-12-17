@@ -596,7 +596,7 @@ include_once( $path );
                       <div role="tabpanel" class="tab-pane fade show " id="auctionFTtab" aria-labelledby="auctionFT">
                         <form class="needs-validation mt-4" validate dmx-bind:action="javascript:auctionFT('{{mint_detail.data.set}}','{{auctionFTprice.value}}','{{Date.now()}}','{{auctionFTdays.value}}'),'{{auctionFTpriceType.value}}'">
                           <div class="form-row my-2">
-							  <div class="col-4">
+							  <div class="col-6">
                               <label for="auctionFTqty">Quantity</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="auctionFTqty" aria-describedby="auctionFTqtyappend" placeholder="1" step="1" min="1" required readonly>
@@ -604,7 +604,7 @@ include_once( $path );
 								  <div class="invalid-feedback"> Please enter the number of FTs to auction. </div>
                               </div>
                             </div>
-                            <div class="col-8">
+                            <div class="col-6">
                               <label for="auctionFTprice">Starting Bid</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="auctionFTprice" aria-describedby="auctionFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
