@@ -786,7 +786,7 @@ include_once( $path );
                     <input id="auctionNFTbid" class="form-control" type="number" required step="0.001" placeholder="1.000">
                   </div>
                 </div>
-				  <button class="btn btn-lg btn-primary" dmx-on:click="bidNFT('{{auctions_detail.data.set}}','{{auctions_detail.data.uid}}','{{auctionNFTbid.value}}','{{auctions_detail.data.price.token}}', statusWaiter)">Place Bid {{auctions_detail.data.price.token}}</button>
+				  <button class="btn btn-lg btn-primary" dmx-on:click="bidNFT('{{auctions_detail.data.set}}','{{auctions_detail.data.uid}}','{{auctionNFTbid.value}}','{{auctions_detail.data.price.token}}', statusWaiter)">Place Bid {{auctions_detail.data.pricenai.token}}</button>
               </form>
             </div>
             <div class="card-footer d-flex align-items-center">
