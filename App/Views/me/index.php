@@ -852,13 +852,15 @@ if ( isset( $author ) ) {
                               <label for="sellNFTprice">Sale Price</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="sellNFTprice" aria-describedby="sellNFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
-                                <span class="input-group-text r-radius-hotfix p-0 m-0" id="sellNFTpriceappend">
+                                <div class="input-group-append">
+								  <span class="input-group-text r-radius-hotfix p-0 m-0" id="sellNFTpriceappend">
  										<select class="form-select border-0 bg-none w-100 h-100" id="sellNFTpriceType" aria-label="Sell price type select">
    											<option value="DLUX" selected>DLUX</option>
    											<option value="HIVE">HIVE</option>
    											<option value="HBD">HBD</option>
  										</select>
  									</span>
+								</div>
                               <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
 								  </div>
                             </div>
