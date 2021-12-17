@@ -628,10 +628,19 @@ function tradeFT(setname, to, price, callback){
     })
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
-
-function sellFT(setname, price,  callback){
+// {
+//     hive:1000, //1.000 Hive || hbd: 1000 // 1.000 HBD
+//     quantity: 4096, //4096 NFTs
+//     set: 'dlux', //set tokens to sell
+//     distro: 'account1_5000,acc2_5000' //must add to 10000
+// }
+function sellFT(setname, price, type, quantity = 1, distro,  callback){
     price = parseInt(price * 1000)
-    broadcastCJA({set: setname, price}, 'dlux_ft_sell', `Trying to sell ${setname} mint token`)
+    if(type.toUpperCase() == 'HIVE')type = 'hive'
+    else if (type.toUpperCase() == 'HBD') type = 'hbd'
+    else type = 0
+    if(!type)broadcastCJA({set: setname, price}, 'dlux_ft_sell', `Trying to sell ${setname} mint token`)
+    else broadcastCJA({set: setname, [type]:price, quantity, distro}, 'dlux_fts_sell_h', `Trying to sell ${setname} mint token`)
  }
 
  function auctionFT(setname, price, now, time, callback){
