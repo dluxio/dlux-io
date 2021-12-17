@@ -545,19 +545,7 @@ include_once( $path );
                               <label for="tradeFTamount">Amount</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="tradeFTamountDlux" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required  dmx-class:readonly="">
-                                <input type="number" class="form-control" id="tradeFTamountHive" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required dmx-show="" dmx-class:readonly="">
-                                <input type="number" class="form-control" id="tradeFTamountHBD" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required dmx-show="" dmx-class:readonly="">
-                                <div class="input-group-append"> <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split r-radius-hotfix" id="dropdownMenuReference" data-toggle="dropdown" aria-expanded="false" data-reference="parent">
-									DLUX
-      <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div> </div>
+
 								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
                               </div>
                             </div>
@@ -608,13 +596,17 @@ include_once( $path );
                               <label for="auctionFTprice">Starting Bid</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="auctionFTprice" aria-describedby="auctionFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
-                               	<div class="input-group-append">
-									<span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">
-										
-									</span>
-								 </div>
-                              	<div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
-							  </div>
+                             	<div class="input-group-append">
+ 									<span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">
+ 										<select class="form-select border-0" id="auctionFTpriceType" aria-label="Default select example">
+   											<option value="DLUX" selected>DLUX</option>
+   											<option value="HIVE">HIVE</option>
+   											<option value="HBD">HBD</option>
+ 										</select>
+ 									</span>
+ 								 </div>
+                               	<div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
+ 							  </div>
                             </div>
                           </div>
 							<div class="d-flex justify-content-around">
@@ -657,15 +649,7 @@ include_once( $path );
                           <div class="form-row my-2">
 							<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and auctioned publicly. Once submitted this cannot be cancelled. If there are no bids at the end of the auction period, it will be returned to you immediately.</p>
                          </div>
-							<div class="d-flex justify-content-around">
-                                            <div class="form-row my-2 d-flex align-items-center">
-                                              <label for="auctionFTpriceType" class="m-0">Duration: </label>
-							<select class="form-control border-0" id="auctionFTpriceType" required aria-label="Default select example">
-  											<option value="DLUX" selected>DLUX</option>
-  											<option value="HIVE">HIVE</option>
-  											<option value="HBD">HBD</option>
-										</select>
-								</div></div>
+
                           <center><button class="btn btn-info my-2" type="submit">List Item</button></center>
 						  </form>
 						  </div>
