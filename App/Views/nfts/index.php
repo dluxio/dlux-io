@@ -610,11 +610,7 @@ include_once( $path );
                                 <input type="number" class="form-control" id="auctionFTprice" aria-describedby="auctionFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
                                	<div class="input-group-append">
 									<span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">
-										<select class="form-select border-0" id="auctionFTpriceType" aria-label="Default select example">
-  											<option value="DLUX" selected>DLUX</option>
-  											<option value="HIVE">HIVE</option>
-  											<option value="HBD">HBD</option>
-										</select>
+										
 									</span>
 								 </div>
                               	<div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
@@ -661,6 +657,11 @@ include_once( $path );
                           <div class="form-row my-2">
 							<p class="text-white-50 small">Ownership will be transferred to the DAO listing service and auctioned publicly. Once submitted this cannot be cancelled. If there are no bids at the end of the auction period, it will be returned to you immediately.</p>
                          </div>
+							<select class="form-select border-0" id="auctionFTpriceType" aria-label="Default select example">
+  											<option value="DLUX" selected>DLUX</option>
+  											<option value="HIVE">HIVE</option>
+  											<option value="HBD">HBD</option>
+										</select>
                           <center><button class="btn btn-info my-2" type="submit">List Item</button></center>
 						  </form>
 						  </div>
