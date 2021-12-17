@@ -60,7 +60,12 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         <div class="text-center small" 
 						 dmx-class:text-success="dexapi.data.behind < 30"	
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
-						 dmx-class:text-danger="dexapi.data.behind > 100"> <span dmx-show="dexapi.data.behind < 30">ONLINE:</span> <span dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING:</span> <span dmx-show="dexapi.data.behind > 100">OFFLINE:</span> <span>{{dexapi.data.behind}} BBH</span> </div>
+						 dmx-class:text-danger="dexapi.data.behind > 100"> 
+			<span dmx-show="dexapi.data.behind < 30">ONLINE:</span> 
+			<span dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING:</span> 
+			<span dmx-show="dexapi.data.behind > 100">OFFLINE:</span> 
+			<span>{{dexapi.data.behind}} BBH</span> 
+		  </div>
         <div class="d-flex text-white-50">
           <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} DLUX</div>
           <div id="userdpwr" class="mx-4 text-info">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} DPWR</div>

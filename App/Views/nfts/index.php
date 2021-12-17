@@ -122,6 +122,10 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 	border-top-right-radius: 0.25rem !important;
 	border-bottom-right-radius: 0.25rem !important;
 }
+	.l-radius-hotfix {
+	border-top-left-radius: 0rem !important;
+	border-bottom-left-radius: 0rem !important;
+}
 		.max-160 {
 		max-width: 160px;
 	}
@@ -471,49 +475,6 @@ include_once( $path );
             </div>
           </div>
         </div>
-        <!-- sealed NFTs -->
-        <div class="mt-4 d-none" style="border-bottom: #FFFFFF thick solid">
-          <h1 class="text-white p-0 m-0">Sealed NFTs</h1>
-        </div>
-        <div class="card-columns my-3" id="sales-mint-cards" >
-          <div dmx-repeat:repeatsalesmint1="salesMint.data">
-            <div class="card d-none" style="color:black; background:radial-gradient(yellow,darkorange)"> <a href="#buyDluxModal" class="a-1" data-toggle="modal">
-              <div class="card-header text-center" style="color: black;background:linear-gradient(darkorange,yellow)">
-                <h5 class="card-title lead">COIN</h5>
-              </div>
-              <div class="card-img-top" alt="dlux-coin">
-                <h1 class="py-3 mb-0 text-center text-primary"><i class="fas fa-coins"></i></h1>
-                <h3 class="text-center mb-0" style="color:  black;">DLUX Token</h3>
-                <p class="card-text lead text-center pt-1" style="color: black">Powering the multiverse!</p>
-              </div>
-              <div class="card-body" style="color: black;">
-                <div class="text-center"><u>0.254 HIVE</u></div>
-              </div>
-              <div class="card-footer text-center">
-                <p class="lead">
-                  <button class="btn btn-primary btn-lg" href="#" role="button">Get DLUX</button>
-                </p>
-              </div>
-            </a></div>
-            <div class="card" style="color:black; background:radial-gradient(#8D42EB,purple)" dmx-repeat:repeatsalesmint2="$value"> <a href="#auctionsModal" class="a-1" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)">
-              <div class="card-header text-center" style="background: linear-gradient(purple,#8D42EB) ">
-                <h5 class="card-title lead">MINT</h5>
-              </div>
-              <div class="card-img-top" dmx-bind:id="image-{{set}}" dmx-bind:alt="image-{{set}}">
-                <h1 class="py-3 mb-0 text-center" ><i class="far fa-gem"></i></h1>
-                <h3 class="text-center mb-0">{{set}} NFT</h3>
-                <p class="lead card-text text-center pt-1">Unwrap to see attributes.</p>
-              </div>
-              <div class="card-body">
-                <div class="text-center"><u>{{items[0].price.nai()}}</u></div>
-              </div>
-              </a>
-              <div class="card-footer text-center">
-                <p class="lead"> <a class="btn btn-primary btn-lg" href="/dex/dlux/" role="button">Buy NFT</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 			  <!-- Mint FT Iterator -->
 		  <dmx-data-iterator id="mint_iterator" dmx-bind:data="inventoryapi.data.mint_tokens" loop="true" dmx-bind:index="1"></dmx-data-iterator>
@@ -559,7 +520,7 @@ include_once( $path );
                           <center><button id="giveFTbutton" class="btn btn-info my-2" type="submit">Give</button></center>
                         </form>
                       </div>
-                      <div role="tabpanel" class="tab-pane fade show" id="tradeFTtab" aria-labelledby="tradeFT">
+                      <div role="tabpanel" class="tab-pane fade show " id="tradeFTtab" aria-labelledby="tradeFT">
                         <form class="needs-validation mt-4" validate dmx-bind:action="javascript:tradeFT('{{mint_detail.data.set}}','{{tradeFTusername.value}}','{{tradeFTamount.value}}')">
                           <div class="form-row my-2">
                             <div class="col-12">
@@ -583,8 +544,20 @@ include_once( $path );
 							  <div class="col-6">
                               <label for="tradeFTamount">Amount</label>
                               <div class="input-group">
-                                <input type="number" class="form-control" id="tradeFTamount" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTamountappend">DLUX</span> </div>
+                                <input type="number" class="form-control" id="tradeFTamountDlux" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required  dmx-class:readonly="">
+                                <input type="number" class="form-control" id="tradeFTamountHive" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required dmx-show="" dmx-class:readonly="">
+                                <input type="number" class="form-control" id="tradeFTamountHBD" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required dmx-show="" dmx-class:readonly="">
+                                <div class="input-group-append"> <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split r-radius-hotfix" id="dropdownMenuReference" data-toggle="dropdown" aria-expanded="false" data-reference="parent">
+									DLUX
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div> </div>
 								  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
                               </div>
                             </div>
@@ -621,9 +594,9 @@ include_once( $path );
                         </form>
                       </div>
                       <div role="tabpanel" class="tab-pane fade show " id="auctionFTtab" aria-labelledby="auctionFT">
-                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:auctionFT('{{mint_detail.data.set}}','{{auctionFTprice.value}}','{{Date.now()}}','{{auctionFTdays.value}}')">
+                        <form class="needs-validation mt-4" validate dmx-bind:action="javascript:auctionFT('{{mint_detail.data.set}}','{{auctionFTprice.value}}','{{Date.now()}}','{{auctionFTdays.value}}'),'{{auctionFTpriceType.value}}'">
                           <div class="form-row my-2">
-							  <div class="col-6">
+							  <div class="col-4">
                               <label for="auctionFTqty">Quantity</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="auctionFTqty" aria-describedby="auctionFTqtyappend" placeholder="1" step="1" min="1" required readonly>
@@ -631,15 +604,21 @@ include_once( $path );
 								  <div class="invalid-feedback"> Please enter the number of FTs to auction. </div>
                               </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-8">
                               <label for="auctionFTprice">Starting Bid</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="auctionFTprice" aria-describedby="auctionFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
-                                <div class="input-group-append">
-                                  <div class="input-group-text r-radius-hotfix" id="auctionFTpriceappend">DLUX</div>
-                                </div>
-                              <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
-								  </div>
+                               	<div class="input-group-append">
+									<span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">
+										<select class="form-select border-0" id="auctionFTpriceType" aria-label="Default select example">
+  											<option value="DLUX" selected>DLUX</option>
+  											<option value="HIVE">HIVE</option>
+  											<option value="HBD">HBD</option>
+										</select>
+									</span>
+								 </div>
+                              	<div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
+							  </div>
                             </div>
                           </div>
 							<div class="d-flex justify-content-around">
