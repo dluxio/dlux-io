@@ -774,7 +774,7 @@ include_once( $path );
       <div class="card-body d-flex flex-column text-center"><span>Bid: <u>{{price.nai()}}</u></span></div>
       </a>
       <div class="card-footer text-center d-flex justify-content-between align-items-center"> <span>{{bids}} Bids</span>
-        <button href="#auctionsModal" class="btn btn-primary btn-lg" style="min-width:100px" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)" role="button">Bid</button>
+        <button href="#auctionsModal" class="btn btn-primary btn-lg" style="min-width:100px" data-toggle="modal" dmx-show="(auctions_detail.data.by != userCookie.value)" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)" role="button">Bid</button>
       </div>
     </div>
   </div>
@@ -831,7 +831,7 @@ include_once( $path );
                 <h6>{{auctions_detail.data.price.nai()}}</h6>
               </div>
             </div>
-            <form>
+            <form dmx-show="(auctions_detail.data.by != userCookie.value)">
 				  <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" dmx-hide="buymarket.checked">
                 <div class="form-row col-lg-6 my-3 mx-auto">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="auctionNFTbid">Bid Amount:</legend>
