@@ -982,7 +982,7 @@ include_once( $path );
               </div>
             </div>
 			  
-   			 <button id="cancelNFTbtn1" class="btn btn-warning btn-lg" dmx-show="(by == userCookie.value)" dmx-on:click="sellNFTcancel('{{set}}','{{uid}}')">Cancel</button>
+   			 <button id="cancelNFTbtn1" class="btn btn-warning btn-lg" dmx-show="(by == userCookie.value)" dmx-on:click="sellNFTcancel('{{sales_detail.data.set}}','{{sales_detail.data.uid}}')">Cancel</button>
               <button class="btn btn-lg btn-info" dmx-show="(by != userCookie.value)" dmx-on:click="buyNFT('{{sales_detail.data.set}}','{{sales_detail.data.uid}}','{{sales_detail.data.price.amount}}','{{sales_detail.data.price.token}}')">Buy</button>
          
 			  
