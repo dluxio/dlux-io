@@ -757,6 +757,7 @@ include_once( $path );
 		   dmx-bind:class="row row-cols-xl-{{auctionNFTsizeXL.value}} row-cols-lg-{{auctionNFTsizeLG.value}} row-cols-md-{{auctionNFTsizeMD.value}} row-cols-sm-{{auctionNFTsizeSM.value}} row-cols-1"
 		   
 		   style="margin-left: -8px; margin-right: -8px">
+	<!-- NFT Repeat -->
   <div dmx-repeat:repeatauctiontoken1="auctionsview.data">
     <div class="m-2 bg-dark card text-white">
       <div class="card-header d-flex align-items-center border-0" dmx-bind:id="{{script}}{{uid}}-nftauctionheader">{{script.getSetDetailsColors(uid+'-nftauctionheader')}}
@@ -770,7 +771,7 @@ include_once( $path );
       <div class="text-center " style="background: crimson">
         <h5 dmx-bind:id="timer-{{set}}-{{uid}}" class="mb-0 lead">{{time.animateTime(set, uid)}}</h5>
       </div>
-      <div class="card-body d-flex flex-column text-center"> <span>High Bidder: {{bidder}}</span> <span>Bid: <u>{{price.nai()}}</u></span></div>
+      <div class="card-body d-flex flex-column text-center"><span>Bid: <u>{{price.nai()}}</u></span></div>
       </a>
       <div class="card-footer text-center d-flex justify-content-between align-items-center"> <span>{{bids}} Bids</span>
         <button href="#auctionsModal" class="btn btn-primary btn-lg" style="min-width:100px" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)" role="button">Bid</button>
