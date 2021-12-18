@@ -831,14 +831,13 @@ include_once( $path );
                 <h6>{{auctions_detail.data.price.nai()}}</h6>
               </div>
             </div>
-			  
             <form>
 				  <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" dmx-hide="buymarket.checked">
                 <div class="form-row col-lg-6 my-3 mx-auto">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="auctionNFTbid">Bid Amount:</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control bg-dark border-black text-info" id="auctionNFTbid" placeholder="0" min="0.001" step="0.001" aria-required="true" >
+                      <input type="number" required class="form-control bg-dark border-black text-info" id="auctionNFTbid" dmx-bind:value="{{((auctions_detail.data.price.amount/1000)+1)}}" placeholder="0" min="0.001" step="0.001" aria-required="true" >
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-black r-radius-hotfix text-white-50">{{auctions_detail.data.price.token}}</div>
                       </div>
