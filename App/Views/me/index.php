@@ -57,6 +57,9 @@ include_once( $path );
     font-weight: bold;
     margin-bottom: 5px;
 }
+	.max-80 {
+		max-width: 80px;
+	}
 </style>
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="index" is="dmx-app">
@@ -507,6 +510,7 @@ if ( isset( $author ) ) {
               </div>
               <div class="card-body text-center d-flex flex-column lead">
                 <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">
+					 <div dmx-bind:id="{{script}}wrapped"> {{script.getSetPhotos('','wrapped','rounded max-80')}}</div>
 					<div dmx-bind:id="{{script}}-header"  style="-webkit-background-clip: text;color: transparent;">{{script.getSetDetailsColorsTxt('-header')}}
                   <div class="mt-3">
                     <h1 class="text-center">{{name_long}}<i dmx-bind:id="{{script}}icon" class="ml-3"></i></h1>
