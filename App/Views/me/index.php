@@ -493,8 +493,8 @@ if ( isset( $author ) ) {
           </div>
           <!-- Mint repeat -->
           <div class="card-columns cc-3 pt-5" id="inventory-mint" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.mint_tokens">
-            <div dmx-bind:id="{{script}}-card" class="card text-white"> {{script.getSetDetailsColors('-card')}}
-              <div class="card-header border-0 d-flex align-items-center justify-content-between" >
+            <div dmx-bind:id="{{script}}-card" class="card text-white border-0"> {{script.getSetDetailsColors('-card')}}
+              <div class="card-header d-flex align-items-center justify-content-between" >
                 <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
                   <div class="pr-2"><small>QTY: </small></div>
                   <div class="px-2">
