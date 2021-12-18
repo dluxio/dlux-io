@@ -808,7 +808,7 @@ include_once( $path );
                 </div>
 								<p dmx-bind:id="{{auctions_detail.data.script}}descriptionp"> {{auctions_detail.data.script.getSetDetails('Description', 'descriptionp', 'innerText')}} </p>
 
-				 <div dmx-bind:id="{{auctions_detail.data.script}}-{{auctions_detail.data.uid}}-attributes" class="d-flex flex-wrap justify-content-around"> {{auctions_detail.data.script.getNFTDetails(auctions_detail.data.uid)}} </div>
+				 <div dmx-bind:id="{{auctions_detail.data.script}}-{{auctions_detail.data.uid}}-attributes" class="d-flex flex-wrap"> {{auctions_detail.data.script.getNFTDetails(auctions_detail.data.uid)}} </div>
 			</div>
 				</div>
 				
@@ -963,7 +963,7 @@ include_once( $path );
                 </div>
 								<p dmx-bind:id="{{sales_detail.data.script}}descriptionp"> {{sales_detail.data.script.getSetDetails('Description', 'descriptionp', 'innerText')}} </p>
 
-				 <div dmx-bind:id="{{sales_detail.data.script}}-{{sales_detail.data.uid}}-attributes" class="d-flex flex-wrap justify-content-around"> {{sales_detail.data.script.getNFTDetails(sales_detail.data.uid)}} </div>
+				 <div dmx-bind:id="{{sales_detail.data.script}}-{{sales_detail.data.uid}}-attributes" class="d-flex flex-wrap"> {{sales_detail.data.script.getNFTDetails(sales_detail.data.uid)}} </div>
 			</div>
 				</div>
 				
