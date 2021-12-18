@@ -123,11 +123,22 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 	border-bottom-right-radius: 0.25rem !important;
 }
 	.l-radius-hotfix {
-	border-top-left-radius: 0rem !important;
-	border-bottom-left-radius: 0rem !important;
+	border-top-left-radius: 0.25rem !important;
+	border-bottom-left-radius: 0.25rem !important;
 }
 		.max-160 {
 		max-width: 160px;
+	}
+	.border-black {
+		border-color: black;
+	}
+			.attribute-name {
+		text-decoration: underline;
+		margin-top: 5px;
+	}
+	.attribute-value {
+		font-weight: bold;
+		margin-bottom: 5px;
 	}
 	</style>
 <?php
@@ -735,13 +746,13 @@ include_once( $path );
 		   
 		   style="margin-left: -8px; margin-right: -8px">
         <div dmx-repeat:repeatauctiontoken1="auctionsview.data">
-          <div class="m-2  bg-dark card text-white">
-            <div class="card-header d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-nftauctionheader">{{script.getSetDetailsColors(uid+'-nftauctionheader')}}
+          <div class="m-2 bg-dark card text-white">
+            <div class="card-header d-flex align-items-center border-0" dmx-bind:id="{{script}}{{uid}}-nftauctionheader">{{script.getSetDetailsColors(uid+'-nftauctionheader')}}
               <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{uid}}</h2></div>
               <h3 class="card-title lead border rounded border-dark p-2 ml-auto mb-0 "><a dmx-bind:href="/nfts/set/{{set}}" class="lead" style="color: black">{{set}} NFT</a></h3>
             </div>
             <a href="#auctionsModal" class="a-1" data-toggle="modal" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)">
-              <div class="card-img-top p-1" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
+              <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="image-{{set}}-{{uid}}">{{uid.nftImageWell(script, set)}}</div>
               <div class="text-center " style="background: crimson">
                 <h5 dmx-bind:id="timer-{{set}}-{{uid}}" class="mb-0 lead">{{time.animateTime(set, uid)}}</h5>
               </div>
@@ -761,32 +772,56 @@ include_once( $path );
       <div class="modal fade " id="auctionsModal" tabindex="11" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-full modal modal-dialog-centered" role="document">
           <div class="modal-content bg-dark text-white">
-            <div class="card text-white bg-dark ">
+            <div class="card border-0 text-white bg-dark ">
               <div class="card-header d-flex align-items-center justify-content-between" dmx-bind:id="{{auctions_detail.data.script}}{{auctions_detail.data.uid}}-nftauctiondetailheader">{{auctions_detail.data.script.getSetDetailsColors(auctions_detail.data.uid+'-nftauctiondetailheader')}}
               <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{auctions_detail.data.uid}}</h2></div>
                 <h3 class="card-title lead border border-dark rounded mb-0 p-2"><a dmx-bind:href="/nfts/set/{{auctions_detail.data.set}}" style="color: black">{{auctions_detail.data.set}} NFT</a></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
-            </div>
+            
             <div class="card-img-top" dmx-bind:id="detail-image-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" dmx-bind:alt="{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}">{{auctions_detail.data.uid.nftDetailWell(auctions_detail.data.script, auctions_detail.data.set)}}</div>
             <div class="text-center " style="background: crimson">
               <h5 dmx-bind:id="detail-timer-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" class="mb-0 lead">{{auctions_detail.data.time.animateTime(auctions_detail.data.set, auctions_detail.data.uid, 1)}}</h5>
             </div>
             <div class="card-body text-center">
-              <div>{{auctions_detail.data.by}} is auctioning {{auctions_detail.data.uid}}</div>
-              <div>Set: {{auctions_detail.data.set}}</div>
-              <div>Initial Price: {{auctions_detail.data.initial_price.nai()}}</div>
-              <div>Current Bid: {{auctions_detail.data.price.nai()}}</div>
+				<div class="d-flex justify-content-around">
+						<div>
+						<small>Seller:</small>
+						<h6><a dmx-bind:href="/@{{auctions_detail.data.by}}#inventory">{{auctions_detail.data.by}}</a></h6>
+						</div>
+						<div>
+						<small>Starting Price:</small>
+						<h6>{{auctions_detail.data.initial_price.nai()}}</h6>
+						</div>
+					</div>
+				<div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">{{auctions_detail.data.script.getSetDetailsIcon('seticon')}}
+                  <h1 class="text-center rainbow-text"><i dmx-bind:id="{{auctions_detail.data.script}}seticon"></i></h1>
+					<div dmx-bind:id="{{auctions_detail.data.script}}-{{auctions_detail.data.uid}}-attributes" class="attribute-container">  {{auctions_detail.data.script.getNFTDetails(auctions_detail.data.uid)}} </div>
+                </div>
+				<div class="d-flex justify-content-around">
+						<div>
+						<small>High Bidder:</small>
+						<h5><a dmx-bind:href="/@{{auctions_detail.data.bidder}}#inventory">{{auctions_detail.data.bidder}}</a></h5>
+						</div>
+						<div>
+						<small>Current Bid:</small>
+						<h5>{{auctions_detail.data.price.nai()}}</h5>
+						</div>
+				</div>
+				
               <form class="">
-                <div class="form-group d-flex justify-content-center align-items-center">
-                  <div class="p-2">
-                    <label>Bid Amount: </label>
-                  </div>
-                  <div>
-                    <input id="auctionNFTbid" class="form-control" type="number" required step="0.001" placeholder="1.000">
+                <div class="form-group form-row d-flex justify-content-center align-items-center">
+					<div class="input-group">
+						<label>Bid Amount: </label>
+                    <input id="auctionNFTbid" class="form-control bg-dark border-black l-radius-hotfix text-info" type="number" required step="0.001" placeholder="1.000">
+					<div class="input-group-append">
+						<span class="input-group-text bg-dark border-black text-white-50 r-radius-hotfix m-0" id="tradeNFTamountappend">
+						{{auctions_detail.data.price.token}}
+						</span>
+					</div>
                   </div>
                 </div>
-				  <button class="btn btn-lg btn-primary" dmx-on:click="bidNFT('{{auctions_detail.data.set}}','{{auctions_detail.data.uid}}','{{auctionNFTbid.value}}','{{auctions_detail.data.price.token}}', statusWaiter)">Place Bid {{auctions_detail.data.price.token}}</button>
+				  <button class="btn btn-lg btn-primary" dmx-on:click="bidNFT('{{auctions_detail.data.set}}','{{auctions_detail.data.uid}}','{{auctionNFTbid.value}}','{{auctions_detail.data.price.token}}', statusWaiter)">Place Bid</button>
               </form>
             </div>
             <div class="card-footer d-flex align-items-center">
@@ -797,7 +832,7 @@ include_once( $path );
           </div>
         </div>
       </div>
-
+	</div>
     </dmx-data-detail>
 
     <!-- NFT Sales Repeat -->
