@@ -667,9 +667,11 @@ function openFT(setname, callback){
     broadcastCJA({set:setname}, 'dlux_nft_mint', `Minting ${setname} token...`)
  }
 
-function buyFT(setname, uid, price,  callback){
+function buyFT(setname, uid, price, type,  callback){
      price = parseInt(price * 1000)
-     broadcastCJA({set: setname, uid, price}, 'dlux_ft_buy', `Trying to buy ${setname} mint token`)
+     if(type == 'HIVE')broadcastTransfer({ to: 'dlux-cc', hive: bid_amount, memo:`NFTbuy ${setname}:${uid}`}, `Buying on ${setname}:${uid}`)
+     else if(type == 'HBD')broadcastTransfer({ to: 'dlux-cc', hbd: bid_amount, memo:`NFTbuy ${setname}:${uid}`}, `Buying ${setname}:${uid}`)
+     else broadcastCJA({set: setname, uid, price}, 'dlux_ft_buy', `Trying to buy ${setname} mint token`)
  }
 
 function bidFT(setname, uid, callback){
@@ -712,9 +714,9 @@ function tradeNFT(setname, uid, to, price, callback){
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
 
-function sellNFT(setname, uid, price, callback){
+function sellNFT(setname, uid, price, type, callback){
     price = parseInt(price * 1000)
-    broadcastCJA({ set: setname, uid, price}, "dlux_nft_sell", `Trying to list ${setname}:${uid} for sell`)
+    broadcastCJA({ set: setname, uid, price, type}, "dlux_nft_sell", `Trying to list ${setname}:${uid} for sell`)
  }
 
 function auctionNFT(setname, uid, price, now, time, type, callback){
