@@ -140,6 +140,12 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 		font-weight: bold;
 		margin-bottom: 5px;
 	}
+	.attribute-container{
+		position:absolute;
+		width: 100%;
+		overflow: hidden;
+		z-index: 11;
+	}
 	</style>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
@@ -778,8 +784,13 @@ include_once( $path );
                 <h3 class="card-title lead border border-dark rounded mb-0 p-2"><a dmx-bind:href="/nfts/set/{{auctions_detail.data.set}}" style="color: black">{{auctions_detail.data.set}} NFT</a></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
-            
-            <div class="card-img-top" dmx-bind:id="detail-image-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" dmx-bind:alt="{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}">{{auctions_detail.data.uid.nftDetailWell(auctions_detail.data.script, auctions_detail.data.set)}}</div>
+			<div class="card-img-top">	
+            <div class="text-center rounded attribute-container" style="background-color: rgba(0,0,0,0.75)">{{auctions_detail.data.script.getSetDetailsIcon('seticon')}}
+                  <h1 class="text-center rainbow-text"><i dmx-bind:id="{{auctions_detail.data.script}}seticon"></i></h1>
+					<div dmx-bind:id="{{auctions_detail.data.script}}-{{auctions_detail.data.uid}}-attributes" class="d-flex flex-wrap flex-shrink">  {{auctions_detail.data.script.getNFTDetails(auctions_detail.data.uid)}} </div>
+                </div>
+            <div  dmx-bind:id="detail-image-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" dmx-bind:alt="{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}">{{auctions_detail.data.uid.nftDetailWell(auctions_detail.data.script, auctions_detail.data.set)}}</div></div>
+				
             <div class="text-center " style="background: crimson">
               <h5 dmx-bind:id="detail-timer-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" class="mb-0 lead">{{auctions_detail.data.time.animateTime(auctions_detail.data.set, auctions_detail.data.uid, 1)}}</h5>
             </div>
@@ -794,10 +805,7 @@ include_once( $path );
 						<h6>{{auctions_detail.data.initial_price.nai()}}</h6>
 						</div>
 					</div>
-				<div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">{{auctions_detail.data.script.getSetDetailsIcon('seticon')}}
-                  <h1 class="text-center rainbow-text"><i dmx-bind:id="{{auctions_detail.data.script}}seticon"></i></h1>
-					<div dmx-bind:id="{{auctions_detail.data.script}}-{{auctions_detail.data.uid}}-attributes" class="attribute-container">  {{auctions_detail.data.script.getNFTDetails(auctions_detail.data.uid)}} </div>
-                </div>
+				
 				<div class="d-flex justify-content-around">
 						<div>
 						<small>High Bidder:</small>
