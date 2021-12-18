@@ -764,10 +764,11 @@ function buyNFT(setname, uid, price, callback){
  }
  function bidNFT(setname, uid, bid_amount, type, callback){
     console.log({bid_amount, type})
-    bid_amount = parseInt(bid_amount * 1000), hive = ''
+    bid_amount = parseInt(bid_amount * 1000), hive = '', hbd = ''
     if(type == 'HIVE')hive = `${parseFloat(bid_amount/1000).toFixed(3)} HIVE`
-    else if(type == 'HBD')hive = `${parseFloat(bid_amount/1000).toFixed(3)} HBD`
-    if(type == 'HIVE' || type == 'HBD')broadcastTransfer({ to: 'dlux-cc', amount: hive, memo:`NFTbid ${setname}:${uid}`}, `Bidding on ${setname}:${uid}`)
+    else if(type == 'HBD')hbd = `${parseFloat(bid_amount/1000).toFixed(3)} HBD`
+    if(type == 'HIVE') broadcastTransfer({ to: 'dlux-cc', hive, memo:`NFTbid ${setname}:${uid}`}, `Bidding on ${setname}:${uid}`)
+    else if (type == 'HBD')broadcastTransfer({ to: 'dlux-cc', hbd, memo:`NFTbid ${setname}:${uid}`}, `Bidding on ${setname}:${uid}`)
     else broadcastCJA({ set: setname, uid, bid_amount}, "dlux_nft_bid", `Bidding on ${setname}:${uid} for ${parseFloat(bid_amount/1000).toFixed(3)} DLUX`)
  }
 
