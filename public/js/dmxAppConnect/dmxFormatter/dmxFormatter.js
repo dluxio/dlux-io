@@ -620,7 +620,8 @@ dmx.Formatters("global", {
                     for (var j = 0; j < SVG.attributes.length; j++) {
                         let node = document.createElement('div')
                         node.id = `${s}-${u}-attribute-${j}`
-						node.classList.add(`mx-2 border border-light`)
+						node.classList.add(`mx-2`)
+						node.classList.add(`border`)
                         node.innerHTML = `<div class="attribute-name">${Object.keys(SVG.attributes[j])[0]}</div><div class="attribute-value">${SVG.attributes[j][Object.keys(SVG.attributes[j])[0]]}</div>`
                         document.getElementById(`${s}-${u}-attributes`).appendChild(node)
                     }
