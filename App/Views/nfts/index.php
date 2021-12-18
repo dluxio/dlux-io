@@ -804,7 +804,7 @@ include_once( $path );
                     <h1 class="text-center">{{auctions_detail.data.name_long}}<i dmx-bind:id="{{auctions_detail.data.script}}icon" class="ml-3"></i></h1>
                     {{auctions_detail.data.script.getSetDetailsIcon('icon')}}</div>
                 </div>
-				 <div dmx-bind:id="{{auctions_detail.data.script}}-{{auctions_detail.data.uid}}-attributes" class="d-flex flex-wrap"> {{auctions_detail.data.script.getNFTDetails(auctions_detail.data.uid)}} </div>
+				 <div dmx-bind:id="{{auctions_detail.data.script}}-{{auctions_detail.data.uid}}-attributes" class="d-flex flex-wrap justify-content-around"> {{auctions_detail.data.script.getNFTDetails(auctions_detail.data.uid)}} </div>
 			</div>
 				</div>
 				
@@ -816,13 +816,13 @@ include_once( $path );
 			  <div class="d-flex justify-content-around">
 
 				  <div><small><u>Seller</u></small>
-                <h6><a dmx-bind:href="/@{{auctions_detail.data.by}}#inventory">@{{auctions_detail.data.by}}</a></h6>
+                <h6><a dmx-bind:href="/@{{auctions_detail.data.by}}#inventory">{{auctions_detail.data.by}}</a></h6>
               </div>
 				<div><small><u>Starting Price</u></small>
                 <h6>{{auctions_detail.data.initial_price.nai()}}</h6>
               </div>
 				  <div><small><u>High Bidder</u></small>
-                <h6><a dmx-bind:href="/@{{auctions_detail.data.bidder}}#inventory">@{{auctions_detail.data.bidder}}</a></h6>
+                <h6><a dmx-bind:href="/@{{auctions_detail.data.bidder}}#inventory">{{auctions_detail.data.bidder}}</a></h6>
               </div>
               <div><small><u>Current Bid</u></small>
                 <h6>{{auctions_detail.data.price.nai()}}</h6>
