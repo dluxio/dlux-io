@@ -785,15 +785,14 @@ include_once( $path );
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
 			<div class="card-img-top">	
-            <div class="text-center rounded attribute-container" style="background-color: rgba(0,0,0,0.75)">
-				
-				<div dmx-bind:id="{{auctions_detail.data.script}}header"  style="background-image: linear-gradient(magenta,aqua);-webkit-background-clip: text;color: transparent;">{{auctions_detail.data.script.getSetDetailsColorsTxt('header')}}
-                              		<div class="mt-3"><h1 class="text-center">longname<i dmx-bind:id="{{auctions_detail.data.script}}icon" class="ml-3"></i></h1>{{auctions_detail.data.script.getSetDetailsIcon('icon')}}</div>
-                            	</div>
-
-				
+            <div class="text-center rounded attribute-container d-flex" style="background-color: rgba(0,0,0,0.75); height: 50%;">
+				<div class="my-auto">
+				<div dmx-bind:id="{{auctions_detail.data.script}}header"  style=";-webkit-background-clip: text;color: transparent;">{{auctions_detail.data.script.getSetDetailsColorsTxt('header')}}
+                       	<div class="mt-3"><h1 class="text-center">longname<i dmx-bind:id="{{auctions_detail.data.script}}icon" class="ml-3"></i></h1>{{auctions_detail.data.script.getSetDetailsIcon('icon')}}</div>
+                       </div>
 					<div dmx-bind:id="{{auctions_detail.data.script}}-{{auctions_detail.data.uid}}-attributes" class="d-flex flex-wrap">  {{auctions_detail.data.script.getNFTDetails(auctions_detail.data.uid)}} </div>
                 </div>
+				</div>
             <div  dmx-bind:id="detail-image-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" dmx-bind:alt="{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}">{{auctions_detail.data.uid.nftDetailWell(auctions_detail.data.script, auctions_detail.data.set)}}</div></div>
 				
             <div class="text-center " style="background: crimson">
