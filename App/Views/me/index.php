@@ -511,8 +511,9 @@ if ( isset( $author ) ) {
                   <div class="mt-3">
                     <h1 class="text-center">{{name_long}}<i dmx-bind:id="{{script}}icon" class="ml-3"></i></h1>
                     {{script.getSetDetailsIcon('icon')}}</div>
-                </div>
-                  <h3 class="my-0 mx-2 p-0 p-2 ml-auto rainbow-text">sealed NFT</h3>
+                
+                  <h3 class="my-0 mx-2 p-0 p-2 ml-auto">sealed NFT</h3>
+						</div>
                   <h5>Unwrap to see what's inside.</h5>
                 </div>
               </div>
