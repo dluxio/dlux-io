@@ -3238,6 +3238,150 @@ dmx.config({
           }
         ]
       }
+    ],
+    "auctionsapi": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "array",
+            "name": "result",
+            "sub": [
+              {
+                "type": "text",
+                "name": "uid"
+              },
+              {
+                "type": "text",
+                "name": "set"
+              },
+              {
+                "type": "object",
+                "name": "price",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "amount"
+                  },
+                  {
+                    "type": "number",
+                    "name": "precision"
+                  },
+                  {
+                    "type": "text",
+                    "name": "token"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "name": "initial_price",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "amount"
+                  },
+                  {
+                    "type": "number",
+                    "name": "precision"
+                  },
+                  {
+                    "type": "text",
+                    "name": "token"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "name": "time"
+              },
+              {
+                "type": "text",
+                "name": "by"
+              },
+              {
+                "type": "number",
+                "name": "bids"
+              },
+              {
+                "type": "text",
+                "name": "bidder"
+              },
+              {
+                "type": "text",
+                "name": "script"
+              },
+              {
+                "type": "text",
+                "name": "name_long"
+              },
+              {
+                "type": "number",
+                "name": "days"
+              },
+              {
+                "type": "text",
+                "name": "buy"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "node"
+          },
+          {
+            "type": "number",
+            "name": "behind"
+          },
+          {
+            "type": "text",
+            "name": "VERSION"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "connection"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "via"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          }
+        ]
+      }
     ]
   },
   "explore": {
