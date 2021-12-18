@@ -775,7 +775,7 @@ include_once( $path );
       </a>
       <div class="card-footer text-center d-flex justify-content-between align-items-center"> <span>{{bids}} Bids</span>
         <button href="#auctionsModal" class="btn btn-primary btn-lg" style="min-width:100px" data-toggle="modal" dmx-show="(by != userCookie.value)" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)" role="button">Bid</button>
-        <button href="#auctionsModal" class="btn btn-secondary btn-lg" style="min-width:100px" data-toggle="modal" dmx-show="(by == userCookie.value)" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)" role="button">Ongoing</button>
+        <button href="#auctionsModal" class="btn btn-secondary btn-lg" style="min-width:100px" data-toggle="modal" dmx-show="(by == userCookie.value)" dmx-on:click="auctions_iterator.select($index);auctions_detail.select(uid)" role="button">In-Progress</button>
       </div>
     </div>
   </div>
