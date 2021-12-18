@@ -763,6 +763,7 @@ function buyNFT(setname, uid, price, callback){
     broadcastCJA({ set: setname, uid, price}, "dlux_nft_buy", `Trying to buy ${setname}:${uid}`)
  }
  function bidNFT(setname, uid, bid_amount, type, callback){
+    console.log({bid_amount, type})
     bid_amount = parseInt(bid_amount * 1000), hive = ''
     if(type == 'HIVE')hive = `${parseFloat(bid_amount/1000).toFixed(3)} HIVE`
     else if(type == 'HBD')hive = `${parseFloat(bid_amount/1000).toFixed(3)} HBD`
