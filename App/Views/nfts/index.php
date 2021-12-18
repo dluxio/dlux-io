@@ -804,6 +804,8 @@ include_once( $path );
                     <h1 class="text-center">{{auctions_detail.data.name_long}}<i dmx-bind:id="{{auctions_detail.data.script}}icon" class="ml-3"></i></h1>
                     {{auctions_detail.data.script.getSetDetailsIcon('icon')}}</div>
                 </div>
+								<p dmx-bind:id="{{auctions_detail.data.script}}descriptionp"> {{auctions_detail.data.script.getSetDetails('Description', 'descriptionp', 'innerText')}} </p>
+
 				 <div dmx-bind:id="{{auctions_detail.data.script}}-{{auctions_detail.data.uid}}-attributes" class="d-flex flex-wrap justify-content-around"> {{auctions_detail.data.script.getNFTDetails(auctions_detail.data.uid)}} </div>
 			</div>
 				</div>
@@ -829,10 +831,10 @@ include_once( $path );
               </div>
             </div>
 			  
-            <form class="">
-              <div class="form-group form-row d-flex justify-content-center align-items-center">
+            <form>
+              <div class="form-group row">
+				<label for="auctionNFTbid">Bid Amount: </label>
                 <div class="input-group">
-                  <label>Bid Amount: </label>
                   <input id="auctionNFTbid" class="form-control bg-dark border-black l-radius-hotfix text-info" type="number" required step="0.001" placeholder="1.000">
                   <div class="input-group-append"> <span class="input-group-text bg-dark border-black text-white-50 r-radius-hotfix m-0" id="tradeNFTamountappend"> {{auctions_detail.data.price.token}} </span> </div>
                 </div>
