@@ -779,7 +779,7 @@ include_once( $path );
         <div class="modal-dialog modal-full modal modal-dialog-centered" role="document">
           <div class="modal-content bg-dark text-white">
             <div class="card border-0 text-white bg-dark ">
-              <div class="card-header d-flex align-items-center justify-content-between" dmx-bind:id="{{auctions_detail.data.script}}{{auctions_detail.data.uid}}-nftauctiondetailheader">{{auctions_detail.data.script.getSetDetailsColors(auctions_detail.data.uid+'-nftauctiondetailheader')}}
+              <div class="card-header border-0 d-flex align-items-center justify-content-between" dmx-bind:id="{{auctions_detail.data.script}}{{auctions_detail.data.uid}}-nftauctiondetailheader">{{auctions_detail.data.script.getSetDetailsColors(auctions_detail.data.uid+'-nftauctiondetailheader')}}
               <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black"><h2 class="m-0 px-2">{{auctions_detail.data.uid}}</h2></div>
                 <h3 class="card-title lead border border-dark rounded mb-0 p-2"><a dmx-bind:href="/nfts/set/{{auctions_detail.data.set}}" style="color: black">{{auctions_detail.data.set}} NFT</a></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
