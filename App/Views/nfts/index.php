@@ -983,7 +983,7 @@ include_once( $path );
             </div>
 			  
    
-              <button class="btn btn-lg btn-info" dmx-on:click="buyNFT('{{sales_detail.data.set}}','{{sales_detail.data.uid}}','{{sales_detail.data.price.amount}}','{{sales_detail.data.price.token}}')">Buy</button>
+              <button class="btn btn-lg btn-info" dmx-show="(by != userCookie.value)" dmx-on:click="buyNFT('{{sales_detail.data.set}}','{{sales_detail.data.uid}}','{{sales_detail.data.price.amount}}','{{sales_detail.data.price.token}}')">Buy</button>
          
 			  
 			  </div>
@@ -1017,7 +1017,8 @@ include_once( $path );
           <div>Set: {{sales_detail.data.set}}</div>
           <div>Price: {{sales_detail.data.price.nai()}}</div>
           <form class="my-3">
-            <button class="btn btn-lg btn-primary" dmx-on:click="buyNFT('{{sales_detail.data.set}}','{{sales_detail.data.uid}}','{{sales_detail.data.price.amount}}')">Buy NFT</button>
+			  <button id="cancelNFTbtn1" class="btn btn-warning btn-lg" dmx-show="(by == userCookie.value)" dmx-on:click="sellNFTcancel('{{sales_detail.data.set}}','{{sales_detail.data.uid}}')">Cancel</button>
+            <button class="btn btn-lg btn-primary" dmx-show="(by != userCookie.value)" dmx-on:click="buyNFT('{{sales_detail.data.set}}','{{sales_detail.data.uid}}','{{sales_detail.data.price.amount}}')">Buy NFT</button>
           </form>
         </div>
         <div class="card-footer d-flex align-items-center">
