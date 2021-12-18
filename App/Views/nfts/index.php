@@ -828,7 +828,7 @@ include_once( $path );
                 <h6>{{auctions_detail.data.price.nai()}}</h6>
               </div>
             </div>
-			  </div>
+			  
             <form class="">
               <div class="form-group form-row d-flex justify-content-center align-items-center">
                 <div class="input-group">
@@ -839,6 +839,8 @@ include_once( $path );
               </div>
               <button class="btn btn-lg btn-primary" dmx-on:click="bidNFT('{{auctions_detail.data.set}}','{{auctions_detail.data.uid}}','{{auctionNFTbid.value}}','{{auctions_detail.data.price.token}}', statusWaiter)">Place Bid</button>
             </form>
+			  
+			  </div>
           </div>
           <div class="card-footer d-flex align-items-center">
             <h2><a class="text-muted p-3" href="#" dmx-on:click="auctions_iterator.prev();auctions_detail.select(auctions_iterator.value.uid)"><i class="fas fa-caret-square-left"></i></a></h2>

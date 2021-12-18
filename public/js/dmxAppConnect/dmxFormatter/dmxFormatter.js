@@ -625,6 +625,7 @@ dmx.Formatters("global", {
 						node.classList.add(`py-1`)
 						node.classList.add(`border`)
 						node.classList.add(`rounded`)
+						node.classList.add(`text-center`)
                         node.innerHTML = `<div class="attribute-name">${Object.keys(SVG.attributes[j])[0]}</div><div class="attribute-value">${SVG.attributes[j][Object.keys(SVG.attributes[j])[0]]}</div>`
                         document.getElementById(`${s}-${u}-attributes`).appendChild(node)
                     }
