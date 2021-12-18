@@ -800,7 +800,7 @@ if ( isset( $author ) ) {
                             </div>
                             <div id="collapseAttributes" class="collapse show" aria-labelledby="headingAttributes" data-parent="#accordion">
                               <div class="card-body">
-                                <div dmx-bind:id="{{inventory_detail.data.script}}-{{inventory_detail.data.uid}}-attributes" class="attribute-container"> {{inventory_detail.data.script.getNFTDetails(inventory_detail.data.uid)}} </div>
+                                <div dmx-bind:id="{{inventory_detail.data.script}}-{{inventory_detail.data.uid}}-attributes" class="attribute-container d-flex flex-wrap"> {{inventory_detail.data.script.getNFTDetails(inventory_detail.data.uid)}} </div>
                               </div>
                             </div>
                           </div>
