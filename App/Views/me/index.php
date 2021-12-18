@@ -435,7 +435,7 @@ if ( isset( $author ) ) {
           <!-- Trade FT repeat -->
           <div class="card-columns cc-3 pt-5" id="trade-ft-cards" is="dmx-repeat" dmx-bind:repeat="tradefts.data.result">
             <div dmx-bind:id="{{script}}-trade-card" class="card text-white" style="border: none;"> {{script.getSetDetailsColors('-trade-card')}}
-              <div class="card-header d-flex align-items-center justify-content-between" >
+              <div class="card-header border-0 d-flex align-items-center justify-content-between" >
                 <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
                   <div class="pr-2"><small>QTY: </small></div>
                   <div class="px-2">
@@ -469,7 +469,7 @@ if ( isset( $author ) ) {
           <!-- Trade NFT repeat -->
           <div class="card-columns cc-3 pt-5" id="trade-nft-cards" is="dmx-repeat" dmx-bind:repeat="tradenfts.data.result">
             <div class="card text-white bg-dark ">
-              <div class="card-header d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-nftheader">{{script.getSetDetailsColors(uid+'-nftheader')}}
+              <div class="card-header border-0 d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-nftheader">{{script.getSetDetailsColors(uid+'-nftheader')}}
                 <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
                   <h2 class="m-0 px-2">{{uid}}</h2>
                 </div>
@@ -494,7 +494,7 @@ if ( isset( $author ) ) {
           <!-- Mint repeat -->
           <div class="card-columns cc-3 pt-5" id="inventory-mint" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.mint_tokens">
             <div dmx-bind:id="{{script}}-card" class="card text-white"> {{script.getSetDetailsColors('-card')}}
-              <div class="card-header d-flex align-items-center justify-content-between" >
+              <div class="card-header border-0 d-flex align-items-center justify-content-between" >
                 <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
                   <div class="pr-2"><small>QTY: </small></div>
                   <div class="px-2">
@@ -730,7 +730,7 @@ if ( isset( $author ) ) {
           <!-- NFT repeat -->
           <div class="card-columns cc-3 pt-5" id="inventory-cards" is="dmx-repeat" dmx-bind:repeat="inventorydata.data.result">
             <div class="card text-white bg-dark ">
-              <div class="card-header d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-nftheader">{{script.getSetDetailsColors(uid+'-nftheader')}}
+              <div class="card-header border-0 d-flex align-items-center" dmx-bind:id="{{script}}{{uid}}-nftheader">{{script.getSetDetailsColors(uid+'-nftheader')}}
                 <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
                   <h2 class="m-0 px-2">{{uid}}</h2>
                 </div>
@@ -748,7 +748,7 @@ if ( isset( $author ) ) {
               <div class="modal-dialog modal-full modal-xl modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark text-white">
                   <div class="card text-white bg-dark ">
-                    <div class="card-header d-flex align-items-center justify-content-between" dmx-bind:id="{{inventory_detail.data.script}}{{inventory_detail.data.uid}}-nftdetailheader">{{inventory_detail.data.script.getSetDetailsColors(inventory_detail.data.uid+'-nftdetailheader')}}
+                    <div class="card-header border-0 d-flex align-items-center justify-content-between" dmx-bind:id="{{inventory_detail.data.script}}{{inventory_detail.data.uid}}-nftdetailheader">{{inventory_detail.data.script.getSetDetailsColors(inventory_detail.data.uid+'-nftdetailheader')}}
                       <div class="rounded-pill d-flex align-items-center p-2" style="background-color: black">
                         <h2 class="m-0 px-2">{{inventory_detail.data.uid}}</h2>
                       </div>
