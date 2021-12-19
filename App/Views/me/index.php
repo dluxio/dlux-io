@@ -483,7 +483,7 @@ if ( isset( $author ) ) {
               From: {{from}} To: {{to}} Price: {{price}} </a>
               <div class="card-footer" dmx-show="(to == userCookie.value)">
                 <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="tradeNFTaccept('{{set}}','{{uid}}')">Accept<i class="fas fa-check-square ml-3"></i></button>
+                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="tradeNFTaccept('{{set}}','{{uid}}','{{price}}','{{type}}')">Accept<i class="fas fa-check-square ml-3"></i></button>
                   <button type="button" class="btn btn-danger mr-auto ml-auto mt-1" dmx-on:click="tradeNFTreject('{{set}}','{{uid}}')">Reject<i class="fas fa-window-close ml-3"></i></button>
                 </div>
               </div>
@@ -594,7 +594,9 @@ if ( isset( $author ) ) {
                                 <label for="tradeFTamount">Amount</label>
                                 <div class="input-group">
                                   <input type="number" class="form-control" id="tradeFTamount" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required>
-                                  <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTamountappend">DLUX</span> </div>
+                                  <div class="input-group-append">
+									  <span class="input-group-text r-radius-hotfix" id="tradeFTamountappend">DLUX</span> 
+									</div>
                                   <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
                                 </div>
                               </div>
@@ -605,7 +607,7 @@ if ( isset( $author ) ) {
                           </form>
                         </div>
                         <div role="tabpanel" class="tab-pane fade show " id="sellFTtab" aria-labelledby="sellFT">
-                          <form class="needs-validation mt-4" validate dmx-bind:action="javascript:sellFT('{{mint_detail.data.set}}','{{sellFTprice.value}}')">
+                          <form class="needs-validation mt-4" validate dmx-bind:action="javascript:sellFT('{{mint_detail.data.set}}','{{sellFTprice.value}}','{{sellFTpriceType.value}}')">
                             <div class="form-row my-2">
                               <div class="col-6">
                                 <label for="sellFTqty">Quantity</label>
@@ -617,13 +619,18 @@ if ( isset( $author ) ) {
                               </div>
                               <div class="col-6">
                                 <label for="sellFTprice">Sale Price</label>
-                                <div class="input-group">
-                                  <input type="number" class="form-control" id="sellFTprice" aria-describedby="sellFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
-                                  <div class="input-group-append">
-                                    <div class="input-group-text" id="sellFTpriceappend">DLUX</div>
-                                  </div>
-                                  <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
-                                </div>
+                               <small class="ml-auto mb-2 align-self-center text-white-50" id="sellFTfeeDlux" dmx-show="sellFTpriceType.value == 'DLUX'">0% FEE</small>
+											<small class="ml-auto mb-2 align-self-center text-white-50" id="sellFTfeeHive" dmx-show="sellFTpriceType.value != 'DLUX'">1% FEE</small>
+                                            <div class="input-group">
+                                              <input type="number" class="form-control bg-dark border-dark text-info" id="sellFTprice" aria-describedby="sellFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
+                                              <div class="input-group-append"> <span class="input-group-text bg-dark border-dark r-radius-hotfix m-0" id="sellFTpriceappend">
+                                                <select class="form-select border-0 text-white-50 bg-none w-100 h-100" id="sellFTpriceType" aria-label="Sell price type select">
+                                                  <option value="DLUX" selected>DLUX</option>
+                                                  <option value="HIVE">HIVE</option>
+                                                  <option value="HBD">HBD</option>
+                                                </select>
+                                                </span> </div>
+                                              <div class="invalid-feedback"> Please enter the amount of {{sellFTpriceType.value}} you'd like to receive. </div>
                               </div>
                             </div>
                             <div class="form-row my-2">
