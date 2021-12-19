@@ -1044,6 +1044,7 @@ if ( isset( $author ) ) {
           </dmx-data-detail>
         </div>
       </div>
+			  </div>
       <!-- node tab -->
       <div role="tabpanel" class="tab-pane fade show" id="node" aria-labelledby="nodetab">
         <div id="nodeBanner" class="container no-session">
