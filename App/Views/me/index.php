@@ -633,6 +633,7 @@ if ( isset( $author ) ) {
                                               <div class="invalid-feedback"> Please enter the amount of {{sellFTpriceType.value}} you'd like to receive. </div>
                               </div>
                             </div>
+							  </div>
                             <div class="form-row my-2">
                               <p class="text-white-50 small">Ownership will be transferred to the DAO listing service and sold publicly. Cancel anytime to return immediately.</p>
                             </div>
@@ -1044,7 +1045,6 @@ if ( isset( $author ) ) {
           </dmx-data-detail>
         </div>
       </div>
-			  </div>
       <!-- node tab -->
       <div role="tabpanel" class="tab-pane fade show" id="node" aria-labelledby="nodetab">
         <div id="nodeBanner" class="container no-session">
