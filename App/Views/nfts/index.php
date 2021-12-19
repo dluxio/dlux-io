@@ -801,10 +801,10 @@ include_once( $path );
           <div class="card-img-top w-100" dmx-bind:id="detail-image-{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}" dmx-bind:alt="{{auctions_detail.data.set}}-{{auctions_detail.data.uid}}">{{auctions_detail.data.uid.nftDetailWell(auctions_detail.data.script, auctions_detail.data.set)}}</div>
           </div>
 			<div class="col-md-6">
-			<div dmx-bind:id="{{auctions_detail.data.script}}-header"  style="-webkit-background-clip: text;color: transparent;">{{auctions_detail.data.script.getSetDetailsColorsTxt('-header')}}
+			<div dmx-bind:id="{{auctions_detail.data.script}}{{auctions_detail.data.uid}}-header"  style="-webkit-background-clip: text;color: transparent;">{{auctions_detail.data.script.getSetDetailsColorsTxt(auctions_detail.data.uid+'-header')}}
                   <div class="mt-3">
-                    <h1 class="text-center">{{auctions_detail.data.name_long}}<i dmx-bind:id="{{auctions_detail.data.script}}icon" class="ml-3"></i></h1>
-                    {{auctions_detail.data.script.getSetDetailsIcon('icon')}}</div>
+                    <h1 class="text-center">{{auctions_detail.data.name_long}}<i dmx-bind:id="{{auctions_detail.data.script}}{{auctions_detail.data.uid}}icon" class="ml-3"></i></h1>
+                    {{auctions_detail.data.script.getSetDetailsIcon(auctions_detail.data.uid+'icon')}}</div>
                 </div>
 								<p dmx-bind:id="{{auctions_detail.data.script}}descriptionp"> {{auctions_detail.data.script.getSetDetails('Description', 'descriptionp', 'innerText')}} </p>
 
@@ -956,10 +956,10 @@ include_once( $path );
           <div class="card-img-top w-100" dmx-bind:id="detail-image-{{sales_detail.data.set}}-{{sales_detail.data.uid}}" dmx-bind:alt="{{sales_detail.data.set}}-{{sales_detail.data.uid}}">{{sales_detail.data.uid.nftDetailWell(sales_detail.data.script, sales_detail.data.set)}}</div>
           </div>
 			<div class="col-md-6">
-			<div dmx-bind:id="{{sales_detail.data.script}}-header"  style="-webkit-background-clip: text;color: transparent;">{{sales_detail.data.script.getSetDetailsColorsTxt('-header')}}
+			<div dmx-bind:id="{{sales_detail.data.script}}{{sales_detail.data.uid}}-header"  style="-webkit-background-clip: text;color: transparent;">{{sales_detail.data.script.getSetDetailsColorsTxt(sales_detail.data.uid+'-header')}}
                   <div class="mt-3">
-                    <h1 class="text-center">{{sales_detail.data.name_long}}<i dmx-bind:id="{{sales_detail.data.script}}icon" class="ml-3"></i></h1>
-                    {{sales_detail.data.script.getSetDetailsIcon('icon')}}</div>
+                    <h1 class="text-center">{{sales_detail.data.name_long}}<i dmx-bind:id="{{sales_detail.data.script}}{{sales_detail.data.uid}}-icon" class="ml-3"></i></h1>
+                    {{sales_detail.data.script.getSetDetailsIcon(sales_detail.data.uid+'-icon')}}</div>
                 </div>
 								<p dmx-bind:id="{{sales_detail.data.script}}descriptionp"> {{sales_detail.data.script.getSetDetails('Description', 'descriptionp', 'innerText')}} </p>
 
