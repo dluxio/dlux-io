@@ -705,11 +705,11 @@ function giveNFT(setname, uid, to, callback){
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
 
-function tradeNFT(setname, uid, to, price, callback){
+function tradeNFT(setname, uid, to, price, type, callback){
     price = parseInt(price * 1000)
     checkAccount(to)
     .then(r => {
-        broadcastCJA({ set: setname, uid, to, price}, "dlux_nft_reserve_transfer", `Trying to trade ${setname}:${uid}`)
+        broadcastCJA({ set: setname, uid, to, price, type}, "dlux_nft_reserve_transfer", `Trying to trade ${setname}:${uid}`)
     })
     .catch(e=>alert(`${to} is not a valid hive account`))
  }
@@ -749,8 +749,14 @@ function deleteNFT(setname, uid, callback){
     broadcastCJA({ name: setname, type, script, permlink, start, end, total, royalty, handling, max_fee, bond}, "dlux_nft_define", `Trying to define ${setname}`)
  }
 
-function tradeNFTaccept(setname, uid, callback){
-     broadcastCJA({ set: setname, uid}, "dlux_nft_reserve_complete", `Trying to complete ${setname}:${uid} trade`)
+function tradeNFTaccept(setname, uid, price, type, callback){
+    if(type.toUpperCase() == 'HIVE'){
+        broadcastTransfer({ to: 'dlux-cc', hive: price, memo:`NFTtrade ${setname}:${uid}`}, `Completing Trade ${setname}:${uid}`)
+    } else if (type.toUpperCase() == 'HBD'){
+        broadcastTransfer({ to: 'dlux-cc', hbd: price, memo:`NFTtrade ${setname}:${uid}`}, `Completing Trade ${setname}:${uid}`)
+    } else {
+        broadcastCJA({ set: setname, uid, price}, "dlux_nft_reserve_complete", `Trying to complete ${setname}:${uid} trade`)
+    }
  }
 function tradeNFTreject(setname, uid, callback){
     broadcastCJA({ set: setname, uid }, "dlux_nft_transfer_cancel", `Trying to cancel ${setname}:${uid} trade`)
