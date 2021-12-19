@@ -221,6 +221,28 @@ dmx.config({
               },
               {
                 "type": "text",
+                "name": "type"
+              },
+              {
+                "type": "object",
+                "name": "nai",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "amount"
+                  },
+                  {
+                    "type": "number",
+                    "name": "precision"
+                  },
+                  {
+                    "type": "text",
+                    "name": "token"
+                  }
+                ]
+              },
+              {
+                "type": "text",
                 "name": "item"
               },
               {

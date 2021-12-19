@@ -80,9 +80,9 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"tradefts\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/trades/fts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"tradenfts\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/trades/nfts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
 } else {
-
 };
 ?>
+<dmx-api-datasource id="tradenfts" is="dmx-fetch" url="https://token.dlux.io/api/trades/nfts/markegiles"></dmx-api-datasource>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
@@ -433,7 +433,7 @@ if ( isset( $author ) ) {
         </div>
       </div>
       <!-- inventory tab -->
-      <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
+      <div role="tabpanel" class="tab-pane fade show active" id="inventory" aria-labelledby="inventorytab">
         <div class="container"> 
           <!-- Trade FT repeat -->
           <div class="card-columns cc-3 pt-5" id="trade-ft-cards" is="dmx-repeat" dmx-bind:repeat="tradefts.data.result">
@@ -478,12 +478,18 @@ if ( isset( $author ) ) {
                 </div>
                 <h3 class="card-title lead border rounded border-dark p-2 ml-auto mb-0 "><a dmx-bind:href="/nfts/set/{{set}}" class="lead" style="color: black">{{set}} NFT</a></h3>
               </div>
-              <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
               <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
-              From: {{from}} To: {{to}} Price: {{price}} </a>
+              	<div class="text-center d-flex flex-column">
+				<div>
+				  <span dmx-show="to == userCookie.value">From: <a dmx-bind:href="/@{{from}}">{{from}}</a></span>
+				  <span dmx-show="from == userCookie.value">To: <a dmx-bind:href="/@{{to}}">{{to}}</a></span>
+				</div>
+				<div>Price: {{nai.nai()}}</div>
+					
+					</div>
               <div class="card-footer" dmx-show="(to == userCookie.value)">
                 <div class="d-flex flex-wrap justify-content-between">
-                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="tradeNFTaccept('{{set}}','{{uid}}','{{price}}','{{type}}')">Accept<i class="fas fa-check-square ml-3"></i></button>
+                  <button type="button" class="btn btn-success mr-auto ml-auto mt-1" dmx-on:click="tradeNFTaccept('{{set}}','{{uid}}','{{price}}','{{nai.token}}')">Accept<i class="fas fa-check-square ml-3"></i></button>
                   <button type="button" class="btn btn-danger mr-auto ml-auto mt-1" dmx-on:click="tradeNFTreject('{{set}}','{{uid}}')">Reject<i class="fas fa-window-close ml-3"></i></button>
                 </div>
               </div>
