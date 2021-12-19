@@ -82,7 +82,7 @@ if ( isset( $author ) ) {
 } else {
 };
 ?>
-<dmx-api-datasource id="tradenfts" is="dmx-fetch" url="https://token.dlux.io/api/trades/nfts/markegiles"></dmx-api-datasource>
+
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
