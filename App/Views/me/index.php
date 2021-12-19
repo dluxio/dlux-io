@@ -433,7 +433,7 @@ if ( isset( $author ) ) {
         </div>
       </div>
       <!-- inventory tab -->
-      <div role="tabpanel" class="tab-pane fade show active" id="inventory" aria-labelledby="inventorytab">
+      <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
         <div class="container"> 
           <!-- Trade FT repeat -->
           <div class="card-columns cc-3 pt-5" id="trade-ft-cards" is="dmx-repeat" dmx-bind:repeat="tradefts.data.result">
