@@ -564,7 +564,8 @@ include_once( $path );
                     <div class="col-6">
                       <label for="tradeFTamount">Amount</label>
                       <div class="input-group">
-                        <input type="number" class="form-control" id="tradeFTamountDlux" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required  dmx-class:readonly="">
+                        <input type="number" class="form-control" id="tradeFTamount" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required  dmx-class:readonly="">
+						  <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTamountappend">DLUX</span> </div>
                         <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
                       </div>
                     </div>
@@ -618,13 +619,7 @@ include_once( $path );
                       <label for="auctionFTprice">Starting Bid</label>
                       <div class="input-group">
                         <input type="number" class="form-control" id="auctionFTprice" aria-describedby="auctionFTpriceappend" placeholder="0.000" step="0.001" min="0.001" required>
-                        <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">
-                          <select class="form-select border-0" id="auctionFTpriceType" aria-label="Default select example">
-                            <option value="DLUX" selected>DLUX</option>
-                            <option value="HIVE">HIVE</option>
-                            <option value="HBD">HBD</option>
-                          </select>
-                          </span> </div>
+                        <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="auctionFTqtyappend">DLUX</span> </div>
                         <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to start the bidding. </div>
                       </div>
                     </div>
