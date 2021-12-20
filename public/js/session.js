@@ -56,7 +56,7 @@ function updateprogress(id) {
  function checkCookie() {
      console.log('Checking for login')
      user = localStorage.getItem('user');
-     if(getCookie('user') != user){
+     if(user && getCookie('user') != user){
          console.log('cookie is not set, refreshing')
          setCookie('user', user, 30)
          window.location.reload()
