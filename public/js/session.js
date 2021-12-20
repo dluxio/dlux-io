@@ -56,6 +56,11 @@ function updateprogress(id) {
  function checkCookie() {
      console.log('Checking for login')
      user = localStorage.getItem('user');
+     if(getCookie('user') != user){
+         console.log('cookie is not set, refreshing')
+         setCookie('user', user, 30)
+         window.location.reload()
+     }
      console.log('user=' + user)
      if (user != null) {
 /*
@@ -999,7 +1004,7 @@ function setPFP(setname, uid, callback){
                                      window.localStorage.setItem(storables[i], JSON.stringify(itr[storables[i]]))
                                  }
                                  loginDismiss()
-                                 setCookie('user', itr.hiveid, 5)
+                                 setCookie('user', itr.hiveid, 30)
                                  resolve(this.jwt)
                              })
                      })
