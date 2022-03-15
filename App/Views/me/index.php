@@ -7,9 +7,9 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-<!--page specific--> 
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script> 
-<script src="/js/dex.js"></script> 
+<!--page specific-->
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
+<script src="/js/dex.js"></script>
 <script src="/js/me.js"></script>
 <style>
 @media (min-width: 1200px) {
@@ -61,6 +61,7 @@ include_once( $path );
 		max-width: 160px;
 	}
 </style>
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="index" is="dmx-app">
 <?php
@@ -79,10 +80,11 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"tradefts\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/trades/fts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"tradenfts\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/trades/nfts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"claimdlux\" is=\"dmx-fetch\" url=\"https://token.dlux.io/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
 } else {
 };
 ?>
-
+<dmx-api-datasource id="claimdlux" is="dmx-fetch" url="https://token.dlux.io/@markegiles"></dmx-api-datasource>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
@@ -236,9 +238,23 @@ if ( isset( $author ) ) {
           <div role="tabpanel" class="tab-pane fade show active" id="dlux" aria-labelledby="dluxtab">
             <div class="container">
               <div class="jumbotron pt-4 bg-darker">
-                <h1 class="display-5">Introducing DLUX OpenToken</h1>
+                <h1 class="display-5">DLUX OpenToken</h1>
                 <p class="lead ">The smartest, most decentralized token powering games, apps, and the multiverse</p>
                 <hr class="my-4 bg-light">
+				<div class="clearfix">
+                  <div class="float-left">
+                    <h4>Claim DLUX</h4>
+                    <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
+                  </div>
+                  <div id="claimdluxbtn" class="float-right text-right">
+                    <h5 id="dluxclaim">{{((claimdlux.data.claim)/1000).formatNumber(3,'.',',')}} DLUX</h5>
+                    <div class="btn-group" role="group" aria-label="DLUX Claim">
+                      <button type="button" class="btn btn-info mr-half"><i class="fas fa-coin"></i>Claim</button>
+                      
+                    </div>
+                  </div>
+                </div>
+				  <hr class="my-4 bg-light">
                 <div class="clearfix">
                   <div class="float-left">
                     <h4>DLUX Token</h4>
