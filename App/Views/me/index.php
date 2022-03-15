@@ -247,7 +247,7 @@ if ( isset( $author ) ) {
                     <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
                   </div>
                   <div id="claimdluxbtn" class="float-right text-right">
-                    <h5 id="dluxclaim">{{claimdlux.data.claim}} DLUX</h5>
+                    <h5 id="dluxclaim">{{((claimdlux.data.claim)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Claim">
                       <button type="button" class="btn btn-info mr-half"><i class="fas fa-coin"></i>Claim</button>
                       
