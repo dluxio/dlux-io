@@ -80,7 +80,7 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"tradefts\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/trades/fts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"tradenfts\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/trades/nfts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"claimdlux\" is=\"dmx-fetch\" url=\"https://token.dlux.io/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"claimdlux\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
 } else {
 };
 ?>
