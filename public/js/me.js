@@ -106,7 +106,7 @@ function claim(gov) {
             "required_posting_auths": 0,
             "id": "dlux_claim",
             "json": JSON.stringify({
-                gov: gov ? true : false
+                gov: gov == 'true' ? true : false
             })
         }
     console.log(params)
