@@ -2544,11 +2544,11 @@ dmx.config({
                 "name": "next_vesting_withdrawal"
               },
               {
-                "type": "text",
+                "type": "number",
                 "name": "withdrawn"
               },
               {
-                "type": "text",
+                "type": "number",
                 "name": "to_withdraw"
               },
               {
@@ -2572,7 +2572,7 @@ dmx.config({
                 "name": "proxied_vsf_votes",
                 "sub": [
                   {
-                    "type": "number",
+                    "type": "text",
                     "name": "$value"
                   }
                 ]
@@ -2677,6 +2677,10 @@ dmx.config({
           },
           {
             "type": "text",
+            "name": "connection"
+          },
+          {
+            "type": "text",
             "name": "content-length"
           },
           {
@@ -2694,10 +2698,6 @@ dmx.config({
           {
             "type": "text",
             "name": "server"
-          },
-          {
-            "type": "text",
-            "name": "via"
           },
           {
             "type": "text",
