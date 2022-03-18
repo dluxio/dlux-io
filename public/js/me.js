@@ -100,6 +100,7 @@ function dluxgovup(amt) {
 }
 
 function claim(gov) {
+    console.log({gov})
     let params = {
             "required_auths": [user],
             "required_posting_auths": 0,
