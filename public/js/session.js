@@ -169,130 +169,130 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
     usr.hbd = { balance: usr.hive.hbd_balance }
     User.hbd = { balance: usr.hive.hbd_balance }
 
-    document.getElementById('hiveactions').firstElementChild.innerText = usr.hive.balance
-    document.getElementById('hbdactions').firstElementChild.innerText = usr.hive.hbd_balance
-    document.getElementById('savingsactions').firstElementChild.innerText = User.hive.savings_hbd_balance
-    document.getElementById('govbal').innerText = `${parseFloat((User.dlux.gov)/ 1000).toFixed(3).commafy()} DLUXG`
+    //document.getElementById('hiveactions').firstElementChild.innerText = usr.hive.balance
+    //document.getElementById('hbdactions').firstElementChild.innerText = usr.hive.hbd_balance
+    //document.getElementById('savingsactions').firstElementChild.innerText = User.hive.savings_hbd_balance
+    //document.getElementById('govbal').innerText = `${parseFloat((User.dlux.gov)/ 1000).toFixed(3).commafy()} DLUXG`
     if(User.dlux.heldCollateral){
-        document.getElementById('escrowbal').innerHTML = `(${parseFloat(User.dlux.heldCollateral / 1000).toFixed(3).commafy()} DLUXG)<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapse"><i class="fas fa-search ml-2"></i></a>`
+        //document.getElementById('escrowbal').innerHTML = `(${parseFloat(User.dlux.heldCollateral / 1000).toFixed(3).commafy()} DLUXG)<a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="collapse"><i class="fas fa-search ml-2"></i></a>`
     } else {
-        document.getElementById('escrowbal').innerHTML = ``
+        //document.getElementById('escrowbal').innerHTML = ``
     }
-    document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(parseInt(User.dlux.balance)/1000),'powerupdluxamount')">${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3).commafy()} DLUX</a>):`
-    document.getElementById('dluxactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3).commafy()} DLUX`
-    document.getElementById('dluxpactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3).commafy()} DLUX`
-    document.getElementById('hivepactions').firstElementChild.innerText = parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)).toFixed(3).commafy() + ' HP'
+    //document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(parseInt(User.dlux.balance)/1000),'powerupdluxamount')">${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3).commafy()} DLUX</a>):`
+    //document.getElementById('dluxactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.balance)/1000).toFixed(3).commafy()} DLUX`
+    //document.getElementById('dluxpactions').firstElementChild.innerText = `${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3).commafy()} DLUX`
+    //document.getElementById('hivepactions').firstElementChild.innerText = parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)).toFixed(3).commafy() + ' HP'
 
-    document.getElementById('hiveval').firstElementChild.innerText = `$${parseFloat((parseFloat(( parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)) + parseFloat(usr.hive.balance))*usr.price).toFixed(2)}`
-    document.getElementById('dluxval').firstElementChild.innerText = `$${parseFloat(((parseInt(usr.dlux.balance) + parseInt(usr.dlux.gov) + parseInt(usr.dlux.poweredUp))/1000)*parseFloat(usr.dex.markets.hive.tick)*parseFloat(usr.price)).toFixed(2)}`
-    document.getElementById('buylink').addEventListener("click", function() {
-        User.opts.type = 'Buy'
-        dexmodal("hive", "Buy");
-    })
+    //document.getElementById('hiveval').firstElementChild.innerText = `$${parseFloat((parseFloat(( parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)) + parseFloat(usr.hive.balance))*usr.price).toFixed(2)}`
+    //document.getElementById('dluxval').firstElementChild.innerText = `$${parseFloat(((parseInt(usr.dlux.balance) + parseInt(usr.dlux.gov) + parseInt(usr.dlux.poweredUp))/1000)*parseFloat(usr.dex.markets.hive.tick)*parseFloat(usr.price)).toFixed(2)}`
+    //document.getElementById('buylink').addEventListener("click", function() {
+    //    User.opts.type = 'Buy'
+    //    dexmodal("hive", "Buy");
+    //})
     //power down modal ops
-    document.getElementById('dluxpowerdownModalButton').addEventListener("click", function() {
-        document.getElementById('powerdowndluxsubmit').innerText = `Powerdown`
-        document.getElementById('powerdownDluxTitle').innerText = `Power Down Tokens`
-        var el = document.getElementById('powerdowndluxsubmit'),
-            elClone = el.cloneNode(true);
-            el.parentNode.replaceChild(elClone, el);
-        document.getElementById('powerdowndluxsubmit').addEventListener('click', function (){
-            powerDown('powerdowndluxamount', 'powerdowndluxto', 'powerdowndluxmemo')
-        })
-        document.getElementById('dluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerdowndluxamount')">${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3).commafy()} DLUX</a>):`
-    })
+    //document.getElementById('dluxpowerdownModalButton').addEventListener("click", function() {
+        //document.getElementById('powerdowndluxsubmit').innerText = `Powerdown`
+        //document.getElementById('powerdownDluxTitle').innerText = `Power Down Tokens`
+        //var el = document.getElementById('powerdowndluxsubmit'),
+    //         elClone = el.cloneNode(true);
+    //         el.parentNode.replaceChild(elClone, el);
+    //     document.getElementById('powerdowndluxsubmit').addEventListener('click', function (){
+    //         powerDown('powerdowndluxamount', 'powerdowndluxto', 'powerdowndluxmemo')
+    //     })
+    //     document.getElementById('dluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerdowndluxamount')">${parseFloat(parseInt(usr.dlux.poweredUp)/1000).toFixed(3).commafy()} DLUX</a>):`
+    // })
     console.log('Power Down EL added')
-    document.getElementById('dluxgovdownModalButton').addEventListener("click", function() {
-        document.getElementById('powerdownDluxTitle').innerText = `Unlock Governance Tokens`
-        document.getElementById('powerdowndluxsubmit').innerText = `Unlock`
-        var el = document.getElementById('powerdowndluxsubmit'), // should clone without event listeners 
-            elClone = el.cloneNode(true);
-            el.parentNode.replaceChild(elClone, el);
-        document.getElementById('powerdowndluxsubmit').addEventListener('click', function (){
-            govDown('powerdowndluxamount', 'powerdowndluxto', 'powerdowndluxmemo')
-        })
-        document.getElementById('dluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.gov/1000),'powerdowndluxamount')">${parseFloat(parseInt(usr.dlux.gov)/1000).toFixed(3).commafy()} DLUX</a>):`
-    })
+    // document.getElementById('dluxgovdownModalButton').addEventListener("click", function() {
+    //     document.getElementById('powerdownDluxTitle').innerText = `Unlock Governance Tokens`
+    //     document.getElementById('powerdowndluxsubmit').innerText = `Unlock`
+    //     var el = document.getElementById('powerdowndluxsubmit'), // should clone without event listeners 
+    //         elClone = el.cloneNode(true);
+    //         el.parentNode.replaceChild(elClone, el);
+    //     document.getElementById('powerdowndluxsubmit').addEventListener('click', function (){
+    //         govDown('powerdowndluxamount', 'powerdowndluxto', 'powerdowndluxmemo')
+    //     })
+    //     document.getElementById('dluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.gov/1000),'powerdowndluxamount')">${parseFloat(parseInt(usr.dlux.gov)/1000).toFixed(3).commafy()} DLUX</a>):`
+    // })
 
 
     // lock gov tokens
-    document.getElementById('freezedluxbutton').addEventListener("click", function() {
-        document.getElementById('powerdluxsubmitbutton').addEventListener("click", function() {
-            dluxgovup('powerupdluxamount')
-        })
-        document.getElementById('powerDluxTitle').innerText = `Lock DLUX for Governance Ops`
-        document.getElementById('sendformunits').innerText = 'DLUX'
-        document.getElementById('dluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3).commafy()} DLUX</a>):`
-        document.getElementById('powerupdluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
-    })
+    // document.getElementById('freezedluxbutton').addEventListener("click", function() {
+    //     document.getElementById('powerdluxsubmitbutton').addEventListener("click", function() {
+    //         dluxgovup('powerupdluxamount')
+    //     })
+    //     document.getElementById('powerDluxTitle').innerText = `Lock DLUX for Governance Ops`
+    //     document.getElementById('sendformunits').innerText = 'DLUX'
+    //     document.getElementById('dluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3).commafy()} DLUX</a>):`
+    //     document.getElementById('powerupdluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
+    // })
 
     console.log('running check')
-    document.getElementById('senddluxmodalbutton').addEventListener("click", function() {
-        document.getElementById('sendmodalsend').addEventListener("click", function() {
-            dluxsend('senddluxto', 'senddluxamount', 'senddluxmemo')
-        })
-        console.log('execution check')
-        document.getElementById('sendDluxTitle').innerText = `Send DLUX`
-        document.getElementById('sendformunits').innerText = 'DLUX'
-        document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'senddluxamount')">${parseFloat(User.dlux.balance/1000).toFixed(3).commafy()} DLUX</a>):`
-        document.getElementById('senddluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000).toFixed(3).commafy()
-    })
+    // document.getElementById('senddluxmodalbutton').addEventListener("click", function() {
+    //     document.getElementById('sendmodalsend').addEventListener("click", function() {
+    //         dluxsend('senddluxto', 'senddluxamount', 'senddluxmemo')
+    //     })
+    //     console.log('execution check')
+    //     document.getElementById('sendDluxTitle').innerText = `Send DLUX`
+    //     document.getElementById('sendformunits').innerText = 'DLUX'
+    //     document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'senddluxamount')">${parseFloat(User.dlux.balance/1000).toFixed(3).commafy()} DLUX</a>):`
+    //     document.getElementById('senddluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000).toFixed(3).commafy()
+    // })
     console.log('running check')
-    document.getElementById('powerupdluxbutton').addEventListener("click", function() {
-        document.getElementById('powerdluxsubmitbutton').addEventListener("click", function() {
-            powerUp('powerupdluxamount', 'powerupdluxto', 'powerupdluxmemo')
-        })
-        $("#powerupdluxmemo").addClass("d-none");
-        document.getElementById('powerDluxTitle').innerText = `Power Up DLUX`
-        document.getElementById('sendformunits').innerText = 'DLUX'
-        document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3).commafy()} DLUX</a>):`
-        document.getElementById('powerupdluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
-    })
+    // document.getElementById('powerupdluxbutton').addEventListener("click", function() {
+    //     document.getElementById('powerdluxsubmitbutton').addEventListener("click", function() {
+    //         powerUp('powerupdluxamount', 'powerupdluxto', 'powerupdluxmemo')
+    //     })
+    //     $("#powerupdluxmemo").addClass("d-none");
+    //     document.getElementById('powerDluxTitle').innerText = `Power Up DLUX`
+    //     document.getElementById('sendformunits').innerText = 'DLUX'
+    //     document.getElementById('powerdluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000),'powerupdluxamount')">${parseFloat(parseInt(User.dlux.balance)/1000).toFixed(3).commafy()} DLUX</a>):`
+    //     document.getElementById('powerupdluxamount').max = parseFloat(parseInt(User.dlux.balance) / 1000)
+    // })
     console.log('running check')
-    document.getElementById('poweruphivebutton').addEventListener("click", function() {
-        document.getElementById('sendmodalsend').addEventListener("click", function() {
-            hivepower('senddluxto', 'senddluxamount', 'senddluxmemo')
-        })
-        console.log('triggered')
-        $("#senddluxmemo").addClass("d-none");
-        document.getElementById('sendDluxTitle').innerText = `Power up HIVE`
-        document.getElementById('sendformunits').innerText = 'HIVE'
-        document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.hive.balance),'senddluxamount')">${User.hive.balance}</a>):`
-        document.getElementById('senddluxamount').max = parseFloat(User.hive.balance)
-    })
+    // document.getElementById('poweruphivebutton').addEventListener("click", function() {
+    //     document.getElementById('sendmodalsend').addEventListener("click", function() {
+    //         hivepower('senddluxto', 'senddluxamount', 'senddluxmemo')
+    //     })
+    //     console.log('triggered')
+    //     $("#senddluxmemo").addClass("d-none");
+    //     document.getElementById('sendDluxTitle').innerText = `Power up HIVE`
+    //     document.getElementById('sendformunits').innerText = 'HIVE'
+    //     document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.hive.balance),'senddluxamount')">${User.hive.balance}</a>):`
+    //     document.getElementById('senddluxamount').max = parseFloat(User.hive.balance)
+    // })
     console.log('running check')
-    document.getElementById('govtopowerbutton').addEventListener("click", function() {
-        document.getElementById('sendmodalsend').addEventListener("click", function() {
-            govtopower('senddluxto', 'senddluxamount', 'senddluxmemo')
-        })
-        console.log('triggered')
-        $("#senddluxmemo").addClass("d-none");
-        document.getElementById('sendDluxTitle').innerText = `Convert DLUX Gov to DLUX Power`
-        document.getElementById('sendformunits').innerText = 'GOV'
-        document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.gov.balance),'senddluxamount')">${User.gov.balance}</a>):`
-        document.getElementById('senddluxamount').max = parseFloat(User.gov.balance) / 1000
-    })
-    console.log('running check')
-    document.getElementById('sendhivemodalbutton').addEventListener("click", function() {
-        document.getElementById('sendmodalsend').addEventListener("click", function() {
-            hivesend('senddluxto', 'senddluxamount', 'senddluxmemo')
-        })
-        document.getElementById('sendDluxTitle').innerText = `Send HIVE`
-        document.getElementById('sendformunits').innerText = 'HIVE'
-        document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.hive.balance),'senddluxamount')">${User.hive.balance}</a>):`
-        document.getElementById('senddluxamount').max = parseFloat(usr.hive.balance)
-    })
-    console.log('running check')
-    document.getElementById('sendhbdmodalbutton').addEventListener("click", function() {
-        document.getElementById('sendmodalsend').addEventListener("click", function() {
-            hbdsend('senddluxto', 'senddluxamount', 'senddluxmemo')
-        })
-        document.getElementById('sendDluxTitle').innerText = `Send HBD`
-        document.getElementById('sendformunits').innerText = 'HBD'
-        document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(usr.hive.hbd_balance),'senddluxamount')">${User.hbd.balance}</a>):`
-        document.getElementById('senddluxamount').max = parseFloat(usr.hive.hbd_balance)
-    })
-    console.log('running check')
+    // document.getElementById('govtopowerbutton').addEventListener("click", function() {
+    //     document.getElementById('sendmodalsend').addEventListener("click", function() {
+    //         govtopower('senddluxto', 'senddluxamount', 'senddluxmemo')
+    //     })
+    //     console.log('triggered')
+    //     $("#senddluxmemo").addClass("d-none");
+    //     document.getElementById('sendDluxTitle').innerText = `Convert DLUX Gov to DLUX Power`
+    //     document.getElementById('sendformunits').innerText = 'GOV'
+    //     document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.gov.balance),'senddluxamount')">${User.gov.balance}</a>):`
+    //     document.getElementById('senddluxamount').max = parseFloat(User.gov.balance) / 1000
+    // })
+    // console.log('running check')
+    // document.getElementById('sendhivemodalbutton').addEventListener("click", function() {
+    //     document.getElementById('sendmodalsend').addEventListener("click", function() {
+    //         hivesend('senddluxto', 'senddluxamount', 'senddluxmemo')
+    //     })
+    //     document.getElementById('sendDluxTitle').innerText = `Send HIVE`
+    //     document.getElementById('sendformunits').innerText = 'HIVE'
+    //     document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.hive.balance),'senddluxamount')">${User.hive.balance}</a>):`
+    //     document.getElementById('senddluxamount').max = parseFloat(usr.hive.balance)
+    // })
+    // console.log('running check')
+    // document.getElementById('sendhbdmodalbutton').addEventListener("click", function() {
+    //     document.getElementById('sendmodalsend').addEventListener("click", function() {
+    //         hbdsend('senddluxto', 'senddluxamount', 'senddluxmemo')
+    //     })
+    //     document.getElementById('sendDluxTitle').innerText = `Send HBD`
+    //     document.getElementById('sendformunits').innerText = 'HBD'
+    //     document.getElementById('senddluxamountlab').innerHTML = `Amount (Balance <a href="#" onClick="insertBal(parseFloat(usr.hive.hbd_balance),'senddluxamount')">${User.hbd.balance}</a>):`
+    //     document.getElementById('senddluxamount').max = parseFloat(usr.hive.hbd_balance)
+    // })
+    // console.log('running check')
     document.getElementById('updateNode').addEventListener("click", function() {
         updateNode()
     })
