@@ -238,7 +238,7 @@ if ( isset( $author ) ) {
           <div role="tabpanel" class="tab-pane fade show active" id="dlux" aria-labelledby="dluxtab">
             <div class="container">
               <div class="jumbotron pt-4 bg-darker">
-                <h1 class="display-5">DLUX Token<small>Decentralized Limitless User Experiences</small></h1>
+                <h1 class="display-5">DLUX Token</h1>
                 <p class="lead ">A completely open source foundation for p2p games, apps, and experiences.</p>
                
 				<div class="clearfix" dmx-show="usertoken.data.claim > 0">
