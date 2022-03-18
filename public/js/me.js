@@ -99,6 +99,22 @@ function dluxgovup(amt) {
         .catch(e => { feedback(e) })
 }
 
+function claim(gov) {
+    let amount = parseInt(document.getElementById(amt).value * 1000),
+        params = {
+            "required_auths": [user],
+            "required_posting_auths": 0,
+            "id": "dlux_claim",
+            "json": JSON.stringify({
+                gov: gov ? true : false
+            })
+        }
+    console.log(params)
+    reqsign(['custom_json', params], ['active', user])
+        .then(r => { statusWaiter (r, `Trying to gov up...`);feedback(r) })
+        .catch(e => { feedback(e) })
+}
+
 function govDown(amt, to, memo) {
     let amount = parseInt(document.getElementById(amt).value * 1000),
         params = {

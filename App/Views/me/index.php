@@ -249,7 +249,7 @@ if ( isset( $author ) ) {
                   <div id="claimdluxbtn" class="float-right text-right">
                     <h5 id="dluxclaim">{{((claimdlux.data.claim)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Claim">
-                      <button type="button" class="btn btn-info mr-half"><i class="fas fa-coin"></i>Claim</button>
+                      <button type="button" class="btn btn-info mr-half" onclick="claim()"><i class="fas fa-coin"></i>Claim</button>
                       
                     </div>
                   </div>

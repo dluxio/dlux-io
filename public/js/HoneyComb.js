@@ -51,15 +51,18 @@ class HoneyComb {
         return this.fallbacks
     }
     optimize(){
-        if()
-        this.fallbacks.sort((a,b) => a.ping - b.ping)
-        this.domain = this.fallbacks[0].domain
+        if(this.opt){
+            this.fallbacks.sort((a,b) => a.ping - b.ping)
+            this.domain = this.fallbacks[0].domain
+        }
     }
+    /*
     set domain(domain){
         this.domain = domain.substr(domain.length-2) === '/' ? domain : `${domain}/`
         this.ready = false
         this.init()
     }
+    */
     get ready(){
         return this.ready
     }
