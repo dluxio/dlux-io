@@ -87,7 +87,8 @@ if ( isset( $author ) ) {
 } else {
 };
 ?>
-
+<!--<dmx-api-datasource id="accountapi" is="dmx-fetch" url="https://token.dlux.io/hapi/condenser_api/get_accounts" dmx-param:0="markegiles"></dmx-api-datasource>-->
+<dmx-api-datasource id="hivestatsapi" is="dmx-fetch" url="https://token.dlux.io/hapi/condenser_api/get_dynamic_global_properties"></dmx-api-datasource>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
@@ -408,7 +409,23 @@ if ( isset( $author ) ) {
                     </ul>
                   </div>
                   <div id="hivepactions" class="float-right text-right">
-                    <h5 id="hpbal">0 HP</h5>
+                    <h5 id="hpbal">
+						parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)).toFixed(3).commafy() 
+						<br> 
+						{{parseFloat(hivestatsapi.data.result.total_vesting_fund_hive)}} 
+						<br>
+						user {{accountapi.data.result[0].vesting_shares}} 
+						<br>
+						shares {{hivestatsapi.data.result.total_vesting_shares.parseFloat()}} 
+						
+						<br>
+						fund {{hivestatsapi.data.result.total_vesting_fund_hive.parseFloat()}}
+						<br>
+						{{accountapi.data.result[0].vesting_shares}}
+						<br>
+						{{hivestatsapi.data.result.total_vesting_shares}}
+						<br>
+						 HP</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Actions">
                       <button type="button" class="btn btn-info mr-half" style="pointer-events: none;" disabled><i class="fas fa-user-friends mr-2"></i>Delegate</button>
                       <div class="btn-group" role="group">
@@ -446,7 +463,7 @@ if ( isset( $author ) ) {
                     <p class="text-white-50 mb-0">A 3 day waiting period is imposed on withdrawl</p>
                   </div>
                   <div id="savingsactions" class="float-right text-right">
-                    <h5 id="savbal">0 HBD</h5>
+                    <h5 id="savbal">{{accountapi.data.result[0].savings_hbd_balance}} HBD</h5>
                   </div>
                 </div>
                 <hr class="my-4 bg-light">

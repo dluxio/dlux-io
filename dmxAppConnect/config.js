@@ -2677,10 +2677,6 @@ dmx.config({
           },
           {
             "type": "text",
-            "name": "connection"
-          },
-          {
-            "type": "text",
             "name": "content-length"
           },
           {
@@ -3485,6 +3481,246 @@ dmx.config({
           {
             "type": "text",
             "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          }
+        ]
+      }
+    ],
+    "hivestatsapi": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "number",
+            "name": "id"
+          },
+          {
+            "type": "text",
+            "name": "jsonrpc"
+          },
+          {
+            "type": "object",
+            "name": "result",
+            "sub": [
+              {
+                "type": "number",
+                "name": "head_block_number"
+              },
+              {
+                "type": "text",
+                "name": "head_block_id"
+              },
+              {
+                "type": "text",
+                "name": "time"
+              },
+              {
+                "type": "text",
+                "name": "current_witness"
+              },
+              {
+                "type": "number",
+                "name": "total_pow"
+              },
+              {
+                "type": "number",
+                "name": "num_pow_witnesses"
+              },
+              {
+                "type": "text",
+                "name": "virtual_supply"
+              },
+              {
+                "type": "text",
+                "name": "current_supply"
+              },
+              {
+                "type": "text",
+                "name": "init_hbd_supply"
+              },
+              {
+                "type": "text",
+                "name": "current_hbd_supply"
+              },
+              {
+                "type": "text",
+                "name": "total_vesting_fund_hive"
+              },
+              {
+                "type": "text",
+                "name": "total_vesting_shares"
+              },
+              {
+                "type": "text",
+                "name": "total_reward_fund_hive"
+              },
+              {
+                "type": "text",
+                "name": "total_reward_shares2"
+              },
+              {
+                "type": "text",
+                "name": "pending_rewarded_vesting_shares"
+              },
+              {
+                "type": "text",
+                "name": "pending_rewarded_vesting_hive"
+              },
+              {
+                "type": "number",
+                "name": "hbd_interest_rate"
+              },
+              {
+                "type": "number",
+                "name": "hbd_print_rate"
+              },
+              {
+                "type": "number",
+                "name": "maximum_block_size"
+              },
+              {
+                "type": "number",
+                "name": "required_actions_partition_percent"
+              },
+              {
+                "type": "number",
+                "name": "current_aslot"
+              },
+              {
+                "type": "text",
+                "name": "recent_slots_filled"
+              },
+              {
+                "type": "number",
+                "name": "participation_count"
+              },
+              {
+                "type": "number",
+                "name": "last_irreversible_block_num"
+              },
+              {
+                "type": "number",
+                "name": "vote_power_reserve_rate"
+              },
+              {
+                "type": "number",
+                "name": "delegation_return_period"
+              },
+              {
+                "type": "number",
+                "name": "reverse_auction_seconds"
+              },
+              {
+                "type": "number",
+                "name": "available_account_subsidies"
+              },
+              {
+                "type": "number",
+                "name": "hbd_stop_percent"
+              },
+              {
+                "type": "number",
+                "name": "hbd_start_percent"
+              },
+              {
+                "type": "text",
+                "name": "next_maintenance_time"
+              },
+              {
+                "type": "text",
+                "name": "last_budget_time"
+              },
+              {
+                "type": "text",
+                "name": "next_daily_maintenance_time"
+              },
+              {
+                "type": "number",
+                "name": "content_reward_percent"
+              },
+              {
+                "type": "number",
+                "name": "vesting_reward_percent"
+              },
+              {
+                "type": "number",
+                "name": "sps_fund_percent"
+              },
+              {
+                "type": "text",
+                "name": "sps_interval_ledger"
+              },
+              {
+                "type": "number",
+                "name": "downvote_pool_percent"
+              },
+              {
+                "type": "number",
+                "name": "current_remove_threshold"
+              },
+              {
+                "type": "number",
+                "name": "early_voting_seconds"
+              },
+              {
+                "type": "number",
+                "name": "mid_voting_seconds"
+              },
+              {
+                "type": "number",
+                "name": "max_consecutive_recurrent_transfer_failures"
+              },
+              {
+                "type": "number",
+                "name": "max_recurrent_transfer_end_date"
+              },
+              {
+                "type": "number",
+                "name": "min_recurrent_transfers_recurrence"
+              },
+              {
+                "type": "number",
+                "name": "max_open_recurrent_transfers"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "connection"
           },
           {
             "type": "text",
