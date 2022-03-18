@@ -71,7 +71,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
           <div id="userdpwr" class="mx-4 text-info">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} DPWR</div>
           <div id="userdgov" class="mx-4 text-primary">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} DGOV</div>
           <div id="userhive" class="mx-4 text-danger">{{accountapi.data.result[0].balance}}</div>
-          <div id="userhive" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
+          <div id="userhbd" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
         </div>
       </div>
     </div>
