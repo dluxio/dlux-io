@@ -256,7 +256,7 @@ if ( isset( $author ) ) {
 					    <span class="small" dmx-hide="govcheck.checked" >50% Liquid | 50% Power</span>
 					<span class="small" dmx-show="govcheck.checked">50% Liquid | 50% Gov</span>
 						  </div>
-					  <div>
+					  <div dmx-show="usertoken.data.gov > 0">
 					    <div class="input-group mb-3">
 					      <div class="input-group-prepend">
 					        <div class="input-group-text">
@@ -275,7 +275,7 @@ if ( isset( $author ) ) {
                     <p class="text-white-50">The utility token for content distribution and smart contracts, also called a smart media token (SMT)</p>
                   </div>
                   <div id="dluxactions" class="float-right text-right">
-                    <h5 id="dluxbalance">{{usertoken.data.balance}} DLUX</h5>
+                    <h5 id="dluxbalance">{{usertoken.data.balance.formatNumber(3,'.',',')}} DLUX</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Actions">
                       <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="senddluxmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
                       <div class="btn-group" role="group">
@@ -301,7 +301,7 @@ if ( isset( $author ) ) {
                     </ul>
                   </div>
                   <div id="dluxpactions" class="float-right text-right">
-                    <h5 id="pwrbalance">{{usertoken.data.poweredup}} DLUX</h5>
+                    <h5 id="pwrbalance">{{usertoken.data.poweredUp.formatNumber(3,'.',',')}} DLUX</h5>
                     <a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white d-none" style="text-decoration: none">
                     <h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
                     </a>
@@ -338,7 +338,7 @@ if ( isset( $author ) ) {
                     </ul>
                   </div>
                   <div id="dluxgactions" class="float-right text-right">
-                    <h5 id="govbalance">{{usertoken.data.gov}} DLUX</h5>
+                    <h5 id="govbalance">{{usertoken.data.gov.formatNumber(3,'.',',')}} DLUX</h5>
                     <a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
                     <h6 id="escrowbal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
                     </a>
