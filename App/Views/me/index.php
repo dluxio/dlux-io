@@ -246,12 +246,25 @@ if ( isset( $author ) ) {
                     <h4>Claim DLUX</h4>
                     <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
                   </div>
-                  <div id="claimdluxbtn" class="float-right text-right">
+                  <div id="claimdluxbtn" class="float-right text-right d-column">
                     <h5 id="dluxclaim">{{((claimdlux.data.claim)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Claim">
                       <button type="button" class="btn btn-info mr-half"><i class="fas fa-coin"></i>Claim</button>
-                      
                     </div>
+					  <div>
+					    <span class="small" dmx-hide="govcheck.checked" >50% Liquid | 50% Power</span>
+					<span class="small" dmx-show="govcheck.checked">50% Liquid | 50% Gov</span>
+						  </div>
+					  <div>
+					    <div class="input-group mb-3">
+					      <div class="input-group-prepend">
+					        <div class="input-group-text">
+					          <input id="govcheck" type="checkbox" aria-label="Claim GOV instead of PWR">
+				            </div>
+				          </div>
+					      <input type="text" class="form-control" placeholder="Claim GOV instead of PWR">
+				        </div>
+                      </div>
                   </div>
                 </div>
 				  <hr class="my-4 bg-light">
