@@ -260,11 +260,10 @@ if ( isset( $author ) ) {
 					    <div class="input-group mb-3">
 					      <div class="input-group-prepend">
 					        <div class="input-group-text">
-					          <input id="govcheck" type="checkbox" aria-label="Claim GOV not PWR">
-
+					          <input id="govcheck" class="btn-outline-secondary" type="checkbox" aria-label="Claim GOV not PWR">
 				            </div>
 				          </div>
-					      <input type="text" placeholder="Claim GOV not PWR">
+					      <input type="text" class="bg-dark border-dark text-white form-control" placeholder="Claim GOV not PWR">
 				        </div>
                       </div>
                   </div>
