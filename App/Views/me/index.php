@@ -80,7 +80,7 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"tradefts\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/trades/fts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"tradenfts\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/trades/nfts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"claimdlux\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"usertoken\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
 } else {
 };
 ?>
@@ -240,18 +240,32 @@ if ( isset( $author ) ) {
               <div class="jumbotron pt-4 bg-darker">
                 <h1 class="display-5">DLUX OpenToken</h1>
                 <p class="lead ">The smartest, most decentralized token powering games, apps, and the multiverse</p>
-                <hr class="my-4 bg-light">
-				<div class="clearfix">
+               
+				<div class="clearfix" dmx-show="usertoken.data.claim > 0">
+					 <hr class="my-4 bg-light">
                   <div class="float-left">
                     <h4>Claim DLUX</h4>
                     <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
                   </div>
-                  <div id="claimdluxbtn" class="float-right text-right">
-                    <h5 id="dluxclaim">{{((claimdlux.data.claim)/1000).formatNumber(3,'.',',')}} DLUX</h5>
+                  <div id="claimdluxbtn" class="float-right text-right d-column">
+                    <h5 id="dluxclaim">{{((usertoken.data.claim)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Claim">
-                      <button type="button" class="btn btn-info mr-half" onclick="claim()"><i class="fas fa-coin"></i>Claim</button>
-                      
+                      <button type="submit" class="btn btn-info mr-half" dmx-on:click="claim('{{govcheck.checked}}')"><i class="fas fa-coin"></i>Claim</button>
                     </div>
+					  <div>
+					    <span class="small" dmx-hide="govcheck.checked" >50% Liquid | 50% Power</span>
+					<span class="small" dmx-show="govcheck.checked">50% Liquid | 50% Gov</span>
+						  </div>
+					  <div dmx-show="usertoken.data.gov > 0">
+					    <div class="input-group mb-3">
+					      <div class="input-group-prepend">
+					        <div class="input-group-text">
+					          <input id="govcheck" type="checkbox" aria-label="Claim GOV instead of PWR">
+				            </div>
+				          </div>
+					      <input type="text" class="form-control" placeholder="Claim GOV instead of PWR">
+				        </div>
+                      </div>
                   </div>
                 </div>
 				  <hr class="my-4 bg-light">
@@ -261,7 +275,7 @@ if ( isset( $author ) ) {
                     <p class="text-white-50">The utility token for content distribution and smart contracts, also called a smart media token (SMT)</p>
                   </div>
                   <div id="dluxactions" class="float-right text-right">
-                    <h5 id="dluxbal">0 DLUX</h5>
+                    <h5 id="dluxbalance">{{usertoken.data.balance.formatNumber(3,'.',',')}} DLUX</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Actions">
                       <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="senddluxmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
                       <div class="btn-group" role="group">
@@ -287,7 +301,7 @@ if ( isset( $author ) ) {
                     </ul>
                   </div>
                   <div id="dluxpactions" class="float-right text-right">
-                    <h5 id="pwrbal">0 DLUX</h5>
+                    <h5 id="pwrbalance">{{usertoken.data.poweredUp.formatNumber(3,'.',',')}} DLUX</h5>
                     <a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white d-none" style="text-decoration: none">
                     <h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
                     </a>
@@ -324,7 +338,7 @@ if ( isset( $author ) ) {
                     </ul>
                   </div>
                   <div id="dluxgactions" class="float-right text-right">
-                    <h5 id="govbal">0 DLUX</h5>
+                    <h5 id="govbalance">{{usertoken.data.gov.formatNumber(3,'.',',')}} DLUX</h5>
                     <a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
                     <h6 id="escrowbal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
                     </a>
