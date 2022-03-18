@@ -412,13 +412,13 @@ if ( isset( $author ) ) {
                     <h5 id="hpbal">
 						parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)).toFixed(3).commafy() 
 						<br> 
-						calc: {{((hivestatsapi.data.result.total_vesting_fund_hive.parseFloat())*(accountapi.data.result[0].vesting_shares.parseFloat())}}
+						calc: {{hivestatsapi.data.result.total_vesting_fund_hive.parseFloat()*accountapi.data.result[0].vesting_shares.parseFloat()}}
 						<br>
 						hive vesting fund {{hivestatsapi.data.result.total_vesting_fund_hive}} 
 						<br>
 						fund.parseFloat() {{hivestatsapi.data.result.total_vesting_fund_hive.parseFloat()}}
 						<br>
-						user vesting shares {{accountapi.data.result[0].vesting_shares}} 
+						user shares {{accountapi.data.result[0].vesting_shares}} 
 						<br>
 						shares.parseFloat(){{accountapi.data.result[0].vesting_shares.parseFloat()}}
 						<br>
