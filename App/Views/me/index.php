@@ -383,7 +383,7 @@ if ( isset( $author ) ) {
                     <p class="text-white-50">The main token of the chain, often rewarded for content.</p>
                   </div>
                   <div id="hiveactions" class="float-right text-right">
-                    <h5 id="hivebal">{{accountapi.data.result[0].balance}} HIVE</h5>
+                    <h5 id="hivebalance">{{accountapi.data.result[0].balance}} HIVE</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Actions">
                       <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhivemodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
                       <div class="btn-group" role="group">
@@ -427,7 +427,7 @@ if ( isset( $author ) ) {
                     <p class="text-white-50">Also a reward for content, this token is pegged to the US Dollar</p>
                   </div>
                   <div id="hbdactions" class="float-right text-right">
-                    <h5 id="hbdbal">{{accountapi.data.result[0].hbd_balance}} HBD</h5>
+                    <h5 id="hbdbalance">{{accountapi.data.result[0].hbd_balance}} HBD</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Actions">
                       <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhbdmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
                       <div class="btn-group" role="group">
