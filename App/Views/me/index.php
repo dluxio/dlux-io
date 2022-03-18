@@ -240,8 +240,9 @@ if ( isset( $author ) ) {
               <div class="jumbotron pt-4 bg-darker">
                 <h1 class="display-5">DLUX OpenToken</h1>
                 <p class="lead ">The smartest, most decentralized token powering games, apps, and the multiverse</p>
-                <hr class="my-4 bg-light">
-				<div class="clearfix">
+               
+				<div class="clearfix" dmx-show="claimdlux.data.claim > 0">
+					 <hr class="my-4 bg-light">
                   <div class="float-left">
                     <h4>Claim DLUX</h4>
                     <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
