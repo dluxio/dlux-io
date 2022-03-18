@@ -238,7 +238,7 @@ if ( isset( $author ) ) {
           <div role="tabpanel" class="tab-pane fade show active" id="dlux" aria-labelledby="dluxtab">
             <div class="container">
               <div class="jumbotron pt-4 bg-darker">
-                <h1 class="display-5">DLUX Token (<a href="https://hivehoneycomb.com" target="_blank">HoneyComb Architecture</a>)</h1>
+                <h1 class="display-5">DLUX Token (<a href="https://dlux.io/honeycomb">HoneyComb</a>)</h1>
                 <p class="lead ">The smartest, most decentralized token powering games, apps, and the multiverse</p>
                
 				<div class="clearfix" dmx-show="usertoken.data.claim > 0">
