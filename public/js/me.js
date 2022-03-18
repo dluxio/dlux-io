@@ -100,8 +100,7 @@ function dluxgovup(amt) {
 }
 
 function claim(gov) {
-    let amount = parseInt(document.getElementById(amt).value * 1000),
-        params = {
+    let params = {
             "required_auths": [user],
             "required_posting_auths": 0,
             "id": "dlux_claim",
@@ -111,7 +110,7 @@ function claim(gov) {
         }
     console.log(params)
     reqsign(['custom_json', params], ['active', user])
-        .then(r => { statusWaiter (r, `Trying to gov up...`);feedback(r) })
+        .then(r => { statusWaiter (r, `Claiming...`);feedback(r) })
         .catch(e => { feedback(e) })
 }
 
