@@ -74,6 +74,7 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'" . $author . "'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'" . $author . "'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/" . $author . "\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"usertoken\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $author . "\"></dmx-api-datasource>";
 } else if ( isset( $_COOKIE[ 'user' ] ) ) {
   echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
