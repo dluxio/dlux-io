@@ -256,7 +256,7 @@ if ( isset( $author ) ) {
 					    <span class="small" dmx-hide="govcheck.checked" >50% Liquid | 50% Power</span>
 					<span class="small" dmx-show="govcheck.checked">50% Liquid | 50% Gov</span>
 						  </div>
-					  <div dmx-show="usertoken.data.gov > 0">
+					  <div dmx-show="usertoken.data.gov > 0" class="bg-dark text-white">
 					    <div class="input-group mb-3">
 					      <div class="input-group-prepend">
 					        <div class="input-group-text">
