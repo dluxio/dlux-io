@@ -412,19 +412,13 @@ if ( isset( $author ) ) {
                     <h5 id="hpbal">
 						parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)).toFixed(3).commafy() 
 						<br> 
-						calc: {{hivestatsapi.data.result.total_vesting_fund_hive.parseFloat()*accountapi.data.result[0].vesting_shares.parseFloat()}}
+						calc: {{(hivestatsapi.data.result.total_vesting_fund_hive.parseFloat()*accountapi.data.result[0].vesting_shares.parseFloat())/hivestatsapi.data.result.total_vesting_shares.parseFloat()}}
 						<br>
-						hive vesting fund {{hivestatsapi.data.result.total_vesting_fund_hive}} 
-						<br>
-						fund.parseFloat() {{hivestatsapi.data.result.total_vesting_fund_hive.parseFloat()}}
+						total fund {{hivestatsapi.data.result.total_vesting_fund_hive}} 
 						<br>
 						user shares {{accountapi.data.result[0].vesting_shares}} 
 						<br>
-						shares.parseFloat(){{accountapi.data.result[0].vesting_shares.parseFloat()}}
-						<br>
-						hive shares {{hivestatsapi.data.result.total_vesting_shares}}
-						<br>
-						total shares.parseFloat() {{hivestatsapi.data.result.total_vesting_shares.parseFloat()}}
+						total shares {{hivestatsapi.data.result.total_vesting_shares}}
 						<br>
 						 HP</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Actions">
