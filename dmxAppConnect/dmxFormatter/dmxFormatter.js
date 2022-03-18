@@ -399,6 +399,12 @@ dmx.Formatters("global", {
             );
         }
         dmx.Formatters("string", {
+            parseFloat: function(t) {
+                return parseFloat(t);
+            },
+            parseInt: function(t, b = 10) {
+                return parseInt(t, b);
+            },
             startsWith: function(t, n) {
                 return 0 === t.indexOf(n);
             },
