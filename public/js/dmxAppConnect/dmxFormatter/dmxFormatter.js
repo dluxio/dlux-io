@@ -402,6 +402,12 @@ dmx.Formatters("global", {
             );
         }
         dmx.Formatters("string", {
+            parseFloat: function(t) {
+                return parseFloat(t);
+            },
+            parseInt: function(t, b = 10) {
+                return parseInt(t, b);
+            },
             startsWith: function(t, n) {
                 return 0 === t.indexOf(n);
             },
@@ -573,7 +579,6 @@ dmx.Formatters("global", {
                 })
             },
             getSetPhotos : function(s, i, c, t){
-                console.log({s,i,c})
                 fetch(`https://ipfs.io/ipfs/${s}`)
                 .then((response) => response.text())
                 .then((data) => {
@@ -583,7 +588,6 @@ dmx.Formatters("global", {
                 try{r = SVG.set[c]}catch(e){
                     r = ''
                 }
-                console.log({s,i,c,r})
                 document.getElementById(`${s}${i}${c}`).innerHTML = `<img class="img-fluid ${t}" src="https://ipfs.io/ipfs/${r}"></img>`
                 })
             },
