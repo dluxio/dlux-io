@@ -238,7 +238,7 @@ if ( isset( $author ) ) {
           <div role="tabpanel" class="tab-pane fade show active" id="dlux" aria-labelledby="dluxtab">
             <div class="container">
               <div class="jumbotron pt-4 bg-darker">
-                <h1 class="display-5">DLUX OpenToken</h1>
+                <h1 class="display-5">DLUX Token (<a href="https://hivehoneycomb.com" target="_blank">HoneyComb Architecture</a>)</h1>
                 <p class="lead ">The smartest, most decentralized token powering games, apps, and the multiverse</p>
                
 				<div class="clearfix" dmx-show="usertoken.data.claim > 0">
@@ -275,7 +275,7 @@ if ( isset( $author ) ) {
                     <p class="text-white-50">The utility token for content distribution and smart contracts, also called a smart media token (SMT)</p>
                   </div>
                   <div id="dluxactions" class="float-right text-right">
-                    <h5 id="dluxbalance">{{usertoken.data.balance.formatNumber(3,'.',',')}} DLUX</h5>
+                    <h5 id="dluxbalance">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Actions">
                       <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="senddluxmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
                       <div class="btn-group" role="group">
@@ -301,7 +301,7 @@ if ( isset( $author ) ) {
                     </ul>
                   </div>
                   <div id="dluxpactions" class="float-right text-right">
-                    <h5 id="pwrbalance">{{usertoken.data.poweredUp.formatNumber(3,'.',',')}} DLUX</h5>
+                    <h5 id="pwrbalance">{{((usertoken.data.poweredUp)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                     <a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white d-none" style="text-decoration: none">
                     <h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
                     </a>
@@ -338,7 +338,7 @@ if ( isset( $author ) ) {
                     </ul>
                   </div>
                   <div id="dluxgactions" class="float-right text-right">
-                    <h5 id="govbalance">{{usertoken.data.gov.formatNumber(3,'.',',')}} DLUX</h5>
+                    <h5 id="govbalance">{{((usertoken.data.gov)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                     <a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
                     <h6 id="escrowbal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
                     </a>
