@@ -250,7 +250,7 @@ if ( isset( $author ) ) {
                   <div id="claimdluxbtn" class="float-right text-right d-column">
                     <h5 id="dluxclaim">{{((usertoken.data.claim)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Claim">
-                      <button type="submit" class="btn btn-info mr-half" dmx-on:click="claim('{{govcheck.checked}}')"><i class="fas fa-coin"></i>Claim</button>
+                      <button type="submit" class="btn btn-info mr-half" dmx-on:click="claim('{{govcheck.checked}}')"><i class="fas fa-coin"></i><i class="fas fa-money-bill-wave-alt mr-2"></i>Claim</button>
                     </div>
 					  <div>
 					    <span class="small" dmx-hide="govcheck.checked" >50% Liquid | 50% Power</span>
