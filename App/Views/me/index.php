@@ -410,16 +410,6 @@ if ( isset( $author ) ) {
                   </div>
                   <div id="hivepactions" class="float-right text-right">
                     <h5 id="hpbal">
-						parseFloat((parseFloat(usr.hstats.total_vesting_fund_hive) * parseFloat(usr.hive.vesting_shares)) / parseFloat(usr.hstats.total_vesting_shares)).toFixed(3).commafy() 
-						<br> 
-						calc: 
-						<br>
-						total fund {{hivestatsapi.data.result.total_vesting_fund_hive}} 
-						<br>
-						user shares {{accountapi.data.result[0].vesting_shares}} 
-						<br>
-						total shares {{hivestatsapi.data.result.total_vesting_shares}}
-						<br>
 						{{((hivestatsapi.data.result.total_vesting_fund_hive.parseFloat()*accountapi.data.result[0].vesting_shares.parseFloat())/hivestatsapi.data.result.total_vesting_shares.parseFloat()).formatNumber('3','.',',')}} HP</h5>
                     <div class="btn-group" role="group" aria-label="DLUX Actions">
                       <button type="button" class="btn btn-info mr-half" style="pointer-events: none;" disabled><i class="fas fa-user-friends mr-2"></i>Delegate</button>
