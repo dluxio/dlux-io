@@ -263,7 +263,7 @@ if ( isset( $author ) ) {
 					          <input id="govcheck" class="btn-outline-secondary" type="checkbox" aria-label="Claim GOV not PWR">
 				            </div>
 				          </div>
-					      <input type="text" class="bg-dark border-dark text-white form-control" placeholder="Claim GOV not PWR">
+					      <input type="text" class="form-control" placeholder="Claim GOV not PWR">
 				        </div>
                       </div>
                   </div>
