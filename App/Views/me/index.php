@@ -89,8 +89,10 @@ if ( isset( $author ) ) {
 } else {
 };
 ?>
+	<dmx-api-datasource id="larynxtoken" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/@markegiles"></dmx-api-datasource>
 <!--<dmx-api-datasource id="accountapi" is="dmx-fetch" url="https://token.dlux.io/hapi/condenser_api/get_accounts" dmx-param:0="markegiles"></dmx-api-datasource>-->
 <dmx-api-datasource id="hivehistory" is="dmx-fetch" url="https://token.dlux.io/hapi/account_history_api/get_account_history" dmx-param:account="markegiles"></dmx-api-datasource>
+<dmx-data-view id="userhivehistory" dmx-bind:data="hivehistory.data.result.history"></dmx-data-view>
 <dmx-api-datasource id="hivestatsapi" is="dmx-fetch" url="https://token.dlux.io/hapi/condenser_api/get_dynamic_global_properties"></dmx-api-datasource>
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
@@ -243,7 +245,8 @@ if ( isset( $author ) ) {
       <div class="p-3">
         <ul class="nav nav-pills justify-content-center" role="tablist">
           <li class="nav-item"> <a class="nav-link active" href="#dlux" id="dluxtab" role="tab" data-toggle="tab" aria-controls="dlux" aria-expanded="true">DLUX</a></li>
-          <li class="nav-item"> <a class="nav-link" id="hivetab" role="tab" data-toggle="tab" aria-controls="hive" aria-expanded="true" href="#hive">HIVE</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#hive" id="hivetab" role="tab" data-toggle="tab" aria-controls="hive" aria-expanded="true">HIVE</a></li>
+		  <li class="nav-item"> <a class="nav-link " href="#larynx" id="larynxtab" role="tab" data-toggle="tab" aria-controls="larynx" aria-expanded="true">LARYNX</a></li>
         </ul>
       </div>
       <div id="walletcontent" class="tab-content">
@@ -260,6 +263,135 @@ if ( isset( $author ) ) {
                 </div>
                 <div id="claimdluxbtn" class="float-right text-right d-column">
                   <h5 id="dluxclaim">{{((usertoken.data.claim)/1000).formatNumber(3,'.',',')}} DLUX</h5>
+                  <div class="btn-group" role="group" aria-label="DLUX Claim">
+                    <button type="submit" class="btn btn-info mr-half" dmx-on:click="claim('{{govcheck.checked}}')"><i class="fas fa-coin"></i><i class="fas fa-money-bill-wave-alt mr-2"></i>Claim</button>
+                  </div>
+                  <div> <span class="small" dmx-hide="govcheck.checked" >50% Liquid | 50% Power</span> <span class="small" dmx-show="govcheck.checked">50% Liquid | 50% Gov</span> </div>
+                  <div dmx-show="usertoken.data.gov > 0" class="bg-dark text-white">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <input id="govcheck" class="btn-outline-secondary" type="checkbox" aria-label="Claim GOV not PWR">
+                        </div>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Claim GOV not PWR">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4 bg-light">
+              <div class="clearfix">
+                <div class="float-left">
+                  <h4>DLUX Token</h4>
+                  <p class="text-white-50">The utility token for content distribution and smart contracts, also called a smart media token (SMT)</p>
+                </div>
+                <div id="dluxactions" class="float-right text-right">
+                  <h5 id="dluxbalance">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}} DLUX</h5>
+                  <div class="btn-group" role="group" aria-label="DLUX Actions">
+                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="senddluxmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                    <div class="btn-group" role="group">
+                      <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" id="powerupdluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item" href="#" id="freezedluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-lock fa-fw mr-2"></i>Lock GOV</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" id="buylink" data-toggle="modal" data-target="#buyDluxModal"><i class="fas fa-cart-arrow-down fa-fw mr-2"></i>Buy DLUX</a> <a class="dropdown-item" href="#" id="selllink" data-toggle="modal" data-target="#buyDluxModal"><i class="fas fa-coins fa-fw mr-2"></i>Sell DLUX</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4 bg-light">
+              <div class="clearfix">
+                <div class="float-left">
+                  <h4>DLUX Power</h4>
+                  <p class="text-white-50">Staked tokens (Powered Up) allowing for inflationary rewards on new content</p>
+                  <p class="text-white-50">Benefits of DLUX Power:</p>
+                  <ul class="text-white-50">
+                    <li>Increased voting power on content</li>
+                    <li>Increased rewards from content</li>
+                    <li>Increased resource credits</li>
+                    <li>Instant Power Up | 4 Week Power Down | 1 Week Convert</li>
+                  </ul>
+                </div>
+                <div id="dluxpactions" class="float-right text-right">
+                  <h5 id="pwrbalance">{{((usertoken.data.poweredUp)/1000).formatNumber(3,'.',',')}} DLUX</h5>
+                  <a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white d-none" style="text-decoration: none">
+                    <h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
+                  </a>
+                  <div class="btn-group" role="group" aria-label="DLUX Actions">
+                    <button type="button" class="btn btn-info mr-half disabled" data-toggle="modal" title="Delegate DLUX" id="delegatedluxbtn" data-target="#sendDluxModal" style="pointer-events: none"><i class="fas fa-user-friends fa-fw mr-2"></i>Delegate</button>
+                    <div class="btn-group" role="group">
+                      <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ></button>
+                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" data-toggle="modal" id="dluxpowerdownModalButton" data-target="#powerdownDluxModal"><i class="fas fa-angle-double-down fa-fw mr-2"></i>Power Down</a> <a class="dropdown-item disabled" href="#" data-toggle="modal" id="powertogovbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to GOV</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="collapse" id="delegations">
+                <hr class="my-2 bg-light">
+                <div class="clearfix">
+                  <p class="float-left pt-2">@username was delegated 1000 DP 5 Days Ago</p>
+                  <div class="float-right">
+                    <button class="btn btn-secondary"><i class="fas fa-fw fa-user-edit"></i></button>
+                    <button class="btn btn-danger ml-1"><i class="fas fa-fw fa-trash-alt"></i></button>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4 bg-light">
+              <div class="clearfix">
+                <div class="float-left">
+                  <h4>DLUX Governance</h4>
+                  <p class="text-white-50">Locked tokens used to determine concensus and earn rewards for running a node</p>
+                  <p class="text-white-50">Benefits of DLUX Governance:</p>
+                  <ul class="text-white-50">
+                    <li>Provides liquid funds to DAO multi-sig wallet</li>
+                    <li>Ensures collateral for DEX escrow transactions</li>
+                    <li>Enables voting on proposed community measures</li>
+                    <li>1 Week Lock | 4 Week Unlock | 1 Week Convert</li>
+                  </ul>
+                </div>
+                <div id="dluxgactions" class="float-right text-right">
+                  <h5 id="govbalance">{{((usertoken.data.gov)/1000).formatNumber(3,'.',',')}} DLUX</h5>
+                  <a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
+                    <h6 id="escrowbal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
+                  </a>
+                  <div class="btn-group" role="group" aria-label="DLUX Actions">
+                    <button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
+                    <div class="btn-group" role="group">
+                      <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" data-toggle="modal" id="dluxgovdownModalButton" data-target="#powerdownDluxModal"><i class="fas fa-lock-open fa-fw mr-2"></i>Unlock GOV</a> <a class="dropdown-item disabled" href="#" data-toggle="modal" id="govtopowerbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to PWR</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="collapse" id="escrowtx">
+                <hr class="my-2 bg-light">
+              </div>
+              <hr class="my-4 bg-light">
+              <div class="clearfix">
+                <div class="float-left">
+                  <h4>Estimated Account Value</h4>
+                  <p class="text-white-50">The approximate US Dollar value for all DLUX in your account</p>
+                </div>
+                <div id="dluxval" class="float-right text-right">
+                  <h5 id="totaldbal">{{(((usertoken.data.balance+usertoken.data.poweredUp+usertoken.data.gov)/1000)*(dexapi.data.markets.hive.tick*hiveprice.data.hive.usd)).formatCurrency()}}</h5>
+                </div>
+              </div>
+            </div>
+            <div id="dluxtxs" class="jumbotron pt-3 bg-darker text-white"></div>
+          </div>
+        </div>
+		   <div role="tabpanel" class="tab-pane fade show " id="larynx" aria-labelledby="larynxtab">
+          <div class="container">
+            <div class="jumbotron pt-4 bg-darker">
+              <h1 class="display-5">LARYNX Token</h1>
+              <p class="lead ">Powering the spk network.</p>
+              <div class="clearfix" dmx-show="usertoken.data.claim > 0">
+                <hr class="my-4 bg-light">
+                <div class="float-left">
+                  <h4>Claim LARYNX</h4>
+                  <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
+                </div>
+                <div id="claimdluxbtn" class="float-right text-right d-column">
+                  <h5 id="dluxclaim">{{((larynxtoken.data.claim)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <div class="btn-group" role="group" aria-label="DLUX Claim">
                     <button type="submit" class="btn btn-info mr-half" dmx-on:click="claim('{{govcheck.checked}}')"><i class="fas fa-coin"></i><i class="fas fa-money-bill-wave-alt mr-2"></i>Claim</button>
                   </div>
@@ -465,10 +597,11 @@ if ( isset( $author ) ) {
                 </div>
               </div>
             </div>
-            <div id="hivehistory" class="jumbotron pt-3 bg-darker text-white">
-			  <div dmx-repeat:hivetxs="hivehistory.data.result.history">
+            <div id="hivetransactions" class="jumbotron pt-3 bg-darker text-white">
+				
+			  <div dmx-repeat:hivetxs="userhivehistory.data">
 				{{$index}} {{$key}} 
-				   <div dmx-repeat:histrepeat="hivehistory.data.result.history[0].$value">
+				   <div dmx-repeat:histrepeat="$value">
 					   {{$value}}
 				</div>
 			  </div>

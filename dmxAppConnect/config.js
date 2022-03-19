@@ -3758,6 +3758,10 @@ dmx.config({
           },
           {
             "type": "text",
+            "name": "connection"
+          },
+          {
+            "type": "text",
             "name": "content-length"
           },
           {
@@ -3786,12 +3790,188 @@ dmx.config({
     "histrepeat": {
       "meta": [
         {
+          "name": "$index",
+          "type": "number"
+        },
+        {
+          "name": "$key",
+          "type": "text"
+        },
+        {
           "type": "number",
           "name": "$value"
         }
       ],
       "outputType": "array"
-    }
+    },
+    "hivetxs": {
+      "meta": [
+        {
+          "type": "array",
+          "name": "$value",
+          "sub": [
+            {
+              "name": "$index",
+              "type": "number"
+            },
+            {
+              "name": "$key",
+              "type": "text"
+            },
+            {
+              "type": "number",
+              "name": "$value"
+            }
+          ]
+        }
+      ],
+      "outputType": "array"
+    },
+    "userhivehistory": {
+      "meta": [
+        {
+          "type": "array",
+          "name": "$value",
+          "sub": [
+            {
+              "type": "number",
+              "name": "$value"
+            }
+          ]
+        }
+      ],
+      "outputType": "array"
+    },
+    "larynxtoken": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "number",
+            "name": "balance"
+          },
+          {
+            "type": "number",
+            "name": "claim"
+          },
+          {
+            "type": "object",
+            "name": "drop",
+            "sub": [
+              {
+                "type": "object",
+                "name": "availible",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "amount"
+                  },
+                  {
+                    "type": "number",
+                    "name": "precision"
+                  },
+                  {
+                    "type": "text",
+                    "name": "token"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "name": "last_claim"
+              },
+              {
+                "type": "text",
+                "name": "total_claims"
+              }
+            ]
+          },
+          {
+            "type": "number",
+            "name": "poweredUp"
+          },
+          {
+            "type": "number",
+            "name": "granted"
+          },
+          {
+            "type": "number",
+            "name": "granting"
+          },
+          {
+            "type": "number",
+            "name": "heldCollateral"
+          },
+          {
+            "type": "array",
+            "name": "contracts"
+          },
+          {
+            "type": "object",
+            "name": "up"
+          },
+          {
+            "type": "object",
+            "name": "down"
+          },
+          {
+            "type": "number",
+            "name": "gov"
+          },
+          {
+            "type": "text",
+            "name": "node"
+          },
+          {
+            "type": "number",
+            "name": "behind"
+          },
+          {
+            "type": "text",
+            "name": "VERSION"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "connection"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          }
+        ]
+      }
+    ]
   },
   "explore": {
     "setsapi": [
