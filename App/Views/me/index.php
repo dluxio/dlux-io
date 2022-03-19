@@ -368,7 +368,7 @@ if ( isset( $author ) ) {
                     <p class="text-white-50">The approximate US Dollar value for all DLUX in your account</p>
                   </div>
                   <div id="dluxval" class="float-right text-right">
-                    <h5 id="totaldbal">{{((usertoken.data.balance+usertoken.data.poweredUp+usertoken.data.gov)/1000)*.formatCurrency()}}</h5>
+                    <h5 id="totaldbal">{{(((usertoken.data.balance+usertoken.data.poweredUp+usertoken.data.gov)/1000)*dexapi.data.markets.hive.tick*hiveprice.data.hive.usd).formatCurrency()}}</h5>
                   </div>
                 </div>
               </div>
