@@ -392,30 +392,18 @@ if ( isset( $author ) ) {
                 </div>
                 <div id="claimdluxbtn" class="float-right text-right d-column">
                   <h5 id="dluxclaim">{{((larynxtoken.data.claim)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
-                  <div class="btn-group" role="group" aria-label="DLUX Claim">
-                    <button type="submit" class="btn btn-info mr-half" dmx-on:click="claim('{{govcheck.checked}}')"><i class="fas fa-coin"></i><i class="fas fa-money-bill-wave-alt mr-2"></i>Claim</button>
-                  </div>
-                  <div> <span class="small" dmx-hide="govcheck.checked" >50% Liquid | 50% Power</span> <span class="small" dmx-show="govcheck.checked">50% Liquid | 50% Gov</span> </div>
-                  <div dmx-show="usertoken.data.gov > 0" class="bg-dark text-white">
-                    <div class="input-group mb-3">
-                      <div class="input-group-prepend">
-                        <div class="input-group-text">
-                          <input id="govcheck" class="btn-outline-secondary" type="checkbox" aria-label="Claim GOV not PWR">
-                        </div>
-                      </div>
-                      <input type="text" class="form-control" placeholder="Claim GOV not PWR">
-                    </div>
+                  
                   </div>
                 </div>
               </div>
               <hr class="my-4 bg-light">
               <div class="clearfix">
                 <div class="float-left">
-                  <h4>DLUX Token</h4>
-                  <p class="text-white-50">The utility token for content distribution and smart contracts, also called a smart media token (SMT)</p>
+                  <h4>LARYNX Token</h4>
+                  <p class="text-white-50">The utility token for the spk network.</p>
                 </div>
-                <div id="dluxactions" class="float-right text-right">
-                  <h5 id="dluxbalance">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}} DLUX</h5>
+                <div id="larynxactions" class="float-right text-right">
+                  <h5 id="larynxbalance">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <div class="btn-group" role="group" aria-label="DLUX Actions">
                     <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="senddluxmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
                     <div class="btn-group" role="group">
@@ -430,9 +418,9 @@ if ( isset( $author ) ) {
               <hr class="my-4 bg-light">
               <div class="clearfix">
                 <div class="float-left">
-                  <h4>DLUX Power</h4>
-                  <p class="text-white-50">Staked tokens (Powered Up) allowing for inflationary rewards on new content</p>
-                  <p class="text-white-50">Benefits of DLUX Power:</p>
+                  <h4>LARYNX Power</h4>
+                  <p class="text-white-50">Not yet available</p>
+                  <p class="text-white-50">Benefits of LARYNX Power:</p>
                   <ul class="text-white-50">
                     <li>Increased voting power on content</li>
                     <li>Increased rewards from content</li>
@@ -440,8 +428,8 @@ if ( isset( $author ) ) {
                     <li>Instant Power Up | 4 Week Power Down | 1 Week Convert</li>
                   </ul>
                 </div>
-                <div id="dluxpactions" class="float-right text-right">
-                  <h5 id="pwrbalance">{{((usertoken.data.poweredUp)/1000).formatNumber(3,'.',',')}} DLUX</h5>
+                <div id="larynxpactions" class="float-right text-right">
+                  <h5 id="larynxpwrbalance">{{((larynxtoken.data.poweredUp)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                   <a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white d-none" style="text-decoration: none">
                     <h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
                   </a>
@@ -467,7 +455,7 @@ if ( isset( $author ) ) {
               <hr class="my-4 bg-light">
               <div class="clearfix">
                 <div class="float-left">
-                  <h4>DLUX Governance</h4>
+                  <h4>LARYNX Governance</h4>
                   <p class="text-white-50">Locked tokens used to determine concensus and earn rewards for running a node</p>
                   <p class="text-white-50">Benefits of DLUX Governance:</p>
                   <ul class="text-white-50">
@@ -478,7 +466,7 @@ if ( isset( $author ) ) {
                   </ul>
                 </div>
                 <div id="dluxgactions" class="float-right text-right">
-                  <h5 id="govbalance">{{((usertoken.data.gov)/1000).formatNumber(3,'.',',')}} DLUX</h5>
+                  <h5 id="govbalance">{{((larynxtoken.data.gov)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
                     <h6 id="escrowbal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
                   </a>
@@ -491,17 +479,17 @@ if ( isset( $author ) ) {
                   </div>
                 </div>
               </div>
-              <div class="collapse" id="escrowtx">
+              <div class="collapse" id="larynxescrowtx">
                 <hr class="my-2 bg-light">
               </div>
               <hr class="my-4 bg-light">
               <div class="clearfix">
                 <div class="float-left">
                   <h4>Estimated Account Value</h4>
-                  <p class="text-white-50">The approximate US Dollar value for all DLUX in your account</p>
+                  <p class="text-white-50">The approximate US Dollar value for all LARYNX in your account</p>
                 </div>
                 <div id="dluxval" class="float-right text-right">
-                  <h5 id="totaldbal">{{(((usertoken.data.balance+usertoken.data.poweredUp+usertoken.data.gov)/1000)*(dexapi.data.markets.hive.tick*hiveprice.data.hive.usd)).formatCurrency()}}</h5>
+                  <h5 id="totallbal">{{(((larynxtoken.data.balance+larynxtoken.data.poweredUp+larynxtoken.data.gov)/1000)*(dexapi.data.markets.hive.tick*hiveprice.data.hive.usd)).formatCurrency()}}</h5>
                 </div>
               </div>
             </div>
