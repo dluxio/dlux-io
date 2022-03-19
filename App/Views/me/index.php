@@ -461,7 +461,7 @@ if ( isset( $author ) ) {
                     <p class="text-white-50">The approximate US Dollar value for all HIVE in your account</p>
                   </div>
                   <div id="hiveval" class="float-right text-right">
-                    <h5 id="totalhivebalance">{(((((hivestatsapi.data.result.total_vesting_fund_hive.parseFloat()*accountapi.data.result[0].vesting_shares.parseFloat())/hivestatsapi.data.result.total_vesting_shares.parseFloat())+accountapi.data.result[0].balance.parseFloat())*hiveprice.data.hive.usd)+((accountapi.data.result[0].hbd_balance.parseFloat()+accountapi.data.result[0].savings_hbd_balance.parseFloat())*hbdprice.data.hive_dollar.usd)).formatCurrency()}}
+                    <h5 id="totalhivebalance">{{(((((hivestatsapi.data.result.total_vesting_fund_hive.parseFloat()*accountapi.data.result[0].vesting_shares.parseFloat())/hivestatsapi.data.result.total_vesting_shares.parseFloat())+accountapi.data.result[0].balance.parseFloat())*hiveprice.data.hive.usd)+((accountapi.data.result[0].hbd_balance.parseFloat()+accountapi.data.result[0].savings_hbd_balance.parseFloat())*hbdprice.data.hive_dollar.usd)).formatCurrency()}}
 					  </h5>
                   </div>
                 </div>
