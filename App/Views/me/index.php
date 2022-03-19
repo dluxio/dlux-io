@@ -89,6 +89,9 @@ if ( isset( $author ) ) {
 ?>
 <!--<dmx-api-datasource id="accountapi" is="dmx-fetch" url="https://token.dlux.io/hapi/condenser_api/get_accounts" dmx-param:0="markegiles"></dmx-api-datasource>-->
 <dmx-api-datasource id="hivestatsapi" is="dmx-fetch" url="https://token.dlux.io/hapi/condenser_api/get_dynamic_global_properties"></dmx-api-datasource>
+<dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
+<dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
+	<dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/" ></dmx-api-datasource>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 "> 
     <!-- Page header area -->
@@ -365,7 +368,7 @@ if ( isset( $author ) ) {
                     <p class="text-white-50">The approximate US Dollar value for all DLUX in your account</p>
                   </div>
                   <div id="dluxval" class="float-right text-right">
-                    <h5 id="totaldbal">{{((usertoken.data.balance+usertoken.data.poweredUp+usertoken.data.gov)/1000).formatCurrency()}}</h5>
+                    <h5 id="totaldbal">{{((usertoken.data.balance+usertoken.data.poweredUp+usertoken.data.gov)/1000)*.formatCurrency()}}</h5>
                   </div>
                 </div>
               </div>
@@ -458,7 +461,9 @@ if ( isset( $author ) ) {
                     <p class="text-white-50">The approximate US Dollar value for all HIVE in your account</p>
                   </div>
                   <div id="hiveval" class="float-right text-right">
-                    <h5 id="totalhbal">$0</h5>
+                    <h5 id="totalhivebalance">
+					  {{((((hivestatsapi.data.result.total_vesting_fund_hive.parseFloat()*accountapi.data.result[0].vesting_shares.parseFloat())/hivestatsapi.data.result.total_vesting_shares.parseFloat())+accountapi.data.result[0].balance)*hiveprice.data.hive.usd)+((accountapi.data.result[0].hbd_balance+accountapi.data.result[0].savings_hbd_balance)*hbdprice.data.hive_dollar.usd)}}
+					  </h5>
                   </div>
                 </div>
               </div>
