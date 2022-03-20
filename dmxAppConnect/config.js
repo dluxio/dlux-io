@@ -1601,16 +1601,12 @@ dmx.config({
         "name": "data",
         "sub": [
           {
-            "type": "array",
-            "name": "recent_trades"
+            "type": "text",
+            "name": "error"
           },
           {
             "type": "text",
             "name": "node"
-          },
-          {
-            "type": "number",
-            "name": "behind"
           },
           {
             "type": "text",
@@ -1625,6 +1621,10 @@ dmx.config({
           {
             "type": "text",
             "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "connection"
           },
           {
             "type": "text",
@@ -1645,10 +1645,6 @@ dmx.config({
           {
             "type": "text",
             "name": "server"
-          },
-          {
-            "type": "text",
-            "name": "via"
           },
           {
             "type": "text",
