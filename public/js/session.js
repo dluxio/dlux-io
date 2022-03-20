@@ -443,7 +443,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
      });
  }
 
- function dluxsend(toid, amountid, memoid, prefix = 'dlux_') {
+ function dluxsend(toid, amount, memo, prefix = 'dlux_') {
     var token, statusapi
     switch (prefix){
         case 'spkcc_':
@@ -456,8 +456,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
     }
     return new Promise((resolve, reject) => {
         var to = document.getElementById(toid).value,
-            amount = parseInt(document.getElementById(amountid).value * 1000),
-            memo = document.getElementById(memoid).value
+            amount = parseInt(amount * 1000)
         if (amount){
          checkAccount(to)
              .then(r => {
