@@ -286,7 +286,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
       <div id="tradeForms">
         <div class="row">
           <div class="mt-3 col-md-6">
-            <h4>Buy DLUX</h4>
+            <h4>Buy LARYNX</h4>
             <form name="buy" class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyHiveTotal.value}}','{{buyHBDTotal.value}}','{{buyQuantity.value}}','{{buyHours.value}}')">
               <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                 <div class="form-row">
