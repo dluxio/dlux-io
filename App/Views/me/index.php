@@ -392,9 +392,11 @@ if ( isset( $author ) ) {
                   <h4>Claim LARYNX</h4>
                   <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
                 </div>
-                <div id="claimdluxbtn" class="float-right text-right d-column">
-                  <h5 id="dluxclaim">{{((larynxtoken.data.claim)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
-                  
+                <div id="claimlarynxbtn" class="float-right text-right d-column">
+                  <h5 id="larynxclaim">{{((larynxtoken.data.claim)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
+                  <div class="btn-group" role="group" aria-label="LARYNX Claim">
+                    <button type="submit" class="btn btn-info mr-half" dmx-on:click="claimLarynx()"><i class="fas fa-coin"></i><i class="fas fa-money-bill-wave-alt mr-2"></i>Claim</button>
+                  </div>
                   </div>
                 </div>
               <hr class="my-4 bg-light">
