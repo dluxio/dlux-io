@@ -91,7 +91,7 @@ if ( isset( $author ) ) {
 } else {
 };
 ?>
-<dmx-api-datasource id="larynxtoken" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/@markegiles"></dmx-api-datasource>-->
+<!--<dmx-api-datasource id="larynxtoken" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/@markegiles"></dmx-api-datasource>-->
 <!--<dmx-api-datasource id="accountapi" is="dmx-fetch" url="https://token.dlux.io/hapi/condenser_api/get_accounts" dmx-param:0="markegiles"></dmx-api-datasource>-->
 <dmx-api-datasource id="hivehistory" is="dmx-fetch" url="https://token.dlux.io/hapi/account_history_api/get_account_history" dmx-param:account="markegiles"></dmx-api-datasource>
 <dmx-data-view id="userhivehistory" dmx-bind:data="hivehistory.data.result.history"></dmx-data-view>
@@ -391,9 +391,9 @@ if ( isset( $author ) ) {
                 <div class="float-left">
                   <h4>Claim LARYNX</h4>
                   <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
-                </div>{{(larynxtoken.data.drop.availible.amount)/1000).formatNumber(3,'.',',')}}
+                </div>
                 <div id="claimlarynxbtn" class="float-right text-right d-column">
-                  <h5>{{((larynxtoken.data.claim)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
+                  <h5>{{((larynxtoken.data.drop.availible.amount)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <div class="btn-group" role="group" aria-label="LARYNX Claim">
                     <button type="submit" class="btn btn-info mr-half" dmx-on:click="claimLarynx()"><i class="fas fa-coin"></i><i class="fas fa-money-bill-wave-alt mr-2"></i>Claim</button>
                   </div>
