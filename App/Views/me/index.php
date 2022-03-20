@@ -386,14 +386,13 @@ if ( isset( $author ) ) {
             <div class="jumbotron pt-4 bg-darker">
               <h1 class="display-5">LARYNX Token</h1>
               <p class="lead ">Powering the spk network.</p>
-              <div class="clearfix" >
+              <div class="clearfix"  dmx-show="larynxtoken.data.drop.last_claim.parseInt(16) != frmDate.value">
                 <hr class="my-4 bg-light">
                 <div class="float-left">
                   <h4>Claim LARYNX</h4>
                   <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
-					<input type="text" name="frmDateReg" required id="frmDate" value="">
-
-                </div>{{larynxtoken.data.drop.last_claim.parseInt(16)}} !=  {{frmDate.value}}
+					<input type="text" name="frmDateReg" required id="frmDate" value="" class="d-none">
+                </div>
                 <div id="claimlarynxbtn" class="float-right text-right d-column">
                   <h5>{{((larynxtoken.data.drop.availible.amount)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <div class="btn-group" role="group" aria-label="LARYNX Claim">
