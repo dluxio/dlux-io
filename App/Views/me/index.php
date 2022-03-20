@@ -436,13 +436,14 @@ if ( isset( $author ) ) {
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                       <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled" href="#" id="powerupdluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item" href="#" id="freezedluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-lock fa-fw mr-2"></i>Lock GOV</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/dex/larynx" id="buylink"><i class="fas fa-cart-arrow-down fa-fw mr-2"></i>Buy LARYNX</a> <a class="dropdown-item disabled" href="/dex/larynx" id="selllink"><i class="fas fa-coins fa-fw mr-2"></i>Sell LARYNX</a></div>
+                        <a class="dropdown-item" href="/dex/larynx" id="buylink"><i class="fas fa-cart-arrow-down fa-fw mr-2"></i>Buy LARYNX</a> <a class="dropdown-item" href="/dex/larynx" id="selllink"><i class="fas fa-coins fa-fw mr-2"></i>Sell LARYNX</a></div>
                     </div>
                   </div>
                 </div>
               </div>
-              <hr class="my-4 bg-light">
-              <div class="clearfix">
+              
+              <div class="clearfix d-none">
+				  <hr class="my-4 bg-light">
                 <div class="float-left">
                   <h4>LARYNX Power</h4>
                   <p class="text-white-50">Not yet available</p>
