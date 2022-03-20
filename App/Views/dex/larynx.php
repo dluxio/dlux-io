@@ -49,8 +49,8 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
 include_once( $path );
 if ( isset( $_COOKIE[ 'user' ] ) ) {
-  echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"https://spkgiles.hivehoneycomb.com/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"https://spkgiles.hivehoneycomb.com/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
 };
 ?>
 <main role="main" class="flex-shrink-0 text-white">
