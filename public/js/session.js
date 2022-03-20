@@ -443,7 +443,8 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
      });
  }
 
- function dluxsend(toid, amountid, memoid) {
+ function dluxsend(toid, amountid, memoid, prefix = 'dlux_') {
+
     return new Promise((resolve, reject) => {
         var to = document.getElementById(toid).value,
             amount = parseInt(document.getElementById(amountid).value * 1000),
@@ -451,7 +452,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
         if (amount){
          checkAccount(to)
              .then(r => {
-                 broadcastCJA({to, amount, memo}, 'dlux_send', `Trying to send DLUX...`)
+                 broadcastCJA({to, amount, memo}, `${prefix}send`, `Trying to send DLUX...`)
              })
              .catch(e => { alert(e) })
         } else {
@@ -578,7 +579,15 @@ function buyFTHive(set, uid, price, token, qty){
     console.log(set, uid, price, token)
     broadcastTransfer({to:'dlux-cc',[`${token.toLowerCase()}`]:price * qty , memo: `NFT ${set}:${uid}`}, `Buying a ${set} mint token`)
 }
-function sellDEX(dlux, hive, hbd, hours, callback){
+function sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback){
+    var token
+    switch (prefix){
+        case 'spkcc_':
+            token = 'LARYNX'
+            break;
+        default:
+            token = 'DLUX'
+    }
     var andthen = ' at market rate'
     dlux = parseInt(parseFloat(dlux)*1000)
     hive = parseInt(parseFloat(hive)*1000)
@@ -586,32 +595,42 @@ function sellDEX(dlux, hive, hbd, hours, callback){
     hours = parseInt(hours)
     if (hive || hbd){
         const price = parseFloat(dlux/(hive? hive : hbd)).toFixed(6)
-        andthen = ` at ${price} ${hive?'HIVE':'HBD'} per DLUX`
+        andthen = ` at ${price} ${hive?'HIVE':'HBD'} per ${token}`
     }
-    if(!hbd) broadcastCJA({ dlux, hive, hours}, "dlux_dex_sell", `Selling ${parseFloat(dlux/1000).toFixed(3)} DLUX${andthen}`)
-    else broadcastCJA({ dlux, hbd, hours}, "dlux_dex_sell", `Selling ${parseFloat(dlux/1000).toFixed(3)} DLUX${andthen}`)
+    if(!hbd) broadcastCJA({ dlux, hive, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`)
+    else broadcastCJA({ dlux, hbd, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`)
  }
 
- function buyDEX(hive, hbd, dlux, hours, callback){
+ function buyDEX(hive, hbd, dlux, hours, prefix = 'dlux_', callback){
      console.log({hive,hbd,dlux})
+    var token, msaccount
+    switch (prefix){
+        case 'spkcc_':
+            token = 'LARYNX'
+            msaccount = 'spk-cc'
+            break;
+        default:
+            token = 'DLUX'
+            msaccount = 'dlux-cc'
+    }
     dlux = parseInt(parseFloat(dlux)*1000)
     hive = parseInt(parseFloat(hive)*1000)
     hbd = parseInt(parseFloat(hbd)*1000)
     var andthen = ' at market rate', rate = undefined, hours = 720
     if (dlux){
         rate = parseFloat((hive? hive : hbd)/dlux).toFixed(6)
-        andthen = ` at ${rate} ${hive?'HIVE':'HBD'} per DLUX`
+        andthen = ` at ${rate} ${hive?'HIVE':'HBD'} per ${token}`
     }
-    if(!hbd) broadcastTransfer({ to: 'dlux-cc', hive, memo:JSON.stringify({rate, hours})}, `Buying DLUX with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
-    else broadcastTransfer({ to: 'dlux-cc', hbd, memo:JSON.stringify({rate, hours})}, `Buying DLUX with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
+    if(!hbd) broadcastTransfer({ to: msaccount, hive, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
+    else broadcastTransfer({ to: msaccount, hbd, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
  }
 
- function cancelDEX(txid) {
+ function cancelDEX(txid, prefix = 'dlux_') {
     var txidstring = txid
     if (typeof txid === 'array'){
         txidstring = txid.join(',')
     }
-    broadcastCJA({ txid}, "dlux_dex_clear", `Canceling: ${txidstring}`)
+    broadcastCJA({ txid}, `${prefix}dex_clear`, `Canceling: ${txidstring}`)
 }
 
 
