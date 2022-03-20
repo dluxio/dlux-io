@@ -390,7 +390,7 @@ if ( isset( $author ) ) {
                 <hr class="my-4 bg-light">
                 <div class="float-left">
                   <h4>Claim LARYNX</h4>
-                  <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
+                  <p class="text-white-50">This months claimable tokens based on a January 6th HIVE blockchain snapshot. Tokens not claimed do not roll over to next month.</p>
 					<input type="text" name="frmDateReg" required id="frmDate" value="" class="d-none">
                 </div>
                 <div id="claimlarynxbtn" class="float-right text-right d-column">
@@ -426,10 +426,9 @@ if ( isset( $author ) ) {
                   <p class="text-white-50">Not yet available</p>
                   <p class="text-white-50">Benefits of LARYNX Power:</p>
                   <ul class="text-white-50">
-                    <li>Increased voting power on content</li>
-                    <li>Increased rewards from content</li>
-                    <li>Increased resource credits</li>
-                    <li>Instant Power Up | 4 Week Power Down | 1 Week Convert</li>
+                    <li>Similar to running mining hardware</li>
+                    <li>Instant Power Up</li>
+					<li>Cannot be Powered Down, sold, or traded</li>
                   </ul>
                 </div>
                 <div id="larynxpactions" class="float-right text-right">
