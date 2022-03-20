@@ -64,7 +64,7 @@ include_once( $path );
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
-<body class="d-flex flex-column bg-darker h-100 padme-t70" id="index" is="dmx-app">
+<body class="d-flex flex-column bg-darker h-100 padme-t70" id="index" is="dmx-app" onLoad="getDate()">
 
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
@@ -91,7 +91,7 @@ if ( isset( $author ) ) {
 } else {
 };
 ?>
-<dmx-api-datasource id="larynxtoken" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/@markegiles"></dmx-api-datasource>-->
+<!--<dmx-api-datasource id="larynxtoken" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/@markegiles"></dmx-api-datasource>-->
 <!--<dmx-api-datasource id="accountapi" is="dmx-fetch" url="https://token.dlux.io/hapi/condenser_api/get_accounts" dmx-param:0="markegiles"></dmx-api-datasource>-->
 <dmx-api-datasource id="hivehistory" is="dmx-fetch" url="https://token.dlux.io/hapi/account_history_api/get_account_history" dmx-param:account="markegiles"></dmx-api-datasource>
 <dmx-data-view id="userhivehistory" dmx-bind:data="hivehistory.data.result.history"></dmx-data-view>
@@ -99,6 +99,7 @@ if ( isset( $author ) ) {
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/" ></dmx-api-datasource>
+<dmx-api-datasource id="larynxdexapi" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/dex/" ></dmx-api-datasource>
 <dmx-api-datasource id="dluxfeed" is="dmx-fetch" url="https://token.dlux.io/feed/" ></dmx-api-datasource>
 <dmx-data-view id="data_view1"></dmx-data-view>
 <main role="main" class="flex-shrink-0 text-white">
@@ -247,15 +248,25 @@ if ( isset( $author ) ) {
       <div class="p-3">
         <ul class="nav nav-pills justify-content-center" role="tablist">
           <li class="nav-item"> <a class="nav-link active" href="#dlux" id="dluxtab" role="tab" data-toggle="tab" aria-controls="dlux" aria-expanded="true">DLUX</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#hive" id="hivetab" role="tab" data-toggle="tab" aria-controls="hive" aria-expanded="true">HIVE</a></li>
 		  <li class="nav-item"> <a class="nav-link " href="#larynx" id="larynxtab" role="tab" data-toggle="tab" aria-controls="larynx" aria-expanded="true">LARYNX</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#hive" id="hivetab" role="tab" data-toggle="tab" aria-controls="hive" aria-expanded="true">HIVE</a></li>
         </ul>
       </div>
+		 
       <div id="walletcontent" class="tab-content">
+		   <!-- dlux wallet tab-->
         <div role="tabpanel" class="tab-pane fade show active" id="dlux" aria-labelledby="dluxtab">
           <div class="container">
             <div class="jumbotron pt-4 bg-darker">
-              <h1 class="display-5">DLUX Token</h1>
+             <div class="d-flex align-items-center pb-2"> <h1 class="display-5 p-0 m-0">DLUX</h1><div class="text-center small p-0 m-0 ml-4" 
+						 dmx-class:text-success="dexapi.data.behind < 30"	
+						 dmx-class:text-warning="dexapi.data.behind >= 30"
+						 dmx-class:text-danger="dexapi.data.behind > 100"> 
+			<span dmx-show="dexapi.data.behind < 30">ONLINE - </span> 
+			<span dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING - </span> 
+			<span dmx-show="dexapi.data.behind > 100">OFFLINE - </span> 
+			<span>{{dexapi.data.behind}} BBH</span> </div>
+		  </div>
               <p class="lead ">A completely open source platform for p2p games, apps, and experiences.</p>
               <div class="clearfix" dmx-show="usertoken.data.claim > 0">
                 <hr class="my-4 bg-light">
@@ -293,7 +304,7 @@ if ( isset( $author ) ) {
                     <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="senddluxmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
                     <div class="btn-group" role="group">
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" id="powerupdluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item" href="#" id="freezedluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-lock fa-fw mr-2"></i>Lock GOV</a>
+                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" id="powerupdluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item" href="#" id="freezedluxbutton" data-toggle="modal" data-target="#lockgovDluxModal"><i class="fas fa-lock fa-fw mr-2"></i>Lock GOV</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" id="buylink" data-toggle="modal" data-target="#buyDluxModal"><i class="fas fa-cart-arrow-down fa-fw mr-2"></i>Buy DLUX</a> <a class="dropdown-item" href="#" id="selllink" data-toggle="modal" data-target="#buyDluxModal"><i class="fas fa-coins fa-fw mr-2"></i>Sell DLUX</a></div>
                     </div>
@@ -316,7 +327,7 @@ if ( isset( $author ) ) {
                 <div id="dluxpactions" class="float-right text-right">
                   <h5 id="pwrbalance">{{((usertoken.data.poweredUp)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                   <a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white d-none" style="text-decoration: none">
-                    <h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
+                    <h6 id="delegatebal">(-0 G)<i class="fas fa-search ml-2"></i></h6>
                   </a>
                   <div class="btn-group" role="group" aria-label="DLUX Actions">
                     <button type="button" class="btn btn-info mr-half disabled" data-toggle="modal" title="Delegate DLUX" id="delegatedluxbtn" data-target="#sendDluxModal" style="pointer-events: none"><i class="fas fa-user-friends fa-fw mr-2"></i>Delegate</button>
@@ -359,7 +370,7 @@ if ( isset( $author ) ) {
                     <button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
                     <div class="btn-group" role="group">
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" data-toggle="modal" id="dluxgovdownModalButton" data-target="#powerdownDluxModal"><i class="fas fa-lock-open fa-fw mr-2"></i>Unlock GOV</a> <a class="dropdown-item disabled" href="#" data-toggle="modal" id="govtopowerbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to PWR</a></div>
+                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" data-toggle="modal" id="dluxgovdownModalButton" data-target="#unlockgovDluxModal"><i class="fas fa-lock-open fa-fw mr-2"></i>Unlock GOV</a> <a class="dropdown-item disabled" href="#" data-toggle="modal" id="govtopowerbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to PWR</a></div>
                     </div>
                   </div>
                 </div>
@@ -381,17 +392,29 @@ if ( isset( $author ) ) {
             <div id="dluxtxs" class="jumbotron pt-3 bg-darker text-white"></div>
           </div>
         </div>
+		  <!-- larynx wallet tab-->
 		   <div role="tabpanel" class="tab-pane fade show " id="larynx" aria-labelledby="larynxtab">
           <div class="container">
             <div class="jumbotron pt-4 bg-darker">
-              <h1 class="display-5">LARYNX Token</h1>
+              <div class="d-flex align-items-center pb-2"><h1 class="display-5 m-0 p-0">LARYNX</h1>
+				<div class="text-center small m-0 p-2 ml-2" 
+						 dmx-class:text-success="larynxdexapi.data.behind < 30"	
+						 dmx-class:text-warning="larynxdexapi.data.behind >= 30"
+						 dmx-class:text-danger="larynxdexapi.data.behind > 100"> 
+			<span dmx-show="larynxdexapi.data.behind < 30">ONLINE - </span> 
+			<span dmx-show="larynxdexapi.data.behind >= 30 && larynxdexapi.data.behind <=100">LAGGING - </span> 
+			<span dmx-show="larynxdexapi.data.behind > 100">OFFLINE - </span> 
+			<span>{{larynxdexapi.data.behind}} BBH</span> 
+		  </div></div>
               <p class="lead ">Powering the spk network.</p>
-              <div class="clearfix" >
+              <div class="clearfix"  dmx-show="larynxtoken.data.drop.last_claim.parseInt(16) != frmDate.value && larynxtoken.data.claim > 0">
                 <hr class="my-4 bg-light">
                 <div class="float-left">
                   <h4>Claim LARYNX</h4>
-                  <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
-                </div>{{larynxtoken.data.drop.last_claim.parseInt(16)}} != {{larynxtoken.headers.date.getMonth()}}
+                  <p class="text-white-50">This months claimable tokens based on a January 6th HIVE blockchain snapshot.</p>
+					<p>Tokens not claimed do not roll over to next month.</p>
+					<input type="text" name="frmDateReg" required id="frmDate" value="" class="d-none">
+                </div>
                 <div id="claimlarynxbtn" class="float-right text-right d-column">
                   <h5>{{((larynxtoken.data.drop.availible.amount)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <div class="btn-group" role="group" aria-label="LARYNX Claim">
@@ -408,7 +431,7 @@ if ( isset( $author ) ) {
                 <div id="larynxactions" class="float-right text-right">
                   <h5 id="larynxbalance">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <div class="btn-group" role="group" aria-label="DLUX Actions">
-                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="senddluxmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendlarynxmodalbutton" data-target="#sendLarynxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
                     <div class="btn-group" role="group">
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                       <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled" href="#" id="powerupdluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item" href="#" id="freezedluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-lock fa-fw mr-2"></i>Lock GOV</a>
@@ -425,10 +448,9 @@ if ( isset( $author ) ) {
                   <p class="text-white-50">Not yet available</p>
                   <p class="text-white-50">Benefits of LARYNX Power:</p>
                   <ul class="text-white-50">
-                    <li>Increased voting power on content</li>
-                    <li>Increased rewards from content</li>
-                    <li>Increased resource credits</li>
-                    <li>Instant Power Up | 4 Week Power Down | 1 Week Convert</li>
+                    <li>Similar to running mining hardware</li>
+                    <li>Instant Power Up</li>
+					<li>Cannot be Powered Down, sold, or traded</li>
                   </ul>
                 </div>
                 <div id="larynxpactions" class="float-right text-right">
@@ -468,12 +490,12 @@ if ( isset( $author ) ) {
                     <li>1 Week Lock | 4 Week Unlock | 1 Week Convert</li>
                   </ul>
                 </div>
-                <div id="dluxgactions" class="float-right text-right">
+                <div id="larynxgactions" class="float-right text-right">
                   <h5 id="govbalance">{{((larynxtoken.data.gov)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
-                  <a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
-                    <h6 id="escrowbal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
+                  <a data-toggle="collapse" id="larynxescrowtxbutton" href="#larynxescrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
+                    <h6 id="escrowbal">(-0 G)<i class="fas fa-search ml-2"></i></h6>
                   </a>
-                  <div class="btn-group" role="group" aria-label="DLUX Actions">
+                  <div class="btn-group" role="group" aria-label="LARYNX Actions">
                     <button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
                     <div class="btn-group" role="group">
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
@@ -491,8 +513,8 @@ if ( isset( $author ) ) {
                   <h4>Estimated Account Value</h4>
                   <p class="text-white-50">The approximate US Dollar value for all LARYNX in your account</p>
                 </div>
-                <div id="dluxval" class="float-right text-right">
-                  <h5 id="totallbal">{{(((larynxtoken.data.balance+larynxtoken.data.poweredUp+larynxtoken.data.gov)/1000)*(dexapi.data.markets.hive.tick*hiveprice.data.hive.usd)).formatCurrency()}}</h5>
+                <div class="float-right text-right">
+                  <h5 id="totallarynx">{{(((larynxtoken.data.balance+larynxtoken.data.poweredUp+larynxtoken.data.gov)/1000)*(larynxdexapi.data.markets.hive.tick*hiveprice.data.hive.usd)).formatCurrency()}}</h5>
                 </div>
               </div>
             </div>
@@ -500,10 +522,11 @@ if ( isset( $author ) ) {
 			  </div>
           </div>
 		  </div>
+		  <!-- hive wallet tab-->
         <div role="tabpanel" class="tab-pane fade show" id="hive" aria-labelledby="hivetab">
           <div class="container">
             <div class="jumbotron pt-4 bg-darker">
-              <h1 class="display-5">HIVE Token</h1>
+              <h1 class="display-5">HIVE</h1>
               <p class="lead ">A proof-of-stake blockchain built for censorship resistant content and apps</p>
               <hr class="my-4 bg-light">
               <div class="clearfix">
@@ -591,17 +614,12 @@ if ( isset( $author ) ) {
             </div>
             <div id="hivetransactions" class="jumbotron pt-3 bg-darker text-white">
 				
-			  <div dmx-repeat:hivetxs="userhivehistory.data">
-				{{$index}} {{$key}} 
-				   <div dmx-repeat:histrepeat="$value">
-					   {{$value}}
+			  
 				</div>
 			  </div>
           </div>
         </div>
       </div>
-    </div>
-	  </div>
     <!-- inventory tab -->
     <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
       <div class="container">
@@ -1225,7 +1243,6 @@ if ( isset( $author ) ) {
         </center>
       </div>
     </div>
-
         <!-- node tab -->
         <div role="tabpanel" class="tab-pane fade show" id="node" aria-labelledby="nodetab">
           <div id="nodeBanner" class="container no-session">
@@ -1553,12 +1570,8 @@ if ( isset( $author ) ) {
             </div>
           </div>
         </div>
-      </center>
-    </center>
   </div>
 </div>
-<center>
-  <center>
     </main>
     <!-- Send DLUX Modal -->
     <div class="modal fade" id="sendDluxModal" tabindex="-1" role="dialog" aria-labelledby="sendDluxModalTitle" aria-hidden="true">
@@ -1589,7 +1602,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="senddluxamountlab" for="senddluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'senddluxamount')">0</a>):</label>
+                <label id="senddluxamountlab" for="senddluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'senddluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="senddluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
@@ -1612,7 +1625,59 @@ if ( isset( $author ) ) {
         </div>
       </div>
     </div>
-    <!-- Power Up DLUX Modal -->
+    <!-- Send LARYNX Modal -->
+    <div class="modal fade" id="sendLarynxModal" tabindex="-1" role="dialog" aria-labelledby="sendLarynxModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-darker text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="sendLarynxTitle">Send LARYNX</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
+          </div>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="senddluxfrom">From:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="sendlarynxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="sendlarynxto">To:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="sendlarynxto" type="text" placeholder="Recipient">
+                </div>
+              </div>
+              <div class="form-group">
+                <label id="sendlarynxamountlab" for="sendlarynxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.larynx.balance/1000), 'senddluxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <div class="input-group">
+                  <input class="form-control" id="sendlarynxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <div class="input-group-append">
+                    <div class="input-group-text" id="sendformunits">LARYNX</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" id="sendlarynxmemogroup">
+                <label for="sendlarynxmemo">Memo:</label>
+                <div class="input-group">
+                  <input class="form-control" id="sendlarynxmemo" type="text" placeholder="Include a memo (optional)">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button id="sendlarynxmodalsend" type="button" class="btn btn-primary">Continue</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+	<!-- Power Up DLUX Modal -->
     <div class="modal fade" id="powerupDluxModal" tabindex="-1" role="dialog" aria-labelledby="powerupDluxModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-darker text-white">
@@ -1641,7 +1706,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="powerdluxamountlab" for="powerupdluxmmount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000), 'powerupdluxamount')"></a>):</label>
+                <label id="powerdluxamountlab" for="powerupdluxmmount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'powerupdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="powerupdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
@@ -1687,7 +1752,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="dluxamountlab" for="powerdowndluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerdowndluxamount')">0</a>):</label>
+                <label id="dluxamountlab" for="powerdowndluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerdowndluxamount')">{{((usertoken.data.poweredUp)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="powerdowndluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
@@ -1704,168 +1769,205 @@ if ( isset( $author ) ) {
         </div>
       </div>
     </div>
-    <!-- Buy DLUX Modal -->
-    <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
+	<!-- Lock Gov DLUX Modal -->
+    <div class="modal fade" id="lockgovDluxModal" tabindex="-1" role="dialog" aria-labelledby="lockgovDluxModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-darker text-white">
           <div class="modal-header">
-            <h3 class="modal-title" id="buyDluxTitle">Buy With: </h3>
-            <ul class="nav nav-pills ml-3" role="tablist">
-              <li class="nav-item"><a href="javascript:dexmodal('hive', User.opts.type)" class="nav-link active" id="buywithhivetab" onClick="toggleActive()">HIVE</a></li>
-              <li class="nav-item"><a href="javascript:dexmodal('hbd', User.opts.type)" class="nav-link" id="buywithhbdtab" onClick="toggleActive()">HBD</a></li>
-            </ul>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">x</span></button>
+            <h5 class="modal-title" id="powerDluxTitle">Lock Gov DLUX</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <div class="container-fluid">
-            <div class="row" id="buy-main-row">
-              <div class="col-lg-12 col-md-12 col-sm-12" id="buy-form">
-                <div class="pt-4 pl-3 pr-3">
-                  <button class="btn btn-dark float-right d-none d-lg-block" onClick="toggleOrders()"><i class="fas fa-book-open mr-2"></i>Orders</button>
-                  <h4 id="menutitle" class="text-white-50 mt-2">New Buy Order</h4>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="lockgovdluxfrom">From:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="lockgovdluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
                 </div>
-                <form>
-                  <div class="modal-body">
-                    <div class="alert alert-dark text-center" role="alert"> <small>This will place a buy order on the <a href="../dex/">DEX (Decentralized Exchange)</a></small></div>
-                    <div class="form-group">
-                      <label for="buydluxfrom">Buyer:</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">@</div>
-                        </div>
-                        <input class="form-control" id="senddluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label id="menudluxlab" for="buydluxquantity">Desired Quantity:</label>
-                      <div class="input-group">
-                        <input class="form-control" id="menudlux" type="number" step="0.001" min="0.001" placeholder="1.000">
-                        <div class="input-group-append">
-                          <div class="input-group-text">DLUX</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label id="menupricelab" for="buydluxprice">Desired Price Each (<a href="#" onClick="insertBal(User.dex.markets[User.opts.type].tick, 'menuprice')">Market Price: 0 HIVE</a>):</label>
-                      <div class="input-group">
-                        <input class="form-control" id="menuprice" type="number" placeholder="1.000">
-                        <div class="input-group-append">
-                          <div class="input-group-text" id="menupairdiv">HIVE</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label id="menupairlab" for="buydluxtotal">Order Total (<a href="#" onClick="insertBal(parseFloat(User[User.opts.type].balance), 'menupair')">HIVE Balance: 0 HIVE</a>):</label>
-                      <div class="input-group">
-                        <input class="form-control" id="menupair" type="number" step="0.001" min="0.001" placeholder="1.000">
-                        <div class="input-group-append">
-                          <div class="input-group-text" id="paycoin">HIVE</div>
-                        </div>
-                      </div>
-                    </div>
-                    <p><a data-toggle="collapse" href="#buydluxadvanced" role="button" aria-expanded="false" aria-controls="collapseExample">Advanced Options<i class="fas fa-angle-double-down ml-2"></i></a></p>
-                    <div class="collapse" id="buydluxadvanced">
-                      <div class="form-group">
-                        <label for="custodialAgent">Custodial Agent:</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <label class="input-group-text">@</label>
-                          </div>
-                          <button class="btn btn-light dropdown-toggle form-control text-left" type="button" id="custodialAgent" data-toggle="dropdown">Custodial Agent</button>
-                          <ul class="dropdown-menu custodial-drop form-control agent-input-ul" id="custodialAgentUl">
-                            <input class="form-control agent-input" id="custodialAgentSearch" type="text" placeholder="Search..">
-                            <li><a href="#">disregardfiat - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">markegiles - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">dlux-io - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">heyhey - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">inconcievable - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">robotolux - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                          </ul>
-                          <div class="input-group-append">
-                            <button id="custodialAgentSort" type="button" class="btn btn-light append-radius" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sort-amount-down"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right text-white"> <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd mr-2"></i>Sort By Fee</a> <a class="dropdown-item" href="#"><i class="fas fa-award fa-fw mr-2"></i>Sort By Trust</a> <a class="dropdown-item" href="#"><i class="fas fa-fish fa-fw mr-2"></i>Sort By Liquidity</a></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="escrowAgent">Escrow Agent:</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <label class="input-group-text">@</label>
-                          </div>
-                          <button class="btn btn-light dropdown-toggle form-control text-left" type="button" id="escrowAgent" data-toggle="dropdown">Escrow Agent</button>
-                          <ul class="dropdown-menu escrow-drop form-control agent-input-ul mx-auto" id="escrowAgentUl">
-                            <input class="form-control agent-input" id="escrowAgentSearch" type="text" placeholder="Search..">
-                            <li><a href="#">disregardfiat - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">markegiles - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">dlux-io - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">heyhey - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">inconcievable - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">robotolux - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                          </ul>
-                          <div class="input-group-append">
-                            <button type="button" id="escrowAgentSort" class="btn btn-light append-radius" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sort-amount-down"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right text-white"> <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd mr-2"></i>Sort By Fee</a> <a class="dropdown-item" href="#"><i class="fas fa-award fa-fw mr-2"></i>Sort By Trust</a> <a class="dropdown-item" href="#"><i class="fas fa-fish fa-fw mr-2"></i>Sort By Liquidity</a></div>
-                          </div>
-                        </div>
-                      </div>
-                      <script src="/dlux-io/js/popper.min.js"></script>
-                      <script src="/dlux-io/js/bootstrap-4.4.1.js"></script>
-                      <script>
-$(document).ready(function(){
-  $("#custodialAgentSearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $(".custodial-drop li").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-$(document).ready(function(){
-  $("#escrowAgentSearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $(".escrow-drop li").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
-                      <!-- <div class="form-group">
-			   <label for="menuexpire">Expiration Date and Time:</label>
-				<input class="form-control" id="buydluxexpire" />
-			 </div>-->
-                      <div class="form-group">
-                        <label for="escrowExpire">Expiration:</label>
-                        <select class="form-control" id="escrowExpire">
-                          <option value=1>1 hour</option>
-                          <option value=3>3 hours</option>
-                          <option value=6>6 hours</option>
-                          <option value=12>12 hours</option>
-                          <option value=24>1 day</option>
-                          <option value=72>3 days</option>
-                          <option value=120 selected>5 days</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <div class="mr-auto d-lg-none">
-                      <button type="button" class="btn btn-dark " onClick="toggleOrdersSM()"><i class="fas fa-book-open mr-2"></i>Orders</button>
-                    </div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" onClick="dexsend(document.getElementById('buyDluxTitle').innerText.split(' ')[0], User.opts.pair)">Continue</button>
-                  </div>
-                </form>
               </div>
-              <div class="col-lg-6 col-md-12 col-sm-12 overflow-auto d-none" id="orders"></div>
+              <div class="form-group">
+                <label for="lockgovdluxto">To:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="lockgovdluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label id="lockgovdluxamountlab" for="lockgovdluxmmount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'lockgovdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <div class="input-group">
+                  <input class="form-control" id="lockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <div class="input-group-append">
+                    <div class="input-group-text">DLUX</div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" id="lockgovdluxsubmitbutton">Continue</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
+    <!-- Unlock Gov DLUX Modal -->
+    <div class="modal fade" id="unlockgovDluxModal" tabindex="-1" role="dialog" aria-labelledby="unlockgovDluxModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-darker text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="unlockgovDluxTitle">Unlock Gov DLUX</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
+          </div>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="unlockgovdluxfrom">From:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="unlockgovdluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="unlockgovdluxto">To:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="unlockgovdluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label id="unlockgovamountlab" for="unlockgovdluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.gov/1000),'unlockgovdluxamount')">{{((usertoken.data.gov)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <div class="input-group">
+                  <input class="form-control" id="unlockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <div class="input-group-append">
+                    <div class="input-group-text">DLUX</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" id="unlockgovdluxsubmit" class="btn btn-primary" onClick="unlockgov('unlockgovdluxamount', 'unlockgovdluxto', 'unlockgovdluxmemo')">Continue</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Buy DLUX Modal -->
+     <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
+              <div class="modal-content bg-dark text-white">
+                <form class="needs-validation" validate id="marketorderform" dmx-bind:action="javascript:buyDEX('{{markethive.value}}','{{markethbd.value}}','{{marketqty.value}}','{{markettime.value}}')" >
+                  <input id="markethbd" value="0" class="d-none">
+                  <input id="marketqty" value="0" class="d-none">
+                  <input id="markettime" value="0" class="d-none">
+                  <div class="card-header d-flex flex-fill justify-content-between align-items-center">
+                    <div>&nbsp;</div>
+                    <h3 class="lead m-0">MARKET ORDER</h3>
+                    <button type="button" class="close m-0 p-0" data-dismiss="modal" aria-label="Close"> <span class="close text-white m-0 p-0"><i class="fas fa-times"></i></span></button>
+                  </div>
+                  <div class="card-body">
+                    <p class="small text-white-50">Market Orders utilize multisig to complete partial fills of open orders on the DEX, starting with the lowest rate to ensure you're getting the best price.</p>
+                    <p class="small text-white-50"> If no orders are available, the ICO price of 1 HIVE per 1 DLUX is in effect.</p>
+                    <div class="d-flex flex-column">
+                      <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 bg-darker" >
+                        <div class="d-flex flex-row flex-fill align-items-center">
+                          <p style="font-size: 18px;" class="p-0 m-0 font-weight-light">From</p>
+                          <div class="d-flex ml-auto align-items-baseline">
+                            <div class="d-flex small justify-content-between">
+                              <p class="my-0 text-white-50" >Available<i class="fab fa-hive mx-1"></i></p>
+                              <p class="my-0 text-primary">{{accountapi.data.result[0].balance}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-row flex-fill mt-1">
+                          <div class="d-flex align-items-center">
+                            <div class="circle2"><i class="fab fa-hive"></i></div>
+                            <h2 class="p-0 m-0 ml-2 font-weight-bold">HIVE</h2>
+                          </div>
+                          <div class="d-flex ml-auto flex-column">
+                            <p class="ml-auto my-0 text-white-50 font-weight-bolder" style="font-size: 30px;">
+                              <input class="form-control text-white" style="background-color: rgba(0,0,0,0.5); max-width: 150px" id="markethive" value="1" placeholder="0" type="number" min="0.004" step="0.001" required dmx-bind:max="{{accountapi.data.result[0].balance.split(' ')[0]}}">
+                            </p>
+                            <p class="ml-auto my-0 text-muted font-weight-bold" style="font-size: 16px;">&asymp; {{(markethive.value*hiveprice.data.hive.usd).formatCurrency()}}</p>
+                          </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <div></div>
+                          <div>
+                            <button class="btn btn-outline-secondary btn-sm text-muted" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-info-circle"></i></button>
+                          </div>
+                        </div>
+                        <div class="collapse" id="collapseExample">
+                          <div class="d-flex">
+                            <p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Rate</p>
+                            <p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">1 HIVE &asymp; {{1/dexview1.data[0].rate}} DLUX</p>
+                          </div>
+                          <div class="d-flex">
+                            <p style="font-size: 12px;" class="p-0 m-0 text-muted ml-auto text-success">1 DLUX &asymp; {{dexview1.data[0].rate}} HIVE</p>
+                          </div>
+                          <hr width="100%" style="border: #333 thin solid">
+                          <div class="d-flex">
+                            <p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Swap Fee<small class="rounded-pill border border-secondary p-1 ml-2">0.1%</small></p>
+                            <p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">&asymp;
+                              <input id="marketfee" class="d-none" dmx-bind:value="{{((markethive.value/dexview1.data[0].rate)*0.001).formatNumber(3,'.',',')}}">
+                              {{marketfee.value}} DLUX</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class"p-0 m-0 bg-dark">
+                        <div class="arrow2 rounded-circle border border-warning bg-darker text-warning">
+                          <h1 class="m-2 px-3 py-1"><i class="fas fa-angle-double-down"></i></h1>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 border border-warning" style="background: radial-gradient(#222,#111);">
+                        <div class="d-flex flex-row flex-fill align-items-center">
+                          <p style="font-size: 18px;" class="p-0 m-0 font-weight-light">To</p>
+                        </div>
+                        <div class="d-flex flex-row flex-fill mt-1 align-items-center">
+                          <div class="d-flex align-items-center">
+                            <div class="circle2 d-flex align-items-center justify-content-around"><img src="/img/dlux-hive-logo-alpha.svg" width="70%"></div>
+                            <h2 class="p-0 m-0 ml-2 font-weight-bold">DLUX</h2>
+                          </div>
+                          <div class="d-flex ml-auto">
+                            <p class="ml-auto my-0 text-warning font-weight-bolder" style="font-size: 30px;">&asymp; {{((markethive.value/dexview1.data[0].rate)-(marketfee.value.toNumber())).formatNumber(3,'.',',')}}</p>
+                          </div>
+                        </div>
+                        <p class="pt-3">DLUX is your ticket to the metaverse. Purchase NFTs, power-up to vote on proposals, and use it across a variety of XR games and apps.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <div class="d-flex justify-content-around">
+                      <button type="submit" class="btn btn-lg btn-primary">Convert</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
     <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/footer.php";
 include_once( $path );
 ?>
+	<script>
+function getDate(){
+   const d = new Date();
+   const e =d.getMonth() + 1
+   document.getElementById("frmDate").value = e;
+  console.log('set month', e)
+  } 
+getDate(); 
+	</script>
     <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
