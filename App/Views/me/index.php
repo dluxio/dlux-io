@@ -64,7 +64,7 @@ include_once( $path );
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
-<body class="d-flex flex-column bg-darker h-100 padme-t70" id="index" is="dmx-app">
+<body class="d-flex flex-column bg-darker h-100 padme-t70" id="index" is="dmx-app" onLoad="getDate()">
 
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
