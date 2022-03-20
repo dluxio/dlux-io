@@ -526,7 +526,7 @@ if ( isset( $author ) ) {
         <div role="tabpanel" class="tab-pane fade show" id="hive" aria-labelledby="hivetab">
           <div class="container">
             <div class="jumbotron pt-4 bg-darker">
-              <h1 class="display-5">HIVE Token</h1>
+              <h1 class="display-5">HIVE</h1>
               <p class="lead ">A proof-of-stake blockchain built for censorship resistant content and apps</p>
               <hr class="my-4 bg-light">
               <div class="clearfix">
