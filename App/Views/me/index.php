@@ -493,8 +493,8 @@ if ( isset( $author ) ) {
                   <h4>Estimated Account Value</h4>
                   <p class="text-white-50">The approximate US Dollar value for all LARYNX in your account</p>
                 </div>
-                <div id="dluxval" class="float-right text-right">
-                  <h5 id="totallbal">{{(((larynxtoken.data.balance+larynxtoken.data.poweredUp+larynxtoken.data.gov)/1000)*(larynxdexapi.data.markets.hive.tick*hiveprice.data.hive.usd)).formatCurrency()}}</h5>
+                <div class="float-right text-right">
+                  <h5 id="totallarynx">{{(((larynxtoken.data.balance+larynxtoken.data.poweredUp+larynxtoken.data.gov)/1000)*(larynxdexapi.data.markets.hive.tick*hiveprice.data.hive.usd)).formatCurrency()}}</h5>
                 </div>
               </div>
             </div>
