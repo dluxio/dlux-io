@@ -436,7 +436,7 @@ if ( isset( $author ) ) {
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                       <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled" href="#" id="powerupdluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item" href="#" id="freezedluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-lock fa-fw mr-2"></i>Lock GOV</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item disabled" href="#" id="buylink" data-toggle="modal" data-target="#buyDluxModal"><i class="fas fa-cart-arrow-down fa-fw mr-2"></i>Buy LARYNX</a> <a class="dropdown-item disabled" href="#" id="selllink" data-toggle="modal" data-target="#buyDluxModal"><i class="fas fa-coins fa-fw mr-2"></i>Sell LARYNX</a></div>
+                        <a class="dropdown-item" href="/dex/larynx" id="buylink"><i class="fas fa-cart-arrow-down fa-fw mr-2"></i>Buy LARYNX</a> <a class="dropdown-item disabled" href="/dex/larynx" id="selllink"><i class="fas fa-coins fa-fw mr-2"></i>Sell LARYNX</a></div>
                     </div>
                   </div>
                 </div>
@@ -1862,99 +1862,7 @@ if ( isset( $author ) ) {
         </div>
       </div>
     </div>
-    <!-- Buy DLUX Modal -->
-    <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
-              <div class="modal-content bg-dark text-white">
-                <form class="needs-validation" validate id="marketorderform" dmx-bind:action="javascript:buyDEX('{{markethive.value}}','{{markethbd.value}}','{{marketqty.value}}','{{markettime.value}}')" >
-                  <input id="markethbd" value="0" class="d-none">
-                  <input id="marketqty" value="0" class="d-none">
-                  <input id="markettime" value="0" class="d-none">
-                  <div class="card-header d-flex flex-fill justify-content-between align-items-center">
-                    <div>&nbsp;</div>
-                    <h3 class="lead m-0">MARKET ORDER</h3>
-                    <button type="button" class="close m-0 p-0" data-dismiss="modal" aria-label="Close"> <span class="close text-white m-0 p-0"><i class="fas fa-times"></i></span></button>
-                  </div>
-                  <div class="card-body">
-                    <p class="small text-white-50">Market Orders utilize multisig to complete partial fills of open orders on the DEX, starting with the lowest rate to ensure you're getting the best price.</p>
-                    <p class="small text-white-50"> If no orders are available, the ICO price of 1 HIVE per 1 DLUX is in effect.</p>
-                    <div class="d-flex flex-column">
-                      <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 bg-darker" >
-                        <div class="d-flex flex-row flex-fill align-items-center">
-                          <p style="font-size: 18px;" class="p-0 m-0 font-weight-light">From</p>
-                          <div class="d-flex ml-auto align-items-baseline">
-                            <div class="d-flex small justify-content-between">
-                              <p class="my-0 text-white-50" >Available<i class="fab fa-hive mx-1"></i></p>
-                              <p class="my-0 text-primary">{{accountapi.data.result[0].balance}}</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="d-flex flex-row flex-fill mt-1">
-                          <div class="d-flex align-items-center">
-                            <div class="circle2"><i class="fab fa-hive"></i></div>
-                            <h2 class="p-0 m-0 ml-2 font-weight-bold">HIVE</h2>
-                          </div>
-                          <div class="d-flex ml-auto flex-column">
-                            <p class="ml-auto my-0 text-white-50 font-weight-bolder" style="font-size: 30px;">
-                              <input class="form-control text-white" style="background-color: rgba(0,0,0,0.5); max-width: 150px" id="markethive" value="1" placeholder="0" type="number" min="0.004" step="0.001" required dmx-bind:max="{{accountapi.data.result[0].balance.split(' ')[0]}}">
-                            </p>
-                            <p class="ml-auto my-0 text-muted font-weight-bold" style="font-size: 16px;">&asymp; {{(markethive.value*hiveprice.data.hive.usd).formatCurrency()}}</p>
-                          </div>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                          <div></div>
-                          <div>
-                            <button class="btn btn-outline-secondary btn-sm text-muted" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-info-circle"></i></button>
-                          </div>
-                        </div>
-                        <div class="collapse" id="collapseExample">
-                          <div class="d-flex">
-                            <p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Rate</p>
-                            <p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">1 HIVE &asymp; {{1/dexview1.data[0].rate}} DLUX</p>
-                          </div>
-                          <div class="d-flex">
-                            <p style="font-size: 12px;" class="p-0 m-0 text-muted ml-auto text-success">1 DLUX &asymp; {{dexview1.data[0].rate}} HIVE</p>
-                          </div>
-                          <hr width="100%" style="border: #333 thin solid">
-                          <div class="d-flex">
-                            <p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Swap Fee<small class="rounded-pill border border-secondary p-1 ml-2">0.1%</small></p>
-                            <p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">&asymp;
-                              <input id="marketfee" class="d-none" dmx-bind:value="{{((markethive.value/dexview1.data[0].rate)*0.001).formatNumber(3,'.',',')}}">
-                              {{marketfee.value}} DLUX</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class"p-0 m-0 bg-dark">
-                        <div class="arrow2 rounded-circle border border-warning bg-darker text-warning">
-                          <h1 class="m-2 px-3 py-1"><i class="fas fa-angle-double-down"></i></h1>
-                        </div>
-                      </div>
-                      <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 border border-warning" style="background: radial-gradient(#222,#111);">
-                        <div class="d-flex flex-row flex-fill align-items-center">
-                          <p style="font-size: 18px;" class="p-0 m-0 font-weight-light">To</p>
-                        </div>
-                        <div class="d-flex flex-row flex-fill mt-1 align-items-center">
-                          <div class="d-flex align-items-center">
-                            <div class="circle2 d-flex align-items-center justify-content-around"><img src="/img/dlux-hive-logo-alpha.svg" width="70%"></div>
-                            <h2 class="p-0 m-0 ml-2 font-weight-bold">DLUX</h2>
-                          </div>
-                          <div class="d-flex ml-auto">
-                            <p class="ml-auto my-0 text-warning font-weight-bolder" style="font-size: 30px;">&asymp; {{((markethive.value/dexview1.data[0].rate)-(marketfee.value.toNumber())).formatNumber(3,'.',',')}}</p>
-                          </div>
-                        </div>
-                        <p class="pt-3">DLUX is your ticket to the metaverse. Purchase NFTs, power-up to vote on proposals, and use it across a variety of XR games and apps.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-footer">
-                    <div class="d-flex justify-content-around">
-                      <button type="submit" class="btn btn-lg btn-primary">Convert</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+    
     <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/footer.php";
