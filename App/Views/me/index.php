@@ -393,7 +393,7 @@ if ( isset( $author ) ) {
                   <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
                 </div>
                 <div id="claimlarynxbtn" class="float-right text-right d-column">
-                  <h5 id="larynxclaim">{{((larynxtoken.data.claim)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
+                  <h5>{{((larynxtoken.data.claim)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <div class="btn-group" role="group" aria-label="LARYNX Claim">
                     <button type="submit" class="btn btn-info mr-half" dmx-on:click="claimLarynx()"><i class="fas fa-coin"></i><i class="fas fa-money-bill-wave-alt mr-2"></i>Claim</button>
                   </div>
@@ -432,7 +432,7 @@ if ( isset( $author ) ) {
                   </ul>
                 </div>
                 <div id="larynxpactions" class="float-right text-right">
-                  <h5 id="larynxpwrbalance">{{((larynxtoken.data.poweredUp)/1000).formatNumber(3,'.',',')}} DLUX</h5>
+                  <h5 id="larynxpwrbalance">{{((larynxtoken.data.poweredUp)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white d-none" style="text-decoration: none">
                     <h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
                   </a>
@@ -460,7 +460,7 @@ if ( isset( $author ) ) {
                 <div class="float-left">
                   <h4>LARYNX Governance</h4>
                   <p class="text-white-50">Locked tokens used to determine concensus and earn rewards for running a node</p>
-                  <p class="text-white-50">Benefits of DLUX Governance:</p>
+                  <p class="text-white-50">Benefits of LARYNX Governance:</p>
                   <ul class="text-white-50">
                     <li>Provides liquid funds to DAO multi-sig wallet</li>
                     <li>Ensures collateral for DEX escrow transactions</li>
