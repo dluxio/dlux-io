@@ -390,7 +390,8 @@ if ( isset( $author ) ) {
                 <hr class="my-4 bg-light">
                 <div class="float-left">
                   <h4>Claim LARYNX</h4>
-                  <p class="text-white-50">This months claimable tokens based on a January 6th HIVE blockchain snapshot. Tokens not claimed do not roll over to next month.</p>
+                  <p class="text-white-50">This months claimable tokens based on a January 6th HIVE blockchain snapshot.</p>
+					<p>Tokens not claimed do not roll over to next month.</p>
 					<input type="text" name="frmDateReg" required id="frmDate" value="" class="d-none">
                 </div>
                 <div id="claimlarynxbtn" class="float-right text-right d-column">
