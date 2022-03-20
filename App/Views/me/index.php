@@ -252,7 +252,9 @@ if ( isset( $author ) ) {
 		  <li class="nav-item"> <a class="nav-link " href="#larynx" id="larynxtab" role="tab" data-toggle="tab" aria-controls="larynx" aria-expanded="true">LARYNX</a></li>
         </ul>
       </div>
+		 
       <div id="walletcontent" class="tab-content">
+		   <!-- dlux wallet tab-->
         <div role="tabpanel" class="tab-pane fade show active" id="dlux" aria-labelledby="dluxtab">
           <div class="container">
             <div class="jumbotron pt-4 bg-darker">
@@ -601,8 +603,6 @@ if ( isset( $author ) ) {
           </div>
         </div>
       </div>
-    </div>
-	  </div>
     <!-- inventory tab -->
     <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
       <div class="container">
@@ -1226,7 +1226,6 @@ if ( isset( $author ) ) {
         </center>
       </div>
     </div>
-
         <!-- node tab -->
         <div role="tabpanel" class="tab-pane fade show" id="node" aria-labelledby="nodetab">
           <div id="nodeBanner" class="container no-session">
@@ -1554,12 +1553,8 @@ if ( isset( $author ) ) {
             </div>
           </div>
         </div>
-      </center>
-    </center>
   </div>
 </div>
-<center>
-  <center>
     </main>
     <!-- Send DLUX Modal -->
     <div class="modal fade" id="sendDluxModal" tabindex="-1" role="dialog" aria-labelledby="sendDluxModalTitle" aria-hidden="true">
