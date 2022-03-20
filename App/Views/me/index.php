@@ -1701,162 +1701,98 @@ if ( isset( $author ) ) {
       </div>
     </div>
     <!-- Buy DLUX Modal -->
-    <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
-        <div class="modal-content bg-darker text-white">
-          <div class="modal-header">
-            <h3 class="modal-title" id="buyDluxTitle">Buy With: </h3>
-            <ul class="nav nav-pills ml-3" role="tablist">
-              <li class="nav-item"><a href="javascript:dexmodal('hive', User.opts.type)" class="nav-link active" id="buywithhivetab" onClick="toggleActive()">HIVE</a></li>
-              <li class="nav-item"><a href="javascript:dexmodal('hbd', User.opts.type)" class="nav-link" id="buywithhbdtab" onClick="toggleActive()">HBD</a></li>
-            </ul>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">x</span></button>
-          </div>
-          <div class="container-fluid">
-            <div class="row" id="buy-main-row">
-              <div class="col-lg-12 col-md-12 col-sm-12" id="buy-form">
-                <div class="pt-4 pl-3 pr-3">
-                  <button class="btn btn-dark float-right d-none d-lg-block" onClick="toggleOrders()"><i class="fas fa-book-open mr-2"></i>Orders</button>
-                  <h4 id="menutitle" class="text-white-50 mt-2">New Buy Order</h4>
-                </div>
-                <form>
-                  <div class="modal-body">
-                    <div class="alert alert-dark text-center" role="alert"> <small>This will place a buy order on the <a href="../dex/">DEX (Decentralized Exchange)</a></small></div>
-                    <div class="form-group">
-                      <label for="buydluxfrom">Buyer:</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <div class="input-group-text">@</div>
-                        </div>
-                        <input class="form-control" id="senddluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label id="menudluxlab" for="buydluxquantity">Desired Quantity:</label>
-                      <div class="input-group">
-                        <input class="form-control" id="menudlux" type="number" step="0.001" min="0.001" placeholder="1.000">
-                        <div class="input-group-append">
-                          <div class="input-group-text">DLUX</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label id="menupricelab" for="buydluxprice">Desired Price Each (<a href="#" onClick="insertBal(User.dex.markets[User.opts.type].tick, 'menuprice')">Market Price: 0 HIVE</a>):</label>
-                      <div class="input-group">
-                        <input class="form-control" id="menuprice" type="number" placeholder="1.000">
-                        <div class="input-group-append">
-                          <div class="input-group-text" id="menupairdiv">HIVE</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label id="menupairlab" for="buydluxtotal">Order Total (<a href="#" onClick="insertBal(parseFloat(User[User.opts.type].balance), 'menupair')">HIVE Balance: 0 HIVE</a>):</label>
-                      <div class="input-group">
-                        <input class="form-control" id="menupair" type="number" step="0.001" min="0.001" placeholder="1.000">
-                        <div class="input-group-append">
-                          <div class="input-group-text" id="paycoin">HIVE</div>
-                        </div>
-                      </div>
-                    </div>
-                    <p><a data-toggle="collapse" href="#buydluxadvanced" role="button" aria-expanded="false" aria-controls="collapseExample">Advanced Options<i class="fas fa-angle-double-down ml-2"></i></a></p>
-                    <div class="collapse" id="buydluxadvanced">
-                      <div class="form-group">
-                        <label for="custodialAgent">Custodial Agent:</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <label class="input-group-text">@</label>
+     <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
+              <div class="modal-content bg-dark text-white">
+                <form class="needs-validation" validate id="marketorderform" dmx-bind:action="javascript:buyDEX('{{markethive.value}}','{{markethbd.value}}','{{marketqty.value}}','{{markettime.value}}')" >
+                  <input id="markethbd" value="0" class="d-none">
+                  <input id="marketqty" value="0" class="d-none">
+                  <input id="markettime" value="0" class="d-none">
+                  <div class="card-header d-flex flex-fill justify-content-between align-items-center">
+                    <div>&nbsp;</div>
+                    <h3 class="lead m-0">MARKET ORDER</h3>
+                    <button type="button" class="close m-0 p-0" data-dismiss="modal" aria-label="Close"> <span class="close text-white m-0 p-0"><i class="fas fa-times"></i></span></button>
+                  </div>
+                  <div class="card-body">
+                    <p class="small text-white-50">Market Orders utilize multisig to complete partial fills of open orders on the DEX, starting with the lowest rate to ensure you're getting the best price.</p>
+                    <p class="small text-white-50"> If no orders are available, the ICO price of 1 HIVE per 1 DLUX is in effect.</p>
+                    <div class="d-flex flex-column">
+                      <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 bg-darker" >
+                        <div class="d-flex flex-row flex-fill align-items-center">
+                          <p style="font-size: 18px;" class="p-0 m-0 font-weight-light">From</p>
+                          <div class="d-flex ml-auto align-items-baseline">
+                            <div class="d-flex small justify-content-between">
+                              <p class="my-0 text-white-50" >Available<i class="fab fa-hive mx-1"></i></p>
+                              <p class="my-0 text-primary">{{accountapi.data.result[0].balance}}</p>
+                            </div>
                           </div>
-                          <button class="btn btn-light dropdown-toggle form-control text-left" type="button" id="custodialAgent" data-toggle="dropdown">Custodial Agent</button>
-                          <ul class="dropdown-menu custodial-drop form-control agent-input-ul" id="custodialAgentUl">
-                            <input class="form-control agent-input" id="custodialAgentSearch" type="text" placeholder="Search..">
-                            <li><a href="#">disregardfiat - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">markegiles - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">dlux-io - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">heyhey - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">inconcievable - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">robotolux - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                          </ul>
-                          <div class="input-group-append">
-                            <button id="custodialAgentSort" type="button" class="btn btn-light append-radius" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sort-amount-down"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right text-white"> <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd mr-2"></i>Sort By Fee</a> <a class="dropdown-item" href="#"><i class="fas fa-award fa-fw mr-2"></i>Sort By Trust</a> <a class="dropdown-item" href="#"><i class="fas fa-fish fa-fw mr-2"></i>Sort By Liquidity</a></div>
+                        </div>
+                        <div class="d-flex flex-row flex-fill mt-1">
+                          <div class="d-flex align-items-center">
+                            <div class="circle2"><i class="fab fa-hive"></i></div>
+                            <h2 class="p-0 m-0 ml-2 font-weight-bold">HIVE</h2>
+                          </div>
+                          <div class="d-flex ml-auto flex-column">
+                            <p class="ml-auto my-0 text-white-50 font-weight-bolder" style="font-size: 30px;">
+                              <input class="form-control text-white" style="background-color: rgba(0,0,0,0.5); max-width: 150px" id="markethive" value="1" placeholder="0" type="number" min="0.004" step="0.001" required dmx-bind:max="{{accountapi.data.result[0].balance.split(' ')[0]}}">
+                            </p>
+                            <p class="ml-auto my-0 text-muted font-weight-bold" style="font-size: 16px;">&asymp; {{(markethive.value*hiveprice.data.hive.usd).formatCurrency()}}</p>
+                          </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                          <div></div>
+                          <div>
+                            <button class="btn btn-outline-secondary btn-sm text-muted" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-info-circle"></i></button>
+                          </div>
+                        </div>
+                        <div class="collapse" id="collapseExample">
+                          <div class="d-flex">
+                            <p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Rate</p>
+                            <p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">1 HIVE &asymp; {{1/dexview1.data[0].rate}} DLUX</p>
+                          </div>
+                          <div class="d-flex">
+                            <p style="font-size: 12px;" class="p-0 m-0 text-muted ml-auto text-success">1 DLUX &asymp; {{dexview1.data[0].rate}} HIVE</p>
+                          </div>
+                          <hr width="100%" style="border: #333 thin solid">
+                          <div class="d-flex">
+                            <p style="font-size: 18px;" class="p-0 m-0 text-white-50 font-weight-light">Swap Fee<small class="rounded-pill border border-secondary p-1 ml-2">0.1%</small></p>
+                            <p style="font-size: 16px;" class="p-0 m-0 text-white-50 ml-auto">&asymp;
+                              <input id="marketfee" class="d-none" dmx-bind:value="{{((markethive.value/dexview1.data[0].rate)*0.001).formatNumber(3,'.',',')}}">
+                              {{marketfee.value}} DLUX</p>
                           </div>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label for="escrowAgent">Escrow Agent:</label>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <label class="input-group-text">@</label>
-                          </div>
-                          <button class="btn btn-light dropdown-toggle form-control text-left" type="button" id="escrowAgent" data-toggle="dropdown">Escrow Agent</button>
-                          <ul class="dropdown-menu escrow-drop form-control agent-input-ul mx-auto" id="escrowAgentUl">
-                            <input class="form-control agent-input" id="escrowAgentSearch" type="text" placeholder="Search..">
-                            <li><a href="#">disregardfiat - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">markegiles - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">dlux-io - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">heyhey - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">inconcievable - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                            <li><a href="#">robotolux - Fee: .1DLUX - Trust: 99 - Liquid: 1000000000</a></li>
-                          </ul>
-                          <div class="input-group-append">
-                            <button type="button" id="escrowAgentSort" class="btn btn-light append-radius" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-sort-amount-down"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right text-white"> <a class="dropdown-item" href="#"><i class="fas fa-hand-holding-usd mr-2"></i>Sort By Fee</a> <a class="dropdown-item" href="#"><i class="fas fa-award fa-fw mr-2"></i>Sort By Trust</a> <a class="dropdown-item" href="#"><i class="fas fa-fish fa-fw mr-2"></i>Sort By Liquidity</a></div>
-                          </div>
+                      <div class"p-0 m-0 bg-dark">
+                        <div class="arrow2 rounded-circle border border-warning bg-darker text-warning">
+                          <h1 class="m-2 px-3 py-1"><i class="fas fa-angle-double-down"></i></h1>
                         </div>
                       </div>
-                      <script src="/dlux-io/js/popper.min.js"></script>
-                      <script src="/dlux-io/js/bootstrap-4.4.1.js"></script>
-                      <script>
-$(document).ready(function(){
-  $("#custodialAgentSearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $(".custodial-drop li").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-$(document).ready(function(){
-  $("#escrowAgentSearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $(".escrow-drop li").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
-                      <!-- <div class="form-group">
-			   <label for="menuexpire">Expiration Date and Time:</label>
-				<input class="form-control" id="buydluxexpire" />
-			 </div>-->
-                      <div class="form-group">
-                        <label for="escrowExpire">Expiration:</label>
-                        <select class="form-control" id="escrowExpire">
-                          <option value=1>1 hour</option>
-                          <option value=3>3 hours</option>
-                          <option value=6>6 hours</option>
-                          <option value=12>12 hours</option>
-                          <option value=24>1 day</option>
-                          <option value=72>3 days</option>
-                          <option value=120 selected>5 days</option>
-                        </select>
+                      <div class="d-flex flex-column flex-fill rounded-lg p-3 my-1 border border-warning" style="background: radial-gradient(#222,#111);">
+                        <div class="d-flex flex-row flex-fill align-items-center">
+                          <p style="font-size: 18px;" class="p-0 m-0 font-weight-light">To</p>
+                        </div>
+                        <div class="d-flex flex-row flex-fill mt-1 align-items-center">
+                          <div class="d-flex align-items-center">
+                            <div class="circle2 d-flex align-items-center justify-content-around"><img src="/img/dlux-hive-logo-alpha.svg" width="70%"></div>
+                            <h2 class="p-0 m-0 ml-2 font-weight-bold">DLUX</h2>
+                          </div>
+                          <div class="d-flex ml-auto">
+                            <p class="ml-auto my-0 text-warning font-weight-bolder" style="font-size: 30px;">&asymp; {{((markethive.value/dexview1.data[0].rate)-(marketfee.value.toNumber())).formatNumber(3,'.',',')}}</p>
+                          </div>
+                        </div>
+                        <p class="pt-3">DLUX is your ticket to the metaverse. Purchase NFTs, power-up to vote on proposals, and use it across a variety of XR games and apps.</p>
                       </div>
                     </div>
                   </div>
-                  <div class="modal-footer">
-                    <div class="mr-auto d-lg-none">
-                      <button type="button" class="btn btn-dark " onClick="toggleOrdersSM()"><i class="fas fa-book-open mr-2"></i>Orders</button>
+                  <div class="card-footer">
+                    <div class="d-flex justify-content-around">
+                      <button type="submit" class="btn btn-lg btn-primary">Convert</button>
                     </div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" onClick="dexsend(document.getElementById('buyDluxTitle').innerText.split(' ')[0], User.opts.pair)">Continue</button>
                   </div>
                 </form>
               </div>
-              <div class="col-lg-6 col-md-12 col-sm-12 overflow-auto d-none" id="orders"></div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
     <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/footer.php";
