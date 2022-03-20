@@ -386,7 +386,7 @@ if ( isset( $author ) ) {
             <div class="jumbotron pt-4 bg-darker">
               <h1 class="display-5">LARYNX Token</h1>
               <p class="lead ">Powering the spk network.</p>
-              <div class="clearfix" dmx-show="larynxtoken.data.claim > 0">
+              <div class="clearfix" >
                 <hr class="my-4 bg-light">
                 <div class="float-left">
                   <h4>Claim LARYNX</h4>
