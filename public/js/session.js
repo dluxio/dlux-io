@@ -597,8 +597,8 @@ function sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback){
         const price = parseFloat(dlux/(hive? hive : hbd)).toFixed(6)
         andthen = ` at ${price} ${hive?'HIVE':'HBD'} per ${token}`
     }
-    if(!hbd) broadcastCJA({ dlux, hive, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`)
-    else broadcastCJA({ dlux, hbd, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`)
+    if(!hbd) broadcastCJA({ [token.toLocaleLowerCase()]:dlux, hive, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`)
+    else broadcastCJA({ [token.toLocaleLowerCase()]:dlux, hbd, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`)
  }
 
  function buyDEX(hive, hbd, dlux, hours, prefix = 'dlux_', callback){
