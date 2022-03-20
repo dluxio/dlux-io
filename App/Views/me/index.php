@@ -296,7 +296,7 @@ if ( isset( $author ) ) {
                     <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="senddluxmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
                     <div class="btn-group" role="group">
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" id="powerupdluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item" href="#" id="freezedluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-lock fa-fw mr-2"></i>Lock GOV</a>
+                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" id="powerupdluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item" href="#" id="freezedluxbutton" data-toggle="modal" data-target="#lockgovDluxModal"><i class="fas fa-lock fa-fw mr-2"></i>Lock GOV</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" id="buylink" data-toggle="modal" data-target="#buyDluxModal"><i class="fas fa-cart-arrow-down fa-fw mr-2"></i>Buy DLUX</a> <a class="dropdown-item" href="#" id="selllink" data-toggle="modal" data-target="#buyDluxModal"><i class="fas fa-coins fa-fw mr-2"></i>Sell DLUX</a></div>
                     </div>
@@ -362,7 +362,7 @@ if ( isset( $author ) ) {
                     <button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
                     <div class="btn-group" role="group">
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" data-toggle="modal" id="dluxgovdownModalButton" data-target="#powerdownDluxModal"><i class="fas fa-lock-open fa-fw mr-2"></i>Unlock GOV</a> <a class="dropdown-item disabled" href="#" data-toggle="modal" id="govtopowerbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to PWR</a></div>
+                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" data-toggle="modal" id="dluxgovdownModalButton" data-target="#unlockgovDluxModal"><i class="fas fa-lock-open fa-fw mr-2"></i>Unlock GOV</a> <a class="dropdown-item disabled" href="#" data-toggle="modal" id="govtopowerbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to PWR</a></div>
                     </div>
                   </div>
                 </div>
@@ -1747,6 +1747,98 @@ if ( isset( $author ) ) {
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button type="button" id="powerdowndluxsubmit" class="btn btn-primary" onClick="powerDown('powerdowndluxamount', 'powerdowndluxto', 'powerdowndluxmemo')">Continue</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+	<!-- Lock Gov DLUX Modal -->
+    <div class="modal fade" id="lockgovDluxModal" tabindex="-1" role="dialog" aria-labelledby="lockgovDluxModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-darker text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="powerDluxTitle">Lock Gov DLUX</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
+          </div>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="lockgovdluxfrom">From:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="lockgovdluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="lockgovdluxto">To:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="lockgovdluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label id="powerdluxamountlab" for="powerupdluxmmount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'powerupdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <div class="input-group">
+                  <input class="form-control" id="powerupdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <div class="input-group-append">
+                    <div class="input-group-text">DLUX</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" id="powerdluxsubmitbutton">Continue</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Unlock Gov DLUX Modal -->
+    <div class="modal fade" id="unlockgovDluxModal" tabindex="-1" role="dialog" aria-labelledby="unlockgovDluxModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-darker text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="unlockgovDluxTitle">Unlock Gov DLUX</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
+          </div>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="unlockgovdluxfrom">From:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="unlockgovdluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="unlockgovdluxto">To:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="unlockgovdluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label id="dluxamountlab" for="unlockgovdluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'unlockgovdluxamount')">{{((usertoken.data.poweredUp)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <div class="input-group">
+                  <input class="form-control" id="unlockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <div class="input-group-append">
+                    <div class="input-group-text">DLUX</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" id="unlockgovdluxsubmit" class="btn btn-primary" onClick="unlockgov('unlockgovdluxamount', 'unlockgovdluxto', 'unlockgovdluxmemo')">Continue</button>
             </div>
           </form>
         </div>
