@@ -20,10 +20,6 @@ dmx.Formatters("global", {
                 "string" == typeof t && "now" == t.toLowerCase() && (t = null);
             var n = t ? new Date(t) : new Date();
             return "Invalid Date" == n.toString() ? null : n.toISOString();
-        },
-        getMonth: function(t) {
-            const d = new Date();
-            return d.getMonth() + 1
         }
     }),
     dmx.Formatters("array", {
@@ -414,6 +410,10 @@ dmx.Formatters("global", {
             },
             startsWith: function(t, n) {
                 return 0 === t.indexOf(n);
+            },
+            getMonth: function(t) {
+                const d = new Date();
+                return d.getMonth() + 1
             },
             Base64toNumber: function(chars){ 
                 var result = 0, glyphs = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz+="
