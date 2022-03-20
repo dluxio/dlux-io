@@ -1870,12 +1870,10 @@ include_once( $path );
 ?>
 	<script>
 function getDate(){
-   var todaydate = new Date();
-   var day = todaydate.getDate();
-   var month = todaydate.getMonth() + 1;
-   var year = todaydate.getFullYear();
-   var datestring = month;
-   document.getElementById("frmDate").value = datestring;
+   const d = new Date();
+   const e =d.getMonth() + 1
+   document.getElementById("frmDate").value = e;
+  console.log('set month', e)
   } 
 getDate(); 
 	</script>
