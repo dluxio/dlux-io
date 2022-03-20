@@ -1633,7 +1633,7 @@ if ( isset( $author ) ) {
             <h5 class="modal-title" id="sendLarynxTitle">Send LARYNX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form>
+          <form name="sendlarynx" dmx-bind:action="javascript:dluxsend('{{sendlarynxto.value}}','{{sendlarynxamount.value}}','{{sendlarynxmemo.value}}','spkcc_')">
             <div class="modal-body">
               <div class="form-group">
                 <label for="senddluxfrom">From:</label>
@@ -1671,7 +1671,7 @@ if ( isset( $author ) ) {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button id="sendlarynxmodalsend" type="button" class="btn btn-primary">Continue</button>
+              <button id="sendlarynxmodalsend" type="submit" class="btn btn-primary">Continue</button>
             </div>
           </form>
         </div>
@@ -1862,7 +1862,7 @@ if ( isset( $author ) ) {
       </div>
     </div>
     <!-- Buy DLUX Modal -->
-     <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
+    <div class="modal fade" id="buyDluxModal" tabindex="-1" role="dialog" aria-labelledby="buyDluxModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document" id="buy-modal">
               <div class="modal-content bg-dark text-white">
                 <form class="needs-validation" validate id="marketorderform" dmx-bind:action="javascript:buyDEX('{{markethive.value}}','{{markethbd.value}}','{{marketqty.value}}','{{markettime.value}}')" >
