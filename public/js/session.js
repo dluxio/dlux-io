@@ -444,7 +444,16 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  }
 
  function dluxsend(toid, amountid, memoid, prefix = 'dlux_') {
-
+    var token, statusapi
+    switch (prefix){
+        case 'spkcc_':
+            token = 'LARYNX'
+            statusapi = 'spkgiles.hivehoneycomb.com'
+            break;
+        default:
+            token = 'DLUX'
+            statusapi
+    }
     return new Promise((resolve, reject) => {
         var to = document.getElementById(toid).value,
             amount = parseInt(document.getElementById(amountid).value * 1000),
@@ -452,7 +461,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
         if (amount){
          checkAccount(to)
              .then(r => {
-                 broadcastCJA({to, amount, memo}, `${prefix}send`, `Trying to send DLUX...`)
+                 broadcastCJA({to, amount, memo}, `${prefix}send`, `Trying to send ${token}...`, statusapi)
              })
              .catch(e => { alert(e) })
         } else {
@@ -542,7 +551,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
      } catch (e) { console.log(e) }
  }
 
- function broadcastCJA(cj, id, msg){
+ function broadcastCJA(cj, id, msg, api){
     Dluxsession.hive_sign([user, [
                          ['custom_json', {
                              "required_auths": [user],
@@ -552,12 +561,12 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          }]
                      ], 'active'])
                      .then(r => {
-                         statusWaiter (r, msg)
+                         statusWaiter (r, msg, api)
                      })
                      .catch(e => { console.log(e) })
  }
 
- function broadcastTransfer(cj, msg){
+ function broadcastTransfer(cj, msg, api){
      console.log('bT', cj)
     Dluxsession.hive_sign([user, [
                          ['transfer', {
@@ -568,7 +577,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                          }]
                      ], 'active'])
                      .then(r => {
-                         statusWaiter (r, msg)
+                         statusWaiter (r, msg, api)
                      })
                      .catch(e => { console.log(e) })
  }
@@ -580,10 +589,11 @@ function buyFTHive(set, uid, price, token, qty){
     broadcastTransfer({to:'dlux-cc',[`${token.toLowerCase()}`]:price * qty , memo: `NFT ${set}:${uid}`}, `Buying a ${set} mint token`)
 }
 function sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback){
-    var token
+    var token, statusapi
     switch (prefix){
         case 'spkcc_':
             token = 'LARYNX'
+            statusapi = 'spkgiles.hivehoneycomb.com'
             break;
         default:
             token = 'DLUX'
@@ -597,17 +607,18 @@ function sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback){
         const price = parseFloat(dlux/(hive? hive : hbd)).toFixed(6)
         andthen = ` at ${price} ${hive?'HIVE':'HBD'} per ${token}`
     }
-    if(!hbd) broadcastCJA({ [token.toLocaleLowerCase()]:dlux, hive, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`)
-    else broadcastCJA({ [token.toLocaleLowerCase()]:dlux, hbd, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`)
+    if(!hbd) broadcastCJA({ [token.toLocaleLowerCase()]:dlux, hive, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, statusapi)
+    else broadcastCJA({ [token.toLocaleLowerCase()]:dlux, hbd, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, statusapi)
  }
 
  function buyDEX(hive, hbd, dlux, hours, prefix = 'dlux_', callback){
      console.log({hive,hbd,dlux})
-    var token, msaccount
+    var token, msaccount, statusapi
     switch (prefix){
         case 'spkcc_':
             token = 'LARYNX'
             msaccount = 'spk-cc'
+            statusapi = 'spkgiles.hivehoneycomb.com'
             break;
         default:
             token = 'DLUX'
@@ -621,16 +632,25 @@ function sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback){
         rate = parseFloat((hive? hive : hbd)/dlux).toFixed(6)
         andthen = ` at ${rate} ${hive?'HIVE':'HBD'} per ${token}`
     }
-    if(!hbd) broadcastTransfer({ to: msaccount, hive, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
-    else broadcastTransfer({ to: msaccount, hbd, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`)
+    if(!hbd) broadcastTransfer({ to: msaccount, hive, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
+    else broadcastTransfer({ to: msaccount, hbd, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
  }
 
  function cancelDEX(txid, prefix = 'dlux_') {
+     var token, statusapi
+    switch (prefix){
+        case 'spkcc_':
+            token = 'LARYNX'
+            statusapi = 'spkgiles.hivehoneycomb.com'
+            break;
+        default:
+            token = 'DLUX'
+    }
     var txidstring = txid
     if (typeof txid === 'array'){
         txidstring = txid.join(',')
     }
-    broadcastCJA({ txid}, `${prefix}dex_clear`, `Canceling: ${txidstring}`)
+    broadcastCJA({ txid}, `${prefix}dex_clear`, `Canceling: ${txidstring}`, statusapi)
 }
 
 
@@ -877,7 +897,7 @@ function setPFP(setname, uid, callback){
         })
  }
 
- function statusWaiter (res, what){
+ function statusWaiter (res, what, api = 'token.dlux.io'){
      const txid = res.result.id
      const whatt = what || ''
      let node = document.createElement('div')
@@ -902,7 +922,7 @@ function setPFP(setname, uid, callback){
                 updateDiv(id)
             }, 1000);
             if (time < 55 && time % 5 == 0){
-                fetch(`https://token.dlux.io/api/status/${id}`)
+                fetch(`https://${api}/api/status/${id}`)
                 .then(r => r.json())
                 .then(json => {
                     console.log(json,json.status.slice(0,20))
