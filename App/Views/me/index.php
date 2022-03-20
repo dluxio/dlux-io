@@ -597,6 +597,7 @@ if ( isset( $author ) ) {
         </div>
       </div>
     </div>
+	  </div>
     <!-- inventory tab -->
     <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
       <div class="container">
