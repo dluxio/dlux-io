@@ -492,7 +492,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
             </div>
-            <div id="dluxtxs" class="jumbotron pt-3 bg-darker text-white">
+            <div id="larynxtxs" class="jumbotron pt-3 bg-darker text-white">
 			  </div>
           </div>
 		  </div>
