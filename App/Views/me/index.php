@@ -1781,9 +1781,9 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="powerdluxamountlab" for="powerupdluxmmount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'powerupdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="lockgovdluxamountlab" for="lockgovdluxmmount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'lockgovdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
-                  <input class="form-control" id="powerupdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <input class="form-control" id="lockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
                     <div class="input-group-text">DLUX</div>
                   </div>
@@ -1792,7 +1792,7 @@ if ( isset( $author ) ) {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" id="powerdluxsubmitbutton">Continue</button>
+              <button type="button" class="btn btn-primary" id="lockgovdluxsubmitbutton">Continue</button>
             </div>
           </form>
         </div>
@@ -1827,7 +1827,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="dluxamountlab" for="unlockgovdluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.gov/1000),'unlockgovdluxamount')">{{((usertoken.data.gov)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="unlockgovamountlab" for="unlockgovdluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.gov/1000),'unlockgovdluxamount')">{{((usertoken.data.gov)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="unlockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
