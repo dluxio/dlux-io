@@ -382,6 +382,7 @@ if ( isset( $author ) ) {
             <div id="dluxtxs" class="jumbotron pt-3 bg-darker text-white"></div>
           </div>
         </div>
+		  <!-- larynx wallet tab-->
 		   <div role="tabpanel" class="tab-pane fade show " id="larynx" aria-labelledby="larynxtab">
           <div class="container">
             <div class="jumbotron pt-4 bg-darker">
@@ -470,7 +471,7 @@ if ( isset( $author ) ) {
                     <li>1 Week Lock | 4 Week Unlock | 1 Week Convert</li>
                   </ul>
                 </div>
-                <div id="dluxgactions" class="float-right text-right">
+                <div id="larynxgactions" class="float-right text-right">
                   <h5 id="govbalance">{{((larynxtoken.data.gov)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <a data-toggle="collapse" id="larynxescrowtxbutton" href="#larynxescrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
                     <h6 id="escrowbal">(-0 G)<i class="fas fa-search ml-2"></i></h6>
@@ -502,6 +503,7 @@ if ( isset( $author ) ) {
 			  </div>
           </div>
 		  </div>
+		  <!-- hive wallet tab-->
         <div role="tabpanel" class="tab-pane fade show" id="hive" aria-labelledby="hivetab">
           <div class="container">
             <div class="jumbotron pt-4 bg-darker">
@@ -593,10 +595,7 @@ if ( isset( $author ) ) {
             </div>
             <div id="hivetransactions" class="jumbotron pt-3 bg-darker text-white">
 				
-			  <div dmx-repeat:hivetxs="userhivehistory.data">
-				{{$index}} {{$key}} 
-				   <div dmx-repeat:histrepeat="$value">
-					   {{$value}}
+			  
 				</div>
 			  </div>
           </div>
@@ -1591,7 +1590,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="senddluxamountlab" for="senddluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'senddluxamount')">0</a>):</label>
+                <label id="senddluxamountlab" for="senddluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'senddluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="senddluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
