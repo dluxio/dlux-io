@@ -693,6 +693,7 @@ if ( isset( $author ) ) {
             </div>
           </div>
         </div>
+		
         <!-- Transfer FT Mint -->
         <dmx-data-detail id="mint_detail" dmx-bind:data="inventorydata.data.mint_tokens" key="set">
         <div class="modal fade show" id="mintTransferModal" tabindex="11" role="dialog" aria-hidden="true">
@@ -1220,8 +1221,7 @@ if ( isset( $author ) ) {
         </center>
       </div>
     </div>
-    <center>
-      <center>
+
         <!-- node tab -->
         <div role="tabpanel" class="tab-pane fade show" id="node" aria-labelledby="nodetab">
           <div id="nodeBanner" class="container no-session">
