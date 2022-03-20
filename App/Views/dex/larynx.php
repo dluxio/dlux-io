@@ -38,12 +38,12 @@ input.disabled-input {
 <dmx-api-datasource id="recenthbdapi" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/api/recent/HBD_LARYNX/" dmx-param:depth="200"></dmx-api-datasource>
 <dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
 <dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
-<dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="rate.parseFloat()" sortdir="desc"></dmx-data-view>
-<dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="rate.parseFloat()" sortdir="desc"></dmx-data-view>
-<dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate.parseFloat()" sortdir="desc"></dmx-data-view>
-<dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate.parseFloat()" sortdir="asc"></dmx-data-view>
-<dmx-data-view id="hbdbuys" dmx-bind:data="dexapi.data.markets.hbd.buys" sorton="rate.parseFloat()" sortdir="desc"></dmx-data-view>
-<dmx-data-view id="hbdsells" dmx-bind:data="dexapi.data.markets.hbd.sells" sorton="rate.parseFloat()" sortdir="asc"></dmx-data-view>
+<dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="rate.toNumber()" sortdir="desc"></dmx-data-view>
+<dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="rate.toNumber()" sortdir="desc"></dmx-data-view>
+<dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate.toNumber()" sortdir="desc"></dmx-data-view>
+<dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate.toNumber()" sortdir="asc"></dmx-data-view>
+<dmx-data-view id="hbdbuys" dmx-bind:data="dexapi.data.markets.hbd.buys" sorton="rate.toNumber()" sortdir="desc"></dmx-data-view>
+<dmx-data-view id="hbdsells" dmx-bind:data="dexapi.data.markets.hbd.sells" sorton="rate.toNumber()" sortdir="asc"></dmx-data-view>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
