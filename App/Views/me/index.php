@@ -248,8 +248,8 @@ if ( isset( $author ) ) {
       <div class="p-3">
         <ul class="nav nav-pills justify-content-center" role="tablist">
           <li class="nav-item"> <a class="nav-link active" href="#dlux" id="dluxtab" role="tab" data-toggle="tab" aria-controls="dlux" aria-expanded="true">DLUX</a></li>
-          <li class="nav-item"> <a class="nav-link" href="#hive" id="hivetab" role="tab" data-toggle="tab" aria-controls="hive" aria-expanded="true">HIVE</a></li>
 		  <li class="nav-item"> <a class="nav-link " href="#larynx" id="larynxtab" role="tab" data-toggle="tab" aria-controls="larynx" aria-expanded="true">LARYNX</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#hive" id="hivetab" role="tab" data-toggle="tab" aria-controls="hive" aria-expanded="true">HIVE</a></li>
         </ul>
       </div>
 		 
@@ -414,7 +414,7 @@ if ( isset( $author ) ) {
                 <div id="larynxactions" class="float-right text-right">
                   <h5 id="larynxbalance">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <div class="btn-group" role="group" aria-label="DLUX Actions">
-                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="senddluxmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendlarynxmodalbutton" data-target="#sendLarynxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
                     <div class="btn-group" role="group">
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                       <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled" href="#" id="powerupdluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item" href="#" id="freezedluxbutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-lock fa-fw mr-2"></i>Lock GOV</a>
@@ -1608,7 +1608,59 @@ if ( isset( $author ) ) {
         </div>
       </div>
     </div>
-    <!-- Power Up DLUX Modal -->
+    <!-- Send LARYNX Modal -->
+    <div class="modal fade" id="sendLarynxModal" tabindex="-1" role="dialog" aria-labelledby="sendLarynxModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-darker text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="sendLarynxTitle">Send LARYNX</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
+          </div>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="senddluxfrom">From:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="sendlarynxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="sendlarynxto">To:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="sendlarynxto" type="text" placeholder="Recipient">
+                </div>
+              </div>
+              <div class="form-group">
+                <label id="sendlarynxamountlab" for="sendlarynxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.larynx.balance/1000), 'senddluxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <div class="input-group">
+                  <input class="form-control" id="sendlarynxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <div class="input-group-append">
+                    <div class="input-group-text" id="sendformunits">LARYNX</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" id="sendlarynxmemogroup">
+                <label for="sendlarynxmemo">Memo:</label>
+                <div class="input-group">
+                  <input class="form-control" id="sendlarynxmemo" type="text" placeholder="Include a memo (optional)">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button id="sendlarynxmodalsend" type="button" class="btn btn-primary">Continue</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+	<!-- Power Up DLUX Modal -->
     <div class="modal fade" id="powerupDluxModal" tabindex="-1" role="dialog" aria-labelledby="powerupDluxModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-darker text-white">
