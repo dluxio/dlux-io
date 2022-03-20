@@ -21,6 +21,10 @@ class Dex extends \Core\Controller
     {
         View::render('dex/index.php');
     }
+	public function larynx($request, $response, $service)
+    {
+        View::render('dex/larynx.php');
+    }
 	public function grid($request, $response, $service)
     {
         View::render('dex/grid.php');
