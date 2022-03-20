@@ -99,6 +99,7 @@ if ( isset( $author ) ) {
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/" ></dmx-api-datasource>
+<dmx-api-datasource id="larynxdexapi" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/dex/" ></dmx-api-datasource>
 <dmx-api-datasource id="dluxfeed" is="dmx-fetch" url="https://token.dlux.io/feed/" ></dmx-api-datasource>
 <dmx-data-view id="data_view1"></dmx-data-view>
 <main role="main" class="flex-shrink-0 text-white">
@@ -471,10 +472,10 @@ if ( isset( $author ) ) {
                 </div>
                 <div id="dluxgactions" class="float-right text-right">
                   <h5 id="govbalance">{{((larynxtoken.data.gov)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
-                  <a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
-                    <h6 id="escrowbal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
+                  <a data-toggle="collapse" id="larynxescrowtxbutton" href="#larynxescrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
+                    <h6 id="escrowbal">(-0 G)<i class="fas fa-search ml-2"></i></h6>
                   </a>
-                  <div class="btn-group" role="group" aria-label="DLUX Actions">
+                  <div class="btn-group" role="group" aria-label="LARYNX Actions">
                     <button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
                     <div class="btn-group" role="group">
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
@@ -493,7 +494,7 @@ if ( isset( $author ) ) {
                   <p class="text-white-50">The approximate US Dollar value for all LARYNX in your account</p>
                 </div>
                 <div id="dluxval" class="float-right text-right">
-                  <h5 id="totallbal">{{(((larynxtoken.data.balance+larynxtoken.data.poweredUp+larynxtoken.data.gov)/1000)*(dexapi.data.markets.hive.tick*hiveprice.data.hive.usd)).formatCurrency()}}</h5>
+                  <h5 id="totallbal">{{(((larynxtoken.data.balance+larynxtoken.data.poweredUp+larynxtoken.data.gov)/1000)*(larynxdexapi.data.markets.hive.tick*hiveprice.data.hive.usd)).formatCurrency()}}</h5>
                 </div>
               </div>
             </div>

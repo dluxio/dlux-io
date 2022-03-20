@@ -3971,6 +3971,750 @@ dmx.config({
           }
         ]
       }
+    ],
+    "larynxdexapi": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "object",
+            "name": "markets",
+            "sub": [
+              {
+                "type": "object",
+                "name": "hbd",
+                "sub": [
+                  {
+                    "type": "text",
+                    "name": "buyBook"
+                  },
+                  {
+                    "type": "text",
+                    "name": "tick"
+                  },
+                  {
+                    "type": "array",
+                    "name": "sells"
+                  },
+                  {
+                    "type": "array",
+                    "name": "buys",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "amount"
+                      },
+                      {
+                        "type": "number",
+                        "name": "block"
+                      },
+                      {
+                        "type": "text",
+                        "name": "expire_path"
+                      },
+                      {
+                        "type": "number",
+                        "name": "fee"
+                      },
+                      {
+                        "type": "text",
+                        "name": "from"
+                      },
+                      {
+                        "type": "number",
+                        "name": "hbd"
+                      },
+                      {
+                        "type": "number",
+                        "name": "hive"
+                      },
+                      {
+                        "type": "text",
+                        "name": "rate"
+                      },
+                      {
+                        "type": "text",
+                        "name": "txid"
+                      },
+                      {
+                        "type": "text",
+                        "name": "type"
+                      },
+                      {
+                        "type": "text",
+                        "name": "key"
+                      },
+                      {
+                        "type": "object",
+                        "name": "hivenai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "hbdnai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "amountnai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "feenai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "name": "hive",
+                "sub": [
+                  {
+                    "type": "text",
+                    "name": "buyBook"
+                  },
+                  {
+                    "type": "key_array",
+                    "name": "his",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "base_vol"
+                      },
+                      {
+                        "type": "number",
+                        "name": "block"
+                      },
+                      {
+                        "type": "text",
+                        "name": "id"
+                      },
+                      {
+                        "type": "text",
+                        "name": "price"
+                      },
+                      {
+                        "type": "number",
+                        "name": "t"
+                      },
+                      {
+                        "type": "text",
+                        "name": "target"
+                      },
+                      {
+                        "type": "number",
+                        "name": "target_vol"
+                      },
+                      {
+                        "type": "text",
+                        "name": "type"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "name": "sellBook"
+                  },
+                  {
+                    "type": "object",
+                    "name": "sellOrders",
+                    "sub": [
+                      {
+                        "type": "object",
+                        "name": "-0.063373:LARYNXQmVMG9SoHt7W49SvyNdato17qMMboAGM5D4QqmQFN7xVJz",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "expire_path"
+                          },
+                          {
+                            "type": "number",
+                            "name": "fee"
+                          },
+                          {
+                            "type": "text",
+                            "name": "from"
+                          },
+                          {
+                            "type": "number",
+                            "name": "hbd"
+                          },
+                          {
+                            "type": "number",
+                            "name": "hive"
+                          },
+                          {
+                            "type": "text",
+                            "name": "rate"
+                          },
+                          {
+                            "type": "text",
+                            "name": "txid"
+                          },
+                          {
+                            "type": "text",
+                            "name": "type"
+                          },
+                          {
+                            "type": "text",
+                            "name": "key"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "name": "tick"
+                  },
+                  {
+                    "type": "array",
+                    "name": "sells",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "amount"
+                      },
+                      {
+                        "type": "number",
+                        "name": "block"
+                      },
+                      {
+                        "type": "text",
+                        "name": "expire_path"
+                      },
+                      {
+                        "type": "number",
+                        "name": "fee"
+                      },
+                      {
+                        "type": "text",
+                        "name": "from"
+                      },
+                      {
+                        "type": "number",
+                        "name": "hbd"
+                      },
+                      {
+                        "type": "number",
+                        "name": "hive"
+                      },
+                      {
+                        "type": "text",
+                        "name": "rate"
+                      },
+                      {
+                        "type": "text",
+                        "name": "txid"
+                      },
+                      {
+                        "type": "text",
+                        "name": "type"
+                      },
+                      {
+                        "type": "text",
+                        "name": "key"
+                      },
+                      {
+                        "type": "object",
+                        "name": "hivenai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "hbdnai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "amountnai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "feenai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "array",
+                    "name": "buys",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "amount"
+                      },
+                      {
+                        "type": "number",
+                        "name": "block"
+                      },
+                      {
+                        "type": "text",
+                        "name": "expire_path"
+                      },
+                      {
+                        "type": "number",
+                        "name": "fee"
+                      },
+                      {
+                        "type": "text",
+                        "name": "from"
+                      },
+                      {
+                        "type": "number",
+                        "name": "hbd"
+                      },
+                      {
+                        "type": "number",
+                        "name": "hive"
+                      },
+                      {
+                        "type": "text",
+                        "name": "rate"
+                      },
+                      {
+                        "type": "text",
+                        "name": "txid"
+                      },
+                      {
+                        "type": "text",
+                        "name": "type"
+                      },
+                      {
+                        "type": "text",
+                        "name": "key"
+                      },
+                      {
+                        "type": "object",
+                        "name": "hivenai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "hbdnai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "amountnai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "name": "feenai",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "amount"
+                          },
+                          {
+                            "type": "number",
+                            "name": "precision"
+                          },
+                          {
+                            "type": "text",
+                            "name": "token"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "name": "stats",
+            "sub": [
+              {
+                "type": "number",
+                "name": "IPFSRate"
+              },
+              {
+                "type": "object",
+                "name": "MSHeld",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "HBD"
+                  },
+                  {
+                    "type": "number",
+                    "name": "HIVE"
+                  }
+                ]
+              },
+              {
+                "type": "number",
+                "name": "budgetRate"
+              },
+              {
+                "type": "number",
+                "name": "currationRate"
+              },
+              {
+                "type": "number",
+                "name": "delegationRate"
+              },
+              {
+                "type": "text",
+                "name": "dex_fee"
+              },
+              {
+                "type": "text",
+                "name": "dex_max"
+              },
+              {
+                "type": "text",
+                "name": "dex_slope"
+              },
+              {
+                "type": "number",
+                "name": "gov_threshhold"
+              },
+              {
+                "type": "text",
+                "name": "hashLastIBlock"
+              },
+              {
+                "type": "number",
+                "name": "icoPrice"
+              },
+              {
+                "type": "number",
+                "name": "interestRate"
+              },
+              {
+                "type": "text",
+                "name": "lastBlock"
+              },
+              {
+                "type": "number",
+                "name": "lastIBlock"
+              },
+              {
+                "type": "number",
+                "name": "liq_reward"
+              },
+              {
+                "type": "number",
+                "name": "marketingRate"
+              },
+              {
+                "type": "number",
+                "name": "maxBudget"
+              },
+              {
+                "type": "number",
+                "name": "movingWeight"
+              },
+              {
+                "type": "object",
+                "name": "ms",
+                "sub": [
+                  {
+                    "type": "object",
+                    "name": "active_account_auths",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "pizza.spk"
+                      },
+                      {
+                        "type": "number",
+                        "name": "regardspk"
+                      },
+                      {
+                        "type": "number",
+                        "name": "verbalshadow"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "number",
+                    "name": "active_threshold"
+                  },
+                  {
+                    "type": "text",
+                    "name": "memo_key"
+                  },
+                  {
+                    "type": "object",
+                    "name": "owner_key_auths",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "STM5AAedmAPerZhzhA1f7FQCLnaidzeSoSnzRSJgMnvqVcXzaRXUK"
+                      },
+                      {
+                        "type": "number",
+                        "name": "STM6EUEaEywYoxpeVDX1fPDxrsyQLGTsgYf1LLDSHWwiKBdgRhGrx"
+                      },
+                      {
+                        "type": "number",
+                        "name": "STM7aLtAzKUpakSUJsrhTDhzEtWsKKwQsZcFmWMd2XDV9Tq5XH7bz"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "number",
+                    "name": "owner_threshold"
+                  },
+                  {
+                    "type": "number",
+                    "name": "posting_threshold"
+                  }
+                ]
+              },
+              {
+                "type": "number",
+                "name": "multiSigCollateral"
+              },
+              {
+                "type": "number",
+                "name": "nodeRate"
+              },
+              {
+                "type": "number",
+                "name": "outOnBlock"
+              },
+              {
+                "type": "number",
+                "name": "safetyLimit"
+              },
+              {
+                "type": "number",
+                "name": "savingsRate"
+              },
+              {
+                "type": "number",
+                "name": "tokenSupply"
+              }
+            ]
+          },
+          {
+            "type": "key_array",
+            "name": "queue",
+            "sub": [
+              {
+                "type": "text",
+                "name": "api"
+              },
+              {
+                "type": "number",
+                "name": "g"
+              },
+              {
+                "type": "number",
+                "name": "l"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "node"
+          },
+          {
+            "type": "number",
+            "name": "behind"
+          },
+          {
+            "type": "text",
+            "name": "VERSION"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          }
+        ]
+      }
     ]
   },
   "explore": {
