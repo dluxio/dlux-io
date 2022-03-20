@@ -258,13 +258,13 @@ if ( isset( $author ) ) {
         <div role="tabpanel" class="tab-pane fade show active" id="dlux" aria-labelledby="dluxtab">
           <div class="container">
             <div class="jumbotron pt-4 bg-darker">
-             <div> <h1 class="display-5">DLUX </h1><div class="text-center small" 
+             <div class="d-flex align-items-center"> <h1 class="display-5 p-0 m-0">DLUX </h1><div class="text-center small p-0 m-0 ml-4" 
 						 dmx-class:text-success="dexapi.data.behind < 30"	
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
 						 dmx-class:text-danger="dexapi.data.behind > 100"> 
-			<span dmx-show="dexapi.data.behind < 30">ONLINE:</span> 
-			<span dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING:</span> 
-			<span dmx-show="dexapi.data.behind > 100">OFFLINE:</span> 
+			<span dmx-show="dexapi.data.behind < 30"><i class="fas fa-circle mr-2"></i>ONLINE - </span> 
+			<span dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100"><i class="fas fa-circle mr-2">LAGGING - </span> 
+			<span dmx-show="dexapi.data.behind > 100"><i class="fas fa-circle mr-2">OFFLINE - </span> 
 			<span>{{dexapi.data.behind}} BBH</span> </div>
 		  </div>
               <p class="lead ">A completely open source platform for p2p games, apps, and experiences.</p>
@@ -396,7 +396,7 @@ if ( isset( $author ) ) {
 		   <div role="tabpanel" class="tab-pane fade show " id="larynx" aria-labelledby="larynxtab">
           <div class="container">
             <div class="jumbotron pt-4 bg-darker">
-              <div><h1 class="display-5">LARYNX</h1>
+              <div class="d-flex"><h1 class="display-5">LARYNX</h1>
 				<div class="text-center small" 
 						 dmx-class:text-success="larynxdexapi.data.behind < 30"	
 						 dmx-class:text-warning="larynxdexapi.data.behind >= 30"
