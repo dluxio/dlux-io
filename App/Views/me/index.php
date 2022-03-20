@@ -258,13 +258,13 @@ if ( isset( $author ) ) {
         <div role="tabpanel" class="tab-pane fade show active" id="dlux" aria-labelledby="dluxtab">
           <div class="container">
             <div class="jumbotron pt-4 bg-darker">
-             <div class="d-flex align-items-center"> <h1 class="display-5 p-0 m-0">DLUX </h1><div class="text-center small p-0 m-0 ml-4" 
+             <div class="d-flex align-items-center pb-2"> <h1 class="display-5 p-0 m-0">DLUX</h1><div class="text-center small p-0 m-0 ml-4" 
 						 dmx-class:text-success="dexapi.data.behind < 30"	
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
 						 dmx-class:text-danger="dexapi.data.behind > 100"> 
-			<span dmx-show="dexapi.data.behind < 30"><i class="fas fa-circle mr-2"></i>ONLINE - </span> 
-			<span dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100"><i class="fas fa-circle mr-2">LAGGING - </span> 
-			<span dmx-show="dexapi.data.behind > 100"><i class="fas fa-circle mr-2">OFFLINE - </span> 
+			<span dmx-show="dexapi.data.behind < 30">ONLINE - </span> 
+			<span dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING - </span> 
+			<span dmx-show="dexapi.data.behind > 100">OFFLINE - </span> 
 			<span>{{dexapi.data.behind}} BBH</span> </div>
 		  </div>
               <p class="lead ">A completely open source platform for p2p games, apps, and experiences.</p>
@@ -327,7 +327,7 @@ if ( isset( $author ) ) {
                 <div id="dluxpactions" class="float-right text-right">
                   <h5 id="pwrbalance">{{((usertoken.data.poweredUp)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                   <a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white d-none" style="text-decoration: none">
-                    <h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
+                    <h6 id="delegatebal">(-0 G)<i class="fas fa-search ml-2"></i></h6>
                   </a>
                   <div class="btn-group" role="group" aria-label="DLUX Actions">
                     <button type="button" class="btn btn-info mr-half disabled" data-toggle="modal" title="Delegate DLUX" id="delegatedluxbtn" data-target="#sendDluxModal" style="pointer-events: none"><i class="fas fa-user-friends fa-fw mr-2"></i>Delegate</button>
@@ -396,14 +396,14 @@ if ( isset( $author ) ) {
 		   <div role="tabpanel" class="tab-pane fade show " id="larynx" aria-labelledby="larynxtab">
           <div class="container">
             <div class="jumbotron pt-4 bg-darker">
-              <div class="d-flex"><h1 class="display-5">LARYNX</h1>
-				<div class="text-center small" 
+              <div class="d-flex align-items-center pb-2"><h1 class="display-5 m-0 p-0">LARYNX</h1>
+				<div class="text-center small m-0 p-2 ml-2" 
 						 dmx-class:text-success="larynxdexapi.data.behind < 30"	
 						 dmx-class:text-warning="larynxdexapi.data.behind >= 30"
 						 dmx-class:text-danger="larynxdexapi.data.behind > 100"> 
-			<span dmx-show="larynxdexapi.data.behind < 30">ONLINE:</span> 
-			<span dmx-show="larynxdexapi.data.behind >= 30 && larynxdexapi.data.behind <=100">LAGGING:</span> 
-			<span dmx-show="larynxdexapi.data.behind > 100">OFFLINE:</span> 
+			<span dmx-show="larynxdexapi.data.behind < 30">ONLINE - </span> 
+			<span dmx-show="larynxdexapi.data.behind >= 30 && larynxdexapi.data.behind <=100">LAGGING - </span> 
+			<span dmx-show="larynxdexapi.data.behind > 100">OFFLINE - </span> 
 			<span>{{larynxdexapi.data.behind}} BBH</span> 
 		  </div></div>
               <p class="lead ">Powering the spk network.</p>
