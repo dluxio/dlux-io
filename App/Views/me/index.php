@@ -77,6 +77,7 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'" . $author . "'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/" . $author . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"usertoken\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $author . "\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"larynxtoken\" is=\"dmx-fetch\" url=\"https://spkgiles.hivehoneycomb.com/@" . $author . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $author . "'\"></dmx-api-datasource>";
 } else if ( isset( $_COOKIE[ 'user' ] ) ) {
   echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
@@ -85,11 +86,12 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"tradefts\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/trades/fts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"tradenfts\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/trades/nfts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"usertoken\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"larynxtoken\" is=\"dmx-fetch\" url=\"https://spkgiles.hivehoneycomb.com/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
 } else {
 };
 ?>
-	<dmx-api-datasource id="larynxtoken" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/@markegiles"></dmx-api-datasource>
+<!--<dmx-api-datasource id="larynxtoken" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/@markegiles"></dmx-api-datasource>-->
 <!--<dmx-api-datasource id="accountapi" is="dmx-fetch" url="https://token.dlux.io/hapi/condenser_api/get_accounts" dmx-param:0="markegiles"></dmx-api-datasource>-->
 <dmx-api-datasource id="hivehistory" is="dmx-fetch" url="https://token.dlux.io/hapi/account_history_api/get_account_history" dmx-param:account="markegiles"></dmx-api-datasource>
 <dmx-data-view id="userhivehistory" dmx-bind:data="hivehistory.data.result.history"></dmx-data-view>
