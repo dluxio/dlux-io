@@ -388,7 +388,16 @@ if ( isset( $author ) ) {
 		   <div role="tabpanel" class="tab-pane fade show " id="larynx" aria-labelledby="larynxtab">
           <div class="container">
             <div class="jumbotron pt-4 bg-darker">
-              <h1 class="display-5">LARYNX Token</h1>
+              <h1 class="display-5">LARYNX</h1>
+				<div class="text-center small" 
+						 dmx-class:text-success="larynxdexapi.data.behind < 30"	
+						 dmx-class:text-warning="larynxdexapi.data.behind >= 30"
+						 dmx-class:text-danger="larynxdexapi.data.behind > 100"> 
+			<span dmx-show="larynxdexapi.data.behind < 30">ONLINE:</span> 
+			<span dmx-show="larynxdexapi.data.behind >= 30 && larynxdexapi.data.behind <=100">LAGGING:</span> 
+			<span dmx-show="larynxdexapi.data.behind > 100">OFFLINE:</span> 
+			<span>{{larynxdexapi.data.behind}} BBH</span> 
+		  </div>
               <p class="lead ">Powering the spk network.</p>
               <div class="clearfix"  dmx-show="larynxtoken.data.drop.last_claim.parseInt(16) != frmDate.value && larynxtoken.data.claim > 0">
                 <hr class="my-4 bg-light">
