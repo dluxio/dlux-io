@@ -67,9 +67,9 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 			<span>{{dexapi.data.behind}} BBH</span> 
 		  </div>
         <div class="d-flex text-white-50">
-          <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} DLUX</div>
-          <div id="userdpwr" class="mx-4 text-info">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} DPWR</div>
-          <div id="userdgov" class="mx-4 text-primary">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} DGOV</div>
+          <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} LARYNX</div>
+          <div id="userdpwr" class="mx-4 text-info">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} LARYNXP</div>
+          <div id="userdgov" class="mx-4 text-primary">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} LARYNXG</div>
           <div id="userhive" class="mx-4 text-danger">{{accountapi.data.result[0].balance}}</div>
           <div id="userhbd" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
         </div>
@@ -96,7 +96,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" dmx-show="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hive.tick*hiveprice.data.hive.usd}}</b></h2>
+              <h2 class="lead my-0"><b>LARYNX: ${{dexapi.data.markets.hive.tick*hiveprice.data.hive.usd}}</b></h2>
             </div>
             <input id="dluxhiveusd" dmx-bind:value="{{dexapi.data.markets.hive.tick}}" class="d-none">
           </div>
@@ -312,7 +312,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                     <div role="group" class="input-group">
                       <input type="number" required class="form-control bg-dark border-dark text-white-50" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:readonly="buymarket.checked">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">DLUX</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">LARYNX</div>
                       </div>
 						<div class="invalid-feedback"> Minimum quantity is 0.001 </div>
                     </div>
@@ -326,7 +326,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                     <div role="group" class="input-group">
                       <input id="buyPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  dmx-bind:readonly="buymarket.checked">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span dmx-show="buyhive.checked">HIVE</span><span dmx-show="buyhbd.checked">HBD</span>/DLUX</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span dmx-show="buyhive.checked">HIVE</span><span dmx-show="buyhbd.checked">HBD</span>/LARYNX</div>
                       </div>
 						<div class="invalid-feedback"> Minimum price is 0.000001 </div>
                     </div>
@@ -381,7 +381,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
             </form>
           </div>
           <div class="mt-3 col-md-6">
-            <h4>Sell DLUX</h4>
+            <h4>Sell LARYNX</h4>
             <form name="sell" class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX('{{sellQuantity.value}}','{{sellHiveTotal.value}}','{{sellHBDTotal.value}}','{{sellHours.value}}')">
               <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                 <div class="form-row">
@@ -407,7 +407,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                     <div role="group" class="input-group">
                       <input type="number" required class="form-control bg-dark border-dark text-white-50" id="sellQuantity" placeholder="0" min="0.004" step="0.001" aria-required="true" >
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">DLUX</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">LARYNX</div>
                       </div>
 						<div class="invalid-feedback"> Minimum quantity is 0.004 </div>
                     </div>
@@ -421,7 +421,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                     <div role="group" class="input-group">
                       <input id="sellPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  dmx-bind:readonly="sellmarket.checked">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span dmx-show="buyhive.checked">HIVE</span><span dmx-show="buyhbd.checked">HBD</span>/DLUX</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span dmx-show="buyhive.checked">HIVE</span><span dmx-show="buyhbd.checked">HBD</span>/LARYNX</div>
                       </div>
 						<div class="invalid-feedback"> Minimum price is 0.000001 </div>
                     </div>
@@ -494,7 +494,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HIVE</th>
                       <th role="columnheader" scope="col" aria-colindex="2" class=""><div>HIVE</div></th>
-                      <th role="columnheader" scope="col" aria-colindex="3" class="">DLUX</th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class="">LARYNX</th>
                       <th role="columnheader" scope="col" aria-colindex="4" class=""><div>BID</div></th>
                     </tr>
                   </thead>
@@ -517,7 +517,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
-                      <th role="columnheader" scope="col" aria-colindex="2" class="">DLUX</th>
+                      <th role="columnheader" scope="col" aria-colindex="2" class="">LARYNX</th>
                       <th role="columnheader" scope="col" aria-colindex="3" class=""><div>HIVE</div></th>
                       <th role="columnheader" scope="col" aria-colindex="4" class="">TOTAL HIVE</th>
                     </tr>
@@ -575,7 +575,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HBD</th>
                       <th role="columnheader" scope="col" aria-colindex="2" class=""><div>HBD</div></th>
-                      <th role="columnheader" scope="col" aria-colindex="3" class="">DLUX</th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class="">LARYNX</th>
                       <th role="columnheader" scope="col" aria-colindex="4" class=""><div>BID</div></th>
                     </tr>
                   </thead>
@@ -598,7 +598,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
-                      <th role="columnheader" scope="col" aria-colindex="2" class="">DLUX</th>
+                      <th role="columnheader" scope="col" aria-colindex="2" class="">LARYNX</th>
                       <th role="columnheader" scope="col" aria-colindex="3" class=""><div>HBD</div></th>
                       <th role="columnheader" scope="col" aria-colindex="4" class="">TOTAL HBD</th>
                     </tr>
