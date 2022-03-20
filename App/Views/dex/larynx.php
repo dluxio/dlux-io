@@ -34,8 +34,8 @@ input.disabled-input {
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/dex" ></dmx-api-datasource>
-<dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/api/recent/HIVE_DLUX/" dmx-param:depth="200"></dmx-api-datasource>
-<dmx-api-datasource id="recenthbdapi" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/api/recent/HBD_DLUX/" dmx-param:depth="200"></dmx-api-datasource>
+<dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/api/recent/HIVE_LARYNX/" dmx-param:depth="200"></dmx-api-datasource>
+<dmx-api-datasource id="recenthbdapi" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/api/recent/HBD_LARYNX/" dmx-param:depth="200"></dmx-api-datasource>
 <dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
 <dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
 <dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="rate" sortdir="desc"></dmx-data-view>

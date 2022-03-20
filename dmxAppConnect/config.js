@@ -1586,10 +1586,6 @@ dmx.config({
           },
           {
             "type": "text",
-            "name": "via"
-          },
-          {
-            "type": "text",
             "name": "x-powered-by"
           }
         ]
@@ -1601,12 +1597,42 @@ dmx.config({
         "name": "data",
         "sub": [
           {
-            "type": "text",
-            "name": "error"
+            "type": "array",
+            "name": "recent_trades",
+            "sub": [
+              {
+                "type": "text",
+                "name": "trade_id"
+              },
+              {
+                "type": "text",
+                "name": "price"
+              },
+              {
+                "type": "text",
+                "name": "base_volume"
+              },
+              {
+                "type": "text",
+                "name": "target_volume"
+              },
+              {
+                "type": "number",
+                "name": "trade_timestamp"
+              },
+              {
+                "type": "text",
+                "name": "type"
+              }
+            ]
           },
           {
             "type": "text",
             "name": "node"
+          },
+          {
+            "type": "number",
+            "name": "behind"
           },
           {
             "type": "text",
