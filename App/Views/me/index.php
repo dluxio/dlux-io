@@ -391,7 +391,7 @@ if ( isset( $author ) ) {
                 <div class="float-left">
                   <h4>Claim LARYNX</h4>
                   <p class="text-white-50">Tokens from earnings, delegation, PoB, node rewards, etc.</p>
-                </div>{{larynxtoken.data.drop.last_claim.parseInt(16)}} !=  {{larynxtoken.data.node.getMonth()}}
+                </div>{{larynxtoken.data.drop.last_claim.parseInt(16)}} !=  {{larynxtoken.data.node}}
                 <div id="claimlarynxbtn" class="float-right text-right d-column">
                   <h5>{{((larynxtoken.data.drop.availible.amount)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <div class="btn-group" role="group" aria-label="LARYNX Claim">
