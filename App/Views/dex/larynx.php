@@ -33,9 +33,6 @@ input.disabled-input {
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
-<dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/dex" ></dmx-api-datasource>
-<dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/api/recent/HIVE_LARYNX/" dmx-param:depth="200"></dmx-api-datasource>
-<dmx-api-datasource id="recenthbdapi" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/api/recent/HBD_LARYNX/" dmx-param:depth="200"></dmx-api-datasource>
 <dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
 <dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
 <dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="rate.toNumber()" sortdir="desc"></dmx-data-view>
@@ -47,10 +44,16 @@ input.disabled-input {
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
+$lapi = "https://spktoken.dlux.io";
+if ( isset( $_COOKIE[ 'lapi' ] ) ) {$lapi = $_COOKIE[ 'lapi' ];};
 include_once( $path );
 if ( isset( $_COOKIE[ 'user' ] ) ) {
-  echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"https://spkgiles.hivehoneycomb.com/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"https://spkgiles.hivehoneycomb.com/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
+
+  echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:depth=\"200\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:depth=\"200\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
 };
 ?>
 <main role="main" class="flex-shrink-0 text-white">
