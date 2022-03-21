@@ -33,6 +33,10 @@ dmx.Component("data-view", {
       type: String,
       default: ""
     },
+    natural:{
+      type: Boolean,
+      default: false
+    },
     page: {
       type: Number,
       default: 1
@@ -103,7 +107,7 @@ dmx.Component("data-view", {
     this.filtered = this.items.slice(0), t && (this.filtered = this.filtered.filter(function (t) {
       return dmx.parse(this.props.filter, dmx.DataScope(t, this))
     }, this)), s && this.filtered.sort(function (t, e, n) {
-      console.warn('EXE')
+      console.warn(n)
       if (n)  return parseFloat(t[s]) < parseFloat(e[s]) ? -1 : parseFloat(t[s]) > parseFloat(e[s]) ? 1 : 0
       else return t[s] < e[s] ? -1 : t[s] > e[s] ? 1 : 0
     }), "desc" == e && this.filtered.reverse(), this.filtered.length ? this.set("pages", i ? Math.ceil(this.filtered.length / i) : 1) : this.set("pages", 1), this.set("items", this.filtered.length), this.set("sort", {
