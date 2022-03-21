@@ -1331,17 +1331,117 @@ dmx.config({
     "repeat1": {
       "meta": [
         {
-          "type": "array",
-          "name": "$value",
+          "type": "number",
+          "name": "attempts"
+        },
+        {
+          "type": "number",
+          "name": "bidRate"
+        },
+        {
+          "type": "number",
+          "name": "burned"
+        },
+        {
+          "type": "number",
+          "name": "contracts"
+        },
+        {
+          "type": "number",
+          "name": "dm"
+        },
+        {
+          "type": "text",
+          "name": "domain"
+        },
+        {
+          "type": "number",
+          "name": "ds"
+        },
+        {
+          "type": "number",
+          "name": "escrows"
+        },
+        {
+          "type": "number",
+          "name": "lastGood"
+        },
+        {
+          "type": "number",
+          "name": "moved"
+        },
+        {
+          "type": "text",
+          "name": "mskey"
+        },
+        {
+          "type": "object",
+          "name": "report",
           "sub": [
             {
               "type": "number",
-              "name": "$value"
+              "name": "block"
+            },
+            {
+              "type": "number",
+              "name": "block_num"
+            },
+            {
+              "type": "text",
+              "name": "hash"
+            },
+            {
+              "type": "text",
+              "name": "ipfs_id"
+            },
+            {
+              "type": "text",
+              "name": "prand"
+            },
+            {
+              "type": "text",
+              "name": "sig"
+            },
+            {
+              "type": "number",
+              "name": "sig_block"
+            },
+            {
+              "type": "text",
+              "name": "transaction_id"
+            },
+            {
+              "type": "text",
+              "name": "version"
             }
           ]
+        },
+        {
+          "type": "text",
+          "name": "self"
+        },
+        {
+          "type": "number",
+          "name": "strikes"
+        },
+        {
+          "type": "number",
+          "name": "tw"
+        },
+        {
+          "type": "number",
+          "name": "ty"
+        },
+        {
+          "type": "number",
+          "name": "wins"
+        },
+        {
+          "type": "number",
+          "name": "yays"
         }
       ],
-      "outputType": "array"
+      "outputType": "key_array"
     },
     "hivebuys": {
       "meta": [
@@ -4737,7 +4837,472 @@ dmx.config({
           }
         ]
       }
-    ]
+    ],
+    "nodes": [
+      {
+        "type": "object",
+        "name": "data",
+        "sub": [
+          {
+            "type": "object",
+            "name": "markets",
+            "sub": [
+              {
+                "type": "key_array",
+                "name": "node",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "attempts"
+                  },
+                  {
+                    "type": "number",
+                    "name": "bidRate"
+                  },
+                  {
+                    "type": "number",
+                    "name": "burned"
+                  },
+                  {
+                    "type": "number",
+                    "name": "contracts"
+                  },
+                  {
+                    "type": "number",
+                    "name": "dm"
+                  },
+                  {
+                    "type": "text",
+                    "name": "domain"
+                  },
+                  {
+                    "type": "number",
+                    "name": "ds"
+                  },
+                  {
+                    "type": "number",
+                    "name": "escrows"
+                  },
+                  {
+                    "type": "number",
+                    "name": "lastGood"
+                  },
+                  {
+                    "type": "number",
+                    "name": "moved"
+                  },
+                  {
+                    "type": "text",
+                    "name": "mskey"
+                  },
+                  {
+                    "type": "object",
+                    "name": "report",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "block"
+                      },
+                      {
+                        "type": "number",
+                        "name": "block_num"
+                      },
+                      {
+                        "type": "text",
+                        "name": "hash"
+                      },
+                      {
+                        "type": "text",
+                        "name": "ipfs_id"
+                      },
+                      {
+                        "type": "text",
+                        "name": "prand"
+                      },
+                      {
+                        "type": "text",
+                        "name": "sig"
+                      },
+                      {
+                        "type": "number",
+                        "name": "sig_block"
+                      },
+                      {
+                        "type": "text",
+                        "name": "transaction_id"
+                      },
+                      {
+                        "type": "text",
+                        "name": "version"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "text",
+                    "name": "self"
+                  },
+                  {
+                    "type": "number",
+                    "name": "strikes"
+                  },
+                  {
+                    "type": "number",
+                    "name": "tw"
+                  },
+                  {
+                    "type": "number",
+                    "name": "ty"
+                  },
+                  {
+                    "type": "number",
+                    "name": "wins"
+                  },
+                  {
+                    "type": "number",
+                    "name": "yays"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "object",
+            "name": "stats",
+            "sub": [
+              {
+                "type": "number",
+                "name": "IPFSRate"
+              },
+              {
+                "type": "object",
+                "name": "MSHeld",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "HBD"
+                  },
+                  {
+                    "type": "number",
+                    "name": "HIVE"
+                  }
+                ]
+              },
+              {
+                "type": "number",
+                "name": "budgetRate"
+              },
+              {
+                "type": "number",
+                "name": "currationRate"
+              },
+              {
+                "type": "number",
+                "name": "delegationRate"
+              },
+              {
+                "type": "text",
+                "name": "dex_fee"
+              },
+              {
+                "type": "text",
+                "name": "dex_max"
+              },
+              {
+                "type": "text",
+                "name": "dex_slope"
+              },
+              {
+                "type": "number",
+                "name": "gov_threshhold"
+              },
+              {
+                "type": "text",
+                "name": "hashLastIBlock"
+              },
+              {
+                "type": "number",
+                "name": "icoPrice"
+              },
+              {
+                "type": "number",
+                "name": "interestRate"
+              },
+              {
+                "type": "text",
+                "name": "lastBlock"
+              },
+              {
+                "type": "number",
+                "name": "lastIBlock"
+              },
+              {
+                "type": "number",
+                "name": "liq_reward"
+              },
+              {
+                "type": "number",
+                "name": "marketingRate"
+              },
+              {
+                "type": "number",
+                "name": "maxBudget"
+              },
+              {
+                "type": "number",
+                "name": "movingWeight"
+              },
+              {
+                "type": "object",
+                "name": "ms",
+                "sub": [
+                  {
+                    "type": "object",
+                    "name": "active_account_auths",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "pizza.spk"
+                      },
+                      {
+                        "type": "number",
+                        "name": "regardspk"
+                      },
+                      {
+                        "type": "number",
+                        "name": "verbalshadow"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "number",
+                    "name": "active_threshold"
+                  },
+                  {
+                    "type": "text",
+                    "name": "memo_key"
+                  },
+                  {
+                    "type": "object",
+                    "name": "owner_key_auths",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "STM5AAedmAPerZhzhA1f7FQCLnaidzeSoSnzRSJgMnvqVcXzaRXUK"
+                      },
+                      {
+                        "type": "number",
+                        "name": "STM6EUEaEywYoxpeVDX1fPDxrsyQLGTsgYf1LLDSHWwiKBdgRhGrx"
+                      },
+                      {
+                        "type": "number",
+                        "name": "STM7aLtAzKUpakSUJsrhTDhzEtWsKKwQsZcFmWMd2XDV9Tq5XH7bz"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "number",
+                    "name": "owner_threshold"
+                  },
+                  {
+                    "type": "number",
+                    "name": "posting_threshold"
+                  }
+                ]
+              },
+              {
+                "type": "number",
+                "name": "multiSigCollateral"
+              },
+              {
+                "type": "number",
+                "name": "nodeRate"
+              },
+              {
+                "type": "number",
+                "name": "outOnBlock"
+              },
+              {
+                "type": "number",
+                "name": "safetyLimit"
+              },
+              {
+                "type": "number",
+                "name": "savingsRate"
+              },
+              {
+                "type": "number",
+                "name": "tokenSupply"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "name": "node"
+          },
+          {
+            "type": "number",
+            "name": "behind"
+          },
+          {
+            "type": "text",
+            "name": "VERSION"
+          }
+        ]
+      },
+      {
+        "type": "object",
+        "name": "headers",
+        "sub": [
+          {
+            "type": "text",
+            "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "connection"
+          },
+          {
+            "type": "text",
+            "name": "content-length"
+          },
+          {
+            "type": "text",
+            "name": "content-type"
+          },
+          {
+            "type": "text",
+            "name": "date"
+          },
+          {
+            "type": "text",
+            "name": "etag"
+          },
+          {
+            "type": "text",
+            "name": "server"
+          },
+          {
+            "type": "text",
+            "name": "x-powered-by"
+          }
+        ]
+      }
+    ],
+    "data_view1": {
+      "meta": [
+        {
+          "type": "number",
+          "name": "attempts"
+        },
+        {
+          "type": "number",
+          "name": "bidRate"
+        },
+        {
+          "type": "number",
+          "name": "burned"
+        },
+        {
+          "type": "number",
+          "name": "contracts"
+        },
+        {
+          "type": "number",
+          "name": "dm"
+        },
+        {
+          "type": "text",
+          "name": "domain"
+        },
+        {
+          "type": "number",
+          "name": "ds"
+        },
+        {
+          "type": "number",
+          "name": "escrows"
+        },
+        {
+          "type": "number",
+          "name": "lastGood"
+        },
+        {
+          "type": "number",
+          "name": "moved"
+        },
+        {
+          "type": "text",
+          "name": "mskey"
+        },
+        {
+          "type": "object",
+          "name": "report",
+          "sub": [
+            {
+              "type": "number",
+              "name": "block"
+            },
+            {
+              "type": "number",
+              "name": "block_num"
+            },
+            {
+              "type": "text",
+              "name": "hash"
+            },
+            {
+              "type": "text",
+              "name": "ipfs_id"
+            },
+            {
+              "type": "text",
+              "name": "prand"
+            },
+            {
+              "type": "text",
+              "name": "sig"
+            },
+            {
+              "type": "number",
+              "name": "sig_block"
+            },
+            {
+              "type": "text",
+              "name": "transaction_id"
+            },
+            {
+              "type": "text",
+              "name": "version"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "self"
+        },
+        {
+          "type": "number",
+          "name": "strikes"
+        },
+        {
+          "type": "number",
+          "name": "tw"
+        },
+        {
+          "type": "number",
+          "name": "ty"
+        },
+        {
+          "type": "number",
+          "name": "wins"
+        },
+        {
+          "type": "number",
+          "name": "yays"
+        }
+      ],
+      "outputType": "key_array"
+    }
   },
   "explore": {
     "setsapi": [
