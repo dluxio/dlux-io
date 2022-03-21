@@ -65,7 +65,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 		      <a class="dropdown-item" href="/dex/dlux">DLUX</a>
 		      <a class="dropdown-item" href="/dex/larynx">LARYNX</a> </div>
 	      </div>
-        <div class="text-center small" 
+        <div class="d-flex text-center small align-items-center ml-4" 
 						 dmx-class:text-success="dexapi.data.behind < 30"	
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
 						 dmx-class:text-danger="dexapi.data.behind > 100">
@@ -73,7 +73,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 			<span class=" p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE - </span> 
 			<span class=" p-0 m-0" dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING - </span> 
 			<span class=" p-0 m-0" dmx-show="dexapi.data.behind > 100">OFFLINE - </span> 
-			<span class=" p-0 m-0 ml-2">{{dexapi.data.behind}}BBH</span> 
+			<span class=" p-0 m-0 ml-2">{{dexapi.data.behind}} BBH</span> 
 		  </div>
 		  </div>
         <div class="d-flex text-white-50">
