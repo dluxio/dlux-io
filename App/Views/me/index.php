@@ -1635,7 +1635,6 @@ if ( isset( $author ) ) {
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
           <form name="sendlarynx" dmx-bind:action="javascript:dluxsend('{{sendlarynxto.value}}','{{sendlarynxamount.value}}','{{sendlarynxmemo.value}}','spkcc_')">
-			  {{sendlarynxto.value}} {{sendlarynxamount.value}} {{sendlarynxmemo.value}}
             <div class="modal-body">
               <div class="form-group">
                 <label for="senddluxfrom">From:</label>
