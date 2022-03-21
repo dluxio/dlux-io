@@ -50,8 +50,8 @@ include_once( $path );
 if ( isset( $_COOKIE[ 'user' ] ) ) {
 
   echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"200\"></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"200\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
 };
@@ -62,10 +62,10 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 		
       <div class="d-flex justify-content-between align-items-center px-3 py-1" style="background-color: black;" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
 
-		  <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Market </a>
+		  <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
 		    <div class="dropdown-menu">
 		      <h6 class="dropdown-header">Market</h6>
-		      <a class="dropdown-item" href="#">DLUX</a> <a class="dropdown-item disabled" href="#" >Disabled Link</a> <a class="dropdown-item" href="#">Something else here</a>
+		      <a class="dropdown-item" href="#">DLUX</a>
 		      <div class="dropdown-divider"></div>
 		      <a class="dropdown-item" href="#">LARYNX</a> </div>
 	      </div>
@@ -74,9 +74,9 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 						 dmx-class:text-success="dexapi.data.behind < 30"	
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
 						 dmx-class:text-danger="dexapi.data.behind > 100"> 
-			<span dmx-show="dexapi.data.behind < 30">ONLINE:</span> 
-			<span dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING:</span> 
-			<span dmx-show="dexapi.data.behind > 100">OFFLINE:</span> 
+			<span dmx-show="dexapi.data.behind < 30">LARYNX: ONLINE - </span> 
+			<span dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING - </span> 
+			<span dmx-show="dexapi.data.behind > 100">OFFLINE - </span> 
 			<span>{{dexapi.data.behind}} BBH</span> 
 		  </div>
         <div class="d-flex text-white-50">
