@@ -49,7 +49,6 @@ dmx.Component("data-view", {
       type: String,
       default: "asc",
       validate: function (t) {
-        console.warn(t, /^(asc|desc|nasc|ndesc)$/i.test(t))
         return /^(asc|desc|nasc|ndesc)$/i.test(t)
       }
     }
@@ -78,6 +77,7 @@ dmx.Component("data-view", {
     },
     sort: function (t, e) {
       if(e == "nasc" || e == "ndesc"){
+        console.warn(e)
         this.props.natural = true
         this.props.sortDir = e && "ndesc" == e.toLowerCase() ? "desc" : "asc"
       } else {
