@@ -13,6 +13,7 @@ switch(window.location.pathname) {
     case '/dex/larynx':
         tokenapi = 'https://spktoken.dlux.io'
         TOKEN = 'LARYNX'
+        break;
     default:
         tokenapi = 'https://token.dlux.io'
         TOKEN = 'DLUX'
@@ -24,6 +25,7 @@ function getHistorical(pair, width, bc, api){
     return new Promise(function(resolve, reject) {
     const numbars = bc || 100
     const period = width || 3600000 * 24 //days
+    console.log(`${api}/dex`)
     promises = [fetch(`${api}/dex`)]
     Promise.all(promises).then(res =>
     Promise.all(res.map(res => res.json()))
