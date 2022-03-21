@@ -81,6 +81,7 @@ dmx.Component("data-view", {
         this.props.natural = true
         this.props.sortDir = e && "ndesc" == e.toLowerCase() ? "desc" : "asc"
       } else {
+        console.warn(e, 'else')
         this.props.natural = false
         this.props.sortDir = e && "desc" == e.toLowerCase() ? "desc" : "asc"
       }
