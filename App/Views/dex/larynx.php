@@ -61,24 +61,26 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
     <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
 		
       <div class="d-flex justify-content-between align-items-center px-3 py-1" style="background-color: black;" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
-
+<div class="d-flex align-itmes-center">
 		  <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
 		    <div class="dropdown-menu">
-		      <h6 class="dropdown-header">Market</h6>
-		      <a class="dropdown-item" href="#">DLUX</a>
-		      <div class="dropdown-divider"></div>
-		      <a class="dropdown-item" href="#">LARYNX</a> </div>
+		      <h6 class="dropdown-header">HIVE / HBD</h6>
+				<div class="dropdown-divider"></div>
+		      <a class="dropdown-item" href="/dex/">DLUX</a>
+		      <a class="dropdown-item" href="/dex/larynx">LARYNX</a> </div>
 	      </div>
 
-        <div class="text-center small" 
+        <div class="d-flex text-center small align-items-center ml-4" 
 						 dmx-class:text-success="dexapi.data.behind < 30"	
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
 						 dmx-class:text-danger="dexapi.data.behind > 100"> 
-			<span dmx-show="dexapi.data.behind < 30">LARYNX: ONLINE - </span> 
-			<span dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING - </span> 
-			<span dmx-show="dexapi.data.behind > 100">OFFLINE - </span> 
-			<span>{{dexapi.data.behind}} BBH</span> 
+			<span class=" p-0 m-0 mr-2">LARYNX:</span> 
+			<span class=" p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE - </span> 
+			<span class=" p-0 m-0" dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING - </span> 
+			<span class=" p-0 m-0" dmx-show="dexapi.data.behind > 100">OFFLINE - </span> 
+			<span class=" p-0 m-0 ml-2">{{dexapi.data.behind}}BBH</span> 
 		  </div>
+	</div>
         <div class="d-flex text-white-50">
           <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} LARYNX</div>
           <div id="userdpwr" class="mx-4 text-info d-none">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} LARYNXP</div>
