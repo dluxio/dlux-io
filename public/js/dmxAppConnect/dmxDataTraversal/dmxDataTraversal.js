@@ -49,6 +49,7 @@ dmx.Component("data-view", {
       type: String,
       default: "asc",
       validate: function (t) {
+        console.warn(t, /^(asc|desc|nasc|ndesc)$/i.test(t))
         return /^(asc|desc|nasc|ndesc)$/i.test(t)
       }
     }
