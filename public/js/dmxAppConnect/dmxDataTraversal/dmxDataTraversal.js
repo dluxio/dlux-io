@@ -103,14 +103,11 @@ dmx.Component("data-view", {
       s = this.props.sortOn,
       e = this.props.sortDir.toLowerCase(),
       i = this.props.pageSize
+      console.warn(e)
     this.filtered = this.items.slice(0), t && (this.filtered = this.filtered.filter(function (t) {
       return dmx.parse(this.props.filter, dmx.DataScope(t, this))
     }, this)), s && this.filtered.sort(function (t, e) {
-      console.warn(e)
-      if (e == 'nasc' || e == 'ndesc')  {
-        e = "ndesc" == e ? "desc" : "asc"
-        return parseFloat(t[s]) < parseFloat(e[s]) ? -1 : parseFloat(t[s]) > parseFloat(e[s]) ? 1 : 0
-      } else return t[s] < e[s] ? -1 : t[s] > e[s] ? 1 : 0
+      return t[s] < e[s] ? -1 : t[s] > e[s] ? 1 : 0
     }), "desc" == e && this.filtered.reverse(), this.filtered.length ? this.set("pages", i ? Math.ceil(this.filtered.length / i) : 1) : this.set("pages", 1), this.set("items", this.filtered.length), this.set("sort", {
       on: s,
       dir: e
