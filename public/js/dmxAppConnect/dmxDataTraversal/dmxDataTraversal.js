@@ -49,7 +49,7 @@ dmx.Component("data-view", {
       type: String,
       default: "asc",
       validate: function (t) {
-        return /^(asc|desc)$/i.test(t)
+        return /^(asc|desc|nasc|ndesc)$/i.test(t)
       }
     }
   },
@@ -76,7 +76,14 @@ dmx.Component("data-view", {
       this.page = t, this.setPage(t)
     },
     sort: function (t, e) {
-      this.props.sortOn = t, this.props.sortDir = e && "desc" == e.toLowerCase() ? "desc" : "asc", this._update()
+      if(e == "nasc" || e == "ndesc"){
+        this.props.natural = true
+        this.props.sortDir = e && "ndesc" == e.toLowerCase() ? "desc" : "asc"
+      } else {
+        this.props.natural = false
+        this.props.sortDir = e && "desc" == e.toLowerCase() ? "desc" : "asc"
+      }
+      this.props.sortOn = t, this._update()
     }
   },
   render: function (t) {
@@ -89,11 +96,13 @@ dmx.Component("data-view", {
     var t = this.props.filter,
       s = this.props.sortOn,
       e = this.props.sortDir.toLowerCase(),
-      i = this.props.pageSize;
+      i = this.props.pageSize
+      n = this.props.natural;
     this.filtered = this.items.slice(0), t && (this.filtered = this.filtered.filter(function (t) {
       return dmx.parse(this.props.filter, dmx.DataScope(t, this))
     }, this)), s && this.filtered.sort(function (t, e) {
-      return t[s] < e[s] ? -1 : t[s] > e[s] ? 1 : 0
+      if (n)  return parseFloat(t[s]) < parseFloat(e[s]) ? -1 : parseFloat(t[s]) > parseFloat(e[s]) ? 1 : 0
+      else return t[s] < e[s] ? -1 : t[s] > e[s] ? 1 : 0
     }), "desc" == e && this.filtered.reverse(), this.filtered.length ? this.set("pages", i ? Math.ceil(this.filtered.length / i) : 1) : this.set("pages", 1), this.set("items", this.filtered.length), this.set("sort", {
       on: s,
       dir: e
