@@ -62,12 +62,12 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 		
       <div class="d-flex justify-content-between align-items-center px-3 py-1" style="background-color: black;" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
 <div class="d-flex align-itmes-center">
-		  <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
+		  <div class="dropdown show bg-dark"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
 		    <div class="dropdown-menu">
 		      <h6 class="dropdown-header">HIVE / HBD</h6>
-				<div class="dropdown-divider"></div>
-		      <a class="dropdown-item" href="/dex/">DLUX</a>
-		      <a class="dropdown-item" href="/dex/larynx">LARYNX</a> </div>
+				<div class="dropdown-divider bg-light"></div>
+		      <a class="dropdown-item text-white" href="/dex/">DLUX</a>
+		      <a class="dropdown-item text-white" href="/dex/larynx">LARYNX</a> </div>
 	      </div>
 
         <div class="d-flex text-center small align-items-center ml-4" 
