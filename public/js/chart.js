@@ -3,11 +3,12 @@ var now = new Date()
 var pair = 'HIVE'
 var width = 3600000 * 24
 var initialDateStr = new Date(now - (width * barCount)).toISOString()
-var tokenapi = 'https://token.dlux.io'
-var TOKEN = 'DLUX'
+var tokenapi
+var TOKEN
 var ctx = document.getElementById('chart').getContext('2d');
 ctx.canvas.width = 1000;
 ctx.canvas.height = 250;
+console.log(window.location.pathname)
 switch(window.location.pathname) {
     case '/dex/larynx':
         tokenapi = 'https://spktoken.dlux.io'
