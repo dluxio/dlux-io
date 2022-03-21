@@ -3,19 +3,27 @@ var now = new Date()
 var pair = 'HIVE'
 var width = 3600000 * 24
 var initialDateStr = new Date(now - (width * barCount)).toISOString()
-
+var tokenapi = 'https://token.dlux.io'
+var TOKEN = 'DLUX'
 var ctx = document.getElementById('chart').getContext('2d');
 ctx.canvas.width = 1000;
 ctx.canvas.height = 250;
-
-var barData = getHistorical(pair, width, barCount);
+switch(window.location.pathname) {
+    case '/dex/larynx':
+        tokenapi = 'https://spktoken.dlux.io'
+        TOKEN = 'LARYNX'
+    default:
+        tokenapi = 'https://token.dlux.io'
+        TOKEN = 'DLUX'
+}
+var barData = getHistorical(pair, width, barCount, tokenapi);
 function lineData() { return barData.map(d => { return { x: d.x, y: d.c} }) };
 
-function getHistorical(pair, width, bc){
+function getHistorical(pair, width, bc, api){
     return new Promise(function(resolve, reject) {
     const numbars = bc || 100
     const period = width || 3600000 * 24 //days
-    promises = [fetch(`https://token.dlux.io/dex`)]
+    promises = [fetch(`${api}/dex`)]
     Promise.all(promises).then(res =>
     Promise.all(res.map(res => res.json()))
     ).then(jsons => {
@@ -127,7 +135,7 @@ barData.then(bars=>{
 	type: 'candlestick',
 	data: {
 		datasets: [{
-			label: `DLUX/${pair}`,
+			label: `${TOKEN}/${pair}`,
 			data: bars,
             color: {
                 up: '#21ffb5',
@@ -147,7 +155,7 @@ var updateChart = function(pr, wd, bc) {
     getHistorical(pair, width, barCount).then(bars=>{
         chart.config.data.datasets = [
 			{
-				label: `DLUX/${pair}`,
+				label: `${TOKEN}/${pair}`,
 				data: bars,
                 color: {
                     up: '#21ffb5',
