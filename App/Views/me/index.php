@@ -407,7 +407,7 @@ if ( isset( $author ) ) {
 			<span>{{larynxdexapi.data.behind}} BBH</span> 
 		  </div></div>
               <p class="lead ">Powering the spk network.</p>
-              <div class="clearfix"  dmx-show="larynxtoken.data.drop.last_claim.parseInt(16) != frmDate.value">
+              <div class="clearfix"  dmx-show="larynxtoken.data.drop.last_claim.parseInt(16) != frmDate.value && larynxtoken.data.drop.available.amount.parseFloat() > 0">
                 <hr class="my-4 bg-light">
                 <div class="float-left">
                   <h4>Claim LARYNX</h4>
