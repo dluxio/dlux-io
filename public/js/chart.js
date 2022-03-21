@@ -153,7 +153,7 @@ var updateChart = function(pr, wd, bc) {
     width = wd || width
     barCount = bc || barCount
     console.log({pair, width, barCount})
-    getHistorical(pair, width, barCount).then(bars=>{
+    getHistorical(pair, width, barCount, tokenapi).then(bars=>{
         chart.config.data.datasets = [
 			{
 				label: `${TOKEN}/${pair}`,
