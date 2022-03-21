@@ -1655,8 +1655,8 @@ if ( isset( $author ) ) {
                   <input class="form-control" id="sendlarynxto" type="text" placeholder="Recipient">
                 </div>
               </div>
-              <div class="form-group">
-                <label id="sendlarynxamountlab" for="sendlarynxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.larynx.balance/1000), 'sendlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+              <div class="form-group"><!--onClick="insertBal(parseFloat(User.larynx.balance/1000), 'sendlarynxamount')"-->
+                <label id="sendlarynxamountlab" for="sendlarynxamount">Amount (Balance <a href="#"  dmx-on:click="javascript:insertBal((larynxtoken.data.balance/1000).parseFloat(), 'sendlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="sendlarynxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
