@@ -74,11 +74,11 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 						 dmx-class:text-success="dexapi.data.behind < 30"	
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
 						 dmx-class:text-danger="dexapi.data.behind > 100"> 
-			<span class=" p-0 m-0 mr-2">LARYNX:</span> 
-			<span class=" p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE - </span> 
-			<span class=" p-0 m-0" dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING - </span> 
-			<span class=" p-0 m-0" dmx-show="dexapi.data.behind > 100">OFFLINE - </span> 
-			<span class=" p-0 m-0 ml-2">{{dexapi.data.behind}}BBH</span> 
+			<span class=" p-0 m-0 mr-1">LARYNX:</span> 
+			<span class=" p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE -</span> 
+			<span class=" p-0 m-0" dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING -</span> 
+			<span class=" p-0 m-0" dmx-show="dexapi.data.behind > 100">OFFLINE -</span> 
+			<span class=" p-0 m-0 ml-1">{{dexapi.data.behind}} BBH</span> 
 		  </div>
 	</div>
         <div class="d-flex text-white-50">
