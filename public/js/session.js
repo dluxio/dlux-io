@@ -525,6 +525,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
 
 
 function setAPI (name, api){
+    if(!api){delete_cookie(name);window.location.reload(true);return}
     if(api.indexOf('https://') == -1)return
     api = 'https://' + api.split('//')[1].split('/')[0]
     setCookie(name, api, 365)
