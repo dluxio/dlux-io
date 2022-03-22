@@ -514,6 +514,14 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
     return "";
 }
 
+
+function setAPI (name, api){
+    if(api.indexOf('https://') == -1)return
+    api = api.split('//')[1].split('/')[0]
+    setCookie(name, api, 365)
+    window.location.reload(true)
+}
+
  function logout() {
      localStorage.clear()
      $('.active-session').addClass('d-none');
