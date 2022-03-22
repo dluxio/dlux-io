@@ -83,12 +83,23 @@ function hivepower(toid, amountid, memoid) {
     });
 }
 
-function dluxgovup(amt) {
+function dluxgovup(amt, prefix = 'dlux_') {
+    var token, msaccount, statusapi
+    switch (prefix){
+        case 'spkcc_':
+            token = 'LARYNX'
+            msaccount = 'spk-cc'
+            statusapi = 'spkinstant.hivehoneycomb.com'
+            break;
+        default:
+            token = 'DLUX'
+            msaccount = 'dlux-cc'
+    }
     let amount = parseInt(document.getElementById(amt).value * 1000),
         params = {
             "required_auths": [user],
             "required_posting_auths": 0,
-            "id": "dlux_gov_up",
+            "id": `${prefix}gov_up`,
             "json": JSON.stringify({
                 amount
             })
@@ -105,7 +116,7 @@ function adclaim() {
             "required_posting_auths": [user],
             "id": "spkcc_claim",
             "json": JSON.stringify({
-                claim: true
+                "claim": true
             })
         }
     console.log(params)
@@ -120,7 +131,7 @@ function rclaim() {
             "required_posting_auths": [user],
             "id": "spkcc_shares_claim",
             "json": JSON.stringify({
-                claim: true
+                "claim": true
             })
         }
     console.log(params)
@@ -145,12 +156,12 @@ function claim(gov) {
         .catch(e => { feedback(e) })
 }
 
-function govDown(amt, to, memo) {
+function govDown(amt, to, memo, prefix = 'dlux_') {
     let amount = parseInt(document.getElementById(amt).value * 1000),
         params = {
             "required_auths": [user],
             "required_posting_auths": 0,
-            "id": "dlux_gov_down",
+            "id": `${prefix}gov_down`,
             "json": JSON.stringify({
                 amount
             })
