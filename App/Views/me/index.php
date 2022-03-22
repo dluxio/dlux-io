@@ -410,7 +410,7 @@ if ( isset( $author ) ) {
               <div class="clearfix" id="larynxclaimdiv" dmx-show="larynxtoken.data.drop.last_claim.parseInt(16) != frmDate.value && larynxtoken.data.drop.availible.amount > 0">
                 <hr class="my-4 bg-light">
                 <div class="float-left">
-                  <h4>Claim LARYNX</h4>
+                  <h4>Claim LARYNX AirDrop</h4>
                   <p class="text-white-50">This months claimable tokens based on a January 6th HIVE blockchain snapshot.</p>
 					<p>Tokens not claimed do not roll over to next month.</p>
 					<input type="text" name="frmDateReg" required id="frmDate" value="" class="d-none">
@@ -418,7 +418,20 @@ if ( isset( $author ) ) {
                 <div id="claimlarynxbtn" class="float-right text-right d-column">
                   <h5>{{((larynxtoken.data.drop.availible.amount)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                   <div class="btn-group" role="group" aria-label="LARYNX Claim">
-                    <button type="submit" class="btn btn-info mr-half" dmx-on:click="claimLarynx()"><i class="fas fa-coin"></i><i class="fas fa-money-bill-wave-alt mr-2"></i>Claim</button>
+                    <button type="submit" class="btn btn-info mr-half" onClick="adclaim()"><i class="fas fa-coin"></i><i class="fas fa-money-bill-wave-alt mr-2"></i>Claim</button>
+                  </div>
+                  </div>
+                </div>
+				<div class="clearfix" id="larynxclaimrewards">
+                <hr class="my-4 bg-light">
+                <div class="float-left">
+                  <h4>Claim LARYNX Rewards</h4>
+                  <p class="text-white-50">Claimable rewards for running a node, compiled daily.</p>
+                </div>
+                <div id="claimlarynxrewardbtn" class="float-right text-right d-column">
+                  <h5>{{((larynxtoken.data.claim)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
+                  <div class="btn-group" role="group" aria-label="LARYNX Claim">
+                    <button type="submit" class="btn btn-info mr-half" onClick="rclaim()"><i class="fas fa-coin"></i><i class="fas fa-money-bill-wave-alt mr-2"></i>Claim</button>
                   </div>
                   </div>
                 </div>

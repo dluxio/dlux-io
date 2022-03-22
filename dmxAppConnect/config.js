@@ -2031,6 +2031,42 @@ dmx.config({
           },
           {
             "type": "number",
+            "name": "claim"
+          },
+          {
+            "type": "object",
+            "name": "drop",
+            "sub": [
+              {
+                "type": "object",
+                "name": "availible",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "amount"
+                  },
+                  {
+                    "type": "number",
+                    "name": "precision"
+                  },
+                  {
+                    "type": "text",
+                    "name": "token"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "name": "last_claim"
+              },
+              {
+                "type": "text",
+                "name": "total_claims"
+              }
+            ]
+          },
+          {
+            "type": "number",
             "name": "poweredUp"
           },
           {
@@ -2078,6 +2114,26 @@ dmx.config({
                 "name": "hive"
               },
               {
+                "type": "object",
+                "name": "partial",
+                "sub": [
+                  {
+                    "type": "object",
+                    "name": "b42154947b8fc6eda6986a54881860ce91be4480",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "coin"
+                      },
+                      {
+                        "type": "number",
+                        "name": "token"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
                 "type": "text",
                 "name": "rate"
               },
@@ -2093,21 +2149,7 @@ dmx.config({
           },
           {
             "type": "object",
-            "name": "up",
-            "sub": [
-              {
-                "type": "number",
-                "name": "last"
-              },
-              {
-                "type": "number",
-                "name": "max"
-              },
-              {
-                "type": "number",
-                "name": "power"
-              }
-            ]
+            "name": "up"
           },
           {
             "type": "object",
@@ -2161,10 +2203,6 @@ dmx.config({
           },
           {
             "type": "text",
-            "name": "via"
-          },
-          {
-            "type": "text",
             "name": "x-powered-by"
           }
         ]
@@ -2199,6 +2237,26 @@ dmx.config({
         {
           "type": "number",
           "name": "hive"
+        },
+        {
+          "type": "object",
+          "name": "partial",
+          "sub": [
+            {
+              "type": "object",
+              "name": "b42154947b8fc6eda6986a54881860ce91be4480",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "coin"
+                },
+                {
+                  "type": "number",
+                  "name": "token"
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "text",
@@ -2244,6 +2302,26 @@ dmx.config({
         {
           "type": "number",
           "name": "hive"
+        },
+        {
+          "type": "object",
+          "name": "partial",
+          "sub": [
+            {
+              "type": "object",
+              "name": "b42154947b8fc6eda6986a54881860ce91be4480",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "coin"
+                },
+                {
+                  "type": "number",
+                  "name": "token"
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "text",
@@ -5429,6 +5507,25 @@ dmx.config({
         }
       ],
       "outputType": "key_array"
+    },
+    "openorderspartialrepeat": {
+      "meta": [
+        {
+          "type": "object",
+          "name": "b42154947b8fc6eda6986a54881860ce91be4480",
+          "sub": [
+            {
+              "type": "number",
+              "name": "coin"
+            },
+            {
+              "type": "number",
+              "name": "token"
+            }
+          ]
+        }
+      ],
+      "outputType": "object"
     }
   },
   "explore": {
