@@ -95,7 +95,7 @@ function dluxgovup(amt, prefix = 'dlux_') {
             token = 'DLUX'
             msaccount = 'dlux-cc'
     }
-    let amount = parseInt(document.getElementById(amt).value * 1000),
+    let amount = parseInt(amt * 1000),
         params = {
             "required_auths": [user],
             "required_posting_auths": 0,
@@ -168,7 +168,7 @@ function govDown(amt, prefix = 'dlux_') {
             token = 'DLUX'
             msaccount = 'dlux-cc'
     }
-    let amount = parseInt(document.getElementById(amt).value * 1000),
+    let amount = parseInt(amt * 1000),
         params = {
             "required_auths": [user],
             "required_posting_auths": 0,

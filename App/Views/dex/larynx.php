@@ -46,7 +46,7 @@ input.disabled-input {
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
-$lapi = "https://spktoken.dlux.io";
+$lapi = "https://spkinstant.hivehoneycomb.io";
 if ( isset( $_COOKIE[ 'lapi' ] ) ) {$lapi = $_COOKIE[ 'lapi' ];};
 include_once( $path );
 if ( isset( $_COOKIE[ 'user' ] ) ) {
