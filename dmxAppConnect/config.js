@@ -1331,6 +1331,18 @@ dmx.config({
     "repeat1": {
       "meta": [
         {
+          "name": "$index",
+          "type": "number"
+        },
+        {
+          "name": "$key",
+          "type": "text"
+        },
+        {
+          "name": "$value",
+          "type": "object"
+        },
+        {
           "type": "number",
           "name": "attempts"
         },
@@ -5189,6 +5201,121 @@ dmx.config({
       }
     ],
     "data_view1": {
+      "meta": [
+        {
+          "type": "number",
+          "name": "attempts"
+        },
+        {
+          "type": "number",
+          "name": "bidRate"
+        },
+        {
+          "type": "number",
+          "name": "burned"
+        },
+        {
+          "type": "number",
+          "name": "contracts"
+        },
+        {
+          "type": "number",
+          "name": "dm"
+        },
+        {
+          "type": "text",
+          "name": "domain"
+        },
+        {
+          "type": "number",
+          "name": "ds"
+        },
+        {
+          "type": "number",
+          "name": "escrows"
+        },
+        {
+          "type": "number",
+          "name": "lastGood"
+        },
+        {
+          "type": "number",
+          "name": "moved"
+        },
+        {
+          "type": "text",
+          "name": "mskey"
+        },
+        {
+          "type": "object",
+          "name": "report",
+          "sub": [
+            {
+              "type": "number",
+              "name": "block"
+            },
+            {
+              "type": "number",
+              "name": "block_num"
+            },
+            {
+              "type": "text",
+              "name": "hash"
+            },
+            {
+              "type": "text",
+              "name": "ipfs_id"
+            },
+            {
+              "type": "text",
+              "name": "prand"
+            },
+            {
+              "type": "text",
+              "name": "sig"
+            },
+            {
+              "type": "number",
+              "name": "sig_block"
+            },
+            {
+              "type": "text",
+              "name": "transaction_id"
+            },
+            {
+              "type": "text",
+              "name": "version"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "self"
+        },
+        {
+          "type": "number",
+          "name": "strikes"
+        },
+        {
+          "type": "number",
+          "name": "tw"
+        },
+        {
+          "type": "number",
+          "name": "ty"
+        },
+        {
+          "type": "number",
+          "name": "wins"
+        },
+        {
+          "type": "number",
+          "name": "yays"
+        }
+      ],
+      "outputType": "key_array"
+    },
+    "marketnodes": {
       "meta": [
         {
           "type": "number",

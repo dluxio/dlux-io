@@ -62,8 +62,9 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
   <div class="container-fluid px-0 ">
     <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
 		
-      <div class="d-flex justify-content-between align-items-center px-3 py-1" style="background-color: black;" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
-<div class="d-flex align-itmes-center">
+      <div class="d-flex  flex-column justify-content-between align-items-center px-3 py-1" style="background-color: black;" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
+		<div class="d-flex align-itmes-center">
+		<div class="d-flex align-itmes-center">
 		  <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
 		    <div class="dropdown-menu">
 		      <h6 class="dropdown-header">HIVE / HBD</h6>
@@ -90,10 +91,50 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
           <div id="userhive" class="mx-4 text-danger">{{accountapi.data.result[0].balance}}</div>
           <div id="userhbd" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
         </div>
-		  <div dmx-repeat:repeat1="marketnodes.data">
-			  {{self}} {{domain}}
-		  </div>
+		</div>
+		  <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">NODES ({{nodes.data.markets.count()}}) <i class="fas fa-book-reader ml-2"></i></button>
+		   <div id="nodedrawer" class="collapse">
+          <div class="py-5">
+	  
+			   
+			  
+            <div class="table-responsive rounded border border-dark">
+              <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
+                <thead role="rowgroup" class="">
+                  <tr role="row" class="">
+                    <th role="columnheader" class="" aria-colindex="1"> <div class="d-flex align-items-center">
+                        <div class="mr-3">NAME</div>
+                       </div>
+                    </th>
+                    <th role="columnheader" class="" aria-colindex="2"> <div class="d-flex align-items-center">
+                        <div class="mr-3">LAST GOOD</div>
+                     </div>
+                    </th>
+                    <th role="columnheader" class="" aria-colindex="3"> <div class="d-flex align-items-center">
+                        <div class="mr-3">API</div>
+                         </div>
+                    </th>
+
+                  </tr>
+                  </thread>
+                  
+                <tbody role="rowgroup">
+                  <!--repeat region-->
+                  <tr role="row" class="" dmx-repeat:openordersrepeat="nodes.data.markets.node">
+                    <td role="cell" class="" aria-colindex="1">{{self}}</td>
+                    <td role="cell" class="" aria-colindex="2">{{lastGood}}</td>
+                    <td role="cell" class="" aria-colindex="3">{{domain}}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+		 
       </div>
+		
     </div>
     <div class="container text-white" style="margin-top: 50px;">
       <div class="row">
