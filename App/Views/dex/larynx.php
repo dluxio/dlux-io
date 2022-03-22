@@ -73,10 +73,10 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 		      <a class="dropdown-item" href="/dex/larynx">LARYNX</a> </div>
 	      </div>
 			<div class="d-flex">
-        <button class="text-center small btn align-items-center ml-4" 
-						 dmx-class:btn-success="dexapi.data.behind < 30"	
-						 dmx-class:btn-warning="dexapi.data.behind >= 30"
-						 dmx-class:btn-danger="dexapi.data.behind > 100"
+        <button class="text-center btn btn-sm align-items-center ml-4" 
+						 dmx-class:btn-outline-success="dexapi.data.behind < 30"	
+						 dmx-class:btn-outline-warning="dexapi.data.behind >= 30"
+						 dmx-class:btn-outline-danger="dexapi.data.behind > 100"
 			type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
 			<span class=" p-0 m-0 mr-1">LARYNX:</span> 
 			<span class=" p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE -</span> 
