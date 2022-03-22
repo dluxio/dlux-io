@@ -1860,7 +1860,7 @@ if ( isset( $author ) ) {
               <div class="form-group">
                 <label id="lockgovlarynxamountlab" for="lockgovlarynxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{larynxtoken.data.balance/1000}}', 'lockgovlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</a>):</label>
                 <div class="input-group">
-                  <input class="form-control" id="lockgovlarnyxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <input class="form-control" id="lockgovlarynxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
                     <div class="input-group-text">LARYNX</div>
                   </div>
