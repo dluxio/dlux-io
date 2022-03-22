@@ -387,6 +387,7 @@ function getSellID(txid) {
             }
             console.log({ addr, receiver })
             if (type) {
+
                 var params = {
                     "required_auths": [user],
                     "required_posting_auths": [],
@@ -953,4 +954,9 @@ function  countdown(t, s, u, d){
   }
 }, 1000);
 //x()
+}
+
+function setAPI (name, api){
+    api = api.split('//')[1].split('/')[0]
+    setCookie(name, api, 365)
 }
