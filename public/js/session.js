@@ -937,7 +937,7 @@ function setPFP(setname, uid, callback){
             setTimeout(function(){
                 updateDiv(id)
             }, 1000);
-            if (time < 55 && time % 5 == 0){
+            if (time < 90 && time % 2 == 0){
                 fetch(`https://${api}/api/status/${id}`)
                 .then(r => r.json())
                 .then(json => {
