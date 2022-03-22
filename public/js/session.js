@@ -498,6 +498,15 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
  }
 
+ function delete_cookie( name, path, domain ) {
+  if( get_cookie( name ) ) {
+    document.cookie = name + "=" +
+      ((path) ? ";path="+path:"")+
+      ((domain)?";domain="+domain:"") +
+      ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+  }
+}
+
  function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
@@ -512,6 +521,15 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
         }
     }
     return "";
+}
+
+
+function setAPI (name, api){
+    if(!api){delete_cookie(name);window.location.reload(true);return}
+    if(api.indexOf('https://') == -1)return
+    api = 'https://' + api.split('//')[1].split('/')[0]
+    setCookie(name, api, 365)
+    window.location.reload(true)
 }
 
  function logout() {
