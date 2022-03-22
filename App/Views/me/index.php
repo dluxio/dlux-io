@@ -1837,7 +1837,7 @@ if ( isset( $author ) ) {
             <h5 class="modal-title" id="lockLarynxTitle">Lock Gov LARYNX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form name="locklarynx" dmx-bind:action="javascript:dluxgovup('{{locklarynxamount.value}}','spkcc_')">
+          <form name="locklarynx" dmx-bind:action="javascript:dluxgovup('{{lockgovlarynxamount.value}}','spkcc_')">
             <div class="modal-body">
               <div class="form-group">
                 <label for="lockgovdluxfrom">From:</label>
