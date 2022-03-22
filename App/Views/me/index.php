@@ -513,7 +513,7 @@ if ( isset( $author ) ) {
                     <button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
                     <div class="btn-group" role="group">
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" data-toggle="modal" id="dluxgovdownModalButton" data-target="#powerdownDluxModal"><i class="fas fa-lock-open fa-fw mr-2"></i>Unlock GOV</a> <a class="dropdown-item disabled d-none" href="#" data-toggle="modal" id="govtopowerbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to PWR</a></div>
+                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item" href="#" data-toggle="modal" id="larynxgovdownModalButton" data-target="#unlockgovLarynxModal"><i class="fas fa-lock-open fa-fw mr-2"></i>Unlock GOV</a> <a class="dropdown-item disabled d-none" href="#" data-toggle="modal" id="govtopowerbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to PWR</a></div>
                     </div>
                   </div>
                 </div>
@@ -1668,7 +1668,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group"><!--onClick="insertBal(parseFloat(User.larynx.balance/1000), 'sendlarynxamount')"-->
-                <label id="sendlarynxamountlab" for="sendlarynxamount">Amount (Balance <a href="#"  dmx-on:click="javascript:insertBal((larynxtoken.data.balance/1000).parseFloat(), 'sendlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="sendlarynxamountlab" for="sendlarynxamount">Amount (Balance <a href="#"  dmx-on:click="javascript:insertBal('{{larynxtoken.data.balance/1000}}', 'sendlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="sendlarynxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
@@ -1837,7 +1837,7 @@ if ( isset( $author ) ) {
             <h5 class="modal-title" id="lockLarynxTitle">Lock Gov LARYNX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form name="locklarynx" dmx-bind:action="javascript:dluxgovup('{{locklarynxamount.value}}','spkcc_')">
+          <form name="locklarynx" dmx-bind:action="javascript:dluxgovup('{{lockgovlarynxamount.value}}','spkcc_')">
             <div class="modal-body">
               <div class="form-group">
                 <label for="lockgovdluxfrom">From:</label>
@@ -1858,9 +1858,9 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="lockgovlarynxamountlab" for="lockgovlarynxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal((larynxtoken.data.gov)/1000).parseFloat(), 'lockgovlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</a>):</label>
+                <label id="lockgovlarynxamountlab" for="lockgovlarynxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{larynxtoken.data.balance/1000}}', 'lockgovlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</a>):</label>
                 <div class="input-group">
-                  <input class="form-control" id="lockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <input class="form-control" id="lockgovlarynxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
                     <div class="input-group-text">LARYNX</div>
                   </div>
@@ -1875,47 +1875,47 @@ if ( isset( $author ) ) {
         </div>
       </div>
     </div>
-    <!-- Unlock Gov DLUX Modal -->
-    <div class="modal fade" id="unlockgovDluxModal" tabindex="-1" role="dialog" aria-labelledby="unlockgovDluxModalTitle" aria-hidden="true">
+    <!-- Unlock Gov LARYNX Modal -->
+    <div class="modal fade" id="unlockgovLarynxModal" tabindex="-1" role="dialog" aria-labelledby="unlockgovLarynxModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-darker text-white">
           <div class="modal-header">
-            <h5 class="modal-title" id="unlockgovDluxTitle">Unlock Gov DLUX</h5>
+            <h5 class="modal-title" id="unlockgovLarynxTitle">Unlock Gov DLUX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form>
+          <form name="unlocklarynx" dmx-bind:action="javascript:govDown('{{unlockgovlarynxamount.value}}','spkcc_')">
             <div class="modal-body">
               <div class="form-group">
-                <label for="unlockgovdluxfrom">From:</label>
+                <label for="unlockgovlarynxfrom">From:</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">@</div>
                   </div>
-                  <input class="form-control" id="unlockgovdluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                  <input class="form-control" id="unlockgovlarynxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
                 </div>
               </div>
               <div class="form-group">
-                <label for="unlockgovdluxto">To:</label>
+                <label for="unlockgovlarynxto">To:</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">@</div>
                   </div>
-                  <input class="form-control" id="unlockgovdluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                  <input class="form-control" id="unlockgovlarynxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
                 </div>
               </div>
               <div class="form-group">
-                <label id="unlockgovamountlab" for="unlockgovdluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.gov/1000),'unlockgovdluxamount')">{{((usertoken.data.gov)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="unlockgovlarynxamountlab" for="unlockgovlarynxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{larynxtoken.data.gov/1000}}','unlockgovlarynxamount')">{{((larynxtoken.data.gov)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
-                  <input class="form-control" id="unlockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <input class="form-control" id="unlockgovlarynxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
-                    <div class="input-group-text">DLUX</div>
+                    <div class="input-group-text">LARYNX</div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" id="unlockgovdluxsubmit" class="btn btn-primary" onClick="unlockgov('unlockgovdluxamount', 'unlockgovdluxto', 'unlockgovdluxmemo')">Continue</button>
+              <button type="submit" id="unlockgovlarnyxsubmit" class="btn btn-primary">Continue</button>
             </div>
           </form>
         </div>
