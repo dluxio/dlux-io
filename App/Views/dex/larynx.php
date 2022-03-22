@@ -118,7 +118,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   
                 <tbody role="rowgroup">
                   <!--repeat region-->
-                  <tr role="row" class="" dmx-repeat:openordersrepeat="nodes.data.markets.node">
+                  <tr role="row" class="" dmx-repeat:openordersrepeat="nodes.data.markets.node" dmx-on:click="javascript:setAPI('lapi','{{domain}}')">
                     <td role="cell" class="" aria-colindex="1">{{self}}</td>
                     <td role="cell" class="" aria-colindex="2">{{lastGood}}</td>
                     <td role="cell" class="" aria-colindex="3">{{domain}}</td>
