@@ -1720,7 +1720,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="powerdluxamountlab" for="powerupdluxmmount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'powerupdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="powerdluxamountlab" for="powerupdluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'powerupdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="powerupdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
@@ -1812,7 +1812,53 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="lockgovdluxamountlab" for="lockgovdluxmmount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'lockgovdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="lockgovdluxamountlab" for="lockgovdluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'lockgovdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <div class="input-group">
+                  <input class="form-control" id="lockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <div class="input-group-append">
+                    <div class="input-group-text">DLUX</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" id="lockgovdluxsubmitbutton">Continue</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+	<!-- Lock Gov DLUX Modal -->
+    <div class="modal fade" id="lockgovLarynxModal" tabindex="-1" role="dialog" aria-labelledby="lockgovLarynxModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-darker text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="lockLarynxTitle">Lock Gov LARYNX</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
+          </div>
+          <form>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="lockgovdluxfrom">From:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="lockgovlarynxluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="lockgovdluxto">To:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="lockgovdluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label id="lockgovlarynxamountlab" for="lockgovlarynxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal((larynxtoken.data.gov)/1000).parseFloat(), 'lockgovlarynxamount')">{{((larynxtoken.data.gov)/1000).formatNumber(3,'.',',')}} LARYNX</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="lockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
