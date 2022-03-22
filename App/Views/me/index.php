@@ -422,7 +422,7 @@ if ( isset( $author ) ) {
                   </div>
                   </div>
                 </div>
-				<div class="clearfix" id="larynxclaimrewards">
+				<div class="clearfix" id="larynxclaimrewards" dmx-show="larynxtoken.data.claim > 0">
                 <hr class="my-4 bg-light">
                 <div class="float-left">
                   <h4>Claim LARYNX Rewards</h4>
