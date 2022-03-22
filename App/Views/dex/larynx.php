@@ -63,7 +63,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
     <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
 		
       <div class="d-flex  flex-column justify-content-between align-items-center px-3 py-1" style="background-color: black;" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
-		<div class="d-flex align-itmes-center">
+		<div class="d-flex align-itmes-center justify-content-between w-100">
 		<div class="d-flex align-itmes-center">
 		  <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
 		    <div class="dropdown-menu">
@@ -72,16 +72,17 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 		      <a class="dropdown-item" href="/dex/dlux">DLUX</a>
 		      <a class="dropdown-item" href="/dex/larynx">LARYNX</a> </div>
 	      </div>
-
-        <div class="d-flex text-center small align-items-center ml-4" 
-						 dmx-class:text-success="dexapi.data.behind < 30"	
-						 dmx-class:text-warning="dexapi.data.behind >= 30"
-						 dmx-class:text-danger="dexapi.data.behind > 100"> 
+			<div class="d-flex">
+        <button class="text-center small btn align-items-center ml-4" 
+						 dmx-class:btn-success="dexapi.data.behind < 30"	
+						 dmx-class:btn-warning="dexapi.data.behind >= 30"
+						 dmx-class:btn-danger="dexapi.data.behind > 100"
+			type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
 			<span class=" p-0 m-0 mr-1">LARYNX:</span> 
 			<span class=" p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE -</span> 
 			<span class=" p-0 m-0" dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING -</span> 
 			<span class=" p-0 m-0" dmx-show="dexapi.data.behind > 100">OFFLINE -</span> 
-			<span class=" p-0 m-0 ml-1">{{dexapi.data.behind}} BBH</span> 
+			<span class=" p-0 m-0 ml-1">{{dexapi.data.behind}} BBH</span> </button>
 		  </div>
 	</div>
         <div class="d-flex text-white-50">
@@ -92,7 +93,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
           <div id="userhbd" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
         </div>
 		</div>
-		  <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">NODES ({{nodes.data.markets.count()}}) <i class="fas fa-book-reader ml-2"></i></button>
+		  
 		   <div id="nodedrawer" class="collapse">
           <div class="py-5">
 	  
