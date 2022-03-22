@@ -94,11 +94,8 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         </div>
 		</div>
 		  
-		   <div id="nodedrawer" class="collapse">
+		   <div id="nodedrawer" class="collapse" style="overflow: scroll">
           <div class="py-5">
-	  
-			   
-			  
             <div class="table-responsive rounded border border-dark">
               <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                 <thead role="rowgroup" class="">
