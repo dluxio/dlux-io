@@ -1875,47 +1875,47 @@ if ( isset( $author ) ) {
         </div>
       </div>
     </div>
-    <!-- Unlock Gov DLUX Modal -->
-    <div class="modal fade" id="unlockgovDluxModal" tabindex="-1" role="dialog" aria-labelledby="unlockgovDluxModalTitle" aria-hidden="true">
+    <!-- Unlock Gov LARYNX Modal -->
+    <div class="modal fade" id="unlockgovLarynxModal" tabindex="-1" role="dialog" aria-labelledby="unlockgovLarynxModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-darker text-white">
           <div class="modal-header">
-            <h5 class="modal-title" id="unlockgovDluxTitle">Unlock Gov DLUX</h5>
+            <h5 class="modal-title" id="unlockgovLarynxTitle">Unlock Gov DLUX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form>
+          <form name="unlocklarynx" dmx-bind:action="javascript:govDown('{{unlocklarynxamount.value}}','spkcc_')">
             <div class="modal-body">
               <div class="form-group">
-                <label for="unlockgovdluxfrom">From:</label>
+                <label for="unlockgovlarynxfrom">From:</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">@</div>
                   </div>
-                  <input class="form-control" id="unlockgovdluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                  <input class="form-control" id="unlockgovlarynxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
                 </div>
               </div>
               <div class="form-group">
-                <label for="unlockgovdluxto">To:</label>
+                <label for="unlockgovlarynxto">To:</label>
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">@</div>
                   </div>
-                  <input class="form-control" id="unlockgovdluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                  <input class="form-control" id="unlockgovlarynxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
                 </div>
               </div>
               <div class="form-group">
-                <label id="unlockgovamountlab" for="unlockgovdluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.gov/1000),'unlockgovdluxamount')">{{((usertoken.data.gov)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="unlockgovlarynxamountlab" for="unlockgovlarynxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{larynxtoken.data.gov/1000}}','unlockgovlarynxamount')">{{((larynxtoken.data.gov)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
-                  <input class="form-control" id="unlockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <input class="form-control" id="unlockgovlarynxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
-                    <div class="input-group-text">DLUX</div>
+                    <div class="input-group-text">LARYNX</div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" id="unlockgovdluxsubmit" class="btn btn-primary" onClick="unlockgov('unlockgovdluxamount', 'unlockgovdluxto', 'unlockgovdluxmemo')">Continue</button>
+              <button type="submit" id="unlockgovlarnyxsubmit" class="btn btn-primary">Continue</button>
             </div>
           </form>
         </div>
