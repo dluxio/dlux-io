@@ -114,6 +114,21 @@ function adclaim() {
         .catch(e => { feedback(e) })
 }
 
+function rclaim() {
+    let params = {
+            "required_auths": 0,
+            "required_posting_auths": [user],
+            "id": "spkcc_shares_claim",
+            "json": JSON.stringify({
+                claim: true
+            })
+        }
+    console.log(params)
+    reqsign(['custom_json', params], ['active', user])
+        .then(r => { statusWaiter (r, `Claiming...`, `spkinstant.hivehoneycomb.com`);feedback(r) })
+        .catch(e => { feedback(e) })
+}
+
 function claim(gov) {
     console.log({gov})
     let params = {
