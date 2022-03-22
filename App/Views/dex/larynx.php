@@ -62,7 +62,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
   <div class="container-fluid px-0 ">
     <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
 		
-      <div class="d-flex  flex-column justify-content-between align-items-center px-3 py-1" style="background-color: black;" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
+      <div class="d-flex  flex-column justify-content-between align-items-center px-3 py-1" style="background-color: black;" >
 		<div class="d-flex align-itmes-center justify-content-between w-100">
 		<div class="d-flex align-itmes-center">
 		  <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
@@ -72,7 +72,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 		      <a class="dropdown-item" href="/dex/dlux">DLUX</a>
 		      <a class="dropdown-item" href="/dex/larynx">LARYNX</a> </div>
 	      </div>
-			<div class="d-flex">
+			<div class="d-flex" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
         <button class="text-center btn btn-sm align-items-center ml-4" 
 						 dmx-class:btn-outline-success="dexapi.data.behind < 30"	
 						 dmx-class:btn-outline-warning="dexapi.data.behind >= 30"
@@ -108,11 +108,15 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                         <div class="mr-3">LAST GOOD</div>
                      </div>
                     </th>
+                    
                     <th role="columnheader" class="" aria-colindex="3"> <div class="d-flex align-items-center">
-                        <div class="mr-3">API</div>
+                        <div class="mr-3">API (Click to load)</div>
                          </div>
                     </th>
-
+					<th role="columnheader" class="" aria-colindex="3"> <div class="d-flex align-items-center">
+						<div><button class="btn btn-secondary float-right" onClick="setAPI('lapi')"><i class="fas fa-sync-alt"></i>{{getCookie('lapi')}}</button>
+						</div>
+						</th>
                   </tr>
                   </thread>
                   
