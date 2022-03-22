@@ -106,7 +106,7 @@ function dluxgovup(amt, prefix = 'dlux_') {
         }
     console.log(params)
     reqsign(['custom_json', params], ['active', user])
-        .then(r => { statusWaiter (r, `Trying to gov up...`);feedback(r) })
+        .then(r => { statusWaiter (r, `Trying to gov up...`, statusapi);feedback(r) })
         .catch(e => { feedback(e) })
 }
 
@@ -156,7 +156,18 @@ function claim(gov) {
         .catch(e => { feedback(e) })
 }
 
-function govDown(amt, to, memo, prefix = 'dlux_') {
+function govDown(amt, prefix = 'dlux_') {
+    var token, msaccount, statusapi
+    switch (prefix){
+        case 'spkcc_':
+            token = 'LARYNX'
+            msaccount = 'spk-cc'
+            statusapi = 'spkinstant.hivehoneycomb.com'
+            break;
+        default:
+            token = 'DLUX'
+            msaccount = 'dlux-cc'
+    }
     let amount = parseInt(document.getElementById(amt).value * 1000),
         params = {
             "required_auths": [user],
@@ -168,7 +179,7 @@ function govDown(amt, to, memo, prefix = 'dlux_') {
         }
     console.log(params)
     reqsign(['custom_json', params], ['active', user])
-        .then(r => { statusWaiter (r, `Trying to gov down...`);feedback(r) })
+        .then(r => { statusWaiter (r, `Trying to gov down...`, statusapi);feedback(r) })
         .catch(e => { feedback(e) })
 }
 
