@@ -448,7 +448,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
     switch (prefix){
         case 'spkcc_':
             token = 'LARYNX'
-            statusapi = 'spkgiles.hivehoneycomb.com'
+            statusapi = 'spkinstant.hivehoneycomb.com'
             break;
         default:
             token = 'DLUX'
@@ -609,7 +609,7 @@ function sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback){
     switch (prefix){
         case 'spkcc_':
             token = 'LARYNX'
-            statusapi = 'spkgiles.hivehoneycomb.com'
+            statusapi = 'spkinstant.hivehoneycomb.com'
             break;
         default:
             token = 'DLUX'
@@ -634,7 +634,7 @@ function sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback){
         case 'spkcc_':
             token = 'LARYNX'
             msaccount = 'spk-cc'
-            statusapi = 'spkgiles.hivehoneycomb.com'
+            statusapi = 'spkinstant.hivehoneycomb.com'
             break;
         default:
             token = 'DLUX'
@@ -657,7 +657,7 @@ function sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback){
     switch (prefix){
         case 'spkcc_':
             token = 'LARYNX'
-            statusapi = 'spkgiles.hivehoneycomb.com'
+            statusapi = 'spkinstant.hivehoneycomb.com'
             break;
         default:
             token = 'DLUX'

@@ -70,14 +70,18 @@ include_once( $path );
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
 include_once( $path );
+$lapi = "https://spkinstant.hivehoneycomb.io";
+if ( isset( $_COOKIE[ 'lapi' ] ) ) {$lapi = $_COOKIE[ 'lapi' ];};
 ?>
 <?php
+  echo "<dmx-api-datasource id=\"larynxdexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex/\" ></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"larynxnodeapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/markets/\" ></dmx-api-datasource>";
 if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'" . $author . "'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"dluxGetAccount\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_accounts\" dmx-param:0=\"'" . $author . "'\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"inventorydata\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/nfts/" . $author . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"usertoken\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $author . "\"></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"larynxtoken\" is=\"dmx-fetch\" url=\"https://spkgiles.hivehoneycomb.com/@" . $author . "\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"larynxtoken\" is=\"dmx-fetch\" url=\"" . $lapi . "/@" . $author . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $author . "'\"></dmx-api-datasource>";
 } else if ( isset( $_COOKIE[ 'user' ] ) ) {
   echo "<dmx-api-datasource id=\"dluxGetBlog\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/condenser_api/get_discussions_by_blog\" dmx-param:tag=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
@@ -86,7 +90,7 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"tradefts\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/trades/fts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"tradenfts\" is=\"dmx-fetch\" url=\"https://token.dlux.io/api/trades/nfts/" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"usertoken\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"larynxtoken\" is=\"dmx-fetch\" url=\"https://spkgiles.hivehoneycomb.com/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
+  echo "<dmx-api-datasource id=\"larynxtoken\" is=\"dmx-fetch\" url=\"" . $lapi . "/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
   echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
 } else {
 };
@@ -99,7 +103,6 @@ if ( isset( $author ) ) {
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/" ></dmx-api-datasource>
-<dmx-api-datasource id="larynxdexapi" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/dex/" ></dmx-api-datasource>
 <dmx-api-datasource id="dluxfeed" is="dmx-fetch" url="https://token.dlux.io/feed/" ></dmx-api-datasource>
 <dmx-data-view id="data_view1"></dmx-data-view>
 <main role="main" class="flex-shrink-0 text-white">
