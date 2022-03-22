@@ -1668,7 +1668,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group"><!--onClick="insertBal(parseFloat(User.larynx.balance/1000), 'sendlarynxamount')"-->
-                <label id="sendlarynxamountlab" for="sendlarynxamount">Amount (Balance <a href="#"  dmx-on:click="javascript:insertBal((larynxtoken.data.balance/1000).parseFloat(), 'sendlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="sendlarynxamountlab" for="sendlarynxamount">Amount (Balance <a href="#"  dmx-on:click="javascript:insertBal('{{larynxtoken.data.balance/1000}}', 'sendlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="sendlarynxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
@@ -1858,9 +1858,9 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="lockgovlarynxamountlab" for="lockgovlarynxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal((larynxtoken.data.gov)/1000).parseFloat(), 'lockgovlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</a>):</label>
+                <label id="lockgovlarynxamountlab" for="lockgovlarynxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{larynxtoken.data.balance/1000}}', 'lockgovlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</a>):</label>
                 <div class="input-group">
-                  <input class="form-control" id="lockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <input class="form-control" id="lockgovlarnyxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
                     <div class="input-group-text">LARYNX</div>
                   </div>
@@ -1883,7 +1883,7 @@ if ( isset( $author ) ) {
             <h5 class="modal-title" id="unlockgovLarynxTitle">Unlock Gov DLUX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form name="unlocklarynx" dmx-bind:action="javascript:govDown('{{unlocklarynxamount.value}}','spkcc_')">
+          <form name="unlocklarynx" dmx-bind:action="javascript:govDown('{{unlockgovlarynxamount.value}}','spkcc_')">
             <div class="modal-body">
               <div class="form-group">
                 <label for="unlockgovlarynxfrom">From:</label>
