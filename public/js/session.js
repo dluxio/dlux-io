@@ -499,7 +499,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
  }
 
  function delete_cookie( name, path, domain ) {
-  if( get_cookie( name ) ) {
+  if( getCookie( name ) ) {
     document.cookie = name + "=" +
       ((path) ? ";path="+path:"")+
       ((domain)?";domain="+domain:"") +
