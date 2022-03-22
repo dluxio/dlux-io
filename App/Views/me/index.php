@@ -1858,7 +1858,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="lockgovlarynxamountlab" for="lockgovlarynxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal((larynxtoken.data.gov)/1000).parseFloat(), 'lockgovlarynxamount')">{{((larynxtoken.data.gov)/1000).formatNumber(3,'.',',')}} LARYNX</a>):</label>
+                <label id="lockgovlarynxamountlab" for="lockgovlarynxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal((larynxtoken.data.gov)/1000).parseFloat(), 'lockgovlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="lockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
