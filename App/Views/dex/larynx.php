@@ -157,8 +157,8 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
     </div>
     
 	  <div class="container text-white" style="margin-top: 50px;">
-	<input id="timenow" dmx-bind:value="{{nodes.data.node.eval('getCookie(`lapi`)')}}">
-	<input id="timeoffset" dmx-bind:value="{{openordersapi.data.node.eval('getTimeOffset(`86400000`)')}}">
+	<input id="timenow" dmx-bind:value="{{nodes.data.node.eval('getTimeOffset(`0`)')}}">
+	<input id="timeoffset" dmx-bind:value="{{nodes.data.node.eval('getTimeOffset(`86400000`)')}}">
 
       <div class="row">
         <div class="col-4">
