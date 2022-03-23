@@ -160,6 +160,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 	<input id="timenow" dmx-bind:value="{{openordersapi.data.node.eval('getTimeOffset('0')')}}">
 	<input id="timeoffset" dmx-bind:value="{{openordersapi.data.node.eval('getTimeOffset('86400000')')}}">
 
+		  
       <div class="row">
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
