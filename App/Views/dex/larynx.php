@@ -185,7 +185,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" dmx-show="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>LARYNX: ${{dexapi.data.markets.hive.tick*hiveprice.data.hive.usd}}</b></h2>
+              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.data.markets.hive.tick*hiveprice.data.hive.usd).toNumber().toFixed('8')}}</b></h2>
             </div>
             <input id="dluxhiveusd" dmx-bind:value="{{dexapi.data.markets.hive.tick}}" class="d-none">
           </div>
