@@ -169,7 +169,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hivequote">
-              <h2 class="lead my-0"><b>HIVE: ${{hiveprice.data.hive.usd}}</b></h2>
+              <h2 class="lead my-0"><b>HIVE: ${{hiveprice.data.hive.usd.toFixedTrunc('6')}}</b></h2>
             </div>
             <input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none">
           </div>
@@ -177,7 +177,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hbdquote">
-              <h2 class="lead my-0"><b>HBD: ${{hbdprice.data.hive_dollar.usd}}</b></h2>
+              <h2 class="lead my-0"><b>HBD: ${{hbdprice.data.hive_dollar.usd.toFixedTrunc('6')}}</b></h2>
             </div>
             <input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none">
           </div>
@@ -185,13 +185,13 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" dmx-show="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.data.markets.hive.tick*hiveprice.data.hive.usd).toFixedTrunc('8')}}</b></h2>
+              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.data.markets.hive.tick*hiveprice.data.hive.usd).toFixedTrunc('6')}}</b></h2>
             </div>
             <input id="dluxhiveusd" dmx-bind:value="{{dexapi.data.markets.hive.tick}}" class="d-none">
           </div>
           <div class="jumbotron p-3 bg-dark" dmx-show="buyhbd.checked">
             <div id="dluxhbdquote">
-              <h2 class="lead my-0"><b>LARYNX: ${{dexapi.data.markets.hbd.tick*hbdprice.data.hive_dollar.usd}}</b></h2>
+              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.data.markets.hbd.tick*hbdprice.data.hive_dollar.usd).toFixedTrunc('6')}}</b></h2>
             </div>
             <input id="dluxhbdusd" dmx-bind:value="{{dexapi.data.markets.hbd.tick}}" class="d-none">
           </div>
