@@ -506,6 +506,11 @@ dmx.Formatters("global", {
                 else if (t.appHash) return 'dAPP'
                 else return 'BLOG'
             },
+            getTimeOffset: function(t, o) {
+                if(!o)o=0;
+                var n = new Date().getTime() - o
+                return n;
+            },
             removeQuotes: function (i){
                 return i.replace(/"/g, '\&QO').replace(/'/g, '\&SQO').replace(/\(/g, '\&OPR').replace(/\)/g, '\&CPR');
             },

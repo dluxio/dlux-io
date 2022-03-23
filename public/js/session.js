@@ -1291,13 +1291,3 @@ function insertBal(data, loc, atr) {
         document.getElementById(loc)[atr] = data
     }
 }
-
-function insertTime(offset, loc, atr) {
-    if(!offset)offset = 0
-    const data = new Date().getTime() - offset
-    if (!atr) {
-        document.getElementById(loc).value = data
-    } else {
-        document.getElementById(loc)[atr] = data
-    }
-}
