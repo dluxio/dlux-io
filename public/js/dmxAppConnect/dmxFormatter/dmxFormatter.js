@@ -419,8 +419,8 @@ dmx.Formatters("global", {
             parseFloat: function(t) {
                 return parseFloat(t);
             },
-            eval: function (t,e) {
-                return eval(e);
+            getCookie: function (t,e) {
+                return getCookie(e);
             },
             parseInt: function(t, b) {
                 if(!b)b=10;
