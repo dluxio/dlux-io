@@ -216,16 +216,16 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              <i class="fab fa-hive"></i>{{hivebuyorders[0].$key}}<br>
-              $ {{(hivebuyorders[0].$key*hiveusd.value).toFixedTrunc('6')}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hivebuyorders[0].$key}}<br>
+              <i class="fas fa-dollar-sign mr-1"></i>{{(hivebuyorders[0].$key*hiveusd.value).toFixedTrunc('6')}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
-              <i class="fab fa-hive"></i>{{hivesellorders[0].$key}}<br>
-              $ {{(hivesellorders[0].$key*hiveusd.value).toFixedTrunc('6')}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hivesellorders[0].$key}}<br>
+              <i class="fas fa-dollar-sign mr-1"></i>{{(hivesellorders[0].$key*hiveusd.value).toFixedTrunc('6')}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              <i class="fab fa-hive"></i>{{hiveorderhistory[0].price}} <br>
-              $ {{(hiveorderhistory[0].price*hiveusd.value).toFixedTrunc('6')}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hiveorderhistory[0].price}} <br>
+              <i class="fas fa-dollar-sign mr-1"></i>{{(hiveorderhistory[0].price*hiveusd.value).toFixedTrunc('6')}} </div>
             <div id="hive24" class="mt-2 col">
               <h5>24h Volume</h5>
               <br>
