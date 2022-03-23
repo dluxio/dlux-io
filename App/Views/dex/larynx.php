@@ -43,7 +43,7 @@ input.disabled-input {
 <dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
 <dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
 <dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
-<dmx-data-view id="recenthive24h" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange('min24hive.value','max24hive.value')" ></dmx-data-view>
+<dmx-data-view id="recenthive24h" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange('timeoffset.value','timenow.value')" ></dmx-data-view>
 <dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
 <dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="ndesc" pagesize="15"></dmx-data-view>
 <dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="nasc" pagesize="15"></dmx-data-view>
@@ -158,6 +158,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
     
 	  <div class="container text-white" style="margin-top: 50px;">
 	<input id="timenow" dmx-bind:value="{{openordersapi.data.node.eval('getTimeOffset('0')')}}">
+	<input id="timeoffset" dmx-bind:value="{{openordersapi.data.node.eval('getTimeOffset('86400000')')}}">
 
       <div class="row">
         <div class="col-4">
@@ -209,7 +210,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              <i class="fab fa-hive mr-1"></i>{{hivebuyorders[0].$key}}<br>
+              <i class="fab fa-hive mr-1"></i>{{hivebuyorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
               <i class="fas fa-dollar-sign mr-1"></i>{{(hivebuyorders[0].$key*hiveusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
@@ -221,8 +222,8 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
               <i class="fas fa-dollar-sign mr-1"></i>{{(hiveorderhistory[0].price*hiveusd.value).formatNumber('6','.',',')}} </div>
             <div id="24hive" class="mt-2 col">
               <h5>24h Volume</h5>
-              <i class="fab fa-hive mr-1"></i>{{recenthive24h.data.sum(`target_volume`).formatNumber('6','.',',')}}<br>
-			  <i class="fas fa-dollar-sign mr-1"></i>{{(recenthive24h.data.sum(`target_volume`)*hiveusd.value).formatNumber('6','.',',')}}
+              <i class="fab fa-hive mr-1"></i>{{recenthive24h.data.sum('target_volume').toNumber().formatNumber('6','.',',')}}<br>
+			  <i class="fas fa-dollar-sign mr-1"></i>{{(recenthive24h.data.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
             </div>
           </div>
         </div>
