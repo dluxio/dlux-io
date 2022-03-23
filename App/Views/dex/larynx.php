@@ -38,10 +38,10 @@ input.disabled-input {
 <dmx-data-view id="marketnodes" dmx-bind:data="nodes.data.result"></dmx-data-view>
 <dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
 <dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
-<dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc"></dmx-data-view>
+<dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
 <dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc"></dmx-data-view>
-<dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="ndesc"></dmx-data-view>
-<dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="nasc"></dmx-data-view>
+<dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="ndesc" pagesize="25"></dmx-data-view>
+<dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="nasc" pagesize="25"></dmx-data-view>
 <dmx-data-view id="hbdbuys" dmx-bind:data="dexapi.data.markets.hbd.buys" sorton="rate" sortdir="ndesc"></dmx-data-view>
 <dmx-data-view id="hbdsells" dmx-bind:data="dexapi.data.markets.hbd.sells" sorton="rate" sortdir="nasc"></dmx-data-view>
 <?php
@@ -585,6 +585,19 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <td aria-colindex="4" role="cell" class="text-primary">{{$key}}</td>
                     </tr>
                   </tbody>
+					<tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hivebuys.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hivebuys.prev()" dmx-show="hivebuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{hivebuys.page}} of {{hivebuys.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hivebuys.next()" dmx-show="hivebuys.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
+                </tfoot>
                 </table>
               </div>
             </div>
@@ -609,6 +622,19 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <td aria-colindex="4" role="cell" class=""></td>
                     </tr>
                   </tbody>
+					<tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hivesells.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hivesells.prev()" dmx-show="hivesells.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{hivesells.page}} of {{hivesells.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hivesells.next()" dmx-show="hivesells.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
+                </tfoot>
                   <!---->
                 </table>
               </div>
@@ -636,6 +662,19 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
                     </tr>
                   </tbody>
+					<tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="recenthive.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="recenthive.prev()" dmx-show="recenthive.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{recenthive.page}} of {{recenthive.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="recenthive.next()" dmx-show="recenthive.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
+                </tfoot>
                 </table>
               </div>
             </div>
