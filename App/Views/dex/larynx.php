@@ -127,7 +127,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 						      <h6 class="dropdown-header">CURRENT API</h6>
 						      <p class="dropdown-item">{{openordersapi.data.node.eval('getCookie(`lapi`)')}}</p>
 						      <div class="dropdown-divider"></div>
-						      <a class="dropdown-item" href="#" onClick="setAPI('lapi')"><i class="fas fa-bolt mr-2"></i>Load Latest</a>
+						      <a class="dropdown-item" href="#" onClick="setAPI('lapi','https://spkinstant.hivehoneycomb.com/')"><i class="fas fa-bolt mr-2"></i>Load Latest</a>
 					      </div>
 						  
 						</div>
