@@ -434,14 +434,6 @@ function delegateToLeader() {
         .catch(e => { feedback(e) })
 }
 
-function insertBal(data, loc, atr) {
-    if (!atr) {
-        document.getElementById(loc).value = data
-    } else {
-        document.getElementById(loc)[atr] = data
-    }
-}
-
 function insertCalc(data, loc, atr) {
     if (!atr) {
         if (document.getElementById('menudlux').value > 0) {
@@ -954,9 +946,4 @@ function  countdown(t, s, u, d){
   }
 }, 1000);
 //x()
-}
-
-function setAPI (name, api){
-    api = api.split('//')[1].split('/')[0]
-    setCookie(name, api, 365)
 }

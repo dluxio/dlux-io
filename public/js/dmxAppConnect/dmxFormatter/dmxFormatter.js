@@ -262,6 +262,13 @@ dmx.Formatters("global", {
         toFixed: function(t, n) {
             return t.toFixed(n);
         },
+        toFixedTrunc: function(t, n) {
+            t = t.toFixed(n)
+            while(t.charAt(t.length - 1) == '0'){
+                t = t.substr(0, t.length - 1)
+            }
+            return t;
+        },
         rep: function(rep2) {
             console.log('ip ' + rep2)
             if (rep2 == null) return rep2;
