@@ -224,6 +224,11 @@ dmx.Formatters("global", {
         inRange: function(t, n, r) {
             return n <= t && t <= r;
         },
+        now: function(t) {
+            const now = new Date()
+            const ms = now.getTime()
+            return ms
+        },
         behindWarning: function(t) {
             var color = 'success'
             if(t > 30)color = 'warning'
