@@ -2128,6 +2128,10 @@ dmx.config({
                       {
                         "type": "number",
                         "name": "token"
+                      },
+                      {
+                        "type": "text",
+                        "name": "txid"
                       }
                     ]
                   }
@@ -2144,6 +2148,24 @@ dmx.config({
               {
                 "type": "text",
                 "name": "type"
+              },
+              {
+                "type": "array",
+                "name": "partials",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "coin"
+                  },
+                  {
+                    "type": "number",
+                    "name": "token"
+                  },
+                  {
+                    "type": "text",
+                    "name": "txid"
+                  }
+                ]
               }
             ]
           },
@@ -2180,6 +2202,10 @@ dmx.config({
           {
             "type": "text",
             "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "connection"
           },
           {
             "type": "text",
@@ -2276,64 +2302,20 @@ dmx.config({
     "openordersrepeat": {
       "meta": [
         {
-          "type": "number",
-          "name": "amount"
-        },
-        {
-          "type": "number",
-          "name": "block"
-        },
-        {
           "type": "text",
-          "name": "expire_path"
+          "name": "api"
         },
         {
           "type": "number",
-          "name": "fee"
-        },
-        {
-          "type": "text",
-          "name": "from"
+          "name": "g"
         },
         {
           "type": "number",
-          "name": "hbd"
-        },
-        {
-          "type": "number",
-          "name": "hive"
-        },
-        {
-          "type": "object",
-          "name": "partial",
-          "sub": [
-            {
-              "type": "object",
-              "name": "b42154947b8fc6eda6986a54881860ce91be4480",
-              "sub": [
-                {
-                  "type": "number",
-                  "name": "coin"
-                },
-                {
-                  "type": "number",
-                  "name": "token"
-                }
-              ]
-            }
-          ]
+          "name": "l"
         },
         {
           "type": "text",
-          "name": "rate"
-        },
-        {
-          "type": "text",
-          "name": "txid"
-        },
-        {
-          "type": "text",
-          "name": "type"
+          "name": "account"
         }
       ],
       "outputType": "array"
@@ -4934,294 +4916,56 @@ dmx.config({
         "name": "data",
         "sub": [
           {
-            "type": "object",
-            "name": "markets",
+            "type": "array",
+            "name": "result",
             "sub": [
               {
-                "type": "key_array",
-                "name": "node",
-                "sub": [
-                  {
-                    "type": "number",
-                    "name": "attempts"
-                  },
-                  {
-                    "type": "number",
-                    "name": "bidRate"
-                  },
-                  {
-                    "type": "number",
-                    "name": "burned"
-                  },
-                  {
-                    "type": "number",
-                    "name": "contracts"
-                  },
-                  {
-                    "type": "number",
-                    "name": "dm"
-                  },
-                  {
-                    "type": "text",
-                    "name": "domain"
-                  },
-                  {
-                    "type": "number",
-                    "name": "ds"
-                  },
-                  {
-                    "type": "number",
-                    "name": "escrows"
-                  },
-                  {
-                    "type": "number",
-                    "name": "lastGood"
-                  },
-                  {
-                    "type": "number",
-                    "name": "moved"
-                  },
-                  {
-                    "type": "text",
-                    "name": "mskey"
-                  },
-                  {
-                    "type": "object",
-                    "name": "report",
-                    "sub": [
-                      {
-                        "type": "number",
-                        "name": "block"
-                      },
-                      {
-                        "type": "number",
-                        "name": "block_num"
-                      },
-                      {
-                        "type": "text",
-                        "name": "hash"
-                      },
-                      {
-                        "type": "text",
-                        "name": "ipfs_id"
-                      },
-                      {
-                        "type": "text",
-                        "name": "prand"
-                      },
-                      {
-                        "type": "text",
-                        "name": "sig"
-                      },
-                      {
-                        "type": "number",
-                        "name": "sig_block"
-                      },
-                      {
-                        "type": "text",
-                        "name": "transaction_id"
-                      },
-                      {
-                        "type": "text",
-                        "name": "version"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "text",
-                    "name": "self"
-                  },
-                  {
-                    "type": "number",
-                    "name": "strikes"
-                  },
-                  {
-                    "type": "number",
-                    "name": "tw"
-                  },
-                  {
-                    "type": "number",
-                    "name": "ty"
-                  },
-                  {
-                    "type": "number",
-                    "name": "wins"
-                  },
-                  {
-                    "type": "number",
-                    "name": "yays"
-                  }
-                ]
+                "type": "text",
+                "name": "api"
+              },
+              {
+                "type": "number",
+                "name": "g"
+              },
+              {
+                "type": "number",
+                "name": "l"
+              },
+              {
+                "type": "text",
+                "name": "account"
               }
             ]
           },
           {
-            "type": "object",
-            "name": "stats",
+            "type": "key_array",
+            "name": "runners",
             "sub": [
               {
-                "type": "number",
-                "name": "IPFSRate"
-              },
-              {
-                "type": "object",
-                "name": "MSHeld",
-                "sub": [
-                  {
-                    "type": "number",
-                    "name": "HBD"
-                  },
-                  {
-                    "type": "number",
-                    "name": "HIVE"
-                  }
-                ]
+                "type": "text",
+                "name": "api"
               },
               {
                 "type": "number",
-                "name": "budgetRate"
+                "name": "g"
               },
               {
                 "type": "number",
-                "name": "currationRate"
-              },
-              {
-                "type": "number",
-                "name": "delegationRate"
+                "name": "l"
               },
               {
                 "type": "text",
-                "name": "dex_fee"
-              },
+                "name": "account"
+              }
+            ]
+          },
+          {
+            "type": "array",
+            "name": "latest",
+            "sub": [
               {
                 "type": "text",
-                "name": "dex_max"
-              },
-              {
-                "type": "text",
-                "name": "dex_slope"
-              },
-              {
-                "type": "number",
-                "name": "gov_threshhold"
-              },
-              {
-                "type": "text",
-                "name": "hashLastIBlock"
-              },
-              {
-                "type": "number",
-                "name": "icoPrice"
-              },
-              {
-                "type": "number",
-                "name": "interestRate"
-              },
-              {
-                "type": "text",
-                "name": "lastBlock"
-              },
-              {
-                "type": "number",
-                "name": "lastIBlock"
-              },
-              {
-                "type": "number",
-                "name": "liq_reward"
-              },
-              {
-                "type": "number",
-                "name": "marketingRate"
-              },
-              {
-                "type": "number",
-                "name": "maxBudget"
-              },
-              {
-                "type": "number",
-                "name": "movingWeight"
-              },
-              {
-                "type": "object",
-                "name": "ms",
-                "sub": [
-                  {
-                    "type": "object",
-                    "name": "active_account_auths",
-                    "sub": [
-                      {
-                        "type": "number",
-                        "name": "pizza.spk"
-                      },
-                      {
-                        "type": "number",
-                        "name": "regardspk"
-                      },
-                      {
-                        "type": "number",
-                        "name": "verbalshadow"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "number",
-                    "name": "active_threshold"
-                  },
-                  {
-                    "type": "text",
-                    "name": "memo_key"
-                  },
-                  {
-                    "type": "object",
-                    "name": "owner_key_auths",
-                    "sub": [
-                      {
-                        "type": "number",
-                        "name": "STM5AAedmAPerZhzhA1f7FQCLnaidzeSoSnzRSJgMnvqVcXzaRXUK"
-                      },
-                      {
-                        "type": "number",
-                        "name": "STM6EUEaEywYoxpeVDX1fPDxrsyQLGTsgYf1LLDSHWwiKBdgRhGrx"
-                      },
-                      {
-                        "type": "number",
-                        "name": "STM7aLtAzKUpakSUJsrhTDhzEtWsKKwQsZcFmWMd2XDV9Tq5XH7bz"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "number",
-                    "name": "owner_threshold"
-                  },
-                  {
-                    "type": "number",
-                    "name": "posting_threshold"
-                  }
-                ]
-              },
-              {
-                "type": "number",
-                "name": "multiSigCollateral"
-              },
-              {
-                "type": "number",
-                "name": "nodeRate"
-              },
-              {
-                "type": "number",
-                "name": "outOnBlock"
-              },
-              {
-                "type": "number",
-                "name": "safetyLimit"
-              },
-              {
-                "type": "number",
-                "name": "savingsRate"
-              },
-              {
-                "type": "number",
-                "name": "tokenSupply"
+                "name": "api"
               }
             ]
           },
@@ -5246,10 +4990,6 @@ dmx.config({
           {
             "type": "text",
             "name": "access-control-allow-origin"
-          },
-          {
-            "type": "text",
-            "name": "connection"
           },
           {
             "type": "text",
@@ -5396,117 +5136,23 @@ dmx.config({
     "marketnodes": {
       "meta": [
         {
-          "type": "number",
-          "name": "attempts"
+          "type": "text",
+          "name": "api"
         },
         {
           "type": "number",
-          "name": "bidRate"
+          "name": "g"
         },
         {
           "type": "number",
-          "name": "burned"
-        },
-        {
-          "type": "number",
-          "name": "contracts"
-        },
-        {
-          "type": "number",
-          "name": "dm"
+          "name": "l"
         },
         {
           "type": "text",
-          "name": "domain"
-        },
-        {
-          "type": "number",
-          "name": "ds"
-        },
-        {
-          "type": "number",
-          "name": "escrows"
-        },
-        {
-          "type": "number",
-          "name": "lastGood"
-        },
-        {
-          "type": "number",
-          "name": "moved"
-        },
-        {
-          "type": "text",
-          "name": "mskey"
-        },
-        {
-          "type": "object",
-          "name": "report",
-          "sub": [
-            {
-              "type": "number",
-              "name": "block"
-            },
-            {
-              "type": "number",
-              "name": "block_num"
-            },
-            {
-              "type": "text",
-              "name": "hash"
-            },
-            {
-              "type": "text",
-              "name": "ipfs_id"
-            },
-            {
-              "type": "text",
-              "name": "prand"
-            },
-            {
-              "type": "text",
-              "name": "sig"
-            },
-            {
-              "type": "number",
-              "name": "sig_block"
-            },
-            {
-              "type": "text",
-              "name": "transaction_id"
-            },
-            {
-              "type": "text",
-              "name": "version"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "name": "self"
-        },
-        {
-          "type": "number",
-          "name": "strikes"
-        },
-        {
-          "type": "number",
-          "name": "tw"
-        },
-        {
-          "type": "number",
-          "name": "ty"
-        },
-        {
-          "type": "number",
-          "name": "wins"
-        },
-        {
-          "type": "number",
-          "name": "yays"
+          "name": "account"
         }
       ],
-      "outputType": "key_array"
+      "outputType": "array"
     },
     "openorderspartialrepeat": {
       "meta": [

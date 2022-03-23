@@ -33,8 +33,9 @@ input.disabled-input {
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
-<dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spktoken.dlux.io/markets" ></dmx-api-datasource>
-<dmx-data-view id="marketnodes" dmx-bind:data="nodes.data.markets.node"></dmx-data-view>
+<dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/runners" ></dmx-api-datasource>
+<dmx-api-datasource id="openordersapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/@imno" ></dmx-api-datasource>
+<dmx-data-view id="marketnodes" dmx-bind:data="nodes.data.result"></dmx-data-view>
 <dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
 <dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
 <dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc"></dmx-data-view>
@@ -100,21 +101,35 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
               <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
-                    <th role="columnheader" class="" aria-colindex="1"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="1" dmx-class:col-sort="marketnodes.sort.on == 'account'"> <div class="d-flex align-items-center">
                         <div class="mr-3">NAME</div>
+						<button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('account','asc')" dmx-class:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'account'"> <i class="fas fa-caret-up"></i> </button>
+                        <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('account','desc')" dmx-class:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'account'"> <i class="fas fa-caret-down"></i> </button>
                        </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="2"> <div class="d-flex align-items-center">
-                        <div class="mr-3">LAST GOOD</div>
+                    <th role="columnheader" class="" aria-colindex="2" dmx-class:col-sort="marketnodes.sort.on == 'g'"> <div class="d-flex align-items-center">
+                        <div class="mr-3">GOV BAL</div>
+						<button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('g','asc')" dmx-class:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'g'"> <i class="fas fa-caret-up"></i> </button>
+                        <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('g','desc')" dmx-class:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'g'"> <i class="fas fa-caret-down"></i> </button>
                      </div>
                     </th>
                     
-                    <th role="columnheader" class="" aria-colindex="3"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="3" dmx-class:col-sort="marketnodes.sort.on == 'api'"> <div class="d-flex align-items-center">
                         <div class="mr-3">API (Click to load)</div>
+						<button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('api','asc')" dmx-class:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'api'"> <i class="fas fa-caret-up"></i> </button>
+                        <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('api','desc')" dmx-class:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'api'"> <i class="fas fa-caret-down"></i> </button>
                          </div>
                     </th>
-					<th role="columnheader" class="" aria-colindex="3"> <div class="d-flex align-items-center">
-						<div><button class="btn btn-secondary float-right" onClick="setAPI('lapi')"><i class="fas fa-sync-alt"></i>{{getCookie('lapi')}}</button>
+					<th role="columnheader" class="" aria-colindex="4"> <div class="d-flex align-items-center">
+						<div>
+						  <div class="dropdown show"> <a class="btn btn-sm btn-dark " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v px-1"></i></a>
+						    <div class="dropdown-menu">
+						      <h6 class="dropdown-header">CURRENT API</h6>
+						      <p class="dropdown-item">{{openordersapi.data.node.eval('getCookie(`lapi`)')}}</p>
+						      <div class="dropdown-divider"></div>
+						      <a class="dropdown-item" href="#" onClick="setAPI('lapi')"><i class="fas fa-bolt mr-2"></i>Load Latest</a>
+					      </div>
+						  
 						</div>
 						</th>
                   </tr>
@@ -122,10 +137,10 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   
                 <tbody role="rowgroup">
                   <!--repeat region-->
-                  <tr role="row" class="" dmx-repeat:openordersrepeat="nodes.data.markets.node" dmx-on:click="javascript:setAPI('lapi','{{domain}}')">
-                    <td role="cell" class="" aria-colindex="1">{{self}}</td>
-                    <td role="cell" class="" aria-colindex="2">{{lastGood}}</td>
-                    <td role="cell" class="" aria-colindex="3">{{domain}}</td>
+                  <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data" >
+                    <td role="cell" class="" aria-colindex="1"><a dmx-bind:href="/@{{account}}">@{{account}}</a></td>
+                    <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
+                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" dmx-on:click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
                   </tr>
                 </tbody>
                 <tfoot>
