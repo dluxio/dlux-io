@@ -286,6 +286,20 @@ dmx.Formatters("global", {
                 return n + (log - parseInt(log));
             }
         },
+        formatReasonableNumber: function(t, n, r, e) {
+            if (isNaN(t)) return "Invalid Number";
+            if (!isFinite(t)) return (t < 0 ? "-" : "") + "infinite";
+            (r = r || "."), (e = e || "");
+            var u = t < 0;
+            t = Math.abs(t);
+            var a = (null != n && 0 <= n ? t.toFixed(n) : t.toString()).split("."),
+                i = a[0],
+                o = 1 < a.length ? r + a[1] : "";
+            if (e)
+                for (var c = /(\d+)(\d{3})/; c.test(i);)
+                    i = i.replace(c, "$1" + e + "$2");
+            return (u ? "-" : "") + i + o;
+        },
         formatNumber: function(t, n, r, e) {
             if (isNaN(t)) return "Invalid Number";
             if (!isFinite(t)) return (t < 0 ? "-" : "") + "infinite";
@@ -405,7 +419,11 @@ dmx.Formatters("global", {
             parseFloat: function(t) {
                 return parseFloat(t);
             },
-            parseInt: function(t, b = 10) {
+            eval: function (t,e) {
+                return eval(e);
+            },
+            parseInt: function(t, b) {
+                if(!b)b=10;
                 return parseInt(t, b);
             },
             startsWith: function(t, n) {
@@ -1087,8 +1105,8 @@ dmx.Formatters("global", {
         },
         nai: function(o) {
             return `${parseFloat(o.amount/Math.pow(10, o.precision)).toFixed(o.precision).replace(/(^|[^\w.])(\d{4,})/g, function($0, $1, $2) {
-        return $1 + $2.replace(/\d(?=(?:\d\d\d)+(?!\d))/g, "$&,");
-    })} ${o.token}`
+            return $1 + $2.replace(/\d(?=(?:\d\d\d)+(?!\d))/g, "$&,");
+        })} ${o.token}`
         },
         values: function(n) {
             return Object.keys(n).map(function(t) {
