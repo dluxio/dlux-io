@@ -138,7 +138,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                 <tbody role="rowgroup">
                   <!--repeat region-->
                   <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data" >
-                    <td role="cell" class="" aria-colindex="1"><a dmx-bind:href="/@{{account}}#wallet">@{{account}}</a></td>
+                    <td role="cell" class="" aria-colindex="1"><a dmx-bind:href="/@{{account}}">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
                     <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" dmx-on:click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
                   </tr>
