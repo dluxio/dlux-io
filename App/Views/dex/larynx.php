@@ -209,7 +209,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              <i class="fab fa-hive mr-1"></i>{{hivebuyorders[0].$key.formatNumber('6','.',',')}}<br>
+              <i class="fab fa-hive mr-1"></i>{{hivebuyorders[0].$key}}<br>
               <i class="fas fa-dollar-sign mr-1"></i>{{(hivebuyorders[0].$key*hiveusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
