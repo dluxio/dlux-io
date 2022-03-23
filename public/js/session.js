@@ -1283,3 +1283,11 @@ function voteProp(props, user) {
         .then(r => { feedback(r) })
         .catch(e => { feedback(e) })
 }
+
+function insertBal(data, loc, atr) {
+    if (!atr) {
+        document.getElementById(loc).value = data
+    } else {
+        document.getElementById(loc)[atr] = data
+    }
+}
