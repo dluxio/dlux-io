@@ -217,15 +217,15 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
             <div class="mt-2 col">
               <h5>Bid</h5>
               {{hivebuyorders[0].$key}}<br>
-              {{(hivebuyorders[0].$key*hiveusd.value).formatCurrency()}} </div>
+              ${{(hivebuyorders[0].$key*hiveusd.value).toFixedTrunc('6')}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
               {{hivesellorders[0].$key}}<br>
-              {{(hivesellorders[0].$key*hiveusd.value).formatCurrency()}} </div>
+              ${{(hivesellorders[0].$key*hiveusd.value).toFixedTrunc('6')}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
               {{hiveorderhistory[0].price}} <br>
-              {{(hiveorderhistory[0].price*hiveusd.value).formatCurrency()}} </div>
+              ${{(hiveorderhistory[0].price*hiveusd.value).toFixedTrunc('6')}} </div>
             <div id="hive24" class="mt-2 col">
               <h5>24h Volume</h5>
               <br>
