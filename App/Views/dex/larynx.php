@@ -157,10 +157,9 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
     </div>
     
 	  <div class="container text-white" style="margin-top: 50px;">
-	<input id="timenow" dmx-bind:value="{{openordersapi.data.node.eval('getTimeOffset('0')')}}">
+	<input id="timenow" dmx-bind:value="{{nodes.data.node.eval('getCookie(lapi)')}}">
 	<input id="timeoffset" dmx-bind:value="{{openordersapi.data.node.eval('getTimeOffset('86400000')')}}">
 
-		  
       <div class="row">
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
@@ -219,11 +218,11 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
               <i class="fas fa-dollar-sign mr-1"></i>{{(hivesellorders[0].$key*hiveusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              <i class="fab fa-hive mr-1"></i>{{hiveorderhistory[0].price.formatNumber('6','.',',')}} <br>
+              <i class="fab fa-hive mr-1"></i>{{hiveorderhistory[0].price.toNumber().formatNumber('6','.',',')}} <br>
               <i class="fas fa-dollar-sign mr-1"></i>{{(hiveorderhistory[0].price*hiveusd.value).formatNumber('6','.',',')}} </div>
             <div id="24hive" class="mt-2 col">
               <h5>24h Volume</h5>
-              <i class="fab fa-hive mr-1"></i>{{recenthive24h.data.sum('target_volume').toNumber().formatNumber('6','.',',')}}<br>
+              <i class="fab fa-hive mr-1"></i>{{recenthive24h.data.sum('target_volume').formatNumber('6','.',',')}}<br>
 			  <i class="fas fa-dollar-sign mr-1"></i>{{(recenthive24h.data.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
             </div>
           </div>
