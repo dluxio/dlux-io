@@ -35,15 +35,15 @@ input.disabled-input {
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/runners" ></dmx-api-datasource>
 <dmx-api-datasource id="openordersapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/@imno" ></dmx-api-datasource>
-<dmx-data-view id="marketnodes" dmx-bind:data="nodes.data.result"></dmx-data-view>
+<dmx-data-view id="marketnodes" dmx-bind:data="nodes.data.result" sorton="g" sortdir="ndesc" pagesize="10"></dmx-data-view>
 <dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
 <dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
 <dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
-<dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc"></dmx-data-view>
+<dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
 <dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="ndesc" pagesize="15"></dmx-data-view>
 <dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="nasc" pagesize="15"></dmx-data-view>
-<dmx-data-view id="hbdbuys" dmx-bind:data="dexapi.data.markets.hbd.buys" sorton="rate" sortdir="ndesc"></dmx-data-view>
-<dmx-data-view id="hbdsells" dmx-bind:data="dexapi.data.markets.hbd.sells" sorton="rate" sortdir="nasc"></dmx-data-view>
+<dmx-data-view id="hbdbuys" dmx-bind:data="dexapi.data.markets.hbd.buys" sorton="rate" sortdir="ndesc" pagesize="15"></dmx-data-view>
+<dmx-data-view id="hbdsells" dmx-bind:data="dexapi.data.markets.hbd.sells" sorton="rate" sortdir="nasc" pagesize="15"></dmx-data-view>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
@@ -144,6 +144,17 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   </tr>
                 </tbody>
                 <tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="marketnodes.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="marketnodes.prev()" dmx-show="marketnodes.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{marketnodes.page}} of {{marketnodes.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="marketnodes.next()" dmx-show="marketnodes.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
                 </tfoot>
               </table>
             </div>
@@ -702,9 +713,22 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <td aria-colindex="1" role="cell" class=""></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="4" role="cell" class=""><a href="#">{{$key}}</a></td>
+                      <td aria-colindex="4" role="cell" class=""><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></td>
                     </tr>
                   </tbody>
+					<tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hbdbuys.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hbdbuys.prev()" dmx-show="hbdbuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{hbdbuys.page}} of {{hbdbuys.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hbdbuys.next()" dmx-show="hbdbuys.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
+                </tfoot>
                 </table>
               </div>
             </div>
@@ -723,12 +747,25 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <tbody role="rowgroup">
                     <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.data.groupBy('rate')" dmx-class:border-warning="txid == 'DLUXICO'">
-                      <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
+                      <td aria-colindex="1" role="cell" class=""><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
                     </tr>
                   </tbody>
+					<tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hbdsells.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hbdsells.prev()" dmx-show="hbdsells.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{hbdsells.page}} of {{hbdsells.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hbdsells.next()" dmx-show="hbdsells.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
+                </tfoot>
                   <!---->
                 </table>
               </div>
@@ -756,6 +793,19 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
                     </tr>
                   </tbody>
+					<tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="recenthbd.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="recenthbd.prev()" dmx-show="recenthbd.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{recenthbd.page}} of {{recenthbd.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="recenthbd.next()" dmx-show="recenthbd.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
+                </tfoot>
                 </table>
               </div>
             </div>
