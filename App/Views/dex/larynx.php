@@ -582,7 +582,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                       <td aria-colindex="1" role="cell" class=""></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="4" role="cell" class="text-primary">{{$key}}</td>
+                      <td aria-colindex="4" role="cell" class="text-primary"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'buyprice')">{{$key}}</a></td>
                     </tr>
                   </tbody>
 					<tfoot>
@@ -616,7 +616,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
                   <tbody role="rowgroup">
                     <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hivesellorders="hivesells.data.groupBy('rate')">
-                      <td aria-colindex="1" role="cell" class="text-primary">{{$key}}</td>
+                      <td aria-colindex="1" role="cell" class="text-primary"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'sellprice')">{{$key}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
