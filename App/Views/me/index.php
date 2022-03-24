@@ -70,7 +70,7 @@ include_once( $path );
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
 include_once( $path );
-$lapi = "https://spkinstant.hivehoneycomb.io";
+$lapi = "https://spkinstant.hivehoneycomb.com";
 if ( isset( $_COOKIE[ 'lapi' ] ) ) {$lapi = $_COOKIE[ 'lapi' ];};
 ?>
 <?php
