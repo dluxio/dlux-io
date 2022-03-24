@@ -52,7 +52,7 @@ input.disabled-input {
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
-$lapi = "https://spkinstant.hivehoneycomb.io";
+$lapi = "https://spkinstant.hivehoneycomb.com";
 if ( isset( $_COOKIE[ 'lapi' ] ) ) {$lapi = $_COOKIE[ 'lapi' ];};
 if ( isset( $_COOKIE[ 'user' ] ) ) {
 
