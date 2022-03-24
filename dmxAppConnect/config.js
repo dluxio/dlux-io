@@ -1331,129 +1331,31 @@ dmx.config({
     "repeat1": {
       "meta": [
         {
-          "name": "$index",
-          "type": "number"
-        },
-        {
-          "name": "$key",
-          "type": "text"
-        },
-        {
-          "name": "$value",
-          "type": "object"
-        },
-        {
-          "type": "number",
-          "name": "attempts"
-        },
-        {
-          "type": "number",
-          "name": "bidRate"
-        },
-        {
-          "type": "number",
-          "name": "burned"
-        },
-        {
-          "type": "number",
-          "name": "contracts"
-        },
-        {
-          "type": "number",
-          "name": "dm"
+          "type": "text",
+          "name": "trade_id"
         },
         {
           "type": "text",
-          "name": "domain"
-        },
-        {
-          "type": "number",
-          "name": "ds"
-        },
-        {
-          "type": "number",
-          "name": "escrows"
-        },
-        {
-          "type": "number",
-          "name": "lastGood"
-        },
-        {
-          "type": "number",
-          "name": "moved"
+          "name": "price"
         },
         {
           "type": "text",
-          "name": "mskey"
-        },
-        {
-          "type": "object",
-          "name": "report",
-          "sub": [
-            {
-              "type": "number",
-              "name": "block"
-            },
-            {
-              "type": "number",
-              "name": "block_num"
-            },
-            {
-              "type": "text",
-              "name": "hash"
-            },
-            {
-              "type": "text",
-              "name": "ipfs_id"
-            },
-            {
-              "type": "text",
-              "name": "prand"
-            },
-            {
-              "type": "text",
-              "name": "sig"
-            },
-            {
-              "type": "number",
-              "name": "sig_block"
-            },
-            {
-              "type": "text",
-              "name": "transaction_id"
-            },
-            {
-              "type": "text",
-              "name": "version"
-            }
-          ]
+          "name": "base_volume"
         },
         {
           "type": "text",
-          "name": "self"
+          "name": "target_volume"
         },
         {
           "type": "number",
-          "name": "strikes"
+          "name": "trade_timestamp"
         },
         {
-          "type": "number",
-          "name": "tw"
-        },
-        {
-          "type": "number",
-          "name": "ty"
-        },
-        {
-          "type": "number",
-          "name": "wins"
-        },
-        {
-          "type": "number",
-          "name": "yays"
+          "type": "text",
+          "name": "type"
         }
       ],
-      "outputType": "key_array"
+      "outputType": "array"
     },
     "hivebuys": {
       "meta": [
@@ -1671,10 +1573,6 @@ dmx.config({
           {
             "type": "text",
             "name": "access-control-allow-origin"
-          },
-          {
-            "type": "text",
-            "name": "connection"
           },
           {
             "type": "text",
@@ -5172,6 +5070,35 @@ dmx.config({
         }
       ],
       "outputType": "object"
+    },
+    "recenthive24h": {
+      "meta": [
+        {
+          "type": "text",
+          "name": "trade_id"
+        },
+        {
+          "type": "text",
+          "name": "price"
+        },
+        {
+          "type": "text",
+          "name": "base_volume"
+        },
+        {
+          "type": "text",
+          "name": "target_volume"
+        },
+        {
+          "type": "number",
+          "name": "trade_timestamp"
+        },
+        {
+          "type": "text",
+          "name": "type"
+        }
+      ],
+      "outputType": "array"
     }
   },
   "explore": {
