@@ -427,14 +427,14 @@ include_once( $path );
                           <input type="radio" name="buyType" id="buylimit" checked dmx-on:click="buyQuantity.setValue('');buyHours.setValue('720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="buyType" id="buymarket" dmx-on:click="buyQuantity.setValue('0');buyHours.setValue('0');buyHiveTotal.setValue(null)">
+                          <input type="radio" name="buyType" id="buymarket" dmx-on:click="buyQuantity.setValue('0');buyHours.setValue('0')">
                           MARKET </label>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" dmx-hide="buymarket.checked">
+              <div class="form-group" id="buy-qty" aria-labelledby="buy-qty-label" for="buyQuantity" dmx-hide="buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -448,7 +448,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyPrice" id="buy-price" aria-labelledby="buy-price-label" dmx-hide="buymarket.checked">
+              <div class="form-group" id="buy-price" aria-labelledby="buy-price-label" for="buyPrice" dmx-hide="buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -462,7 +462,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" dmx-hide="buymarket.checked">
+              <div class="form-group" id="buy-hours" aria-labelledby="buy-hours-label" for="buyHours" dmx-hide="buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -543,7 +543,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellPrice" id="sell-price" aria-labelledby="sell-price-label" dmx-hide="sellmarket.checked">
+              <div class="form-group" id="sell-price" aria-labelledby="sell-price-label" for="sellPrice" dmx-hide="sellmarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -557,7 +557,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellHours" id="sell-hours" aria-labelledby="sell-hours-label" dmx-hide="sellmarket.checked">
+              <div class="form-group" id="sell-hours" aria-labelledby="sell-hours-label" for="sellHours" dmx-hide="sellmarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
