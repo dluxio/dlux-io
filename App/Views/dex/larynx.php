@@ -29,6 +29,10 @@ input.disabled-input {
     border-top-right-radius: 0.25rem !important;
     border-bottom-right-radius: 0.25rem !important;
 }
+.l-radius-hotfix {
+    border-top-left-radius: 0.25rem !important;
+    border-bottom-left-radius: 0.25rem !important;
+}
 	
 </style>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
@@ -43,7 +47,8 @@ input.disabled-input {
 <dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
 <dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
 <dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
-<dmx-data-view id="recenthive24h" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(0,99999999999999)" ></dmx-data-view>
+<dmx-data-view id="recenthive24h" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(timeoffset.value,timenow.value)" ></dmx-data-view>
+<dmx-data-view id="recenthbd24h" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(timeoffset.value,timenow.value)" ></dmx-data-view>
 <dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
 <dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="ndesc" pagesize="15"></dmx-data-view>
 <dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="nasc" pagesize="15"></dmx-data-view>
@@ -97,14 +102,47 @@ include_once( $path );
             <div id="userhbd" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
           </div>
         </div>
-        <div id="nodedrawer" class="collapse" style="overflow: scroll">
+        <div id="nodedrawer" class="collapse">
           <div class="py-5">
+			  <div class="d-flex align-items-center mb-2">
+				  <div class="">
+			  		<div role="group" class="input-group" dmx-show="filtertype.checked == false">
+				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
+                      <input type="text" class="form-control bg-dark border-dark text-info" id="filteraccount" aria-required="true" placeholder="Users">
+                      <div class="input-group-append p-0 m-0" >
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix p-0 m-0" style="width: 30px">
+							<span dmx-show="filteraccount.value">
+								<a href="#" class="badge badge-secondary" dmx-on:click="filteraccount.setValue(null)"><i class="fas fa-times"></i></a>
+							</span>
+						 </div>
+                      </div>
+                  </div>
+					  </div>
+			  <div class="">
+			  <div role="group" class="input-group" dmx-show="filtertype.checked == true">
+				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filterapi.focus()"><i class="fas fa-search"></i></span></div>
+                      <input type="text" class="form-control bg-dark border-dark text-info" id="filterapi" aria-required="true" placeholder="APIs">
+                      <div class="input-group-append p-0 m-0">
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix p-0 m-0" style="width: 30px">
+							<span dmx-show="filterapi.value"><a href="#" class="badge badge-secondary" dmx-on:click="filterapi.setValue(null)"><i class="fas fa-times"></i></a></span></div>
+                      </div>
+                  </div>
+				  </div>
+			 <div class="d-flex ml-3">
+				  <label for="filtertype" class="m-0 px-2 py-1 border l-radius-hotfix" dmx-class:border-primary="filtertype.checked == false" style="border-width: 2px !important"><span dmx-class:text-primary="filtertype.checked == false">Filter Users</label>
+				  <label for="filtertype" class="m-0 px-2 py-1 border r-radius-hotfix" dmx-class:border-primary="filtertype.checked == true" style="border-width: 2px !important"><span dmx-class:text-primary="filtertype.checked == true">Filter APIs</span></label>
+				  <div class="custom-control custom-switch d-none">
+  					<input type="checkbox" class="custom-control-input d-none" id="filtertype">
+				</div>
+			</div>
+			</div>
+
             <div class="table-responsive rounded border border-dark">
               <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
                     <th role="columnheader" class="" aria-colindex="1" dmx-class:col-sort="marketnodes.sort.on == 'account'"> <div class="d-flex align-items-center">
-                      <div class="mr-3">NAME</div>
+                      <div class="mr-3">USER NAME</div>
                       <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('account','asc')" dmx-class:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'account'"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('account','desc')" dmx-class:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'account'"> <i class="fas fa-caret-down"></i></button>
                     </div>
@@ -135,7 +173,12 @@ include_once( $path );
                   </tr>
                 <tbody role="rowgroup">
                   <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data" >
+                  <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data.where(`account`, filteraccount.value, 'fuzzySearch')" dmx-show="filtertype.checked == false">
+                    <td role="cell" class="" aria-colindex="1"><a dmx-bind:href="/@{{account}}">@{{account}}</a></td>
+                    <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
+                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" dmx-on:click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
+                  </tr>
+					<tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data.where(`api`, filterapi.value, 'fuzzySearch')" dmx-show="filtertype.checked == true">
                     <td role="cell" class="" aria-colindex="1"><a dmx-bind:href="/@{{account}}">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
                     <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" dmx-on:click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
@@ -161,8 +204,8 @@ include_once( $path );
     </div>
     
 	  <div class="container text-white" style="margin-top: 50px;">
-	<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.eval('getTimeOffset(`0`)')}}">
-	<input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.eval('getTimeOffset(`86400000`)')}}">
+	<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
+	<input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(86400000)}}">
 
       <div class="row">
         <div class="col-4">
@@ -235,20 +278,20 @@ include_once( $path );
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              {{hbdbuyorders[0].$key}}<br>
-              {{(hbdbuyorders[0].$key*hbdusd.value).formatCurrency()}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hbdbuyorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
+              <i class="fas fa-dollar-sign mr-1"></i>{{(hbdbuyorders[0].$key*hbdusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
-              {{hbdsellorders[0].$key}}<br>
-              {{(hbdsellorders[0].$key*hbdusd.value).formatCurrency()}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hbdsellorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
+              <i class="fas fa-dollar-sign mr-1"></i>{{(hbdsellorders[0].$key*hbdusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              {{hbdorderhistory[0].price}} <br>
-              {{(hbdorderhistory[0].price*hbdusd.value).formatCurrency()}} </div>
-            <div id="hbd24" class="mt-2 col">
+              <i class="fab fa-hive mr-1"></i>{{hbdorderhistory[0].price.toNumber().formatNumber('6','.',',')}} <br>
+              <i class="fas fa-dollar-sign mr-1"></i>{{(hbdorderhistory[0].price*hbdusd.value).formatNumber('6','.',',')}} </div>
+            <div id="24hbd" class="mt-2 col">
               <h5>24h Volume</h5>
-              {{recenthive24h.data.sum(`target_volume`)}}<br>
-				
+              <i class="fab fa-hive mr-1"></i>{{recenthbd24h.data.sum('target_volume').formatNumber('6','.',',')}}<br>
+			  <i class="fas fa-dollar-sign mr-1"></i>{{(recenthbd24h.data.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
             </div>
           </div>
         </div>

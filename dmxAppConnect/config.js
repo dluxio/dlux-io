@@ -2200,6 +2200,18 @@ dmx.config({
     "openordersrepeat": {
       "meta": [
         {
+          "name": "$index",
+          "type": "number"
+        },
+        {
+          "name": "$key",
+          "type": "text"
+        },
+        {
+          "name": "$value",
+          "type": "object"
+        },
+        {
           "type": "text",
           "name": "api"
         },
