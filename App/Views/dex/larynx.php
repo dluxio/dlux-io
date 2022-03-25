@@ -104,7 +104,7 @@ include_once( $path );
         </div>
         <div id="nodedrawer" class="collapse">
           <div class="py-5">
-			  <div class="d-flex align-items-center mb-2">
+			  <div class="d-flex align-items-center mb-3">
 				  <div class="">
 			  		<div role="group" class="input-group" dmx-show="filtertype.checked == false">
 				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
@@ -128,9 +128,9 @@ include_once( $path );
                       </div>
                   </div>
 				  </div>
-			 <div class="d-flex ml-3">
-				  <label for="filtertype" class="m-0 px-2 py-1 border l-radius-hotfix" dmx-class:border-primary="filtertype.checked == false" dmx-class:bg-primary="filtertype.checked == false" dmx-class:border-secondary="filtertype.checked == true" style="border-width: 2px !important"><span dmx-class:text-white="filtertype.checked == false" dmx-class:text-secondary="filtertype.checked == true">Filter Users</label>
-				  <label for="filtertype" class="m-0 px-2 py-1 border r-radius-hotfix" dmx-class:border-primary="filtertype.checked == true" dmx-class:bg-primary="filtertype.checked == true" dmx-class:border-secondary="filtertype.checked == false" style="border-width: 2px !important"><span class="" dmx-class:text-white="filtertype.checked == true" dmx-class:text-secondary="filtertype.checked == false">Filter APIs</span></label>
+			 <div class="d-flex ml-2">
+				  <label for="filtertype" class="m-0 px-2 py-1 border l-radius-hotfix" dmx-class:border-primary="filtertype.checked == false" dmx-class:bg-primary="filtertype.checked == false" dmx-class:border-secondary="filtertype.checked == true" style="border-width: 2px !important"><span dmx-class:text-white="filtertype.checked == false" dmx-class:text-secondary="filtertype.checked == true">Users</label>
+				  <label for="filtertype" class="m-0 px-2 py-1 border r-radius-hotfix" dmx-class:border-primary="filtertype.checked == true" dmx-class:bg-primary="filtertype.checked == true" dmx-class:border-secondary="filtertype.checked == false" style="border-width: 2px !important"><span class="" dmx-class:text-white="filtertype.checked == true" dmx-class:text-secondary="filtertype.checked == false">APIs</span></label>
 				  <div class="custom-control custom-switch d-none">
   					<input type="checkbox" class="custom-control-input d-none" id="filtertype">
 				</div>
