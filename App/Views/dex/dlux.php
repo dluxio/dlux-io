@@ -42,14 +42,14 @@ input.disabled-input {
 <dmx-data-view id="marketnodes" dmx-bind:data="nodes.data.markets.node" sorton="g" sortdir="ndesc" pagesize="10"></dmx-data-view>
 <dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
 <dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
-<dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="rate" sortdir="ndesc"></dmx-data-view>
-<dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="rate" sortdir="ndesc"></dmx-data-view>
+<dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
+<dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
 <dmx-data-view id="recenthive24h" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(timeoffset.value,timenow.value)" ></dmx-data-view>
 <dmx-data-view id="recenthbd24h" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(timeoffset.value,timenow.value)" ></dmx-data-view>
-<dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="ndesc"></dmx-data-view>
-<dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="nasc"></dmx-data-view>
-<dmx-data-view id="hbdbuys" dmx-bind:data="dexapi.data.markets.hbd.buys" sorton="rate" sortdir="ndesc"></dmx-data-view>
-<dmx-data-view id="hbdsells" dmx-bind:data="dexapi.data.markets.hbd.sells" sorton="rate" sortdir="nasc"></dmx-data-view>
+<dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="ndesc" pagesize="15"></dmx-data-view>
+<dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="nasc" pagesize="15"></dmx-data-view>
+<dmx-data-view id="hbdbuys" dmx-bind:data="dexapi.data.markets.hbd.buys" sorton="rate" sortdir="ndesc" pagesize="15"></dmx-data-view>
+<dmx-data-view id="hbdsells" dmx-bind:data="dexapi.data.markets.hbd.sells" sorton="rate" sortdir="nasc" pagesize="15"></dmx-data-view>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
@@ -96,8 +96,8 @@ include_once( $path );
         </div>
         <div class="d-flex text-white-50">
           <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} DLUX</div>
-          <div id="userdpwr" class="mx-4 text-info">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} DPWR</div>
-          <div id="userdgov" class="mx-4 text-primary">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} DGOV</div>
+          <div id="userdpwr" class="mx-4 text-primary">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} DLUXP</div>
+          <div id="userdgov" class="mx-4 text-info">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} DLUXG</div>
           <div id="userhive" class="mx-4 text-danger">{{accountapi.data.result[0].balance}}</div>
           <div id="userhbd" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
         </div>
@@ -161,7 +161,7 @@ include_once( $path );
                     </th>
                     <th role="columnheader" class="" aria-colindex="4"> <div class="d-flex align-items-center">
                       <div>
-                        <div class="dropdown show"> <a class="btn btn-sm btn-dark " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v px-1"></i></a>
+                        <div class="dropdown show"> <a class="btn btn-sm btn-dark " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-satellite-dish"></i></a>
                           <div class="dropdown-menu">
                             <h6 class="dropdown-header">CURRENT API</h6>
                             <p class="dropdown-item">{{openordersapi.data.node.eval('getCookie(`dapi`)')}}</p>
@@ -629,9 +629,21 @@ include_once( $path );
                       <td aria-colindex="1" role="cell" class=""></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="4" role="cell" class="text-primary">{{$key}}</td>
+                      <td aria-colindex="4" role="cell" class="text-primary"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></td>
                     </tr>
                   </tbody>
+					<tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hivebuys.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hivebuys.prev()" dmx-show="hivebuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{hivebuys.page}} of {{hivebuys.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hivebuys.next()" dmx-show="hivebuys.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
+                </tfoot>
                 </table>
               </div>
             </div>
@@ -650,13 +662,25 @@ include_once( $path );
                   <tbody role="rowgroup">
                     <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hivesellorders="hivesells.data.groupBy('rate')">
-                      <td aria-colindex="1" role="cell" class="text-primary">{{$key}}</td>
+                      <td aria-colindex="1" role="cell" class="text-primary"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
                     </tr>
                   </tbody>
                   <!---->
+					<tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hivesells.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hivesells.prev()" dmx-show="hivesells.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{hivesells.page}} of {{hivesells.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hivesells.next()" dmx-show="hivesells.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
+                </tfoot>
                 </table>
               </div>
             </div>
@@ -683,6 +707,18 @@ include_once( $path );
                       <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
                     </tr>
                   </tbody>
+					<tfoot>
+                    <tr role="row" class="" >
+                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="recenthive.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="recenthive.prev()" dmx-show="recenthive.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                          <div class="d-flex">
+                            <p class="m-0 p-0 text-muted">Page {{recenthive.page}} of {{recenthive.pages}}</p>
+                          </div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="recenthive.next()" dmx-show="recenthive.has.next"><i class="fa fa-angle-right"></i></a></div>
+                        </div></td>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
             </div>
@@ -710,9 +746,21 @@ include_once( $path );
                       <td aria-colindex="1" role="cell" class=""></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="4" role="cell" class=""><a href="#">{{$key}}</a></td>
+                      <td aria-colindex="4" role="cell" class=""><a href="#"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></a></td>
                     </tr>
                   </tbody>
+					<tfoot>
+                    <tr role="row" class="" >
+                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hbdbuys.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hbdbuys.prev()" dmx-show="hbdbuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                          <div class="d-flex">
+                            <p class="m-0 p-0 text-muted">Page {{hbdbuys.page}} of {{hbdbuys.pages}}</p>
+                          </div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hbdbuys.next()" dmx-show="hbdbuys.has.next"><i class="fa fa-angle-right"></i></a></div>
+                        </div></td>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
             </div>
@@ -731,12 +779,24 @@ include_once( $path );
                   <tbody role="rowgroup">
                     <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.data.groupBy('rate')" dmx-class:border-warning="txid == 'DLUXICO'">
-                      <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
+                      <td aria-colindex="1" role="cell" class=""><a href="#"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></a></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
                     </tr>
                   </tbody>
+					<tfoot>
+                    <tr role="row" class="" >
+                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hbdsells.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hbdsells.prev()" dmx-show="hbdsells.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                          <div class="d-flex">
+                            <p class="m-0 p-0 text-muted">Page {{hbdsells.page}} of {{hbdsells.pages}}</p>
+                          </div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hbdsells.next()" dmx-show="hbdsells.has.next"><i class="fa fa-angle-right"></i></a></div>
+                        </div></td>
+                    </tr>
+                  </tfoot>
                   <!---->
                 </table>
               </div>
@@ -764,6 +824,18 @@ include_once( $path );
                       <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
                     </tr>
                   </tbody>
+					<tfoot>
+                    <tr role="row" class="" >
+                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="recenthbd.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="recenthbd.prev()" dmx-show="recenthbd.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                          <div class="d-flex">
+                            <p class="m-0 p-0 text-muted">Page {{recenthbd.page}} of {{recenthbd.pages}}</p>
+                          </div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="recenthbd.next()" dmx-show="recenthbd.has.next"><i class="fa fa-angle-right"></i></a></div>
+                        </div></td>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
             </div>
