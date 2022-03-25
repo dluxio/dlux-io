@@ -4826,56 +4826,5496 @@ dmx.config({
         "name": "data",
         "sub": [
           {
-            "type": "array",
-            "name": "result",
+            "type": "object",
+            "name": "markets",
             "sub": [
               {
-                "type": "text",
-                "name": "api"
-              },
-              {
-                "type": "number",
-                "name": "g"
-              },
-              {
-                "type": "number",
-                "name": "l"
-              },
-              {
-                "type": "text",
-                "name": "account"
+                "type": "object",
+                "name": "node",
+                "sub": [
+                  {
+                    "type": "object",
+                    "name": "actifit-dlux",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "boolean",
+                            "name": "escrow"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "alloyxuast",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "dm"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ds"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "text",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "text",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "amphlux.dlux",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "atexoras.pub",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "atexoras.witness",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "ipfs_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "ats-david",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "badcode",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "biq",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "blockgolem",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "ipfs_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "bluemist",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "text",
+                        "name": "mskey"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "ipfs_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "cadlux",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "chisdealhd",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "chisfund",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "dm"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ds"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "crrdlx",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "deluxe-node",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "disregardfiat",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "text",
+                        "name": "mskey"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "boolean",
+                            "name": "escrow"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "dlux-io",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "text",
+                        "name": "mskey"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "boolean",
+                            "name": "escrow"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "ipfs_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "transfers"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "dluxfox",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "drlobes",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "eastmael",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "ervin-lemark",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "fbslo.pay",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "fintechshark",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "forkyishere",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "fortnitefunnies",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "foxon.dlux",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "boolean",
+                            "name": "escrow"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "freebornsociety",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "hexflex",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "heyhey",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "boolean",
+                            "name": "escrow"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "hive-123849",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "inconceivable",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "boolean",
+                            "name": "escrow"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "jenkem",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "leosoph",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "makemoneyhd",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "markegiles",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "text",
+                        "name": "mskey"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "boolean",
+                            "name": "escrow"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "phillytv",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "pizza-dlux",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "ppextend",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "preevy",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "preludiocosmico",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "premiumsfx",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "primersion.spkcc",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "text",
+                        "name": "mskey"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "ipfs_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "qwoyn-dlux",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "boolean",
+                            "name": "escrow"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "rishi556-dlux",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "boolean",
+                            "name": "escrow"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "russia-btc",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "satoshitimes",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "savvytester",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "text",
+                        "name": "mskey"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "ipfs_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "sexist",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "shmoogleosukami",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "mirror"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "speak-lux",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "liquidity"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "prand"
+                          },
+                          {
+                            "type": "text",
+                            "name": "sig"
+                          },
+                          {
+                            "type": "number",
+                            "name": "sig_block"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          },
+                          {
+                            "type": "text",
+                            "name": "version"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "youdontknowme",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "dm"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ds"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "text",
+                        "name": "mskey"
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "text",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "text",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "z-allyourchain",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "object",
+                    "name": "z-isbelongtous",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "attempts"
+                      },
+                      {
+                        "type": "number",
+                        "name": "bidRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "burned"
+                      },
+                      {
+                        "type": "number",
+                        "name": "contracts"
+                      },
+                      {
+                        "type": "text",
+                        "name": "domain"
+                      },
+                      {
+                        "type": "boolean",
+                        "name": "escrow"
+                      },
+                      {
+                        "type": "number",
+                        "name": "escrows"
+                      },
+                      {
+                        "type": "number",
+                        "name": "lastGood"
+                      },
+                      {
+                        "type": "number",
+                        "name": "marketingRate"
+                      },
+                      {
+                        "type": "number",
+                        "name": "moved"
+                      },
+                      {
+                        "type": "object",
+                        "name": "report",
+                        "sub": [
+                          {
+                            "type": "number",
+                            "name": "block"
+                          },
+                          {
+                            "type": "number",
+                            "name": "block_num"
+                          },
+                          {
+                            "type": "text",
+                            "name": "hash"
+                          },
+                          {
+                            "type": "text",
+                            "name": "transaction_id"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "name": "self"
+                      },
+                      {
+                        "type": "number",
+                        "name": "strikes"
+                      },
+                      {
+                        "type": "number",
+                        "name": "tw"
+                      },
+                      {
+                        "type": "number",
+                        "name": "ty"
+                      },
+                      {
+                        "type": "number",
+                        "name": "wins"
+                      },
+                      {
+                        "type": "number",
+                        "name": "yays"
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           },
           {
-            "type": "key_array",
-            "name": "runners",
+            "type": "object",
+            "name": "stats",
             "sub": [
               {
-                "type": "text",
-                "name": "api"
+                "type": "number",
+                "name": "IPFSRate"
+              },
+              {
+                "type": "object",
+                "name": "MSHeld",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "HBD"
+                  },
+                  {
+                    "type": "number",
+                    "name": "HIVE"
+                  }
+                ]
               },
               {
                 "type": "number",
-                "name": "g"
+                "name": "budgetRate"
               },
               {
                 "type": "number",
-                "name": "l"
+                "name": "currationRate"
+              },
+              {
+                "type": "number",
+                "name": "delegationRate"
               },
               {
                 "type": "text",
-                "name": "account"
-              }
-            ]
-          },
-          {
-            "type": "array",
-            "name": "latest",
-            "sub": [
+                "name": "dex_fee"
+              },
               {
                 "type": "text",
-                "name": "api"
+                "name": "dluxPerDel"
+              },
+              {
+                "type": "number",
+                "name": "gov_threshhold"
+              },
+              {
+                "type": "text",
+                "name": "hashLastIBlock"
+              },
+              {
+                "type": "number",
+                "name": "icoPrice"
+              },
+              {
+                "type": "number",
+                "name": "icoRound"
+              },
+              {
+                "type": "number",
+                "name": "interestRate"
+              },
+              {
+                "type": "text",
+                "name": "lastBlock"
+              },
+              {
+                "type": "number",
+                "name": "lastIBlock"
+              },
+              {
+                "type": "number",
+                "name": "liq_reward"
+              },
+              {
+                "type": "number",
+                "name": "marketingRate"
+              },
+              {
+                "type": "number",
+                "name": "maxBudget"
+              },
+              {
+                "type": "number",
+                "name": "max_transfer"
+              },
+              {
+                "type": "object",
+                "name": "movingWeight",
+                "sub": [
+                  {
+                    "type": "number",
+                    "name": "dailyPool"
+                  },
+                  {
+                    "type": "number",
+                    "name": "running"
+                  }
+                ]
+              },
+              {
+                "type": "object",
+                "name": "ms",
+                "sub": [
+                  {
+                    "type": "text",
+                    "name": "account"
+                  },
+                  {
+                    "type": "object",
+                    "name": "active_account_auths",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "disregardfiat"
+                      },
+                      {
+                        "type": "number",
+                        "name": "dlux-io"
+                      },
+                      {
+                        "type": "number",
+                        "name": "markegiles"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "number",
+                    "name": "active_threshold"
+                  },
+                  {
+                    "type": "text",
+                    "name": "memo_key"
+                  },
+                  {
+                    "type": "object",
+                    "name": "owner_key_auths",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "STM5Rp1fWQMS7tAPVqatg8B22faeJGcKkfsez3mgUwGZPE9aqWd6X"
+                      },
+                      {
+                        "type": "number",
+                        "name": "STM7Hgi4pjf5e7u6oKLdhWfgForEVikzvpkK5ejdaMzAzH6dWAtAD"
+                      },
+                      {
+                        "type": "number",
+                        "name": "STM8TPTJXiCbGaEhAheXxQqbX4isq3UWiPuQBnHLmCKpmmNXhu31m"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "number",
+                    "name": "owner_threshold"
+                  },
+                  {
+                    "type": "object",
+                    "name": "posting_account_auths",
+                    "sub": [
+                      {
+                        "type": "number",
+                        "name": "disregardfiat"
+                      },
+                      {
+                        "type": "number",
+                        "name": "dlux-io"
+                      },
+                      {
+                        "type": "number",
+                        "name": "markegiles"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "number",
+                    "name": "posting_threshold"
+                  }
+                ]
+              },
+              {
+                "type": "number",
+                "name": "multiSigCollateral"
+              },
+              {
+                "type": "number",
+                "name": "nft_byte_cost"
+              },
+              {
+                "type": "number",
+                "name": "nft_fee_1"
+              },
+              {
+                "type": "number",
+                "name": "nodeRate"
+              },
+              {
+                "type": "number",
+                "name": "outOnBlock"
+              },
+              {
+                "type": "number",
+                "name": "resteemReward"
+              },
+              {
+                "type": "number",
+                "name": "safetyLimit"
+              },
+              {
+                "type": "number",
+                "name": "savingsRate"
+              },
+              {
+                "type": "number",
+                "name": "tokenSupply"
               }
             ]
           },
@@ -4900,6 +10340,10 @@ dmx.config({
           {
             "type": "text",
             "name": "access-control-allow-origin"
+          },
+          {
+            "type": "text",
+            "name": "connection"
           },
           {
             "type": "text",
@@ -5046,23 +10490,5271 @@ dmx.config({
     "marketnodes": {
       "meta": [
         {
-          "type": "text",
-          "name": "api"
+          "type": "object",
+          "name": "actifit-dlux",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "boolean",
+                  "name": "escrow"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
         },
         {
-          "type": "number",
-          "name": "g"
+          "type": "object",
+          "name": "alloyxuast",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "number",
+              "name": "dm"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "number",
+              "name": "ds"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "text",
+              "name": "tw"
+            },
+            {
+              "type": "text",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
         },
         {
-          "type": "number",
-          "name": "l"
+          "type": "object",
+          "name": "amphlux.dlux",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
         },
         {
-          "type": "text",
-          "name": "account"
+          "type": "object",
+          "name": "atexoras.pub",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "atexoras.witness",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "ipfs_id"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "ats-david",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "badcode",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "biq",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "blockgolem",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "ipfs_id"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "bluemist",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "text",
+              "name": "mskey"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "ipfs_id"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "cadlux",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "chisdealhd",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "chisfund",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "number",
+              "name": "dm"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "number",
+              "name": "ds"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "crrdlx",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "deluxe-node",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "disregardfiat",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "text",
+              "name": "mskey"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "boolean",
+                  "name": "escrow"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "dlux-io",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "text",
+              "name": "mskey"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "boolean",
+                  "name": "escrow"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "ipfs_id"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "transfers"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "dluxfox",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "drlobes",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "eastmael",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "ervin-lemark",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "fbslo.pay",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "fintechshark",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "forkyishere",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "fortnitefunnies",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "foxon.dlux",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "boolean",
+                  "name": "escrow"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "freebornsociety",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "hexflex",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "heyhey",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "boolean",
+                  "name": "escrow"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "hive-123849",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "inconceivable",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "boolean",
+                  "name": "escrow"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "jenkem",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "leosoph",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "makemoneyhd",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "markegiles",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "text",
+              "name": "mskey"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "boolean",
+                  "name": "escrow"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "phillytv",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "pizza-dlux",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "ppextend",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "preevy",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "preludiocosmico",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "premiumsfx",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "primersion.spkcc",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "text",
+              "name": "mskey"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "ipfs_id"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "qwoyn-dlux",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "boolean",
+                  "name": "escrow"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "rishi556-dlux",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "boolean",
+                  "name": "escrow"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "russia-btc",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "satoshitimes",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "savvytester",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "text",
+              "name": "mskey"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "ipfs_id"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "sexist",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "shmoogleosukami",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "boolean",
+              "name": "mirror"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "speak-lux",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "liquidity"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "prand"
+                },
+                {
+                  "type": "text",
+                  "name": "sig"
+                },
+                {
+                  "type": "number",
+                  "name": "sig_block"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                },
+                {
+                  "type": "text",
+                  "name": "version"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "youdontknowme",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "number",
+              "name": "dm"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "number",
+              "name": "ds"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "text",
+              "name": "mskey"
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "text",
+              "name": "tw"
+            },
+            {
+              "type": "text",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "z-allyourchain",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
+        },
+        {
+          "type": "object",
+          "name": "z-isbelongtous",
+          "sub": [
+            {
+              "type": "number",
+              "name": "attempts"
+            },
+            {
+              "type": "number",
+              "name": "bidRate"
+            },
+            {
+              "type": "number",
+              "name": "burned"
+            },
+            {
+              "type": "number",
+              "name": "contracts"
+            },
+            {
+              "type": "text",
+              "name": "domain"
+            },
+            {
+              "type": "boolean",
+              "name": "escrow"
+            },
+            {
+              "type": "number",
+              "name": "escrows"
+            },
+            {
+              "type": "number",
+              "name": "lastGood"
+            },
+            {
+              "type": "number",
+              "name": "marketingRate"
+            },
+            {
+              "type": "number",
+              "name": "moved"
+            },
+            {
+              "type": "object",
+              "name": "report",
+              "sub": [
+                {
+                  "type": "number",
+                  "name": "block"
+                },
+                {
+                  "type": "number",
+                  "name": "block_num"
+                },
+                {
+                  "type": "text",
+                  "name": "hash"
+                },
+                {
+                  "type": "text",
+                  "name": "transaction_id"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "name": "self"
+            },
+            {
+              "type": "number",
+              "name": "strikes"
+            },
+            {
+              "type": "number",
+              "name": "tw"
+            },
+            {
+              "type": "number",
+              "name": "ty"
+            },
+            {
+              "type": "number",
+              "name": "wins"
+            },
+            {
+              "type": "number",
+              "name": "yays"
+            }
+          ]
         }
       ],
-      "outputType": "array"
+      "outputType": "object"
     },
     "openorderspartialrepeat": {
       "meta": [

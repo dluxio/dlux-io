@@ -86,7 +86,12 @@ include_once( $path );
 						 dmx-class:btn-outline-success="dexapi.data.behind < 30"	
 						 dmx-class:btn-outline-warning="dexapi.data.behind >= 30"
 						 dmx-class:btn-outline-danger="dexapi.data.behind > 100"
-			type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer"> <span class=" p-0 m-0 mr-1">LARYNX:</span> <span class=" p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE -</span> <span class=" p-0 m-0" dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING -</span> <span class=" p-0 m-0" dmx-show="dexapi.data.behind > 100">OFFLINE -</span> <span class=" p-0 m-0 ml-1">{{dexapi.data.behind}} BBH</span></button>
+						type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
+				  <span class=" p-0 m-0 mr-1">LARYNX:</span>
+				  <span class=" p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE -</span>
+				  <span class=" p-0 m-0" dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING -</span>
+				  <span class=" p-0 m-0" dmx-show="dexapi.data.behind > 100">OFFLINE -</span>
+				  <span class=" p-0 m-0 ml-1">{{dexapi.data.behind}} BBH</span></button>
             </div>
           </div>
           <div class="d-flex text-white-50">
