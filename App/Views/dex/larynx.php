@@ -267,7 +267,7 @@ include_once( $path );
               <h5>Last</h5>
               <i class="fab fa-hive mr-1"></i>{{hiveorderhistory[0].price.toNumber().formatNumber('6','.',',')}} <br>
               <i class="fas fa-dollar-sign mx-1"></i>{{(hiveorderhistory[0].price*hiveusd.value).formatNumber('6','.',',')}} </div>
-            <div id="24hive" class="mt-2 col">
+            <div class="mt-2 col">
               <h5>24h Volume</h5>
               <i class="fab fa-hive mr-1"></i>{{recenthive24h.data.sum('target_volume').formatNumber('6','.',',')}}<br>
 			  <i class="fas fa-dollar-sign mx-1"></i>{{(recenthive24h.data.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
@@ -288,7 +288,7 @@ include_once( $path );
               <h5>Last</h5>
               <i class="fab fa-hive mr-1"></i>{{hbdorderhistory[0].price.toNumber().formatNumber('6','.',',')}} <br>
               <i class="fas fa-dollar-sign mx-1"></i>{{(hbdorderhistory[0].price*hbdusd.value).formatNumber('6','.',',')}} </div>
-            <div id="24hbd" class="mt-2 col">
+            <div class="mt-2 col">
               <h5>24h Volume</h5>
               <i class="fab fa-hive mr-1"></i>{{recenthbd24h.data.sum('target_volume').formatNumber('6','.',',')}}<br>
 			  <i class="fas fa-dollar-sign mx-1"></i>{{(recenthbd24h.data.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
