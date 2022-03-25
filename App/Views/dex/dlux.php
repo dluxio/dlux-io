@@ -207,7 +207,7 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hivequote">
-              <h2 class="lead my-0"><b>HIVE: ${{hiveprice.data.hive.usd}}</b></h2>
+              <h2 class="lead my-0"><b>HIVE: ${{hiveprice.data.hive.usd.toFixedTrunc('6')}}</b></h2>
             </div>
             <input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none">
           </div>
@@ -215,7 +215,7 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hbdquote">
-              <h2 class="lead my-0"><b>HBD: ${{hbdprice.data.hive_dollar.usd}}</b></h2>
+              <h2 class="lead my-0"><b>HBD: ${{hbdprice.data.hive_dollar.usd.toFixedTrunc('6')}}</b></h2>
             </div>
             <input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none">
           </div>
@@ -223,13 +223,13 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" dmx-show="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hive.tick*hiveprice.data.hive.usd}}</b></h2>
+              <h2 class="lead my-0"><b>DLUX: ${{(dexapi.data.markets.hive.tick*hiveprice.data.hive.usd).toFixedTrunc('6')}}</b></h2>
             </div>
             <input id="dluxhiveusd" dmx-bind:value="{{dexapi.data.markets.hive.tick}}" class="d-none">
           </div>
           <div class="jumbotron p-3 bg-dark" dmx-show="buyhbd.checked">
             <div id="dluxhbdquote">
-              <h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hbd.tick*hbdprice.data.hive_dollar.usd}}</b></h2>
+              <h2 class="lead my-0"><b>DLUX: ${{(dexapi.data.markets.hbd.tick*hbdprice.data.hive_dollar.usd).toFixedTrunc('6')}}</b></h2>
             </div>
             <input id="dluxhbdusd" dmx-bind:value="{{dexapi.data.markets.hbd.tick}}" class="d-none">
           </div>
@@ -253,19 +253,20 @@ include_once( $path );
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              {{hivebuyorders[0].$key}}<br>
-              {{(hivebuyorders[0].$key*hiveusd.value).formatCurrency()}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hivebuyorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hivebuyorders[0].$key*hiveusd.value).formatNumber('6','.',',')}}</div>
             <div class="mt-2 col">
               <h5>Ask</h5>
-              {{hivesellorders[0].$key}}<br>
-              {{(hivesellorders[0].$key*hiveusd.value).formatCurrency()}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hivesellorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hivesellorders[0].$key*hiveusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              {{hiveorderhistory[0].price}} <br>
-              {{(hiveorderhistory[0].price*hiveusd.value).formatCurrency()}} </div>
-            <div id="hive24" class="mt-2 col">
+              <i class="fab fa-hive mr-1"></i>{{hiveorderhistory[0].price.toNumber().formatNumber('6','.',',')}} <br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hiveorderhistory[0].price*hiveusd.value).formatNumber('6','.',',')}} </div>
+            <div class="mt-2 col">
               <h5>24h Volume</h5>
-              <br>
+              <i class="fab fa-hive mr-1"></i>{{recenthive24h.data.sum('target_volume').formatNumber('6','.',',')}}<br>
+			  <i class="fas fa-dollar-sign mx-1"></i>{{(recenthive24h.data.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
             </div>
           </div>
         </div>
@@ -273,19 +274,20 @@ include_once( $path );
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              {{hbdbuyorders[0].$key}}<br>
-              {{(hbdbuyorders[0].$key*hbdusd.value).formatCurrency()}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hbdbuyorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdbuyorders[0].$key*hbdusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
-              {{hbdsellorders[0].$key}}<br>
-              {{(hbdsellorders[0].$key*hbdusd.value).formatCurrency()}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hbdsellorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdsellorders[0].$key*hbdusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              {{hbdorderhistory[0].price}} <br>
-              {{(hbdorderhistory[0].price*hbdusd.value).formatCurrency()}} </div>
-            <div id="hbd24" class="mt-2 col">
+              <i class="fab fa-hive mr-1"></i>{{hbdorderhistory[0].price.toNumber().formatNumber('6','.',',')}} <br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdorderhistory[0].price*hbdusd.value).formatNumber('6','.',',')}} </div>
+            <div class="mt-2 col">
               <h5>24h Volume</h5>
-              <br>
+              <i class="fab fa-hive mr-1"></i>{{recenthive24h.data.sum('target_volume').formatNumber('6','.',',')}}<br>
+			  <i class="fas fa-dollar-sign mx-1"></i>{{(recenthive24h.data.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
             </div>
           </div>
         </div>
