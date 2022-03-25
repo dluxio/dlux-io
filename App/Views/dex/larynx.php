@@ -129,8 +129,8 @@ include_once( $path );
                   </div>
 				  </div>
 			 <div class="d-flex ml-3">
-				  <label for="filtertype" class="m-0 px-2 py-1 border l-radius-hotfix" dmx-class:border-primary="filtertype.checked == false" style="border-width: 2px !important"><span dmx-class:text-primary="filtertype.checked == false">Filter Users</label>
-				  <label for="filtertype" class="m-0 px-2 py-1 border r-radius-hotfix" dmx-class:border-primary="filtertype.checked == true" style="border-width: 2px !important"><span dmx-class:text-primary="filtertype.checked == true">Filter APIs</span></label>
+				  <label for="filtertype" class="m-0 px-2 py-1 border l-radius-hotfix" dmx-class:border-primary="filtertype.checked == false" dmx-class:bg-primary="filtertype.checked == false" dmx-class:border-secondary="filtertype.checked == true" style="border-width: 2px !important"><span dmx-class:text-white="filtertype.checked == false" dmx-class:text-secondary="filtertype.checked == true">Filter Users</label>
+				  <label for="filtertype" class="m-0 px-2 py-1 border r-radius-hotfix" dmx-class:border-primary="filtertype.checked == true" dmx-class:bg-primary="filtertype.checked == true" dmx-class:border-secondary="filtertype.checked == false" style="border-width: 2px !important"><span class="" dmx-class:text-white="filtertype.checked == true" dmx-class:text-secondary="filtertype.checked == false">Filter APIs</span></label>
 				  <div class="custom-control custom-switch d-none">
   					<input type="checkbox" class="custom-control-input d-none" id="filtertype">
 				</div>
