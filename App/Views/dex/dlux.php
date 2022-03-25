@@ -26,25 +26,26 @@ input.disabled-input {
     border-top-right-radius: 0.25rem !important;
     border-bottom-right-radius: 0.25rem !important;
 }
-	
+.l-radius-hotfix {
+    border-top-left-radius: 0.25rem !important;
+    border-bottom-left-radius: 0.25rem !important;
+}
 </style>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
-
-
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
-<dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/" ></dmx-api-datasource>
-<dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://token.dlux.io/api/recent/HIVE_DLUX" dmx-param:depth="200"></dmx-api-datasource>
-<dmx-api-datasource id="recenthbdapi" is="dmx-fetch" url="https://token.dlux.io/api/recent/HBD_DLUX" dmx-param:depth="200"></dmx-api-datasource>
-<dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spktoken.dlux.io/markets" ></dmx-api-datasource>
-<dmx-data-view id="marketnodes" dmx-bind:data="nodes.data.markets.node"></dmx-data-view>
+<dmx-api-datasource id="nodes" is="dmx-fetch" url="https://token.dlux.io/markets" ></dmx-api-datasource>
+
+<dmx-data-view id="marketnodes" dmx-bind:data="nodes.data.markets.node" sorton="g" sortdir="ndesc" pagesize="10"></dmx-data-view>
 <dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
 <dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
 <dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="rate" sortdir="ndesc"></dmx-data-view>
 <dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="rate" sortdir="ndesc"></dmx-data-view>
+<dmx-data-view id="recenthive24h" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(timeoffset.value,timenow.value)" ></dmx-data-view>
+<dmx-data-view id="recenthbd24h" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(timeoffset.value,timenow.value)" ></dmx-data-view>
 <dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="ndesc"></dmx-data-view>
 <dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="nasc"></dmx-data-view>
 <dmx-data-view id="hbdbuys" dmx-bind:data="dexapi.data.markets.hbd.buys" sorton="rate" sortdir="ndesc"></dmx-data-view>
@@ -52,16 +53,27 @@ input.disabled-input {
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
-include_once( $path );
+$dapi = "https://token.dlux.io";
+if ( isset( $_COOKIE[ 'dapi' ] ) ) {$dapi = $_COOKIE[ 'dapi' ];};
 if ( isset( $_COOKIE[ 'user' ] ) ) {
-  echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>";
-  echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
+
+  echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $dapi . "/dex\" ></dmx-api-datasource>\n";
+  echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $dapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
+  echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $dapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
+  echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"" . $dapi . "/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>\n";
+  echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"" . $dapi . "/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>\n";
+} else {
+  echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $dapi . "/dex\" ></dmx-api-datasource>\n";
+  echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $dapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
+  echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $dapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
 };
+include_once( $path );
 ?>
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 ">
     <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
-      <div class="d-flex justify-content-between align-items-center px-3 py-1" style="background-color: black;" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
+      <div class="d-flex flex-column justify-content-between align-items-center px-3 py-1" style="background-color: black;">
+		  <div class="d-flex align-itmes-center justify-content-between w-100">
         <div class="d-flex align-itmes-center">
           <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
             <div class="dropdown-menu">
@@ -69,10 +81,18 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
               <div class="dropdown-divider bg-light"></div>
               <a class="dropdown-item" href="/dex/dlux">DLUX</a> <a class="dropdown-item" href="/dex/larynx">LARYNX</a></div>
           </div>
-          <div class="d-flex text-center small align-items-center ml-4" 
-						 dmx-class:text-success="dexapi.data.behind < 30"	
-						 dmx-class:text-warning="dexapi.data.behind >= 30"
-						 dmx-class:text-danger="dexapi.data.behind > 100"> <span class=" p-0 m-0 mr-1">DLUX:</span> <span class=" p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE -</span> <span class=" p-0 m-0" dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING -</span> <span class=" p-0 m-0" dmx-show="dexapi.data.behind > 100">OFFLINE -</span> <span class=" p-0 m-0 ml-1">{{dexapi.data.behind}} BBH</span></div>
+			<div class="d-flex" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
+          <button class="text-center btn btn-sm align-items-center ml-4" 
+						 dmx-class:btn-outline-success="dexapi.data.behind < 30"	
+						 dmx-class:btn-outline-warning="dexapi.data.behind >= 30"
+						 dmx-class:btn-outline-danger="dexapi.data.behind > 100"
+				  type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer"> 
+			  <span class=" p-0 m-0 mr-1">DLUX:</span> 
+			  <span class=" p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE -</span> 
+			  <span class=" p-0 m-0" dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING -</span> 
+			  <span class=" p-0 m-0" dmx-show="dexapi.data.behind > 100">OFFLINE -</span> 
+			  <span class=" p-0 m-0 ml-1">{{dexapi.data.behind}} BBH</span></button>
+			</div>
         </div>
         <div class="d-flex text-white-50">
           <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} DLUX</div>
@@ -81,9 +101,105 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
           <div id="userhive" class="mx-4 text-danger">{{accountapi.data.result[0].balance}}</div>
           <div id="userhbd" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
         </div>
-		  <div dmx-repeat:repeat1="marketnodes.data">
-			  {{self}} {{domain}}
 		  </div>
+		   <div id="nodedrawer" class="collapse">
+          <div class="py-5">
+			  <div class="d-flex align-items-center mb-3">
+				  <div class="">
+			  		<div role="group" class="input-group" dmx-show="filtertype.checked == false">
+				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
+                      <input type="text" class="form-control bg-dark border-dark text-info" id="filteraccount" aria-required="true" placeholder="Users">
+                      <div class="input-group-append p-0 m-0" >
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix p-0 m-0" style="width: 30px">
+							<span dmx-show="filteraccount.value">
+								<a href="#" class="badge badge-secondary" dmx-on:click="filteraccount.setValue(null)"><i class="fas fa-times"></i></a>
+							</span>
+						 </div>
+                      </div>
+                  </div>
+					  </div>
+			  <div class="">
+			  <div role="group" class="input-group" dmx-show="filtertype.checked == true">
+				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filterapi.focus()"><i class="fas fa-search"></i></span></div>
+                      <input type="text" class="form-control bg-dark border-dark text-info" id="filterapi" aria-required="true" placeholder="APIs">
+                      <div class="input-group-append p-0 m-0">
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix p-0 m-0" style="width: 30px">
+							<span dmx-show="filterapi.value"><a href="#" class="badge badge-secondary" dmx-on:click="filterapi.setValue(null)"><i class="fas fa-times"></i></a></span></div>
+                      </div>
+                  </div>
+				  </div>
+			 <div class="d-flex ml-2">
+				  <label for="filtertype" class="m-0 px-2 py-1 border l-radius-hotfix" dmx-class:border-primary="filtertype.checked == false" dmx-class:bg-primary="filtertype.checked == false" dmx-class:border-secondary="filtertype.checked == true" style="border-width: 2px !important"><span dmx-class:text-white="filtertype.checked == false" dmx-class:text-secondary="filtertype.checked == true">Users</label>
+				  <label for="filtertype" class="m-0 px-2 py-1 border r-radius-hotfix" dmx-class:border-primary="filtertype.checked == true" dmx-class:bg-primary="filtertype.checked == true" dmx-class:border-secondary="filtertype.checked == false" style="border-width: 2px !important"><span class="" dmx-class:text-white="filtertype.checked == true" dmx-class:text-secondary="filtertype.checked == false">APIs</span></label>
+				  <div class="custom-control custom-switch d-none">
+  					<input type="checkbox" class="custom-control-input d-none" id="filtertype">
+				</div>
+			</div>
+			</div>
+
+            <div class="table-responsive rounded border border-dark">
+              <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
+                <thead role="rowgroup" class="">
+                  <tr role="row" class="">
+                    <th role="columnheader" class="" aria-colindex="1" dmx-class:col-sort="marketnodes.sort.on == 'account'"> <div class="d-flex align-items-center">
+                      <div class="mr-3">USER NAME</div>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('account','asc')" dmx-class:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'account'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('account','desc')" dmx-class:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'account'"> <i class="fas fa-caret-down"></i></button>
+                    </div>
+                    </th>
+                    <th role="columnheader" class="" aria-colindex="2" dmx-class:col-sort="marketnodes.sort.on == 'g'"> <div class="d-flex align-items-center">
+                      <div class="mr-3">GOV BAL</div>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('g','asc')" dmx-class:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'g'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('g','desc')" dmx-class:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'g'"> <i class="fas fa-caret-down"></i></button>
+                    </div>
+                    </th>
+                    <th role="columnheader" class="" aria-colindex="3" dmx-class:col-sort="marketnodes.sort.on == 'api'"> <div class="d-flex align-items-center">
+                      <div class="mr-3">API (Click to load)</div>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('api','asc')" dmx-class:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'api'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('api','desc')" dmx-class:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'api'"> <i class="fas fa-caret-down"></i></button>
+                    </div>
+                    </th>
+                    <th role="columnheader" class="" aria-colindex="4"> <div class="d-flex align-items-center">
+                      <div>
+                        <div class="dropdown show"> <a class="btn btn-sm btn-dark " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v px-1"></i></a>
+                          <div class="dropdown-menu">
+                            <h6 class="dropdown-header">CURRENT API</h6>
+                            <p class="dropdown-item">{{openordersapi.data.node.eval('getCookie(`dapi`)')}}</p>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" onClick="setAPI('dapi','https://spkinstant.hivehoneycomb.com/')"><i class="fas fa-bolt mr-2"></i>Load Latest</a> </div>
+                        </div>
+                      </div>
+                    </div></th>
+                  </tr>
+                <tbody role="rowgroup">
+                  <!--repeat region-->
+                  <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data.where(`account`, filteraccount.value, 'fuzzySearch')" dmx-show="filtertype.checked == false">
+                    <td role="cell" class="" aria-colindex="1"><a dmx-bind:href="/@{{account}}">@{{account}}</a></td>
+                    <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
+                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" dmx-on:click="javascript:setAPI('dapi','{{api}}')">{{api}}</a></td>
+                  </tr>
+					<tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data.where(`api`, filterapi.value, 'fuzzySearch')" dmx-show="filtertype.checked == true">
+                    <td role="cell" class="" aria-colindex="1"><a dmx-bind:href="/@{{account}}">@{{account}}</a></td>
+                    <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
+                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" dmx-on:click="javascript:setAPI('dapi','{{api}}')">{{api}}</a></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="marketnodes.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="marketnodes.prev()" dmx-show="marketnodes.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{marketnodes.page}} of {{marketnodes.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="marketnodes.next()" dmx-show="marketnodes.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="container text-white" style="margin-top: 50px;">
