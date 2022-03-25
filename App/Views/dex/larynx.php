@@ -161,7 +161,7 @@ include_once( $path );
                     </th>
                     <th role="columnheader" class="" aria-colindex="4"> <div class="d-flex align-items-center">
                       <div>
-                        <div class="dropdown show"> <a class="btn btn-sm btn-dark " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v px-1"></i></a>
+                        <div class="dropdown show"> <a class="btn btn-sm btn-dark " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-satellite-dish"></i></a>
                           <div class="dropdown-menu">
                             <h6 class="dropdown-header">CURRENT API</h6>
                             <p class="dropdown-item">{{openordersapi.data.node.eval('getCookie(`lapi`)')}}</p>
