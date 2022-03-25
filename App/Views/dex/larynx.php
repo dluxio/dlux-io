@@ -72,7 +72,7 @@ include_once( $path );
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 ">
     <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
-      <div class="d-flex flex-column justify-content-between align-items-center px-3 py-1" style="background-color: black;" >
+      <div class="d-flex flex-column justify-content-between align-items-center px-3 py-1" style="background-color: black;">
         <div class="d-flex align-itmes-center justify-content-between w-100">
           <div class="d-flex align-itmes-center">
             <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
@@ -434,7 +434,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" id="buy-qty" aria-labelledby="buy-qty-label" for="buyQuantity" dmx-hide="buymarket.checked">
+              <div class="form-group"for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" dmx-hide="buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -448,7 +448,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" id="buy-price" aria-labelledby="buy-price-label" for="buyPrice" dmx-hide="buymarket.checked">
+              <div class="form-group" for="buyPrice" id="buy-price" aria-labelledby="buy-price-label" dmx-hide="buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -462,7 +462,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" id="buy-hours" aria-labelledby="buy-hours-label" for="buyHours" dmx-hide="buymarket.checked">
+              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" dmx-hide="buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -476,7 +476,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" id="buy-hive-total" aria-labelledby="buy-hive-total-label" for="buyHiveTotal" dmx-show="buyhive.checked">
+              <div class="form-group" for="buyHiveTotal" id="buy-hive-total" aria-labelledby="buy-hive-total-label" dmx-show="buyhive.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -490,7 +490,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" for="buyHBDTotal" dmx-show="buyhbd.checked">
+              <div class="form-group" for="buyHBDTotal" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" dmx-show="buyhbd.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -543,7 +543,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" id="sell-price" aria-labelledby="sell-price-label" for="sellPrice" dmx-hide="sellmarket.checked">
+              <div class="form-group" for="sellPrice" id="sell-price" aria-labelledby="sell-price-label" dmx-hide="sellmarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -557,7 +557,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" id="sell-hours" aria-labelledby="sell-hours-label" for="sellHours" dmx-hide="sellmarket.checked">
+              <div class="form-group" for="sellHours" id="sell-hours" aria-labelledby="sell-hours-label" dmx-hide="sellmarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -571,7 +571,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" id="sell-hive-total" aria-labelledby="sell-hive-total-label" for="sellHiveTotal" dmx-show="buyhive.checked && selllimit.checked">
+              <div class="form-group" for="sellHiveTotal" id="sell-hive-total" aria-labelledby="sell-hive-total-label" dmx-show="buyhive.checked && selllimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -588,7 +588,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" id="sell-hbd-total" aria-labelledby="sell-hbd-total-label" for="sellHBDTotal" dmx-show="buyhbd.checked && selllimit.checked">
+              <div class="form-group" for="sellHBDTotal" id="sell-hbd-total" aria-labelledby="sell-hbd-total-label" dmx-show="buyhbd.checked && selllimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -854,8 +854,6 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/footer.php";
 include_once( $path );
 ?>
-<script src="/dlux-io/js/popper.min.js"></script>
-<script src="/dlux-io/js/bootstrap-4.4.1.js"></script>
 </body>
 <script>
 	

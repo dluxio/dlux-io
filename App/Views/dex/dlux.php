@@ -37,9 +37,9 @@ input.disabled-input {
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
-<dmx-api-datasource id="nodes" is="dmx-fetch" url="https://token.dlux.io/markets" ></dmx-api-datasource>
+<dmx-api-datasource id="nodes" is="dmx-fetch" url="https://token.dlux.io/runners" ></dmx-api-datasource>
 
-<dmx-data-view id="marketnodes" dmx-bind:data="nodes.data.markets.node" sorton="g" sortdir="ndesc" pagesize="10"></dmx-data-view>
+<dmx-data-view id="marketnodes" dmx-bind:data="nodes.data.result" sorton="g" sortdir="ndesc" pagesize="10"></dmx-data-view>
 <dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
 <dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
 <dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
@@ -203,6 +203,8 @@ include_once( $path );
       </div>
     </div>
     <div class="container text-white" style="margin-top: 50px;">
+	<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
+	<input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(86400000)}}">
       <div class="row">
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
@@ -746,7 +748,7 @@ include_once( $path );
                       <td aria-colindex="1" role="cell" class=""></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="4" role="cell" class=""><a href="#"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></a></td>
+                      <td aria-colindex="4" role="cell" class=""><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></td>
                     </tr>
                   </tbody>
 					<tfoot>
@@ -779,7 +781,7 @@ include_once( $path );
                   <tbody role="rowgroup">
                     <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.data.groupBy('rate')" dmx-class:border-warning="txid == 'DLUXICO'">
-                      <td aria-colindex="1" role="cell" class=""><a href="#"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></a></td>
+                      <td aria-colindex="1" role="cell" class=""><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
