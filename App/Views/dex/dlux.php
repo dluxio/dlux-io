@@ -166,7 +166,7 @@ include_once( $path );
                             <h6 class="dropdown-header">CURRENT API</h6>
                             <p class="dropdown-item">{{openordersapi.data.node.eval('getCookie(`dapi`)')}}</p>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" onClick="setAPI('dapi','https://spkinstant.hivehoneycomb.com/')"><i class="fas fa-bolt mr-2"></i>Load Latest</a> </div>
+                            <a class="dropdown-item" href="#" onClick="setAPI('dapi','https://token.dlux.io/')"><i class="fas fa-bolt mr-2"></i>Load Leader</a> </div>
                         </div>
                       </div>
                     </div></th>
