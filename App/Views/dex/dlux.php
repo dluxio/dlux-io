@@ -282,8 +282,8 @@ include_once( $path );
               <i class="fas fa-dollar-sign mx-1"></i>{{(hbdsellorders[0].$key*hbdusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              <i class="fab fa-hive mr-1"></i>{{hbdorderhistory[0].price.toNumber().formatNumber('6','.',',')}} <br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdorderhistory[0].price*hbdusd.value).formatNumber('6','.',',')}} </div>
+              <i class="fab fa-hive mr-1"></i>{{dexapi.data.markets.hive.tick.toNumber().formatNumber('6','.',',')}} <br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.data.markets.hive.tick*hbdusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
               <i class="fab fa-hive mr-1"></i>{{recenthive24h.data.sum('target_volume').formatNumber('6','.',',')}}<br>
