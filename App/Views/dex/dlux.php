@@ -107,9 +107,9 @@ include_once( $path );
 		  </div>
 		   <div id="nodedrawer" class="collapse">
           <div class="py-5">
-			  <div class="d-flex align-items-center mb-3">
+	<div class="d-flex align-items-center mb-3">
 				  <div class="">
-			  		<div role="group" class="input-group" dmx-show="filtertype.checked == false">
+			  		<div role="group" class="input-group" dmx-show="filterusers.checked">
 				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
                       <input type="text" class="form-control bg-dark border-dark text-info" id="filteraccount" aria-required="true" placeholder="Users">
                       <div class="input-group-append p-0 m-0" >
@@ -122,7 +122,7 @@ include_once( $path );
                   </div>
 					  </div>
 			  <div class="">
-			  <div role="group" class="input-group" dmx-show="filtertype.checked == true">
+			  <div role="group" class="input-group" dmx-show="filterapis.checked">
 				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filterapi.focus()"><i class="fas fa-search"></i></span></div>
                       <input type="text" class="form-control bg-dark border-dark text-info" id="filterapi" aria-required="true" placeholder="APIs">
                       <div class="input-group-append p-0 m-0">
@@ -132,15 +132,17 @@ include_once( $path );
                   </div>
 				  </div>
 			 <div class="d-flex ml-2">
-				  <label for="filtertype" class="m-0 px-2 py-1 border l-radius-hotfix" dmx-class:border-primary="filtertype.checked == false" dmx-class:bg-primary="filtertype.checked == false" dmx-class:border-secondary="filtertype.checked == true" style="border-width: 2px !important"><span dmx-class:text-white="filtertype.checked == false" dmx-class:text-secondary="filtertype.checked == true">Users</label>
-				  <label for="filtertype" class="m-0 px-2 py-1 border r-radius-hotfix" dmx-class:border-primary="filtertype.checked == true" dmx-class:bg-primary="filtertype.checked == true" dmx-class:border-secondary="filtertype.checked == false" style="border-width: 2px !important"><span class="" dmx-class:text-white="filtertype.checked == true" dmx-class:text-secondary="filtertype.checked == false">APIs</span></label>
-				  <div class="custom-control custom-switch d-none">
-  					<input type="checkbox" class="custom-control-input d-none" id="filtertype">
-				</div>
+				 <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-outline-primary active">
+                <input name="filtertype" type="radio" id="filterusers" is="dmx-radio" value="" checked="">
+                Users </label>
+              <label class="btn btn-outline-primary">
+                <input type="radio" name="filtertype" id="filterapis" is="dmx-radio" value="">
+                APIs </label>
+            </div>
 			</div>
 			</div>
-
-            <div class="table-responsive rounded border border-dark">
+			  <div class="table-responsive rounded border border-dark">
               <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
