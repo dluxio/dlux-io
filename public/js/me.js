@@ -1,6 +1,6 @@
 function hivesend(to, amountid, memoid) {
     return new Promise((resolve, reject) => {
-        var amount = parseFloat(amountid * 1000).toFixed(3) + ' HIVE',
+        var amount = parseFloat(amountid).toFixed(3) + ' HIVE',
             memo = memoid
         checkAccount(to)
             .then(r => {
@@ -23,7 +23,7 @@ function hivesend(to, amountid, memoid) {
 
 function hbdsend(to, amountid, memoid) {
     return new Promise((resolve, reject) => {
-        var amount = parseFloat(amountid * 1000).toFixed(3) + ' HBD',
+        var amount = parseFloat(amountid).toFixed(3) + ' HBD',
             memo = memoid
         checkAccount(to)
             .then(r => {
