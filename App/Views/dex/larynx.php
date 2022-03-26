@@ -34,6 +34,8 @@ input.disabled-input {
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
+<!--<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
+<input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(86400000)}}">-->
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/runners" ></dmx-api-datasource>
@@ -202,12 +204,8 @@ include_once( $path );
         </div>
       </div>
     </div>
-    
-	  <div class="container text-white" style="margin-top: 50px;">
-	<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
-	<input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(86400000)}}">
-
-      <div class="row">
+	<div class="container text-white" style="margin-top: 50px;">
+	      <div class="row">
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hivequote">
