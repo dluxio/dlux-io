@@ -432,7 +432,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" dmx-hide="buymarket.checked">
+              <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" dmx-show="buylimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -446,7 +446,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyPrice" id="buy-price" aria-labelledby="buy-price-label" dmx-hide="buymarket.checked">
+              <div class="form-group" for="buyPrice" id="buy-price" aria-labelledby="buy-price-label" dmx-show="buylimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -460,7 +460,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" dmx-hide="buymarket.checked">
+              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" dmx-show="buylimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
