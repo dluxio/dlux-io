@@ -2,25 +2,11 @@
 <html lang="en" class="h-100">
 <head>
 <title>DLUX - DEX</title>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
-<!-- Bootstrap -->
-<script src="/js/dmxAppConnect/dmxAppConnect.js"></script>
-<script src="/js/jquery-3.4.1.min.js"></script>
-<script src="/js/popper.min.js"></script>
-<link href="/css/bootstrap-4.4.1.css" rel="stylesheet">
-<link href="/css/bd.css" rel="stylesheet">
-<!--dmxAppConnect-->
-<script src="/js/dmxAppConnect/dmxMoment.js"></script>
-<script src="/js/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
-<script src="/js/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
-<!-- Icons -->
-<script src="https://kit.fontawesome.com/0f693ffc58.js" crossorigin="anonymous"></script>
-<!-- HIVE -->
-<script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js"></script>
-<!-- Initialization -->
+<?php
+$path = $_SERVER[ 'DOCUMENT_ROOT' ];
+$path .= "/mod/header.php";
+include_once( $path );
+?>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script>
@@ -47,12 +33,6 @@ input.disabled-input {
 </style>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
-<script>
-hive.api.setOptions({url:"https://anyx.io"})
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-</script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
