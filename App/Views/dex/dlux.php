@@ -113,7 +113,7 @@ include_once( $path );
 				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
                       <input type="text" class="form-control bg-dark border-dark text-info" id="filteraccount" aria-required="true" placeholder="Users">
                       <div class="input-group-append p-0 m-0" >
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix p-0 m-0" style="width: 30px">
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px">
 							<span dmx-show="filteraccount.value">
 								<a href="#" class="badge badge-secondary" dmx-on:click="filteraccount.setValue(null)"><i class="fas fa-times"></i></a>
 							</span>
@@ -126,7 +126,7 @@ include_once( $path );
 				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filterapi.focus()"><i class="fas fa-search"></i></span></div>
                       <input type="text" class="form-control bg-dark border-dark text-info" id="filterapi" aria-required="true" placeholder="APIs">
                       <div class="input-group-append p-0 m-0">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix p-0 m-0" style="width: 30px">
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px">
 							<span dmx-show="filterapi.value"><a href="#" class="badge badge-secondary" dmx-on:click="filterapi.setValue(null)"><i class="fas fa-times"></i></a></span></div>
                       </div>
                   </div>
