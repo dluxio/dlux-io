@@ -1598,7 +1598,7 @@ if ( isset( $author ) ) {
             <h5 class="modal-title" id="sendDluxTitle">Send DLUX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form>
+          <form name="senddlux" dmx-bind:action="javascript:dluxsend('{{senddluxto.value}}','{{senddluxamount.value}}','{{senddluxmemo.value}}','spkcc_')">
             <div class="modal-body">
               <div class="form-group">
                 <label for="senddluxfrom">From:</label>
@@ -1619,7 +1619,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="senddluxamountlab" for="senddluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'senddluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="senddluxamountlab" for="senddluxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{usertoken.data.balance/1000}}', 'senddluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="senddluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
@@ -1636,7 +1636,7 @@ if ( isset( $author ) ) {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button id="sendmodalsend" type="button" class="btn btn-primary">Continue</button>
+              <button id="sendmodalsend" type="submit" class="btn btn-primary">Continue</button>
             </div>
           </form>
         </div>
@@ -1670,7 +1670,7 @@ if ( isset( $author ) ) {
                   <input class="form-control" id="sendlarynxto" type="text" placeholder="Recipient">
                 </div>
               </div>
-              <div class="form-group"><!--onClick="insertBal(parseFloat(User.larynx.balance/1000), 'sendlarynxamount')"-->
+              <div class="form-group">
                 <label id="sendlarynxamountlab" for="sendlarynxamount">Amount (Balance <a href="#"  dmx-on:click="javascript:insertBal('{{larynxtoken.data.balance/1000}}', 'sendlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="sendlarynxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
@@ -1702,7 +1702,7 @@ if ( isset( $author ) ) {
             <h5 class="modal-title" id="powerDluxTitle">Power Up DLUX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form>
+          <form name="powerupdlux" dmx-bind:action="javascript:powerUp('{{powerupdluxamount.value}}','{{powerupdluxto.value}}')">
             <div class="modal-body">
               <div class="form-group">
                 <label for="powerupdluxfrom">From:</label>
@@ -1723,7 +1723,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="powerdluxamountlab" for="powerupdluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'powerupdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="powerdluxamountlab" for="powerupdluxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{usertoken.data.balance/1000}}','powerupdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="powerupdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
@@ -1734,7 +1734,7 @@ if ( isset( $author ) ) {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-primary" id="powerdluxsubmitbutton">Continue</button>
+              <button type="submit" class="btn btn-primary" id="powerdluxsubmitbutton">Continue</button>
             </div>
           </form>
         </div>
@@ -1748,7 +1748,7 @@ if ( isset( $author ) ) {
             <h5 class="modal-title" id="powerdownDluxTitle">Power Down DLUX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form>
+          <form name="powerdowndlux" dmx-bind:action="javascript:powerDown('{{powerdowndluxamount.value}}','{{powerdowndluxto.value}}')">
             <div class="modal-body">
               <div class="form-group">
                 <label for="powerdowndluxfrom">From:</label>
@@ -1769,7 +1769,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="dluxamountlab" for="powerdowndluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.poweredUp/1000),'powerdowndluxamount')">{{((usertoken.data.poweredUp)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="dluxamountlab" for="powerdowndluxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{usertoken.data.poweredUp/1000}}','powerdowndluxamount')">{{((usertoken.data.poweredUp)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="powerdowndluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
@@ -1780,7 +1780,7 @@ if ( isset( $author ) ) {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" id="powerdowndluxsubmit" class="btn btn-primary" onClick="powerDown('powerdowndluxamount', 'powerdowndluxto', 'powerdowndluxmemo')">Continue</button>
+              <button type="submit" id="powerdowndluxsubmit" class="btn btn-primary">Continue</button>
             </div>
           </form>
         </div>
@@ -1794,7 +1794,7 @@ if ( isset( $author ) ) {
             <h5 class="modal-title" id="powerDluxTitle">Lock Gov DLUX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form name="lockdlux" dmx-bind:action="javascript:dluxgovup('{{lockgovlarynxamount.value}}')">
+          <form name="lockdlux" dmx-bind:action="javascript:dluxgovup('{{lockgovdluxamount.value}}')">
             <div class="modal-body">
               <div class="form-group">
                 <label for="lockgovdluxfrom">From:</label>
@@ -1815,7 +1815,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="lockgovdluxamountlab" for="lockgovdluxamount">Amount (Balance <a href="#" onClick="insertBal(parseFloat(User.dlux.balance/1000), 'lockgovdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="lockgovdluxamountlab" for="lockgovdluxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{usertoken.data.balance/1000}}','lockgovdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="lockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
@@ -1907,7 +1907,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="unlockgovdluxamountlab" for="unlockgovdluxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{dluxtoken.data.gov/1000}}','unlockgovdluxamount')">{{((dluxtoken.data.gov)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="unlockgovdluxamountlab" for="unlockgovdluxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{usertoken.data.gov/1000}}','unlockgovdluxamount')">{{((usertoken.data.gov)/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="unlockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
