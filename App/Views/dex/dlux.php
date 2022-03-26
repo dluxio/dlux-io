@@ -70,6 +70,8 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 include_once( $path );
 ?>
 <main role="main" class="flex-shrink-0 text-white">
+	<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
+	<input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(86400000)}}">
   <div class="container-fluid px-0 ">
     <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
       <div class="d-flex flex-column justify-content-between align-items-center px-3 py-1" style="background-color: black;">
@@ -203,8 +205,6 @@ include_once( $path );
       </div>
     </div>
     <div class="container text-white" style="margin-top: 50px;">
-	<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
-	<input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(86400000)}}">
       <div class="row">
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
