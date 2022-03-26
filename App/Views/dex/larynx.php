@@ -93,7 +93,7 @@ include_once( $path );
 				  <span class="small p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE</span>
 				  <span class="small p-0 m-0" dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING</span>
 				  <span class="small p-0 m-0" dmx-show="dexapi.data.behind > 100">OFFLINE</span>
-				  <span class="small p-0 m-0">| {{dexapi.data.behind}} BBH | {{marketnodes.data.count()}} NODES</span></button>
+				  <span class="small p-0 m-0">| {{dexapi.data.behind}} BBH | {{nodes.data.result.count()}} NODES</span></button>
             </div>
           </div>
           <div class="d-flex text-white-50">
