@@ -1,8 +1,7 @@
-function hivesend(toid, amountid, memoid) {
+function hivesend(to, amountid, memoid) {
     return new Promise((resolve, reject) => {
-        var to = document.getElementById(toid).value,
-            amount = parseFloat(document.getElementById(amountid).value).toFixed(3) + ' HIVE',
-            memo = document.getElementById(memoid).value
+        var amount = parseFloat(amountid * 1000).toFixed(3) + ' HIVE',
+            memo = memoid
         checkAccount(to)
             .then(r => {
                 Dluxsession.hive_sign([user, [
@@ -22,11 +21,10 @@ function hivesend(toid, amountid, memoid) {
     });
 }
 
-function hbdsend(toid, amountid, memoid) {
+function hbdsend(to, amountid, memoid) {
     return new Promise((resolve, reject) => {
-        var to = document.getElementById(toid).value,
-            amount = parseFloat(document.getElementById(amountid).value).toFixed(3) + ' HBD',
-            memo = document.getElementById(memoid).value
+        var amount = parseFloat(amountid * 1000).toFixed(3) + ' HBD',
+            memo = memoid
         checkAccount(to)
             .then(r => {
                 Dluxsession.hive_sign([user, [
