@@ -1702,7 +1702,7 @@ if ( isset( $author ) ) {
             <h5 class="modal-title" id="powerDluxTitle">Power Up DLUX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form name="powerupdlux" dmx-bind:action="javascript:powerUp('{{powerupdluxamount.value}}','{{powerupdluxto.value}}')">
+          <form name="powerupdlux" dmx-bind:action="javascript:powerUp('{{powerupdluxamount.value}}')">
             <div class="modal-body">
               <div class="form-group">
                 <label for="powerupdluxfrom">From:</label>
@@ -1748,7 +1748,7 @@ if ( isset( $author ) ) {
             <h5 class="modal-title" id="powerdownDluxTitle">Power Down DLUX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form name="powerdowndlux" dmx-bind:action="javascript:powerDown('{{powerdowndluxamount.value}}','{{powerdowndluxto.value}}')">
+          <form name="powerdowndlux" dmx-bind:action="javascript:powerDown('{{powerdowndluxamount.value}}')">
             <div class="modal-body">
               <div class="form-group">
                 <label for="powerdowndluxfrom">From:</label>
