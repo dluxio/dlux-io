@@ -1619,7 +1619,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="sendhiveamountlab" for="sendhiveamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{accountapi.data.result[0].balance/1000}}', 'sendhiveamount')">{{((accountapi.data.result[0].balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="sendhiveamountlab" for="sendhiveamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{accountapi.data.result[0].balance.parseFloat()/1000}}', 'sendhiveamount')">{{((accountapi.data.result[0].balance.parseFloat())/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="sendhiveamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
@@ -1671,7 +1671,7 @@ if ( isset( $author ) ) {
                 </div>
               </div>
               <div class="form-group">
-                <label id="sendhbdamountlab" for="sendhbdamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{accountapi.data.result[0].hbd_balance/1000}}', 'sendhbdamount')">{{((accountapi.data.result[0].hbd_balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
+                <label id="sendhbdamountlab" for="sendhbdamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{accountapi.data.result[0].hbd_balance.parseFloat()/1000}}', 'sendhbdamount')">{{((accountapi.data.result[0].hbd_balance.parseFloat())/1000).formatNumber(3,'.',',')}}</a>):</label>
                 <div class="input-group">
                   <input class="form-control" id="sendhbdamount" type="number" step="0.001" min="0.001" placeholder="1.000">
                   <div class="input-group-append">
