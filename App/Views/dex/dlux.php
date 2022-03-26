@@ -35,6 +35,9 @@ input.disabled-input {
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
+<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
+
+
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="nodes" is="dmx-fetch" url="https://token.dlux.io/runners" ></dmx-api-datasource>
@@ -70,8 +73,6 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 include_once( $path );
 ?>
 <main role="main" class="flex-shrink-0 text-white">
-	<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
-	<input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(86400000)}}">
   <div class="container-fluid px-0 ">
     <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
       <div class="d-flex flex-column justify-content-between align-items-center px-3 py-1" style="background-color: black;">
@@ -209,7 +210,7 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hivequote">
-              <h2 class="lead my-0"><b>HIVE: ${{hiveprice.data.hive.usd}}</b></h2>
+              <h2 class="lead my-0"><b>HIVE: ${{hiveprice.data.hive.usd.toFixedTrunc('6')}}</b></h2>
             </div>
             <input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none">
           </div>
@@ -217,7 +218,7 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hbdquote">
-              <h2 class="lead my-0"><b>HBD: ${{hbdprice.data.hive_dollar.usd}}</b></h2>
+              <h2 class="lead my-0"><b>HBD: ${{hbdprice.data.hive_dollar.usd.toFixedTrunc('6')}}</b></h2>
             </div>
             <input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none">
           </div>
@@ -225,13 +226,13 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" dmx-show="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hive.tick*hiveprice.data.hive.usd}}</b></h2>
+              <h2 class="lead my-0"><b>DLUX: ${{(dexapi.data.markets.hive.tick*hiveprice.data.hive.usd).toFixedTrunc('6')}}</b></h2>
             </div>
             <input id="dluxhiveusd" dmx-bind:value="{{dexapi.data.markets.hive.tick}}" class="d-none">
           </div>
           <div class="jumbotron p-3 bg-dark" dmx-show="buyhbd.checked">
             <div id="dluxhbdquote">
-              <h2 class="lead my-0"><b>DLUX: ${{dexapi.data.markets.hbd.tick*hbdprice.data.hive_dollar.usd}}</b></h2>
+              <h2 class="lead my-0"><b>DLUX: ${{(dexapi.data.markets.hbd.tick*hbdprice.data.hive_dollar.usd).toFixedTrunc('6')}}</b></h2>
             </div>
             <input id="dluxhbdusd" dmx-bind:value="{{dexapi.data.markets.hbd.tick}}" class="d-none">
           </div>
@@ -255,19 +256,20 @@ include_once( $path );
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              {{hivebuyorders[0].$key}}<br>
-              {{(hivebuyorders[0].$key*hiveusd.value).formatCurrency()}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hivebuyorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hivebuyorders[0].$key*hiveusd.value).formatNumber('6','.',',')}}</div>
             <div class="mt-2 col">
               <h5>Ask</h5>
-              {{hivesellorders[0].$key}}<br>
-              {{(hivesellorders[0].$key*hiveusd.value).formatCurrency()}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hivesellorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hivesellorders[0].$key*hiveusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              {{hiveorderhistory[0].price}} <br>
-              {{(hiveorderhistory[0].price*hiveusd.value).formatCurrency()}} </div>
-            <div id="hive24" class="mt-2 col">
+              <i class="fab fa-hive mr-1"></i>{{dexapi.data.markets.hive.tick.toNumber().formatNumber('6','.',',')}} <br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.data.markets.hive.tick*hiveusd.value).formatNumber('6','.',',')}} </div>
+            <div class="mt-2 col">
               <h5>24h Volume</h5>
-              <br>
+              <i class="fab fa-hive mr-1"></i>{{recenthive24h.data.sum('target_volume').formatNumber('6','.',',')}}<br>
+			  <i class="fas fa-dollar-sign mx-1"></i>{{(recenthive24h.data.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
             </div>
           </div>
         </div>
@@ -275,19 +277,20 @@ include_once( $path );
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              {{hbdbuyorders[0].$key}}<br>
-              {{(hbdbuyorders[0].$key*hbdusd.value).formatCurrency()}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hbdbuyorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdbuyorders[0].$key*hbdusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
-              {{hbdsellorders[0].$key}}<br>
-              {{(hbdsellorders[0].$key*hbdusd.value).formatCurrency()}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hbdsellorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdsellorders[0].$key*hbdusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              {{hbdorderhistory[0].price}} <br>
-              {{(hbdorderhistory[0].price*hbdusd.value).formatCurrency()}} </div>
-            <div id="hbd24" class="mt-2 col">
+              <i class="fab fa-hive mr-1"></i>{{dexapi.data.markets.hive.tick.toNumber().formatNumber('6','.',',')}} <br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.data.markets.hive.tick*hbdusd.value).formatNumber('6','.',',')}} </div>
+            <div class="mt-2 col">
               <h5>24h Volume</h5>
-              <br>
+              <i class="fab fa-hive mr-1"></i>{{recenthive24h.data.sum('target_volume').formatNumber('6','.',',')}}<br>
+			  <i class="fas fa-dollar-sign mx-1"></i>{{(recenthive24h.data.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
             </div>
           </div>
         </div>
@@ -629,9 +632,21 @@ include_once( $path );
                       <td aria-colindex="1" role="cell" class=""></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="4" role="cell" class="text-primary">{{$key}}</td>
+                      <td aria-colindex="4" role="cell" class="text-primary"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></td>
                     </tr>
                   </tbody>
+					<tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hivebuys.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hivebuys.prev()" dmx-show="hivebuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{hivebuys.page}} of {{hivebuys.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hivebuys.next()" dmx-show="hivebuys.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
+                </tfoot>
                 </table>
               </div>
             </div>
@@ -650,13 +665,25 @@ include_once( $path );
                   <tbody role="rowgroup">
                     <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hivesellorders="hivesells.data.groupBy('rate')">
-                      <td aria-colindex="1" role="cell" class="text-primary">{{$key}}</td>
+                      <td aria-colindex="1" role="cell" class="text-primary"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
                     </tr>
                   </tbody>
                   <!---->
+					<tfoot>
+                  <tr role="row" class="" >
+                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hivesells.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hivesells.prev()" dmx-show="hivesells.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex">
+                          <p class="m-0 p-0 text-muted">Page {{hivesells.page}} of {{hivesells.pages}}</p>
+                        </div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hivesells.next()" dmx-show="hivesells.has.next"><i class="fa fa-angle-right"></i></a></div>
+                      </div></td>
+                  </tr>
+                </tfoot>
                 </table>
               </div>
             </div>
@@ -683,6 +710,18 @@ include_once( $path );
                       <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
                     </tr>
                   </tbody>
+					<tfoot>
+                    <tr role="row" class="" >
+                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="recenthive.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="recenthive.prev()" dmx-show="recenthive.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                          <div class="d-flex">
+                            <p class="m-0 p-0 text-muted">Page {{recenthive.page}} of {{recenthive.pages}}</p>
+                          </div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="recenthive.next()" dmx-show="recenthive.has.next"><i class="fa fa-angle-right"></i></a></div>
+                        </div></td>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
             </div>
@@ -710,9 +749,21 @@ include_once( $path );
                       <td aria-colindex="1" role="cell" class=""></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="4" role="cell" class=""><a href="#">{{$key}}</a></td>
+                      <td aria-colindex="4" role="cell" class=""><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></td>
                     </tr>
                   </tbody>
+					<tfoot>
+                    <tr role="row" class="" >
+                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hbdbuys.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hbdbuys.prev()" dmx-show="hbdbuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                          <div class="d-flex">
+                            <p class="m-0 p-0 text-muted">Page {{hbdbuys.page}} of {{hbdbuys.pages}}</p>
+                          </div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hbdbuys.next()" dmx-show="hbdbuys.has.next"><i class="fa fa-angle-right"></i></a></div>
+                        </div></td>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
             </div>
@@ -731,12 +782,24 @@ include_once( $path );
                   <tbody role="rowgroup">
                     <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.data.groupBy('rate')" dmx-class:border-warning="txid == 'DLUXICO'">
-                      <td aria-colindex="1" role="cell" class=""><a href="#">{{$key}}</a></td>
+                      <td aria-colindex="1" role="cell" class=""><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
                     </tr>
                   </tbody>
+					<tfoot>
+                    <tr role="row" class="" >
+                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hbdsells.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hbdsells.prev()" dmx-show="hbdsells.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                          <div class="d-flex">
+                            <p class="m-0 p-0 text-muted">Page {{hbdsells.page}} of {{hbdsells.pages}}</p>
+                          </div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hbdsells.next()" dmx-show="hbdsells.has.next"><i class="fa fa-angle-right"></i></a></div>
+                        </div></td>
+                    </tr>
+                  </tfoot>
                   <!---->
                 </table>
               </div>
@@ -764,6 +827,18 @@ include_once( $path );
                       <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
                     </tr>
                   </tbody>
+					<tfoot>
+                    <tr role="row" class="" >
+                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="recenthbd.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="recenthbd.prev()" dmx-show="recenthbd.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                          <div class="d-flex">
+                            <p class="m-0 p-0 text-muted">Page {{recenthbd.page}} of {{recenthbd.pages}}</p>
+                          </div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="recenthbd.next()" dmx-show="recenthbd.has.next"><i class="fa fa-angle-right"></i></a></div>
+                        </div></td>
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
             </div>
@@ -773,70 +848,11 @@ include_once( $path );
     </div>
   </div>
 </main>
-<!-- Footer -->
-<footer class="footer mt-auto bg-dark pt-5">
-
-  <!-- Footer Elements -->
-  <div class="container text-center">
-
-        <div class="mb-5 ">
-		
-          <!-- Github -->
-          <a href="https://github.com/dluxio" target="_blank">
-            <i class="fab fa-github fa-lg mx-md-3 mx-2 fa-2x"></i>
-          </a>
-          <!-- Discord -->
-          <a href="https://discord.gg/Beeb38j" target="_blank">
-            <i class="fab fa-discord fa-lg mx-md-3 mx-2 fa-2x"></i>
-          </a>
-          <!-- Hive -->
-          <a href="https://peakd.com/@dlux-io" target="_blank">
-            <img src="/img/peakd_logo.svg" class="responsive pb-3" width="40px">
-          </a>
-          <!--Twitter -->
-          <a href="https://twitter.com/dluxxr" target="_blank">
-            <i class="fab fa-twitter fa-lg mx-md-3 mx-2 fa-2x"></i>
-          </a>
-        </div>
-
-
-  </div>
-  <!-- Footer Elements -->
-
-  <!-- Copyright -->
-  <div class="footer-copyright bg-darker text-center text-white py-3">© 2020 Copyright: 
-    <a href="https://www.dlux.io/about/" class="">dlux.io</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
-<script src="/js/bootstrap-4.4.1.js"></script>
-<script src="/js/session.js"></script>
-<script>
-function hiveKeychain () {
-    let username = document.getElementById('hk-username').value
-    console.log('value: ' + username)
-    localStorage.setItem("user", username);
-    let session = new Dluxsession(hive, {hiveidip:username})
-} 
-   window.addEventListener('load', function () {
-    let use = document.getElementById("hiveKeychain");
-    let get = document.getElementById("getKeychain");
-    let count = 0;
-    let kc_interval = setInterval(function() {
-      count++
-      if(window.hive_keychain) {
-          get.style.display = "none";
-      } else {
-          use.style.display = "none";
-      }
-      if (count >= 8) clearInterval(kc_interval)
-    }, 250);
-  checkCookie()
-}) 
-
-</script>
+<?php
+$path = $_SERVER[ 'DOCUMENT_ROOT' ];
+$path .= "/mod/footer.php";
+include_once( $path );
+?>
 </body>
 <script>
 	
