@@ -203,6 +203,8 @@ include_once( $path );
       </div>
     </div>
     <div class="container text-white" style="margin-top: 50px;">
+	<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
+	<input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(86400000)}}">
       <div class="row">
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
