@@ -554,7 +554,7 @@ if ( isset( $author ) ) {
                 <div id="hiveactions" class="float-right text-right">
                   <h5 id="hivebalance">{{accountapi.data.result[0].balance}}</h5>
                   <div class="btn-group" role="group" aria-label="DLUX Actions">
-                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhivemodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhivemodalbutton" data-target="#sendHiveModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
                     <div class="btn-group" role="group">
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                       <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled" href="#"  id="poweruphivebutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item disabled" href="#"><i class="fas fa-random fa-fw mr-2"></i>Convert to HBD</a>
@@ -598,7 +598,7 @@ if ( isset( $author ) ) {
                 <div id="hbdactions" class="float-right text-right">
                   <h5 id="hbdbalance">{{accountapi.data.result[0].hbd_balance}}</h5>
                   <div class="btn-group" role="group" aria-label="DLUX Actions">
-                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhbdmodalbutton" data-target="#sendDluxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhbdmodalbutton" data-target="#sendHbdModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
                     <div class="btn-group" role="group">
                       <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                       <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled" href="#"><i class="fas fa-random fa-fw mr-2"></i>Convert to HIVE</a> <a class="dropdown-item disabled" href="#"><i class="fas fa-piggy-bank fa-fw mr-2"></i>Transfer to Savings</a>
@@ -1590,7 +1590,111 @@ if ( isset( $author ) ) {
   </div>
 </div>
     </main>
-    <!-- Send DLUX Modal -->
+    <!-- Send HIVE Modal -->
+    <div class="modal fade" id="sendHiveModal" tabindex="-1" role="dialog" aria-labelledby="sendHiveModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-darker text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="sendHiveTitle">Send HIVE</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
+          </div>
+          <form name="sendhive" dmx-bind:action="javascript:hivesend('{{sendhiveto.value}}','{{sendhiveamount.value}}','{{sendhivememo.value}}')">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="sendhivefrom">From:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="sendhivefrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="sendhiveto">To:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="sendhiveto" type="text" placeholder="Recipient">
+                </div>
+              </div>
+              <div class="form-group">
+                <label id="sendhiveamountlab" for="sendhiveamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{accountapi.data.result[0].balance.parseFloat()}}', 'sendhiveamount')">{{((accountapi.data.result[0].balance.parseFloat())).formatNumber(3,'.',',')}}</a>):</label>
+                <div class="input-group">
+                  <input class="form-control" id="sendhiveamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <div class="input-group-append">
+                    <div class="input-group-text" id="sendformunits">HIVE</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" id="sendhivememogroup">
+                <label for="sendhivememo">Memo:</label>
+                <div class="input-group">
+                  <input class="form-control" id="sendhivememo" type="text" placeholder="Include a memo (optional)">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button id="sendhivemodalsend" type="submit" class="btn btn-primary">Continue</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+	<!-- Send HBD Modal -->
+    <div class="modal fade" id="sendHbdModal" tabindex="-1" role="dialog" aria-labelledby="sendHbdModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-darker text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="sendHbdTitle">Send HBD</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
+          </div>
+          <form name="sendhbd" dmx-bind:action="javascript:hbdsend('{{sendhbdto.value}}','{{sendhbdamount.value}}','{{sendhbdmemo.value}}')">
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="sendhbdfrom">From:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="sendhbdfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="sendhbdto">To:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input class="form-control" id="sendhbdto" type="text" placeholder="Recipient">
+                </div>
+              </div>
+              <div class="form-group">
+                <label id="sendhbdamountlab" for="sendhbdamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{accountapi.data.result[0].hbd_balance.parseFloat()}}', 'sendhbdamount')">{{((accountapi.data.result[0].hbd_balance.parseFloat())).formatNumber(3,'.',',')}}</a>):</label>
+                <div class="input-group">
+                  <input class="form-control" id="sendhbdamount" type="number" step="0.001" min="0.001" placeholder="1.000">
+                  <div class="input-group-append">
+                    <div class="input-group-text" id="sendhbdformunits">HBD</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group" id="sendhbdmemogroup">
+                <label for="sendhbdmemo">Memo:</label>
+                <div class="input-group">
+                  <input class="form-control" id="sendhbdmemo" type="text" placeholder="Include a memo (optional)">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button id="sendhbdmodalsend" type="submit" class="btn btn-primary">Continue</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+	<!-- Send DLUX Modal -->
     <div class="modal fade" id="sendDluxModal" tabindex="-1" role="dialog" aria-labelledby="sendDluxModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-darker text-white">
@@ -1598,7 +1702,7 @@ if ( isset( $author ) ) {
             <h5 class="modal-title" id="sendDluxTitle">Send DLUX</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span class="close text-white">×</span></button>
           </div>
-          <form name="senddlux" dmx-bind:action="javascript:dluxsend('{{senddluxto.value}}','{{senddluxamount.value}}','{{senddluxmemo.value}}','spkcc_')">
+          <form name="senddlux" dmx-bind:action="javascript:dluxsend('{{senddluxto.value}}','{{senddluxamount.value}}','{{senddluxmemo.value}}')">
             <div class="modal-body">
               <div class="form-group">
                 <label for="senddluxfrom">From:</label>
