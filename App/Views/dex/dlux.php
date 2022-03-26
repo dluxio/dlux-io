@@ -178,12 +178,12 @@ include_once( $path );
                   </tr>
                 <tbody role="rowgroup">
                   <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data.where(`account`, filteraccount.value, 'fuzzySearch')" dmx-show="filtertype.checked == false">
+                  <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data.where(`account`, filteraccount.value, 'fuzzySearch')" dmx-show="filterusers.checked">
                     <td role="cell" class="" aria-colindex="1"><a dmx-bind:href="/@{{account}}">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
                     <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" dmx-on:click="javascript:setAPI('dapi','{{api}}')">{{api}}</a></td>
                   </tr>
-					<tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data.where(`api`, filterapi.value, 'fuzzySearch')" dmx-show="filtertype.checked == true">
+					<tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data.where(`api`, filterapi.value, 'fuzzySearch')" dmx-show="filterapis.checked">
                     <td role="cell" class="" aria-colindex="1"><a dmx-bind:href="/@{{account}}">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
                     <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" dmx-on:click="javascript:setAPI('dapi','{{api}}')">{{api}}</a></td>
