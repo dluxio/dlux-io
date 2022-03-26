@@ -432,7 +432,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label"  dmx-hide="buymarket.checked">
+              <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" dmx-hide="buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -474,7 +474,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyHiveTotal" id="buy-hive-total" aria-labelledby="buy-hive-total-label" dmx-show="buyhive.checked">
+              <div class="form-group" id="buy-hive-total" aria-labelledby="buy-hive-total-label" for="buyHiveTotal" dmx-show="buyhive.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -488,7 +488,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyHBDTotal" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" dmx-show="buyhbd.checked">
+              <div class="form-group" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" for="buyHBDTotal" dmx-show="buyhbd.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -569,7 +569,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellHiveTotal" id="sell-hive-total" aria-labelledby="sell-hive-total-label" dmx-show="buyhive.checked && selllimit.checked">
+              <div class="form-group" id="sell-hive-total" aria-labelledby="sell-hive-total-label" for="sellHiveTotal" dmx-show="buyhive.checked && selllimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -586,7 +586,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellHBDTotal" id="sell-hbd-total" aria-labelledby="sell-hbd-total-label" dmx-show="buyhbd.checked && selllimit.checked">
+              <div class="form-group" id="sell-hbd-total" aria-labelledby="sell-hbd-total-label" for="sellHBDTotal" dmx-show="buyhbd.checked && selllimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
