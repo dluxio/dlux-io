@@ -184,8 +184,8 @@ function govDown(amt, prefix = 'dlux_') {
 }
 
 function powerUp(amt, tol, memol) {
-    let amount = parseInt(document.getElementById(amt).value * 1000),
-        to = document.getElementById(tol).value || '',
+    let amount = parseInt(amt * 1000),
+        //to = document.getElementById(tol).value || '',
         //memo = document.getElementById(memol).value || '',
         params = {
             "required_auths": [user],
@@ -229,7 +229,7 @@ function powerGrant(amt, tol) {
 }
 
 function powerDown(amt, tol, memol) {
-    let amount = parseInt(document.getElementById(amt).value * 1000),
+    let amount = parseInt(amt * 1000),
         //to = document.getElementById(tol).value,
         //memo = document.getElementById(memol).value,
         params = {
