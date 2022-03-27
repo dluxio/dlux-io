@@ -984,7 +984,7 @@ include_once( $path );
       }, false);
     });
     setTimeout(function(){ 
-      totals()
+      //totals()
   }, 1000);
 });
 })()
