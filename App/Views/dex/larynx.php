@@ -67,7 +67,7 @@ input.disabled-input {
           hive: 0,
           hbd: 0,
           token_hive: 0,
-          token_hbd: 0
+          token_hbd: 0,
           hive_usd: 0,
           hbd_usd: 0
         }
