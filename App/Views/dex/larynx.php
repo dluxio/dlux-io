@@ -789,7 +789,7 @@ include_once( $path );
             <div class="mt-3 col-md-6">
               <h4>Buy Orders</h4>
               <div class="table-responsive">
-                <!-- <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivebuyordertable">
+                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivebuyordertable">
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HIVE</th>
@@ -799,14 +799,14 @@ include_once( $path );
                     </tr>
                   </thead>
                   <tbody role="rowgroup">
-                    <tr class="" role="row" dmx-repeat:hivebuyorders="hivebuys.groupBy('rate')">
+                    <tr class="" role="row" v-for="item in hivebuys">
                       <td aria-colindex="1" role="cell" class=""></td>
-                      <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="4" role="cell" class="text-primary"><a href="#" @click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></td>
+                      <td aria-colindex="2" role="cell" class="">{{(item.hive/1000).toFixed(3)}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
+                      <td aria-colindex="4" role="cell" class="text-primary"><a href="#" @click="javascript:insertBal('{{item.rate}}', 'buyPrice')">{{item.rate}}</a></td>
                     </tr>
                   </tbody>
-                  <tfoot>
+                  <!-- <tfoot>
                     <tr role="row" class="" >
                       <td role="cell" class="" colspan="7" aria-colindex="1">
                         <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hivebuys.pages > 1">
@@ -817,14 +817,14 @@ include_once( $path );
                           <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="hivebuys.next()" v-if="hivebuys.has.next"><i class="fa fa-angle-right"></i></a></div>
                         </div></td>
                     </tr>
-                  </tfoot>
-                </table> -->
+                  </tfoot> -->
+                </table>
               </div>
             </div>
             <div class="mt-3 col-md-6">
               <h4>Sell Orders</h4>
               <div class="table-responsive">
-                <!-- <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivesellorderstable">
+                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivesellorderstable">
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
@@ -834,14 +834,14 @@ include_once( $path );
                     </tr>
                   </thead>
                   <tbody role="rowgroup">
-                    <tr class="" role="row" dmx-repeat:hivesellorders="hivesells.groupBy('rate')">
-                      <td aria-colindex="1" role="cell" class="text-primary"><a href="#" @click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
-                      <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="3" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
+                    <tr class="" role="row" v-for="item in hivesells">
+                      <td aria-colindex="1" role="cell" class="text-primary"><a href="#" @click="javascript:insertBal('{{item.rate}}', 'sellPrice')">{{item.rate}}</a></td>
+                      <td aria-colindex="2" role="cell" class="">{{((item.amount/1000).toFixed(3)}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{((item.hive/1000).toFixed(3))}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
                     </tr>
                   </tbody>
-                  <tfoot>
+                  <!-- <tfoot>
                     <tr role="row" class="" >
                       <td role="cell" class="" colspan="7" aria-colindex="1">
                         <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hivesells.pages > 1">
@@ -852,8 +852,8 @@ include_once( $path );
                           <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="hivesells.next()" v-if="hivesells.has.next"><i class="fa fa-angle-right"></i></a></div>
                         </div></td>
                     </tr>
-                  </tfoot>
-                </table> -->
+                  </tfoot> -->
+                </table>
               </div>
             </div>
           </div>
