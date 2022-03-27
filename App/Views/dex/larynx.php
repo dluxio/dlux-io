@@ -155,11 +155,11 @@ input.disabled-input {
           this.volume.hbd = data.recent_trades.reduce((a, b) => {
             if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.target_volume) * 1000)
             else return a
-            }, 0)
+            }, 0) / 1000
           this.volume.token_hbd = data.recent_trades.reduce((a, b) => {
             if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.base_volume) * 1000)
             else return a
-            }, 0)
+            }, 0) / 1000
           this.recenthbd = data.recent_trades
         })
       fetch('https://spkinstant.hivehoneycomb.com/@' + user)
