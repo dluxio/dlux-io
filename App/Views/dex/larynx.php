@@ -34,8 +34,8 @@ input.disabled-input {
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
-<!--<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
-<input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(86400000)}}">-->
+<input id="timenow" class="d-none">
+<input id="timeoffset" class="d-none">
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/runners" ></dmx-api-datasource>
@@ -97,11 +97,13 @@ include_once( $path );
             </div>
           </div>
           <div class="d-flex align-items-center text-white-50">
-            <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} LARYNX</div>
-            <div id="userdpwr" class="mx-4 text-primary" dmx-show="openordersapi.data.poweredUp > 0">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} LARYNXP</div>
-            <div id="userdgov" class="mx-4 text-info" dmx-show="openordersapi.data.gov > 0">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} LARYNXG</div>
-            <div id="userhive" class="mx-4 text-danger">{{accountapi.data.result[0].balance}}</div>
-            <div id="userhbd" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
+			  
+            <div id="userdlux" class="mx-4 text-warning"><a href="/me#spk"><span class="text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} LARYNX</span></a></div>
+            <div id="userdpwr" class="mx-4 text-primary" dmx-show="openordersapi.data.poweredUp > 0"><a href="/me#spk"><span class="text-primary">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} LARYNXP</span></a></div>
+            <div id="userdgov" class="mx-4 text-info" dmx-show="openordersapi.data.gov > 0"><a href="/me#spk"><span class="text-info">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} LARYNXG</span></a></div>
+            <div id="userhive" class="mx-4 text-danger"><a href="/me#hive"><span class="text-danger">{{accountapi.data.result[0].balance}}</span></a></div>
+            <div id="userhbd" class="mx-4 text-success"><a href="/me#hive"><span class="text-success">{{accountapi.data.result[0].hbd_balance}}</span></a></div>
+				  
           </div>
         </div>
 		  <!-- node collapse region -->
