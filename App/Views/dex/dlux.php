@@ -102,7 +102,7 @@ include_once( $path );
           <div id="userdpwr" class="mx-4 text-primary"><a href="/me#dlux"><span class="text-primary">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} DLUXP</span></a></div>
           <div id="userdgov" class="mx-4 text-info"><a href="/me#dlux"><span class="text-info">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} DLUXG</span></a></div>
           <div id="userhive" class="mx-4 text-danger"><a href="/me#hive"><span class="text-danger">{{accountapi.data.result[0].balance}}</span></a></div>
-          <div id="userhbd" class="mx-4 text-success"><a href="/me#dlux"><span class="text-success">{{accountapi.data.result[0].hbd_balance}}</span></a></div>
+          <div id="userhbd" class="mx-4 text-success"><a href="/me#hive"><span class="text-success">{{accountapi.data.result[0].hbd_balance}}</span></a></div>
         </div>
 		  </div>
 		  <!-- node collapse region -->
