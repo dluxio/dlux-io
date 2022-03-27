@@ -423,7 +423,7 @@ if ( isset( $author ) ) {
                   <hr class="my-4 bg-light">
                   <div class="float-left">
                     <h4>Claim LARYNX Rewards</h4>
-                    <p class="text-white-50">Claimable rewards for running a node, compiled daily.</p>
+                    <p class="text-white-50">Claimable rewards for running a spkcc node, compiled daily.</p>
                   </div>
                   <div id="claimlarynxrewardbtn" class="float-right text-right d-column">
                     <h5>{{((larynxtoken.data.claim)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
