@@ -142,11 +142,11 @@ input.disabled-input {
           this.volume.hive = data.recent_trades.reduce((a, b) => {
             if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.target_volume) * 1000)
             else return a
-            }, 0)
+            }, 0) / 1000
           this.volume.token_hive = data.recent_trades.reduce((a, b) => {
             if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.base_volume) * 1000)
             else return a
-            }, 0)
+            }, 0) / 1000
           this.recenthive = data.recent_trades
         })
       fetch('https://spkinstant.hivehoneycomb.com/api/recent/HBD_LARYNX?limit=1000')
