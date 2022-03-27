@@ -139,7 +139,7 @@ input.disabled-input {
           this.hivebuys = data.markets.hive.buys.sort(function(a, b) {
             return parseFloat(b.rate) - parseFloat(a.rate)
           }).reduce((acc, cur) => {
-            if(acc[acc.length-1].rate != cur.rate) {
+            if(!acc.length || acc[acc.length-1].rate != cur.rate) {
               cur.total = cur.hive + acc[acc.length-1].total
               acc.push(cur)
             } else {
@@ -152,7 +152,7 @@ input.disabled-input {
           this.hivesells = data.markets.hive.sells.sort(function(a, b) {
             return parseFloat(a.rate) - parseFloat(b.rate)
           }).reduce((acc, cur) => {
-            if(acc[acc.length-1].rate != cur.rate) {
+            if(!acc.length || acc[acc.length-1].rate != cur.rate) {
               cur.total = cur.hive + acc[acc.length-1].total
               acc.push(cur)
             } else {
@@ -165,7 +165,7 @@ input.disabled-input {
           this.hbdbuys = data.markets.hbd.buys.sort(function(a, b) {
             return parseFloat(b.rate) - parseFloat(a.rate)
           }).reduce((acc, cur) => {
-            if(acc[acc.length-1].rate != cur.rate) {
+            if(!acc.length || acc[acc.length-1].rate != cur.rate) {
               cur.total = cur.hbd + acc[acc.length-1].total
               acc.push(cur)
             } else {
@@ -178,7 +178,7 @@ input.disabled-input {
           this.hbdsells = data.markets.hbd.sells.sort(function(a, b) {
             return parseFloat(a.rate) - parseFloat(b.rate)
           }).reduce((acc, cur) => {
-            if(acc[acc.length-1].rate != cur.rate) {
+            if(!acc.length || acc[acc.length-1].rate != cur.rate) {
               cur.total = cur.hbd + acc[acc.length-1].total
               acc.push(cur)
             } else {
