@@ -70,7 +70,7 @@ input.disabled-input {
           token_hbd: 0,
           hive_usd: 0,
           hbd_usd: 0
-        }
+        },
         recenthive: {},
         openorders: {},
         accountinfo: {},
