@@ -56,6 +56,7 @@ input.disabled-input {
         hivesells: {},
         hbdbuys: {},
         hbdsells: {},
+        dexapi: {},
         recenthive: {},
         openorders: {},
         accountinfo: {}
@@ -89,6 +90,7 @@ input.disabled-input {
           this.hivesells = data.markets.hive.sells
           this.hbdbuys = data.markets.hbd.buys
           this.hbdsells = data.markets.hbd.sells
+          this.dexapi = data
         })
       fetch('https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX/')
         .then(response => response.json())
@@ -142,19 +144,19 @@ input.disabled-input {
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
-$lapi = "https://spkinstant.hivehoneycomb.com";
-if ( isset( $_COOKIE[ 'lapi' ] ) ) {$lapi = $_COOKIE[ 'lapi' ];};
-if ( isset( $_COOKIE[ 'user' ] ) ) {
-  //echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>\n";
-  echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
-  echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
-  echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>\n";
-  echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>\n";
-} else {
-  echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>\n";
-  echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
-  echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
-};
+// $lapi = "https://spkinstant.hivehoneycomb.com";
+// if ( isset( $_COOKIE[ 'lapi' ] ) ) {$lapi = $_COOKIE[ 'lapi' ];};
+// if ( isset( $_COOKIE[ 'user' ] ) ) {
+//   echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>\n";
+//   echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
+//   echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
+//   echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>\n";
+//   echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>\n";
+// } else {
+//   echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>\n";
+//   echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
+//   echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
+// };
 include_once( $path );
 ?>
 <div id="app">
@@ -170,30 +172,30 @@ include_once( $path );
                 <div class="dropdown-divider bg-light"></div>
                 <a class="dropdown-item" href="/dex/dlux">DLUX</a> <a class="dropdown-item" href="/dex/larynx">LARYNX</a></div>
             </div>
-            <div class="d-flex" :title="{{dexapi.data.behind}} Blocks Behind Hive">
+            <div class="d-flex" :title="{{dexapi.behind}} Blocks Behind Hive">
               <button class="text-center btn btn-sm align-items-center ml-4" 
-						 dmx-class:btn-outline-success="dexapi.data.behind < 30"	
-						 dmx-class:btn-outline-warning="dexapi.data.behind >= 30"
-						 dmx-class:btn-outline-danger="dexapi.data.behind > 100"
+						 dmx-class:btn-outline-success="dexapi.behind < 30"	
+						 dmx-class:btn-outline-warning="dexapi.behind >= 30"
+						 dmx-class:btn-outline-danger="dexapi.behind > 100"
 						type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
 				  <span class="small p-0 m-0"><i class="fas fa-circle mr-2"></i>LARYNX |</span>
 				  <span class="small p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE</span>
 				  <span class="small p-0 m-0" dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING</span>
 				  <span class="small p-0 m-0" dmx-show="dexapi.data.behind > 100">OFFLINE</span>
-				  <span class="small p-0 m-0">| {{dexapi.data.behind}} BBH | {{nodes.data.result.count()}} NODES</span></button>
+				  <span class="small p-0 m-0">| {{dexapi.behind}} BBH | {{nodes.result.length}} NODES</span></button>
             </div>
           </div>
-          <div class="d-flex text-white-50">
-            <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} LARYNX</div>
-            <div id="userdpwr" class="mx-4 text-primary" dmx-show="openordersapi.data.poweredUp > 0">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} LARYNXP</div>
-            <div id="userdgov" class="mx-4 text-info" dmx-show="openordersapi.data.gov > 0">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} LARYNXG</div>
+          <!-- <div class="d-flex text-white-50">
+            <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.balance/1000)}} LARYNX</div>
+            <div id="userdpwr" class="mx-4 text-primary" dmx-show="openordersapi.data.poweredUp > 0">{{(openordersapi.poweredUp/1000)}} LARYNXP</div>
+            <div id="userdgov" class="mx-4 text-info" dmx-show="openordersapi.data.gov > 0">{{(openordersapi.gov/1000)}} LARYNXG</div>
             <div id="userhive" class="mx-4 text-danger">{{accountapi.balance}}</div>
             <div id="userhbd" class="mx-4 text-success">{{accountapi.hbd_balance}}</div>
-          </div>
+          </div> -->
         </div>
         <div id="nodedrawer" class="collapse">
           <div class="py-5">
-			  <div class="d-flex align-items-center mb-3">
+			  <!-- <div class="d-flex align-items-center mb-3">
 				  <div class="">
 			  		<div role="group" class="input-group" dmx-show="filterusers.checked">
 				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
@@ -206,7 +208,7 @@ include_once( $path );
 						 </div>
                       </div>
                   </div>
-					  </div>
+					  </div> -->
 			  <div class="">
 			  <div role="group" class="input-group" dmx-show="filterapis.checked">
 				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filterapi.focus()"><i class="fas fa-search"></i></span></div>
