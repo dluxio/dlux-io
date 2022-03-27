@@ -166,7 +166,7 @@ include_once( $path );
                 <div class="dropdown-divider bg-light"></div>
                 <a class="dropdown-item" href="/dex/dlux">DLUX</a> <a class="dropdown-item" href="/dex/larynx">LARYNX</a></div>
             </div>
-            <div class="d-flex" :title="{{dexapi.behind}} Blocks Behind Hive">
+            <div class="d-flex" title="{{dexapi.behind}} Blocks Behind Hive">
               <button class="text-center btn btn-sm align-items-center ml-4" 
 						 v-bind:btn-outline-success="dexapi.behind < 30"	
 						 v-bind:btn-outline-warning="dexapi.behind >= 30"
@@ -262,12 +262,12 @@ include_once( $path );
                 <tbody role="rowgroup">
                   <!--repeat region-->
                   <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.where(`account`, filteraccount.value, 'fuzzySearch')" v-if="filterusers.checked">
-                    <td role="cell" class="" aria-colindex="1"><a :href="/@{{account}}">@{{account}}</a></td>
+                    <td role="cell" class="" aria-colindex="1"><a href="/@{{account}}">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
                     <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
                   </tr>
 					<tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.where(`api`, filterapi.value, 'fuzzySearch')" v-if="filterapis.checked">
-                    <td role="cell" class="" aria-colindex="1"><a :href="/@{{account}}">@{{account}}</a></td>
+                    <td role="cell" class="" aria-colindex="1"><a href="/@{{account}}">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
                     <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
                   </tr>
