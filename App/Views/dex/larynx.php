@@ -869,7 +869,7 @@ include_once( $path );
                   </thead>
                   <tbody role="rowgroup">
                     <tr class="" role="row" v-for="item in recenthive">
-                      <td aria-colindex="1" role="cell" class="" v-bind:class="{text-danger: (item.type == 'sell'), text-success: (item.type == 'buy')}">{{item.price}}</td>
+                      <td aria-colindex="1" role="cell" class="" v-bind:class="{'text-danger': (item.type == 'sell'), 'text-success': (item.type == 'buy')}">{{item.price}}</td>
                       <td aria-colindex="2" role="cell" class="">{{item.target_volume}}</td>
                       <td aria-colindex="3" role="cell" class="">{{new Date(item.trade_timestamp).toLocaleTimeString()}}</td>
                     </tr>
