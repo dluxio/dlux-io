@@ -140,11 +140,11 @@ input.disabled-input {
         .then(response => response.json())
         .then(data => {
           this.volume.hive = data.recent_trades.reduce((a, b) => {
-            if(b.trade_timestamp > this.agoTime)return a + b.target_volume
+            if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.target_volume) * 1000)
             else return a
             }, 0)
           this.volume.token_hive = data.recent_trades.reduce((a, b) => {
-            if(b.trade_timestamp > this.agoTime)return a + b.base_volume
+            if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.base_volume) * 1000)
             else return a
             }, 0)
           this.recenthive = data.recent_trades
@@ -153,11 +153,11 @@ input.disabled-input {
         .then(response => response.json())
         .then(data => {
           this.volume.hbd = data.recent_trades.reduce((a, b) => {
-            if(b.trade_timestamp > this.agoTime)return a + b.target_volume
+            if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.target_volume) * 1000)
             else return a
             }, 0)
           this.volume.token_hbd = data.recent_trades.reduce((a, b) => {
-            if(b.trade_timestamp > this.agoTime)return a + b.base_volume
+            if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.base_volume) * 1000)
             else return a
             }, 0)
           this.recenthbd = data.recent_trades
