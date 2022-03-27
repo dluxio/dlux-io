@@ -1798,24 +1798,6 @@ if ( isset( $author ) ) {
       <form name="powerupdlux" dmx-bind:action="javascript:powerUp('{{powerupdluxamount.value}}')">
         <div class="modal-body">
           <div class="form-group">
-            <label for="powerupdluxfrom">From:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input class="form-control" id="powerupdluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="powerupdluxto">To:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input class="form-control" id="powerupdluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-            </div>
-          </div>
-          <div class="form-group">
             <label id="powerdluxamountlab" for="powerupdluxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{usertoken.data.balance/1000}}','powerupdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
             <div class="input-group">
               <input class="form-control" id="powerupdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
@@ -1843,24 +1825,6 @@ if ( isset( $author ) ) {
       </div>
       <form name="powerdowndlux" dmx-bind:action="javascript:powerDown('{{powerdowndluxamount.value}}')">
         <div class="modal-body">
-          <div class="form-group">
-            <label for="powerdowndluxfrom">From:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input class="form-control" id="powerdowndluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="powerdowndluxto">To:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input class="form-control" id="powerdowndluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-            </div>
-          </div>
           <div class="form-group">
             <label id="dluxamountlab" for="powerdowndluxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{usertoken.data.poweredUp/1000}}','powerdowndluxamount')">{{((usertoken.data.poweredUp)/1000).formatNumber(3,'.',',')}}</a>):</label>
             <div class="input-group">
@@ -1890,24 +1854,6 @@ if ( isset( $author ) ) {
       <form name="lockdlux" dmx-bind:action="javascript:dluxgovup('{{lockgovdluxamount.value}}')">
         <div class="modal-body">
           <div class="form-group">
-            <label for="lockgovdluxfrom">From:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input class="form-control" id="lockgovdluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="lockgovdluxto">To:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input class="form-control" id="lockgovdluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-            </div>
-          </div>
-          <div class="form-group">
             <label id="lockgovdluxamountlab" for="lockgovdluxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{usertoken.data.balance/1000}}','lockgovdluxamount')">{{((usertoken.data.balance)/1000).formatNumber(3,'.',',')}}</a>):</label>
             <div class="input-group">
               <input class="form-control" id="lockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
@@ -1935,24 +1881,6 @@ if ( isset( $author ) ) {
       </div>
       <form name="locklarynx" dmx-bind:action="javascript:dluxgovup('{{lockgovlarynxamount.value}}','spkcc_')">
         <div class="modal-body">
-          <div class="form-group">
-            <label for="lockgovdluxfrom">From:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input class="form-control" id="lockgovlarynxluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="lockgovdluxto">To:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input class="form-control" id="lockgovdluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-            </div>
-          </div>
           <div class="form-group">
             <label id="lockgovlarynxamountlab" for="lockgovlarynxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{larynxtoken.data.balance/1000}}', 'lockgovlarynxamount')">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</a>):</label>
             <div class="input-group">
@@ -1982,24 +1910,6 @@ if ( isset( $author ) ) {
       <form name="unlockdlux" dmx-bind:action="javascript:govDown('{{unlockgovdluxamount.value}}')">
         <div class="modal-body">
           <div class="form-group">
-            <label for="unlockgovdluxfrom">From:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input class="form-control" id="unlockgovdluxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="unlockgovdluxto">To:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input class="form-control" id="unlockgovdluxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-            </div>
-          </div>
-          <div class="form-group">
             <label id="unlockgovdluxamountlab" for="unlockgovdluxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{usertoken.data.gov/1000}}','unlockgovdluxamount')">{{((usertoken.data.gov)/1000).formatNumber(3,'.',',')}}</a>):</label>
             <div class="input-group">
               <input class="form-control" id="unlockgovdluxamount" type="number" step="0.001" min="0.001" placeholder="1.000">
@@ -2027,24 +1937,6 @@ if ( isset( $author ) ) {
       </div>
       <form name="unlocklarynx" dmx-bind:action="javascript:govDown('{{unlockgovlarynxamount.value}}','spkcc_')">
         <div class="modal-body">
-          <div class="form-group">
-            <label for="unlockgovlarynxfrom">From:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input class="form-control" id="unlockgovlarynxfrom" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="unlockgovlarynxto">To:</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-              </div>
-              <input class="form-control" id="unlockgovlarynxto" type="text" dmx-bind:placeholder="{{dluxGetAccount.data.result[0].name}}" readonly>
-            </div>
-          </div>
           <div class="form-group">
             <label id="unlockgovlarynxamountlab" for="unlockgovlarynxamount">Amount (Balance <a href="#" dmx-on:click="javascript:insertBal('{{larynxtoken.data.gov/1000}}','unlockgovlarynxamount')">{{((larynxtoken.data.gov)/1000).formatNumber(3,'.',',')}}</a>):</label>
             <div class="input-group">
