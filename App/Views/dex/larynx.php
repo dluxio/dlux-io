@@ -299,7 +299,7 @@ include_once( $path );
             <div id="hivequote">
               <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd.toFixedTrunc('6')}}</b></h2>
             </div>
-            <input id="hiveusd" :value="{{hiveprice.hive.usd}}" class="d-none">
+            <input id="hiveusd" :value="hiveprice.hive.usd" class="d-none">
           </div>
         </div>
         <div class="col-4">
@@ -307,7 +307,7 @@ include_once( $path );
             <div id="hbdquote">
               <h2 class="lead my-0"><b>HBD: ${{hbdprice.hive_dollar.usd.toFixedTrunc('6')}}</b></h2>
             </div>
-            <input id="hbdusd" :value="{{hbdprice.hive_dollar.usd}}" class="d-none">
+            <input id="hbdusd" :value="hbdprice.hive_dollar.usd" class="d-none">
           </div>
         </div>
         <div class="col-4">
@@ -315,13 +315,13 @@ include_once( $path );
             <div id="dluxhivequote">
               <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.markets.hive.tick*hiveprice.hive.usd).toFixedTrunc('6')}}</b></h2>
             </div>
-            <input id="dluxhiveusd" :value="{{dexapi.markets.hive.tick}}" class="d-none">
+            <input id="dluxhiveusd" :value="dexapi.markets.hive.tick" class="d-none">
           </div>
           <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
             <div id="dluxhbdquote">
               <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.markets.hbd.tick*hbdprice.hive_dollar.usd).toFixedTrunc('6')}}</b></h2>
             </div>
-            <input id="dluxhbdusd" :value="{{dexapi.markets.hbd.tick}}" class="d-none">
+            <input id="dluxhbdusd" :value="dexapi.markets.hbd.tick" class="d-none">
           </div>
         </div>
       </div>
