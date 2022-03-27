@@ -2006,8 +2006,10 @@ function pageSpecfic(usr){
     const hash = url.split("#");
     if(hash[1] == 'hive' || hash[1] == 'dlux' || hash[1] == 'larynx'){
       $('#usertabs a[href="#wallet"]').tab("show");
+      $('#wallettabs a[href="#'+hash[1]+'"]').tab("show");
+    } else {
+      $('#usertabs a[href="#'+hash[1]+'"]').tab("show");
     }
-    $('#usertabs a[href="#'+hash[1]+'"]').tab("show");
     url = location.href.replace(/\/#/, "#");
     history.replaceState(null, null, url);
     setTimeout(() => {
