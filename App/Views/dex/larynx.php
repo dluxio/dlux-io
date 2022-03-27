@@ -55,7 +55,10 @@ input.disabled-input {
         dexapi: {},
         recenthive: {},
         openorders: {},
-        accountinfo: {}
+        accountinfo: {},
+        filterusers: {
+          checked: true
+        }
       }
     },
     mounted() {
