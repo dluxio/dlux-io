@@ -265,7 +265,7 @@ include_once( $path );
           </div>
           <div class="jumbotron p-3 bg-dark" dmx-show="buyhbd.checked">
             <div id="dluxhbdquote">
-              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.data.markets.hbd.tick*hbdprice.data.hive_dollar.usd).toFixedTrunc('6')}}</b></h2>
+              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.data.markets.hbd.tick).toFixedTrunc('6')}}</b></h2><!-- *hbdprice.data.hive_dollar.usd-->
             </div>
             <input id="dluxhbdusd" dmx-bind:value="{{dexapi.data.markets.hbd.tick}}" class="d-none">
           </div>
