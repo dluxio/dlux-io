@@ -97,7 +97,7 @@ include_once( $path );
 			  <span class="small p-0 m-0"> | {{dexapi.data.behind}} BBH | {{nodes.data.result.count()}} NODES</span></button>
 			</div>
         </div>
-        <div class="d-flex text-white-50">
+        <div class="d-flex align-items-center text-white-50">
           <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} DLUX</div>
           <div id="userdpwr" class="mx-4 text-primary">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} DLUXP</div>
           <div id="userdgov" class="mx-4 text-info">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} DLUXG</div>
@@ -105,6 +105,7 @@ include_once( $path );
           <div id="userhbd" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
         </div>
 		  </div>
+		  <!-- node collapse region -->
 		   <div id="nodedrawer" class="collapse">
           <div class="py-5">
 	<div class="d-flex align-items-center mb-3">
