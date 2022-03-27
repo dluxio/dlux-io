@@ -57,7 +57,8 @@ input.disabled-input {
         openorders: {},
         accountinfo: {},
         filterusers: {
-          checked: true
+          checked: true,
+          value: user,
         }
       }
     },
