@@ -338,13 +338,13 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi?.markets?.hive.tick*hiveprice.hive.usd).toFixedTrunc('6')}}</b></h2>
+              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi?.markets?.hive.tick*hiveprice.hive.usd)}}</b></h2>
             </div>
             <input id="dluxhiveusd" :value="dexapi.markets.hive.tick" class="d-none">
           </div>
           <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
             <div id="dluxhbdquote">
-              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi?.markets?.hbd?.tick*hbdprice.hive_dollar.usd).toFixedTrunc('6')}}</b></h2>
+              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi?.markets?.hbd?.tick*hbdprice.hive_dollar.usd)}}</b></h2>
             </div>
             <input id="dluxhbdusd" :value="dexapi.markets.hbd.tick" class="d-none">
           </div>
@@ -364,7 +364,7 @@ include_once( $path );
             </div>
           </div>
         </div>
-        <div class="col-lg-9" v-if="buyhive.checked">
+        <!-- <div class="col-lg-9" v-if="buyhive.checked">
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
@@ -381,11 +381,11 @@ include_once( $path );
             <div class="mt-2 col">
               <h5>24h Volume</h5>
               <i class="fab fa-hive mr-1"></i>{{recenthive24h.sum('target_volume').formatNumber('6','.',',')}}<br>
-			  <i class="fas fa-dollar-sign mx-1"></i>{{(recenthive24h.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
+			        <i class="fas fa-dollar-sign mx-1"></i>{{(recenthive24h.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
             </div>
           </div>
-        </div>
-        <div class="col-lg-9" v-if="buyhbd.checked">
+        </div> -->
+        <!-- <div class="col-lg-9" v-if="buyhbd.checked">
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
@@ -402,10 +402,10 @@ include_once( $path );
             <div class="mt-2 col">
               <h5>24h Volume</h5>
               <i class="fab fa-hive mr-1"></i>{{recenthbd24h.sum('target_volume').formatNumber('6','.',',')}}<br>
-			  <i class="fas fa-dollar-sign mx-1"></i>{{(recenthbd24h.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
+              <i class="fas fa-dollar-sign mx-1"></i>{{(recenthbd24h.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="marketChart mt-3 mb-3">
         <div class="">
@@ -440,9 +440,9 @@ include_once( $path );
               <input type="radio" name="timescale" id="yearbtn" is="dmx-radio">
               1Y </label>
           </div>
-          <!-- <div>
+          <div>
             <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.length}}) <i class="fas fa-book-reader ml-2"></i></button>
-          </div> -->
+          </div>
         </div>
         <div id="openordersdrawer" class="collapse ">
           <div class="py-5">
