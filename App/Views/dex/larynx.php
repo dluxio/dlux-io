@@ -64,6 +64,10 @@ input.disabled-input {
           checked: false,
           value: '',
         },
+        filterapistate: {
+          checked: false,
+          value: '',
+        },
       }
     },
     mounted() {
