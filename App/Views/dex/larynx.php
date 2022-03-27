@@ -33,20 +33,6 @@ input.disabled-input {
 </style>
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-  createApp({
-    data() {
-      return {
-        time: new Date().getTime(),
-        ago24: new Date().getTime() - 86400000,
-      }
-    }
-  }).mount('#time')
-</script>
-<div id="time">
-  
-</div>
-<script type="module">
-  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   let user = getCookie('user') || 'GUEST'
   let lapi = getCookie('lapi') || 'https://spkinstant.hivehoneycomb.com'
   let hapi = getCookie('hapi') || 'https://api.hive.blog'
@@ -167,6 +153,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 };
 include_once( $path );
 ?>
+<div id="app">
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 ">
     <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
@@ -953,6 +940,7 @@ include_once( $path );
     </div>
   </div>
 </main>
+</div>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/footer.php";
