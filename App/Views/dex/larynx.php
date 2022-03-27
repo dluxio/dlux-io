@@ -415,15 +415,15 @@ include_once( $path );
               <input type="radio" name="timescale" id="yearbtn" is="dmx-radio">
               1Y </label>
           </div>
-          <div>
+          <!-- <div>
             <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.length}}) <i class="fas fa-book-reader ml-2"></i></button>
-          </div>
+          </div> -->
         </div>
         <div id="openordersdrawer" class="collapse ">
           <div class="py-5">
-            <div v-if="openorders.length == 0" class="text-center text-white-50">
+            <!-- <div v-if="openorders.length == 0" class="text-center text-white-50">
               <h5>No open orders</h5>
-            </div>
+            </div> -->
             <div class="table-responsive rounded border border-dark" v-if="openorders.length > 0">
               <!-- <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
                 <thead role="rowgroup" class="">
