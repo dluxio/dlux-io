@@ -41,12 +41,24 @@ input.disabled-input {
 </script>-->
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  let user = getCookie('user') || 'GUEST'
+  let lapi = getCookie('lapi') || 'https://spkinstant.hivehoneycomb.com'
+  let hapi = getCookie('hapi') || 'https://api.hive.blog'
 
   createApp({
     data() {
       return {
         hiveprice: {},
-        hbdprice: {}
+        hbdprice: {},
+        nodes: {},
+        marketnodes, {},
+        hivebuys: {},
+        hivesells: {},
+        hbdbuys: {},
+        hbdsells: {},
+        recenthive: {},
+        openorders: {},
+        accountinfo: {}
       }
     },
     mounted() {
@@ -60,37 +72,80 @@ input.disabled-input {
         .then(data => {
           this.hbdprice = data
         })
+      fetch('https://spkinstant.hivehoneycomb.com/runners')
+        .then(response => response.json())
+        .then(data => {
+          this.nodes = data
+        })
+      fetch('https://spkinstant.hivehoneycomb.com/markets')
+        .then(response => response.json())
+        .then(data => {
+          this.nodes = data.result
+        })
+      fetch('https://spkinstant.hivehoneycomb.com/dex')
+        .then(response => response.json())
+        .then(data => {
+          this.hivebuys = data.markets.hive.buys
+          this.hivesells = data.markets.hive.sells
+          this.hbdbuys = data.markets.hbd.buys
+          this.hbdsells = data.markets.hbd.sells
+        })
+      fetch('https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX/')
+        .then(response => response.json())
+        .then(data => {
+          this.recenthive = data.recent_trades
+        })
+      fetch('https://spkinstant.hivehoneycomb.com/api/recent/HBD_LARYNX/')
+        .then(response => response.json())
+        .then(data => {
+          this.recenthbd = data.recent_trades
+        })
+      fetch('https://spkinstant.hivehoneycomb.com/@' + user)
+        .then(response => response.json())
+        .then(data => {
+          this.recenthive = data.contracts
+        })
+      if(user != 'GUEST')fetch(hapi, {
+          body: `{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["${user}"]], "id":1}`,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          method: "POST"
+        })
+        .then(response => response.json())
+        .then(data => {
+          this.accountinfo = data.result[0]
+        })
     }
   }).mount('#app')
 </script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
-<!--<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
-<input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(86400000)}}">-->
-<!--<dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>-->
-<!--<dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>-->
+<!--<input id="timenow" class="d-none" :value="{{nodes.data.node.getTimeOffset(0)}}">
+<input id="timeoffset" class="d-none" :value="{{nodes.data.node.getTimeOffset(86400000)}}">-->
+<!-- <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
+<dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/runners" ></dmx-api-datasource>
-<!--<dmx-api-datasource id="openordersapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/@imno" ></dmx-api-datasource>-->
-<!--<dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX" dmx-param:limit="1000" ></dmx-api-datasource>-->
-<dmx-data-view id="marketnodes" dmx-bind:data="nodes.data.result" sorton="g" sortdir="ndesc" pagesize="10"></dmx-data-view>
-<dmx-data-view id="openorders" dmx-bind:data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
-<dmx-data-view id="accountinfo" dmx-bind:data="accountapi.data.result"></dmx-data-view>
-<dmx-data-view id="recenthive" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
-<dmx-data-view id="recenthbd" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
-<dmx-data-view id="recenthive24h" dmx-bind:data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(timeoffset.value,timenow.value)" ></dmx-data-view>
-<dmx-data-view id="recenthbd24h" dmx-bind:data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(timeoffset.value,timenow.value)" ></dmx-data-view>
-<dmx-data-view id="hivebuys" dmx-bind:data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="ndesc" pagesize="15"></dmx-data-view>
-<dmx-data-view id="hivesells" dmx-bind:data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="nasc" pagesize="15"></dmx-data-view>
-<dmx-data-view id="hbdbuys" dmx-bind:data="dexapi.data.markets.hbd.buys" sorton="rate" sortdir="ndesc" pagesize="15"></dmx-data-view>
-<dmx-data-view id="hbdsells" dmx-bind:data="dexapi.data.markets.hbd.sells" sorton="rate" sortdir="nasc" pagesize="15"></dmx-data-view>
+<dmx-api-datasource id="openordersapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/@imno" ></dmx-api-datasource>
+<dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX" dmx-param:limit="1000" ></dmx-api-datasource>
+<dmx-data-view id="marketnodes" :data="nodes.data.result" sorton="g" sortdir="ndesc" pagesize="10"></dmx-data-view>
+<dmx-data-view id="openorders" :data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
+<dmx-data-view id="accountinfo" :data="accountapi.data.result"></dmx-data-view>
+<dmx-data-view id="recenthive" :data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
+<dmx-data-view id="recenthbd" :data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
+<dmx-data-view id="recenthive24h" :data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(timeoffset.value,timenow.value)" ></dmx-data-view>
+<dmx-data-view id="recenthbd24h" :data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(timeoffset.value,timenow.value)" ></dmx-data-view>
+<dmx-data-view id="hivebuys" :data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="ndesc" pagesize="15"></dmx-data-view>
+<dmx-data-view id="hivesells" :data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="nasc" pagesize="15"></dmx-data-view>
+<dmx-data-view id="hbdbuys" :data="dexapi.data.markets.hbd.buys" sorton="rate" sortdir="ndesc" pagesize="15"></dmx-data-view>
+<dmx-data-view id="hbdsells" :data="dexapi.data.markets.hbd.sells" sorton="rate" sortdir="nasc" pagesize="15"></dmx-data-view> -->
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
 $lapi = "https://spkinstant.hivehoneycomb.com";
 if ( isset( $_COOKIE[ 'lapi' ] ) ) {$lapi = $_COOKIE[ 'lapi' ];};
 if ( isset( $_COOKIE[ 'user' ] ) ) {
-
-  echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>\n";
+  //echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>\n";
   echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
   echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
   echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>\n";
@@ -115,7 +170,7 @@ include_once( $path );
                 <div class="dropdown-divider bg-light"></div>
                 <a class="dropdown-item" href="/dex/dlux">DLUX</a> <a class="dropdown-item" href="/dex/larynx">LARYNX</a></div>
             </div>
-            <div class="d-flex" dmx-bind:title="{{dexapi.data.behind}} Blocks Behind Hive">
+            <div class="d-flex" :title="{{dexapi.data.behind}} Blocks Behind Hive">
               <button class="text-center btn btn-sm align-items-center ml-4" 
 						 dmx-class:btn-outline-success="dexapi.data.behind < 30"	
 						 dmx-class:btn-outline-warning="dexapi.data.behind >= 30"
@@ -132,8 +187,8 @@ include_once( $path );
             <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} LARYNX</div>
             <div id="userdpwr" class="mx-4 text-primary" dmx-show="openordersapi.data.poweredUp > 0">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} LARYNXP</div>
             <div id="userdgov" class="mx-4 text-info" dmx-show="openordersapi.data.gov > 0">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} LARYNXG</div>
-            <div id="userhive" class="mx-4 text-danger">{{accountapi.data.result[0].balance}}</div>
-            <div id="userhbd" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
+            <div id="userhive" class="mx-4 text-danger">{{accountapi.balance}}</div>
+            <div id="userhbd" class="mx-4 text-success">{{accountapi.hbd_balance}}</div>
           </div>
         </div>
         <div id="nodedrawer" class="collapse">
@@ -210,12 +265,12 @@ include_once( $path );
                 <tbody role="rowgroup">
                   <!--repeat region-->
                   <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data.where(`account`, filteraccount.value, 'fuzzySearch')" dmx-show="filterusers.checked">
-                    <td role="cell" class="" aria-colindex="1"><a dmx-bind:href="/@{{account}}">@{{account}}</a></td>
+                    <td role="cell" class="" aria-colindex="1"><a :href="'/@' + account">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
                     <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" dmx-on:click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
                   </tr>
 					<tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data.where(`api`, filterapi.value, 'fuzzySearch')" dmx-show="filterapis.checked">
-                    <td role="cell" class="" aria-colindex="1"><a dmx-bind:href="/@{{account}}">@{{account}}</a></td>
+                    <td role="cell" class="" aria-colindex="1"><a :href="'/@' + account">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
                     <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" dmx-on:click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
                   </tr>
@@ -261,13 +316,13 @@ include_once( $path );
             <div id="dluxhivequote">
               <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.data.markets.hive.tick*hiveprice.data.hive.usd).toFixedTrunc('6')}}</b></h2>
             </div>
-            <input id="dluxhiveusd" dmx-bind:value="{{dexapi.data.markets.hive.tick}}" class="d-none">
+            <input id="dluxhiveusd" :value="{{dexapi.data.markets.hive.tick}}" class="d-none">
           </div>
           <div class="jumbotron p-3 bg-dark" dmx-show="buyhbd.checked">
             <div id="dluxhbdquote">
               <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.data.markets.hbd.tick).toFixedTrunc('6')}}</b></h2><!-- *hbdprice.data.hive_dollar.usd-->
             </div>
-            <input id="dluxhbdusd" dmx-bind:value="{{dexapi.data.markets.hbd.tick}}" class="d-none">
+            <input id="dluxhbdusd" :value="{{dexapi.data.markets.hbd.tick}}" class="d-none">
           </div>
         </div>
       </div>
@@ -448,7 +503,7 @@ include_once( $path );
         <div class="row">
           <div class="mt-3 col-md-6">
             <h4>Buy LARYNX</h4>
-            <form name="buy" class="form-horizontal needs-validation" dmx-bind:action="javascript:buyDEX('{{buyHiveTotal.value}}','{{buyHBDTotal.value}}','{{buyQuantity.value}}','{{buyHours.value}}','spkcc_')">
+            <form name="buy" class="form-horizontal needs-validation" :action="javascript:buyDEX('{{buyHiveTotal.value}}','{{buyHBDTotal.value}}','{{buyQuantity.value}}','{{buyHours.value}}','spkcc_')">
               <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
@@ -471,7 +526,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control bg-dark border-dark text-white-50" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:readonly="buymarket.checked">
+                      <input type="number" required class="form-control bg-dark border-dark text-white-50" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">LARYNX</div>
                       </div>
@@ -485,7 +540,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="buyPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  dmx-bind:readonly="buymarket.checked">
+                      <input id="buyPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span dmx-show="buyhive.checked">HIVE</span><span dmx-show="buyhbd.checked">HBD</span>/LARYNX</div>
                       </div>
@@ -499,7 +554,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="buyHours" type="number" value="720" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  dmx-bind:readonly="buymarket.checked">
+                      <input id="buyHours" type="number" value="720" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HOURS</div>
                       </div>
@@ -513,7 +568,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info" dmx-class:disabled-input="buylimit.checked" dmx-bind:readonly="buyhbd.checked" dmx-bind:value="buyhive.checked.then((buyPrice.value*buyQuantity.value).toFixed(3),'0')" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:max="">
+                      <input type="number" class="form-control bg-dark border-dark text-info" dmx-class:disabled-input="buylimit.checked" :readonly="buyhbd.checked" :value="buyhive.checked.then((buyPrice.value*buyQuantity.value).toFixed(3),'0')" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" :max="">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
                       </div>
@@ -527,7 +582,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info" dmx-class:disabled-input="buylimit.checked" dmx-bind:readonly="buyhive.checked" id="buyHBDTotal" dmx-bind:value="buyhbd.checked.then((buyPrice.value*buyQuantity.value).toFixed(3),'0')" placeholder="0" min="0.001" step="0.001" dmx-bind:max="" aria-required="true">
+                      <input type="number" class="form-control bg-dark border-dark text-info" dmx-class:disabled-input="buylimit.checked" :readonly="buyhive.checked" id="buyHBDTotal" :value="buyhbd.checked.then((buyPrice.value*buyQuantity.value).toFixed(3),'0')" placeholder="0" min="0.001" step="0.001" :max="" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
                       </div>
@@ -543,7 +598,7 @@ include_once( $path );
           </div>
           <div class="mt-3 col-md-6">
             <h4>Sell LARYNX</h4>
-            <form name="sell" class="form-horizontal needs-validation" dmx-bind:action="javascript:sellDEX('{{sellQuantity.value}}','{{sellHiveTotal.value}}','{{sellHBDTotal.value}}','{{sellHours.value}}','spkcc_')">
+            <form name="sell" class="form-horizontal needs-validation" :action="javascript:sellDEX('{{sellQuantity.value}}','{{sellHiveTotal.value}}','{{sellHBDTotal.value}}','{{sellHours.value}}','spkcc_')">
               <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
@@ -580,7 +635,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="sellPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  dmx-bind:readonly="sellmarket.checked">
+                      <input id="sellPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="sellmarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span dmx-show="buyhive.checked">HIVE</span><span dmx-show="buyhbd.checked">HBD</span>/LARYNX</div>
                       </div>
@@ -594,7 +649,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="sellHours" type="number" value="720" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  dmx-bind:readonly="sellmarket.checked">
+                      <input id="sellHours" type="number" value="720" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="sellmarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HOURS</div>
                       </div>
@@ -609,9 +664,9 @@ include_once( $path );
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
-							 dmx-bind:readonly="buyhbd.checked || sellmarket.checked" id="sellHiveTotal" 
-							 dmx-bind:value="buyhive.checked.then((sellPrice.value*sellQuantity.value).toFixed(3),'0')" 
-							  placeholder="0" min="0.004" step="0.001" aria-required="true" dmx-bind:max="">
+							 :readonly="buyhbd.checked || sellmarket.checked" id="sellHiveTotal" 
+							 :value="buyhive.checked.then((sellPrice.value*sellQuantity.value).toFixed(3),'0')" 
+							  placeholder="0" min="0.004" step="0.001" aria-required="true" :max="">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
                       </div>
@@ -626,9 +681,9 @@ include_once( $path );
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
-							 dmx-bind:readonly="buyhive.checked || sellmarket.checked" id="sellHBDTotal" 
-							 dmx-bind:value="buyhbd.checked.then((sellPrice.value*sellQuantity.value).toFixed(3),'0')" 
-							 placeholder="0" min="0.004" step="0.001" dmx-bind:max="" aria-required="true">
+							 :readonly="buyhive.checked || sellmarket.checked" id="sellHBDTotal" 
+							 :value="buyhbd.checked.then((sellPrice.value*sellQuantity.value).toFixed(3),'0')" 
+							 placeholder="0" min="0.004" step="0.001" :max="" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
                       </div>
@@ -661,10 +716,10 @@ include_once( $path );
                   </thead>
                   <tbody role="rowgroup">
                     <!--repeat region-->
-                    <tr class="" role="row" dmx-repeat:hivebuyorders="hivebuys.data.groupBy('rate')">
+                    <tr class="" role="row" v-for="buy in hivebuys" :key="buy.txid">
                       <td aria-colindex="1" role="cell" class=""></td>
-                      <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
+                      <td aria-colindex="2" role="cell" class="">{{(buy.sum('hive')/1000)}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{(buy.sum('amount')/1000)}}</td>
                       <td aria-colindex="4" role="cell" class="text-primary"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></td>
                     </tr>
                   </tbody>
