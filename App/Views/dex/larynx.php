@@ -851,18 +851,6 @@ include_once( $path );
                       <td aria-colindex="4" role="cell" class="text-primary"><a href="#" @click="insertBal('{{item.rate}}', 'buyPrice')">{{item.rate}}</a></td>
                     </tr>
                   </tbody>
-                  <!-- <tfoot>
-                    <tr role="row" class="" >
-                      <td role="cell" class="" colspan="7" aria-colindex="1">
-                        <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hivebuys.pages > 1">
-                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="hivebuys.prev()" v-if="hivebuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
-                          <div class="d-flex">
-                            <p class="m-0 p-0 text-muted">Page {{hivebuys.page}} of {{hivebuys.pages}}</p>
-                          </div>
-                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="hivebuys.next()" v-if="hivebuys.has.next"><i class="fa fa-angle-right"></i></a></div>
-                        </div></td>
-                    </tr>
-                  </tfoot> -->
                 </table>
               </div>
             </div>
@@ -886,18 +874,6 @@ include_once( $path );
                       <td aria-colindex="4" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
                     </tr>
                   </tbody>
-                  <!-- <tfoot>
-                    <tr role="row" class="" >
-                      <td role="cell" class="" colspan="7" aria-colindex="1">
-                        <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hivesells.pages > 1">
-                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="hivesells.prev()" v-if="hivesells.has.prev"><i class="fa fa-angle-left"></i></a></div>
-                          <div class="d-flex">
-                            <p class="m-0 p-0 text-muted">Page {{hivesells.page}} of {{hivesells.pages}}</p>
-                          </div>
-                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="hivesells.next()" v-if="hivesells.has.next"><i class="fa fa-angle-right"></i></a></div>
-                        </div></td>
-                    </tr>
-                  </tfoot> -->
                 </table>
               </div>
             </div>
@@ -923,18 +899,6 @@ include_once( $path );
                       <td aria-colindex="3" role="cell" class="">{{new Date(item.trade_timestamp).toLocaleTimeString()}}</td>
                     </tr>
                   </tbody>
-                  <!-- <tfoot>
-                    <tr role="row" class="" >
-                      <td role="cell" class="" colspan="7" aria-colindex="1">
-                        <div class="d-flex flex-fill justify-content-between align-items-center" v-if="recenthive.pages > 1">
-                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="recenthive.prev()" v-if="recenthive.has.prev"><i class="fa fa-angle-left"></i></a></div>
-                          <div class="d-flex">
-                            <p class="m-0 p-0 text-muted">Page {{recenthive.page}} of {{recenthive.pages}}</p>
-                          </div>
-                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="recenthive.next()" v-if="recenthive.has.next"><i class="fa fa-angle-right"></i></a></div>
-                        </div></td>
-                    </tr>
-                  </tfoot> -->
                 </table>
               </div>
             </div>
@@ -947,7 +911,7 @@ include_once( $path );
             <div class="mt-3 col-md-6">
               <h4>Buy Orders</h4>
               <div class="table-responsive">
-                <!-- <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdbuyordertable">
+                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdbuyordertable">
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HBD</th>
@@ -957,32 +921,20 @@ include_once( $path );
                     </tr>
                   </thead>
                   <tbody role="rowgroup">
-                    <tr class="" role="row" dmx-repeat:hbdbuyorders="hbdbuys.groupBy('rate')">
-                      <td aria-colindex="1" role="cell" class=""></td>
-                      <td aria-colindex="2" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="4" role="cell" class=""><a href="#" @click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></td>
+                    <tr class="" role="row" v-for="item in hbdbuys">
+                      <td aria-colindex="1" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
+                      <td aria-colindex="2" role="cell" class="">{{(item.hbd/1000).toFixed(3)}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
+                      <td aria-colindex="4" role="cell" class=""><a href="#" @click="insertBal('{{item.rate}}', 'buyPrice')">{{item.rate}}</a></td>
                     </tr>
                   </tbody>
-                  <tfoot>
-                    <tr role="row" class="" >
-                      <td role="cell" class="" colspan="7" aria-colindex="1">
-                        <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hbdbuys.pages > 1">
-                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="hbdbuys.prev()" v-if="hbdbuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
-                          <div class="d-flex">
-                            <p class="m-0 p-0 text-muted">Page {{hbdbuys.page}} of {{hbdbuys.pages}}</p>
-                          </div>
-                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="hbdbuys.next()" v-if="hbdbuys.has.next"><i class="fa fa-angle-right"></i></a></div>
-                        </div></td>
-                    </tr>
-                  </tfoot>
-                </table> -->
+                </table>
               </div>
             </div>
             <div class="mt-3 col-md-6">
               <h4>Sell Orders</h4>
               <div class="table-responsive">
-                <!-- <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdsellorderstable">
+                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdsellorderstable">
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
@@ -992,26 +944,14 @@ include_once( $path );
                     </tr>
                   </thead>
                   <tbody role="rowgroup">
-                    <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.groupBy('rate')" v-bind:border-warning="txid == 'DLUXICO'">
-                      <td aria-colindex="1" role="cell" class=""><a href="#" @click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
-                      <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="3" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="4" role="cell" class=""></td>
+                    <tr class="" role="row" v-for="item in hbdsells">
+                      <td aria-colindex="1" role="cell" class=""><a href="#" @click="insertBal('{{item.rate}}', 'sellPrice')">{{item.rate}}</a></td>
+                      <td aria-colindex="2" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{(item.hbd/1000).toFixed(3)}}</td>
+                      <td aria-colindex="4" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
                     </tr>
                   </tbody>
-                  <tfoot>
-                    <tr role="row" class="" >
-                      <td role="cell" class="" colspan="7" aria-colindex="1">
-                        <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hbdsells.pages > 1">
-                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="hbdsells.prev()" v-if="hbdsells.has.prev"><i class="fa fa-angle-left"></i></a></div>
-                          <div class="d-flex">
-                            <p class="m-0 p-0 text-muted">Page {{hbdsells.page}} of {{hbdsells.pages}}</p>
-                          </div>
-                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="hbdsells.next()" v-if="hbdsells.has.next"><i class="fa fa-angle-right"></i></a></div>
-                        </div></td>
-                    </tr>
-                  </tfoot>
-                </table> -->
+                </table>
               </div>
             </div>
           </div>
@@ -1021,7 +961,7 @@ include_once( $path );
             <div class="mt-3 col-12">
               <h4>Trade History</h4>
               <div class="table-responsive">
-                <!-- <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdtradehistorytable">
+                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdtradehistorytable">
                   <thead role="rowgroup" class="">
                     <tr role="row">
                       <th role="columnheader" scope="col" aria-colindex="1" class="" >PRICE</th>
@@ -1030,25 +970,13 @@ include_once( $path );
                     </tr>
                   </thead>
                   <tbody role="rowgroup">
-                    <tr class="" role="row" dmx-repeat:hbdorderhistory="recenthbd.data">
-                      <td aria-colindex="1" role="cell" class="" v-bind:text-danger="type == 'sell'" v-bind:text-success="type == 'buy'">{{price}}</td>
-                      <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
-                      <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
+                    <tr class="" role="row" v-for="item in recenthbd">
+                      <td aria-colindex="1" role="cell" class="" v-bind:class="{'text-danger': (item.type == 'sell'), 'text-success': (item.type == 'buy')}">{{price}}</td>
+                      <td aria-colindex="2" role="cell" class="">{{item.target_volume}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{new Date(item.trade_timestamp).toLocaleTimeString()}}</td>
                     </tr>
                   </tbody>
-                  <tfoot>
-                    <tr role="row" class="" >
-                      <td role="cell" class="" colspan="7" aria-colindex="1">
-                        <div class="d-flex flex-fill justify-content-between align-items-center" v-if="recenthbd.pages > 1">
-                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="recenthbd.prev()" v-if="recenthbd.has.prev"><i class="fa fa-angle-left"></i></a></div>
-                          <div class="d-flex">
-                            <p class="m-0 p-0 text-muted">Page {{recenthbd.page}} of {{recenthbd.pages}}</p>
-                          </div>
-                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="recenthbd.next()" v-if="recenthbd.has.next"><i class="fa fa-angle-right"></i></a></div>
-                        </div></td>
-                    </tr>
-                  </tfoot>
-                </table> -->
+                </table>
               </div>
             </div>
           </div>
@@ -1081,72 +1009,9 @@ include_once( $path );
         }
         form.classList.add('was-validated');
       }, false);
-    });
-    setTimeout(function(){ 
-      //totals()
-  }, 1000);
+    })
 });
 })()
-function totals (){
-        var HBDBTotal = 0,
-        HBDSTotal = 0,
-        HBD24 = 0,
-        HiveBTotal = 0,
-        HiveSTotal = 0,
-        Hive24 = 0,
-        HBDH = '', HBDB = '', HBDS = '', HIVEH = '', HIVEB = '', HIVES = ''
-      try {
-        HBDH = document.getElementById('hbdtradehistorytable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        HBDB = document.getElementById('hbdbuyordertable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        HBDS = document.getElementById('hbdsellorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        HIVEH = document.getElementById('hivetradehistorytable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        HIVEB = document.getElementById('hivebuyordertable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-        HIVES = document.getElementById('hivesellorderstable').getElementsByTagName('tbody')[0].getElementsByTagName('tr')
-      } catch (e) {console.log(e);
-      setTimeout(() => {
-          totals()
-        }, 1000);
-      }
-      if(HIVES.length ){
-        for(var i = 0; i < HIVES.length; i++){
-          HiveSTotal += parseFloat(HIVES[i].getElementsByTagName('td')[2].innerText.replace(/,/g, ''))
-          HIVES[i].getElementsByTagName('td')[3].innerText = parseFloat(HiveSTotal).toFixed(3)
-        }
-        for(var i = 0; i < HBDS.length; i++){
-          HBDSTotal += parseFloat(HBDS[i].getElementsByTagName('td')[2].innerText.replace(/,/g, ''))
-          HBDS[i].getElementsByTagName('td')[3].innerText = parseFloat(HBDSTotal).toFixed(3)
-        }
-        for(var i = 0; i < HIVEB.length; i++){
-          HiveBTotal += parseFloat(HIVEB[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
-          HIVEB[i].getElementsByTagName('td')[0].innerText = parseFloat(HiveBTotal).toFixed(3)
-        }
-        for(var i = 0; i < HBDB.length; i++){
-          HBDBTotal += parseFloat(HBDB[i].getElementsByTagName('td')[1].innerText.replace(/,/g, ''))
-          HBDB[i].getElementsByTagName('td')[0].innerText = parseFloat(HBDBTotal).toFixed(3)
-        }
-        for(var i = 0; i < HIVEH.length; i++){
-          //console.log(Date.now() - (new Date(HIVEH[i].getElementsByTagName('td')[2].innerText + ':00.000Z').valueOf()) , 86400000)
-          try{
-            if (Date.now() - (new Date(HIVEH[i].getElementsByTagName('td')[2].innerText + ':00.000Z').valueOf()) < 86400000)
-              Hive24 += parseFloat(HIVEH[i].getElementsByTagName('td')[1].innerText)
-          } catch (e){}
-        }
-        for(var i = 0; i < HBDH.length; i++){
-          try {
-            if(Date.now() - (new Date(HBDH[i].getElementsByTagName('td')[2].innerText + ':00.000Z').valueOf()) < 86400000){
-              HBD24 += parseFloat(HBDH[i].getElementsByTagName('td')[1].innerText)
-            }
-          } catch (e){}
-        }
-        document.getElementById('hbd24').innerHTML = `<h5>24h Volume</h5>${parseFloat(HBD24).toFixed(3)} HBD<br>$${parseFloat(parseFloat(document.getElementById('hbdquote').innerText.split('$')[1]) * HBD24).toFixed(2)}`
-        document.getElementById('hive24').innerHTML = `<h5>24h Volume</h5>${parseFloat(Hive24).toFixed(3)} HIVE<br>$${parseFloat(parseFloat(document.getElementById('hivequote').innerText.split('$')[1]) * Hive24).toFixed(2)}`
-        //console.log({Hive24, HBD24})
-      } else {
-        setTimeout(() => {
-          totals()
-        }, 1000);
-      }
-    }
 </script>
 <script>
 var disabletab = document.getElementsByClassName("disabled-input");
