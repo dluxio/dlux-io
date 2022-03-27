@@ -251,7 +251,7 @@ if ( isset( $author ) ) {
         <div class="p-3">
           <ul id="wallettabs" class="nav nav-pills justify-content-center" role="tablist">
             <li class="nav-item"> <a class="nav-link active" href="#dlux" id="dluxtab" role="tab" data-toggle="tab" aria-controls="dlux" aria-expanded="true">DLUX</a></li>
-            <li class="nav-item"> <a class="nav-link " href="#larynx" id="larynxtab" role="tab" data-toggle="tab" aria-controls="larynx" aria-expanded="true">LARYNX</a></li>
+            <li class="nav-item"> <a class="nav-link " href="#spk" id="spktab" role="tab" data-toggle="tab" aria-controls="spk" aria-expanded="true">SPK</a></li>
             <li class="nav-item"> <a class="nav-link" href="#hive" id="hivetab" role="tab" data-toggle="tab" aria-controls="hive" aria-expanded="true">HIVE</a></li>
           </ul>
         </div>
@@ -392,12 +392,12 @@ if ( isset( $author ) ) {
               <div id="dluxtxs" class="jumbotron pt-3 bg-darker text-white"></div>
             </div>
           </div>
-          <!-- larynx wallet tab-->
-          <div role="tabpanel" class="tab-pane fade show " id="larynx" aria-labelledby="larynxtab">
+          <!-- spk wallet tab-->
+          <div role="tabpanel" class="tab-pane fade show " id="spk" aria-labelledby="spktab">
             <div class="container">
               <div class="jumbotron pt-4 bg-darker">
                 <div class="d-flex align-items-center pb-2">
-                  <h1 class="display-5 m-0 p-0">LARYNX</h1>
+                  <h1 class="display-5 m-0 p-0">SPK</h1>
                   <div class="text-center small m-0 p-2 ml-2" 
 						 dmx-class:text-success="larynxdexapi.data.behind < 30"	
 						 dmx-class:text-warning="larynxdexapi.data.behind >= 30"
@@ -2004,7 +2004,7 @@ function pageSpecfic(usr){
  
   if (location.hash) {
     const hash = url.split("#");
-    if(hash[1] == 'hive' || hash[1] == 'dlux' || hash[1] == 'larynx'){
+    if(hash[1] == 'hive' || hash[1] == 'dlux' || hash[1] == 'spk'){
       $('#usertabs a[href="#wallet"]').tab("show");
       $('#wallettabs a[href="#'+hash[1]+'"]').tab("show");
     } else {
