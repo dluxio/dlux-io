@@ -45,7 +45,8 @@ input.disabled-input {
   createApp({
     data() {
       return {
-        hiveprice: {}
+        hiveprice: {},
+        hbdprice: {}
       }
     },
     mounted() {
