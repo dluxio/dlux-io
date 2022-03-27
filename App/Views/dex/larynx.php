@@ -32,13 +32,13 @@ input.disabled-input {
 }
 </style>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
-<script type="importmap">
+<!--<script type="importmap">
   {
     "imports": {
       "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js"
     }
   }
-</script>
+</script>-->
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js'
 
