@@ -130,10 +130,18 @@ input.disabled-input {
       fetch('https://spkinstant.hivehoneycomb.com/dex')
         .then(response => response.json())
         .then(data => {
-          this.hivebuys = data.markets.hive.buys
-          this.hivesells = data.markets.hive.sells
-          this.hbdbuys = data.markets.hbd.buys
-          this.hbdsells = data.markets.hbd.sells
+          this.hivebuys = data.markets.hive.buys.sort(function(a, b) {
+            return b.rate - a.rate
+          })
+          this.hivesells = data.markets.hive.sells.sort(function(a, b) {
+            return b.rate - a.rate
+          })
+          this.hbdbuys = data.markets.hbd.buys.sort(function(a, b) {
+            return b.rate - a.rate
+          })
+          this.hbdsells = data.markets.hbd.sells.sort(function(a, b) {
+            return b.rate - a.rate
+          })
           this.dexapi = data
         })
       fetch('https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX?limit=1000')
