@@ -403,7 +403,7 @@ if ( isset( $author ) ) {
 						 dmx-class:text-warning="larynxdexapi.data.behind >= 30"
 						 dmx-class:text-danger="larynxdexapi.data.behind > 100"> <span dmx-show="larynxdexapi.data.behind < 30">ONLINE - </span> <span dmx-show="larynxdexapi.data.behind >= 30 && larynxdexapi.data.behind <=100">LAGGING - </span> <span dmx-show="larynxdexapi.data.behind > 100">OFFLINE - </span> <span>{{larynxdexapi.data.behind}} BBH</span> </div>
                 </div>
-                <p class="lead ">Powering the spk network.</p>
+                <p class="lead ">The SPK Network provides the ability for video platforms and content creators to interact with the decentralized social graph, while rewarding infrastructure providers with SPK governance and BROCA gas tokens.</p>
                 <div class="clearfix" id="larynxclaimdiv" dmx-show="larynxtoken.data.drop.last_claim.parseInt(16) != frmDate.value && larynxtoken.data.drop.availible.amount > 0">
                   <hr class="my-4 bg-light">
                   <div class="float-left">
@@ -436,7 +436,7 @@ if ( isset( $author ) ) {
                 <div class="clearfix">
                   <div class="float-left">
                     <h4>LARYNX Token</h4>
-                    <p class="text-white-50">The utility token for the spk network.</p>
+                    <p class="text-white-50">The mining token for the spk network.</p>
                   </div>
                   <div id="larynxactions" class="float-right text-right">
                     <h5 id="larynxbalance">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
