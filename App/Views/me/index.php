@@ -403,7 +403,7 @@ if ( isset( $author ) ) {
 						 dmx-class:text-warning="larynxdexapi.data.behind >= 30"
 						 dmx-class:text-danger="larynxdexapi.data.behind > 100"> <span dmx-show="larynxdexapi.data.behind < 30">ONLINE - </span> <span dmx-show="larynxdexapi.data.behind >= 30 && larynxdexapi.data.behind <=100">LAGGING - </span> <span dmx-show="larynxdexapi.data.behind > 100">OFFLINE - </span> <span>{{larynxdexapi.data.behind}} BBH</span> </div>
                 </div>
-                <p class="lead">Decentralized social video network infrastructure, rewarding providers with SPK governance and BROCA gas tokens.</p>
+                <p class="lead">Decentralized and incentivized network infrastructure, rewarding providers with SPK governance and BROCA gas tokens.</p>
                 <div class="clearfix" id="larynxclaimdiv" dmx-show="larynxtoken.data.drop.last_claim.parseInt(16) != frmDate.value && larynxtoken.data.drop.availible.amount > 0">
                   <hr class="my-4 bg-light">
                   <div class="float-left">
