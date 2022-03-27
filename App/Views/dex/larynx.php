@@ -443,7 +443,7 @@ include_once( $path );
                       <input type="number" required class="form-control bg-dark border-dark text-white-50" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" dmx-bind:readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
-							<a href="#" dmx-show="buyPrice.value > 0" class="mr-2 badge badge-primary" dmx-on:click="buyQuantity.setValue((accountapi.data.result[0].balance.parseFloat()/buyPrice.value).formatNumber(3,'.',','))">MAX</a>
+							<a href="#" dmx-show="buyPrice.value > 0" class="d-none mr-2 badge badge-primary" dmx-on:click="buyQuantity.setValue((accountapi.data.result[0].balance.parseFloat()/buyPrice.value).formatNumber(3,'.',','))">MAX</a>
 							LARYNX
 							 </div>
                       </div>
@@ -460,7 +460,7 @@ include_once( $path );
                       <input id="buyPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  dmx-bind:readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
-							<a dmx-show="buyQuantity.value > 0" href="#" class="mr-2 badge badge-primary" dmx-on:click="buyPrice.setValue((accountapi.data.result[0].balance.parseFloat()/buyQuantity.value).formatNumber(3,'.',','))">MAX</a>
+							<a dmx-show="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" dmx-on:click="buyPrice.setValue((accountapi.data.result[0].balance.parseFloat()/buyQuantity.value).formatNumber(3,'.',','))">MAX</a>
 							<span dmx-show="buyhive.checked">HIVE</span>
 							<span dmx-show="buyhbd.checked">HBD</span>
 							/LARYNX</div>
