@@ -72,6 +72,7 @@ input.disabled-input {
           hbd_usd: 0
         },
         recenthive: {},
+        recenthbd: {},
         openorders: {},
         accountinfo: {},
         filterusers: {
@@ -858,7 +859,7 @@ include_once( $path );
             <div class="mt-3 col-12">
               <h4>Trade History</h4>
               <div class="table-responsive">
-                <!-- <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivetradehistorytable">
+                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivetradehistorytable">
                   <thead role="rowgroup" class="">
                     <tr role="row">
                       <th role="columnheader" scope="col" aria-colindex="1" class="" >PRICE</th>
@@ -867,13 +868,13 @@ include_once( $path );
                     </tr>
                   </thead>
                   <tbody role="rowgroup">
-                    <tr class="" role="row" dmx-repeat:hiveorderhistory="recenthive.data">
-                      <td aria-colindex="1" role="cell" class="" v-bind:text-danger="type == 'sell'" v-bind:text-success="type == 'buy'">{{price}}</td>
-                      <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
-                      <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
+                    <tr class="" role="row" v-for="item in recenthive">
+                      <td aria-colindex="1" role="cell" class="" v-bind:text-danger="type == 'sell'" v-bind:text-success="type == 'buy'">{{item.price}}</td>
+                      <td aria-colindex="2" role="cell" class="">{{item.target_volume}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{item.trade_timestamp}}</td>
                     </tr>
                   </tbody>
-                  <tfoot>
+                  <!-- <tfoot>
                     <tr role="row" class="" >
                       <td role="cell" class="" colspan="7" aria-colindex="1">
                         <div class="d-flex flex-fill justify-content-between align-items-center" v-if="recenthive.pages > 1">
@@ -884,8 +885,8 @@ include_once( $path );
                           <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="recenthive.next()" v-if="recenthive.has.next"><i class="fa fa-angle-right"></i></a></div>
                         </div></td>
                     </tr>
-                  </tfoot>
-                </table> -->
+                  </tfoot> -->
+                </table>
               </div>
             </div>
           </div>
@@ -971,22 +972,22 @@ include_once( $path );
             <div class="mt-3 col-12">
               <h4>Trade History</h4>
               <div class="table-responsive">
-                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdtradehistorytable">
-                  <!-- <thead role="rowgroup" class="">
+                <!-- <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdtradehistorytable">
+                  <thead role="rowgroup" class="">
                     <tr role="row">
                       <th role="columnheader" scope="col" aria-colindex="1" class="" >PRICE</th>
                       <th role="columnheader" scope="col" aria-colindex="2" class="">QTY</th>
                       <th role="columnheader" scope="col" aria-colindex="3" class="">TIME</th>
                     </tr>
-                  </thead> -->
-                  <!-- <tbody role="rowgroup">
+                  </thead>
+                  <tbody role="rowgroup">
                     <tr class="" role="row" dmx-repeat:hbdorderhistory="recenthbd.data">
                       <td aria-colindex="1" role="cell" class="" v-bind:text-danger="type == 'sell'" v-bind:text-success="type == 'buy'">{{price}}</td>
                       <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
                       <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
                     </tr>
-                  </tbody> -->
-                  <!-- <tfoot>
+                  </tbody>
+                  <tfoot>
                     <tr role="row" class="" >
                       <td role="cell" class="" colspan="7" aria-colindex="1">
                         <div class="d-flex flex-fill justify-content-between align-items-center" v-if="recenthbd.pages > 1">
@@ -997,8 +998,8 @@ include_once( $path );
                           <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="recenthbd.next()" v-if="recenthbd.has.next"><i class="fa fa-angle-right"></i></a></div>
                         </div></td>
                     </tr>
-                  </tfoot> -->
-                </table>
+                  </tfoot>
+                </table> -->
               </div>
             </div>
           </div>
