@@ -104,6 +104,7 @@ include_once( $path );
             <div id="userhbd" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
           </div>
         </div>
+		  <!-- node collapse region -->
         <div id="nodedrawer" class="collapse">
           <div class="py-5">
 			  <div class="d-flex align-items-center mb-3">
