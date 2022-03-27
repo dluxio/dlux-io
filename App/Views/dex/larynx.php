@@ -539,7 +539,7 @@ include_once( $path );
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">LARYNX</div>
                       </div>
-                      <div class="invalid-feedback"> Minimum quantity is 0.004 </div>
+                      <div class="invalid-feedback"> Minimum quantity is 0.004 - Maximum quantity is {{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}}</div>
                     </div>
                   </div>
                 </div>
