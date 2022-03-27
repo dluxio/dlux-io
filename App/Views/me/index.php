@@ -249,7 +249,7 @@ if ( isset( $author ) ) {
           <div class="alert alert-danger mt-5" role="alert"> Please log in to see balance information. </div>
         </div>
         <div class="p-3">
-          <ul class="nav nav-pills justify-content-center" role="tablist">
+          <ul id="wallettabs" class="nav nav-pills justify-content-center" role="tablist">
             <li class="nav-item"> <a class="nav-link active" href="#dlux" id="dluxtab" role="tab" data-toggle="tab" aria-controls="dlux" aria-expanded="true">DLUX</a></li>
             <li class="nav-item"> <a class="nav-link " href="#larynx" id="larynxtab" role="tab" data-toggle="tab" aria-controls="larynx" aria-expanded="true">LARYNX</a></li>
             <li class="nav-item"> <a class="nav-link" href="#hive" id="hivetab" role="tab" data-toggle="tab" aria-controls="hive" aria-expanded="true">HIVE</a></li>
@@ -2105,34 +2105,8 @@ function pageSpecfic(usr){
   }, false);
 })();
 </script> 
-<!--
 <script>
-// Show inventory
-function toggleInventory(){
-    $("#inventory-cards").toggleClass("d-none");
-
-  }	
-// Set active tab
-function toggleActive(){
-    $("#buywithhivetab").toggleClass("active");
-    $("#buywithhbdtab").toggleClass("active");
-  }
-// Toggle Order Book LG
-function toggleOrders() {
-	$("#orders").toggleClass("d-none");
-	$("#buy-form").toggleClass("col-lg-12 col-lg-6");
-	$("#buy-modal").toggleClass("modal-xl");
-	$("#order-container").addClass("pos-abs");
-}
-// Toggle Order Book MD SM XS
-function toggleOrdersSM() {
-	$("#orders").toggleClass("d-none");
-	$("#order-container").removeClass("pos-abs");
-}				       												      
-
-
-</script>-->
-<script>
+// Deep link usertabs (blog wallet inventory nodes settings)
 	$(document).ready(() => {
   let url = location.href.replace(/\/$/, "");
  
