@@ -311,7 +311,7 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hivequote">
-              <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd.toFixedTrunc('6')}}</b></h2>
+              <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd}}</b></h2>
             </div>
             <input id="hiveusd" :value="hiveprice.hive.usd" class="d-none">
           </div>
@@ -319,7 +319,7 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hbdquote">
-              <h2 class="lead my-0"><b>HBD: ${{hbdprice.hive_dollar.usd.toFixedTrunc('6')}}</b></h2>
+              <h2 class="lead my-0"><b>HBD: ${{hbdprice.hive_dollar.usd}}</b></h2>
             </div>
             <input id="hbdusd" :value="hbdprice.hive_dollar.usd" class="d-none">
           </div>
