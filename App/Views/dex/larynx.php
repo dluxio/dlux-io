@@ -156,7 +156,9 @@ input.disabled-input {
             if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.base_volume) * 1000)
             else return a
             }, 0) / 1000
-          this.recenthive = data.recent_trades
+          this.recenthive = data.recent_trades.sort((a, b) => {
+            return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
+          })
         })
       fetch('https://spkinstant.hivehoneycomb.com/api/recent/HBD_LARYNX?limit=1000')
         .then(response => response.json())
@@ -169,7 +171,9 @@ input.disabled-input {
             if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.base_volume) * 1000)
             else return a
             }, 0) / 1000
-          this.recenthbd = data.recent_trades
+          this.recenthbd = data.recent_trades.sort((a, b) => {
+            return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
+          })
         })
       fetch('https://spkinstant.hivehoneycomb.com/@' + user)
         .then(response => response.json())
