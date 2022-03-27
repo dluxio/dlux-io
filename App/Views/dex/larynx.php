@@ -32,11 +32,36 @@ input.disabled-input {
 }
 </style>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<script type="importmap">
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js"
+    }
+  }
+</script>
+<script type="module">
+  import { createApp } from 'vue'
+
+  createApp({
+    data() {
+      return {
+        hiveprice: {}
+      }
+    },
+    mounted() {
+      fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
+        .then(response => response.json())
+        .then(data => {
+          this.hiveprice = data
+        })
+    }
+  }).mount('#app')
+</script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <!--<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
 <input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(86400000)}}">-->
-<dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
+<!--<dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>-->
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/runners" ></dmx-api-datasource>
 <!--<dmx-api-datasource id="openordersapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/@imno" ></dmx-api-datasource>-->
@@ -71,6 +96,7 @@ if ( isset( $_COOKIE[ 'user' ] ) ) {
 };
 include_once( $path );
 ?>
+<div id="app">
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 ">
     <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
@@ -211,9 +237,9 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hivequote">
-              <h2 class="lead my-0"><b>HIVE: ${{hiveprice.data.hive.usd.toFixedTrunc('6')}}</b></h2>
+              <h2 class="lead my-0"><b>HIVE: {{hiveprice.data.hive.usd /*.toFixedTrunc('6')*/}}</b></h2>
             </div>
-            <input id="hiveusd" dmx-bind:value="{{hiveprice.data.hive.usd}}" class="d-none">
+            <input id="hiveusd" :value="hiveprice.data.hive.usd" class="d-none">
           </div>
         </div>
         <div class="col-4">
@@ -849,6 +875,7 @@ include_once( $path );
     </div>
   </div>
 </main>
+</div>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/footer.php";
