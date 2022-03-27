@@ -33,4 +33,8 @@ class Dex extends \Core\Controller
     {
         View::render('dex/grid.php');
     }
+	public function old($request, $response, $service)
+    {
+        View::render('dex/old.php');
+    }
 }

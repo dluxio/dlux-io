@@ -34,6 +34,8 @@ $router->respondWithController('GET', '/nfts/explore/', 'Nfts@explore');
 $router->respondWithController('GET', '/nfts/explore', 'Nfts@explore');
 $router->respondWithController('GET', '/dex/grid/', 'Dex@grid');
 $router->respondWithController('GET', '/dex/grid', 'Dex@grid');
+$router->respondWithController('GET', '/dex/old/', 'Dex@old');
+$router->respondWithController('GET', '/dex/old', 'Dex@old');
 $router->respondWithController('GET', '/apps', 'Apps@index');
 $router->respondWithController('GET', '/apps/', 'Apps@index');
 $router->respondWithController('GET', '/docs', 'Docs@index');
