@@ -131,16 +131,16 @@ input.disabled-input {
         .then(response => response.json())
         .then(data => {
           this.hivebuys = data.markets.hive.buys.sort(function(a, b) {
-            return parseFloat(a.rate) - parseFloat(b.rate)
+            return parseFloat(b.rate) - parseFloat(a.rate)
           })
           this.hivesells = data.markets.hive.sells.sort(function(a, b) {
-            return parseFloat(b.rate) - parseFloat(a.rate)
-          })
-          this.hbdbuys = data.markets.hbd.buys.sort(function(a, b) {
             return parseFloat(a.rate) - parseFloat(b.rate)
           })
-          this.hbdsells = data.markets.hbd.sells.sort(function(a, b) {
+          this.hbdbuys = data.markets.hbd.buys.sort(function(a, b) {
             return parseFloat(b.rate) - parseFloat(a.rate)
+          })
+          this.hbdsells = data.markets.hbd.sells.sort(function(a, b) {
+            return parseFloat(a.rate) - parseFloat(b.rate)
           })
           this.dexapi = data
         })
