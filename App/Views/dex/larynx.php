@@ -79,6 +79,9 @@ input.disabled-input {
         buyhive: {
           checked: true
         },
+        buyhbd: {
+          checked: true
+        },
       }
     },
     mounted() {
