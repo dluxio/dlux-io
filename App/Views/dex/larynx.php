@@ -64,7 +64,7 @@ input.disabled-input {
           checked: false,
           value: '',
         },
-        filterapistate: {
+        filterapis: {
           checked: false,
           value: '',
         },
