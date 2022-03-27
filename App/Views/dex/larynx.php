@@ -57,9 +57,13 @@ input.disabled-input {
         openorders: {},
         accountinfo: {},
         filterusers: {
-          checked: true,
-          value: user,
-        }
+          checked: false,
+          value: '',
+        },
+        filteraccount: {
+          checked: false,
+          value: '',
+        },
       }
     },
     mounted() {
