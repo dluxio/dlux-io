@@ -2131,7 +2131,7 @@ function toggleOrdersSM() {
 }				       												      
 
 
-</script>
+</script>-->
 <script>
 	$(document).ready(() => {
   let url = location.href.replace(/\/$/, "");
@@ -2159,6 +2159,6 @@ function toggleOrdersSM() {
   });
 });
 	
-</script>-->
+</script>
 </body>
 </html>
