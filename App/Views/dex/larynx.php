@@ -253,7 +253,7 @@ include_once( $path );
             <div id="hbdquote">
               <h2 class="lead my-0"><b>HBD: {{hbdprice.data.hive_dollar.usd}}</b></h2>
             </div>
-            <input id="hbdusd" :value="{{hbdprice.data.hive_dollar.usd}}" class="d-none">
+            <input id="hbdusd" :value="hbdprice.data.hive_dollar.usd" class="d-none">
           </div>
         </div>
         <div class="col-4">
