@@ -836,8 +836,8 @@ include_once( $path );
                   <tbody role="rowgroup">
                     <tr class="" role="row" v-for="item in hivesells">
                       <td aria-colindex="1" role="cell" class="text-primary"><a href="#" @click="insertBal('{{item.rate}}', 'sellPrice')">{{item.rate}}</a></td>
-                      <td aria-colindex="2" role="cell" class="">{{((item.amount/1000).toFixed(3)}}</td>
-                      <td aria-colindex="3" role="cell" class="">{{((item.hive/1000).toFixed(3))}}</td>
+                      <td aria-colindex="2" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{(item.hive/1000).toFixed(3)}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
                     </tr>
                   </tbody>
