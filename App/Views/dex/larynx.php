@@ -54,6 +54,11 @@ input.disabled-input {
         .then(data => {
           this.hiveprice = data
         })
+      fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd')
+        .then(response => response.json())
+        .then(data => {
+          this.hbdprice = data
+        })
     }
   }).mount('#app')
 </script>
@@ -62,7 +67,7 @@ input.disabled-input {
 <!--<input id="timenow" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(0)}}">
 <input id="timeoffset" class="d-none" dmx-bind:value="{{nodes.data.node.getTimeOffset(86400000)}}">-->
 <!--<dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>-->
-<dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
+<!--<dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>-->
 <dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/runners" ></dmx-api-datasource>
 <!--<dmx-api-datasource id="openordersapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/@imno" ></dmx-api-datasource>-->
 <!--<dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX" dmx-param:limit="1000" ></dmx-api-datasource>-->
@@ -237,7 +242,7 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hivequote">
-              <h2 class="lead my-0"><b>HIVE: {{hiveprice.data.hive.usd /*.toFixedTrunc('6')*/}}</b></h2>
+              <h2 class="lead my-0"><b>HIVE: {{hiveprice.data.hive.usd}}</b></h2>
             </div>
             <input id="hiveusd" :value="hiveprice.data.hive.usd" class="d-none">
           </div>
@@ -245,9 +250,9 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hbdquote">
-              <h2 class="lead my-0"><b>HBD: ${{hbdprice.data.hive_dollar.usd.toFixedTrunc('6')}}</b></h2>
+              <h2 class="lead my-0"><b>HBD: {{hbdprice.data.hive_dollar.usd}}</b></h2>
             </div>
-            <input id="hbdusd" dmx-bind:value="{{hbdprice.data.hive_dollar.usd}}" class="d-none">
+            <input id="hbdusd" :value="{{hbdprice.data.hive_dollar.usd}}" class="d-none">
           </div>
         </div>
         <div class="col-4">
