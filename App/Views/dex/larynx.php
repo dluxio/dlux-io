@@ -267,12 +267,12 @@ include_once( $path );
                   <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.where(`account`, filteraccount.value, 'fuzzySearch')" v-if="filterusers.checked">
                     <td role="cell" class="" aria-colindex="1"><a href="/@{{account}}">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
-                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
+                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setAPI('lapi','{{api}}')">{{api}}</a></td>
                   </tr>
 					<tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.where(`api`, filterapi.value, 'fuzzySearch')" v-if="filterapis.checked">
                     <td role="cell" class="" aria-colindex="1"><a href="/@{{account}}">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
-                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
+                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setAPI('lapi','{{api}}')">{{api}}</a></td>
                   </tr>
                 </tbody>
                 <tfoot>
