@@ -41,13 +41,7 @@ input.disabled-input {
   let user = getCookie('user') || 'GUEST'
   let lapi = getCookie('lapi') || 'https://spkinstant.hivehoneycomb.com'
   let hapi = getCookie('hapi') || 'https://api.hive.blog'
-  function ftn(t, n) {
-            t = t.toFixed(n)
-            while(t.charAt(t.length - 1) == '0'){
-                t = t.substr(0, t.length - 1)
-            }
-            return t;
-        }
+
   createApp({
     data() {
       return {
@@ -1018,6 +1012,13 @@ include_once( $path );
     })
 });
 })()
+function ftn(t, n) {
+            t = t.toFixed(n)
+            while(t.charAt(t.length - 1) == '0'){
+                t = t.substr(0, t.length - 1)
+            }
+            return t;
+        }
 </script>
 <script>
 var disabletab = document.getElementsByClassName("disabled-input");
