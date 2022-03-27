@@ -92,6 +92,18 @@ input.disabled-input {
         buyhbd: {
           checked: false
         },
+        buylimit: {
+          checked: true
+        },
+        buymarket: {
+          checked: false
+        },
+        selllimit: {
+          checked: true
+        },
+        sellmarket: {
+          checked: false
+        },
       }
     },
     mounted() {
