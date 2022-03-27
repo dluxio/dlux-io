@@ -35,8 +35,8 @@ input.disabled-input {
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
-<input id="timenow" class="mt-5 d-non">
-<input id="timeoffset" class="d-non">
+<input type="number" id="timenow" class="mt-5 d-non">
+<input type="number" id="timeoffset" class="d-non">
 
 <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
@@ -943,8 +943,8 @@ var disabletab = document.getElementsByClassName("disabled-input");
 for (var i = 0; i < disabletab.length;i++){disabletab[i].setAttribute('tabindex', '-1')}
 const nowtime = new Date().getTime()
 const ago24 = new Date(nowtime - 86400000).getTime()
-document.getElementById('timeoffset').value = ago24
-document.getElementById('timenow').value = nowtime
+document.getElementById('timeoffset').value = new Number(ago24)
+document.getElementById('timenow').value = new Number(nowtime)
 	</script>
 <script type="text/javascript" src="/js/chart.js"></script>
 </html>
