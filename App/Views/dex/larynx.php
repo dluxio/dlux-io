@@ -40,6 +40,9 @@ input.disabled-input {
   createApp({
     data() {
       return {
+        account: user,
+        lapi: lapi,
+        hapi: hapi,
         hiveprice: {},
         hbdprice: {},
         nodes: {},
