@@ -30,6 +30,11 @@ input.disabled-input {
     border-top-left-radius: 0.25rem !important;
     border-bottom-left-radius: 0.25rem !important;
 }
+.table{
+   overflow-y:scroll;
+   height:300px;
+   display:block;
+}
 </style>
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
