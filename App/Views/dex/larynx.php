@@ -803,7 +803,7 @@ include_once( $path );
                       <td aria-colindex="1" role="cell" class=""></td>
                       <td aria-colindex="2" role="cell" class="">{{(item.hive/1000).toFixed(3)}}</td>
                       <td aria-colindex="3" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
-                      <td aria-colindex="4" role="cell" class="text-primary"><a href="#" @click="javascript:insertBal('{{item.rate}}', 'buyPrice')">{{item.rate}}</a></td>
+                      <td aria-colindex="4" role="cell" class="text-primary"><a href="#" @click="insertBal('{{item.rate}}', 'buyPrice')">{{item.rate}}</a></td>
                     </tr>
                   </tbody>
                   <!-- <tfoot>
@@ -835,7 +835,7 @@ include_once( $path );
                   </thead>
                   <tbody role="rowgroup">
                     <tr class="" role="row" v-for="item in hivesells">
-                      <td aria-colindex="1" role="cell" class="text-primary"><a href="#" @click="javascript:insertBal('{{item.rate}}', 'sellPrice')">{{item.rate}}</a></td>
+                      <td aria-colindex="1" role="cell" class="text-primary"><a href="#" @click="insertBal('{{item.rate}}', 'sellPrice')">{{item.rate}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{((item.amount/1000).toFixed(3)}}</td>
                       <td aria-colindex="3" role="cell" class="">{{((item.hive/1000).toFixed(3))}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
