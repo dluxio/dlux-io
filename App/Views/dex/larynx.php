@@ -495,7 +495,7 @@ include_once( $path );
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
                       </div>
-                      <div class="invalid-feedback"> Your balance is {{accountapi.data.result[0].balance.parseFloat().formatNumber(3,'.',',')}} - minimum order is 0.001 </div>
+                      <div class="invalid-feedback"> Available balance is {{accountapi.data.result[0].balance.parseFloat().formatNumber(3,'.',',')}} - minimum order is 0.001 </div>
                     </div>
                   </div>
                 </div>
@@ -509,7 +509,7 @@ include_once( $path );
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
                       </div>
-                      <div class="invalid-feedback"> Your balance is {{accountapi.data.result[0].hbd_balance.parseFloat().formatNumber(3,'.',',')}} - minimum order is 0.001 </div>
+                      <div class="invalid-feedback"> Available balance is {{accountapi.data.result[0].hbd_balance.parseFloat().formatNumber(3,'.',',')}} - minimum order is 0.001 </div>
                     </div>
                   </div>
                 </div>
@@ -548,7 +548,7 @@ include_once( $path );
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">LARYNX</div>
                       </div>
-                      <div class="invalid-feedback"> Your balance is {{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} - minimum quantity is 0.004 </div>
+                      <div class="invalid-feedback"> Available balance is {{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} - minimum quantity is 0.004 </div>
                     </div>
                   </div>
                 </div>
