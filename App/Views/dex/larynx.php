@@ -96,7 +96,7 @@ include_once( $path );
 				  <span class="small p-0 m-0">| {{dexapi.data.behind}} BBH | {{nodes.data.result.count()}} NODES</span></button>
             </div>
           </div>
-          <div class="d-flex text-white-50">
+          <div class="d-flex align-items-center text-white-50">
             <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} LARYNX</div>
             <div id="userdpwr" class="mx-4 text-primary" dmx-show="openordersapi.data.poweredUp > 0">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} LARYNXP</div>
             <div id="userdgov" class="mx-4 text-info" dmx-show="openordersapi.data.gov > 0">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} LARYNXG</div>
