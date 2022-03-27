@@ -945,6 +945,7 @@ const nowtime = new Date().getTime()
 const ago24 = new Date(nowtime - 86400000).getTime()
 document.getElementById('timeoffset').value = ago24.toString()
 document.getElementById('timenow').value = nowtime.toString()
+console.log("I'm Helping")
 	</script>
 <script type="text/javascript" src="/js/chart.js"></script>
 </html>
