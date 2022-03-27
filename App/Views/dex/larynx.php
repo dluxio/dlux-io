@@ -409,20 +409,20 @@ include_once( $path );
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              <i class="fab fa-hive mr-1"></i>{{hivebuyorders[0].rate}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hivebuyorders[0].rate*hiveusd.value)}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hivebuys[0].rate}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hivebuys[0].rate*hiveusd.value)}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
-              <i class="fab fa-hive mr-1"></i>{{hivesellorders[0].rate}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hivesellorders[0].rate*hiveusd.value)}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hivesells[0].rate}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hivesells[0].rate*hiveusd.value)}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              <i class="fab fa-hive mr-1"></i>{{dexapi.markets.hive.tick.toNumber()}} <br>
+              <i class="fab fa-hive mr-1"></i>{{dexapi.markets.hive.tick}} <br>
               <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.markets.hive.tick*hiveusd.value)}} </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
-              <i class="fab fa-hive mr-1"></i>{{recenthive24h.sum('target_volume')}}<br>
-			        <i class="fas fa-dollar-sign mx-1"></i>{{(recenthive24h.sum('target_volume')*hiveusd.value)}}
+              <i class="fab fa-hive mr-1"></i>{{volume.hive}}<br>
+			        <i class="fas fa-dollar-sign mx-1"></i>{{(volume.hive*hiveusd.value)}}
             </div>
           </div>
         </div>
@@ -430,20 +430,20 @@ include_once( $path );
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              <i class="fab fa-hive mr-1"></i>{{hbdbuyorders[0].rate}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdbuyorders[0].rate*hbdusd.value)}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hbdbuys[0].rate}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdbuys[0].rate*hbdusd.value)}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
-              <i class="fab fa-hive mr-1"></i>{{hbdsellorders[0].rate}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdsellorders[0].rate*hbdusd.value)}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hbdsells[0].rate}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdsells[0].rate*hbdusd.value)}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              <i class="fab fa-hive mr-1"></i>{{dexapi.markets.hive.tick.toNumber()}} <br>
+              <i class="fab fa-hive mr-1"></i>{{dexapi.markets.hive.tick}} <br>
               <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.markets.hive.tick*hbdusd.value)}} </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
-              <i class="fab fa-hive mr-1"></i>{{recenthbd24h.sum('target_volume')}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(recenthbd24h.sum('target_volume')*hiveusd.value)}}
+              <i class="fab fa-hive mr-1"></i>{{volume.hbd}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(volume.hbd*hiveusd.value)}}
             </div>
           </div>
         </div>
