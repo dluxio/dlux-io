@@ -50,7 +50,7 @@ input.disabled-input {
           }
         },
         hbdprice: {
-          hbd: {
+          hive_dollar: {
             usd: 0
           }
         },
