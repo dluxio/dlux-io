@@ -44,8 +44,16 @@ input.disabled-input {
         lapi: lapi,
         hapi: hapi,
         accountapi: {},
-        hiveprice: {},
-        hbdprice: {},
+        hiveprice: {
+          hive: {
+            usd: 0
+          }
+        },
+        hbdprice: {
+          hbd: {
+            usd: 0
+          }
+        },
         nodes: {},
         marketnodes: {},
         hivebuys: {},
