@@ -40,6 +40,8 @@ input.disabled-input {
   createApp({
     data() {
       return {
+        nowtime: new Date().getTime(),
+        agoTime: new Date().getTime() - 86400000,
         account: user,
         lapi: lapi,
         hapi: hapi,
@@ -61,6 +63,14 @@ input.disabled-input {
         hbdbuys: {},
         hbdsells: {},
         dexapi: {},
+        volume:{
+          hive: 0,
+          hbd: 0,
+          token_hive: 0,
+          token_hbd: 0
+          hive_usd: 0,
+          hbd_usd: 0
+        }
         recenthive: {},
         openorders: {},
         accountinfo: {},
@@ -114,14 +124,30 @@ input.disabled-input {
           this.hbdsells = data.markets.hbd.sells
           this.dexapi = data
         })
-      fetch('https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX/')
+      fetch('https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX?limit=1000')
         .then(response => response.json())
         .then(data => {
+          this.volume.hive = data.recent_trades.reduce((a, b) => {
+            if(b.trade_timestamp > this.agoTime)return a + b.target_volume
+            else return a
+            }, 0)
+          this.volume.token_hive = data.recent_trades.reduce((a, b) => {
+            if(b.trade_timestamp > this.agoTime)return a + b.base_volume
+            else return a
+            }, 0)
           this.recenthive = data.recent_trades
         })
-      fetch('https://spkinstant.hivehoneycomb.com/api/recent/HBD_LARYNX/')
+      fetch('https://spkinstant.hivehoneycomb.com/api/recent/HBD_LARYNX?limit=1000')
         .then(response => response.json())
         .then(data => {
+          this.volume.hbd = data.recent_trades.reduce((a, b) => {
+            if(b.trade_timestamp > this.agoTime)return a + b.target_volume
+            else return a
+            }, 0)
+          this.volume.token_hbd = data.recent_trades.reduce((a, b) => {
+            if(b.trade_timestamp > this.agoTime)return a + b.base_volume
+            else return a
+            }, 0)
           this.recenthbd = data.recent_trades
         })
       fetch('https://spkinstant.hivehoneycomb.com/@' + user)
@@ -367,48 +393,48 @@ include_once( $path );
             </div>
           </div>
         </div>
-        <!-- <div class="col-lg-9" v-if="buyhive.checked">
+        <div class="col-lg-9" v-if="buyhive.checked">
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              <i class="fab fa-hive mr-1"></i>{{hivebuyorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hivebuyorders[0].$key*hiveusd.value).formatNumber('6','.',',')}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hivebuyorders[0].rate}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hivebuyorders[0].rate*hiveusd.value)}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
-              <i class="fab fa-hive mr-1"></i>{{hivesellorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hivesellorders[0].$key*hiveusd.value).formatNumber('6','.',',')}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hivesellorders[0].rate}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hivesellorders[0].rate*hiveusd.value)}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              <i class="fab fa-hive mr-1"></i>{{dexapi.markets.hive.tick.toNumber().formatNumber('6','.',',')}} <br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.markets.hive.tick*hiveusd.value).formatNumber('6','.',',')}} </div>
+              <i class="fab fa-hive mr-1"></i>{{dexapi.markets.hive.tick.toNumber()}} <br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.markets.hive.tick*hiveusd.value)}} </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
-              <i class="fab fa-hive mr-1"></i>{{recenthive24h.sum('target_volume').formatNumber('6','.',',')}}<br>
-			        <i class="fas fa-dollar-sign mx-1"></i>{{(recenthive24h.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
+              <i class="fab fa-hive mr-1"></i>{{recenthive24h.sum('target_volume')}}<br>
+			        <i class="fas fa-dollar-sign mx-1"></i>{{(recenthive24h.sum('target_volume')*hiveusd.value)}}
             </div>
           </div>
-        </div> -->
-        <!-- <div class="col-lg-9" v-if="buyhbd.checked">
+        </div>
+        <div class="col-lg-9" v-if="buyhbd.checked">
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
-              <i class="fab fa-hive mr-1"></i>{{hbdbuyorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdbuyorders[0].$key*hbdusd.value).formatNumber('6','.',',')}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hbdbuyorders[0].rate}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdbuyorders[0].rate*hbdusd.value)}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
-              <i class="fab fa-hive mr-1"></i>{{hbdsellorders[0].$key.toNumber().formatNumber('6','.',',')}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdsellorders[0].$key*hbdusd.value).formatNumber('6','.',',')}} </div>
+              <i class="fab fa-hive mr-1"></i>{{hbdsellorders[0].rate}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdsellorders[0].rate*hbdusd.value)}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              <i class="fab fa-hive mr-1"></i>{{dexapi.markets.hive.tick.toNumber().formatNumber('6','.',',')}} <br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.markets.hive.tick*hbdusd.value).formatNumber('6','.',',')}} </div>
+              <i class="fab fa-hive mr-1"></i>{{dexapi.markets.hive.tick.toNumber()}} <br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.markets.hive.tick*hbdusd.value)}} </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
-              <i class="fab fa-hive mr-1"></i>{{recenthbd24h.sum('target_volume').formatNumber('6','.',',')}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(recenthbd24h.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
+              <i class="fab fa-hive mr-1"></i>{{recenthbd24h.sum('target_volume')}}<br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(recenthbd24h.sum('target_volume')*hiveusd.value)}}
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
       <div class="marketChart mt-3 mb-3">
         <div class="">
