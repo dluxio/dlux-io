@@ -110,6 +110,15 @@ input.disabled-input {
         sellmarket: {
           checked: false
         },
+      },
+      filters: {
+        ftn: function(t, n) {
+            t = t.toFixed(n)
+            while(t.charAt(t.length - 1) == '0'){
+                t = t.substr(0, t.length - 1)
+            }
+            return t;
+        }
       }
     },
     mounted() {
@@ -437,13 +446,13 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>LARYNX: ${{ftn((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</b></h2>
+              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd | ftn(6)}}</b></h2>
             </div>
             <!-- <input id="dluxhiveusd" :value="dexapi.markets.hive.tick || 0" class="d-none"> -->
           </div>
           <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
             <div id="dluxhbdquote">
-              <h2 class="lead my-0"><b>LARYNX: ${{ftn((dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd, 6)}}</b></h2>
+              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd | ftn(6)}}</b></h2>
             </div>
             <!-- <input id="dluxhbdusd" :value="dexapi.markets.hbd.tick" class="d-none"> -->
           </div>
@@ -468,19 +477,19 @@ include_once( $path );
             <div class="mt-2 col">
               <h5>Bid</h5>
               <i class="fab fa-hive mr-1"></i>{{hivebuys[0] ? hivebuys[0].rate : 0}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{ftn((hivebuys[0] ? hivebuys[0].rate : 0 ) * hiveprice.hive.usd, 6)}} </div>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hivebuys[0] ? hivebuys[0].rate : 0 ) * hiveprice.hive.usd | ftn(6)}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
               <i class="fab fa-hive mr-1"></i>{{hivesells[0] ? hivesells[0].rate : 0}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{ftn((hivesells[0] ? hivesells[0].rate : 0 ) * hiveprice.hive.usd, 6)}} </div>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hivesells[0] ? hivesells[0].rate : 0 ) * hiveprice.hive.usd | ftn(6)}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
               <i class="fab fa-hive mr-1"></i>{{dexapi.markets ? dexapi.markets.hive.tick : 0}} <br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{ftn((dexapi.markets ? dexapi.markets.hive.tick : 0 ) * hiveprice.hive.usd, 6)}} </div>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.markets ? dexapi.markets.hive.tick : 0 ) * hiveprice.hive.usd | ftn(6)}} </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
               <i class="fab fa-hive mr-1"></i>{{volume.hive}}<br>
-			        <i class="fas fa-dollar-sign mx-1"></i>{{ftn(volume.hive * hiveprice.hive.usd, 2)}}
+			        <i class="fas fa-dollar-sign mx-1"></i>{{volume.hive * hiveprice.hive.usd | ftn(2)}}
             </div>
           </div>
         </div>
@@ -489,19 +498,19 @@ include_once( $path );
             <div class="mt-2 col">
               <h5>Bid</h5>
               <i class="fab fa-hive mr-1"></i>{{hbdbuys[0] ? hbdbuys[0].rate : 0}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{ftn((hbdbuys[0] ? hbdbuys[0].rate : 0 ) * hbdprice.hive_dollar.usd, 6)}} </div>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdbuys[0] ? hbdbuys[0].rate : 0 ) * hbdprice.hive_dollar.usd | ftn(6)}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
               <i class="fab fa-hive mr-1"></i>{{hbdsells[0] ? hbdsells[0].rate : 0}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{ftn((hbdsells[0] ? hbdsells[0].rate : 0 ) * hbdprice.hive_dollar.usd, 6)}} </div>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdsells[0] ? hbdsells[0].rate : 0 ) * hbdprice.hive_dollar.usd | ftn(6)}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
               <i class="fab fa-hive mr-1"></i>{{dexapi.markets ? dexapi.markets.hive.tick : 0}} <br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{ftn((dexapi.markets ? dexapi.markets.hive.tick : 0 ) * hbdprice.hive_dollar.usd, 6)}} </div>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.markets ? dexapi.markets.hive.tick : 0 ) * hbdprice.hive_dollar.usd | ftn(6)}} </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
               <i class="fab fa-hive mr-1"></i>{{volume.hbd}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{ftn(volume.hbd * hbdprice.hive_dollar.usd, 2)}}
+              <i class="fas fa-dollar-sign mx-1"></i>{{volume.hbd * hbdprice.hive_dollar.usd | ftn(2)}}
             </div>
           </div>
         </div>
@@ -1012,13 +1021,6 @@ include_once( $path );
     })
 });
 })()
-function ftn(t, n) {
-            t = t.toFixed(n)
-            while(t.charAt(t.length - 1) == '0'){
-                t = t.substr(0, t.length - 1)
-            }
-            return t;
-        }
 </script>
 <script>
 var disabletab = document.getElementsByClassName("disabled-input");
