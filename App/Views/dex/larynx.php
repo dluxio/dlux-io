@@ -31,14 +31,20 @@ input.disabled-input {
     border-bottom-left-radius: 0.25rem !important;
 }
 </style>
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
-<!--<script type="importmap">
-  {
-    "imports": {
-      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js"
+<script type="module">
+  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  createApp({
+    data() {
+      return {
+        time: new Date().getTime(),
+        ago24: new Date().getTime() - 86400000,
+      }
     }
-  }
-</script>-->
+  }).mount('#time')
+</script>
+<div id="time">
+  
+</div>
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   let user = getCookie('user') || 'GUEST'
@@ -51,7 +57,7 @@ input.disabled-input {
         hiveprice: {},
         hbdprice: {},
         nodes: {},
-        marketnodes, {},
+        marketnodes: {},
         hivebuys: {},
         hivesells: {},
         hbdbuys: {},
@@ -121,16 +127,17 @@ input.disabled-input {
     }
   }).mount('#app')
 </script>
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <!--<input id="timenow" class="d-none" :value="{{nodes.data.node.getTimeOffset(0)}}">
 <input id="timeoffset" class="d-none" :value="{{nodes.data.node.getTimeOffset(86400000)}}">-->
-<!-- <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
+<dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/runners" ></dmx-api-datasource>
-<dmx-api-datasource id="openordersapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/@imno" ></dmx-api-datasource>
-<dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX" dmx-param:limit="1000" ></dmx-api-datasource>
-<dmx-data-view id="marketnodes" :data="nodes.data.result" sorton="g" sortdir="ndesc" pagesize="10"></dmx-data-view>
+<!--<dmx-api-datasource id="openordersapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/@imno" ></dmx-api-datasource>-->
+<!--<dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX" dmx-param:limit="1000" ></dmx-api-datasource>-->
+<!-- <dmx-data-view id="marketnodes" :data="nodes.data.result" sorton="g" sortdir="ndesc" pagesize="10"></dmx-data-view>
 <dmx-data-view id="openorders" :data="openordersapi.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
 <dmx-data-view id="accountinfo" :data="accountapi.data.result"></dmx-data-view>
 <dmx-data-view id="recenthive" :data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
@@ -144,22 +151,22 @@ input.disabled-input {
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
-// $lapi = "https://spkinstant.hivehoneycomb.com";
-// if ( isset( $_COOKIE[ 'lapi' ] ) ) {$lapi = $_COOKIE[ 'lapi' ];};
-// if ( isset( $_COOKIE[ 'user' ] ) ) {
-//   echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>\n";
-//   echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
-//   echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
-//   echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>\n";
-//   echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>\n";
-// } else {
-//   echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>\n";
-//   echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
-//   echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
-// };
+$lapi = "https://spkinstant.hivehoneycomb.com";
+if ( isset( $_COOKIE[ 'lapi' ] ) ) {$lapi = $_COOKIE[ 'lapi' ];};
+if ( isset( $_COOKIE[ 'user' ] ) ) {
+
+  echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>\n";
+  echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
+  echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
+  echo "<dmx-api-datasource id=\"openordersapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>\n";
+  echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>\n";
+} else {
+  echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>\n";
+  echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
+  echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
+};
 include_once( $path );
 ?>
-<div id="app">
 <main role="main" class="flex-shrink-0 text-white">
   <div class="container-fluid px-0 ">
     <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
@@ -174,48 +181,49 @@ include_once( $path );
             </div>
             <div class="d-flex" :title="{{dexapi.behind}} Blocks Behind Hive">
               <button class="text-center btn btn-sm align-items-center ml-4" 
-						 dmx-class:btn-outline-success="dexapi.behind < 30"	
-						 dmx-class:btn-outline-warning="dexapi.behind >= 30"
-						 dmx-class:btn-outline-danger="dexapi.behind > 100"
+						 v-bind:btn-outline-success="dexapi.behind < 30"	
+						 v-bind:btn-outline-warning="dexapi.behind >= 30"
+						 v-bind:btn-outline-danger="dexapi.behind > 100"
 						type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
 				  <span class="small p-0 m-0"><i class="fas fa-circle mr-2"></i>LARYNX |</span>
-				  <span class="small p-0 m-0" dmx-show="dexapi.data.behind < 30">ONLINE</span>
-				  <span class="small p-0 m-0" dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING</span>
-				  <span class="small p-0 m-0" dmx-show="dexapi.data.behind > 100">OFFLINE</span>
+				  <span class="small p-0 m-0" v-if="dexapi.behind < 30">ONLINE</span>
+				  <span class="small p-0 m-0" v-if="dexapi.behind >= 30 && dexapi.behind <=100">LAGGING</span>
+				  <span class="small p-0 m-0" v-if="dexapi.behind > 100">OFFLINE</span>
 				  <span class="small p-0 m-0">| {{dexapi.behind}} BBH | {{nodes.result.length}} NODES</span></button>
             </div>
           </div>
-          <!-- <div class="d-flex text-white-50">
-            <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.balance/1000)}} LARYNX</div>
-            <div id="userdpwr" class="mx-4 text-primary" dmx-show="openordersapi.data.poweredUp > 0">{{(openordersapi.poweredUp/1000)}} LARYNXP</div>
-            <div id="userdgov" class="mx-4 text-info" dmx-show="openordersapi.data.gov > 0">{{(openordersapi.gov/1000)}} LARYNXG</div>
+          <div class="d-flex align-items-center text-white-50">
+            <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.balance/1000).formatNumber(3,'.',',')}} LARYNX</div>
+            <div id="userdpwr" class="mx-4 text-primary" v-if="openordersapi.poweredUp > 0">{{(openordersapi.poweredUp/1000).formatNumber(3,'.',',')}} LARYNXP</div>
+            <div id="userdgov" class="mx-4 text-info" v-if="openordersapi.gov > 0">{{(openordersapi.gov/1000).formatNumber(3,'.',',')}} LARYNXG</div>
             <div id="userhive" class="mx-4 text-danger">{{accountapi.balance}}</div>
             <div id="userhbd" class="mx-4 text-success">{{accountapi.hbd_balance}}</div>
-          </div> -->
+          </div>
         </div>
+		  <!-- node collapse region -->
         <div id="nodedrawer" class="collapse">
           <div class="py-5">
-			  <!-- <div class="d-flex align-items-center mb-3">
+			  <div class="d-flex align-items-center mb-3">
 				  <div class="">
-			  		<div role="group" class="input-group" dmx-show="filterusers.checked">
-				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
+			  		<div role="group" class="input-group" v-if="filterusers.checked">
+				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
                       <input type="text" class="form-control bg-dark border-dark text-info" id="filteraccount" aria-required="true" placeholder="Users">
                       <div class="input-group-append p-0 m-0" >
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px">
-							<span dmx-show="filteraccount.value">
-								<a href="#" class="badge badge-secondary" dmx-on:click="filteraccount.setValue(null)"><i class="fas fa-times"></i></a>
+							<span v-if="filteraccount.value">
+								<a href="#" class="badge badge-secondary" @click="filteraccount.setValue(null)"><i class="fas fa-times"></i></a>
 							</span>
 						 </div>
                       </div>
                   </div>
-					  </div> -->
+					  </div>
 			  <div class="">
-			  <div role="group" class="input-group" dmx-show="filterapis.checked">
-				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" dmx-on:click="filterapi.focus()"><i class="fas fa-search"></i></span></div>
+			  <div role="group" class="input-group" v-if="filterapis.checked">
+				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="filterapi.focus()"><i class="fas fa-search"></i></span></div>
                       <input type="text" class="form-control bg-dark border-dark text-info" id="filterapi" aria-required="true" placeholder="APIs">
                       <div class="input-group-append p-0 m-0">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px">
-							<span dmx-show="filterapi.value"><a href="#" class="badge badge-secondary" dmx-on:click="filterapi.setValue(null)"><i class="fas fa-times"></i></a></span></div>
+							<span v-if="filterapi.value"><a href="#" class="badge badge-secondary" @click="filterapi.setValue(null)"><i class="fas fa-times"></i></a></span></div>
                       </div>
                   </div>
 				  </div>
@@ -234,22 +242,22 @@ include_once( $path );
               <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
-                    <th role="columnheader" class="" aria-colindex="1" dmx-class:col-sort="marketnodes.sort.on == 'account'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="1" v-bind:col-sort="marketnodes.sort.on == 'account'"> <div class="d-flex align-items-center">
                       <div class="mr-3">USER NAME</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('account','asc')" dmx-class:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'account'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('account','desc')" dmx-class:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'account'"> <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('account','asc')" v-bind:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'account'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('account','desc')" v-bind:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'account'"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="2" dmx-class:col-sort="marketnodes.sort.on == 'g'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="2" v-bind:col-sort="marketnodes.sort.on == 'g'"> <div class="d-flex align-items-center">
                       <div class="mr-3">GOV BAL</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('g','asc')" dmx-class:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'g'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('g','desc')" dmx-class:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'g'"> <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('g','asc')" v-bind:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'g'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('g','desc')" v-bind:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'g'"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="3" dmx-class:col-sort="marketnodes.sort.on == 'api'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="3" v-bind:col-sort="marketnodes.sort.on == 'api'"> <div class="d-flex align-items-center">
                       <div class="mr-3">API (Click to load)</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('api','asc')" dmx-class:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'api'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="marketnodes.sort('api','desc')" dmx-class:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'api'"> <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('api','asc')" v-bind:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'api'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('api','desc')" v-bind:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'api'"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="4"> <div class="d-flex align-items-center">
@@ -257,7 +265,7 @@ include_once( $path );
                         <div class="dropdown show"> <a class="btn btn-sm btn-dark " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-satellite-dish"></i></a>
                           <div class="dropdown-menu">
                             <h6 class="dropdown-header">CURRENT API</h6>
-                            <p class="dropdown-item">{{openordersapi.data.node.eval('getCookie(`lapi`)')}}</p>
+                            <p class="dropdown-item">{{openordersapi.node.eval('getCookie(`lapi`)')}}</p>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" onClick="setAPI('lapi','https://spkinstant.hivehoneycomb.com/')"><i class="fas fa-bolt mr-2"></i>Load Latest</a> </div>
                         </div>
@@ -266,26 +274,26 @@ include_once( $path );
                   </tr>
                 <tbody role="rowgroup">
                   <!--repeat region-->
-                  <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data.where(`account`, filteraccount.value, 'fuzzySearch')" dmx-show="filterusers.checked">
-                    <td role="cell" class="" aria-colindex="1"><a :href="'/@' + account">@{{account}}</a></td>
+                  <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.where(`account`, filteraccount.value, 'fuzzySearch')" v-if="filterusers.checked">
+                    <td role="cell" class="" aria-colindex="1"><a :href="/@{{account}}">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
-                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" dmx-on:click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
+                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
                   </tr>
-					<tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.data.where(`api`, filterapi.value, 'fuzzySearch')" dmx-show="filterapis.checked">
-                    <td role="cell" class="" aria-colindex="1"><a :href="'/@' + account">@{{account}}</a></td>
+					<tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.where(`api`, filterapi.value, 'fuzzySearch')" v-if="filterapis.checked">
+                    <td role="cell" class="" aria-colindex="1"><a :href="/@{{account}}">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
-                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" dmx-on:click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
+                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="javascript:setAPI('lapi','{{api}}')">{{api}}</a></td>
                   </tr>
                 </tbody>
                 <tfoot>
                   <tr role="row" class="" >
                     <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
-                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="marketnodes.pages > 1">
-                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="marketnodes.prev()" dmx-show="marketnodes.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                      <div class="d-flex flex-fill justify-content-between align-items-center" v-if="marketnodes.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="marketnodes.prev()" v-if="marketnodes.has.prev"><i class="fa fa-angle-left"></i></a></div>
                         <div class="d-flex">
                           <p class="m-0 p-0 text-muted">Page {{marketnodes.page}} of {{marketnodes.pages}}</p>
                         </div>
-                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="marketnodes.next()" dmx-show="marketnodes.has.next"><i class="fa fa-angle-right"></i></a></div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="marketnodes.next()" v-if="marketnodes.has.next"><i class="fa fa-angle-right"></i></a></div>
                       </div></td>
                   </tr>
                 </tfoot>
@@ -300,31 +308,31 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hivequote">
-              <h2 class="lead my-0"><b>HIVE: {{hiveprice.data.hive.usd}}</b></h2>
+              <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd.toFixedTrunc('6')}}</b></h2>
             </div>
-            <input id="hiveusd" :value="hiveprice.data.hive.usd" class="d-none">
+            <input id="hiveusd" :value="{{hiveprice.hive.usd}}" class="d-none">
           </div>
         </div>
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark">
             <div id="hbdquote">
-              <h2 class="lead my-0"><b>HBD: {{hbdprice.data.hive_dollar.usd}}</b></h2>
+              <h2 class="lead my-0"><b>HBD: ${{hbdprice.hive_dollar.usd.toFixedTrunc('6')}}</b></h2>
             </div>
-            <input id="hbdusd" :value="hbdprice.data.hive_dollar.usd" class="d-none">
+            <input id="hbdusd" :value="{{hbdprice.hive_dollar.usd}}" class="d-none">
           </div>
         </div>
         <div class="col-4">
-          <div class="jumbotron p-3 bg-dark" dmx-show="buyhive.checked">
+          <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.data.markets.hive.tick*hiveprice.data.hive.usd).toFixedTrunc('6')}}</b></h2>
+              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.markets.hive.tick*hiveprice.hive.usd).toFixedTrunc('6')}}</b></h2>
             </div>
-            <input id="dluxhiveusd" :value="{{dexapi.data.markets.hive.tick}}" class="d-none">
+            <input id="dluxhiveusd" :value="{{dexapi.markets.hive.tick}}" class="d-none">
           </div>
-          <div class="jumbotron p-3 bg-dark" dmx-show="buyhbd.checked">
+          <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
             <div id="dluxhbdquote">
-              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.data.markets.hbd.tick).toFixedTrunc('6')}}</b></h2><!-- *hbdprice.data.hive_dollar.usd-->
+              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi.markets.hbd.tick*hbdprice.hive_dollar.usd).toFixedTrunc('6')}}</b></h2>
             </div>
-            <input id="dluxhbdusd" :value="{{dexapi.data.markets.hbd.tick}}" class="d-none">
+            <input id="dluxhbdusd" :value="{{dexapi.markets.hbd.tick}}" class="d-none">
           </div>
         </div>
       </div>
@@ -334,15 +342,15 @@ include_once( $path );
           <div class="container-fluid mt-3">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-outline-warning active">
-                <input name="buypair" type="radio" id="buyhive" checked dmx-on:click="buy.buyHiveTotal.setValue('');sell.sellHiveTotal.setValue('');buy.buyHBDTotal.setValue('0');sell.sellHBDTotal.setValue('0')">
+                <input name="buypair" type="radio" id="buyhive" checked @click="buy.buyHiveTotal.setValue('');sell.sellHiveTotal.setValue('');buy.buyHBDTotal.setValue('0');sell.sellHBDTotal.setValue('0')">
                 HIVE </label>
               <label class="btn btn-outline-warning">
-                <input type="radio" name="buypair" id="buyhbd" dmx-on:click="buy.buyHBDTotal.setValue('');sell.sellHBDTotal.setValue('');buy.buyHiveTotal.setValue('0');sell.sellHiveTotal.setValue('0')">
+                <input type="radio" name="buypair" id="buyhbd" @click="buy.buyHBDTotal.setValue('');sell.sellHBDTotal.setValue('');buy.buyHiveTotal.setValue('0');sell.sellHiveTotal.setValue('0')">
                 HBD </label>
             </div>
           </div>
         </div>
-        <div class="col-lg-9" dmx-show="buyhive.checked">
+        <div class="col-lg-9" v-if="buyhive.checked">
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
@@ -354,16 +362,16 @@ include_once( $path );
               <i class="fas fa-dollar-sign mx-1"></i>{{(hivesellorders[0].$key*hiveusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              <i class="fab fa-hive mr-1"></i>{{dexapi.data.markets.hive.tick.toNumber().formatNumber('6','.',',')}} <br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.data.markets.hive.tick*hiveusd.value).formatNumber('6','.',',')}} </div>
+              <i class="fab fa-hive mr-1"></i>{{dexapi.markets.hive.tick.toNumber().formatNumber('6','.',',')}} <br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.markets.hive.tick*hiveusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
-              <i class="fab fa-hive mr-1"></i>{{recenthive24h.data.sum('target_volume').formatNumber('6','.',',')}}<br>
-			  <i class="fas fa-dollar-sign mx-1"></i>{{(recenthive24h.data.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
+              <i class="fab fa-hive mr-1"></i>{{recenthive24h.sum('target_volume').formatNumber('6','.',',')}}<br>
+			  <i class="fas fa-dollar-sign mx-1"></i>{{(recenthive24h.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
             </div>
           </div>
         </div>
-        <div class="col-lg-9" dmx-show="buyhbd.checked">
+        <div class="col-lg-9" v-if="buyhbd.checked">
           <div class="row">
             <div class="mt-2 col">
               <h5>Bid</h5>
@@ -375,12 +383,12 @@ include_once( $path );
               <i class="fas fa-dollar-sign mx-1"></i>{{(hbdsellorders[0].$key*hbdusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
-              <i class="fab fa-hive mr-1"></i>{{dexapi.data.markets.hive.tick.toNumber().formatNumber('6','.',',')}} <br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.data.markets.hive.tick*hbdusd.value).formatNumber('6','.',',')}} </div>
+              <i class="fab fa-hive mr-1"></i>{{dexapi.markets.hive.tick.toNumber().formatNumber('6','.',',')}} <br>
+              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.markets.hive.tick*hbdusd.value).formatNumber('6','.',',')}} </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
-              <i class="fab fa-hive mr-1"></i>{{recenthbd24h.data.sum('target_volume').formatNumber('6','.',',')}}<br>
-			  <i class="fas fa-dollar-sign mx-1"></i>{{(recenthbd24h.data.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
+              <i class="fab fa-hive mr-1"></i>{{recenthbd24h.sum('target_volume').formatNumber('6','.',',')}}<br>
+			  <i class="fas fa-dollar-sign mx-1"></i>{{(recenthbd24h.sum('target_volume')*hiveusd.value).formatNumber('6','.',',')}}
             </div>
           </div>
         </div>
@@ -419,52 +427,52 @@ include_once( $path );
               1Y </label>
           </div>
           <div>
-            <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.data.count()}}) <i class="fas fa-book-reader ml-2"></i></button>
+            <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.length}}) <i class="fas fa-book-reader ml-2"></i></button>
           </div>
         </div>
         <div id="openordersdrawer" class="collapse ">
           <div class="py-5">
-            <div dmx-show="openorders.data.count() == 0" class="text-center text-white-50">
+            <div v-if="openorders.length == 0" class="text-center text-white-50">
               <h5>No open orders</h5>
             </div>
-            <div class="table-responsive rounded border border-dark" dmx-show="openorders.data.count() > 0">
+            <div class="table-responsive rounded border border-dark" v-if="openorders.length > 0">
               <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
-                    <th role="columnheader" class="" aria-colindex="1" dmx-class:col-sort="openorders.sort.on == 'block'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="1" v-bind:col-sort="openorders.sort.on == 'block'"> <div class="d-flex align-items-center">
                       <div class="mr-3">BLOCK</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('block','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'block'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('block','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'block'"> <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('block','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'block'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('block','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'block'"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="2" dmx-class:col-sort="openorders.sort.on == 'amount'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="2" v-bind:col-sort="openorders.sort.on == 'amount'"> <div class="d-flex align-items-center">
                       <div class="mr-3">LARYNX</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('amount','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('amount','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('amount','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('amount','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="3" dmx-class:col-sort="openorders.sort.on == 'hbd'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="3" v-bind:col-sort="openorders.sort.on == 'hbd'"> <div class="d-flex align-items-center">
                       <div class="mr-3">HBD</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('hbd','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hbd'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('hbd','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hbd'"> <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hbd','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hbd'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hbd','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hbd'"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="4" dmx-class:col-sort="openorders.sort.on == 'hive'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="4" v-bind:col-sort="openorders.sort.on == 'hive'"> <div class="d-flex align-items-center">
                       <div class="mr-3">HIVE</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('hive','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hive'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('hive','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hive'"> <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hive','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hive'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hive','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hive'"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="5" dmx-class:col-sort="openorders.sort.on == 'rate'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="5" v-bind:col-sort="openorders.sort.on == 'rate'"> <div class="d-flex align-items-center">
                       <div class="mr-3">RATE</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('rate','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'rate'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('rate','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'rate'"> <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('rate','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'rate'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('rate','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'rate'"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="6" dmx-class:col-sort="openorders.sort.on == 'type'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="6" v-bind:col-sort="openorders.sort.on == 'type'"> <div class="d-flex align-items-center">
                       <div class="mr-3">TYPE</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('type','asc')" dmx-class:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" dmx-on:click="openorders.sort('type','desc')" dmx-class:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('type','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('type','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="7"> <div class="d-flex align-items-center">
@@ -479,20 +487,20 @@ include_once( $path );
                     <td role="cell" class="" aria-colindex="2">{{amount/1000}}</td>
                     <td role="cell" class="" aria-colindex="3">{{hbd/1000}}</td>
                     <td role="cell" class="" aria-colindex="4">{{hive/1000}}</td>
-                    <td role="cell" class="" aria-colindex="5" dmx-class:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" dmx-class:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{rate}}</td>
-                    <td role="cell" class="" aria-colindex="6" dmx-class:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" dmx-class:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{type.uppercase()}}</td>
-                    <td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" dmx-on:click="cancelDEX('{{txid}}','spkcc_')">CANCEL</button></td>
+                    <td role="cell" class="" aria-colindex="5" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{rate}}</td>
+                    <td role="cell" class="" aria-colindex="6" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{type.uppercase()}}</td>
+                    <td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" @click="cancelDEX('{{txid}}','spkcc_')">CANCEL</button></td>
                   </tr>
                 </tbody>
                 <tfoot>
                   <tr role="row" class="" >
                     <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
-                      <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="openorders.pages > 1">
-                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="openorders.prev()" dmx-show="openorders.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                      <div class="d-flex flex-fill justify-content-between align-items-center" v-if="openorders.pages > 1">
+                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="openorders.prev()" v-if="openorders.has.prev"><i class="fa fa-angle-left"></i></a></div>
                         <div class="d-flex">
                           <p class="m-0 p-0 text-muted">Page {{openorders.page}} of {{openorders.pages}}</p>
                         </div>
-                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="openorders.next()" dmx-show="openorders.has.next"><i class="fa fa-angle-right"></i></a></div>
+                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="openorders.next()" v-if="openorders.has.next"><i class="fa fa-angle-right"></i></a></div>
                       </div></td>
                   </tr>
                 </tfoot>
@@ -513,45 +521,52 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="buyType" id="buylimit" checked dmx-on:click="buyQuantity.setValue('');buyHours.setValue('720')">
+                          <input type="radio" name="buyType" id="buylimit" checked @click="buyQuantity.setValue('');buyHours.setValue('720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="buyType" id="buymarket" dmx-on:click="buyQuantity.setValue('0');buyHours.setValue('0')">
+                          <input type="radio" name="buyType" id="buymarket" @click="buyQuantity.setValue('0');buyHours.setValue('0')">
                           MARKET </label>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group"for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" dmx-hide="buymarket.checked">
+              <div class="form-group"for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" v-if="!buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input type="number" required class="form-control bg-dark border-dark text-white-50" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="buymarket.checked">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">LARYNX</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
+							<a href="#" v-if="buyPrice.value > 0" class="d-none mr-2 badge badge-primary" @click="buyQuantity.setValue((accountapi.balance.parseFloat()/buyPrice.value).formatNumber(3,'.',','))">MAX</a>
+							LARYNX
+							 </div>
                       </div>
                       <div class="invalid-feedback"> Minimum quantity is 0.001 </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyPrice" id="buy-price" aria-labelledby="buy-price-label" dmx-hide="buymarket.checked">
+              <div class="form-group" for="buyPrice" id="buy-price" aria-labelledby="buy-price-label" v-if="!buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input id="buyPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span dmx-show="buyhive.checked">HIVE</span><span dmx-show="buyhbd.checked">HBD</span>/LARYNX</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
+							<a v-if="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" @click="buyPrice.setValue((accountapi.balance.parseFloat()/buyQuantity.value).formatNumber(3,'.',','))">MAX</a>
+							<span v-if="buyhive.checked">HIVE</span>
+							<span v-if="buyhbd.checked">HBD</span>
+							/LARYNX</div>
                       </div>
                       <div class="invalid-feedback"> Minimum price is 0.000001 </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" dmx-hide="buymarket.checked">
+              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" v-if="!buymarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -565,30 +580,30 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyHiveTotal" id="buy-hive-total" aria-labelledby="buy-hive-total-label" dmx-show="buyhive.checked">
+              <div class="form-group" for="buyHiveTotal" id="buy-hive-total" aria-labelledby="buy-hive-total-label" v-if="buyhive.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info" dmx-class:disabled-input="buylimit.checked" :readonly="buyhbd.checked" :value="buyhive.checked.then((buyPrice.value*buyQuantity.value).toFixed(3),'0')" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" :max="">
+                      <input type="number" class="form-control bg-dark border-dark text-info" v-bind:disabled-input="buylimit.checked" :readonly="buyhbd.checked" :value="buyhive.checked.then((buyPrice.value*buyQuantity.value).toFixed(3),'0')" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" :max="{{accountapi.balance.parseFloat()}}">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
                       </div>
-                      <div class="invalid-feedback"> Minimum total is 0.001 - increase the quantity or price </div>
+                      <div class="invalid-feedback"> Your balance is {{accountapi.balance.parseFloat().formatNumber(3,'.',',')}} - minimum order is 0.001 </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyHBDTotal" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" dmx-show="buyhbd.checked">
+              <div class="form-group" for="buyHBDTotal" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" v-if="buyhbd.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info" dmx-class:disabled-input="buylimit.checked" :readonly="buyhive.checked" id="buyHBDTotal" :value="buyhbd.checked.then((buyPrice.value*buyQuantity.value).toFixed(3),'0')" placeholder="0" min="0.001" step="0.001" :max="" aria-required="true">
+                      <input type="number" class="form-control bg-dark border-dark text-info" v-bind:disabled-input="buylimit.checked" :readonly="buyhive.checked" id="buyHBDTotal" :value="buyhbd.checked.then((buyPrice.value*buyQuantity.value).toFixed(3),'0')" placeholder="0" min="0.001" step="0.001" :max="{{accountapi.hbd_balance.parseFloat()}}" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
                       </div>
-                      <div class="invalid-feedback"> Minimum total is 0.001 - increase the quantity or price </div>
+                      <div class="invalid-feedback"> Your balance is {{accountapi.hbd_balance.parseFloat().formatNumber(3,'.',',')}} - minimum order is 0.001 </div>
                     </div>
                   </div>
                 </div>
@@ -608,10 +623,10 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="sellType" id="selllimit" checked dmx-on:click="sellPrice.setValue('');sellHours.setValue('720')">
+                          <input type="radio" name="sellType" id="selllimit" checked @click="sellPrice.setValue('');sellHours.setValue('720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="sellType" id="sellmarket" dmx-on:click="sellPrice.setValue('0');sellHours.setValue('0')">
+                          <input type="radio" name="sellType" id="sellmarket" @click="sellPrice.setValue('0');sellHours.setValue('0')">
                           MARKET </label>
                       </div>
                     </div>
@@ -623,30 +638,30 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control bg-dark border-dark text-white-50" id="sellQuantity" placeholder="0" min="0.004" step="0.001" aria-required="true" >
+                      <input type="number" required class="form-control bg-dark border-dark text-white-50" id="sellQuantity" placeholder="0" min="0.004" step="0.001" aria-required="true" :max="{{(openordersapi.balance/1000)}}">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">LARYNX</div>
                       </div>
-                      <div class="invalid-feedback"> Minimum quantity is 0.004 </div>
+                      <div class="invalid-feedback"> Your balance is {{(openordersapi.balance/1000).formatNumber(3,'.',',')}} - minimum quantity is 0.004 </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellPrice" id="sell-price" aria-labelledby="sell-price-label" dmx-hide="sellmarket.checked">
+              <div class="form-group" for="sellPrice" id="sell-price" aria-labelledby="sell-price-label" v-if="!sellmarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input id="sellPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="sellmarket.checked">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span dmx-show="buyhive.checked">HIVE</span><span dmx-show="buyhbd.checked">HBD</span>/LARYNX</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span v-if="buyhive.checked">HIVE</span><span v-if="buyhbd.checked">HBD</span>/LARYNX</div>
                       </div>
                       <div class="invalid-feedback"> Minimum price is 0.000001 </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellHours" id="sell-hours" aria-labelledby="sell-hours-label" dmx-hide="sellmarket.checked">
+              <div class="form-group" for="sellHours" id="sell-hours" aria-labelledby="sell-hours-label" v-if="!sellmarket.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -660,7 +675,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellHiveTotal" id="sell-hive-total" aria-labelledby="sell-hive-total-label" dmx-show="buyhive.checked && selllimit.checked">
+              <div class="form-group" for="sellHiveTotal" id="sell-hive-total" aria-labelledby="sell-hive-total-label" v-if="buyhive.checked && selllimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -677,7 +692,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="sellHBDTotal" id="sell-hbd-total" aria-labelledby="sell-hbd-total-label" dmx-show="buyhbd.checked && selllimit.checked">
+              <div class="form-group" for="sellHBDTotal" id="sell-hbd-total" aria-labelledby="sell-hbd-total-label" v-if="buyhbd.checked && selllimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -701,7 +716,7 @@ include_once( $path );
           </div>
         </div>
       </div>
-      <div id="hiveData"  dmx-show="buyhive.checked">
+      <div id="hiveData"  v-if="buyhive.checked">
         <div id="hiveMarketOrders">
           <div class="row">
             <div class="mt-3 col-md-6">
@@ -718,22 +733,22 @@ include_once( $path );
                   </thead>
                   <tbody role="rowgroup">
                     <!--repeat region-->
-                    <tr class="" role="row" v-for="buy in hivebuys" :key="buy.txid">
+                    <tr class="" role="row" dmx-repeat:hivebuyorders="hivebuys.groupBy('rate')">
                       <td aria-colindex="1" role="cell" class=""></td>
-                      <td aria-colindex="2" role="cell" class="">{{(buy.sum('hive')/1000)}}</td>
-                      <td aria-colindex="3" role="cell" class="">{{(buy.sum('amount')/1000)}}</td>
-                      <td aria-colindex="4" role="cell" class="text-primary"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></td>
+                      <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
+                      <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
+                      <td aria-colindex="4" role="cell" class="text-primary"><a href="#" @click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr role="row" class="" >
                       <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
-                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hivebuys.pages > 1">
-                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hivebuys.prev()" dmx-show="hivebuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hivebuys.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="hivebuys.prev()" v-if="hivebuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
                           <div class="d-flex">
                             <p class="m-0 p-0 text-muted">Page {{hivebuys.page}} of {{hivebuys.pages}}</p>
                           </div>
-                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hivebuys.next()" dmx-show="hivebuys.has.next"><i class="fa fa-angle-right"></i></a></div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="hivebuys.next()" v-if="hivebuys.has.next"><i class="fa fa-angle-right"></i></a></div>
                         </div></td>
                     </tr>
                   </tfoot>
@@ -754,8 +769,8 @@ include_once( $path );
                   </thead>
                   <tbody role="rowgroup">
                     <!--repeat region-->
-                    <tr class="" role="row" dmx-repeat:hivesellorders="hivesells.data.groupBy('rate')">
-                      <td aria-colindex="1" role="cell" class="text-primary"><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
+                    <tr class="" role="row" dmx-repeat:hivesellorders="hivesells.groupBy('rate')">
+                      <td aria-colindex="1" role="cell" class="text-primary"><a href="#" @click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
@@ -764,12 +779,12 @@ include_once( $path );
                   <tfoot>
                     <tr role="row" class="" >
                       <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
-                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hivesells.pages > 1">
-                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hivesells.prev()" dmx-show="hivesells.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hivesells.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="hivesells.prev()" v-if="hivesells.has.prev"><i class="fa fa-angle-left"></i></a></div>
                           <div class="d-flex">
                             <p class="m-0 p-0 text-muted">Page {{hivesells.page}} of {{hivesells.pages}}</p>
                           </div>
-                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hivesells.next()" dmx-show="hivesells.has.next"><i class="fa fa-angle-right"></i></a></div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="hivesells.next()" v-if="hivesells.has.next"><i class="fa fa-angle-right"></i></a></div>
                         </div></td>
                     </tr>
                   </tfoot>
@@ -795,7 +810,7 @@ include_once( $path );
                   <tbody role="rowgroup">
                     <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hiveorderhistory="recenthive.data">
-                      <td aria-colindex="1" role="cell" class="" dmx-class:text-danger="type == 'sell'" dmx-class:text-success="type == 'buy'">{{price}}</td>
+                      <td aria-colindex="1" role="cell" class="" v-bind:text-danger="type == 'sell'" v-bind:text-success="type == 'buy'">{{price}}</td>
                       <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
                       <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
                     </tr>
@@ -803,12 +818,12 @@ include_once( $path );
                   <tfoot>
                     <tr role="row" class="" >
                       <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
-                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="recenthive.pages > 1">
-                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="recenthive.prev()" dmx-show="recenthive.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex flex-fill justify-content-between align-items-center" v-if="recenthive.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="recenthive.prev()" v-if="recenthive.has.prev"><i class="fa fa-angle-left"></i></a></div>
                           <div class="d-flex">
                             <p class="m-0 p-0 text-muted">Page {{recenthive.page}} of {{recenthive.pages}}</p>
                           </div>
-                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="recenthive.next()" dmx-show="recenthive.has.next"><i class="fa fa-angle-right"></i></a></div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="recenthive.next()" v-if="recenthive.has.next"><i class="fa fa-angle-right"></i></a></div>
                         </div></td>
                     </tr>
                   </tfoot>
@@ -818,7 +833,7 @@ include_once( $path );
           </div>
         </div>
       </div>
-      <div id="hbdData"  dmx-show="buyhbd.checked">
+      <div id="hbdData"  v-if="buyhbd.checked">
         <div id="hbdMarketOrders">
           <div class="row">
             <div class="mt-3 col-md-6">
@@ -835,22 +850,22 @@ include_once( $path );
                   </thead>
                   <tbody role="rowgroup">
                     <!--repeat region-->
-                    <tr class="" role="row" dmx-repeat:hbdbuyorders="hbdbuys.data.groupBy('rate')">
+                    <tr class="" role="row" dmx-repeat:hbdbuyorders="hbdbuys.groupBy('rate')">
                       <td aria-colindex="1" role="cell" class=""></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
-                      <td aria-colindex="4" role="cell" class=""><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></td>
+                      <td aria-colindex="4" role="cell" class=""><a href="#" @click="javascript:insertBal('{{$key}}', 'buyPrice')">{{$key}}</a></td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr role="row" class="" >
                       <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
-                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hbdbuys.pages > 1">
-                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hbdbuys.prev()" dmx-show="hbdbuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hbdbuys.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="hbdbuys.prev()" v-if="hbdbuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
                           <div class="d-flex">
                             <p class="m-0 p-0 text-muted">Page {{hbdbuys.page}} of {{hbdbuys.pages}}</p>
                           </div>
-                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hbdbuys.next()" dmx-show="hbdbuys.has.next"><i class="fa fa-angle-right"></i></a></div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="hbdbuys.next()" v-if="hbdbuys.has.next"><i class="fa fa-angle-right"></i></a></div>
                         </div></td>
                     </tr>
                   </tfoot>
@@ -871,8 +886,8 @@ include_once( $path );
                   </thead>
                   <tbody role="rowgroup">
                     <!--repeat region-->
-                    <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.data.groupBy('rate')" dmx-class:border-warning="txid == 'DLUXICO'">
-                      <td aria-colindex="1" role="cell" class=""><a href="#" dmx-on:click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
+                    <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.groupBy('rate')" v-bind:border-warning="txid == 'DLUXICO'">
+                      <td aria-colindex="1" role="cell" class=""><a href="#" @click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="3" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
                       <td aria-colindex="4" role="cell" class=""></td>
@@ -881,12 +896,12 @@ include_once( $path );
                   <tfoot>
                     <tr role="row" class="" >
                       <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
-                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="hbdsells.pages > 1">
-                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="hbdsells.prev()" dmx-show="hbdsells.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hbdsells.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="hbdsells.prev()" v-if="hbdsells.has.prev"><i class="fa fa-angle-left"></i></a></div>
                           <div class="d-flex">
                             <p class="m-0 p-0 text-muted">Page {{hbdsells.page}} of {{hbdsells.pages}}</p>
                           </div>
-                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="hbdsells.next()" dmx-show="hbdsells.has.next"><i class="fa fa-angle-right"></i></a></div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="hbdsells.next()" v-if="hbdsells.has.next"><i class="fa fa-angle-right"></i></a></div>
                         </div></td>
                     </tr>
                   </tfoot>
@@ -912,7 +927,7 @@ include_once( $path );
                   <tbody role="rowgroup">
                     <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hbdorderhistory="recenthbd.data">
-                      <td aria-colindex="1" role="cell" class="" dmx-class:text-danger="type == 'sell'" dmx-class:text-success="type == 'buy'">{{price}}</td>
+                      <td aria-colindex="1" role="cell" class="" v-bind:text-danger="type == 'sell'" v-bind:text-success="type == 'buy'">{{price}}</td>
                       <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
                       <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
                     </tr>
@@ -920,12 +935,12 @@ include_once( $path );
                   <tfoot>
                     <tr role="row" class="" >
                       <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
-                        <div class="d-flex flex-fill justify-content-between align-items-center" dmx-show="recenthbd.pages > 1">
-                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" dmx-on:click="recenthbd.prev()" dmx-show="recenthbd.has.prev"><i class="fa fa-angle-left"></i></a></div>
+                        <div class="d-flex flex-fill justify-content-between align-items-center" v-if="recenthbd.pages > 1">
+                          <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="recenthbd.prev()" v-if="recenthbd.has.prev"><i class="fa fa-angle-left"></i></a></div>
                           <div class="d-flex">
                             <p class="m-0 p-0 text-muted">Page {{recenthbd.page}} of {{recenthbd.pages}}</p>
                           </div>
-                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" dmx-on:click="recenthbd.next()" dmx-show="recenthbd.has.next"><i class="fa fa-angle-right"></i></a></div>
+                          <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="recenthbd.next()" v-if="recenthbd.has.next"><i class="fa fa-angle-right"></i></a></div>
                         </div></td>
                     </tr>
                   </tfoot>
@@ -938,7 +953,6 @@ include_once( $path );
     </div>
   </div>
 </main>
-</div>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/footer.php";
@@ -964,7 +978,7 @@ include_once( $path );
       }, false);
     });
     setTimeout(function(){ 
-      //totals()
+      totals()
   }, 1000);
 });
 })()
