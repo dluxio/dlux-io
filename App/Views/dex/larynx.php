@@ -183,9 +183,9 @@ include_once( $path );
             </div>
           </div>
           <div class="d-flex align-items-center text-white-50">
-            <div id="userdlux" class="mx-4 text-warning">{{(openorders.balance/1000).formatNumber(3,'.',',')}} LARYNX</div>
-            <div id="userdpwr" class="mx-4 text-primary" v-if="openorders.poweredUp > 0">{{(openorders.poweredUp/1000).formatNumber(3,'.',',')}} LARYNXP</div>
-            <div id="userdgov" class="mx-4 text-info" v-if="openorders.gov > 0">{{(openorders.gov/1000).formatNumber(3,'.',',')}} LARYNXG</div>
+            <div id="userdlux" class="mx-4 text-warning">{{(openorders.balance/1000)}} LARYNX</div>
+            <div id="userdpwr" class="mx-4 text-primary" v-if="openorders.poweredUp > 0">{{(openorders.poweredUp/1000)}} LARYNXP</div>
+            <div id="userdgov" class="mx-4 text-info" v-if="openorders.gov > 0">{{(openorders.gov/1000)}} LARYNXG</div>
             <div id="userhive" class="mx-4 text-danger">{{accountapi.balance}}</div>
             <div id="userhbd" class="mx-4 text-success">{{accountapi.hbd_balance}}</div>
           </div>
@@ -527,7 +527,7 @@ include_once( $path );
                       <input type="number" required class="form-control bg-dark border-dark text-white-50" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
-							<a href="#" v-if="buyPrice.value > 0" class="d-none mr-2 badge badge-primary" @click="buyQuantity.setValue((accountapi.balance.parseFloat()/buyPrice.value).formatNumber(3,'.',','))">MAX</a>
+							<a href="#" v-if="buyPrice.value > 0" class="d-none mr-2 badge badge-primary" @click="buyQuantity.setValue((accountapi.balance.parseFloat()/buyPrice.value))">MAX</a>
 							LARYNX
 							 </div>
                       </div>
@@ -544,7 +544,7 @@ include_once( $path );
                       <input id="buyPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
-							<a v-if="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" @click="buyPrice.setValue((accountapi.balance.parseFloat()/buyQuantity.value).formatNumber(3,'.',','))">MAX</a>
+							<a v-if="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" @click="buyPrice.setValue((accountapi.balance.parseFloat()/buyQuantity.value))">MAX</a>
 							<span v-if="buyhive.checked">HIVE</span>
 							<span v-if="buyhbd.checked">HBD</span>
 							/LARYNX</div>
@@ -577,7 +577,7 @@ include_once( $path );
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
                       </div>
-                      <div class="invalid-feedback"> Your balance is {{accountapi.balance.parseFloat().formatNumber(3,'.',',')}} - minimum order is 0.001 </div>
+                      <div class="invalid-feedback"> Your balance is {{accountapi.balance.parseFloat()}} - minimum order is 0.001 </div>
                     </div>
                   </div>
                 </div>
@@ -591,7 +591,7 @@ include_once( $path );
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
                       </div>
-                      <div class="invalid-feedback"> Your balance is {{accountapi.hbd_balance.parseFloat().formatNumber(3,'.',',')}} - minimum order is 0.001 </div>
+                      <div class="invalid-feedback"> Your balance is {{accountapi.hbd_balance.parseFloat()}} - minimum order is 0.001 </div>
                     </div>
                   </div>
                 </div>
@@ -630,7 +630,7 @@ include_once( $path );
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">LARYNX</div>
                       </div>
-                      <div class="invalid-feedback"> Your balance is {{(openorders.balance/1000).formatNumber(3,'.',',')}} - minimum quantity is 0.004 </div>
+                      <div class="invalid-feedback"> Your balance is {{(openorders.balance/1000)}} - minimum quantity is 0.004 </div>
                     </div>
                   </div>
                 </div>
