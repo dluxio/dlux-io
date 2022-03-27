@@ -941,8 +941,8 @@ function totals (){
 <script>
 var disabletab = document.getElementsByClassName("disabled-input");
 for (var i = 0; i < disabletab.length;i++){disabletab[i].setAttribute('tabindex', '-1')}
-const now = new Date().getTime()
-const ago24 = new Date(now - 86400000).getTime()
+const nowtime = new Date().getTime()
+const ago24 = new Date(nowtime - 86400000).getTime()
 document.getElementById('timeoffset').value = ago24
 document.getElementById('timenow').value = now
 	</script>
