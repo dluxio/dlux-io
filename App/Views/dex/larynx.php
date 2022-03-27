@@ -229,7 +229,7 @@ include_once( $path );
 			</div>
 			</div>
             <div class="table-responsive rounded border border-dark">
-              <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
+              <!-- <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
                     <th role="columnheader" class="" aria-colindex="1" v-bind:col-sort="marketnodes.sort.on == 'account'"> <div class="d-flex align-items-center">
@@ -263,7 +263,6 @@ include_once( $path );
                     </div></th>
                   </tr>
                 <tbody role="rowgroup">
-                  <!--repeat region-->
                   <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.where(`account`, filteraccount.value, 'fuzzySearch')" v-if="filterusers.checked">
                     <td role="cell" class="" aria-colindex="1"><a href="/@{{account}}">@{{account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
@@ -277,7 +276,7 @@ include_once( $path );
                 </tbody>
                 <tfoot>
                   <tr role="row" class="" >
-                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                    <td role="cell" class="" colspan="7" aria-colindex="1">
                       <div class="d-flex flex-fill justify-content-between align-items-center" v-if="marketnodes.pages > 1">
                         <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="marketnodes.prev()" v-if="marketnodes.has.prev"><i class="fa fa-angle-left"></i></a></div>
                         <div class="d-flex">
@@ -287,7 +286,7 @@ include_once( $path );
                       </div></td>
                   </tr>
                 </tfoot>
-              </table>
+              </table> -->
             </div>
           </div>
         </div>
@@ -426,7 +425,7 @@ include_once( $path );
               <h5>No open orders</h5>
             </div>
             <div class="table-responsive rounded border border-dark" v-if="openorders.length > 0">
-              <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
+              <!-- <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
                     <th role="columnheader" class="" aria-colindex="1" v-bind:col-sort="openorders.sort.on == 'block'"> <div class="d-flex align-items-center">
@@ -471,7 +470,6 @@ include_once( $path );
                     </th>
                   </tr>
                 <tbody role="rowgroup">
-                  <!--repeat region-->
                   <tr role="row" class="" dmx-repeat:openordersrepeat="openorders.data">
                     <td role="cell" class="" aria-colindex="1">{{block}}</td>
                     <td role="cell" class="" aria-colindex="2">{{amount/1000}}</td>
@@ -484,7 +482,7 @@ include_once( $path );
                 </tbody>
                 <tfoot>
                   <tr role="row" class="" >
-                    <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                    <td role="cell" class="" colspan="7" aria-colindex="1">
                       <div class="d-flex flex-fill justify-content-between align-items-center" v-if="openorders.pages > 1">
                         <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="openorders.prev()" v-if="openorders.has.prev"><i class="fa fa-angle-left"></i></a></div>
                         <div class="d-flex">
@@ -494,12 +492,12 @@ include_once( $path );
                       </div></td>
                   </tr>
                 </tfoot>
-              </table>
+              </table> -->
             </div>
           </div>
         </div>
       </div>
-      <div id="tradeForms">
+      <!-- <div id="tradeForms">
         <div class="row">
           <div class="mt-3 col-md-6">
             <h4>Buy LARYNX</h4>
@@ -705,14 +703,14 @@ include_once( $path );
             </form>
           </div>
         </div>
-      </div>
+      </div> -->
       <div id="hiveData"  v-if="buyhive.checked">
         <div id="hiveMarketOrders">
           <div class="row">
             <div class="mt-3 col-md-6">
               <h4>Buy Orders</h4>
               <div class="table-responsive">
-                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivebuyordertable">
+                <!-- <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivebuyordertable">
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HIVE</th>
@@ -722,7 +720,6 @@ include_once( $path );
                     </tr>
                   </thead>
                   <tbody role="rowgroup">
-                    <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hivebuyorders="hivebuys.groupBy('rate')">
                       <td aria-colindex="1" role="cell" class=""></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('hive')/1000).formatNumber('3','.',',')}}</td>
@@ -732,7 +729,7 @@ include_once( $path );
                   </tbody>
                   <tfoot>
                     <tr role="row" class="" >
-                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      <td role="cell" class="" colspan="7" aria-colindex="1">
                         <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hivebuys.pages > 1">
                           <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="hivebuys.prev()" v-if="hivebuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
                           <div class="d-flex">
@@ -742,13 +739,13 @@ include_once( $path );
                         </div></td>
                     </tr>
                   </tfoot>
-                </table>
+                </table> -->
               </div>
             </div>
             <div class="mt-3 col-md-6">
               <h4>Sell Orders</h4>
               <div class="table-responsive">
-                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivesellorderstable">
+                <!-- <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivesellorderstable">
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
@@ -758,7 +755,6 @@ include_once( $path );
                     </tr>
                   </thead>
                   <tbody role="rowgroup">
-                    <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hivesellorders="hivesells.groupBy('rate')">
                       <td aria-colindex="1" role="cell" class="text-primary"><a href="#" @click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
@@ -768,7 +764,7 @@ include_once( $path );
                   </tbody>
                   <tfoot>
                     <tr role="row" class="" >
-                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      <td role="cell" class="" colspan="7" aria-colindex="1">
                         <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hivesells.pages > 1">
                           <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="hivesells.prev()" v-if="hivesells.has.prev"><i class="fa fa-angle-left"></i></a></div>
                           <div class="d-flex">
@@ -778,8 +774,7 @@ include_once( $path );
                         </div></td>
                     </tr>
                   </tfoot>
-                  <!---->
-                </table>
+                </table> -->
               </div>
             </div>
           </div>
@@ -789,7 +784,7 @@ include_once( $path );
             <div class="mt-3 col-12">
               <h4>Trade History</h4>
               <div class="table-responsive">
-                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivetradehistorytable">
+                <!-- <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivetradehistorytable">
                   <thead role="rowgroup" class="">
                     <tr role="row">
                       <th role="columnheader" scope="col" aria-colindex="1" class="" >PRICE</th>
@@ -798,7 +793,6 @@ include_once( $path );
                     </tr>
                   </thead>
                   <tbody role="rowgroup">
-                    <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hiveorderhistory="recenthive.data">
                       <td aria-colindex="1" role="cell" class="" v-bind:text-danger="type == 'sell'" v-bind:text-success="type == 'buy'">{{price}}</td>
                       <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
@@ -807,7 +801,7 @@ include_once( $path );
                   </tbody>
                   <tfoot>
                     <tr role="row" class="" >
-                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      <td role="cell" class="" colspan="7" aria-colindex="1">
                         <div class="d-flex flex-fill justify-content-between align-items-center" v-if="recenthive.pages > 1">
                           <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="recenthive.prev()" v-if="recenthive.has.prev"><i class="fa fa-angle-left"></i></a></div>
                           <div class="d-flex">
@@ -817,7 +811,7 @@ include_once( $path );
                         </div></td>
                     </tr>
                   </tfoot>
-                </table>
+                </table> -->
               </div>
             </div>
           </div>
@@ -829,7 +823,7 @@ include_once( $path );
             <div class="mt-3 col-md-6">
               <h4>Buy Orders</h4>
               <div class="table-responsive">
-                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdbuyordertable">
+                <!-- <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdbuyordertable">
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HBD</th>
@@ -839,7 +833,6 @@ include_once( $path );
                     </tr>
                   </thead>
                   <tbody role="rowgroup">
-                    <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hbdbuyorders="hbdbuys.groupBy('rate')">
                       <td aria-colindex="1" role="cell" class=""></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('hbd')/1000).formatNumber('3','.',',')}}</td>
@@ -849,7 +842,7 @@ include_once( $path );
                   </tbody>
                   <tfoot>
                     <tr role="row" class="" >
-                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      <td role="cell" class="" colspan="7" aria-colindex="1">
                         <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hbdbuys.pages > 1">
                           <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="hbdbuys.prev()" v-if="hbdbuys.has.prev"><i class="fa fa-angle-left"></i></a></div>
                           <div class="d-flex">
@@ -859,13 +852,13 @@ include_once( $path );
                         </div></td>
                     </tr>
                   </tfoot>
-                </table>
+                </table> -->
               </div>
             </div>
             <div class="mt-3 col-md-6">
               <h4>Sell Orders</h4>
               <div class="table-responsive">
-                <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdsellorderstable">
+                <!-- <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdsellorderstable">
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
@@ -875,7 +868,6 @@ include_once( $path );
                     </tr>
                   </thead>
                   <tbody role="rowgroup">
-                    <!--repeat region-->
                     <tr class="" role="row" dmx-repeat:hbdsellorders="hbdsells.groupBy('rate')" v-bind:border-warning="txid == 'DLUXICO'">
                       <td aria-colindex="1" role="cell" class=""><a href="#" @click="javascript:insertBal('{{$key}}', 'sellPrice')">{{$key}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{($value.sum('amount')/1000).formatNumber('3','.',',')}}</td>
@@ -885,7 +877,7 @@ include_once( $path );
                   </tbody>
                   <tfoot>
                     <tr role="row" class="" >
-                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      <td role="cell" class="" colspan="7" aria-colindex="1">
                         <div class="d-flex flex-fill justify-content-between align-items-center" v-if="hbdsells.pages > 1">
                           <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="hbdsells.prev()" v-if="hbdsells.has.prev"><i class="fa fa-angle-left"></i></a></div>
                           <div class="d-flex">
@@ -895,8 +887,7 @@ include_once( $path );
                         </div></td>
                     </tr>
                   </tfoot>
-                  <!---->
-                </table>
+                </table> -->
               </div>
             </div>
           </div>
@@ -907,24 +898,23 @@ include_once( $path );
               <h4>Trade History</h4>
               <div class="table-responsive">
                 <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdtradehistorytable">
-                  <thead role="rowgroup" class="">
+                  <!-- <thead role="rowgroup" class="">
                     <tr role="row">
                       <th role="columnheader" scope="col" aria-colindex="1" class="" >PRICE</th>
                       <th role="columnheader" scope="col" aria-colindex="2" class="">QTY</th>
                       <th role="columnheader" scope="col" aria-colindex="3" class="">TIME</th>
                     </tr>
-                  </thead>
-                  <tbody role="rowgroup">
-                    <!--repeat region-->
+                  </thead> -->
+                  <!-- <tbody role="rowgroup">
                     <tr class="" role="row" dmx-repeat:hbdorderhistory="recenthbd.data">
                       <td aria-colindex="1" role="cell" class="" v-bind:text-danger="type == 'sell'" v-bind:text-success="type == 'buy'">{{price}}</td>
                       <td aria-colindex="2" role="cell" class="">{{target_volume}}</td>
                       <td aria-colindex="3" role="cell" class="">{{trade_timestamp.toBetterDate()}}</td>
                     </tr>
-                  </tbody>
-                  <tfoot>
+                  </tbody> -->
+                  <!-- <tfoot>
                     <tr role="row" class="" >
-                      <td role="cell" class="" colspan="7" aria-colindex="1"><!-- pagination -->
+                      <td role="cell" class="" colspan="7" aria-colindex="1">
                         <div class="d-flex flex-fill justify-content-between align-items-center" v-if="recenthbd.pages > 1">
                           <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="recenthbd.prev()" v-if="recenthbd.has.prev"><i class="fa fa-angle-left"></i></a></div>
                           <div class="d-flex">
@@ -933,7 +923,7 @@ include_once( $path );
                           <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="recenthbd.next()" v-if="recenthbd.has.next"><i class="fa fa-angle-right"></i></a></div>
                         </div></td>
                     </tr>
-                  </tfoot>
+                  </tfoot> -->
                 </table>
               </div>
             </div>
