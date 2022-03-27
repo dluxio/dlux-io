@@ -40,7 +40,7 @@ input.disabled-input {
   }
 </script>-->
 <script type="module">
-  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js'
+  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 
   createApp({
     data() {
