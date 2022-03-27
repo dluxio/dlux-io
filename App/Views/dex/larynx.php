@@ -340,13 +340,13 @@ include_once( $path );
             <div id="dluxhivequote">
               <h2 class="lead my-0"><b>LARYNX: ${{(dexapi?.markets?.hive?.tick*hiveprice.hive.usd)}}</b></h2>
             </div>
-            <input id="dluxhiveusd" :value="dexapi.markets.hive.tick" class="d-none">
+            <input id="dluxhiveusd" :value="dexapi?.markets?.hive?.tick" class="d-none">
           </div>
           <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
             <div id="dluxhbdquote">
               <h2 class="lead my-0"><b>LARYNX: ${{(dexapi?.markets?.hbd?.tick*hbdprice.hive_dollar.usd)}}</b></h2>
             </div>
-            <input id="dluxhbdusd" :value="dexapi.markets.hbd.tick" class="d-none">
+            <input id="dluxhbdusd" :value="dexapi?.markets?.hbd?.tick" class="d-none">
           </div>
         </div>
       </div>
@@ -356,10 +356,10 @@ include_once( $path );
           <div class="container-fluid mt-3">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-outline-warning active">
-                <input name="buypair" type="radio" id="buyhive" checked @click="buy.buyHiveTotal.setValue('');sell.sellHiveTotal.setValue('');buy.buyHBDTotal.setValue('0');sell.sellHBDTotal.setValue('0')">
+                <!-- <input name="buypair" type="radio" id="buyhive" checked @click="buy.buyHiveTotal.setValue('');sell.sellHiveTotal.setValue('');buy.buyHBDTotal.setValue('0');sell.sellHBDTotal.setValue('0')"> -->
                 HIVE </label>
               <label class="btn btn-outline-warning">
-                <input type="radio" name="buypair" id="buyhbd" @click="buy.buyHBDTotal.setValue('');sell.sellHBDTotal.setValue('');buy.buyHiveTotal.setValue('0');sell.sellHiveTotal.setValue('0')">
+                <!-- <input type="radio" name="buypair" id="buyhbd" @click="buy.buyHBDTotal.setValue('');sell.sellHBDTotal.setValue('');buy.buyHiveTotal.setValue('0');sell.sellHiveTotal.setValue('0')"> -->
                 HBD </label>
             </div>
           </div>
