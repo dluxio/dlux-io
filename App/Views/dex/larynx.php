@@ -140,7 +140,7 @@ input.disabled-input {
             return parseFloat(b.rate) - parseFloat(a.rate)
           }).reduce((acc, cur) => {
             if(!acc.length || acc[acc.length-1].rate != cur.rate) {
-              cur.total = cur.hive + (acc[acc.length-1].total || 0)
+              cur.total = cur.hive + (acc[acc.length-1]?.total || 0)
               acc.push(cur)
             } else {
               acc[acc.length-1].total = cur.hive + acc[acc.length-1].total
@@ -153,7 +153,7 @@ input.disabled-input {
             return parseFloat(a.rate) - parseFloat(b.rate)
           }).reduce((acc, cur) => {
             if(!acc.length || acc[acc.length-1].rate != cur.rate) {
-              cur.total = cur.hive + (acc[acc.length-1].total || 0)
+              cur.total = cur.hive + (acc[acc.length-1]?.total || 0)
               acc.push(cur)
             } else {
               acc[acc.length-1].total = cur.hive + acc[acc.length-1].total
@@ -166,7 +166,7 @@ input.disabled-input {
             return parseFloat(b.rate) - parseFloat(a.rate)
           }).reduce((acc, cur) => {
             if(!acc.length || acc[acc.length-1].rate != cur.rate) {
-              cur.total = cur.hbd + (acc[acc.length-1].total || 0)
+              cur.total = cur.hbd + (acc[acc.length-1]?.total || 0)
               acc.push(cur)
             } else {
               acc[acc.length-1].total = cur.hbd + acc[acc.length-1].total
@@ -179,7 +179,7 @@ input.disabled-input {
             return parseFloat(a.rate) - parseFloat(b.rate)
           }).reduce((acc, cur) => {
             if(!acc.length || acc[acc.length-1].rate != cur.rate) {
-              cur.total = cur.hbd + (acc[acc.length-1].total || 0)
+              cur.total = cur.hbd + (acc[acc.length-1]?.total || 0)
               acc.push(cur)
             } else {
               acc[acc.length-1].total = cur.hbd + acc[acc.length-1].total
