@@ -138,16 +138,56 @@ input.disabled-input {
         .then(data => {
           this.hivebuys = data.markets.hive.buys.sort(function(a, b) {
             return parseFloat(b.rate) - parseFloat(a.rate)
-          })
+          }).reduce((acc, cur) => {
+            if(acc[acc.length-1].rate != cur.rate) {
+              cur.total = cur.hive + acc[acc.length-1].total
+              acc.push(cur)
+            } else {
+              acc[acc.length-1].total = cur.hive + acc[acc.length-1].total
+              acc[acc.length-1].hive = cur.hive + acc[acc.length-1].hive
+              acc[acc.length-1].amount = cur.amount + acc[acc.length-1].amount
+            }
+            return acc
+          }, [])
           this.hivesells = data.markets.hive.sells.sort(function(a, b) {
             return parseFloat(a.rate) - parseFloat(b.rate)
-          })
+          }).reduce((acc, cur) => {
+            if(acc[acc.length-1].rate != cur.rate) {
+              cur.total = cur.hive + acc[acc.length-1].total
+              acc.push(cur)
+            } else {
+              acc[acc.length-1].total = cur.hive + acc[acc.length-1].total
+              acc[acc.length-1].hive = cur.hive + acc[acc.length-1].hive
+              acc[acc.length-1].amount = cur.amount + acc[acc.length-1].amount
+            }
+            return acc
+          }, [])
           this.hbdbuys = data.markets.hbd.buys.sort(function(a, b) {
             return parseFloat(b.rate) - parseFloat(a.rate)
-          })
+          }).reduce((acc, cur) => {
+            if(acc[acc.length-1].rate != cur.rate) {
+              cur.total = cur.hbd + acc[acc.length-1].total
+              acc.push(cur)
+            } else {
+              acc[acc.length-1].total = cur.hbd + acc[acc.length-1].total
+              acc[acc.length-1].hbd = cur.hbd + acc[acc.length-1].hbd
+              acc[acc.length-1].amount = cur.amount + acc[acc.length-1].amount
+            }
+            return acc
+          }, [])
           this.hbdsells = data.markets.hbd.sells.sort(function(a, b) {
             return parseFloat(a.rate) - parseFloat(b.rate)
-          })
+          }).reduce((acc, cur) => {
+            if(acc[acc.length-1].rate != cur.rate) {
+              cur.total = cur.hbd + acc[acc.length-1].total
+              acc.push(cur)
+            } else {
+              acc[acc.length-1].total = cur.hbd + acc[acc.length-1].total
+              acc[acc.length-1].hbd = cur.hbd + acc[acc.length-1].hbd
+              acc[acc.length-1].amount = cur.amount + acc[acc.length-1].amount
+            }
+            return acc
+          }, [])
           this.dexapi = data
         })
       fetch('https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX?limit=1000')
@@ -805,7 +845,7 @@ include_once( $path );
                   </thead>
                   <tbody role="rowgroup">
                     <tr class="" role="row" v-for="item in hivebuys">
-                      <td aria-colindex="1" role="cell" class=""></td>
+                      <td aria-colindex="1" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
                       <td aria-colindex="2" role="cell" class="">{{(item.hive/1000).toFixed(3)}}</td>
                       <td aria-colindex="3" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
                       <td aria-colindex="4" role="cell" class="text-primary"><a href="#" @click="insertBal('{{item.rate}}', 'buyPrice')">{{item.rate}}</a></td>
@@ -843,7 +883,7 @@ include_once( $path );
                       <td aria-colindex="1" role="cell" class="text-primary"><a href="#" @click="insertBal('{{item.rate}}', 'sellPrice')">{{item.rate}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
                       <td aria-colindex="3" role="cell" class="">{{(item.hive/1000).toFixed(3)}}</td>
-                      <td aria-colindex="4" role="cell" class=""></td>
+                      <td aria-colindex="4" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
                     </tr>
                   </tbody>
                   <!-- <tfoot>
