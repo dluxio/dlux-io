@@ -944,7 +944,7 @@ for (var i = 0; i < disabletab.length;i++){disabletab[i].setAttribute('tabindex'
 const nowtime = new Date().getTime()
 const ago24 = new Date(nowtime - 86400000).getTime()
 document.getElementById('timeoffset').value = ago24
-document.getElementById('timenow').value = now
+document.getElementById('timenow').value = nowtime
 	</script>
 <script type="text/javascript" src="/js/chart.js"></script>
 </html>
