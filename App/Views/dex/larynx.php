@@ -338,7 +338,7 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi?.markets?.hive.tick*hiveprice.hive.usd)}}</b></h2>
+              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi?.markets?.hive?.tick*hiveprice.hive.usd)}}</b></h2>
             </div>
             <input id="dluxhiveusd" :value="dexapi.markets.hive.tick" class="d-none">
           </div>
