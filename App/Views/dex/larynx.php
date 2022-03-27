@@ -43,6 +43,7 @@ input.disabled-input {
         account: user,
         lapi: lapi,
         hapi: hapi,
+        accountapi: {},
         hiveprice: {},
         hbdprice: {},
         nodes: {},
@@ -100,6 +101,7 @@ input.disabled-input {
       fetch('https://spkinstant.hivehoneycomb.com/@' + user)
         .then(response => response.json())
         .then(data => {
+          this.accountapi = data
           this.recenthive = data.contracts
         })
       if(user != 'GUEST')fetch(hapi, {
