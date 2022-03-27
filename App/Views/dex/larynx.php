@@ -97,11 +97,15 @@ include_once( $path );
             </div>
           </div>
           <div class="d-flex align-items-center text-white-50">
+			  <a href="/me#larynx">
             <div id="userdlux" class="mx-4 text-warning">{{(openordersapi.data.balance/1000).formatNumber(3,'.',',')}} LARYNX</div>
             <div id="userdpwr" class="mx-4 text-primary" dmx-show="openordersapi.data.poweredUp > 0">{{(openordersapi.data.poweredUp/1000).formatNumber(3,'.',',')}} LARYNXP</div>
             <div id="userdgov" class="mx-4 text-info" dmx-show="openordersapi.data.gov > 0">{{(openordersapi.data.gov/1000).formatNumber(3,'.',',')}} LARYNXG</div>
+			</a>
+			  <a href="/me#hive">
             <div id="userhive" class="mx-4 text-danger">{{accountapi.data.result[0].balance}}</div>
             <div id="userhbd" class="mx-4 text-success">{{accountapi.data.result[0].hbd_balance}}</div>
+				  </a>
           </div>
         </div>
 		  <!-- node collapse region -->
