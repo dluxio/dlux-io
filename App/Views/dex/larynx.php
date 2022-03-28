@@ -49,6 +49,7 @@ input.disabled-input {
         nowtime: new Date().getTime(),
         agoTime: new Date().getTime() - 86400000,
         account: user,
+        balance: "0.000",
         lapi: lapi,
         hapi: hapi,
         accountapi: {},
@@ -238,6 +239,7 @@ input.disabled-input {
           this.TOKEN = data.jsontoken.toUpperCase()
           this.node = data.node
           this.behind = data.behind
+          step2()
         })
       fetch(this.lapi + '/dex')
         .then(response => response.json())
@@ -296,6 +298,7 @@ input.disabled-input {
           }, [])
           this.dexapi = data
         })
+      function step2(){
       fetch(this.lapi + '/api/recent/HIVE_' + this.TOKEN + '?limit=1000')
         .then(response => response.json())
         .then(data => {
@@ -326,9 +329,11 @@ input.disabled-input {
             return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
           })
         })
-      fetch(this.lapi + '/@' + user)
+      }
+      if(user != 'GUEST')fetch(this.lapi + '/@' + user)
         .then(response => response.json())
         .then(data => {
+          this.balance = (data.balance/1000).toFixed(3)
           this.accountapi = data
           console.log(data.contracts)
           this.openorders = data.contracts
@@ -916,7 +921,7 @@ include_once( $path );
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
 							 :readonly="buyhbd.checked || sellmarket.checked" id="sellHiveTotal" 
 							 :v-model="sellHiveTotal"
-							  placeholder="0" min="0.004" step="0.001" aria-required="true" :max="">
+							  placeholder="0" min="0.004" step="0.001" aria-required="true" :max="balance">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
                       </div>
@@ -933,7 +938,7 @@ include_once( $path );
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
 							 :readonly="buyhive.checked || sellmarket.checked" id="sellHBDTotal" 
 							 :v-model="sellHBDTotal" 
-							 placeholder="0" min="0.004" step="0.001" :max="" aria-required="true">
+							 placeholder="0" min="0.004" step="0.001" :max="balance" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
                       </div>
