@@ -898,7 +898,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
 							 :readonly="buyhbd.checked || sellmarket.checked" id="sellHiveTotal" 
-							 :value="buyhive.checked.then((sellPrice.value*sellQuantity.value).toFixed(3),'0')" 
+							 :value="buyhive.checked ? (sellPrice.value*sellQuantity.value).toFixed(3) : '0'" 
 							  placeholder="0" min="0.004" step="0.001" aria-required="true" :max="">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
@@ -915,7 +915,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
 							 :readonly="buyhive.checked || sellmarket.checked" id="sellHBDTotal" 
-							 :value="buyhbd.checked.then((sellPrice.value*sellQuantity.value).toFixed(3),'0')" 
+							 :value="buyhbd.checked ? (sellPrice.value*sellQuantity.value).toFixed(3) : '0'" 
 							 placeholder="0" min="0.004" step="0.001" :max="" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
