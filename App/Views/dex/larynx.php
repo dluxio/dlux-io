@@ -522,7 +522,8 @@ include_once( $path );
                           </div> -->
                       </div>
               </div>
-			  <!-- <div class="">
+			  <!-- 
+			<div class="">
 			  <div role="group" class="input-group" v-if="filterapis.checked">
 				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="filterapi.focus()"><i class="fas fa-search"></i></span></div>
                       <input type="text" class="form-control bg-dark border-dark text-info" id="filterapi" aria-required="true" placeholder="APIs">
@@ -532,8 +533,8 @@ include_once( $path );
                       </div>
                   </div>
 				  </div>
-			</div> -->
-			  
+			 -->
+			  </div>
             <div class="table-responsive rounded border border-dark">
               <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                 <thead role="rowgroup" class="">
