@@ -445,7 +445,7 @@ include_once( $path );
                 <div class="dropdown-divider bg-light"></div>
                 <a class="dropdown-item" href="/dex/dlux">DLUX</a> <a class="dropdown-item" href="/dex/larynx">LARYNX</a></div>
             </div>
-            <div class="d-flex" title="{{behind}} Blocks Behind Hive">
+            <div class="d-flex" :title="{{behind}} Blocks Behind Hive">
               <button class="text-center btn btn-sm align-items-center ml-4" 
 						 :class="{'btn-outline-success':'behind < 30'}" 
              :class="{'btn-outline-warning':'behind >= 30 && behind < 60'}"
@@ -539,29 +539,17 @@ include_once( $path );
                     </div></th>
                   </tr>
                 <tbody role="rowgroup">
-                  <tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.where(`account`, filteraccount.value, 'fuzzySearch')" v-if="filterusers.checked">
-                    <td role="cell" class="" aria-colindex="1"><a href="/@{{account}}">@{{account}}</a></td>
-                    <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
-                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setAPI('lapi','{{api}}')">{{api}}</a></td>
+                  <tr class="" role="row" v-for="node in runners" v-if="filterusers.checked">
+                    <td role="cell" class="" aria-colindex="1"><a :href="/@{{node.account}}">@{{node.account}}</a></td>
+                    <td role="cell" class="" aria-colindex="2">{{(node.g/1000)}}</td>
+                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setAPI('lapi','{{api}}')">{{node.api}}</a></td>
                   </tr>
-					<tr class="" role="row" dmx-repeat:openordersrepeat="marketnodes.where(`api`, filterapi.value, 'fuzzySearch')" v-if="filterapis.checked">
-                    <td role="cell" class="" aria-colindex="1"><a href="/@{{account}}">@{{account}}</a></td>
-                    <td role="cell" class="" aria-colindex="2">{{(g/1000).formatNumber('3','.',',')}}</td>
-                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setAPI('lapi','{{api}}')">{{api}}</a></td>
+					        <tr class="" role="row" v-for="node in runners" v-if="filterapis.checked">
+                    <td role="cell" class="" aria-colindex="1"><a :href="/@{{node.account}}">@{{node.account}}</a></td>
+                    <td role="cell" class="" aria-colindex="2">{{(node.g/1000)}}</td>
+                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setAPI('lapi','{{api}}')">{{node.api}}</a></td>
                   </tr>
                 </tbody>
-                <tfoot>
-                  <tr role="row" class="" >
-                    <td role="cell" class="" colspan="7" aria-colindex="1">
-                      <div class="d-flex flex-fill justify-content-between align-items-center" v-if="marketnodes.pages > 1">
-                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="marketnodes.prev()" v-if="marketnodes.has.prev"><i class="fa fa-angle-left"></i></a></div>
-                        <div class="d-flex">
-                          <p class="m-0 p-0 text-muted">Page {{marketnodes.page}} of {{marketnodes.pages}}</p>
-                        </div>
-                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="marketnodes.next()" v-if="marketnodes.has.next"><i class="fa fa-angle-right"></i></a></div>
-                      </div></td>
-                  </tr>
-                </tfoot>
               </table>
             </div>
           </div>
