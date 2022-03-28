@@ -30,12 +30,14 @@ input.disabled-input {
     border-top-left-radius: 0.25rem !important;
     border-bottom-left-radius: 0.25rem !important;
 }
-.table{
+.table-scroll{
    overflow-y:scroll;
    height:300px;
+   width:100%;
    display:block;
 }
 </style>
+<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   let user = getCookie('user') || 'GUEST'
@@ -374,7 +376,6 @@ input.disabled-input {
   }).mount('#app')
   
 </script>
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <!--<input id="timenow" class="d-none" :value="{{nodes.data.node.getTimeOffset(0)}}">
@@ -966,7 +967,7 @@ include_once( $path );
                       <th role="columnheader" scope="col" aria-colindex="4" class=""><div>BID</div></th>
                     </tr>
                   </thead>
-                  <tbody role="rowgroup">
+                  <tbody role="rowgroup" class="table-scroll">
                     <tr class="" role="row" v-for="item in hivebuys">
                       <td aria-colindex="1" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
                       <td aria-colindex="2" role="cell" class="">{{(item.hive/1000).toFixed(3)}}</td>
@@ -979,7 +980,7 @@ include_once( $path );
             </div>
             <div class="mt-3 col-md-6">
               <h4>Sell Orders</h4>
-              <div class="table-responsive">
+              <div class="table-responsive table-scroll">
                 <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivesellorderstable">
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
@@ -1033,7 +1034,7 @@ include_once( $path );
           <div class="row">
             <div class="mt-3 col-md-6">
               <h4>Buy Orders</h4>
-              <div class="table-responsive">
+              <div class="table-responsive table-scroll">
                 <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdbuyordertable">
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
@@ -1056,7 +1057,7 @@ include_once( $path );
             </div>
             <div class="mt-3 col-md-6">
               <h4>Sell Orders</h4>
-              <div class="table-responsive">
+              <div class="table-responsive table-scroll">
                 <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hbdsellorderstable">
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
