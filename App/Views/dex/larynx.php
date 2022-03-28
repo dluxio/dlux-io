@@ -474,6 +474,7 @@ include_once( $path );
 		  <!-- node collapse region -->
         <div id="nodedrawer" class="collapse">
           <div class="py-5">
+			  <div class="container">
 			  <div class="d-flex align-items-center mb-3">
 				  <div class="">
 			  		<div role="group" class="input-group" v-if="filterusers.checked">
@@ -509,6 +510,7 @@ include_once( $path );
             </div>
 			</div>
 			</div>
+			  
             <div class="table-responsive rounded border border-dark">
               <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                 <thead role="rowgroup" class="">
@@ -531,8 +533,9 @@ include_once( $path );
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('api','desc')" v-bind:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'api'"> <i class="fas fa-caret-down"></i></button> -->
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="4"> <div class="d-flex align-items-center">
-                      <div>
+                    <th role="columnheader" class="" aria-colindex="4"> 
+						<div class="d-flex justify-content-end">
+                     
                         <div class="dropdown show"> <a class="btn btn-sm btn-dark " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-satellite-dish"></i></a>
                           <div class="dropdown-menu">
                             <h6 class="dropdown-header">CURRENT API</h6>
@@ -540,10 +543,11 @@ include_once( $path );
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" @click="setValue('lapi','https://spkinstant.hivehoneycomb.com/')"><i class="fas fa-bolt mr-2"></i>Load Latest</a> </div>
                         </div>
-                      </div>
-                    </div></th>
+                    
+                    </div>
+					 </th>
                   </tr>
-                <tbody role="rowgroup">
+                <tbody role="rowgroup"  class="tbody-scroll-nodes">
                   <tr class="" role="row" v-for="node in runners" v-if="filterusers.checked">
                     <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(node.g/1000)}}</td>
@@ -556,7 +560,8 @@ include_once( $path );
                   </tr>
                 </tbody>
               </table>
-            </div>
+           </div>
+		 </div>
           </div>
         </div>
       </div>
