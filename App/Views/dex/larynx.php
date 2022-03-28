@@ -240,6 +240,9 @@ input.disabled-input {
                   }, 0)
                 cur.percentFilled = parseFloat(100 * filled / (cur.amount + filled)).toFixed(2)
                 acc.push(cur)
+              } else {
+                cur.percentFilled = 0
+                acc.push(cur)
               }
               console.log({acc})
               return acc
