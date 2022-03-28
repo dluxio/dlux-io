@@ -112,15 +112,15 @@ input.disabled-input {
         },
       }
     },
-    filters() {
-        ftn: function(t, n) {
-            t = t.toFixed(n)
-            while(t.charAt(t.length - 1) == '0'){
-                t = t.substr(0, t.length - 1)
-            }
-            return t;
-        }
-      },
+    filters: {
+      ftn: function(t, n) {
+          t = t.toFixed(n)
+          while(t.charAt(t.length - 1) == '0'){
+              t = t.substr(0, t.length - 1)
+          }
+          return t;
+      }
+    },
     mounted() {
       fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
         .then(response => response.json())
