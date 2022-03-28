@@ -136,7 +136,7 @@ thead, tbody tr {
           rated: false,
           typea: false,
           typed: false
-        }
+        },
         accountinfo: {},
         filterusers: {
           checked: true,
