@@ -173,13 +173,13 @@ thead, tbody tr {
         switch(method){
           case 'asc':
             this[item].sort((a, b) => {
-              return a[key] > b[key] ? -1 : 1
+              return a[key] < b[key] ? -1 : 1
             })
             break;
           case 'desc':
           default:
             this[item].sort((a, b) => {
-              return a[key] < b[key] ? -1 : 1
+              return a[key] > b[key] ? -1 : 1
             })
         }
       },
