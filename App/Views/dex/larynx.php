@@ -94,6 +94,7 @@ thead, tbody tr {
         jsontoken: '',
         node: '',
         behind: '',
+        behindTitle: '',
         TOKEN: 'LARYNX',
         buyHiveTotal: 0,
         buyPrice: 0,
@@ -258,6 +259,7 @@ thead, tbody tr {
           this.TOKEN = data.jsontoken.toUpperCase()
           this.node = data.node
           this.behind = data.behind
+          this.behindTitle = data.behind + ' Blocks Behind Hive'
           fetch(this.lapi + '/api/recent/HIVE_' + this.TOKEN + '?limit=1000')
             .then(response => response.json())
             .then(data => {
@@ -445,7 +447,7 @@ include_once( $path );
                 <div class="dropdown-divider bg-light"></div>
                 <a class="dropdown-item" href="/dex/dlux">DLUX</a> <a class="dropdown-item" href="/dex/larynx">LARYNX</a></div>
             </div>
-            <div class="d-flex" :title="{{behind}} Blocks Behind Hive">
+            <div class="d-flex" :title="behindTitle">
               <button class="text-center btn btn-sm align-items-center ml-4" 
 						 :class="{'btn-outline-success':'behind < 30'}" 
              :class="{'btn-outline-warning':'behind >= 30 && behind < 60'}"
