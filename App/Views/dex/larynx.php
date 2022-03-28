@@ -228,7 +228,7 @@ input.disabled-input {
           console.log(data.contracts)
           this.openorders = data.contracts
             .reduce((acc, cur) => {
-              cur.nai = `${cur.type.split(':')[0] == 'hive' ? parseFloat(order.hive/1000).toFixed(3) : parseFloat(order.hbd/1000).toFixed(3)} ${cur.type.split(':')[0] == 'hive' ? 'HIVE' : 'HBD'}`
+              cur.nai = `${cur.type.split(':')[0] == 'hive' ? parseFloat(cur.hive/1000).toFixed(3) : parseFloat(cur.hbd/1000).toFixed(3)} ${cur.type.split(':')[0] == 'hive' ? 'HIVE' : 'HBD'}`
               if(cur.partials && cur.partials.length && cur.type.split(':')[1] == 'sell') {
                 const filled = cur.partials.reduce(function (a, c) {
                   return a + c.coin
