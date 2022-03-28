@@ -228,13 +228,13 @@ input.disabled-input {
           console.log(data.contracts)
           this.openorders = data.contracts
             .reduce((acc, cur) => {
-              if(cur.partials.length && cur.type.split(':')[1] == 'sell') {
+              if(cur.partials && cur.partials.length && cur.type.split(':')[1] == 'sell') {
                 const filled = cur.partials.reduce(function (a, c) {
                   return a + c.coin
                   }, 0)
                 cur.percentFilled = parseFloat(100 * filled / (cur.hive ? cur.hive : cur.hbd + filled)).toFixed(2)
                 acc.push(cur)
-              } else if (cur.partials.length){
+              } else if (cur.partials && cur.partials.length){
                 const filled = cur.partials.reduce(function (a, c) {
                   return a + c.token
                   }, 0)
