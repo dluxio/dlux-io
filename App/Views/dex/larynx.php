@@ -789,7 +789,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="buyHours" v-model="buyHours" type="number" value="720" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
+                      <input id="buyHours" v-model="buyHours" type="number" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HOURS</div>
                       </div>
@@ -884,7 +884,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="sellHours" type="number" value="720" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="sellmarket.checked">
+                      <input id="sellHours" type="number" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="sellmarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HOURS</div>
                       </div>
