@@ -683,10 +683,10 @@ include_once( $path );
           <div class="container-fluid mt-3">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-outline-warning active">
-                <input name="buypair" type="radio" id="buyhive" checked v-model="buyhive.checked" @click="togglecoin('hive');setValue('buyHiveTotal', '');setValue('sellHiveTotal', '');setValue('buyHBDTotal', '0');setValue('sellHBDTotal', '0')">
+                <input name="buypair" type="radio" id="buyhive" :checked="buyhive.checked" value="true" @click="togglecoin('hive');setValue('buyHiveTotal', '');setValue('sellHiveTotal', '');setValue('buyHBDTotal', '0');setValue('sellHBDTotal', '0')">
                 HIVE </label>
               <label class="btn btn-outline-warning">
-                <input type="radio" name="buypair" id="buyhbd" v-model="buyhbd.checked" @click="togglecoin('hbd');setValue('buyHBDTotal', '');setValue('sellHBDTotal', '');setValue('buyHiveTotal', '0');setValue('sellHiveTotal', '0')">
+                <input type="radio" name="buypair" id="buyhbd" :checked="buyhbd.checked"value="true" @click="togglecoin('hbd');setValue('buyHBDTotal', '');setValue('sellHBDTotal', '');setValue('buyHiveTotal', '0');setValue('sellHiveTotal', '0')">
                 HBD </label>
             </div>
           </div>
@@ -850,7 +850,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="buyType" id="buylimit" checked v-model="buylimit.checked" @click="togglebuylimit();setValue('buyQuantity', '');setValue('buyHours','720')">
+                          <input type="radio" name="buyType" id="buylimit" v-model="buylimit.checked" @click="togglebuylimit();setValue('buyQuantity', '');setValue('buyHours','720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
                           <input type="radio" name="buyType" id="buymarket" v-model="buymarket.checked" @click="togglebuylimit();setValue('buyQuantity','0');setValue('buyHours','0')">
@@ -952,7 +952,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="sellType" id="selllimit" checked v-model="selllimit.checked" @click="toggleselllimit();setValue('sellPrice', '');setValue('sellHours', '720')">
+                          <input type="radio" name="sellType" id="selllimit" v-model="selllimit.checked" @click="toggleselllimit();setValue('sellPrice', '');setValue('sellHours', '720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
                           <input type="radio" name="sellType" id="sellmarket" v-model="sellmarket.checked" @click="toggleselllimit();setValue('sellPrice', '0');setValue('sellHours', '0')">
