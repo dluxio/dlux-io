@@ -225,23 +225,25 @@ input.disabled-input {
         .then(response => response.json())
         .then(data => {
           this.accountapi = data
-          this.openorders = data.contracts.reduce((acc, cur) => {
-            if(cur.partials.length && cur.type.split(':')[1] == 'sell') {
-              const filled = cur.partials.reduce(function (a, c) {
-                return a + c.coin
-                }, 0)
-              cur.percentFilled = parseFloat(100 * filled / (cur.hive ? cur.hive : cur.hbd + filled)).toFixed(2)
-              acc.push(cur)
-            } else if (cur.partials.length){
-              const filled = cur.partials.reduce(function (a, c) {
-                return a + c.token
-                }, 0)
-              cur.percentFilled = parseFloat(100 * filled / (cur.amount + filled)).toFixed(2)
-              acc.push(cur)
-            }
-            console.log({acc})
-            return acc
-          }, [])
+          console.log(data.contracts)
+          this.openorders = data.contracts
+            .reduce((acc, cur) => {
+              if(cur.partials.length && cur.type.split(':')[1] == 'sell') {
+                const filled = cur.partials.reduce(function (a, c) {
+                  return a + c.coin
+                  }, 0)
+                cur.percentFilled = parseFloat(100 * filled / (cur.hive ? cur.hive : cur.hbd + filled)).toFixed(2)
+                acc.push(cur)
+              } else if (cur.partials.length){
+                const filled = cur.partials.reduce(function (a, c) {
+                  return a + c.token
+                  }, 0)
+                cur.percentFilled = parseFloat(100 * filled / (cur.amount + filled)).toFixed(2)
+                acc.push(cur)
+              }
+              console.log({acc})
+              return acc
+            }, [])
         })
       if(user != 'GUEST')fetch(hapi, {
           body: `{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["${user}"]], "id":1}`,
