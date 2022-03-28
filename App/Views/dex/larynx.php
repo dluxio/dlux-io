@@ -541,20 +541,20 @@ include_once( $path );
                   <tr role="row" class="">
                     <th role="columnheader" class="" aria-colindex="1" > <div class="d-flex align-items-center">
                       <div class="mr-3">USER NAME</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('runners','account','asc')"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('runners','account','desc')"> <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','account','asc')"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','account','desc')"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="2" > <div class="d-flex align-items-center">
                       <div class="mr-3">GOV BAL</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('runners','g','asc')" > <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('runners','g','desc')" > <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','g','asc')" > <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','g','desc')" > <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="3" > <div class="d-flex align-items-center">
                       <div class="mr-3">API (Click to load)</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('runners','api','asc')" > <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('runners','api','desc')" > <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','api','asc')" > <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','api','desc')" > <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="4"> 
