@@ -1110,7 +1110,6 @@ if ( isset( $author ) ) {
                                           </center>
                                         </form>
                                       </div>
-                                      <center>
                                         <div role="tabpanel" class="tab-pane fade show " id="auctionNFTtab" aria-labelledby="auctionNFT">
                                           <form class="needs-validation mt-4" validate dmx-bind:action="javascript:auctionNFT('{{inventory_detail.data.set}}','{{inventory_detail.data.uid}}','{{auctionNFTprice.value}}','{{Date.now()}}','{{auctionNFTdays.value}}','{{auctionNFTpriceType.value}}')">
                                             <div class="form-group form-row my-2">
@@ -1173,8 +1172,7 @@ if ( isset( $author ) ) {
                                             </center>
                                           </form>
                                         </div>
-                                      </center>
-                                    </div>
+                                      </div>
                                   </div>
                                 </div>
                               </div>
