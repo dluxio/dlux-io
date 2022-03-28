@@ -65,6 +65,7 @@ include_once( $path );
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js"></script>
 </head>
 <body class="d-flex flex-column bg-darker h-100 padme-t70" id="index" is="dmx-app" onLoad="getDate()">
+
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
@@ -95,7 +96,7 @@ if ( isset( $author ) ) {
   echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"https://token.dlux.io/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>";
 } else {};
 ?>
-<!--<dmx-api-datasource id="larynxtoken" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/@markegiles"></dmx-api-datasource>--> 
+<!--<dmx-api-datasource id="larynxtoken" is="dmx-fetch" url="https://spkgiles.hivehoneycomb.com/@markegiles"></dmx-api-datasource>-->
 <!--<dmx-api-datasource id="accountapi" is="dmx-fetch" url="https://token.dlux.io/hapi/condenser_api/get_accounts" dmx-param:0="markegiles"></dmx-api-datasource>-->
 <dmx-api-datasource id="hivehistory" is="dmx-fetch" url="https://token.dlux.io/hapi/account_history_api/get_account_history" dmx-param:account="markegiles"></dmx-api-datasource>
 <dmx-data-view id="userhivehistory" dmx-bind:data="hivehistory.data.result.history"></dmx-data-view>
@@ -104,12 +105,15 @@ if ( isset( $author ) ) {
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="dexapi" is="dmx-fetch" url="https://token.dlux.io/dex/" ></dmx-api-datasource>
 <dmx-api-datasource id="dluxfeed" is="dmx-fetch" url="https://token.dlux.io/feed/" ></dmx-api-datasource>
-<dmx-data-view id="data_view1"></dmx-data-view>
+<dmx-api-datasource id="larynxnodesapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/markets" ></dmx-api-datasource>
+<dmx-api-datasource id="dluxnodesapi" is="dmx-fetch" url="https://token.dlux.io/markets" ></dmx-api-datasource>
+<dmx-data-view id="larynxnodes" dmx-bind:data="larynxnodesapi.data.markets.node"></dmx-data-view>
+<dmx-data-view id="dluxnodes" dmx-bind:data="dluxnodesapi.data.markets.node"></dmx-data-view>
 <main role="main" class="flex-shrink-0 text-white">
-  <div class="container-fluid px-0 "> 
+  <div class="container-fluid px-0 ">
     <!-- Page header area -->
     <div class="container-fluid bg-darker border-bottom">
-      <div class="container"> 
+      <div class="container">
         <!-- pfp and info -->
         <div class="row pt-3">
           <div class="col-md-8 text-white">
@@ -133,15 +137,15 @@ if ( isset( $author ) ) {
           <li class="nav-item"> <a class="nav-link active" id="blogtab" role="tab" data-toggle="tab" aria-controls="blog" aria-expanded="true" href="#blog">Blog</a></li>
           <li class="nav-item"> <a class="nav-link" id="wallettab" role="tab" data-toggle="tab" aria-controls="wallet" aria-expanded="true" href="#wallet">Wallet</a></li>
           <li class="nav-item"> <a class="nav-link" id="inventorytab" role="tab" data-toggle="tab" aria-controls="inventory" aria-expanded="true" href="#inventory">Inventory</a></li>
-          <li class="nav-item"> <a class="nav-link" id="nodetab" role="tab" data-toggle="tab" aria-controls="node" aria-expanded="true" href="#node">Node</a></li>
+          <li class="nav-item"> <a class="nav-link" id="nodestab" role="tab" data-toggle="tab" aria-controls="nodes" aria-expanded="true" href="#nodes">Nodes</a></li>
           <li class="nav-item"> <a class="nav-link" id="settingstab" role="tab" data-toggle="tab" aria-controls="settings" aria-expanded="true" href="#settings">Settings</a></li>
         </ul>
       </div>
     </div>
     <!-- page tab content -->
-    <div class="tab-content bg-color"> 
+    <div class="tab-content bg-color">
       <!-- blog tab -->
-      <div role="tabpanel" class="tab-pane fade show active" id="blog" aria-labelledby="blogtab"> 
+      <div role="tabpanel" class="tab-pane fade show active" id="blog" aria-labelledby="blogtab">
         <!-- blog repeat -->
         <div class="card-columns p-3" id="blogResult" is="dmx-repeat" dmx-bind:repeat="dluxGetBlog.data.result">
           <div class="card text-white bg-dark mt-2 mb-3">
@@ -155,11 +159,11 @@ if ( isset( $author ) ) {
               <div class="float-right"><span class="badge badge-secondary">{{json_metadata.scat()}}</span></div>
             </div>
             <a href="#detailModal" class="a-1" data-toggle="modal" dmx-on:click="data_detail.select(url)" dmx-bind:onclick="window.history.pushState('{{url}}','{{title}}', '/blog/@{{author}}/{{permlink}}');">
-            <h5 class="card-title mt-2 text-center text-capitalize">{{title}}</h5>
-            <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{json_metadata.parseJSON().picFind()}}" /></a>
+              <h5 class="card-title mt-2 text-center text-capitalize">{{title}}</h5>
+              <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{json_metadata.parseJSON().picFind()}}" /></a>
             <div class="card-body"><a href="#detailModal" class="a-1" data-toggle="modal" dmx-on:click="data_detail.select(url)" dmx-bind:onclick="window.history.pushState('{{url}}','{{title}}', '/blog/@{{author}}/{{permlink}}');">
               <p class="preview-text">{{body.removeMD().trunc(100,true,"...")}}</p>
-              </a></div>
+            </a></div>
             <center>
               <a dmx-bind:href="{{url}}" type="button" class="btn btn-outline-danger mb-4 btn-launch" target="_blank">Launch App</a>
             </center>
@@ -207,7 +211,7 @@ if ( isset( $author ) ) {
                     </div>
                   </div>
                   <a dmx-bind:href="/blog/@{{data_detail.data.author}}/{{data_detail.data.permlink}}" class="text-white">
-                  <h3 class="text-center p-2">{{data_detail.data.title}}</h3>
+                    <h3 class="text-center p-2">{{data_detail.data.title}}</h3>
                   </a> <img src="..."  alt="Card image cap" class="card-img-top" dmx-bind:src="{{data_detail.data.json_metadata.parseJSON().picFind()}}" />
                   <div class="card-body">
                     <p class="p-2">{{data_detail.data.body.removeMD()}}</p>
@@ -255,7 +259,7 @@ if ( isset( $author ) ) {
             <li class="nav-item"> <a class="nav-link" href="#hive" id="hivetab" role="tab" data-toggle="tab" aria-controls="hive" aria-expanded="true">HIVE</a></li>
           </ul>
         </div>
-        <div id="walletcontent" class="tab-content"> 
+        <div id="walletcontent" class="tab-content">
           <!-- dlux wallet tab-->
           <div role="tabpanel" class="tab-pane fade show active" id="dlux" aria-labelledby="dluxtab">
             <div class="container">
@@ -265,7 +269,7 @@ if ( isset( $author ) ) {
                   <div class="text-center small p-0 m-0 ml-4" 
 						 dmx-class:text-success="dexapi.data.behind < 30"	
 						 dmx-class:text-warning="dexapi.data.behind >= 30"
-						 dmx-class:text-danger="dexapi.data.behind > 100"> <span dmx-show="dexapi.data.behind < 30">ONLINE - </span> <span dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING - </span> <span dmx-show="dexapi.data.behind > 100">OFFLINE - </span> <span>{{dexapi.data.behind}} BBH</span> </div>
+						 dmx-class:text-danger="dexapi.data.behind > 100"> <span dmx-show="dexapi.data.behind < 30">ONLINE - </span> <span dmx-show="dexapi.data.behind >= 30 && dexapi.data.behind <=100">LAGGING - </span> <span dmx-show="dexapi.data.behind > 100">OFFLINE - </span> <span>{{dexapi.data.behind}} BBH</span></div>
                 </div>
                 <p class="lead ">An open source platform for p2p games, apps, and experiences.</p>
                 <div class="clearfix" dmx-show="usertoken.data.claim > 0">
@@ -279,7 +283,7 @@ if ( isset( $author ) ) {
                     <div class="btn-group" role="group" aria-label="DLUX Claim">
                       <button type="submit" class="btn btn-info mr-half" dmx-on:click="claim('{{govcheck.checked}}')"><i class="fas fa-coin"></i><i class="fas fa-money-bill-wave-alt mr-2"></i>Claim</button>
                     </div>
-                    <div> <span class="small" dmx-hide="govcheck.checked" >50% Liquid | 50% Power</span> <span class="small" dmx-show="govcheck.checked">50% Liquid | 50% Gov</span> </div>
+                    <div> <span class="small" dmx-hide="govcheck.checked" >50% Liquid | 50% Power</span> <span class="small" dmx-show="govcheck.checked">50% Liquid | 50% Gov</span></div>
                     <div dmx-show="usertoken.data.gov > 0" class="bg-dark text-white">
                       <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -327,7 +331,7 @@ if ( isset( $author ) ) {
                   <div id="dluxpactions" class="float-right text-right">
                     <h5 id="pwrbalance">{{((usertoken.data.poweredUp)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                     <a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white d-none" style="text-decoration: none">
-                    <h6 id="delegatebal">(-0 G)<i class="fas fa-search ml-2"></i></h6>
+                      <h6 id="delegatebal">(-0 G)<i class="fas fa-search ml-2"></i></h6>
                     </a>
                     <div class="btn-group" role="group" aria-label="DLUX Actions">
                       <button type="button" class="btn btn-info mr-half disabled" data-toggle="modal" title="Delegate DLUX" id="delegatedluxbtn" data-target="#sendDluxModal" style="pointer-events: none"><i class="fas fa-user-friends fa-fw mr-2"></i>Delegate</button>
@@ -364,7 +368,7 @@ if ( isset( $author ) ) {
                   <div id="dluxgactions" class="float-right text-right">
                     <h5 id="govbalance">{{((usertoken.data.gov)/1000).formatNumber(3,'.',',')}} DLUX</h5>
                     <a data-toggle="collapse" id="escrowtxbutton" href="#escrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
-                    <h6 id="escrowbal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
+                      <h6 id="escrowbal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
                     </a>
                     <div class="btn-group" role="group" aria-label="DLUX Actions">
                       <button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
@@ -401,7 +405,7 @@ if ( isset( $author ) ) {
                   <div class="text-center small m-0 p-2 ml-2" 
 						 dmx-class:text-success="larynxdexapi.data.behind < 30"	
 						 dmx-class:text-warning="larynxdexapi.data.behind >= 30"
-						 dmx-class:text-danger="larynxdexapi.data.behind > 100"> <span dmx-show="larynxdexapi.data.behind < 30">ONLINE - </span> <span dmx-show="larynxdexapi.data.behind >= 30 && larynxdexapi.data.behind <=100">LAGGING - </span> <span dmx-show="larynxdexapi.data.behind > 100">OFFLINE - </span> <span>{{larynxdexapi.data.behind}} BBH</span> </div>
+						 dmx-class:text-danger="larynxdexapi.data.behind > 100"> <span dmx-show="larynxdexapi.data.behind < 30">ONLINE - </span> <span dmx-show="larynxdexapi.data.behind >= 30 && larynxdexapi.data.behind <=100">LAGGING - </span> <span dmx-show="larynxdexapi.data.behind > 100">OFFLINE - </span> <span>{{larynxdexapi.data.behind}} BBH</span></div>
                 </div>
                 <p class="lead">Decentralized and incentivized network infrastructure, rewarding providers with SPK governance and BROCA gas tokens.</p>
                 <div class="clearfix" id="larynxclaimdiv" dmx-show="larynxtoken.data.drop.last_claim.parseInt(16) != frmDate.value && larynxtoken.data.drop.availible.amount > 0">
@@ -466,7 +470,7 @@ if ( isset( $author ) ) {
                   <div id="larynxpactions" class="float-right text-right">
                     <h5 id="larynxpwrbalance">{{((larynxtoken.data.poweredUp)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                     <a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white d-none" style="text-decoration: none">
-                    <h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
+                      <h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
                     </a>
                     <div class="btn-group" role="group" aria-label="DLUX Actions">
                       <button type="button" class="btn btn-info mr-half disabled" data-toggle="modal" title="Delegate DLUX" id="delegatedluxbtn" data-target="#sendDluxModal" style="pointer-events: none"><i class="fas fa-user-friends fa-fw mr-2"></i>Delegate</button>
@@ -503,7 +507,7 @@ if ( isset( $author ) ) {
                   <div id="larynxgactions" class="float-right text-right">
                     <h5 id="govbalance">{{((larynxtoken.data.gov)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
                     <a data-toggle="collapse" id="larynxescrowtxbutton" href="#larynxescrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
-                    <h6 id="escrowbal">(-0 G)<i class="fas fa-search ml-2"></i></h6>
+                      <h6 id="escrowbal">(-0 G)<i class="fas fa-search ml-2"></i></h6>
                     </a>
                     <div class="btn-group" role="group" aria-label="LARYNX Actions">
                       <button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
@@ -528,7 +532,11 @@ if ( isset( $author ) ) {
                   </div>
                 </div>
               </div>
-              <div id="larynxtxs" class="jumbotron pt-3 bg-darker text-white"> </div>
+              <div id="larynxtxs" class="jumbotron pt-3 bg-darker text-white">
+				<div dmx-repeat:larynxtx="larynxfeed.data.feed">
+				  {{larynxtx.$value}}
+			    </div>
+				</div>
             </div>
           </div>
           <!-- hive wallet tab-->
@@ -628,7 +636,7 @@ if ( isset( $author ) ) {
       </div>
       <!-- inventory tab -->
       <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
-        <div class="container"> 
+        <div class="container">
           <!-- Trade FT repeat -->
           <div class="card-columns cc-3 pt-5" id="trade-ft-cards" is="dmx-repeat" dmx-bind:repeat="tradefts.data.result">
             <div dmx-bind:id="{{script}}-trade-card" class="card text-white" style="border: none;"> {{script.getSetDetailsColors('-trade-card')}}
@@ -641,7 +649,7 @@ if ( isset( $author ) ) {
                 </div>
                 <div> <a dmx-bind:href="/nfts/set/{{set}}">
                   <h3 class="card-title lead shimmer rounded p-2 m-0 ml-auto" style="color: black"><b>{{set}} NFT</b></h3>
-                  </a></div>
+                </a></div>
               </div>
               <div class="card-body text-center d-flex flex-column lead">
                 <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">{{script.getSetDetailsIcon('-trade-icon')}}
@@ -674,7 +682,7 @@ if ( isset( $author ) ) {
               </div>
               <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
               <div class="text-center d-flex flex-column">
-                <div> <span dmx-show="to == userCookie.value">From: <a dmx-bind:href="/@{{from}}">{{from}}</a></span> <span dmx-show="from == userCookie.value">To: <a dmx-bind:href="/@{{to}}">{{to}}</a></span> </div>
+                <div> <span dmx-show="to == userCookie.value">From: <a dmx-bind:href="/@{{from}}">{{from}}</a></span> <span dmx-show="from == userCookie.value">To: <a dmx-bind:href="/@{{to}}">{{to}}</a></span></div>
                 <div>Price: {{nai.nai()}}</div>
               </div>
               <div class="card-footer" dmx-show="(to == userCookie.value)">
@@ -702,7 +710,7 @@ if ( isset( $author ) ) {
                 </div>
                 <div> <a dmx-bind:href="/nfts/set/{{set}}">
                   <h3 class="card-title lead shimmer rounded p-2 m-0 ml-auto" style="color: black"><b>{{set}} NFT</b></h3>
-                  </a></div>
+                </a></div>
               </div>
               <div class="card-body text-center d-flex flex-column lead">
                 <div class="px-2 py-5 text-center rounded" style="background-color: rgba(0,0,0,0.75)">
@@ -721,7 +729,6 @@ if ( isset( $author ) ) {
               </div>
             </div>
           </div>
-          
           <!-- Transfer FT Mint -->
           <dmx-data-detail id="mint_detail" dmx-bind:data="inventorydata.data.mint_tokens" key="set">
           <div class="modal fade show" id="mintTransferModal" tabindex="11" role="dialog" aria-hidden="true">
@@ -790,7 +797,7 @@ if ( isset( $author ) ) {
                               <label for="tradeFTamount">Amount</label>
                               <div class="input-group">
                                 <input type="number" class="form-control" id="tradeFTamount" aria-describedby="tradeFTamountappend" placeholder="0.000" step="0.001" min="0.001" required>
-                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTamountappend">DLUX</span> </div>
+                                <div class="input-group-append"> <span class="input-group-text r-radius-hotfix" id="tradeFTamountappend">DLUX</span></div>
                                 <div class="invalid-feedback"> Please enter the amount of DLUX you'd like to receive. </div>
                               </div>
                             </div>
@@ -822,7 +829,7 @@ if ( isset( $author ) ) {
                                     <option value="HIVE">HIVE</option>
                                     <option value="HBD">HBD</option>
                                   </select>
-                                  </span></div>
+                                </span></div>
                                 <div class="invalid-feedback"> Please enter the amount of {{sellFTpriceType.value}} you'd like to receive. </div>
                               </div>
                             </div>
@@ -948,7 +955,7 @@ if ( isset( $author ) ) {
                   <h3 class="card-title lead border rounded border-dark p-2 ml-auto mb-0 "><a dmx-bind:href="/nfts/set/{{set}}" class="lead" style="color: black">{{set}} NFT</a></h3>
                 </div>
                 <a href="#inventoryModal" class="a-1" data-toggle="modal" dmx-on:click="inventory_iterator.select($index);inventory_detail.select(uid)">
-                <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
+                  <div class="card-img-top" dmx-bind:id="image-{{set}}-{{uid}}" dmx-bind:alt="{{script}}">{{uid.nftImageWell(script, set)}}</div>
                 </a></div>
             </div>
             <!-- NFT iterator -->
@@ -966,10 +973,10 @@ if ( isset( $author ) ) {
                       <h3 class="card-title lead border border-dark rounded p-2 mb-0"><a dmx-bind:href="/nfts/set/{{inventory_detail.data.set}}" style="color:black;">{{inventory_detail.data.set}} NFT</a></h3>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    <div class="card-body row d-flex "> 
+                    <div class="card-body row d-flex ">
                       <!-- NFT detail col 1 -->
                       <div class="col-lg-6 px-0 px-sm-2">
-                        <div class="col-12 px-0 px-sm-2"> 
+                        <div class="col-12 px-0 px-sm-2">
                           <!-- NFT img -->
                           <div class="card-img-top" dmx-bind:id="detail-image-{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}" dmx-bind:alt="{{inventory_detail.data.set}}-{{inventory_detail.data.uid}}">{{inventory_detail.data.uid.nftDetailWell(inventory_detail.data.script, inventory_detail.data.set)}}</div>
                         </div>
@@ -979,9 +986,9 @@ if ( isset( $author ) ) {
                         </div>
                       </div>
                       <!-- NFT detail col 2 -->
-                      <div class="col-lg-6 px-0 px-sm-2"> 
+                      <div class="col-lg-6 px-0 px-sm-2">
                         <!-- NFT Accordion -->
-                        <div id="accordion" class="col-12 px-0 px-sm-2"> 
+                        <div id="accordion" class="col-12 px-0 px-sm-2">
                           <!-- NFT DESCRIPTION -->
                           <div class="card bg-dark text-white">
                             <div class="card-header" id="headingDescription">
@@ -1069,7 +1076,7 @@ if ( isset( $author ) ) {
                                                   <option value="HIVE">HIVE</option>
                                                   <option value="HBD">HBD</option>
                                                 </select>
-                                                </span></div>
+                                              </span></div>
                                               <div class="invalid-feedback"> Please enter the amount of {{tradeNFTpriceType.value}} you'd like to receive. </div>
                                             </div>
                                           </div>
@@ -1091,7 +1098,7 @@ if ( isset( $author ) ) {
                                                   <option value="HIVE">HIVE</option>
                                                   <option value="HBD">HBD</option>
                                                 </select>
-                                                </span></div>
+                                              </span></div>
                                               <div class="invalid-feedback"> Please enter the amount of {{sellNFTpriceType.value}} you'd like to receive. </div>
                                             </div>
                                           </div>
@@ -1117,7 +1124,7 @@ if ( isset( $author ) ) {
                                                     <option value="HIVE">HIVE</option>
                                                     <option value="HBD">HBD</option>
                                                   </select>
-                                                  </span></div>
+                                                </span></div>
                                                 <div class="invalid-feedback"> Please enter the amount of {{auctionNFTpriceType.value}} you'd like to start the bidding. </div>
                                               </div>
                                             </div>
@@ -1191,7 +1198,7 @@ if ( isset( $author ) ) {
                                         </div>
                                         <div class="d-flex no-wrap ml-1"> <u>
                                           <h1 dmx-bind:id="{{inventory_detail.data.set}}-bond-value">{{inventory_detail.data.set.getSetDetailsBond()}}</h1>
-                                          </u></div>
+                                        </u></div>
                                       </div>
                                       <div class="pt-2">
                                         <p class="text-uppercase text-muted">This NFT can be traded, sold, or auctioned until melted. Once melted it will disappear forever.</p>
@@ -1249,12 +1256,13 @@ if ( isset( $author ) ) {
           </center>
         </div>
       </div>
-      <!-- node tab -->
-      <div role="tabpanel" class="tab-pane fade show" id="node" aria-labelledby="nodetab">
+      <!-- nodes tab -->
+      <div role="tabpanel" class="tab-pane fade show" id="nodes" aria-labelledby="nodestab">
         <div id="nodeBanner" class="container no-session">
           <div class="alert alert-danger mt-5" role="alert"> Please log in to see node information. </div>
         </div>
         <div class="container"> <br>
+			<div dmx-repeat:spkrepeat=""></div>
           <form>
             <div class="form-row">
               <div class="form-group col-lg-6 p-2">
@@ -1976,7 +1984,7 @@ function updateVoteSubmit(id,val) {
 function pageSpecfic(usr){
 	me(usr);
 }
-</script> 
+</script>
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
@@ -1996,7 +2004,7 @@ function pageSpecfic(usr){
     });
   }, false);
 })();
-</script> 
+</script>
 <script>
 // Deep link usertabs (blog wallet inventory nodes settings)
 	$(document).ready(() => {
