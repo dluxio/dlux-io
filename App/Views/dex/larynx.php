@@ -38,17 +38,11 @@ input.disabled-input {
 </style>
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-  let user = getCookie('user') || 'GUEST'
+  let user = 'themarkymark' //getCookie('user') || 'GUEST'
   let lapi = getCookie('lapi') || 'https://spkinstant.hivehoneycomb.com'
   let hapi = getCookie('hapi') || 'https://api.hive.blog'
 
-  // Vue.filter("ftn", function(t, n) {
-  //         t = t.toFixed(n)
-  //         while(t.charAt(t.length - 1) == '0'){
-  //             t = t.substr(0, t.length - 1)
-  //         }
-  //         return t;
-  //     })
+
   createApp({
     data() {
       return {
@@ -85,7 +79,7 @@ input.disabled-input {
         },
         recenthive: {},
         recenthbd: {},
-        openorders: {},
+        openorders: [],
         accountinfo: {},
         filterusers: {
           checked: false,
@@ -231,7 +225,22 @@ input.disabled-input {
         .then(response => response.json())
         .then(data => {
           this.accountapi = data
-          this.recenthive = data.contracts
+          this.openorders = data.contracts.reduce((acc, cur) => {
+            if(cur.partials.length && cur.type.split(':')[1] == 'sell') {
+              const filled = cur.partials.reduce(function (a, c) {
+                return a + c.coin
+                }, 0)
+              cur.percentFilled = parseFloat(100 * filled / (cur.hive ? cur.hive : cur.hbd + filled)).toFixed(2)
+              acc.push(cur)
+            } else if (cur.partials.length){
+              const filled = cur.partials.reduce(function (a, c) {
+                return a + c.token
+                }, 0)
+              cur.percentFilled = parseFloat(100 * filled / (cur.amount + filled)).toFixed(2)
+              acc.push(cur)
+            }
+            return acc
+          }, [])
         })
       if(user != 'GUEST')fetch(hapi, {
           body: `{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["${user}"]], "id":1}`,
@@ -246,14 +255,7 @@ input.disabled-input {
         })
     },
     computed: {
-      ftn: (t, n) =>{
-        console.log(t, n)
-          t = typeof t == 'number' ? t.toFixed(n) : parseFloat(t).toFixed(n)
-          while(t.charAt(t.length - 1) == '0'){
-              t = t.substr(0, t.length - 1)
-          }
-          return t;
-      }
+      
     }
   }).mount('#app')
   
@@ -457,13 +459,13 @@ include_once( $path );
             <div id="dluxhivequote">
               <h2 class="lead my-0"><b>LARYNX: ${{((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd)}}</b></h2>
             </div>
-            <!-- <input id="dluxhiveusd" :value="dexapi.markets.hive.tick || 0" class="d-none"> -->
+            <input id="dluxhiveusd" :value="dexapi.markets ? dexapi.markets.hive.tick : 0" class="d-none">
           </div>
           <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
             <div id="dluxhbdquote">
               <h2 class="lead my-0"><b>LARYNX: ${{(dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd}}</b></h2>
             </div>
-            <!-- <input id="dluxhbdusd" :value="dexapi.markets.hbd.tick" class="d-none"> -->
+            <input id="dluxhbdusd" :value="dexapi.markets ? dexapi.markets.hbd.tick : 0" class="d-none">
           </div>
         </div>
       </div>
@@ -563,47 +565,47 @@ include_once( $path );
         </div>
         <div id="openordersdrawer" class="collapse ">
           <div class="py-5">
-            <!-- <div v-if="openorders.length == 0" class="text-center text-white-50">
+            <div v-if="openorders.length == 0" class="text-center text-white-50">
               <h5>No open orders</h5>
-            </div> -->
+            </div>
             <div class="table-responsive rounded border border-dark" v-if="openorders.length > 0">
-              <!-- <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
+              <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
-                    <th role="columnheader" class="" aria-colindex="1" v-bind:col-sort="openorders.sort.on == 'block'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="1" > <div class="d-flex align-items-center">
                       <div class="mr-3">BLOCK</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('block','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'block'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('block','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'block'"> <i class="fas fa-caret-down"></i></button>
+                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('block','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'block'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('block','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'block'"> <i class="fas fa-caret-down"></i></button> -->
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="2" v-bind:col-sort="openorders.sort.on == 'amount'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="2" > <div class="d-flex align-items-center">
                       <div class="mr-3">LARYNX</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('amount','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('amount','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-down"></i></button>
+                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('amount','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('amount','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-down"></i></button> -->
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="3" v-bind:col-sort="openorders.sort.on == 'hbd'"> <div class="d-flex align-items-center">
-                      <div class="mr-3">HBD</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hbd','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hbd'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hbd','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hbd'"> <i class="fas fa-caret-down"></i></button>
+                    <th role="columnheader" class="" aria-colindex="3" > <div class="d-flex align-items-center">
+                      <div class="mr-3">HIVE/HBD</div>
+                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hbd','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hbd'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hbd','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hbd'"> <i class="fas fa-caret-down"></i></button> -->
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="4" v-bind:col-sort="openorders.sort.on == 'hive'"> <div class="d-flex align-items-center">
-                      <div class="mr-3">HIVE</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hive','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hive'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hive','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hive'"> <i class="fas fa-caret-down"></i></button>
+                    <th role="columnheader" class="" aria-colindex="4" > <div class="d-flex align-items-center">
+                      <div class="mr-3">Filled</div>
+                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hive','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hive'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hive','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hive'"> <i class="fas fa-caret-down"></i></button> -->
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="5" v-bind:col-sort="openorders.sort.on == 'rate'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="5" > <div class="d-flex align-items-center">
                       <div class="mr-3">RATE</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('rate','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'rate'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('rate','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'rate'"> <i class="fas fa-caret-down"></i></button>
+                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('rate','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'rate'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('rate','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'rate'"> <i class="fas fa-caret-down"></i></button> -->
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="6" v-bind:col-sort="openorders.sort.on == 'type'"> <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="6" > <div class="d-flex align-items-center">
                       <div class="mr-3">TYPE</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('type','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('type','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-down"></i></button>
+                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('type','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('type','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-down"></i></button> -->
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="7"> <div class="d-flex align-items-center">
@@ -611,30 +613,19 @@ include_once( $path );
                     </div>
                     </th>
                   </tr>
+                </thead>
                 <tbody role="rowgroup">
-                  <tr role="row" class="" dmx-repeat:openordersrepeat="openorders.data">
-                    <td role="cell" class="" aria-colindex="1">{{block}}</td>
-                    <td role="cell" class="" aria-colindex="2">{{amount/1000}}</td>
-                    <td role="cell" class="" aria-colindex="3">{{hbd/1000}}</td>
-                    <td role="cell" class="" aria-colindex="4">{{hive/1000}}</td>
-                    <td role="cell" class="" aria-colindex="5" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{rate}}</td>
-                    <td role="cell" class="" aria-colindex="6" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:text-success="(type == 'hive:buy' || type == 'hbd:buy')">{{type.uppercase()}}</td>
-                    <td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" @click="cancelDEX('{{txid}}','spkcc_')">CANCEL</button></td>
+                  <tr role="row" class="" v-for="order in openorders">
+                    <td role="cell" class="" aria-colindex="1">{{order.block}}</td>
+                    <td role="cell" class="" aria-colindex="2">{{(order.amount/1000).toFixed(3)}}</td>
+                    <td role="cell" class="" aria-colindex="3">{{((order.hbd? order.hbd : order.hive)/1000).toFixed}}</td>
+                    <td role="cell" class="" aria-colindex="4">{{order.percentFilled}}%</td>
+                    <td role="cell" class="" aria-colindex="5" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.rate}}</td>
+                    <td role="cell" class="" aria-colindex="6" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.type.uppercase()}}</td>
+                    <td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" @click="cancelDEX('{{order.txid}}','spkcc_')">CANCEL</button></td>
                   </tr>
                 </tbody>
-                <tfoot>
-                  <tr role="row" class="" >
-                    <td role="cell" class="" colspan="7" aria-colindex="1">
-                      <div class="d-flex flex-fill justify-content-between align-items-center" v-if="openorders.pages > 1">
-                        <div class="col-1 m-0 p-0 text-left"><a class="btn btn-secondary" href="javascript:void(0);" @click="openorders.prev()" v-if="openorders.has.prev"><i class="fa fa-angle-left"></i></a></div>
-                        <div class="d-flex">
-                          <p class="m-0 p-0 text-muted">Page {{openorders.page}} of {{openorders.pages}}</p>
-                        </div>
-                        <div class="col-1 m-0 p-0 text-right"><a class="btn btn-secondary" href="javascript:void(0)" @click="openorders.next()" v-if="openorders.has.next"><i class="fa fa-angle-right"></i></a></div>
-                      </div></td>
-                  </tr>
-                </tfoot>
-              </table> -->
+              </table>
             </div>
           </div>
         </div>
