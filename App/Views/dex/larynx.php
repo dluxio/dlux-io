@@ -43,7 +43,7 @@ input.disabled-input {
   let hapi = getCookie('hapi') || 'https://api.hive.blog'
 
   createApp({
-    filters:{
+    filters: {
       ftn: function(t, n) {
           t = t.toFixed(n)
           while(t.charAt(t.length - 1) == '0'){
@@ -52,7 +52,7 @@ input.disabled-input {
           return t;
       }
     },
-    data: {
+    data() {
       return {
         nowtime: new Date().getTime(),
         agoTime: new Date().getTime() - 86400000,
