@@ -119,7 +119,7 @@ input.disabled-input {
         },
       }
     },
-    mounted() {
+    mounted: {
       fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
         .then(response => response.json())
         .then(data => {
