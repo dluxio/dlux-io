@@ -71,6 +71,8 @@ input.disabled-input {
         dexapi: {},
         prefix: 'spkcc_',
         buyHiveTotal: 0,
+        buyPrice: 0,
+        sellPrice: 0,
         buyHBDTotal: 0,
         sellHiveTotal: 0,
         sellHBDTotal: 0,
