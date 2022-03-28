@@ -37,12 +37,19 @@ input.disabled-input {
 }
 </style>
 <script type="module">
-  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  import Vue from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   let user = getCookie('user') || 'GUEST'
   let lapi = getCookie('lapi') || 'https://spkinstant.hivehoneycomb.com'
   let hapi = getCookie('hapi') || 'https://api.hive.blog'
 
-  createApp({
+  Vue.filter("ftn", function(t, n) {
+          t = t.toFixed(n)
+          while(t.charAt(t.length - 1) == '0'){
+              t = t.substr(0, t.length - 1)
+          }
+          return t;
+      })
+  Vue.createApp({
     data() {
       return {
         nowtime: new Date().getTime(),
