@@ -453,7 +453,7 @@ include_once( $path );
 				  <span class="small p-0 m-0" v-if="behind < 30">ONLINE</span>
 				  <span class="small p-0 m-0" v-if="behind >= 30 && behind <=100">LAGGING</span>
 				  <span class="small p-0 m-0" v-if="behind > 100">OFFLINE</span>
-				  <span class="small p-0 m-0">| {{behind}} BBH | {{runners.length}} NODES</span></button> -->
+				  <span class="small p-0 m-0"> | {{behind}} BBH | {{runners.length}} NODES</span></button>
             </div>
           </div>
           <div class="d-flex align-items-center text-white-50">
