@@ -123,6 +123,20 @@ thead, tbody tr {
         recenthive: {},
         recenthbd: {},
         openorders: [],
+        orders: {
+          filleda: false,
+          filledd: false,
+          blocka: false,
+          blockd: true,
+          coina: false,
+          coind: false,
+          tokena: false,
+          tokend: false,
+          ratea: false,
+          rated: false,
+          typea: false,
+          typed: false
+        }
         accountinfo: {},
         filterusers: {
           checked: true,
@@ -182,6 +196,20 @@ thead, tbody tr {
         this.filteraccount.gova = ip == 'gova' ? true : false
         this.filteraccount.govd = ip == 'govd' ? true : false
       },
+      toggleOrders(ip) {
+        this.orders.blocka = ip == 'blocka' ? true : false
+        this.orders.blockd = ip == 'blockd' ? true : false
+        this.orders.coina = ip == 'coina' ? true : false
+        this.orders.coind = ip == 'coind' ? true : false
+        this.orders.tokena = ip == 'tokena' ? true : false
+        this.orders.tokend = ip == 'tokend' ? true : false
+        this.orders.ratea = ip == 'ratea' ? true : false
+        this.orders.rated = ip == 'rated' ? true : false
+        this.orders.typea = ip == 'typea' ? true : false
+        this.orders.typed = ip == 'typed' ? true : false
+        this.orders.filleda = ip == 'filleda' ? true : false
+        this.orders.filledd = ip == 'filledd' ? true : false
+      },
       setValue(key, value) {
         if(key.split('.').length > 1) {
           let keys = key.split('.')
@@ -228,7 +256,7 @@ thead, tbody tr {
       },
       focus(id){
         document.getElementById(id).focus()
-      },
+      }
       searchRunners(){
         const term = this.filteraccount.value
         if(term){
@@ -458,7 +486,7 @@ thead, tbody tr {
                 cur.percentFilled = parseFloat(100 * filled / (cur.amount + filled)).toFixed(2)
                 acc.push(cur)
               } else {
-                cur.percentFilled = 0
+                cur.percentFilled = "0.00"
                 acc.push(cur)
               }
               console.log({acc})
@@ -768,38 +796,38 @@ include_once( $path );
                   <tr role="row" class="">
                     <th role="columnheader" class="" aria-colindex="1" > <div class="d-flex align-items-center">
                       <div class="mr-3">BLOCK</div>
-                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('block','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'block'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('block','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'block'"> <i class="fas fa-caret-down"></i></button> -->
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','block','asc');toggleOrders('blocka')" v-bind:class="{'bg-primary'=orders.blocka}"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','block','desc');toggleOrders('blockd')" v-bind:class="{'bg-primary'=orders.blockd}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="2" > <div class="d-flex align-items-center">
                       <div class="mr-3">{{TOKEN}}</div>
-                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('amount','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('amount','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-down"></i></button> -->
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','token','asc');toggleOrders('tokena')" v-bind:class="{'bg-primary'=orders.tokena}"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','token','desc');toggleOrders('tokend')" v-bind:class="{'bg-primary'=orders.tokend}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="3" > <div class="d-flex align-items-center">
                       <div class="mr-3">HIVE/HBD</div>
-                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hbd','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hbd'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hbd','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hbd'"> <i class="fas fa-caret-down"></i></button> -->
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','coin','asc');toggleOrders('coina')"v-bind:class="{'bg-primary'=orders.coina}"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','coin','desc');toggleOrders('coind')" v-bind:class="{'bg-primary'=orders.coind}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="4" > <div class="d-flex align-items-center">
                       <div class="mr-3">Filled</div>
-                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hive','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'hive'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('hive','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'hive'"> <i class="fas fa-caret-down"></i></button> -->
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','percentFilled','asc');toggleOrders('filleda')" v-bind:class="{'bg-primary'=orders.filleda}"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','percentFilled','desc');toggleOrders('filledd')" v-bind:class="{'bg-primary'=orders.filledd}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="5" > <div class="d-flex align-items-center">
                       <div class="mr-3">RATE</div>
-                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('rate','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'rate'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('rate','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'rate'"> <i class="fas fa-caret-down"></i></button> -->
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','rate','asc');toggleOrders('ratea')" v-bind:class="{'bg-primary'=orders.ratea}"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','rate','desc');toggleOrders('rated')" v-bind:class="{'bg-primary'=orders.rated}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="6" > <div class="d-flex align-items-center">
                       <div class="mr-3">TYPE</div>
-                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('type','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('type','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'type'"> <i class="fas fa-caret-down"></i></button> -->
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','type','asc');toggleOrders('typea')" v-bind:class="{'bg-primary'=orders.typea}"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','type','desc');toggleOrders('typed')" v-bind:class="{'bg-primary'=orders.typed}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="7"> <div class="d-flex align-items-center">
@@ -809,7 +837,7 @@ include_once( $path );
                   </tr>
                 </thead>
                 <tbody role="rowgroup">
-                  <tr role="row" class="" v-for="order in openorders">
+                  <tr role="row" class="" v-for="order in openorders" v-if="!orders.value">
                     <td role="cell" class="" aria-colindex="1">{{order.block}}</td>
                     <td role="cell" class="" aria-colindex="2">{{(order.amount/1000).toFixed(3)}}</td>
                     <td role="cell" class="" aria-colindex="3">{{order.nai}}</td>
