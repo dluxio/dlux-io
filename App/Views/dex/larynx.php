@@ -136,6 +136,30 @@ input.disabled-input {
       setValue(key, value) {
         this[key] = value
       },
+      buyDEX(hive, hbd, dlux, hours, prefix = 'dlux_', callback){
+        console.log({hive,hbd,dlux})
+        var token, msaccount, statusapi
+        switch (prefix){
+            case 'spkcc_':
+                token = 'LARYNX'
+                msaccount = 'spk-cc'
+                statusapi = 'spkinstant.hivehoneycomb.com'
+                break;
+            default:
+                token = 'DLUX'
+                msaccount = 'dlux-cc'
+        }
+        dlux = parseInt(parseFloat(dlux)*1000)
+        hive = parseInt(parseFloat(hive)*1000)
+        hbd = parseInt(parseFloat(hbd)*1000)
+        var andthen = ' at market rate', rate = undefined, hours = 720
+        if (dlux){
+            rate = parseFloat((hive? hive : hbd)/dlux).toFixed(6)
+            andthen = ` at ${rate} ${hive?'HIVE':'HBD'} per ${token}`
+        }
+        if(!hbd) broadcastTransfer({ to: msaccount, hive, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
+        else broadcastTransfer({ to: msaccount, hbd, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
+      },
     },
     mounted() {
       fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
