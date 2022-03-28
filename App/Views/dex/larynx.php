@@ -247,7 +247,7 @@ input.disabled-input {
     },
     computed: {
       ftn: (t, n) =>{
-          t = t.toFixed(n)
+          t = typeof t == 'number' ? t.toFixed(n) : parseFloat(t).toFixed(n)
           while(t.charAt(t.length - 1) == '0'){
               t = t.substr(0, t.length - 1)
           }
