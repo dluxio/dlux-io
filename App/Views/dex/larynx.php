@@ -82,6 +82,7 @@ thead, tbody tr {
           }
         },
         nodes: {},
+        runners: [],
         marketnodes: {},
         hivebuys: [],
         hivesells: [],
@@ -241,12 +242,12 @@ thead, tbody tr {
       fetch(this.lapi + '/runners')
         .then(response => response.json())
         .then(data => {
-          this.nodes = data
+          this.runners = data.result
         })
       fetch(this.lapi + '/markets')
         .then(response => response.json())
         .then(data => {
-          this.nodes = data.result
+          this.nodes = data.markets.node
         })
       fetch(this.lapi + '/api/protocol')
         .then(response => response.json())
@@ -448,11 +449,11 @@ include_once( $path );
               <button class="text-center btn btn-sm align-items-center ml-4" 
 						 v-bind:class="{'btn-outline-success':'behind < 30', 'btn-outline-warning':'behind >= 30 && behind < 60', 'btn-outline-danger':'behind >= 60'}"	
 						type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
-				  <span class="small p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }} |</span>
+				  <span class="small p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }} | </span>
 				  <span class="small p-0 m-0" v-if="behind < 30">ONLINE</span>
 				  <span class="small p-0 m-0" v-if="behind >= 30 && behind <=100">LAGGING</span>
 				  <span class="small p-0 m-0" v-if="behind > 100">OFFLINE</span>
-				  <!-- <span class="small p-0 m-0">| {{dexapi.behind}} BBH | {{nodes.result.length}} NODES</span></button> -->
+				  <span class="small p-0 m-0">| {{behind}} BBH | {{runners.length}} NODES</span></button> -->
             </div>
           </div>
           <div class="d-flex align-items-center text-white-50">
