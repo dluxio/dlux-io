@@ -486,7 +486,7 @@ thead, tbody tr {
   
 </script>
 </head>
-<body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
+<body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index">
 <!--<input id="timenow" class="d-none" :value="{{nodes.data.node.getTimeOffset(0)}}">
 <input id="timeoffset" class="d-none" :value="{{nodes.data.node.getTimeOffset(86400000)}}">-->
 <!-- <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
