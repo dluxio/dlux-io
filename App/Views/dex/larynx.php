@@ -119,7 +119,7 @@ thead, tbody tr {
         openorders: [],
         accountinfo: {},
         filterusers: {
-          checked: false,
+          checked: true,
           value: '',
         },
         filteraccount: {
@@ -246,7 +246,7 @@ thead, tbody tr {
       fetch(this.lapi + '/runners')
         .then(response => response.json())
         .then(data => {
-          this.runners = data.result
+          this.runners = data.result.sort((a,b) => {return a.gov - b.gov})
         })
       fetch(this.lapi + '/markets')
         .then(response => response.json())
