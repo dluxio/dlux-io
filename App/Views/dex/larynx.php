@@ -38,7 +38,7 @@ input.disabled-input {
 </style>
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-  let user = 'themarkymark' //getCookie('user') || 'GUEST'
+  let user = getCookie('user') || 'GUEST'
   let lapi = getCookie('lapi') || 'https://spkinstant.hivehoneycomb.com'
   let hapi = getCookie('hapi') || 'https://api.hive.blog'
 
@@ -69,6 +69,15 @@ input.disabled-input {
         hbdbuys: [],
         hbdsells: [],
         dexapi: {},
+        prefix: 'spkcc_',
+        buyHiveTotal: 0,
+        buyHBDTotal: 0,
+        sellHiveTotal: 0,
+        sellHBDTotal: 0,
+        buyQuantity: 0,
+        sellQuantity: 0,
+        buyHours: 720,
+        sellHours: 720,
         volume:{
           hive: 0,
           hbd: 0,
@@ -112,6 +121,21 @@ input.disabled-input {
           checked: false
         },
       }
+    },
+    methods: {
+      togglecoin() {
+        this.buyhive.checked = !this.buyhive.checked
+        this.buyhbd.checked = !this.buyhbd.checked
+      },
+      toggletype() {
+        this.buylimit.checked = !this.buylimit.checked
+        this.buymarket.checked = !this.buymarket.checked
+        this.selllimit.checked = !this.selllimit.checked
+        this.sellmarket.checked = !this.sellmarket.checked
+      },
+      setValue(key, value) {
+        this[key] = value
+      },
     },
     mounted() {
       fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
@@ -637,11 +661,11 @@ include_once( $path );
           </div>
         </div>
       </div>
-      <!-- <div id="tradeForms">
+      <div id="tradeForms">
         <div class="row">
           <div class="mt-3 col-md-6">
             <h4>Buy LARYNX</h4>
-            <form name="buy" class="form-horizontal needs-validation" :action="javascript:buyDEX('{{buyHiveTotal.value}}','{{buyHBDTotal.value}}','{{buyQuantity.value}}','{{buyHours.value}}','spkcc_')">
+            <form name="buy" class="form-horizontal needs-validation" :action="buyDEX('{{buyHiveTotal.value}}','{{buyHBDTotal.value}}','{{buyQuantity.value}}','{{buyHours.value}}','{{prefix}}')">
               <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
@@ -667,7 +691,7 @@ include_once( $path );
                       <input type="number" required class="form-control bg-dark border-dark text-white-50" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
-							<a href="#" v-if="buyPrice.value > 0" class="d-none mr-2 badge badge-primary" @click="buyQuantity.setValue((accountapi.balance.parseFloat()/buyPrice.value))">MAX</a>
+							<a href="#" v-if="buyPrice.value > 0" class="d-none mr-2 badge badge-primary" @click="buyQuantity.setValue(accountapi.balance/buyPrice.value)">MAX</a>
 							LARYNX
 							 </div>
                       </div>
@@ -684,7 +708,7 @@ include_once( $path );
                       <input id="buyPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
-							<a v-if="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" @click="buyPrice.setValue((accountapi.balance.parseFloat()/buyQuantity.value))">MAX</a>
+							<a v-if="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" @click="buyPrice.setValue(accountapi.balance/buyQuantity.value)">MAX</a>
 							<span v-if="buyhive.checked">HIVE</span>
 							<span v-if="buyhbd.checked">HBD</span>
 							/LARYNX</div>
@@ -843,7 +867,7 @@ include_once( $path );
             </form>
           </div>
         </div>
-      </div> -->
+      </div>
       <div id="hiveData"  v-if="buyhive.checked">
         <div id="hiveMarketOrders">
           <div class="row">
