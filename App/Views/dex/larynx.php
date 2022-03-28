@@ -68,6 +68,11 @@ thead, tbody tr {
         agoTime: new Date().getTime() - 86400000,
         account: user,
         balance: "0.000",
+        bartoken: "",
+        barhive: "",
+        barhbd: "",
+        bargov: "",
+        barpow: "",
         lapi: lapi,
         hapi: hapi,
         accountapi: {},
@@ -429,6 +434,9 @@ thead, tbody tr {
         .then(response => response.json())
         .then(data => {
           this.balance = (data.balance/1000).toFixed(3)
+          this.bartoken = this.balance
+          this.barpow = ((data.poweredUp + data.granted - data.granting)/1000).toFixed(3)
+          this.bargov = (data.gov/1000).toFixed(3)
           this.accountapi = data
           console.log(data.contracts)
           this.openorders = data.contracts
@@ -464,6 +472,8 @@ thead, tbody tr {
         .then(response => response.json())
         .then(data => {
           this.accountinfo = data.result[0]
+          this.barhive = this.accountinfo.balance
+          this.barhbd = this.accountinfo.hbd_balance
         })
     },
     computed: {
@@ -538,11 +548,11 @@ include_once( $path );
             </div>
           </div>
           <div class="d-flex align-items-center text-white-50">
-            <div id="userdlux" class="mx-4 text-warning">{{(accountapi.balance/1000)}} {{TOKEN}}</div>
-            <div id="userdpwr" class="mx-4 text-primary" v-if="accountapi.poweredUp > 0">{{(accountapi.poweredUp/1000)}} {{TOKEN}}P</div>
-            <div id="userdgov" class="mx-4 text-info" v-if="accountapi.gov > 0">{{(accountapi.gov/1000)}} {{TOKEN}}G</div>
-            <div id="userhive" class="mx-4 text-danger">{{accountapi.balance}}</div>
-            <div id="userhbd" class="mx-4 text-success">{{accountapi.hbd_balance}}</div>
+            <div id="userdlux" class="mx-4 text-warning">{{bartoken}} {{TOKEN}}</div>
+            <div id="userdpwr" class="mx-4 text-primary" v-if="accountapi.poweredUp > 0">{{barpow}} {{TOKEN}}P</div>
+            <div id="userdgov" class="mx-4 text-info" v-if="accountapi.gov > 0">{{bargov}} {{TOKEN}}G</div>
+            <div id="userhive" class="mx-4 text-danger">{{barhive}}</div>
+            <div id="userhbd" class="mx-4 text-success">{{barhbd}}</div>
           </div>
         </div>
 		  <!-- node collapse region -->
