@@ -83,6 +83,7 @@ thead, tbody tr {
         },
         nodes: {},
         runners: [],
+        runnersSearch: [],
         marketnodes: {},
         hivebuys: [],
         hivesells: [],
@@ -123,10 +124,6 @@ thead, tbody tr {
           value: '',
         },
         filteraccount: {
-          checked: false,
-          value: '',
-        },
-        filterapis: {
           checked: false,
           value: '',
         },
@@ -183,10 +180,27 @@ thead, tbody tr {
             })
         }
       },
-      filter(item, key, term){
-        this[item] = this[item].filter(function(e){
-          return e[key].toLowerCase().indexOf(term.toLowerCase()) > -1
-        })
+      searchRunners(){
+        const term = this.filteraccount.value
+        if(term){
+          this.filteraccount.checked = true
+          this.filteraccount.value = term
+          this.filterusers.checked = false
+          this.filterusers.value = ''
+          this.runnersSearch = this.runners.reduce((acc, runner) => {
+          if(runner.account.toLowerCase().includes(term.toLowerCase())){
+            acc.push(runner)
+          } else if (runner.api.toLowerCase().includes(term.toLowerCase())){
+            acc.push(runner)
+          }
+          return acc
+        }, [])
+        } else {
+          this.filteraccount.checked = false
+          this.filteraccount.value = ''
+          this.filterusers.checked = true
+          this.filterusers.value = ''
+        }
       },
       buyDEX(hive, hbd, dlux, hours, prefix = 'dlux_', callback){
         console.log({hive,hbd,dlux})
@@ -496,19 +510,19 @@ include_once( $path );
 			  <div class="container">
 			  <div class="d-flex align-items-center mb-3">
 				  <div class="">
-			  		<div role="group" class="input-group" v-if="filterusers.checked">
-				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
-                      <input type="text" class="form-control bg-dark border-dark text-info" id="filteraccount" aria-required="true" placeholder="Users">
-                      <div class="input-group-append p-0 m-0" >
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px">
-							<span v-if="filteraccount.value">
-								<a href="#" class="badge badge-secondary" @click="setValue('filteraccount',null)"><i class="fas fa-times"></i></a>
-							</span>
-						 </div>
+			  		<div role="group" class="input-group" >
+              <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
+                <input type="text" v-on:keyup="searchRunners()" class="form-control bg-dark border-dark text-info" id="filteraccount" v-model:"filteraccount.value" @ aria-required="true" placeholder="Users">
+                          <!-- <div class="input-group-append p-0 m-0" >
+                            <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px">
+                  <span v-if="filteraccount.value">
+                    <a href="#" class="badge badge-secondary" @click="setValue('filteraccount',null)"><i class="fas fa-times"></i></a>
+                  </span>
+                </div>
+                          </div> -->
                       </div>
-                  </div>
-					  </div>
-			  <div class="">
+              </div>
+			  <!-- <div class="">
 			  <div role="group" class="input-group" v-if="filterapis.checked">
 				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="filterapi.focus()"><i class="fas fa-search"></i></span></div>
                       <input type="text" class="form-control bg-dark border-dark text-info" id="filterapi" aria-required="true" placeholder="APIs">
@@ -518,17 +532,7 @@ include_once( $path );
                       </div>
                   </div>
 				  </div>
-			 <div class="d-flex ml-2">
-				 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-outline-primary active">
-                <input name="filtertype" type="radio" id="filterusers" is="dmx-radio" value="" checked="">
-                Users </label>
-              <label class="btn btn-outline-primary">
-                <input type="radio" name="filtertype" id="filterapis" is="dmx-radio" value="">
-                APIs </label>
-            </div>
-			</div>
-			</div>
+			</div> -->
 			  
             <div class="table-responsive rounded border border-dark">
               <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
@@ -572,7 +576,7 @@ include_once( $path );
                     <td role="cell" class="" aria-colindex="2">{{(node.g/1000)}}</td>
                     <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setAPI('lapi','{{api}}')">{{node.api}}</a></td>
                   </tr>
-					        <tr class="" role="row" v-for="node in runners" v-if="filterapis.checked">
+					        <tr class="" role="row" v-for="node in runnersSearch" v-if="filteraccount.checked">
                     <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(node.g/1000)}}</td>
                     <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setAPI('lapi','{{api}}')">{{node.api}}</a></td>
