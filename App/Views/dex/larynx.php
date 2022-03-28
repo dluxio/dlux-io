@@ -167,7 +167,7 @@ thead, tbody tr {
         return `/@${key}`
       },
       setMem(key, value, reload) {
-        if(value.indexOf('https://') > -1) {
+        if(value.indexOf('https://') == -1) {
           alert('https:// is required for security reasons')
           return
         } else if(value[value.length - 1] == '/'){
