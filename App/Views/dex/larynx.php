@@ -207,38 +207,6 @@ input.disabled-input {
             txidstring = txid.join(',')
         }
         if(txid)broadcastCJA({ txid}, `${prefix}dex_clear`, `Canceling: ${txidstring}`, statusapi)
-      },
-      step2(){
-      fetch(this.lapi + '/api/recent/HIVE_' + this.TOKEN + '?limit=1000')
-        .then(response => response.json())
-        .then(data => {
-          this.volume.hive = data.recent_trades.reduce((a, b) => {
-            if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.target_volume) * 1000)
-            else return a
-            }, 0) / 1000
-          this.volume.token_hive = data.recent_trades.reduce((a, b) => {
-            if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.base_volume) * 1000)
-            else return a
-            }, 0) / 1000
-          this.recenthive = data.recent_trades.sort((a, b) => {
-            return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
-          })
-        })
-      fetch(this.lapi + '/api/recent/HBD_' + this.TOKEN +'?limit=1000')
-        .then(response => response.json())
-        .then(data => {
-          this.volume.hbd = data.recent_trades.reduce((a, b) => {
-            if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.target_volume) * 1000)
-            else return a
-            }, 0) / 1000
-          this.volume.token_hbd = data.recent_trades.reduce((a, b) => {
-            if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.base_volume) * 1000)
-            else return a
-            }, 0) / 1000
-          this.recenthbd = data.recent_trades.sort((a, b) => {
-            return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
-          })
-        })
       }
     },
     mounted() {
@@ -271,7 +239,36 @@ input.disabled-input {
           this.TOKEN = data.jsontoken.toUpperCase()
           this.node = data.node
           this.behind = data.behind
-          step2()
+          fetch(this.lapi + '/api/recent/HIVE_' + this.TOKEN + '?limit=1000')
+            .then(response => response.json())
+            .then(data => {
+              this.volume.hive = data.recent_trades.reduce((a, b) => {
+                if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.target_volume) * 1000)
+                else return a
+                }, 0) / 1000
+              this.volume.token_hive = data.recent_trades.reduce((a, b) => {
+                if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.base_volume) * 1000)
+                else return a
+                }, 0) / 1000
+              this.recenthive = data.recent_trades.sort((a, b) => {
+                return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
+              })
+            })
+          fetch(this.lapi + '/api/recent/HBD_' + this.TOKEN +'?limit=1000')
+            .then(response => response.json())
+            .then(data => {
+              this.volume.hbd = data.recent_trades.reduce((a, b) => {
+                if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.target_volume) * 1000)
+                else return a
+                }, 0) / 1000
+              this.volume.token_hbd = data.recent_trades.reduce((a, b) => {
+                if(b.trade_timestamp > this.agoTime)return a + parseInt(parseFloat(b.base_volume) * 1000)
+                else return a
+                }, 0) / 1000
+              this.recenthbd = data.recent_trades.sort((a, b) => {
+                return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
+              })
+            })
         })
       fetch(this.lapi + '/dex')
         .then(response => response.json())
