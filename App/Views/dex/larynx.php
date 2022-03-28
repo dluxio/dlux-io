@@ -256,7 +256,7 @@ thead, tbody tr {
       },
       focus(id){
         document.getElementById(id).focus()
-      }
+      },
       searchRunners(){
         const term = this.filteraccount.value
         if(term){
