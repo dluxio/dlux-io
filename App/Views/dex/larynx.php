@@ -228,6 +228,7 @@ input.disabled-input {
           console.log(data.contracts)
           this.openorders = data.contracts
             .reduce((acc, cur) => {
+              cur.nai = `${cur.type.split(':')[0] == 'hive' ? parseFloat(order.hive/1000).toFixed(3) : parseFloat(order.hbd/1000).toFixed(3)} ${cur.type.split(':')[0] == 'hive' ? 'HIVE' : 'HBD'}`
               if(cur.partials && cur.partials.length && cur.type.split(':')[1] == 'sell') {
                 const filled = cur.partials.reduce(function (a, c) {
                   return a + c.coin
@@ -624,7 +625,7 @@ include_once( $path );
                   <tr role="row" class="" v-for="order in openorders">
                     <td role="cell" class="" aria-colindex="1">{{order.block}}</td>
                     <td role="cell" class="" aria-colindex="2">{{(order.amount/1000).toFixed(3)}}</td>
-                    <td role="cell" class="" aria-colindex="3">{{((order.hbd? order.hbd : order.hive)/1000).toFixed}}</td>
+                    <td role="cell" class="" aria-colindex="3">{{(order.nai}}</td>
                     <td role="cell" class="" aria-colindex="4">{{order.percentFilled}}%</td>
                     <td role="cell" class="" aria-colindex="5" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.rate}}</td>
                     <td role="cell" class="" aria-colindex="6" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.type}}</td>
