@@ -7,7 +7,6 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-<!-- <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script> 
@@ -53,7 +52,6 @@ thead, tbody tr {
 
 
 </style>
-<!-- <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script> -->
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   let user = localStorage.getItem('user') || 'GUEST'
@@ -515,24 +513,6 @@ thead, tbody tr {
 </script>
 </head>
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index">
-<!--<input id="timenow" class="d-none" :value="{{nodes.data.node.getTimeOffset(0)}}">
-<input id="timeoffset" class="d-none" :value="{{nodes.data.node.getTimeOffset(86400000)}}">-->
-<!-- <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
-<dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
-<dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/runners" ></dmx-api-datasource> -->
-<!--<dmx-api-datasource id="openorders" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/@imno" ></dmx-api-datasource>-->
-<!--<dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX" dmx-param:limit="1000" ></dmx-api-datasource>-->
-<!-- <dmx-data-view id="marketnodes" :data="nodes.data.result" sorton="g" sortdir="ndesc" pagesize="10"></dmx-data-view>
-<dmx-data-view id="openorders" :data="openorders.data.contracts" sorton="block" pagesize="10"></dmx-data-view>
-<dmx-data-view id="accountinfo" :data="accountapi.data.result"></dmx-data-view>
-<dmx-data-view id="recenthive" :data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
-<dmx-data-view id="recenthbd" :data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" pagesize="25"></dmx-data-view>
-<dmx-data-view id="recenthive24h" :data="recenthiveapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(timeoffset.value,timenow.value)" ></dmx-data-view>
-<dmx-data-view id="recenthbd24h" :data="recenthbdapi.data.recent_trades" sorton="trade_timestamp" sortdir="ndesc" filter="trade_timestamp.inRange(timeoffset.value,timenow.value)" ></dmx-data-view>
-<dmx-data-view id="hivebuys" :data="dexapi.data.markets.hive.buys" sorton="rate" sortdir="ndesc" pagesize="15"></dmx-data-view>
-<dmx-data-view id="hivesells" :data="dexapi.data.markets.hive.sells" sorton="rate" sortdir="nasc" pagesize="15"></dmx-data-view>
-<dmx-data-view id="hbdbuys" :data="dexapi.data.markets.hbd.buys" sorton="rate" sortdir="ndesc" pagesize="15"></dmx-data-view>
-<dmx-data-view id="hbdsells" :data="dexapi.data.markets.hbd.sells" sorton="rate" sortdir="nasc" pagesize="15"></dmx-data-view> -->
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
@@ -590,18 +570,6 @@ include_once( $path );
                           </div>
                       </div>
               </div>
-			  <!-- 
-			<div class="">
-			  <div role="group" class="input-group" v-if="filterapis.checked">
-				  <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="filterapi.focus()"><i class="fas fa-search"></i></span></div>
-                      <input type="text" class="form-control bg-dark border-dark text-info" id="filterapi" aria-required="true" placeholder="APIs">
-                      <div class="input-group-append p-0 m-0">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px">
-							<span v-if="filterapi.value"><a href="#" class="badge badge-secondary" @click="setValue('filterapi',null)"><i class="fas fa-times"></i></a></span></div>
-                      </div>
-                  </div>
-				  </div>
-			 -->
 			  </div>
             <div class="table-responsive rounded border border-dark">
               <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
@@ -665,7 +633,6 @@ include_once( $path );
             <div id="hivequote">
               <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd}}</b></h2>
             </div>
-            <!-- <input id="hiveusd" :value="hiveprice.hive.usd" class="d-none"> -->
           </div>
         </div>
         <div class="col-4">
@@ -673,7 +640,6 @@ include_once( $path );
             <div id="hbdquote">
               <h2 class="lead my-0"><b>HBD: ${{hbdprice.hive_dollar.usd}}</b></h2>
             </div>
-            <!-- <input id="hbdusd" :value="hbdprice.hive_dollar.usd" class="d-none"> -->
           </div>
         </div>
         <div class="col-4">
@@ -681,13 +647,11 @@ include_once( $path );
             <div id="dluxhivequote">
               <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</b></h2>
             </div>
-            <!-- <input id="dluxhiveusd" :value="dexapi.markets ? dexapi.markets.hive.tick : 0" class="d-none"> -->
           </div>
           <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
             <div id="dluxhbdquote">
               <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd, 6)}}</b></h2>
             </div>
-            <!-- <input id="dluxhbdusd" :value="dexapi.markets ? dexapi.markets.hbd.tick : 0" class="d-none"> -->
           </div>
         </div>
       </div>
