@@ -627,7 +627,7 @@ include_once( $path );
                     <td role="cell" class="" aria-colindex="3">{{((order.hbd? order.hbd : order.hive)/1000).toFixed}}</td>
                     <td role="cell" class="" aria-colindex="4">{{order.percentFilled}}%</td>
                     <td role="cell" class="" aria-colindex="5" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.rate}}</td>
-                    <td role="cell" class="" aria-colindex="6" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.type.uppercase()}}</td>
+                    <td role="cell" class="" aria-colindex="6" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.type}}</td>
                     <td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" @click="cancelDEX('{{order.txid}}','spkcc_')">CANCEL</button></td>
                   </tr>
                 </tbody>
