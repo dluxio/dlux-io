@@ -129,9 +129,11 @@ input.disabled-input {
         this.buyhive.checked = !this.buyhive.checked
         this.buyhbd.checked = !this.buyhbd.checked
       },
-      toggletype() {
+      togglebuylimit() {
         this.buylimit.checked = !this.buylimit.checked
         this.buymarket.checked = !this.buymarket.checked
+      },
+      toggleselllimit() {
         this.selllimit.checked = !this.selllimit.checked
         this.sellmarket.checked = !this.sellmarket.checked
       },
@@ -737,10 +739,10 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="buyType" id="buylimit" checked @click="buyQuantity.setValue('');buyHours.setValue('720')">
+                          <input type="radio" name="buyType" id="buylimit" :checked="buylimit.checked" @click="togglebuylimit();setValue('buyQuantity', '');setValue('buyHours','720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="buyType" id="buymarket" @click="buyQuantity.setValue('0');buyHours.setValue('0')">
+                          <input type="radio" name="buyType" id="buymarket" checked="buymarket.checked" @click="togglebuylimit();setValue('buyQuantity','0');setValue('buyHours','0')">
                           MARKET </label>
                       </div>
                     </div>
