@@ -512,7 +512,7 @@ include_once( $path );
 				  <div class="">
 			  		<div role="group" class="input-group" >
               <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
-                <input type="text" v-on:keyup="searchRunners()" class="form-control bg-dark border-dark text-info" id="filteraccount" v-model:"filteraccount.value" @ aria-required="true" placeholder="Users">
+                <input type="text" v-on:keyup="searchRunners()" class="form-control bg-dark border-dark text-info" id="filteraccount" v-model="filteraccount.value" @ aria-required="true" placeholder="Users">
                           <!-- <div class="input-group-append p-0 m-0" >
                             <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px">
                   <span v-if="filteraccount.value">
