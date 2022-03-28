@@ -571,7 +571,7 @@ include_once( $path );
                             <h6 class="dropdown-header">CURRENT API</h6>
                             <p class="dropdown-item">{{lapi}}</p>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" @click="setMem('lapi','https://spkinstant.hivehoneycomb.com/', true)"><i class="fas fa-bolt mr-2"></i>Load Latest</a> </div>
+                            <a class="dropdown-item" href="#" @click="setMem('lapi','https://spkinstant.hivehoneycomb.com', true)"><i class="fas fa-bolt mr-2"></i>Load Latest</a> </div>
                         </div>
                     
                     </div>
