@@ -7,7 +7,7 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
 include_once( $path );
 ?>
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script>
+<!-- <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxAppConnect.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script> 
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script> 
@@ -53,7 +53,7 @@ thead, tbody tr {
 
 
 </style>
-<script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
+<!-- <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script> -->
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   let user = localStorage.getItem('user') || 'GUEST'
@@ -508,20 +508,6 @@ thead, tbody tr {
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/nav.php";
-$lapi = "https://spkinstant.hivehoneycomb.com";
-if ( isset( $_COOKIE[ 'lapi' ] ) ) {$lapi = $_COOKIE[ 'lapi' ];};
-if ( isset( $_COOKIE[ 'user' ] ) ) {
-
-  echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>\n";
-  echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
-  echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
-  echo "<dmx-api-datasource id=\"openorders\" is=\"dmx-fetch\" url=\"" . $lapi . "/@" . $_COOKIE[ 'user' ] . "\"></dmx-api-datasource>\n";
-  echo "<dmx-api-datasource id=\"accountapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/hapi/condenser_api/get_accounts\" dmx-param:0=\"'" . $_COOKIE[ 'user' ] . "'\"></dmx-api-datasource>\n";
-} else {
-  echo "<dmx-api-datasource id=\"dexapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/dex\" ></dmx-api-datasource>\n";
-  echo "<dmx-api-datasource id=\"recenthiveapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HIVE_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
-  echo "<dmx-api-datasource id=\"recenthbdapi\" is=\"dmx-fetch\" url=\"" . $lapi . "/api/recent/HBD_LARYNX/\" dmx-param:limit=\"1000\"></dmx-api-datasource>\n";
-};
 include_once( $path );
 ?>
 <div id="app">
@@ -752,19 +738,19 @@ include_once( $path );
           </div>
           <div id="settimescale" class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-info active">
-              <input type="radio" name="timescale" id="hourbtn" is="dmx-radio">
+              <input type="radio" name="timescale" id="hourbtn" >
               1H </label>
             <label class="btn btn-info">
-              <input type="radio" name="timescale" id="daybtn" is="dmx-radio">
+              <input type="radio" name="timescale" id="daybtn" >
               1D </label>
             <label class="btn btn-info">
-              <input type="radio" name="timescale" id="weekbtn" is="dmx-radio">
+              <input type="radio" name="timescale" id="weekbtn" >
               1W </label>
             <label class="btn btn-info">
-              <input type="radio" name="timescale" id="monthbtn" is="dmx-radio">
+              <input type="radio" name="timescale" id="monthbtn" >
               1M </label>
             <label class="btn btn-info">
-              <input type="radio" name="timescale" id="yearbtn" is="dmx-radio">
+              <input type="radio" name="timescale" id="yearbtn" >
               1Y </label>
           </div>
           <div>
