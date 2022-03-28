@@ -708,7 +708,7 @@ include_once( $path );
             <div class="mt-2 col">
               <h5>24h Volume</h5>
               <i class="fab fa-hive mr-1"></i>{{volume.hive}}<br>
-			        <i class="fas fa-dollar-sign mx-1"></i>{{toFixed(volume.hive * hiveprice.hive.usd, 6)}}
+			        <i class="fas fa-dollar-sign mx-1"></i>{{toFixed(volume.hive * hiveprice.hive.usd, 2)}}
             </div>
           </div>
         </div>
@@ -729,7 +729,7 @@ include_once( $path );
             <div class="mt-2 col">
               <h5>24h Volume</h5>
               <i class="fab fa-hive mr-1"></i>{{volume.hbd}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{toFixed(volume.hbd * hbdprice.hive_dollar.usd, 6)}}
+              <i class="fas fa-dollar-sign mx-1"></i>{{toFixed(volume.hbd * hbdprice.hive_dollar.usd, 2)}}
             </div>
           </div>
         </div>
