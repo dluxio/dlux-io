@@ -52,7 +52,7 @@ input.disabled-input {
           return t;
       }
     },
-    data() {
+    data: {
       return {
         nowtime: new Date().getTime(),
         agoTime: new Date().getTime() - 86400000,
@@ -121,7 +121,7 @@ input.disabled-input {
         },
       }
     },
-    mounted() {
+    mounted: {
       fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
         .then(response => response.json())
         .then(data => {
