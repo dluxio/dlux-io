@@ -821,7 +821,7 @@ include_once( $path );
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
                       </div>
-                      <div class="invalid-feedback"> Your balance is {{accountapi.hbd_balance.parseFloat()}} - minimum order is 0.001 </div>
+                      <div class="invalid-feedback"> Your balance is {{accountapi.hbd_balance}} - minimum order is 0.001 </div>
                     </div>
                   </div>
                 </div>
