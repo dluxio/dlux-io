@@ -169,6 +169,26 @@ thead, tbody tr {
       atref(key) {
         return `/@${key}`
       },
+      sort(item, key, method){
+        switch(method){
+          case 'asc':
+            this[item].sort((a, b) => {
+              return a[key] - b[key]
+            })
+            break;
+          case 'desc':
+          default:
+            this[item].sort((a, b) => {
+              return b[key] - a[key]
+            })
+        }
+      },
+      filter(item, key, term){
+        this[item] = this[item].filter(function(e){
+          return e[key].toLowerCase().indexOf(term.toLowerCase()) > -1
+        })
+      },
+      }
       buyDEX(hive, hbd, dlux, hours, prefix = 'dlux_', callback){
         console.log({hive,hbd,dlux})
         var token, msaccount, statusapi
@@ -246,7 +266,7 @@ thead, tbody tr {
       fetch(this.lapi + '/runners')
         .then(response => response.json())
         .then(data => {
-          this.runners = data.result.sort((a,b) => {return a.gov - b.gov})
+          this.runners = data.result.sort((a,b) => {return b.g - a.g})
         })
       fetch(this.lapi + '/markets')
         .then(response => response.json())
@@ -517,20 +537,20 @@ include_once( $path );
                   <tr role="row" class="">
                     <th role="columnheader" class="" aria-colindex="1" > <div class="d-flex align-items-center">
                       <div class="mr-3">USER NAME</div>
-                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('account','asc')" v-bind:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'account'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('account','desc')" v-bind:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'account'"> <i class="fas fa-caret-down"></i></button> -->
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('runners','account','asc')"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('runners','account','desc')"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="2" > <div class="d-flex align-items-center">
                       <div class="mr-3">GOV BAL</div>
-                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('g','asc')" v-bind:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'g'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('g','desc')" v-bind:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'g'"> <i class="fas fa-caret-down"></i></button> -->
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('runners','g','asc')" > <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('runners','g','desc')" > <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="3" > <div class="d-flex align-items-center">
                       <div class="mr-3">API (Click to load)</div>
-                      <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('api','asc')" v-bind:bg-primary="marketnodes.sort.dir == 'asc'  && marketnodes.sort.on == 'api'"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="marketnodes.sort('api','desc')" v-bind:bg-primary="marketnodes.sort.dir == 'desc'  && marketnodes.sort.on == 'api'"> <i class="fas fa-caret-down"></i></button> -->
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('runners','api','asc')" > <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('runners','api','desc')" > <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="4"> 
