@@ -162,9 +162,9 @@ thead, tbody tr {
       toFixed(value, decimals) {
         return Number(value).toFixed(decimals)
       },
-      togglecoin() {
-        this.buyhive.checked = !this.buyhive.checked
-        this.buyhbd.checked = !this.buyhbd.checked
+      togglecoin(coin) {
+        this.buyhive.checked = coin == 'hive' ? true : false
+        this.buyhbd.checked = coin == 'hbd' ? true : false
       },
       togglebuylimit() {
         this.buylimit.checked = !this.buylimit.checked
@@ -683,10 +683,10 @@ include_once( $path );
           <div class="container-fluid mt-3">
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-outline-warning active">
-                <input name="buypair" type="radio" id="buyhive" :checked="buyhive.checked" @click="togglecoin();setValue('buyHiveTotal', '');setValue('sellHiveTotal', '');setValue('buyHBDTotal', '0');setValue('sellHBDTotal', '0')">
+                <input name="buypair" type="radio" id="buyhive" :checked="buyhive.checked" @click="togglecoin('hive');setValue('buyHiveTotal', '');setValue('sellHiveTotal', '');setValue('buyHBDTotal', '0');setValue('sellHBDTotal', '0')">
                 HIVE </label>
               <label class="btn btn-outline-warning">
-                <input type="radio" name="buypair" id="buyhbd" :checked="buyhbd.checked" @click="togglecoin();setValue('buyHBDTotal', '');setValue('sellHBDTotal', '');setValue('buyHiveTotal', '0');setValue('sellHiveTotal', '0')">
+                <input type="radio" name="buypair" id="buyhbd" :checked="buyhbd.checked" @click="togglecoin('hbd');setValue('buyHBDTotal', '');setValue('sellHBDTotal', '');setValue('buyHiveTotal', '0');setValue('sellHiveTotal', '0')">
                 HBD </label>
             </div>
           </div>
