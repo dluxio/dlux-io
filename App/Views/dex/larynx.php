@@ -43,6 +43,15 @@ input.disabled-input {
   let hapi = getCookie('hapi') || 'https://api.hive.blog'
 
   createApp({
+    filters:{
+      ftn: function(t, n) {
+          t = t.toFixed(n)
+          while(t.charAt(t.length - 1) == '0'){
+              t = t.substr(0, t.length - 1)
+          }
+          return t;
+      }
+    },
     data() {
       return {
         nowtime: new Date().getTime(),
@@ -239,13 +248,7 @@ input.disabled-input {
         })
     }
   }).mount('#app')
-  Vue.filter('ftn', function(t, n) {
-          t = t.toFixed(n)
-          while(t.charAt(t.length - 1) == '0'){
-              t = t.substr(0, t.length - 1)
-          }
-          return t;
-      });
+  
 </script>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 </head>
