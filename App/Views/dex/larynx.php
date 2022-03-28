@@ -450,9 +450,9 @@ include_once( $path );
 						 v-bind:class="{'btn-outline-success':'behind < 30', 'btn-outline-warning':'behind >= 30 && behind < 60', 'btn-outline-danger':'behind >= 60'}"	
 						type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
 				  <span class="small p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }} | </span>
-				  <span class="small p-0 m-0" v-if="behind < 30">ONLINE</span>
-				  <span class="small p-0 m-0" v-if="behind >= 30 && behind <=100">LAGGING</span>
-				  <span class="small p-0 m-0" v-if="behind > 100">OFFLINE</span>
+				  <span class="small p-0 m-0" v-show="behind < 30">ONLINE</span>
+				  <span class="small p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span>
+				  <span class="small p-0 m-0" v-show="behind > 100">OFFLINE</span>
 				  <span class="small p-0 m-0"> | {{behind}} BBH | {{runners.length}} NODES</span></button>
             </div>
           </div>
