@@ -126,6 +126,12 @@ thead, tbody tr {
         filteraccount: {
           checked: false,
           value: '',
+          usera: false,
+          userd: false,
+          gova: false,
+          govd: false,
+          apia: false,
+          apid: false
         },
         buyhive: {
           checked: true
@@ -159,6 +165,14 @@ thead, tbody tr {
       toggleselllimit() {
         this.selllimit.checked = !this.selllimit.checked
         this.sellmarket.checked = !this.sellmarket.checked
+      },
+      toggleAPI(ip) {
+        this.filteraccount.usera = ip == 'usera' ? true : false
+        this.filteraccount.userd = ip == 'userd' ? true : false
+        this.filteraccount.apia = ip == 'apia' ? true : false
+        this.filteraccount.apid = ip == 'apid' ? true : false
+        this.filteraccount.gova = ip == 'gova' ? true : false
+        this.filteraccount.govd = ip == 'govd' ? true : false
       },
       setValue(key, value) {
         this[key] = value
@@ -551,22 +565,22 @@ include_once( $path );
               <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
-                    <th role="columnheader" class="" aria-colindex="1" > <div class="d-flex align-items-center">
+                    <th role="columnheader" :class="{'col-sort':'filteraccount.usera || filteraccount.userd'}" class="" aria-colindex="1" > <div class="d-flex align-items-center">
                       <div class="mr-3">USER NAME</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','account','asc')"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','account','desc')"> <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" :class="{'bg-primary':'filteraccount.usera'}" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','account','asc');toggleAPI('usera')"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" :class="{'bg-primary':'filteraccount.userd'}" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','account','desc');toggleAPI('userd')"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="2" > <div class="d-flex align-items-center">
+                    <th role="columnheader" :class="{'col-sort':'filteraccount.gova || filteraccount.govd'}" class="" aria-colindex="2" > <div class="d-flex align-items-center">
                       <div class="mr-3">GOV BAL</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','g','asc')" > <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','g','desc')" > <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" :class="{'bg-primary':'filteraccount.gova'}" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','g','asc');toggleAPI('gova')" > <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" :class="{'bg-primary':'filteraccount.govd'}" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','g','desc');toggleAPI('govd')" > <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" aria-colindex="3" > <div class="d-flex align-items-center">
+                    <th role="columnheader" :class="{'col-sort':'filteraccount.apia || filteraccount.apid'}" class="" aria-colindex="3" > <div class="d-flex align-items-center">
                       <div class="mr-3">API (Click to load)</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','api','asc')" > <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','api','desc')" > <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" :class="{'bg-primary':'filteraccount.apia'}" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','api','asc');toggleAPI('apia')" > <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" :class="{'bg-primary':'filteraccount.apid'}" @click="sort(filterusers.checked ? 'runners' : 'runnersSearch','api','desc');toggleAPI('apid')" > <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="4"> 
