@@ -167,6 +167,12 @@ thead, tbody tr {
         return `/@${key}`
       },
       setMem(key, value, reload) {
+        if(value.indexOf('https://') > -1) {
+          alert('https:// is required for security reasons')
+          return
+        } else if(value[value.length - 1] == '/'){
+          value = value.substring(0, value.length - 1)
+        }
         localStorage.setItem(key, value)
         if (reload) {
           location.reload()
