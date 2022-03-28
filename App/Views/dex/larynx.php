@@ -37,7 +37,7 @@ input.disabled-input {
 }
 </style>
 <script type="module">
-  import Vue from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+  import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
   let user = getCookie('user') || 'GUEST'
   let lapi = getCookie('lapi') || 'https://spkinstant.hivehoneycomb.com'
   let hapi = getCookie('hapi') || 'https://api.hive.blog'
@@ -49,7 +49,7 @@ input.disabled-input {
   //         }
   //         return t;
   //     })
-  Vue.createApp({
+  createApp({
     data() {
       return {
         nowtime: new Date().getTime(),
@@ -119,7 +119,7 @@ input.disabled-input {
         },
       }
     },
-    mounted: {
+    mounted() {
       fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
         .then(response => response.json())
         .then(data => {
