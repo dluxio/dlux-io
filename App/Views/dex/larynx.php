@@ -162,7 +162,7 @@ input.disabled-input {
             andthen = ` at ${rate} ${hive?'HIVE':'HBD'} per ${token}`
         }
         if(!hbd && hive) broadcastTransfer({ to: msaccount, hive, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
-        else if (!hive)broadcastTransfer({ to: msaccount, hbd, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
+        else if (!hive && hbd)broadcastTransfer({ to: msaccount, hbd, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
       },
       sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback){
         var token, statusapi
