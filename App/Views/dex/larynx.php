@@ -625,7 +625,7 @@ include_once( $path );
                   <tr role="row" class="" v-for="order in openorders">
                     <td role="cell" class="" aria-colindex="1">{{order.block}}</td>
                     <td role="cell" class="" aria-colindex="2">{{(order.amount/1000).toFixed(3)}}</td>
-                    <td role="cell" class="" aria-colindex="3">{{(order.nai}}</td>
+                    <td role="cell" class="" aria-colindex="3">{{order.nai}}</td>
                     <td role="cell" class="" aria-colindex="4">{{order.percentFilled}}%</td>
                     <td role="cell" class="" aria-colindex="5" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.rate}}</td>
                     <td role="cell" class="" aria-colindex="6" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.type}}</td>
