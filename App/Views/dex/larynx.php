@@ -188,7 +188,6 @@ thead, tbody tr {
           return e[key].toLowerCase().indexOf(term.toLowerCase()) > -1
         })
       },
-      }
       buyDEX(hive, hbd, dlux, hours, prefix = 'dlux_', callback){
         console.log({hive,hbd,dlux})
         var token, msaccount, statusapi
