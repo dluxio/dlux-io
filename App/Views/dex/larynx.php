@@ -540,7 +540,7 @@ include_once( $path );
             <div id="hivequote">
               <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd}}</b></h2>
             </div>
-            <input id="hiveusd" :value="hiveprice.hive.usd" class="d-none">
+            <!-- <input id="hiveusd" :value="hiveprice.hive.usd" class="d-none"> -->
           </div>
         </div>
         <div class="col-4">
@@ -548,7 +548,7 @@ include_once( $path );
             <div id="hbdquote">
               <h2 class="lead my-0"><b>HBD: ${{hbdprice.hive_dollar.usd}}</b></h2>
             </div>
-            <input id="hbdusd" :value="hbdprice.hive_dollar.usd" class="d-none">
+            <!-- <input id="hbdusd" :value="hbdprice.hive_dollar.usd" class="d-none"> -->
           </div>
         </div>
         <div class="col-4">
@@ -556,13 +556,13 @@ include_once( $path );
             <div id="dluxhivequote">
               <h2 class="lead my-0"><b>LARYNX: ${{((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd)}}</b></h2>
             </div>
-            <input id="dluxhiveusd" :value="dexapi.markets ? dexapi.markets.hive.tick : 0" class="d-none">
+            <!-- <input id="dluxhiveusd" :value="dexapi.markets ? dexapi.markets.hive.tick : 0" class="d-none"> -->
           </div>
           <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
             <div id="dluxhbdquote">
               <h2 class="lead my-0"><b>LARYNX: ${{(dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd}}</b></h2>
             </div>
-            <input id="dluxhbdusd" :value="dexapi.markets ? dexapi.markets.hbd.tick : 0" class="d-none">
+            <!-- <input id="dluxhbdusd" :value="dexapi.markets ? dexapi.markets.hbd.tick : 0" class="d-none"> -->
           </div>
         </div>
       </div>
@@ -803,7 +803,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info" v-bind:disabled-input="buylimit.checked" :readonly="buyhbd.checked" :value="buyhive.checked ? (buyPrice.value*buyQuantity.value).toFixed(3) : '0.000'" v-model="buyHiveTotal" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" :max="accountapi.balance">
+                      <input type="number" class="form-control bg-dark border-dark text-info" v-bind:disabled-input="buylimit.checked" :readonly="buyhbd.checked" v-model="buyHiveTotal" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" :max="accountapi.balance">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
                       </div>
@@ -817,7 +817,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info" v-bind:disabled-input="buylimit.checked" :readonly="buyhive.checked" v-model="buyHBDTotal" id="buyHBDTotal" :value="buyhbd.checked ? (buyPrice.value*buyQuantity.value).toFixed(3) : '0.000'" placeholder="0" min="0.001" step="0.001" :max="accountapi.hbd_balance" aria-required="true">
+                      <input type="number" class="form-control bg-dark border-dark text-info" v-bind:disabled-input="buylimit.checked" :readonly="buyhive.checked" v-model="buyHBDTotal" id="buyHBDTotal" placeholder="0" min="0.001" step="0.001" :max="accountapi.hbd_balance" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
                       </div>
@@ -900,7 +900,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
 							 :readonly="buyhbd.checked || sellmarket.checked" id="sellHiveTotal" 
-							 :value="buyhive.checked ? (sellPrice.value*sellQuantity.value).toFixed(3) : '0'" 
+							 :v-model="sellHiveTotal"
 							  placeholder="0" min="0.004" step="0.001" aria-required="true" :max="">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
@@ -917,7 +917,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
 							 :readonly="buyhive.checked || sellmarket.checked" id="sellHBDTotal" 
-							 :value="buyhbd.checked ? (sellPrice.value*sellQuantity.value).toFixed(3) : '0'" 
+							 :v-model="sellHBDTotal" 
 							 placeholder="0" min="0.004" step="0.001" :max="" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
