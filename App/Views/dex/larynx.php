@@ -159,6 +159,9 @@ thead, tbody tr {
       }
     },
     methods: {
+      toFixed(value, decimals) {
+        return Number(value).toFixed(decimals)
+      },
       togglecoin() {
         this.buyhive.checked = !this.buyhive.checked
         this.buyhbd.checked = !this.buyhbd.checked
@@ -662,13 +665,13 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>{{TOKEN}}: ${{((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd)}}</b></h2>
+              <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</b></h2>
             </div>
             <!-- <input id="dluxhiveusd" :value="dexapi.markets ? dexapi.markets.hive.tick : 0" class="d-none"> -->
           </div>
           <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
             <div id="dluxhbdquote">
-              <h2 class="lead my-0"><b>{{TOKEN}}: ${{(dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd}}</b></h2>
+              <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd, 6)}}</b></h2>
             </div>
             <!-- <input id="dluxhbdusd" :value="dexapi.markets ? dexapi.markets.hbd.tick : 0" class="d-none"> -->
           </div>
@@ -693,19 +696,19 @@ include_once( $path );
             <div class="mt-2 col">
               <h5>Bid</h5>
               <i class="fab fa-hive mr-1"></i>{{hivebuys[0] ? hivebuys[0].rate : 0}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hivebuys[0] ? hivebuys[0].rate : 0 ) * hiveprice.hive.usd}} </div>
+              <i class="fas fa-dollar-sign mx-1"></i>{{toFixed((hivebuys[0] ? hivebuys[0].rate : 0 ) * hiveprice.hive.usd, 6)}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
               <i class="fab fa-hive mr-1"></i>{{hivesells[0] ? hivesells[0].rate : 0}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hivesells[0] ? hivesells[0].rate : 0 ) * hiveprice.hive.usd}} </div>
+              <i class="fas fa-dollar-sign mx-1"></i>{{toFixed((hivesells[0] ? hivesells[0].rate : 0 ) * hiveprice.hive.usd, 6)}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
               <i class="fab fa-hive mr-1"></i>{{dexapi.markets ? dexapi.markets.hive.tick : 0}} <br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.markets ? dexapi.markets.hive.tick : 0 ) * hiveprice.hive.usd}} </div>
+              <i class="fas fa-dollar-sign mx-1"></i>{{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0 ) * hiveprice.hive.usd, 6)}} </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
               <i class="fab fa-hive mr-1"></i>{{volume.hive}}<br>
-			        <i class="fas fa-dollar-sign mx-1"></i>{{volume.hive * hiveprice.hive.usd}}
+			        <i class="fas fa-dollar-sign mx-1"></i>{{toFixed(volume.hive * hiveprice.hive.usd, 6)}}
             </div>
           </div>
         </div>
@@ -714,19 +717,19 @@ include_once( $path );
             <div class="mt-2 col">
               <h5>Bid</h5>
               <i class="fab fa-hive mr-1"></i>{{hbdbuys[0] ? hbdbuys[0].rate : 0}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdbuys[0] ? hbdbuys[0].rate : 0 ) * hbdprice.hive_dollar.usd}} </div>
+              <i class="fas fa-dollar-sign mx-1"></i>{{toFixed((hbdbuys[0] ? hbdbuys[0].rate : 0 ) * hbdprice.hive_dollar.usd, 6)}} </div>
             <div class="mt-2 col">
               <h5>Ask</h5>
               <i class="fab fa-hive mr-1"></i>{{hbdsells[0] ? hbdsells[0].rate : 0}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(hbdsells[0] ? hbdsells[0].rate : 0 ) * hbdprice.hive_dollar.usd}} </div>
+              <i class="fas fa-dollar-sign mx-1"></i>{{toFixed((hbdsells[0] ? hbdsells[0].rate : 0 ) * hbdprice.hive_dollar.usd, 6)}} </div>
             <div class="mt-2 col">
               <h5>Last</h5>
               <i class="fab fa-hive mr-1"></i>{{dexapi.markets ? dexapi.markets.hive.tick : 0}} <br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{(dexapi.markets ? dexapi.markets.hive.tick : 0 ) * hbdprice.hive_dollar.usd}} </div>
+              <i class="fas fa-dollar-sign mx-1"></i>{{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0 ) * hbdprice.hive_dollar.usd, 6)}} </div>
             <div class="mt-2 col">
               <h5>24h Volume</h5>
               <i class="fab fa-hive mr-1"></i>{{volume.hbd}}<br>
-              <i class="fas fa-dollar-sign mx-1"></i>{{volume.hbd * hbdprice.hive_dollar.usd}}
+              <i class="fas fa-dollar-sign mx-1"></i>{{toFixed(volume.hbd * hbdprice.hive_dollar.usd, 6)}}
             </div>
           </div>
         </div>
