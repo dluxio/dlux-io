@@ -396,9 +396,9 @@ thead, tbody tr {
 <body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index" is="dmx-app">
 <!--<input id="timenow" class="d-none" :value="{{nodes.data.node.getTimeOffset(0)}}">
 <input id="timeoffset" class="d-none" :value="{{nodes.data.node.getTimeOffset(86400000)}}">-->
-<dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
+<!-- <dmx-api-datasource id="hiveprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd"></dmx-api-datasource>
 <dmx-api-datasource id="hbdprice" is="dmx-fetch" url="https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd"></dmx-api-datasource>
-<dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/runners" ></dmx-api-datasource>
+<dmx-api-datasource id="nodes" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/runners" ></dmx-api-datasource> -->
 <!--<dmx-api-datasource id="openorders" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/@imno" ></dmx-api-datasource>-->
 <!--<dmx-api-datasource id="recenthiveapi" is="dmx-fetch" url="https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX" dmx-param:limit="1000" ></dmx-api-datasource>-->
 <!-- <dmx-data-view id="marketnodes" :data="nodes.data.result" sorton="g" sortdir="ndesc" pagesize="10"></dmx-data-view>
@@ -444,11 +444,11 @@ include_once( $path );
                 <div class="dropdown-divider bg-light"></div>
                 <a class="dropdown-item" href="/dex/dlux">DLUX</a> <a class="dropdown-item" href="/dex/larynx">LARYNX</a></div>
             </div>
-            <div class="d-flex" title="{{dexapi.behind}} Blocks Behind Hive">
+            <div class="d-flex" title="{{behind}} Blocks Behind Hive">
               <button class="text-center btn btn-sm align-items-center ml-4" 
-						 v-bind:btn-outline-success="dexapi.behind < 30"	
-						 v-bind:btn-outline-warning="dexapi.behind >= 30"
-						 v-bind:btn-outline-danger="dexapi.behind > 100"
+						 v-bind:btn-outline-success="behind < 30"	
+						 v-bind:btn-outline-warning="behind >= 30"
+						 v-bind:btn-outline-danger="behind > 100"
 						type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
 				  <span class="small p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }} |</span>
 				  <span class="small p-0 m-0" v-if="behind < 30">ONLINE</span>
