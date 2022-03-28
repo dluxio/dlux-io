@@ -175,7 +175,19 @@ thead, tbody tr {
         this.filteraccount.govd = ip == 'govd' ? true : false
       },
       setValue(key, value) {
-        this[key] = value
+        if(key.split('.').length > 1) {
+          let keys = key.split('.')
+          let obj = this[keys[0]]
+          for(let i = 1; i < keys.length; i++) {
+            if(i == keys.length - 1) {
+              obj[keys[i]] = value
+            } else {
+              obj = obj[keys[i]]
+            }
+          }
+        } else {
+          this[key] = value
+        }
       },
       atref(key) {
         return `/@${key}`
@@ -205,6 +217,9 @@ thead, tbody tr {
               return a[key] > b[key] ? -1 : 1
             })
         }
+      },
+      focus(id){
+        document.getElementById(id).focus()
       },
       searchRunners(){
         const term = this.filteraccount.value
@@ -537,15 +552,15 @@ include_once( $path );
 			  <div class="d-flex align-items-center mb-3">
 				  <div class="">
 			  		<div role="group" class="input-group" >
-              <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
+              <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="focus('filteraccount')"><i class="fas fa-search"></i></span></div>
                 <input type="text" v-on:keyup="searchRunners()" class="form-control bg-dark border-dark text-info" id="filteraccount" v-model="filteraccount.value" @ aria-required="true" placeholder="Search">
-                          <!-- <div class="input-group-append p-0 m-0" >
+                          <div class="input-group-append p-0 m-0" >
                             <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px">
                   <span v-if="filteraccount.value">
-                    <a href="#" class="badge badge-secondary" @click="setValue('filteraccount',null)"><i class="fas fa-times"></i></a>
+                    <a href="#" class="badge badge-secondary" @click="setValue('filteraccount.value','')"><i class="fas fa-times"></i></a>
                   </span>
                 </div>
-                          </div> -->
+                          </div>
                       </div>
               </div>
 			  <!-- 
