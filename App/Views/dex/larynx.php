@@ -30,12 +30,28 @@ input.disabled-input {
     border-top-left-radius: 0.25rem !important;
     border-bottom-left-radius: 0.25rem !important;
 }
-.table-scroll{
-   overflow-y:scroll;
-   height:300px;
-   width:100%;
-   display:block;
+.tbody-scroll-orders {
+    display:block;
+    height:400px;
+    overflow:auto;
 }
+.tbody-scroll-history {
+    display:block;
+    height:600px;
+    overflow:auto;
+}
+.tbody-scroll-nodes {
+    display:block;
+    height:600px;
+    overflow:auto;
+}
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+
 </style>
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script type="module">
@@ -959,16 +975,16 @@ include_once( $path );
               <h4>Buy Orders</h4>
               <div class="table-responsive">
                 <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivebuyordertable">
-                  <thead role="rowgroup" class="">
-                    <tr role="row" class="">
+                  <thead role="rowgroup">
+                    <tr role="row">
                       <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HIVE</th>
                       <th role="columnheader" scope="col" aria-colindex="2" class=""><div>HIVE</div></th>
                       <th role="columnheader" scope="col" aria-colindex="3" class="">{{TOKEN}}</th>
                       <th role="columnheader" scope="col" aria-colindex="4" class=""><div>BID</div></th>
                     </tr>
                   </thead>
-                  <tbody role="rowgroup" class="table-scroll">
-                    <tr class="" role="row" v-for="item in hivebuys">
+                  <tbody role="rowgroup" class="tbody-scroll-orders">
+                    <tr role="row" v-for="item in hivebuys">
                       <td aria-colindex="1" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
                       <td aria-colindex="2" role="cell" class="">{{(item.hive/1000).toFixed(3)}}</td>
                       <td aria-colindex="3" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
@@ -980,7 +996,7 @@ include_once( $path );
             </div>
             <div class="mt-3 col-md-6">
               <h4>Sell Orders</h4>
-              <div class="table-responsive table-scroll">
+              <div class="table-responsive">
                 <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivesellorderstable">
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
@@ -990,7 +1006,7 @@ include_once( $path );
                       <th role="columnheader" scope="col" aria-colindex="4" class="">TOTAL HIVE</th>
                     </tr>
                   </thead>
-                  <tbody role="rowgroup">
+                  <tbody role="rowgroup" class="tbody-scroll-orders">
                     <tr class="" role="row" v-for="item in hivesells">
                       <td aria-colindex="1" role="cell" class="text-primary"><a href="#" @click="insertBal('{{item.rate}}', 'sellPrice')">{{item.rate}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
@@ -1016,7 +1032,7 @@ include_once( $path );
                       <th role="columnheader" scope="col" aria-colindex="3" class="">TIME</th>
                     </tr>
                   </thead>
-                  <tbody role="rowgroup">
+                  <tbody role="rowgroup" class="tbody-scroll-history">
                     <tr class="" role="row" v-for="item in recenthive">
                       <td aria-colindex="1" role="cell" class="" v-bind:class="{'text-danger': (item.type == 'sell'), 'text-success': (item.type == 'buy')}">{{item.price}}</td>
                       <td aria-colindex="2" role="cell" class="">{{item.target_volume}}</td>
@@ -1044,7 +1060,7 @@ include_once( $path );
                       <th role="columnheader" scope="col" aria-colindex="4" class=""><div>BID</div></th>
                     </tr>
                   </thead>
-                  <tbody role="rowgroup">
+                  <tbody role="rowgroup"  class="tbody-scroll-orders">
                     <tr class="" role="row" v-for="item in hbdbuys">
                       <td aria-colindex="1" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
                       <td aria-colindex="2" role="cell" class="">{{(item.hbd/1000).toFixed(3)}}</td>
@@ -1067,7 +1083,7 @@ include_once( $path );
                       <th role="columnheader" scope="col" aria-colindex="4" class="">TOTAL HBD</th>
                     </tr>
                   </thead>
-                  <tbody role="rowgroup">
+                  <tbody role="rowgroup" class="tbody-scroll-orders">
                     <tr class="" role="row" v-for="item in hbdsells">
                       <td aria-colindex="1" role="cell" class=""><a href="#" @click="insertBal('{{item.rate}}', 'sellPrice')">{{item.rate}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
@@ -1093,7 +1109,7 @@ include_once( $path );
                       <th role="columnheader" scope="col" aria-colindex="3" class="">TIME</th>
                     </tr>
                   </thead>
-                  <tbody role="rowgroup">
+                  <tbody role="rowgroup" class="tbody-scroll-history">
                     <tr class="" role="row" v-for="item in recenthbd">
                       <td aria-colindex="1" role="cell" class="" v-bind:class="{'text-danger': (item.type == 'sell'), 'text-success': (item.type == 'buy')}">{{price}}</td>
                       <td aria-colindex="2" role="cell" class="">{{item.target_volume}}</td>
