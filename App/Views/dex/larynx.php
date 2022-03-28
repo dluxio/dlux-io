@@ -161,8 +161,8 @@ input.disabled-input {
             rate = parseFloat((hive? hive : hbd)/dlux).toFixed(6)
             andthen = ` at ${rate} ${hive?'HIVE':'HBD'} per ${token}`
         }
-        if(!hbd) broadcastTransfer({ to: msaccount, hive, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
-        else broadcastTransfer({ to: msaccount, hbd, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
+        if(!hbd && hive) broadcastTransfer({ to: msaccount, hive, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
+        else if (!hive)broadcastTransfer({ to: msaccount, hbd, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
       },
       sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback){
         var token, statusapi
@@ -183,8 +183,8 @@ input.disabled-input {
             const price = parseFloat(dlux/(hive? hive : hbd)).toFixed(6)
             andthen = ` at ${price} ${hive?'HIVE':'HBD'} per ${token}`
         }
-        if(!hbd) broadcastCJA({ [token.toLocaleLowerCase()]:dlux, hive, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, statusapi)
-        else broadcastCJA({ [token.toLocaleLowerCase()]:dlux, hbd, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, statusapi)
+        if(!hbd && dlux) broadcastCJA({ [token.toLocaleLowerCase()]:dlux, hive, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, statusapi)
+        else if (dlux) broadcastCJA({ [token.toLocaleLowerCase()]:dlux, hbd, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, statusapi)
       },
       cancelDEX(txid, prefix = 'dlux_') {
         var token, statusapi
@@ -200,7 +200,7 @@ input.disabled-input {
         if (typeof txid === 'array'){
             txidstring = txid.join(',')
         }
-        broadcastCJA({ txid}, `${prefix}dex_clear`, `Canceling: ${txidstring}`, statusapi)
+        if(txid)broadcastCJA({ txid}, `${prefix}dex_clear`, `Canceling: ${txidstring}`, statusapi)
       }
     },
     mounted() {
