@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<title>DLUX - {{TOKEN}} DEX</title>
+<title>DLUX - LARYNX DEX</title>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
@@ -74,7 +74,7 @@ input.disabled-input {
         jsontoken: '',
         node: '',
         behind: '',
-        TOKEN: '',
+        TOKEN: 'LARYNX',
         buyHiveTotal: 0,
         buyPrice: 0,
         sellPrice: 0,
@@ -296,7 +296,7 @@ input.disabled-input {
           }, [])
           this.dexapi = data
         })
-      if(this.TOKEN)fetch(this.lapi + '/api/recent/HIVE_' + this.TOKEN + '?limit=1000')
+      fetch(this.lapi + '/api/recent/HIVE_' + this.TOKEN + '?limit=1000')
         .then(response => response.json())
         .then(data => {
           this.volume.hive = data.recent_trades.reduce((a, b) => {
@@ -311,7 +311,7 @@ input.disabled-input {
             return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
           })
         })
-      if(this.TOKEN)fetch(this.lapi + '/api/recent/HBD_' + this.TOKEN +'?limit=1000')
+      fetch(this.lapi + '/api/recent/HBD_' + this.TOKEN +'?limit=1000')
         .then(response => response.json())
         .then(data => {
           this.volume.hbd = data.recent_trades.reduce((a, b) => {
