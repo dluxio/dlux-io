@@ -731,7 +731,7 @@ include_once( $path );
         <div class="row">
           <div class="mt-3 col-md-6">
             <h4>Buy LARYNX</h4>
-            <form name="buy" class="form-horizontal needs-validation" :action="buyDEX('{{buyHiveTotal.value}}','{{buyHBDTotal.value}}','{{buyQuantity.value}}','{{buyHours.value}}','{{prefix}}')">
+            <form name="buy" class="form-horizontal needs-validation" :action="buyDEX(buyHiveTotal,buyHBDTotal,buyQuantity,buyHours,prefix)">
               <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
@@ -754,7 +754,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control bg-dark border-dark text-white-50" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="buymarket.checked">
+                      <input type="number" required class="form-control bg-dark border-dark text-white-50" v-model="buyQuantity" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
 							<a href="#" v-if="buyPrice.value > 0" class="d-none mr-2 badge badge-primary" @click="setValue('buyQuantity', accountapi.balance/buyPrice.value)">MAX</a>
@@ -771,7 +771,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="buyPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
+                      <input id="buyPrice" type="number" v-model="buyPrice" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
 							<a v-if="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" @click="setValue('buyPrice', accountapi.balance/buyQuantity.value)">MAX</a>
@@ -789,7 +789,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="buyHours" type="number" value="720" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
+                      <input id="buyHours" v-model="buyHours" type="number" value="720" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HOURS</div>
                       </div>
@@ -803,7 +803,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info" v-bind:disabled-input="buylimit.checked" :readonly="buyhbd.checked" :value="buyhive.checked ? (buyPrice.value*buyQuantity.value).toFixed(3) : '0.000'" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" :max="accountapi.balance">
+                      <input type="number" class="form-control bg-dark border-dark text-info" v-bind:disabled-input="buylimit.checked" :readonly="buyhbd.checked" :value="buyhive.checked ? (buyPrice.value*buyQuantity.value).toFixed(3) : '0.000'" v-model="buyHiveTotal" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" :max="accountapi.balance">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
                       </div>
@@ -817,7 +817,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info" v-bind:disabled-input="buylimit.checked" :readonly="buyhive.checked" id="buyHBDTotal" :value="buyhbd.checked ? (buyPrice.value*buyQuantity.value).toFixed(3) : '0.000'" placeholder="0" min="0.001" step="0.001" :max="accountapi.hbd_balance" aria-required="true">
+                      <input type="number" class="form-control bg-dark border-dark text-info" v-bind:disabled-input="buylimit.checked" :readonly="buyhive.checked" v-model="buyHBDTotal" id="buyHBDTotal" :value="buyhbd.checked ? (buyPrice.value*buyQuantity.value).toFixed(3) : '0.000'" placeholder="0" min="0.001" step="0.001" :max="accountapi.hbd_balance" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
                       </div>
@@ -833,7 +833,7 @@ include_once( $path );
           </div>
           <div class="mt-3 col-md-6">
             <h4>Sell LARYNX</h4>
-            <form name="sell" class="form-horizontal needs-validation" :action="sellDEX('{{sellQuantity.value}}','{{sellHiveTotal.value}}','{{sellHBDTotal.value}}','{{sellHours.value}}','{{prefix}}')">
+            <form name="sell" class="form-horizontal needs-validation" :action="sellDEX(sellQuantity,sellHiveTotal,sellHBDTotal,sellHours,prefix)">
               <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
@@ -856,7 +856,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control bg-dark border-dark text-white-50" id="sellQuantity" placeholder="0" min="0.004" step="0.001" aria-required="true" :max="(accountapi.balance/1000)">
+                      <input type="number" required class="form-control bg-dark border-dark text-white-50" v-model="sellQuantity" id="sellQuantity" placeholder="0" min="0.004" step="0.001" aria-required="true" :max="(accountapi.balance/1000)">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">LARYNX</div>
                       </div>
