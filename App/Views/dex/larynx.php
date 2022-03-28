@@ -244,6 +244,15 @@ input.disabled-input {
         .then(data => {
           this.accountinfo = data.result[0]
         })
+    },
+    computed: {
+      ftn: (t, n) =>{
+          t = t.toFixed(n)
+          while(t.charAt(t.length - 1) == '0'){
+              t = t.substr(0, t.length - 1)
+          }
+          return t;
+      }
     }
   }).mount('#app')
   
@@ -445,7 +454,7 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>LARYNX: ${{((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd)}}</b></h2>
+              <h2 class="lead my-0"><b>LARYNX: ${{((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd | ftn(6))}}</b></h2>
             </div>
             <!-- <input id="dluxhiveusd" :value="dexapi.markets.hive.tick || 0" class="d-none"> -->
           </div>
