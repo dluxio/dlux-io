@@ -162,6 +162,44 @@ input.disabled-input {
         if(!hbd) broadcastTransfer({ to: msaccount, hive, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
         else broadcastTransfer({ to: msaccount, hbd, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
       },
+      sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback){
+        var token, statusapi
+        switch (prefix){
+            case 'spkcc_':
+                token = 'LARYNX'
+                statusapi = 'spkinstant.hivehoneycomb.com'
+                break;
+            default:
+                token = 'DLUX'
+        }
+        var andthen = ' at market rate'
+        dlux = parseInt(parseFloat(dlux)*1000)
+        hive = parseInt(parseFloat(hive)*1000)
+        hbd = parseInt(parseFloat(hbd)*1000)
+        hours = parseInt(hours)
+        if (hive || hbd){
+            const price = parseFloat(dlux/(hive? hive : hbd)).toFixed(6)
+            andthen = ` at ${price} ${hive?'HIVE':'HBD'} per ${token}`
+        }
+        if(!hbd) broadcastCJA({ [token.toLocaleLowerCase()]:dlux, hive, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, statusapi)
+        else broadcastCJA({ [token.toLocaleLowerCase()]:dlux, hbd, hours}, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, statusapi)
+      },
+      cancelDEX(txid, prefix = 'dlux_') {
+        var token, statusapi
+        switch (prefix){
+          case 'spkcc_':
+              token = 'LARYNX'
+              statusapi = 'spkinstant.hivehoneycomb.com'
+              break;
+          default:
+              token = 'DLUX'
+        }
+        var txidstring = txid
+        if (typeof txid === 'array'){
+            txidstring = txid.join(',')
+        }
+        broadcastCJA({ txid}, `${prefix}dex_clear`, `Canceling: ${txidstring}`, statusapi)
+      }
     },
     mounted() {
       fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
