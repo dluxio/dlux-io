@@ -442,7 +442,7 @@ include_once( $path );
                       <div class="input-group-append p-0 m-0" >
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px">
 							<span v-if="filteraccount.value">
-								<a href="#" class="badge badge-secondary" @click="filteraccount.setValue(null)"><i class="fas fa-times"></i></a>
+								<a href="#" class="badge badge-secondary" @click="setValue('filteraccount',null)"><i class="fas fa-times"></i></a>
 							</span>
 						 </div>
                       </div>
@@ -454,7 +454,7 @@ include_once( $path );
                       <input type="text" class="form-control bg-dark border-dark text-info" id="filterapi" aria-required="true" placeholder="APIs">
                       <div class="input-group-append p-0 m-0">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px">
-							<span v-if="filterapi.value"><a href="#" class="badge badge-secondary" @click="filterapi.setValue(null)"><i class="fas fa-times"></i></a></span></div>
+							<span v-if="filterapi.value"><a href="#" class="badge badge-secondary" @click="setValue('filterapi',null)"><i class="fas fa-times"></i></a></span></div>
                       </div>
                   </div>
 				  </div>
@@ -757,7 +757,7 @@ include_once( $path );
                       <input type="number" required class="form-control bg-dark border-dark text-white-50" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
-							<a href="#" v-if="buyPrice.value > 0" class="d-none mr-2 badge badge-primary" @click="buyQuantity.setValue(accountapi.balance/buyPrice.value)">MAX</a>
+							<a href="#" v-if="buyPrice.value > 0" class="d-none mr-2 badge badge-primary" @click="setValue('buyQuantity', accountapi.balance/buyPrice.value)">MAX</a>
 							LARYNX
 							 </div>
                       </div>
@@ -774,7 +774,7 @@ include_once( $path );
                       <input id="buyPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
-							<a v-if="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" @click="buyPrice.setValue(accountapi.balance/buyQuantity.value)">MAX</a>
+							<a v-if="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" @click="setValue('buyPrice', accountapi.balance/buyQuantity.value)">MAX</a>
 							<span v-if="buyhive.checked">HIVE</span>
 							<span v-if="buyhbd.checked">HBD</span>
 							/LARYNX</div>
@@ -841,10 +841,10 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="sellType" id="selllimit" checked @click="sellPrice.setValue('');sellHours.setValue('720')">
+                          <input type="radio" name="sellType" id="selllimit" :checked="selllimit.checked" @click="toggleselllimit();setValue('sellPrice', '');setValue('sellHours', '720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="sellType" id="sellmarket" @click="sellPrice.setValue('0');sellHours.setValue('0')">
+                          <input type="radio" name="sellType" id="sellmarket" :checked="sellmarket.checked" @click="toggleselllimit();setValue('sellPrice', '0');setValue('sellHours', '0')">
                           MARKET </label>
                       </div>
                     </div>
