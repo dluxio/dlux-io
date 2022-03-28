@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
-<title>DLUX - LARYNX DEX</title>
+<title>DLUX - {{TOKEN}} DEX</title>
 <?php
 $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/header.php";
@@ -69,7 +69,12 @@ input.disabled-input {
         hbdbuys: [],
         hbdsells: [],
         dexapi: {},
-        prefix: 'spkcc_',
+        prefix: '',
+        multisig: '',
+        jsontoken: '',
+        node: '',
+        behind: '',
+        TOKEN: '',
         buyHiveTotal: 0,
         buyPrice: 0,
         sellPrice: 0,
@@ -214,17 +219,27 @@ input.disabled-input {
         .then(data => {
           this.hbdprice = data
         })
-      fetch('https://spkinstant.hivehoneycomb.com/runners')
+      fetch(this.lapi + '/runners')
         .then(response => response.json())
         .then(data => {
           this.nodes = data
         })
-      fetch('https://spkinstant.hivehoneycomb.com/markets')
+      fetch(this.lapi + '/markets')
         .then(response => response.json())
         .then(data => {
           this.nodes = data.result
         })
-      fetch('https://spkinstant.hivehoneycomb.com/dex')
+      fetch(this.lapi + '/api/protocol')
+        .then(response => response.json())
+        .then(data => {
+          this.prefix = data.prefix
+          this.multisig = data.multisig
+          this.jsontoken = data.jsontoken
+          this.TOKEN = data.jsontoken.toUpperCase()
+          this.node = data.node
+          this.behind = data.behind
+        })
+      fetch(this.lapi + '/dex')
         .then(response => response.json())
         .then(data => {
           this.hivebuys = data.markets.hive.buys.sort(function(a, b) {
@@ -281,7 +296,7 @@ input.disabled-input {
           }, [])
           this.dexapi = data
         })
-      fetch('https://spkinstant.hivehoneycomb.com/api/recent/HIVE_LARYNX?limit=1000')
+      if(this.TOKEN)fetch(this.lapi + '/api/recent/HIVE_' + this.TOKEN + '?limit=1000')
         .then(response => response.json())
         .then(data => {
           this.volume.hive = data.recent_trades.reduce((a, b) => {
@@ -296,7 +311,7 @@ input.disabled-input {
             return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
           })
         })
-      fetch('https://spkinstant.hivehoneycomb.com/api/recent/HBD_LARYNX?limit=1000')
+      if(this.TOKEN)fetch(this.lapi + '/api/recent/HBD_' + this.TOKEN +'?limit=1000')
         .then(response => response.json())
         .then(data => {
           this.volume.hbd = data.recent_trades.reduce((a, b) => {
@@ -311,7 +326,7 @@ input.disabled-input {
             return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
           })
         })
-      fetch('https://spkinstant.hivehoneycomb.com/@' + user)
+      fetch(this.lapi + '/@' + user)
         .then(response => response.json())
         .then(data => {
           this.accountapi = data
@@ -416,17 +431,17 @@ include_once( $path );
 						 v-bind:btn-outline-warning="dexapi.behind >= 30"
 						 v-bind:btn-outline-danger="dexapi.behind > 100"
 						type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
-				  <span class="small p-0 m-0"><i class="fas fa-circle mr-2"></i>LARYNX |</span>
-				  <span class="small p-0 m-0" v-if="dexapi.behind < 30">ONLINE</span>
-				  <span class="small p-0 m-0" v-if="dexapi.behind >= 30 && dexapi.behind <=100">LAGGING</span>
-				  <span class="small p-0 m-0" v-if="dexapi.behind > 100">OFFLINE</span>
+				  <span class="small p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }} |</span>
+				  <span class="small p-0 m-0" v-if="behind < 30">ONLINE</span>
+				  <span class="small p-0 m-0" v-if="behind >= 30 && behind <=100">LAGGING</span>
+				  <span class="small p-0 m-0" v-if="behind > 100">OFFLINE</span>
 				  <!-- <span class="small p-0 m-0">| {{dexapi.behind}} BBH | {{nodes.result.length}} NODES</span></button> -->
             </div>
           </div>
           <div class="d-flex align-items-center text-white-50">
-            <div id="userdlux" class="mx-4 text-warning">{{(accountapi.balance/1000)}} LARYNX</div>
-            <div id="userdpwr" class="mx-4 text-primary" v-if="accountapi.poweredUp > 0">{{(accountapi.poweredUp/1000)}} LARYNXP</div>
-            <div id="userdgov" class="mx-4 text-info" v-if="accountapi.gov > 0">{{(accountapi.gov/1000)}} LARYNXG</div>
+            <div id="userdlux" class="mx-4 text-warning">{{(accountapi.balance/1000)}} {{TOKEN}}</div>
+            <div id="userdpwr" class="mx-4 text-primary" v-if="accountapi.poweredUp > 0">{{(accountapi.poweredUp/1000)}} {{TOKEN}}P</div>
+            <div id="userdgov" class="mx-4 text-info" v-if="accountapi.gov > 0">{{(accountapi.gov/1000)}} {{TOKEN}}G</div>
             <div id="userhive" class="mx-4 text-danger">{{accountapi.balance}}</div>
             <div id="userhbd" class="mx-4 text-success">{{accountapi.hbd_balance}}</div>
           </div>
@@ -554,13 +569,13 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>LARYNX: ${{((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd)}}</b></h2>
+              <h2 class="lead my-0"><b>{{TOKEN}}: ${{((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd)}}</b></h2>
             </div>
             <!-- <input id="dluxhiveusd" :value="dexapi.markets ? dexapi.markets.hive.tick : 0" class="d-none"> -->
           </div>
           <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
             <div id="dluxhbdquote">
-              <h2 class="lead my-0"><b>LARYNX: ${{(dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd}}</b></h2>
+              <h2 class="lead my-0"><b>{{TOKEN}}: ${{(dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd}}</b></h2>
             </div>
             <!-- <input id="dluxhbdusd" :value="dexapi.markets ? dexapi.markets.hbd.tick : 0" class="d-none"> -->
           </div>
@@ -676,7 +691,7 @@ include_once( $path );
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="2" > <div class="d-flex align-items-center">
-                      <div class="mr-3">LARYNX</div>
+                      <div class="mr-3">{{TOKEN}}</div>
                       <!-- <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('amount','asc')" v-bind:bg-primary="openorders.sort.dir == 'asc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="openorders.sort('amount','desc')" v-bind:bg-primary="openorders.sort.dir == 'desc'  && openorders.sort.on == 'amount'"> <i class="fas fa-caret-down"></i></button> -->
                     </div>
@@ -730,7 +745,7 @@ include_once( $path );
       <div id="tradeForms">
         <div class="row">
           <div class="mt-3 col-md-6">
-            <h4>Buy LARYNX</h4>
+            <h4>Buy {{TOKEN}}</h4>
             <form name="buy" class="form-horizontal needs-validation">
               <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                 <div class="form-row">
@@ -758,7 +773,7 @@ include_once( $path );
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
 							<a href="#" v-if="buyPrice.value > 0" class="d-none mr-2 badge badge-primary" @click="setValue('buyQuantity', accountapi.balance/buyPrice.value)">MAX</a>
-							LARYNX
+							{{TOKEN}}
 							 </div>
                       </div>
                       <div class="invalid-feedback"> Minimum quantity is 0.001 </div>
@@ -777,7 +792,7 @@ include_once( $path );
 							<a v-if="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" @click="setValue('buyPrice', accountapi.balance/buyQuantity.value)">MAX</a>
 							<span v-if="buyhive.checked">HIVE</span>
 							<span v-if="buyhbd.checked">HBD</span>
-							/LARYNX</div>
+							/{{TOKEN}}</div>
                       </div>
                       <div class="invalid-feedback"> Minimum price is 0.000001 </div>
                     </div>
@@ -832,7 +847,7 @@ include_once( $path );
             </form>
           </div>
           <div class="mt-3 col-md-6">
-            <h4>Sell LARYNX</h4>
+            <h4>Sell {{TOKEN}}</h4>
             <form name="sell" class="form-horizontal needs-validation">
               <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                 <div class="form-row">
@@ -858,7 +873,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input type="number" required class="form-control bg-dark border-dark text-white-50" v-model="sellQuantity" id="sellQuantity" placeholder="0" min="0.004" step="0.001" aria-required="true" :max="(accountapi.balance/1000)">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">LARYNX</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">{{TOKEN}}</div>
                       </div>
                       <div class="invalid-feedback"> Your balance is {{(accountapi.balance/1000)}} - minimum quantity is 0.004 </div>
                     </div>
@@ -872,7 +887,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input id="sellPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="sellmarket.checked">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span v-if="buyhive.checked">HIVE</span><span v-if="buyhbd.checked">HBD</span>/LARYNX</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span v-if="buyhive.checked">HIVE</span><span v-if="buyhbd.checked">HBD</span>/{{TOKEN}}</div>
                       </div>
                       <div class="invalid-feedback"> Minimum price is 0.000001 </div>
                     </div>
@@ -945,7 +960,7 @@ include_once( $path );
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HIVE</th>
                       <th role="columnheader" scope="col" aria-colindex="2" class=""><div>HIVE</div></th>
-                      <th role="columnheader" scope="col" aria-colindex="3" class="">LARYNX</th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class="">{{TOKEN}}</th>
                       <th role="columnheader" scope="col" aria-colindex="4" class=""><div>BID</div></th>
                     </tr>
                   </thead>
@@ -967,7 +982,7 @@ include_once( $path );
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
-                      <th role="columnheader" scope="col" aria-colindex="2" class="">LARYNX</th>
+                      <th role="columnheader" scope="col" aria-colindex="2" class="">{{TOKEN}}</th>
                       <th role="columnheader" scope="col" aria-colindex="3" class=""><div>HIVE</div></th>
                       <th role="columnheader" scope="col" aria-colindex="4" class="">TOTAL HIVE</th>
                     </tr>
@@ -1022,7 +1037,7 @@ include_once( $path );
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HBD</th>
                       <th role="columnheader" scope="col" aria-colindex="2" class=""><div>HBD</div></th>
-                      <th role="columnheader" scope="col" aria-colindex="3" class="">LARYNX</th>
+                      <th role="columnheader" scope="col" aria-colindex="3" class="">{{TOKEN}}</th>
                       <th role="columnheader" scope="col" aria-colindex="4" class=""><div>BID</div></th>
                     </tr>
                   </thead>
@@ -1044,7 +1059,7 @@ include_once( $path );
                   <thead role="rowgroup" class="">
                     <tr role="row" class="">
                       <th role="columnheader" scope="col" aria-colindex="1" class=""><div>ASK</div></th>
-                      <th role="columnheader" scope="col" aria-colindex="2" class="">LARYNX</th>
+                      <th role="columnheader" scope="col" aria-colindex="2" class="">{{TOKEN}}</th>
                       <th role="columnheader" scope="col" aria-colindex="3" class=""><div>HBD</div></th>
                       <th role="columnheader" scope="col" aria-colindex="4" class="">TOTAL HBD</th>
                     </tr>
