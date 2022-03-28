@@ -166,13 +166,13 @@ thead, tbody tr {
         this.buyhive.checked = coin == 'hive' ? true : false
         this.buyhbd.checked = coin == 'hbd' ? true : false
       },
-      togglebuylimit() {
-        this.buylimit.checked = !this.buylimit.checked
-        this.buymarket.checked = !this.buymarket.checked
+      togglebuylimit(type) {
+        this.buylimit.checked = type == 'limit' ? true : false
+        this.buymarket.checked = type == 'market' ? true : false
       },
-      toggleselllimit() {
-        this.selllimit.checked = !this.selllimit.checked
-        this.sellmarket.checked = !this.sellmarket.checked
+      toggleselllimit(type) {
+        this.selllimit.checked = type == 'limit' ? true : false
+        this.sellmarket.checked = type == 'market' ? true : false
       },
       toggleAPI(ip) {
         this.filteraccount.usera = ip == 'usera' ? true : false
@@ -850,10 +850,10 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit();setValue('buyQuantity', '');setValue('buyHours','720')">
+                          <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit('limit');setValue('buyQuantity', '');setValue('buyHours','720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit();setValue('buyQuantity','0');setValue('buyHours','0')">
+                          <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHours','0')">
                           MARKET </label>
                       </div>
                     </div>
@@ -952,10 +952,10 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit();setValue('sellPrice', '');setValue('sellHours', '720')">
+                          <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit('limit');setValue('sellPrice', '');setValue('sellHours', '720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit();setValue('sellPrice', '0');setValue('sellHours', '0')">
+                          <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellPrice', '0');setValue('sellHours', '0')">
                           MARKET </label>
                       </div>
                     </div>
