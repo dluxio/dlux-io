@@ -808,8 +808,8 @@ include_once( $path );
                     </th>
                     <th role="columnheader" class="" aria-colindex="3" > <div class="d-flex align-items-center">
                       <div class="mr-3">HIVE/HBD</div>
-                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','coin','asc');toggleOrders('coina')"v-bind:class="{'bg-primary':orders.coina}"> <i class="fas fa-caret-up"></i></button>
-                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','coin','desc');toggleOrders('coind')" v-bind:class="{'bg-primary':orders.coind}"> <i class="fas fa-caret-down"></i></button>
+                      <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','nai','asc');toggleOrders('coina')" v-bind:class="{'bg-primary':orders.coina}"> <i class="fas fa-caret-up"></i></button>
+                      <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','nai','desc');toggleOrders('coind')" v-bind:class="{'bg-primary':orders.coind}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
                     <th role="columnheader" class="" aria-colindex="4" > <div class="d-flex align-items-center">
