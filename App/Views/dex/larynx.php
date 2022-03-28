@@ -327,9 +327,9 @@ include_once( $path );
             </div>
           </div>
           <div class="d-flex align-items-center text-white-50">
-            <div id="userdlux" class="mx-4 text-warning">{{(openorders.balance/1000)}} LARYNX</div>
-            <div id="userdpwr" class="mx-4 text-primary" v-if="openorders.poweredUp > 0">{{(openorders.poweredUp/1000)}} LARYNXP</div>
-            <div id="userdgov" class="mx-4 text-info" v-if="openorders.gov > 0">{{(openorders.gov/1000)}} LARYNXG</div>
+            <div id="userdlux" class="mx-4 text-warning">{{(accountapi.balance/1000)}} LARYNX</div>
+            <div id="userdpwr" class="mx-4 text-primary" v-if="accountapi.poweredUp > 0">{{(accountapi.poweredUp/1000)}} LARYNXP</div>
+            <div id="userdgov" class="mx-4 text-info" v-if="accountapi.gov > 0">{{(accountapi.gov/1000)}} LARYNXG</div>
             <div id="userhive" class="mx-4 text-danger">{{accountapi.balance}}</div>
             <div id="userhbd" class="mx-4 text-success">{{accountapi.hbd_balance}}</div>
           </div>
@@ -399,7 +399,7 @@ include_once( $path );
                         <div class="dropdown show"> <a class="btn btn-sm btn-dark " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-satellite-dish"></i></a>
                           <div class="dropdown-menu">
                             <h6 class="dropdown-header">CURRENT API</h6>
-                            <p class="dropdown-item">{{openorders.node.eval('getCookie(`lapi`)')}}</p>
+                            <p class="dropdown-item">{{accountapi.node.eval('getCookie(`lapi`)')}}</p>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#" onClick="setAPI('lapi','https://spkinstant.hivehoneycomb.com/')"><i class="fas fa-bolt mr-2"></i>Load Latest</a> </div>
                         </div>
@@ -759,11 +759,11 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control bg-dark border-dark text-white-50" id="sellQuantity" placeholder="0" min="0.004" step="0.001" aria-required="true" :max="{{(openorders.balance/1000)}}">
+                      <input type="number" required class="form-control bg-dark border-dark text-white-50" id="sellQuantity" placeholder="0" min="0.004" step="0.001" aria-required="true" :max="{{(accountapi.balance/1000)}}">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">LARYNX</div>
                       </div>
-                      <div class="invalid-feedback"> Your balance is {{(openorders.balance/1000)}} - minimum quantity is 0.004 </div>
+                      <div class="invalid-feedback"> Your balance is {{(accountapi.balance/1000)}} - minimum quantity is 0.004 </div>
                     </div>
                   </div>
                 </div>
