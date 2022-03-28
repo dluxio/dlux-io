@@ -56,9 +56,9 @@ thead, tbody tr {
 <script type="text/javascript" src="/dlux-io/dmxAppConnect/dmxFormatter/dmxFormatter.js"></script>
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-  let user = getCookie('user') || 'GUEST'
-  let lapi = getCookie('lapi') || 'https://spkinstant.hivehoneycomb.com'
-  let hapi = getCookie('hapi') || 'https://api.hive.blog'
+  let user = localStorage.getItem('user') || 'GUEST'
+  let lapi = localStorage.getItem('lapi') || 'https://spkinstant.hivehoneycomb.com'
+  let hapi = localStorage.getItem('hapi') || 'https://api.hive.blog'
 
 
   createApp({
@@ -165,6 +165,12 @@ thead, tbody tr {
       },
       atref(key) {
         return `/@${key}`
+      },
+      setMem(key, value, reload) {
+        localStorage.setItem(key, value)
+        if (reload) {
+          location.reload()
+        }
       },
       sort(item, key, method){
         switch(method){
@@ -512,7 +518,7 @@ include_once( $path );
 				  <div class="">
 			  		<div role="group" class="input-group" >
               <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="filteraccount.focus()"><i class="fas fa-search"></i></span></div>
-                <input type="text" v-on:keyup="searchRunners()" class="form-control bg-dark border-dark text-info" id="filteraccount" v-model="filteraccount.value" @ aria-required="true" placeholder="Users">
+                <input type="text" v-on:keyup="searchRunners()" class="form-control bg-dark border-dark text-info" id="filteraccount" v-model="filteraccount.value" @ aria-required="true" placeholder="Search">
                           <!-- <div class="input-group-append p-0 m-0" >
                             <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px">
                   <span v-if="filteraccount.value">
@@ -565,7 +571,7 @@ include_once( $path );
                             <h6 class="dropdown-header">CURRENT API</h6>
                             <p class="dropdown-item">{{lapi}}</p>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" @click="setValue('lapi','https://spkinstant.hivehoneycomb.com/')"><i class="fas fa-bolt mr-2"></i>Load Latest</a> </div>
+                            <a class="dropdown-item" href="#" @click="setMem('lapi','https://spkinstant.hivehoneycomb.com/', true)"><i class="fas fa-bolt mr-2"></i>Load Latest</a> </div>
                         </div>
                     
                     </div>
@@ -575,12 +581,12 @@ include_once( $path );
                   <tr class="" role="row" v-for="node in runners" v-if="filterusers.checked">
                     <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(node.g/1000)}}</td>
-                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setAPI('lapi','{{api}}')">{{node.api}}</a></td>
+                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setMem('lapi',node.api, true)">{{node.api}}</a></td>
                   </tr>
 					        <tr class="" role="row" v-for="node in runnersSearch" v-if="filteraccount.checked">
                     <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(node.g/1000)}}</td>
-                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setAPI('lapi','{{api}}')">{{node.api}}</a></td>
+                    <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setMem('lapi',node.api, true)">{{node.api}}</a></td>
                   </tr>
                 </tbody>
               </table>
