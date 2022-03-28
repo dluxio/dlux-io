@@ -166,6 +166,9 @@ thead, tbody tr {
       setValue(key, value) {
         this[key] = value
       },
+      atref(key) {
+        return `/@${key}`
+      },
       buyDEX(hive, hbd, dlux, hours, prefix = 'dlux_', callback){
         console.log({hive,hbd,dlux})
         var token, msaccount, statusapi
@@ -542,12 +545,12 @@ include_once( $path );
                   </tr>
                 <tbody role="rowgroup">
                   <tr class="" role="row" v-for="node in runners" v-if="filterusers.checked">
-                    <td role="cell" class="" aria-colindex="1"><a :href="/@${node.account}">@{{node.account}}</a></td>
+                    <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(node.g/1000)}}</td>
                     <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setAPI('lapi','{{api}}')">{{node.api}}</a></td>
                   </tr>
 					        <tr class="" role="row" v-for="node in runners" v-if="filterapis.checked">
-                    <td role="cell" class="" aria-colindex="1"><a :href="/@${node.account}">@{{node.account}}</a></td>
+                    <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
                     <td role="cell" class="" aria-colindex="2">{{(node.g/1000)}}</td>
                     <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setAPI('lapi','{{api}}')">{{node.api}}</a></td>
                   </tr>
