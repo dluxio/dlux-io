@@ -901,7 +901,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info" 
+                      <input type="number" class="form-control bg-dark border-dark" 
 							 v-bind:disabled-input="buylimit.checked" 
 							 :readonly="buyhbd.checked" 
 							 v-model="buyHiveTotal" 
@@ -920,7 +920,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info" 
+                      <input type="number" class="form-control bg-dark border-dark" 
 							 v-bind:disabled-input="buylimit.checked" 
 							 :readonly="buyhive.checked" 
 							 v-model="buyHBDTotal" 
@@ -1006,7 +1006,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
+                      <input type="number" class="form-control bg-dark border-dark disabled-input" 
 							 :readonly="buyhbd.checked" id="sellHiveTotal" 
 							 :v-model="sellHiveTotal"
 							  placeholder="0" min="0.004" step="0.001" aria-required="true" :max="balance">
@@ -1023,7 +1023,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
+                      <input type="number" class="form-control bg-dark border-dark disabled-input" 
 							 :readonly="buyhive.checked" id="sellHBDTotal" 
 							 :v-model="sellHBDTotal" 
 							 placeholder="0" min="0.004" step="0.001" :max="balance" aria-required="true">
