@@ -957,7 +957,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark" 
+                      <input type="number" class="form-control bg-dark text-white-50 border-dark" 
 							 :readonly="bform.cl" 
 							 v-model="buyHiveTotal" 
 							 id="buyHiveTotal" v-on:keyup="bcalc('h')"
