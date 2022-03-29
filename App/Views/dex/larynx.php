@@ -751,8 +751,8 @@ include_once( $path );
               <div id="userdlux" class="mx-4"><a href="/me#spk"><span class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</span></a></div>
               <div id="userdpwr" class="mx-4" v-if="accountapi.poweredUp > 0"><a href="/me#spk"><span class="text-primary">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</span></a></div>
               <div id="userdgov" class="mx-4" v-if="accountapi.gov > 0"><a href="/me#spk"><span class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</span></a></div>
-              <div id="userhive" class="mx-4"><a href="/me#hive"><span class="text-danger">{{formatNumber(barhive,3,'.',',')}}</span></a></div>
-              <div id="userhbd" class="mx-4"><a href="/me#hive"><span class="text-success">{{formatNumber(barhbd,3,'.',',')}}</span></a></div>
+              <div id="userhive" class="mx-4"><a href="/me#hive"><span class="text-danger">{{formatNumber(barhive,3,'.',',')}} HIVE</span></a></div>
+              <div id="userhbd" class="mx-4"><a href="/me#hive"><span class="text-success">{{formatNumber(barhbd,3,'.',',')}} HBD</span></a></div>
             </div>
           </div>
           <!-- node collapse region -->
@@ -806,12 +806,12 @@ include_once( $path );
                     <tbody role="rowgroup"  class="tbody-scroll-nodes">
                       <tr class="" role="row" v-for="node in runners" v-if="!filteraccount.value">
                         <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
-                        <td role="cell" class="" aria-colindex="2">{{(node.g/1000)}}</td>
+                        <td role="cell" class="" aria-colindex="2">{{formatNumber(node.g/1000,3,'.',',')}}</td>
                         <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setMem('lapi',node.api, true)">{{node.api}}</a></td>
                       </tr>
                       <tr class="" role="row" v-for="node in runnersSearch" v-if="filteraccount.value">
                         <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
-                        <td role="cell" class="" aria-colindex="2">{{(node.g/1000)}}</td>
+                        <td role="cell" class="" aria-colindex="2">{{formatNumber(node.g/1000,3,'.',',')}}</td>
                         <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setMem('lapi',node.api, true)">{{node.api}}</a></td>
                       </tr>
                     </tbody>
@@ -1074,10 +1074,12 @@ include_once( $path );
                         </div>
                       </div>
                     </div>
-					  <div class="small" v-if="buyhive.checked">BALANCE<br><a href="#/" @click="setValue('buyHiveTotal',parseFloat(barhive) < maxhbuy? parseFloat(barhive) : maxhbuy)" >{{barhive}}</a>
+					  <div class="text-right">
+					  <div class="small" v-if="buyhive.checked">BALANCE<br><a href="#/" @click="setValue('buyHiveTotal',parseFloat(barhive) < maxhbuy? parseFloat(barhive) : maxhbuy)" >{{formatHive(barhive,3,'.',',')}} HIVE</a>
 					  </div>
-					   <div class="small" v-if="buyhbd.checked">BALANCE<br><a href="#/" @click="setValue('buyHBDTotal',parseFloat(barhbd) < maxhbuy? parseFloat(barhbd) : maxhbuy)" >{{barhbd}}</a>
+					   <div class="small" v-if="buyhbd.checked">BALANCE<br><a href="#/" @click="setValue('buyHBDTotal',parseFloat(barhbd) < maxhbuy? parseFloat(barhbd) : maxhbuy)" >{{formatHive(barhbd,3,'.',',')}} HBD</a>
 					  </div>
+						 </div>
                   </div>
                 </div>
                 <div class="form-group"for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" v-if="buylimit.checked">
@@ -1173,7 +1175,7 @@ include_once( $path );
                         </div>
                       </div>
                     </div>
-					  <div class="small">BALANCE<br><a href="#/" @click="setValue('sellQuantity',balance)" >{{bartoken}}</a>
+					  <div class="small">BALANCE<br><a href="#/" @click="setValue('sellQuantity',balance)" >{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
 					  </div>
                   </div>
                 </div>
