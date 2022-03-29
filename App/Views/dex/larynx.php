@@ -1198,25 +1198,6 @@ include_once( $path );
       </div>
     </div>
   </div>
-	 <form action="/examples/actions/confirmation.php" class="needs-validation" method="post" novalidate>
-            <div class="mb-3 position-relative">
-                <label class="form-label" for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>                
-                <div class="invalid-tooltip">Please enter a valid email address.</div>
-            </div>
-            <div class="mb-3 position-relative">
-                <label class="form-label" for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
-                <div class="invalid-tooltip">Please enter your password to continue.</div>
-            </div>
-            <div class="mb-3">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="checkRemember">
-                    <label class="form-check-label" for="checkRemember">Remember me</label>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
 </main>
 </div>
 <?php
