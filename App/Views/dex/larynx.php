@@ -859,7 +859,7 @@ include_once( $path );
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
 							{{TOKEN}}
-							<a href="#" class="ml-3 text-secondary"><i class="fas fa-lock"></i></a>
+							<a href="#" class="ml-3 text-secondary"><i class="fas fa-lock-open"></i></a>
 							 </div>
                       </div>
                       <div class="invalid-feedback"> Minimum quantity is 0.001 </div>
@@ -902,7 +902,7 @@ include_once( $path );
 							 placeholder="0" min="0.001" step="0.001" aria-required="true" :max="barhive">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE
-						  <a href="#" class="ml-3 text-secondary"><i class="fas fa-lock"></i></a>
+						  <a href="#" class="ml-3 text-secondary"><i class="fas fa-unlock"></i></a>
 						  </div>
                       </div>
                       <div class="invalid-feedback"> Your balance is {{barhive}} - minimum order is 0.001 </div>
