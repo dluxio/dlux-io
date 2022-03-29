@@ -1125,7 +1125,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info" 
 							 :readonly="sform.cl" id="sellHiveTotal" required
-							 :v-model="sellHiveTotal" v-on:keyup="scalc('c')"
+							 v-model="sellHiveTotal" v-on:keyup="scalc('c')"
 							  placeholder="0" min="0.004" step="0.001" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE<a href="#/" class="ml-3 text-secondary" @click="slock('c')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.cl, 'fa-unlock-alt':!sform.cl}"></i></a></div>
@@ -1142,7 +1142,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info" 
 							 :readonly="sform.cl" id="sellHBDTotal" 
-							 :v-model="sellHBDTotal" required
+							 v-model="sellHBDTotal" required
 							 placeholder="0" min="0.004" step="0.001" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD<a href="#/" class="ml-3 text-secondary" @click="slock('c')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.cl, 'fa-unlock-alt':!sform.cl}"></i></a></div>
