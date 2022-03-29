@@ -660,7 +660,16 @@ thead, tbody tr {
         })
     },
     computed: {
-      
+      minbuy:{
+        get() {
+          return parseFloat((this.buyPrice/1000).toFixed(3))+0.001
+        }
+      },
+      minsell:{
+        get() {
+          return parseFloat((this.sellPrice/1000).toFixed(3))+0.001
+        }
+      }
     }
   }).mount('#app')
   
@@ -997,14 +1006,14 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" v-on:keyup="bcalc('t')" required class="form-control bg-dark border-dark text-info" v-model="buyQuantity" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="bform.tl">
+                      <input type="number" v-on:keyup="bcalc('t')" required class="form-control bg-dark border-dark text-info" v-model="buyQuantity" id="buyQuantity" placeholder="0" :min="minbuy" step="0.001" aria-required="true" :readonly="bform.tl">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
 							{{TOKEN}}
 							<a href="#/" class="ml-3 text-secondary" @click="block('t')"><i class="fas" :class="{'fa-lock':bform.tl, 'fa-unlock-alt':!bform.tl}"></i></a>
 							 </div>
                       </div>
-                      <div class="invalid-feedback"> Minimum quantity is 0.001 </div>
+                      <div class="invalid-feedback"> Minimum quantity is {{minbuy}} </div>
                     </div>
                   </div>
                 </div>
@@ -1139,11 +1148,11 @@ include_once( $path );
                       <input type="number" class="form-control bg-dark border-dark text-info" 
 							 :readonly="sform.cl" id="sellHiveTotal" required
 							 v-model="sellHiveTotal" v-on:keyup="scalc('c')"
-							  placeholder="0" min="0.004" step="0.001" aria-required="true">
+							  placeholder="0" :min="minsell" step="0.001" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE<a href="#/" class="ml-3 text-secondary" @click="slock('c')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.cl, 'fa-unlock-alt':!sform.cl}"></i></a></div>
                       </div>
-                      <div class="invalid-feedback"> Minimum total is 0.004 - increase the quantity or price </div>
+                      <div class="invalid-feedback"> Minimum total is {{minsell}} - increase the quantity or price </div>
                     </div>
                   </div>
                 </div>
