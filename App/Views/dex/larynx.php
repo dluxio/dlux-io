@@ -980,7 +980,7 @@ include_once( $path );
                           <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit('limit');setValue('buyQuantity', 0);setValue('buyHours','720');block()">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHiveTotal',0);block()">
+                          <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHiveTotal',0);setValue('buyHBDTotal',0);block()">
                           MARKET </label>
                       </div>
                     </div>
@@ -1090,7 +1090,7 @@ include_once( $path );
                           <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit('limit');setValue('sellHours', 720);slock()">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellHours', 0);slock()">
+                          <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellHours', 0);setValue('sellHiveTotal', 0);setValue('sellHBDTotal', 0);slock()">
                           MARKET </label>
                       </div>
                     </div>
