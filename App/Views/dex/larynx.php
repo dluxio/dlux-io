@@ -1124,7 +1124,7 @@ include_once( $path );
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info" 
-							 :readonly="sform.cl" id="sellHiveTotal" 
+							 :readonly="sform.cl" id="sellHiveTotal" required
 							 :v-model="sellHiveTotal" v-on:keyup="scalc('c')"
 							  placeholder="0" min="0.004" step="0.001" aria-required="true">
                       <div class="input-group-append">
@@ -1142,7 +1142,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info" 
 							 :readonly="sform.cl" id="sellHBDTotal" 
-							 :v-model="sellHBDTotal" 
+							 :v-model="sellHBDTotal" required
 							 placeholder="0" min="0.004" step="0.001" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD<a href="#/" class="ml-3 text-secondary" @click="slock('c')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.cl, 'fa-unlock-alt':!sform.cl}"></i></a></div>
@@ -1157,7 +1157,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="sellHours" v-on:keyup="scalc('c')" type="number" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-info"  :readonly="sellmarket.checked">
+                      <input id="sellHours" v-on:keyup="scalc('c')" v-model="sellHours" type="number" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-info"  :readonly="sellmarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HOURS</div>
                       </div>
