@@ -188,7 +188,7 @@ thead, tbody tr {
             }
             break;
           case 'p':
-            if(this.bform.tl){
+            if(this.bform.cl){
               if(this.buyhive.checked)this.buyQuantity = (this.buyHiveTotal / this.buyPrice).toFixed(3)
               else this.buyQuantity = (this.buyHBDTotal / this.buyPrice).toFixed(3)
             } else {
