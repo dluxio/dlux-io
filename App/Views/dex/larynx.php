@@ -425,7 +425,9 @@ thead, tbody tr {
         }
       },
       buyDEX(hive, hbd, dlux, hours, prefix = 'dlux_', callback){
-        console.log({hive,hbd,dlux})
+        if(document.getElementById('buyform').classList.contains('needs-validation')){
+          return
+        }
         var token, msaccount, statusapi
         switch (prefix){
             case 'spkcc_':
@@ -449,6 +451,9 @@ thead, tbody tr {
         else if (!this.buyhive.checked && hbd)broadcastTransfer({ to: msaccount, hbd, memo:JSON.stringify({rate, hours})}, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
       },
       sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback){
+        if(document.getElementById('sellform').classList.contains('needs-validation')){
+          return
+        }
         var token, statusapi
         switch (prefix){
             case 'spkcc_':
@@ -969,7 +974,7 @@ include_once( $path );
         <div class="row">
           <div class="mt-3 col-md-6">
             <h4>Buy {{TOKEN}}</h4>
-            <form name="buy" class="form-horizontal needs-validation" novalidate>
+            <form name="buy" id="buyform" class="form-horizontal needs-validation" novalidate>
               <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
@@ -1079,7 +1084,7 @@ include_once( $path );
           </div>
           <div class="mt-3 col-md-6">
             <h4>Sell {{TOKEN}}</h4>
-            <form name="sell" class="form-horizontal needs-validation" novalidate>
+            <form id="sellform" name="sell" class="form-horizontal needs-validation" novalidate>
               <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
