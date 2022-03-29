@@ -197,12 +197,14 @@ thead, tbody tr {
             }
             break;
           case 'c':
-            if(this.bform.pl){
-              if(this.buyhive.checked)this.buyQuantity = (this.buyHiveTotal / this.buyPrice).toFixed(3)
-              else this.buyQuantity = (this.buyHBDTotal / this.buyPrice).toFixed(3)
-            } else {
-              if(this.buyhive.checked)this.buyPrice = (this.buyHiveTotal / this.buyQuantity).toFixed(6)
-              else this.buyPrice = (this.buyHBDTotal / this.buyQuantity).toFixed(6)
+            if(this.buylimit.checked){
+              if(this.bform.pl){
+                if(this.buyhive.checked)this.buyQuantity = (this.buyHiveTotal / this.buyPrice).toFixed(3)
+                else this.buyQuantity = (this.buyHBDTotal / this.buyPrice).toFixed(3)
+              } else {
+                if(this.buyhive.checked)this.buyPrice = (this.buyHiveTotal / this.buyQuantity).toFixed(6)
+                else this.buyPrice = (this.buyHBDTotal / this.buyQuantity).toFixed(6)
+              }
             }
             break;
           default:
@@ -212,18 +214,18 @@ thead, tbody tr {
         switch(o){
           case 't':
             this.bform.tl = !this.bform.tl
-            this.bform.cl = !this.bform.tl
-            this.bform.pl = !this.bform.tl
+            this.bform.cl = this.bform.tl ? false : true
+            this.bform.pl = this.bform.tl ? false : true
             break;
           case 'c':
             this.bform.cl = !this.bform.cl
-            this.bform.tl = !this.bform.cl
-            this.bform.pl = !this.bform.cl
+            this.bform.tl = this.bform.cl ? false : true
+            this.bform.pl = this.bform.cl ? false : true
             break;
           case 'p':
             this.bform.pl = !this.bform.pl
-            this.bform.cl = !this.bform.pl
-            this.bform.tl = !this.bform.pl
+            this.bform.cl = this.bform.pl ? false : true
+            this.bform.tl = this.bform.pl ? false : true
             break;
           default:
             this.bform.cl = false
@@ -901,10 +903,10 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit('limit');setValue('buyQuantity', '');setValue('buyHours','720')">
+                          <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit('limit');setValue('buyQuantity', '');setValue('buyHours','720');block()">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');;setValue('buyHiveTotal','')">
+                          <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHiveTotal','');block()">
                           MARKET </label>
                       </div>
                     </div>
@@ -963,7 +965,7 @@ include_once( $path );
 							 placeholder="0" min="0.001" step="0.001" aria-required="true" :max="barhive">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE
-						  <a href="#/" class="ml-3 text-secondary" @click="block('c')"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
+						  <a href="#/" class="ml-3 text-secondary" @click="block('c')" v-if="buylimit.checked"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
 						  </div>
                       </div>
                       <div class="invalid-feedback"> Your balance is {{barhive}} - minimum order is 0.001 </div>
@@ -984,7 +986,7 @@ include_once( $path );
 							 placeholder="0" min="0.001" step="0.001" :max="barhbd" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD
-						  <a href="#/" class="ml-3 text-secondary" @click="block('c')"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
+						  <a href="#/" class="ml-3 text-secondary" @click="block('c')" v-if="buylimit.checked"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
 						  </div>
                       </div>
                       <div class="invalid-feedback"> Your balance is {{barhbd}} - minimum order is 0.001 </div>
