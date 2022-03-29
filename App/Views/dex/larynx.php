@@ -98,6 +98,7 @@ thead, tbody tr {
         jsontoken: '',
         node: '',
         behind: '',
+        stats: {},
         behindTitle: '',
         TOKEN: 'LARYNX',
         bform: {
@@ -512,6 +513,7 @@ thead, tbody tr {
         .then(response => response.json())
         .then(data => {
           this.nodes = data.markets.node
+          this.stats = data.stats
         })
       fetch(this.lapi + '/api/protocol')
         .then(response => response.json())
@@ -669,6 +671,23 @@ thead, tbody tr {
         get() {
           return parseFloat(parseFloat(parseFloat(this.sellPrice).toFixed(3))+0.001).toFixed(3)
         }
+      },
+      maxhbuy:{
+        get() {
+          return (this.dexapi.hive.tick * (this.stats.dex_max/100) * (1 - (this.stats.dex_slope/100))) * this.stats.safetyLimit/1000).toFixed(3)
+        }
+      },
+      maxdbuy:{
+        get() {
+          return (this.dexapi.hbd.tick * (this.stats.dex_max/100) * (1 - (this.stats.dex_slope/100))) * this.stats.safetyLimit/1000).toFixed(3)
+        }
+      },
+      marketCap:{
+        get() {
+          if(this.buyhive.checked)return `$${parseFloat((this.stats.tokenSuply/1000) * this.hiveprice.hive.usd * this.dexapi.hive.tick)}`
+          else return `$${parseFloat((this.stats.tokenSuply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.hbd.tick)}`
+        }
+      },
       }
     }
   }).mount('#app')
@@ -808,7 +827,7 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</b></h2>
+              <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</b><b>Supply: {{stats.tokenSupply}}</b><b>Market Cap: {{marketCap}}</b></h2>
             </div>
           </div>
           <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
@@ -1045,13 +1064,13 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark text-info border-dark" :readonly="bform.cl" v-model="buyHiveTotal" id="buyHiveTotal" required v-on:keyup="bcalc('c')" placeholder="0" :min="minbuy" step="0.001" :max="parseFloat(barhive)" aria-required="true">
+                      <input type="number" class="form-control bg-dark text-info border-dark" :readonly="bform.cl" v-model="buyHiveTotal" id="buyHiveTotal" required v-on:keyup="bcalc('c')" placeholder="0" :min="minbuy" step="0.001" :max="parseFloat(barhive) > maxhbuy ? toFixed(parseFloat(barhive),3) : maxhbuy" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE
 						  <a href="#/" class="ml-3 text-secondary" @click="block('c')" v-if="buylimit.checked"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
 						  </div>
                       </div>
-                      <div class="invalid-feedback"> Your balance is {{barhive}} - minimum order is {{minbuy}} </div>
+                      <div class="invalid-feedback"> Your balance is {{barhive}} - minimum: {{minbuy}} - max: {{parseFloat(barhive) > maxhbuy ? toFixed(parseFloat(barhive),3) : maxhbuy}}{{parseFloat(barhive) > maxhbuy ? '' : '(Liquidity)'}}</div>
                     </div>
                   </div>
                 </div>
@@ -1061,13 +1080,13 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark text-info border-dark" :readonly="bform.cl" v-model="buyHBDTotal" id="buyHBDTotal" required v-on:keyup="bcalc('c')" placeholder="0" min="0.001" step="0.001" :max="barhbd" aria-required="true">
+                      <input type="number" class="form-control bg-dark text-info border-dark" :readonly="bform.cl" v-model="buyHBDTotal" id="buyHBDTotal" required v-on:keyup="bcalc('c')" placeholder="0" :min="minbuy" step="0.001" :max="parseFloat(barhbd) > maxdbuy ? toFixed(parseFloat(barhbd),3) : maxdbuy" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD
 						  <a href="#/" class="ml-3 text-secondary" @click="block('c')" v-if="buylimit.checked"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
 						  </div>
                       </div>
-                      <div class="invalid-feedback"> Your balance is {{barhbd}} - minimum order is 0.001 </div>
+                      <div class="invalid-feedback"> Your balance is {{barhbd}} - minimum: {{minbuy}} - max: {{parseFloat(barhbd) > maxdbuy ? toFixed(parseFloat(barhbd),3) : maxdbuy}}{{parseFloat(barhbd) > maxdbuy ? '' : '(Liquidity)'}}</div>
                     </div>
                   </div>
                 </div>
