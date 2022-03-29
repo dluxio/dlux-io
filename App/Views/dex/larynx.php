@@ -855,10 +855,15 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
+						<div class="input-group-prepend l-radius-hotfix">
+							 <span class="input-group-text bg-dark border-dark text-secondary">
+						<a href="#" class="mr-2 badge badge-secondary" @click="setValue('buyQuantity', accountapi.balance/buyPrice.value)"><i class="fas fa-lock"></i></a>
+							</span>
+						</div>
                       <input type="number" required class="form-control bg-dark border-dark text-white-50" v-model="buyQuantity" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
-							<a href="#" class="mr-2 badge badge-primary" @click="setValue('buyQuantity', accountapi.balance/buyPrice.value)"><i class="fas fa-lock"></i></a>
+							
 							{{TOKEN}}
 							 </div>
                       </div>
