@@ -687,7 +687,6 @@ thead, tbody tr {
           if(this.buyhive.checked)return `$${parseFloat((this.stats.tokenSuply/1000) * this.hiveprice.hive.usd * this.dexapi.hive.tick)}`
           else return `$${parseFloat((this.stats.tokenSuply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.hbd.tick)}`
         }
-      },
       }
     }
   }).mount('#app')
