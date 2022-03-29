@@ -276,24 +276,24 @@ thead, tbody tr {
       slock(o){
         switch(o){
           case 't':
-            this.bform.tl = !this.bform.tl
-            this.bform.cl = false
-            this.bform.pl = !this.bform.tl
+            this.sform.tl = !this.sform.tl
+            this.sform.cl = false
+            this.sform.pl = !this.sform.tl
             break;
           case 'c':
-            this.bform.cl = !this.bform.cl
-            this.bform.tl = false
-            this.bform.pl = !this.bform.cl
+            this.sform.cl = !this.sform.cl
+            this.sform.tl = false
+            this.sform.pl = !this.sform.cl
             break;
           case 'p':
-            this.bform.pl = !this.bform.pl
-            this.bform.cl = !this.bform.pl
-            this.bform.tl = false
+            this.sform.pl = !this.sform.pl
+            this.sform.cl = !this.sform.pl
+            this.sform.tl = false
             break;
           default:
-            this.bform.cl = false
-            this.bform.tl = false
-            this.bform.pl = true
+            this.sform.cl = false
+            this.sform.tl = false
+            this.sform.pl = true
             break;
         }
       },
