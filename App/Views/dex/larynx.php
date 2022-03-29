@@ -920,7 +920,7 @@ include_once( $path );
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
 							{{TOKEN}}
-							<a href="#" class="ml-3 text-secondary" @click="block('t')"><i class="fas" :class="{'fa-lock':bform.tl, 'fa-unlock-alt':!bform.tl}"></i></a>
+							<a href="#/" class="ml-3 text-secondary" @click="block('t')"><i class="fas" :class="{'fa-lock':bform.tl, 'fa-unlock-alt':!bform.tl}"></i></a>
 							 </div>
                       </div>
                       <div class="invalid-feedback"> Minimum quantity is 0.001 </div>
@@ -940,7 +940,7 @@ include_once( $path );
 							<span v-if="buyhive.checked">HIVE</span>
 							<span v-if="buyhbd.checked">HBD</span>
 							/{{TOKEN}}
-						  <a href="#" class="ml-3 text-secondary" @click="block('p')"><i class="fas" :class="{'fa-lock':bform.pl, 'fa-unlock-alt':!bform.pl}"></i></a>
+						  <a href="#/" class="ml-3 text-secondary" @click="block('p')"><i class="fas" :class="{'fa-lock':bform.pl, 'fa-unlock-alt':!bform.pl}"></i></a>
 						  </div>
 						  
                       </div>
@@ -963,7 +963,7 @@ include_once( $path );
 							 placeholder="0" min="0.001" step="0.001" aria-required="true" :max="barhive">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE
-						  <a href="#" class="ml-3 text-secondary" @click="block('c')"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
+						  <a href="#/" class="ml-3 text-secondary" @click="block('c')"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
 						  </div>
                       </div>
                       <div class="invalid-feedback"> Your balance is {{barhive}} - minimum order is 0.001 </div>
@@ -984,7 +984,7 @@ include_once( $path );
 							 placeholder="0" min="0.001" step="0.001" :max="barhbd" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD
-						  <a href="#" class="ml-3 text-secondary" @click="block('c')"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
+						  <a href="#/" class="ml-3 text-secondary" @click="block('c')"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
 						  </div>
                       </div>
                       <div class="invalid-feedback"> Your balance is {{barhbd}} - minimum order is 0.001 </div>
