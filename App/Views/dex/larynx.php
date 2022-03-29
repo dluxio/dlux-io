@@ -480,7 +480,7 @@ thead, tbody tr {
           this.openorders = data.contracts
             .reduce((acc, cur) => {
               cur.nai = `${cur.type.split(':')[0] == 'hive' ? parseFloat(cur.hive/1000).toFixed(3) : parseFloat(cur.hbd/1000).toFixed(3)} ${cur.type.split(':')[0] == 'hive' ? 'HIVE' : 'HBD'}`
-              if(cur.partials && cur.partials.length && cur.type.split(':')[1] == 'buy') {
+              if(cur.partials && cur.partials.length && cur.type.split(':')[1] == 'sell') {
                 const filled = cur.partials.reduce(function (a, c) {
                   return a + c.coin
                   }, 0)
@@ -767,37 +767,37 @@ include_once( $path );
               <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
-                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.blocka || orders.blockd}" aria-colindex="1" > <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="1" > <div class="d-flex align-items-center">
                       <div class="mr-3">BLOCK</div>
                       <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','block','asc');toggleOrders('blocka')" v-bind:class="{'bg-primary':orders.blocka}"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','block','desc');toggleOrders('blockd')" v-bind:class="{'bg-primary':orders.blockd}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.tokena || orders.tokend}" aria-colindex="2" > <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="2" > <div class="d-flex align-items-center">
                       <div class="mr-3">{{TOKEN}}</div>
                       <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','amount','asc');toggleOrders('tokena')" v-bind:class="{'bg-primary':orders.tokena}"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','amount','desc');toggleOrders('tokend')" v-bind:class="{'bg-primary':orders.tokend}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.coina || orders.coind}" aria-colindex="3" > <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="3" > <div class="d-flex align-items-center">
                       <div class="mr-3">HIVE/HBD</div>
                       <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','nai','asc');toggleOrders('coina')" v-bind:class="{'bg-primary':orders.coina}"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','nai','desc');toggleOrders('coind')" v-bind:class="{'bg-primary':orders.coind}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.filleda || orders.filledd}" aria-colindex="4" > <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="4" > <div class="d-flex align-items-center">
                       <div class="mr-3">Filled</div>
                       <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','percentFilled','asc');toggleOrders('filleda')" v-bind:class="{'bg-primary':orders.filleda}"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','percentFilled','desc');toggleOrders('filledd')" v-bind:class="{'bg-primary':orders.filledd}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.ratea || orders.rated}" aria-colindex="5" > <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="5" > <div class="d-flex align-items-center">
                       <div class="mr-3">RATE</div>
                       <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','rate','asc');toggleOrders('ratea')" v-bind:class="{'bg-primary':orders.ratea}"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','rate','desc');toggleOrders('rated')" v-bind:class="{'bg-primary':orders.rated}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.typea || orders.typed}" aria-colindex="6" > <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" aria-colindex="6" > <div class="d-flex align-items-center">
                       <div class="mr-3">TYPE</div>
                       <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','type','asc');toggleOrders('typea')" v-bind:class="{'bg-primary':orders.typea}"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','type','desc');toggleOrders('typed')" v-bind:class="{'bg-primary':orders.typed}"> <i class="fas fa-caret-down"></i></button>
@@ -815,8 +815,8 @@ include_once( $path );
                     <td role="cell" class="" aria-colindex="2">{{(order.amount/1000).toFixed(3)}}</td>
                     <td role="cell" class="" aria-colindex="3">{{order.nai}}</td>
                     <td role="cell" class="" aria-colindex="4">{{order.percentFilled}}%</td>
-                    <td role="cell" class="" aria-colindex="5" v-bind:class="{'text-danger':(order.type == 'hive:sell' || order.type == 'hbd:sell')}" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.rate}}</td>
-                    <td role="cell" class="" aria-colindex="6" v-bind:class="{'text-danger':(order.type == 'hive:sell' || order.type == 'hbd:sell')}" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.type}}</td>
+                    <td role="cell" class="" aria-colindex="5" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.rate}}</td>
+                    <td role="cell" class="" aria-colindex="6" v-bind:text-danger="(type == 'hive:sell' || type == 'hbd:sell')" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.type}}</td>
                     <td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" @click="cancelDEX('{{order.txid}}','spkcc_')">CANCEL</button></td>
                   </tr>
                 </tbody>
@@ -829,7 +829,7 @@ include_once( $path );
         <div class="row">
           <div class="mt-3 col-md-6">
             <h4>Buy {{TOKEN}}</h4>
-            <form name="buy" class="form-horizontal needs-validation">
+            <form name="buy" class="form-horizontal needs-validation" novalidate>
               <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
@@ -840,14 +840,14 @@ include_once( $path );
                           <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit('limit');setValue('buyQuantity', '');setValue('buyHours','720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHours','0')">
+                          <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');;setValue('buyHiveTotal','')">
                           MARKET </label>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group"for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" v-if="!buymarket.checked">
+              <div class="form-group"for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" v-if="buylimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -864,12 +864,12 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyPrice" id="buy-price" aria-labelledby="buy-price-label" v-if="!buymarket.checked">
+              <div class="form-group" for="buyPrice" id="buy-price" aria-labelledby="buy-price-label" v-if="buylimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="buyPrice" type="number" v-model="buyPrice" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
+                      <input id="buyPrice" type="number" v-model="buyPrice" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
 							<a v-if="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" @click="setValue('buyPrice', accountapi.balance/buyQuantity.value)">MAX</a>
@@ -882,7 +882,7 @@ include_once( $path );
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" v-if="!buymarket.checked">
+              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" v-if="buylimit.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
                   <div tabindex="-1" role="group" class="col">
@@ -901,11 +901,16 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info" v-bind:disabled-input="buylimit.checked" :readonly="buyhbd.checked" v-model="buyHiveTotal" id="buyHiveTotal" placeholder="0" min="0.001" step="0.001" aria-required="true" :max="accountapi.balance">
+                      <input type="number" class="form-control bg-dark border-dark text-info" 
+							 v-bind:disabled-input="buylimit.checked" 
+							 :readonly="buyhbd.checked" 
+							 v-model="buyHiveTotal" 
+							 id="buyHiveTotal" 
+							 placeholder="0" min="0.001" step="0.001" aria-required="true" :max="barhive">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
                       </div>
-                      <div class="invalid-feedback"> Your balance is {{accountapi.balance}} - minimum order is 0.001 </div>
+                      <div class="invalid-feedback"> Your balance is {{barhive}} - minimum order is 0.001 </div>
                     </div>
                   </div>
                 </div>
@@ -915,11 +920,16 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark text-info" v-bind:disabled-input="buylimit.checked" :readonly="buyhive.checked" v-model="buyHBDTotal" id="buyHBDTotal" placeholder="0" min="0.001" step="0.001" :max="accountapi.hbd_balance" aria-required="true">
+                      <input type="number" class="form-control bg-dark border-dark text-info" 
+							 v-bind:disabled-input="buylimit.checked" 
+							 :readonly="buyhive.checked" 
+							 v-model="buyHBDTotal" 
+							 id="buyHBDTotal" 
+							 placeholder="0" min="0.001" step="0.001" :max="barhbd" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
                       </div>
-                      <div class="invalid-feedback"> Your balance is {{accountapi.hbd_balance}} - minimum order is 0.001 </div>
+                      <div class="invalid-feedback"> Your balance is {{barhbd}} - minimum order is 0.001 </div>
                     </div>
                   </div>
                 </div>
@@ -931,7 +941,7 @@ include_once( $path );
           </div>
           <div class="mt-3 col-md-6">
             <h4>Sell {{TOKEN}}</h4>
-            <form name="sell" class="form-horizontal needs-validation">
+            <form name="sell" class="form-horizontal needs-validation" novalidate>
               <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
@@ -968,7 +978,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="sellPrice" v-model="sellPrice" type="number" placeholder="0" required step="0.000001" min="0" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="sellmarket.checked">
+                      <input id="sellPrice" type="number" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="sellmarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span v-if="buyhive.checked">HIVE</span><span v-if="buyhbd.checked">HBD</span>/{{TOKEN}}</div>
                       </div>
@@ -997,7 +1007,7 @@ include_once( $path );
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
-							 :readonly="buyhbd.checked || sellmarket.checked" id="sellHiveTotal" 
+							 :readonly="buyhbd.checked" id="sellHiveTotal" 
 							 :v-model="sellHiveTotal"
 							  placeholder="0" min="0.004" step="0.001" aria-required="true" :max="balance">
                       <div class="input-group-append">
@@ -1014,7 +1024,7 @@ include_once( $path );
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark text-info disabled-input" 
-							 :readonly="buyhive.checked || sellmarket.checked" id="sellHBDTotal" 
+							 :readonly="buyhive.checked" id="sellHBDTotal" 
 							 :v-model="sellHBDTotal" 
 							 placeholder="0" min="0.004" step="0.001" :max="balance" aria-required="true">
                       <div class="input-group-append">
@@ -1052,7 +1062,7 @@ include_once( $path );
                       <td aria-colindex="1" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
                       <td aria-colindex="2" role="cell" class="">{{(item.hive/1000).toFixed(3)}}</td>
                       <td aria-colindex="3" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
-                      <td aria-colindex="4" role="cell" class="text-primary"><a href="#/" @click="setValue('sellPrice', item.rate)">{{item.rate}}</a></td>
+                      <td aria-colindex="4" role="cell" class="text-primary"><a href="#" @click="insertBal('{{item.rate}}', 'buyPrice')">{{item.rate}}</a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -1072,7 +1082,7 @@ include_once( $path );
                   </thead>
                   <tbody role="rowgroup" class="tbody-scroll-orders">
                     <tr class="" role="row" v-for="item in hivesells">
-                      <td aria-colindex="1" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate)">{{item.rate}}</a></td>
+                      <td aria-colindex="1" role="cell" class="text-primary"><a href="#" @click="insertBal('{{item.rate}}', 'sellPrice')">{{item.rate}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
                       <td aria-colindex="3" role="cell" class="">{{(item.hive/1000).toFixed(3)}}</td>
                       <td aria-colindex="4" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
@@ -1129,7 +1139,7 @@ include_once( $path );
                       <td aria-colindex="1" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
                       <td aria-colindex="2" role="cell" class="">{{(item.hbd/1000).toFixed(3)}}</td>
                       <td aria-colindex="3" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
-                      <td aria-colindex="4" role="cell" class=""><a href="#/" @click="setValue('sellPrice', item.rate)">{{item.rate}}</a></td>
+                      <td aria-colindex="4" role="cell" class=""><a href="#" @click="insertBal('{{item.rate}}', 'buyPrice')">{{item.rate}}</a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -1149,7 +1159,7 @@ include_once( $path );
                   </thead>
                   <tbody role="rowgroup" class="tbody-scroll-orders">
                     <tr class="" role="row" v-for="item in hbdsells">
-                      <td aria-colindex="1" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate)">{{item.rate}}</a></td>
+                      <td aria-colindex="1" role="cell" class=""><a href="#" @click="insertBal('{{item.rate}}', 'sellPrice')">{{item.rate}}</a></td>
                       <td aria-colindex="2" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
                       <td aria-colindex="3" role="cell" class="">{{(item.hbd/1000).toFixed(3)}}</td>
                       <td aria-colindex="4" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
@@ -1188,6 +1198,25 @@ include_once( $path );
       </div>
     </div>
   </div>
+	 <form action="/examples/actions/confirmation.php" class="needs-validation" method="post" novalidate>
+            <div class="mb-3 position-relative">
+                <label class="form-label" for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>                
+                <div class="invalid-tooltip">Please enter a valid email address.</div>
+            </div>
+            <div class="mb-3 position-relative">
+                <label class="form-label" for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                <div class="invalid-tooltip">Please enter your password to continue.</div>
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkRemember">
+                    <label class="form-check-label" for="checkRemember">Remember me</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </form>
 </main>
 </div>
 <?php
