@@ -1409,7 +1409,7 @@ include_once( $path );
                     </thead>
                     <tbody role="rowgroup" class="tbody-scroll-history">
                       <tr class="" role="row" v-for="item in recenthbd">
-                        <td aria-colindex="1" role="cell" class="" v-bind:class="{'text-danger': (item.type == 'sell'), 'text-success': (item.type == 'buy')}">{{formatNumber(price,6,'.',',')}}</td>
+                        <td aria-colindex="1" role="cell" class="" v-bind:class="{'text-danger': (item.type == 'sell'), 'text-success': (item.type == 'buy')}">{{formatNumber(item.price,6,'.',',')}}</td>
                         <td aria-colindex="2" role="cell" class="">{{formatNumber(item.target_volume,3,'.',',')}}</td>
                         <td aria-colindex="3" role="cell" class="">{{new Date(item.trade_timestamp).toLocaleTimeString()}}</td>
                       </tr>
