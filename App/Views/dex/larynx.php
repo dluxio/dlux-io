@@ -1061,7 +1061,7 @@ include_once( $path );
                     </div>
 					  <div class="small" v-if="buyhive.checked">BALANCE<br><a href="#/" @click="setValue('buyHiveTotal',parseFloat(barhive) < maxhbuy? parseFloat(barhive) : maxhbuy)" >{{barhive}}</a>
 					  </div>
-					   <div class="small" v-if="buyhbd.checked">BALANCE<br><a href="#/" @click="setValue('buyHBDTotal',parseFloat(hbd_balance) < maxhbuy? parseFloat(hbd_balance) : maxhbuy)" >{{barhbd}}</a>
+					   <div class="small" v-if="buyhbd.checked">BALANCE<br><a href="#/" @click="setValue('buyHBDTotal',parseFloat(barhbd) < maxhbuy? parseFloat(barhbd) : maxhbuy)" >{{barhbd}}</a>
 					  </div>
                   </div>
                 </div>
