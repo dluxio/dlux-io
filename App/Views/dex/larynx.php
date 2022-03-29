@@ -1059,6 +1059,10 @@ include_once( $path );
                         </div>
                       </div>
                     </div>
+					  <div class="small" v-if="buyhive.checked">BALANCE<br><a href="#/" @click="setValue('buyHiveTotal',balance < maxhbuy? balance : maxhbuy)" >{{barhive}}</a>
+					  </div>
+					   <div class="small" v-if="buyhbd.checked">BALANCE<br><a href="#/" @click="setValue('buyHBDTotal',balance < maxhbuy? balance : maxhbuy)" >{{barhbd}}</a>
+					  </div>
                   </div>
                 </div>
                 <div class="form-group"for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" v-if="buylimit.checked">
@@ -1154,6 +1158,8 @@ include_once( $path );
                         </div>
                       </div>
                     </div>
+					  <div class="small">BALANCE<br><a href="#/" @click="setValue('sellQuantity',balance)" >{{bartoken}}</a>
+					  </div>
                   </div>
                 </div>
                 <div class="form-group" for="sellQuantity" id="sell-qty" aria-labelledby="sell-qty-label">
