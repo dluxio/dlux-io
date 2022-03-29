@@ -833,19 +833,15 @@ include_once( $path );
 						<i class="fas fa-info mx-2"></i></a>
                     	<div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right">
                       	<h6 class="dropdown-header">LARYNX STATS</h6>
-                      	
-						<div class="dropdown-divider bg-light"></div>
+                      	<div class="dropdown-divider bg-light"></div>
 						<p class="mb-0">Supply:</p>
 						<p>{{toFixed(stats.tokenSupply/1000, 3)}}</p>
-						
 						<div class="dropdown-divider bg-light"></div>
 						<p class="mb-0">Market Cap:</p>
 						<p>{{marketCap}}</p>
-						
 						<div class="dropdown-divider bg-light"></div>
 						<p class="mb-0">DEX Fee:</p>
 						<p>{{stats.dex_fee}}%</p>
-						
 						<div class="dropdown-divider bg-light"></div>
 						<p class="mb-0">Clearing Time:</p>
 						<p class="mb-0">~10 Minutes</p>
@@ -853,12 +849,32 @@ include_once( $path );
 				</div>
               </div>
             </div>
+				</div>
             <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
-              <div id="dluxhbdquote">
-                <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd, 6)}} <i class="fas fa-info-circle ml-2"></i></b>
+              <div class="d-flex align-items-center" id="dluxhbdquote">
+                <div><h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd, 6)}}</b></h2></div>
+				<div class="ml-auto d-flex align-items-center">
+                	<div class="dropdown show d-flex align-items-center p-0 m-0"><a class="btn btn-sm btn-outline-primary dropdown-toggle py-0 px-2 m-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-info mx-2"></i></a>
+                    	<div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right">
+                      	<h6 class="dropdown-header">LARYNX STATS</h6>
+                      	<div class="dropdown-divider bg-light"></div>
+						<p class="mb-0">Supply:</p>
+						<p>{{toFixed(stats.tokenSupply/1000, 3)}}</p>
+						<div class="dropdown-divider bg-light"></div>
+						<p class="mb-0">Market Cap:</p>
+						<p>{{marketCap}}</p>
+						<div class="dropdown-divider bg-light"></div>
+						<p class="mb-0">DEX Fee:</p>
+						<p>{{stats.dex_fee}}%</p>
+						<div class="dropdown-divider bg-light"></div>
+						<p class="mb-0">Clearing Time:</p>
+						<p class="mb-0">~10 Minutes</p>
+                	</div>
+				</div>
+              </div>
               </div>
             </div>
-          </div>
         </div>
 			</div>
         <!-- market stats -->
