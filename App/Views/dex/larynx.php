@@ -859,7 +859,7 @@ include_once( $path );
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
 							{{TOKEN}}
-							<a href="#" class="ml-3 text-secondary"><i class="fas fa-lock-open"></i></a>
+							<a href="#" class="ml-3 text-secondary"><i class="fas fa-unlock-alt"></i></a>
 							 </div>
                       </div>
                       <div class="invalid-feedback"> Minimum quantity is 0.001 </div>
