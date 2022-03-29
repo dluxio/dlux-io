@@ -1136,7 +1136,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark disabled-input" 
+                      <input type="number" class="form-control bg-dark border-dark" 
 							 :readonly="sform.cl" id="sellHiveTotal" 
 							 :v-model="sellHiveTotal" v-on:keyup="scalc('c')"
 							  placeholder="0" min="0.004" step="0.001" aria-required="true">
@@ -1153,7 +1153,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hbd-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark border-dark disabled-input" 
+                      <input type="number" class="form-control bg-dark border-dark" 
 							 :readonly="sform.cl" id="sellHBDTotal" 
 							 :v-model="sellHBDTotal" 
 							 placeholder="0" min="0.004" step="0.001" aria-required="true">
