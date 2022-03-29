@@ -465,8 +465,8 @@ thead, tbody tr {
             return acc
           }, [])
           this.dexapi = data
-          this.buyPrice this.hivesells[0].rate
-          this.sellPrice this.hivebuys[0].rate
+          this.buyPrice = this.hivesells[0].rate
+          this.sellPrice = this.hivebuys[0].rate
         })
       if(user != 'GUEST')fetch(this.lapi + '/@' + user)
         .then(response => response.json())
