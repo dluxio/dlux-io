@@ -218,6 +218,7 @@ thead, tbody tr {
       scalc(k){
         switch(k){
           case 't':
+            this.sellQuantity = parseFloat(this.sellQuantity)
             if(this.sform.cl){
               if(this.buyhive.checked)this.sellPrice = (this.sellHiveTotal / this.sellQuantity).toFixed(6)
               else this.sellPrice = (this.sellHBDTotal / this.sellQuantity).toFixed(6)
@@ -227,6 +228,7 @@ thead, tbody tr {
             }
             break;
           case 'p':
+            this.sellPrice = parseFloat(this.sellPrice)
             if(this.sform.cl){
               if(this.buyhive.checked)this.sellQuantity = (this.sellHiveTotal / this.sellPrice).toFixed(3)
               else this.sellQuantity = (this.sellHBDTotal / this.sellPrice).toFixed(3)
@@ -236,6 +238,8 @@ thead, tbody tr {
             }
             break;
           case 'c':
+            if(this.buyhive.checked)this.sellHiveTotal = parseFloat(this.sellHiveTotal)
+            else this.sellHBDTotal = parseFloat(this.sellHBDTotal)
             if(this.selllimit.checked){
               if(this.sform.pl){
                 if(this.buyhive.checked)this.sellQuantity = (this.sellHiveTotal / this.sellPrice).toFixed(3)
