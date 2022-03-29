@@ -835,7 +835,7 @@ include_once( $path );
         <div class="col-4">
           <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
             <div id="dluxhivequote">
-              <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</b><b>Supply: {{stats.tokenSupply}}</b><b>Market Cap: {{marketCap}}</b></h2>
+              <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</b><b>Supply: {{toFixed(stats.tokenSupply/1000, 3)}}</b> <b>Market Cap: {{marketCap}}</b> {{maxhbuy}}</h2>
             </div>
           </div>
           <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
