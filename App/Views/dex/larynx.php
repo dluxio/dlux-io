@@ -100,6 +100,11 @@ thead, tbody tr {
         behind: '',
         behindTitle: '',
         TOKEN: 'LARYNX',
+        bform: {
+          cl: false,
+          tl: false,
+          pl: true,
+        },
         buyHiveTotal: 0,
         buyPrice: 0,
         sellPrice: 0,
@@ -171,6 +176,62 @@ thead, tbody tr {
       }
     },
     methods: {
+      bcalc(k){
+        switch(k){
+          case 't':
+            if(this.bform.cl){
+              if(this.buyhive.checked)this.buyPrice = (this.buyHiveTotal / this.buyQuantity).toFixed(6)
+              else this.buyPrice = (this.buyHBDTotal / this.buyQuantity).toFixed(6)
+            } else {
+              if(this.buyhive.checked)this.buyHiveTotal = (this.buyPrice * this.buyQuantity).toFixed(3)
+              else this.buyHBDTotal = (this.buyPrice * this.buyQuantity).toFixed(3)
+            }
+            break;
+          case 'p':
+            if(this.bform.tl){
+              if(this.buyhive.checked)this.buyQuantity = (this.buyHiveTotal / this.buyPrice).toFixed(3)
+              else this.buyQuantity = (this.buyHBDTotal / this.buyPrice).toFixed(3)
+            } else {
+              if(this.buyhive.checked)this.buyHiveTotal = (this.buyPrice * this.buyQuantity).toFixed(3)
+              else this.buyHBDTotal = (this.buyPrice * this.buyQuantity).toFixed(3)
+            }
+            break;
+          case 'c':
+            if(this.bform.pl){
+              if(this.buyhive.checked)this.buyQuantity = (this.buyHiveTotal / this.buyPrice).toFixed(3)
+              else this.buyQuantity = (this.buyHBDTotal / this.buyPrice).toFixed(3)
+            } else {
+              if(this.buyhive.checked)this.buyPrice = (this.buyHiveTotal / this.buyQuantity).toFixed(6)
+              else this.buyPrice = (this.buyHBDTotal / this.buyQuantity).toFixed(6)
+            }
+            break;
+          default:
+        }
+      },
+      block(o){
+        switch(o){
+          case 't':
+            this.bform.tl = !this.bform.tl
+            this.bform.cl = !this.bform.tl
+            this.bform.pl = !this.bform.tl
+            break;
+          case 'c':
+            this.bform.cl = !this.bform.cl
+            this.bform.tl = !this.bform.cl
+            this.bform.pl = !this.bform.cl
+            break;
+          case 'p':
+            this.bform.pl = !this.bform.pl
+            this.bform.cl = !this.bform.pl
+            this.bform.tl = !this.bform.pl
+            break;
+          default:
+            this.bform.cl = false
+            this.bform.tl = false
+            this.bform.pl = true
+            break;
+        }
+      },
       toFixed(value, decimals) {
         return Number(value).toFixed(decimals)
       },
@@ -855,11 +916,11 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" required class="form-control bg-dark border-dark text-white-50" v-model="buyQuantity" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="buymarket.checked">
+                      <input type="number" v-on:keyup="bcalc('t')" required class="form-control bg-dark border-dark text-white-50" v-model="buyQuantity" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="bform.tl">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
 							{{TOKEN}}
-							<a href="#" class="ml-3 text-secondary"><i class="fas fa-unlock-alt"></i></a>
+							<a href="#" class="ml-3 text-secondary" @click="block('t')"><i class="fas" :class="{'fa-lock':bform.tl, 'fa-unlock-alt':!bform.tl}"></i></a>
 							 </div>
                       </div>
                       <div class="invalid-feedback"> Minimum quantity is 0.001 </div>
@@ -872,14 +933,14 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-						<input id="buyPrice" type="number" v-model="buyPrice" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
+						<input id="buyPrice" type="number" v-on:keyup="bcalc('p')" v-model="buyPrice" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="bform.pl">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
 							
 							<span v-if="buyhive.checked">HIVE</span>
 							<span v-if="buyhbd.checked">HBD</span>
 							/{{TOKEN}}
-						  <a href="#" class="ml-3 text-secondary"><i class="fas fa-lock"></i></a>
+						  <a href="#" class="ml-3 text-secondary" @click="block('p')"><i class="fas" :class="{'fa-lock':bform.pl, 'fa-unlock-alt':!bform.pl}"></i></a>
 						  </div>
 						  
                       </div>
@@ -896,13 +957,13 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark" 
 							 v-bind:disabled-input="buylimit.checked" 
-							 :readonly="buyhbd.checked" 
+							 :readonly="bform.cl" 
 							 v-model="buyHiveTotal" 
-							 id="buyHiveTotal" 
+							 id="buyHiveTotal" v-on:keyup="bcalc('h')"
 							 placeholder="0" min="0.001" step="0.001" aria-required="true" :max="barhive">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE
-						  <a href="#" class="ml-3 text-secondary"><i class="fas fa-unlock"></i></a>
+						  <a href="#" class="ml-3 text-secondary" @click="block('c')"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
 						  </div>
                       </div>
                       <div class="invalid-feedback"> Your balance is {{barhive}} - minimum order is 0.001 </div>
@@ -917,13 +978,13 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark" 
 							 v-bind:disabled-input="buylimit.checked" 
-							 :readonly="buyhive.checked" 
+							 :readonly="bform.cl" 
 							 v-model="buyHBDTotal" 
-							 id="buyHBDTotal" 
+							 id="buyHBDTotal" v-on:keyup="bcalc('d')"
 							 placeholder="0" min="0.001" step="0.001" :max="barhbd" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD
-						  <a href="#" class="ml-3 text-secondary"><i class="fas fa-lock"></i></a>
+						  <a href="#" class="ml-3 text-secondary" @click="block('c')"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
 						  </div>
                       </div>
                       <div class="invalid-feedback"> Your balance is {{barhbd}} - minimum order is 0.001 </div>
