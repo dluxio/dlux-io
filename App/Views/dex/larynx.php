@@ -958,7 +958,6 @@ include_once( $path );
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark" 
-							 v-bind:disabled-input="buylimit.checked" 
 							 :readonly="bform.cl" 
 							 v-model="buyHiveTotal" 
 							 id="buyHiveTotal" v-on:keyup="bcalc('h')"
@@ -979,7 +978,6 @@ include_once( $path );
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
                       <input type="number" class="form-control bg-dark border-dark" 
-							 v-bind:disabled-input="buylimit.checked" 
 							 :readonly="bform.cl" 
 							 v-model="buyHBDTotal" 
 							 id="buyHBDTotal" v-on:keyup="bcalc('d')"
