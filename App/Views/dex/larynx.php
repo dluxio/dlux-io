@@ -709,8 +709,8 @@ thead, tbody tr {
       },
       marketCap:{
         get() {
-          if(this.buyhive.checked)return `$${parseFloat((this.stats.tokenSupply/1000) * this.hiveprice.hive.usd * this.dexapi.markets.hive.tick).toFixed(2)}`
-          else return `$${parseFloat((this.stats.tokenSupply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.markets.hbd.tick).toFixed(2)}`
+          if(this.buyhive.checked)return `${parseFloat((this.stats.tokenSupply/1000) * this.hiveprice.hive.usd * this.dexapi.markets.hive.tick).toFixed(2)}`
+          else return `${parseFloat((this.stats.tokenSupply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.markets.hbd.tick).toFixed(2)}`
         }
       }
     }
