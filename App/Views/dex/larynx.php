@@ -773,31 +773,31 @@ include_once( $path );
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','block','desc');toggleOrders('blockd')" v-bind:class="{'bg-primary':orders.blockd}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.tokena || orders.tokend} aria-colindex="2" > <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.tokena || orders.tokend}" aria-colindex="2" > <div class="d-flex align-items-center">
                       <div class="mr-3">{{TOKEN}}</div>
                       <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','amount','asc');toggleOrders('tokena')" v-bind:class="{'bg-primary':orders.tokena}"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','amount','desc');toggleOrders('tokend')" v-bind:class="{'bg-primary':orders.tokend}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.coina || orders.coind} aria-colindex="3" > <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.coina || orders.coind}" aria-colindex="3" > <div class="d-flex align-items-center">
                       <div class="mr-3">HIVE/HBD</div>
                       <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','nai','asc');toggleOrders('coina')" v-bind:class="{'bg-primary':orders.coina}"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','nai','desc');toggleOrders('coind')" v-bind:class="{'bg-primary':orders.coind}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.filleda || orders.filledd} aria-colindex="4" > <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.filleda || orders.filledd}" aria-colindex="4" > <div class="d-flex align-items-center">
                       <div class="mr-3">Filled</div>
                       <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','percentFilled','asc');toggleOrders('filleda')" v-bind:class="{'bg-primary':orders.filleda}"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','percentFilled','desc');toggleOrders('filledd')" v-bind:class="{'bg-primary':orders.filledd}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.ratea || orders.rated} aria-colindex="5" > <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.ratea || orders.rated}" aria-colindex="5" > <div class="d-flex align-items-center">
                       <div class="mr-3">RATE</div>
                       <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','rate','asc');toggleOrders('ratea')" v-bind:class="{'bg-primary':orders.ratea}"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','rate','desc');toggleOrders('rated')" v-bind:class="{'bg-primary':orders.rated}"> <i class="fas fa-caret-down"></i></button>
                     </div>
                     </th>
-                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.typea || orders.typed} aria-colindex="6" > <div class="d-flex align-items-center">
+                    <th role="columnheader" class="" v-bind:class="{'col-sort':orders.typea || orders.typed}" aria-colindex="6" > <div class="d-flex align-items-center">
                       <div class="mr-3">TYPE</div>
                       <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','type','asc');toggleOrders('typea')" v-bind:class="{'bg-primary':orders.typea}"> <i class="fas fa-caret-up"></i></button>
                       <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','type','desc');toggleOrders('typed')" v-bind:class="{'bg-primary':orders.typed}"> <i class="fas fa-caret-down"></i></button>
