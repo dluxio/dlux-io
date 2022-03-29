@@ -764,7 +764,7 @@ include_once( $path );
               <h5>No open orders</h5>
             </div>
             <div class="table-responsive rounded border border-dark" v-if="openorders.length > 0">
-              <table role="table" aria-busy="false" aria-colcount="6" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
+              <table role="table" aria-busy="false" aria-colcount="7" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
                 <thead role="rowgroup" class="">
                   <tr role="row" class="">
                     <th role="columnheader" class="" v-bind:class="{'col-sort':orders.blocka || orders.blockd}" aria-colindex="1" > <div class="d-flex align-items-center">
