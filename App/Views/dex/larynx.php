@@ -471,7 +471,7 @@ thead, tbody tr {
           this.openorders = data.contracts
             .reduce((acc, cur) => {
               cur.nai = `${cur.type.split(':')[0] == 'hive' ? parseFloat(cur.hive/1000).toFixed(3) : parseFloat(cur.hbd/1000).toFixed(3)} ${cur.type.split(':')[0] == 'hive' ? 'HIVE' : 'HBD'}`
-              if(cur.partials && cur.partials.length && cur.type.split(':')[1] == 'sell') {
+              if(cur.partials && cur.partials.length && cur.type.split(':')[1] == 'buy') {
                 const filled = cur.partials.reduce(function (a, c) {
                   return a + c.coin
                   }, 0)
