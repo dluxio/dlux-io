@@ -749,12 +749,11 @@ include_once( $path );
             </div>
             <div class="d-flex align-items-center text-white-50">
               <div id="userdlux" class="mx-4"><a href="/me#spk"><span class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</span></a></div>
-              <div id="userdpwr" class="mx-4" v-if="accountapi.poweredUp > 0"><a href="/me#spk"><span class="text-primary">{{formatNumber(barpow,3,'.',','}} {{TOKEN}}P</span></a></div>
-              <div id="userdgov" class="mx-4" v-if="accountapi.gov > 0"><a href="/me#spk"><span class="text-info">{{formatNumber(bargov,3,'.',','}} {{TOKEN}}G</span></a></div>
-              <div id="userhive" class="mx-4"><a href="/me#hive"><span class="text-danger">{{formatNumber(barhive,3,'.',','}}</span></a></div>
-              <div id="userhbd" class="mx-4"><a href="/me#hive"><span class="text-success">{{formatNumber(barhbd,3,'.',','}}</span></a></div>
+              <div id="userdpwr" class="mx-4" v-if="accountapi.poweredUp > 0"><a href="/me#spk"><span class="text-primary">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</span></a></div>
+              <div id="userdgov" class="mx-4" v-if="accountapi.gov > 0"><a href="/me#spk"><span class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</span></a></div>
+              <div id="userhive" class="mx-4"><a href="/me#hive"><span class="text-danger">{{formatNumber(barhive,3,'.',',')}}</span></a></div>
+              <div id="userhbd" class="mx-4"><a href="/me#hive"><span class="text-success">{{formatNumber(barhbd,3,'.',',')}}</span></a></div>
             </div>
-			 
           </div>
           <!-- node collapse region -->
           <div id="nodedrawer" class="collapse">
@@ -1174,7 +1173,7 @@ include_once( $path );
                         </div>
                       </div>
                     </div>
-					  <div class="small">BALANCE<br><a href="#/" @click="setValue('sellQuantity',balance)" >{{formatNumber(bartoken,3,'.',','}} {{TOKEN}}</a>
+					  <div class="small">BALANCE<br><a href="#/" @click="setValue('sellQuantity',balance)" >{{bartoken}}</a>
 					  </div>
                   </div>
                 </div>
