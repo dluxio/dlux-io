@@ -219,29 +219,29 @@ thead, tbody tr {
         switch(k){
           case 't':
             if(this.sform.cl){
-              if(this.sellhive.checked)this.sellPrice = (this.sellHiveTotal / this.sellQuantity).toFixed(6)
+              if(this.buyhive.checked)this.sellPrice = (this.sellHiveTotal / this.sellQuantity).toFixed(6)
               else this.sellPrice = (this.sellHBDTotal / this.sellQuantity).toFixed(6)
             } else {
-              if(this.sellhive.checked)this.sellHiveTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
+              if(this.buyhive.checked)this.sellHiveTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
               else this.sellHBDTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
             }
             break;
           case 'p':
             if(this.sform.cl){
-              if(this.sellhive.checked)this.sellQuantity = (this.sellHiveTotal / this.sellPrice).toFixed(3)
+              if(this.buyhive.checked)this.sellQuantity = (this.sellHiveTotal / this.sellPrice).toFixed(3)
               else this.sellQuantity = (this.sellHBDTotal / this.sellPrice).toFixed(3)
             } else {
-              if(this.sellhive.checked)this.sellHiveTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
+              if(this.buyhive.checked)this.sellHiveTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
               else this.sellHBDTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
             }
             break;
           case 'c':
             if(this.selllimit.checked){
               if(this.sform.pl){
-                if(this.sellhive.checked)this.sellQuantity = (this.sellHiveTotal / this.sellPrice).toFixed(3)
+                if(this.buyhive.checked)this.sellQuantity = (this.sellHiveTotal / this.sellPrice).toFixed(3)
                 else this.sellQuantity = (this.sellHBDTotal / this.sellPrice).toFixed(3)
               } else {
-                if(this.sellhive.checked)this.sellPrice = (this.sellHiveTotal / this.sellQuantity).toFixed(6)
+                if(this.buyhive.checked)this.sellPrice = (this.sellHiveTotal / this.sellQuantity).toFixed(6)
                 else this.sellPrice = (this.sellHBDTotal / this.sellQuantity).toFixed(6)
               }
             }
