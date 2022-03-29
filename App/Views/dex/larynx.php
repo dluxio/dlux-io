@@ -674,12 +674,12 @@ thead, tbody tr {
       },
       maxhbuy:{
         get() {
-          return (this.dexapi.hive.tick * (this.stats.dex_max/100) * (1 - (this.stats.dex_slope/100))) * this.stats.safetyLimit/1000).toFixed(3)
+          return parseFloat(this.dexapi.hive.tick * (this.stats.dex_max/100) * (1 - (this.stats.dex_slope/100))) * this.stats.safetyLimit/1000).toFixed(3)
         }
       },
       maxdbuy:{
         get() {
-          return (this.dexapi.hbd.tick * (this.stats.dex_max/100) * (1 - (this.stats.dex_slope/100))) * this.stats.safetyLimit/1000).toFixed(3)
+          return parseFloat(this.dexapi.hbd.tick * (this.stats.dex_max/100) * (1 - (this.stats.dex_slope/100))) * this.stats.safetyLimit/1000).toFixed(3)
         }
       },
       marketCap:{
