@@ -76,12 +76,12 @@ thead, tbody tr {
         accountapi: {},
         hiveprice: {
           hive: {
-            usd: 0
+            usd: 1
           }
         },
         hbdprice: {
           hive_dollar: {
-            usd: 0
+            usd: 1
           }
         },
         nodes: {},
@@ -683,12 +683,12 @@ thead, tbody tr {
       },
       maxhbuy:{
         get() {
-          return parseFloat(this.dexapi.markets.hive.tick * (this.stats.dex_max/100) * (1 - (this.stats.dex_slope/100)) * this.stats.safetyLimit/1000).toFixed(3)
+          return parseFloat(this.dexapi.markets.hive.tick * (this.stats.dex_max/100) * (1 - ((this.buyPrice/this.this.dexapi.markets.hive.tick)*(this.stats.dex_slope/100))) * this.stats.safetyLimit/1000).toFixed(3)
         }
       },
       maxdbuy:{
         get() {
-          return parseFloat(this.dexapi.markets.hbd.tick * (this.stats.dex_max/100) * (1 - (this.stats.dex_slope/100)) * this.stats.safetyLimit/1000).toFixed(3)
+          return parseFloat(this.dexapi.markets.hbd.tick * (this.stats.dex_max/100) * (1 - ((this.buyPrice/this.this.dexapi.markets.hbd.tick)*(this.stats.dex_slope/100))) * this.stats.safetyLimit/1000).toFixed(3)
         }
       },
       marketCap:{
