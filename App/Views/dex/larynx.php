@@ -815,8 +815,8 @@ include_once( $path );
                     <td role="cell" class="" aria-colindex="2">{{(order.amount/1000).toFixed(3)}}</td>
                     <td role="cell" class="" aria-colindex="3">{{order.nai}}</td>
                     <td role="cell" class="" aria-colindex="4">{{order.percentFilled}}%</td>
-                    <td role="cell" class="" aria-colindex="5" v-bind:class="{'text-danger':(type == 'hive:sell' || type == 'hbd:sell')}" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.rate}}</td>
-                    <td role="cell" class="" aria-colindex="6" v-bind:class="{'text-danger':(type == 'hive:sell' || type == 'hbd:sell')}" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.type}}</td>
+                    <td role="cell" class="" aria-colindex="5" v-bind:class="{'text-danger':(order.type == 'hive:sell' || order.type == 'hbd:sell')}" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.rate}}</td>
+                    <td role="cell" class="" aria-colindex="6" v-bind:class="{'text-danger':(order.type == 'hive:sell' || order.type == 'hbd:sell')}" v-bind:class="{'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.type}}</td>
                     <td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" @click="cancelDEX('{{order.txid}}','spkcc_')">CANCEL</button></td>
                   </tr>
                 </tbody>
