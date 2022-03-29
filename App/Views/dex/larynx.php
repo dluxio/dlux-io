@@ -674,18 +674,18 @@ thead, tbody tr {
       },
       maxhbuy:{
         get() {
-          return parseFloat(this.dexapi.hive.tick * (this.stats.dex_max/100) * (1 - (this.stats.dex_slope/100)) * this.stats.safetyLimit/1000).toFixed(3)
+          return parseFloat(this.dexapi.markets.hive.tick * (this.stats.dex_max/100) * (1 - (this.stats.dex_slope/100)) * this.stats.safetyLimit/1000).toFixed(3)
         }
       },
       maxdbuy:{
         get() {
-          return parseFloat(this.dexapi.hbd.tick * (this.stats.dex_max/100) * (1 - (this.stats.dex_slope/100)) * this.stats.safetyLimit/1000).toFixed(3)
+          return parseFloat(this.dexapi.markets.hbd.tick * (this.stats.dex_max/100) * (1 - (this.stats.dex_slope/100)) * this.stats.safetyLimit/1000).toFixed(3)
         }
       },
       marketCap:{
         get() {
-          if(this.buyhive.checked)return `$${parseFloat((this.stats.tokenSuply/1000) * this.hiveprice.hive.usd * this.dexapi.hive.tick)}`
-          else return `$${parseFloat((this.stats.tokenSuply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.hbd.tick)}`
+          if(this.buyhive.checked)return `$${parseFloat((this.stats.tokenSuply/1000) * this.hiveprice.hive.usd * this.dexapi.markets.hive.tick)}`
+          else return `$${parseFloat((this.stats.tokenSuply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.markets.hbd.tick)}`
         }
       }
     }
