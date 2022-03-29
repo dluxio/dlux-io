@@ -177,6 +177,13 @@ thead, tbody tr {
       togglecoin(coin) {
         this.buyhive.checked = coin == 'hive' ? true : false
         this.buyhbd.checked = coin == 'hbd' ? true : false
+        if(coin == 'hive') {
+          this.buyPrice this.hivesells[0].rate
+          this.sellPrice this.hivebuys[0].rate
+        } else {
+          this.buyPrice this.hbdsells[0].rate
+          this.sellPrice this.hbdbuys[0].rate
+        }
       },
       togglebuylimit(type) {
         this.buylimit.checked = type == 'limit' ? true : false
@@ -458,6 +465,8 @@ thead, tbody tr {
             return acc
           }, [])
           this.dexapi = data
+          this.buyPrice this.hivesells[0].rate
+          this.sellPrice this.hivebuys[0].rate
         })
       if(user != 'GUEST')fetch(this.lapi + '/@' + user)
         .then(response => response.json())
