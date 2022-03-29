@@ -184,6 +184,7 @@ thead, tbody tr {
       bcalc(k){
         switch(k){
           case 't':
+          this.buyQuantity = parseFloat(this.buyQuantity)
             if(this.bform.cl){
               if(this.buyhive.checked)this.buyPrice = (this.buyHiveTotal / this.buyQuantity).toFixed(6)
               else this.buyPrice = (this.buyHBDTotal / this.buyQuantity).toFixed(6)
@@ -193,6 +194,7 @@ thead, tbody tr {
             }
             break;
           case 'p':
+            this.buyPrice = parseFloat(this.buyPrice)
             if(this.bform.cl){
               if(this.buyhive.checked)this.buyQuantity = (this.buyHiveTotal / this.buyPrice).toFixed(3)
               else this.buyQuantity = (this.buyHBDTotal / this.buyPrice).toFixed(3)
@@ -202,6 +204,8 @@ thead, tbody tr {
             }
             break;
           case 'c':
+            if(this.buyhive.checked)this.buyHiveTotal = parseFloat(this.buyHiveTotal)
+            else this.buyHBDTotal = parseFloat(this.buyHBDTotal)
             if(this.buylimit.checked){
               if(this.bform.pl){
                 if(this.buyhive.checked)this.buyQuantity = (this.buyHiveTotal / this.buyPrice).toFixed(3)
@@ -973,10 +977,10 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit('limit');setValue('buyQuantity', '');setValue('buyHours','720');block()">
+                          <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit('limit');setValue('buyQuantity', 0);setValue('buyHours','720');block()">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHiveTotal','');block()">
+                          <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHiveTotal',0);block()">
                           MARKET </label>
                       </div>
                     </div>
@@ -1083,10 +1087,10 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit('limit');setValue('sellHours', '720');slock()">
+                          <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit('limit');setValue('sellHours', 720);slock()">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellHours', '0');slock()">
+                          <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellHours', 0);slock()">
                           MARKET </label>
                       </div>
                     </div>
