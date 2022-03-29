@@ -105,6 +105,11 @@ thead, tbody tr {
           tl: false,
           pl: true,
         },
+        sform: {
+          cl: false,
+          tl: false,
+          pl: true,
+        },
         buyHiveTotal: 0,
         buyPrice: 0,
         sellPrice: 0,
@@ -210,7 +215,65 @@ thead, tbody tr {
           default:
         }
       },
+      scalc(k){
+        switch(k){
+          case 't':
+            if(this.sform.cl){
+              if(this.sellhive.checked)this.sellPrice = (this.sellHiveTotal / this.sellQuantity).toFixed(6)
+              else this.buyPrice = (this.buyHBDTotal / this.buyQuantity).toFixed(6)
+            } else {
+              if(this.sellhive.checked)this.sellHiveTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
+              else this.sellHBDTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
+            }
+            break;
+          case 'p':
+            if(this.sform.cl){
+              if(this.sellhive.checked)this.sellQuantity = (this.sellHiveTotal / this.sellPrice).toFixed(3)
+              else this.sellQuantity = (this.sellHBDTotal / this.sellPrice).toFixed(3)
+            } else {
+              if(this.sellhive.checked)this.sellHiveTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
+              else this.sellHBDTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
+            }
+            break;
+          case 'c':
+            if(this.selllimit.checked){
+              if(this.sform.pl){
+                if(this.sellhive.checked)this.sellQuantity = (this.sellHiveTotal / this.sellPrice).toFixed(3)
+                else this.sellQuantity = (this.sellHBDTotal / this.sellPrice).toFixed(3)
+              } else {
+                if(this.sellhive.checked)this.buyPrice = (this.sellHiveTotal / this.sellQuantity).toFixed(6)
+                else this.sellPrice = (this.sellHBDTotal / this.sellQuantity).toFixed(6)
+              }
+            }
+            break;
+          default:
+        }
+      },
       block(o){
+        switch(o){
+          case 't':
+            this.bform.tl = !this.bform.tl
+            this.bform.cl = false
+            this.bform.pl = !this.bform.tl
+            break;
+          case 'c':
+            this.bform.cl = !this.bform.cl
+            this.bform.tl = false
+            this.bform.pl = !this.bform.cl
+            break;
+          case 'p':
+            this.bform.pl = !this.bform.pl
+            this.bform.cl = !this.bform.pl
+            this.bform.tl = false
+            break;
+          default:
+            this.bform.cl = false
+            this.bform.tl = false
+            this.bform.pl = true
+            break;
+        }
+      },
+      slock(o){
         switch(o){
           case 't':
             this.bform.tl = !this.bform.tl
@@ -1016,10 +1079,10 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit('limit');setValue('sellHours', '720')">
+                          <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit('limit');setValue('sellHours', '720');slock()">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellHours', '0')">
+                          <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellHours', '0');slock()">
                           MARKET </label>
                       </div>
                     </div>
@@ -1033,7 +1096,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input type="number" required class="form-control bg-dark border-dark text-white-50" v-model="sellQuantity" id="sellQuantity" placeholder="0" min="0.004" step="0.001" aria-required="true" :max="(accountapi.balance/1000)">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">{{TOKEN}}</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">{{TOKEN}}<a href="#/" class="ml-3 text-secondary" @click="slock('t')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.tl, 'fa-unlock-alt':!sform.tl}"></i></a></div>
                       </div>
                       <div class="invalid-feedback"> Your balance is {{(accountapi.balance/1000)}} - minimum quantity is 0.004 </div>
                     </div>
@@ -1047,7 +1110,7 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <input id="sellPrice" v-model="sellPrice" type="number" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="sellmarket.checked">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span v-if="buyhive.checked">HIVE</span><span v-if="buyhbd.checked">HBD</span>/{{TOKEN}}</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span v-if="buyhive.checked">HIVE</span><span v-if="buyhbd.checked">HBD</span>/{{TOKEN}}<a href="#/" class="ml-3 text-secondary" @click="block('p<a href="#/" class="ml-3 text-secondary" @click="block('c')" v-if="buylimit.checked"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.pl, 'fa-unlock-alt':!sform.pl}"></i></a></div>
                       </div>
                       <div class="invalid-feedback"> Minimum price is 0.000001 </div>
                     </div>
@@ -1078,7 +1141,7 @@ include_once( $path );
 							 :v-model="sellHiveTotal"
 							  placeholder="0" min="0.004" step="0.001" aria-required="true" :max="balance">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE<a href="#/" class="ml-3 text-secondary" @click="slock('c')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.cl, 'fa-unlock-alt':!sform.cl}"></i></a></div>
                       </div>
                       <div class="invalid-feedback"> Minimum total is 0.004 - increase the quantity or price </div>
                     </div>
@@ -1095,7 +1158,7 @@ include_once( $path );
 							 :v-model="sellHBDTotal" 
 							 placeholder="0" min="0.004" step="0.001" :max="balance" aria-required="true">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD<a href="#/" class="ml-3 text-secondary" @click="slock('c')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.cl, 'fa-unlock-alt':!sform.cl}"></i></a></div>
                       </div>
                       <div class="invalid-feedback"> Minimum total is 0.004 - increase the quantity or price </div>
                     </div>
