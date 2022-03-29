@@ -662,12 +662,12 @@ thead, tbody tr {
     computed: {
       minbuy:{
         get() {
-          return parseFloat((this.buyPrice/1000).toFixed(3))+0.001
+          return parseFloat(parseFloat(this.buyPrice/1000).toFixed(3))+0.001
         }
       },
       minsell:{
         get() {
-          return parseFloat((this.sellPrice).toFixed(3))+0.001
+          return parseFloat(parseFloat(this.sellPrice).toFixed(3))+0.001
         }
       }
     }
