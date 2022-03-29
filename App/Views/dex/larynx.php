@@ -465,8 +465,8 @@ thead, tbody tr {
             return acc
           }, [])
           this.dexapi = data
-          this.buyPrice = this.hivesells[0].rate
-          this.sellPrice = this.hivebuys[0].rate
+          if(this.hivesells[0])this.buyPrice = this.hivesells[0].rate
+          if(this.hivebuys[0])this.sellPrice = this.hivebuys[0].rate
         })
       if(user != 'GUEST')fetch(this.lapi + '/@' + user)
         .then(response => response.json())
@@ -949,10 +949,10 @@ include_once( $path );
                     <div role="group" class="input-group">
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-outline-warning active">
-                          <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit('limit');setValue('sellPrice', '');setValue('sellHours', '720')">
+                          <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit('limit');setValue('sellHours', '720')">
                           LIMIT </label>
                         <label class="btn btn-outline-warning">
-                          <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellPrice', '0');setValue('sellHours', '0')">
+                          <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellHours', '0')">
                           MARKET </label>
                       </div>
                     </div>
@@ -978,7 +978,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="sellPrice" type="number" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="sellmarket.checked">
+                      <input id="sellPrice" v-model="sellPrice" type="number" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="sellmarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span v-if="buyhive.checked">HIVE</span><span v-if="buyhbd.checked">HBD</span>/{{TOKEN}}</div>
                       </div>
