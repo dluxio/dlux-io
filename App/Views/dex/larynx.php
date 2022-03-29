@@ -1045,7 +1045,7 @@ include_once( $path );
                       <td role="cell" class="" aria-colindex="4">{{order.percentFilled}}%</td>
                       <td role="cell" class="" aria-colindex="5" v-bind:class="{'text-danger':(order.type == 'hive:sell' || order.type == 'hbd:sell'), 'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.rate}}</td>
                       <td role="cell" class="" aria-colindex="6" v-bind:class="{'text-danger':(order.type == 'hive:sell' || order.type == 'hbd:sell'), 'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{toUpperCase(order.type)}}</td>
-                      <td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" @click="cancelDEX('{{order.txid}}','spkcc_')">CANCEL</button></td>
+                      <td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" @click="cancelDEX(order.txid,prefix)">CANCEL</button></td>
                     </tr>
                   </tbody>
                 </table>
