@@ -1039,7 +1039,7 @@ include_once( $path );
                   </thead>
                   <tbody role="rowgroup">
                     <tr role="row" class="" v-for="order in openorders" v-if="!orders.value">
-                      <td role="cell" class="" aria-colindex="1">{{order.block)}}</td>
+                      <td role="cell" class="" aria-colindex="1">{{order.block}}</td>
                       <td role="cell" class="" aria-colindex="2">{{formatNumber(order.amount/1000,3,'.',',')}}</td>
                       <td role="cell" class="" aria-colindex="3">{{order.nai}}</td>
                       <td role="cell" class="" aria-colindex="4">{{formatNumber(order.percentFilled,3,'.',',')}}%</td>
