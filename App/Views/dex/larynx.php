@@ -237,6 +237,9 @@ thead, tbody tr {
       toFixed(value, decimals) {
         return Number(value).toFixed(decimals)
       },
+      parseFloat(value) {
+        return parseFloat(value)
+      },
       toUpperCase(value) {
         return value.toUpperCase()
       },
@@ -957,7 +960,7 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input type="number" class="form-control bg-dark text-info border-dark" :readonly="bform.cl" v-model="buyHiveTotal" id="buyHiveTotal" required v-on:keyup="bcalc('h')" placeholder="0" min="0.001" step="0.001" :max="barhive" aria-required="true">
+                      <input type="number" class="form-control bg-dark text-info border-dark" :readonly="bform.cl" v-model="buyHiveTotal" id="buyHiveTotal" required v-on:keyup="bcalc('h')" placeholder="0" min="0.001" step="0.001" :max="parseFloat(barhive)" aria-required="true">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE
 						  <a href="#/" class="ml-3 text-secondary" @click="block('c')" v-if="buylimit.checked"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a>
