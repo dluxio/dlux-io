@@ -92,7 +92,16 @@ thead, tbody tr {
         hivesells: [],
         hbdbuys: [],
         hbdsells: [],
-        dexapi: {},
+        dexapi: {
+          markets:{
+            hive:{
+              tick: 0.001
+            },
+            hbd:{
+              tick: 0.001
+            }
+          }
+        },
         prefix: '',
         multisig: '',
         jsontoken: '',
