@@ -855,16 +855,11 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-						<div class="input-group-prepend l-radius-hotfix">
-							 <span class="input-group-text bg-dark border-dark text-secondary">
-						<a href="#" class="mr-2 badge badge-secondary" @click="setValue('buyQuantity', accountapi.balance/buyPrice.value)"><i class="fas fa-lock"></i></a>
-							</span>
-						</div>
                       <input type="number" required class="form-control bg-dark border-dark text-white-50" v-model="buyQuantity" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
-							
 							{{TOKEN}}
+							<a href="#" class="ml-3 text-secondary"><i class="fas fa-lock"></i></a>
 							 </div>
                       </div>
                       <div class="invalid-feedback"> Minimum quantity is 0.001 </div>
@@ -877,36 +872,23 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-						 <div class="input-group-prepend l-radius-hotfix">
-							 <span class="input-group-text bg-dark border-dark text-secondary"><i class="fas fa-lock"></i></span>
-						</div>
 						<input id="buyPrice" type="number" v-model="buyPrice" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
-							<a v-if="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" @click="setValue('buyPrice', accountapi.balance/buyQuantity.value)">MAX</a>
+							
 							<span v-if="buyhive.checked">HIVE</span>
 							<span v-if="buyhbd.checked">HBD</span>
-							/{{TOKEN}}</div>
+							/{{TOKEN}}
+						  <a href="#" class="ml-3 text-secondary"><i class="fas fa-lock"></i></a>
+						  </div>
+						  
                       </div>
                       <div class="invalid-feedback"> Minimum price is 0.000001 </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" v-if="buylimit.checked">
-                <div class="form-row">
-                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
-                  <div tabindex="-1" role="group" class="col">
-                    <div role="group" class="input-group">
-                      <input id="buyHours" v-model="buyHours" type="number" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
-                      <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HOURS</div>
-                      </div>
-                      <div class="invalid-feedback"> Expiration must be between 1 and 720 hours </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
               <div class="form-group" for="buyHiveTotal" id="buy-hive-total" aria-labelledby="buy-hive-total-label" v-if="buyhive.checked">
                 <div class="form-row">
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
@@ -919,7 +901,9 @@ include_once( $path );
 							 id="buyHiveTotal" 
 							 placeholder="0" min="0.001" step="0.001" aria-required="true" :max="barhive">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE
+						  <a href="#" class="ml-3 text-secondary"><i class="fas fa-lock"></i></a>
+						  </div>
                       </div>
                       <div class="invalid-feedback"> Your balance is {{barhive}} - minimum order is 0.001 </div>
                     </div>
@@ -938,9 +922,25 @@ include_once( $path );
 							 id="buyHBDTotal" 
 							 placeholder="0" min="0.001" step="0.001" :max="barhbd" aria-required="true">
                       <div class="input-group-append">
-                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD</div>
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD
+						  <a href="#" class="ml-3 text-secondary"><i class="fas fa-lock"></i></a>
+						  </div>
                       </div>
                       <div class="invalid-feedback"> Your balance is {{barhbd}} - minimum order is 0.001 </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+				              <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" v-if="buylimit.checked">
+                <div class="form-row">
+                  <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
+                  <div tabindex="-1" role="group" class="col">
+                    <div role="group" class="input-group">
+                      <input id="buyHours" v-model="buyHours" type="number" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
+                      <div class="input-group-append">
+                        <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HOURS</div>
+                      </div>
+                      <div class="invalid-feedback"> Expiration must be between 1 and 720 hours </div>
                     </div>
                   </div>
                 </div>
