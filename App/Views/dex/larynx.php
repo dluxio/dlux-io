@@ -325,6 +325,20 @@ thead, tbody tr {
       toUpperCase(value) {
         return value.toUpperCase()
       },
+      formatNumber(t, n, r, e) {
+        if (isNaN(t)) return "Invalid Number";
+        if (!isFinite(t)) return (t < 0 ? "-" : "") + "infinite";
+        (r = r || "."), (e = e || "");
+        var u = t < 0;
+        t = Math.abs(t);
+        var a = (null != n && 0 <= n ? t.toFixed(n) : t.toString()).split("."),
+            i = a[0],
+            o = 1 < a.length ? r + a[1] : "";
+        if (e)
+            for (var c = /(\d+)(\d{3})/; c.test(i);)
+                i = i.replace(c, "$1" + e + "$2");
+        return (u ? "-" : "") + i + o;
+      },
       togglecoin(coin) {
         this.buyhive.checked = coin == 'hive' ? true : false
         this.buyhbd.checked = coin == 'hbd' ? true : false
