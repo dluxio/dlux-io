@@ -667,7 +667,7 @@ thead, tbody tr {
       },
       minsell:{
         get() {
-          return parseFloat((this.sellPrice/1000).toFixed(3))+0.001
+          return parseFloat((this.sellPrice).toFixed(3))+0.001
         }
       }
     }
