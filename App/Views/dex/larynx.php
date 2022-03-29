@@ -174,6 +174,9 @@ thead, tbody tr {
       toFixed(value, decimals) {
         return Number(value).toFixed(decimals)
       },
+      toUpperCase(value) {
+        return value.toUpperCase()
+      },
       togglecoin(coin) {
         this.buyhive.checked = coin == 'hive' ? true : false
         this.buyhbd.checked = coin == 'hbd' ? true : false
@@ -816,7 +819,7 @@ include_once( $path );
                     <td role="cell" class="" aria-colindex="3">{{order.nai}}</td>
                     <td role="cell" class="" aria-colindex="4">{{order.percentFilled}}%</td>
                     <td role="cell" class="" aria-colindex="5" v-bind:class="{'text-danger':(order.type == 'hive:sell' || order.type == 'hbd:sell'), 'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.rate}}</td>
-                    <td role="cell" class="" aria-colindex="6" v-bind:class="{'text-danger':(order.type == 'hive:sell' || order.type == 'hbd:sell'), 'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{order.type}}</td>
+                    <td role="cell" class="" aria-colindex="6" v-bind:class="{'text-danger':(order.type == 'hive:sell' || order.type == 'hbd:sell'), 'text-success':(order.type == 'hive:buy' || order.type == 'hbd:buy')}">{{toUpperCase(order.type)}}</td>
                     <td role="cell" class="" aria-colindex="7"><button class="btn btn-sm btn-outline-warning" id="cancelbtn" @click="cancelDEX('{{order.txid}}','spkcc_')">CANCEL</button></td>
                   </tr>
                 </tbody>
