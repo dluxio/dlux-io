@@ -858,7 +858,7 @@ include_once( $path );
                       <input type="number" required class="form-control bg-dark border-dark text-white-50" v-model="buyQuantity" id="buyQuantity" placeholder="0" min="0.001" step="0.001" aria-required="true" :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
-							<a href="#" v-if="buyPrice.value > 0" class="d-none mr-2 badge badge-primary" @click="setValue('buyQuantity', accountapi.balance/buyPrice.value)">MAX</a>
+							<a href="#" class="mr-2 badge badge-primary" @click="setValue('buyQuantity', accountapi.balance/buyPrice.value)"><i class="fas fa-lock"></i></a>
 							{{TOKEN}}
 							 </div>
                       </div>
@@ -872,7 +872,10 @@ include_once( $path );
                   <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                   <div tabindex="-1" role="group" class="col">
                     <div role="group" class="input-group">
-                      <input id="buyPrice" type="number" v-model="buyPrice" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
+						 <div class="input-group-prepend l-radius-hotfix">
+							 <span class="input-group-text bg-dark border-dark text-secondary"><i class="fas fa-lock"></i></span>
+						</div>
+						<input id="buyPrice" type="number" v-model="buyPrice" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-dark border-dark text-white-50"  :readonly="buymarket.checked">
                       <div class="input-group-append">
                         <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">
 							<a v-if="buyQuantity.value > 0" href="#" class="d-none mr-2 badge badge-primary" @click="setValue('buyPrice', accountapi.balance/buyQuantity.value)">MAX</a>
