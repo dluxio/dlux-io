@@ -326,6 +326,7 @@ thead, tbody tr {
         return value.toUpperCase()
       },
       formatNumber(t, n, r, e) {
+        if(typeof t != 'number')t = parseFloat(t)
         if (isNaN(t)) return "Invalid Number";
         if (!isFinite(t)) return (t < 0 ? "-" : "") + "infinite";
         (r = r || "."), (e = e || "");
@@ -849,13 +850,13 @@ include_once( $path );
                       	<h6 class="dropdown-header">LARYNX STATS</h6>
                       	<div class="dropdown-divider bg-light"></div>
 						<p class="mb-0">Supply:</p>
-						<p>{{toFixed(stats.tokenSupply/1000, 3)}}</p>
+						<p>{{formatNumber(stats.tokenSupply/1000,3,'.',',')}}</p>
 						<div class="dropdown-divider bg-light"></div>
 						<p class="mb-0">Market Cap:</p>
-						<p>{{marketCap}}</p>
+						<p>${{formatNumber(marketCap,3,'.',',')}}</p>
 						<div class="dropdown-divider bg-light"></div>
 						<p class="mb-0">DEX Fee:</p>
-						<p>{{stats.dex_fee}}%</p>
+						<p>{{formatNumber(stats.dex_fee/100,2,'.',',')}}%</p>
 						<div class="dropdown-divider bg-light"></div>
 						<p class="mb-0">Clearing Time:</p>
 						<p class="mb-0">~10 Minutes</p>
