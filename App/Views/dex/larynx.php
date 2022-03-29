@@ -1282,9 +1282,9 @@ include_once( $path );
                     </thead>
                     <tbody role="rowgroup" class="tbody-scroll-orders">
                       <tr role="row" v-for="item in hivebuys">
-                        <td aria-colindex="1" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
-                        <td aria-colindex="2" role="cell" class="">{{(item.hive/1000).toFixed(3)}}</td>
-                        <td aria-colindex="3" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
+                        <td aria-colindex="1" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
+                        <td aria-colindex="2" role="cell" class="">{{formatNumber(item.hive/1000,3,'.',',')}}</td>
+                        <td aria-colindex="3" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
                         <td aria-colindex="4" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate)">{{item.rate}}</a></td>
                       </tr>
                     </tbody>
@@ -1306,9 +1306,9 @@ include_once( $path );
                     <tbody role="rowgroup" class="tbody-scroll-orders">
                       <tr class="" role="row" v-for="item in hivesells">
                         <td aria-colindex="1" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate)">{{item.rate}}</a></td>
-                        <td aria-colindex="2" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
-                        <td aria-colindex="3" role="cell" class="">{{(item.hive/1000).toFixed(3)}}</td>
-                        <td aria-colindex="4" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
+                        <td aria-colindex="2" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
+                        <td aria-colindex="3" role="cell" class="">{{formatNumber(item.hive/1000,3,'.',',')}}</td>
+                        <td aria-colindex="4" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1331,8 +1331,8 @@ include_once( $path );
                     </thead>
                     <tbody role="rowgroup" class="tbody-scroll-history">
                       <tr class="" role="row" v-for="item in recenthive">
-                        <td aria-colindex="1" role="cell" class="" v-bind:class="{'text-danger': (item.type == 'sell'), 'text-success': (item.type == 'buy')}">{{item.price}}</td>
-                        <td aria-colindex="2" role="cell" class="">{{item.target_volume}}</td>
+                        <td aria-colindex="1" role="cell" class="" v-bind:class="{'text-danger': (item.type == 'sell'), 'text-success': (item.type == 'buy')}">{{formatNumber(item.price,3,'.',',')}}</td>
+                        <td aria-colindex="2" role="cell" class="">{{formatNumber(item.target_volume,3,'.',',')}}</td>
                         <td aria-colindex="3" role="cell" class="">{{new Date(item.trade_timestamp).toLocaleTimeString()}}</td>
                       </tr>
                     </tbody>
@@ -1360,10 +1360,10 @@ include_once( $path );
                     </thead>
                     <tbody role="rowgroup"  class="tbody-scroll-orders">
                       <tr class="" role="row" v-for="item in hbdbuys">
-                        <td aria-colindex="1" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
-                        <td aria-colindex="2" role="cell" class="">{{(item.hbd/1000).toFixed(3)}}</td>
-                        <td aria-colindex="3" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
-                        <td aria-colindex="4" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate)">{{item.rate}}</a></td>
+                        <td aria-colindex="1" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
+                        <td aria-colindex="2" role="cell" class="">{{formatNumber(item.hbd/1000,3,'.',',')}}</td>
+                        <td aria-colindex="3" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
+                        <td aria-colindex="4" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate)">{{formatNumber(item.rate,3,'.',',')}}</a></td>
                       </tr>
                     </tbody>
                   </table>
@@ -1383,10 +1383,10 @@ include_once( $path );
                     </thead>
                     <tbody role="rowgroup" class="tbody-scroll-orders">
                       <tr class="" role="row" v-for="item in hbdsells">
-                        <td aria-colindex="1" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate)">{{item.rate}}</a></td>
-                        <td aria-colindex="2" role="cell" class="">{{(item.amount/1000).toFixed(3)}}</td>
-                        <td aria-colindex="3" role="cell" class="">{{(item.hbd/1000).toFixed(3)}}</td>
-                        <td aria-colindex="4" role="cell" class="">{{(item.total/1000).toFixed(3)}}</td>
+                        <td aria-colindex="1" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate)">{{formatNumber(item.rate,3,'.',',')}}</a></td>
+                        <td aria-colindex="2" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
+                        <td aria-colindex="3" role="cell" class="">{{formatNumber(item.hbd/1000,3,'.',',')}}</td>
+                        <td aria-colindex="4" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1409,8 +1409,8 @@ include_once( $path );
                     </thead>
                     <tbody role="rowgroup" class="tbody-scroll-history">
                       <tr class="" role="row" v-for="item in recenthbd">
-                        <td aria-colindex="1" role="cell" class="" v-bind:class="{'text-danger': (item.type == 'sell'), 'text-success': (item.type == 'buy')}">{{price}}</td>
-                        <td aria-colindex="2" role="cell" class="">{{item.target_volume}}</td>
+                        <td aria-colindex="1" role="cell" class="" v-bind:class="{'text-danger': (item.type == 'sell'), 'text-success': (item.type == 'buy')}">{{formatNumber(price,3,'.',',')}}</td>
+                        <td aria-colindex="2" role="cell" class="">{{formatNumber(item.target_volume,3,'.',',')}}</td>
                         <td aria-colindex="3" role="cell" class="">{{new Date(item.trade_timestamp).toLocaleTimeString()}}</td>
                       </tr>
                     </tbody>
