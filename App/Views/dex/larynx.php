@@ -214,18 +214,18 @@ thead, tbody tr {
         switch(o){
           case 't':
             this.bform.tl = !this.bform.tl
-            this.bform.cl = this.bform.tl ? false : true
-            this.bform.pl = this.bform.tl ? false : true
+            this.bform.cl = false
+            this.bform.pl = !this.bform.tl
             break;
           case 'c':
             this.bform.cl = !this.bform.cl
-            this.bform.tl = this.bform.cl ? false : true
-            this.bform.pl = this.bform.cl ? false : true
+            this.bform.tl = false
+            this.bform.pl = !this.bform.cl
             break;
           case 'p':
             this.bform.pl = !this.bform.pl
-            this.bform.cl = this.bform.pl ? false : true
-            this.bform.tl = this.bform.pl ? false : true
+            this.bform.cl = !this.bform.pl
+            this.bform.tl = false
             break;
           default:
             this.bform.cl = false
