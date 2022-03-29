@@ -878,7 +878,7 @@ include_once( $path );
 						<p>{{formatNumber(stats.tokenSupply/1000,3,'.',',')}}</p>
 						<div class="dropdown-divider bg-light"></div>
 						<p class="mb-0">Market Cap:</p>
-						<p>${{formatNumber(marketCap,3,'.',',')}}</p>
+						<p>${{formatNumber(marketCap,2,'.',',')}}</p>
 						<div class="dropdown-divider bg-light"></div>
 						<p class="mb-0">DEX Fee:</p>
 						<p>{{formatNumber(stats.dex_fee*100,3,'.',',')}}%</p>
@@ -1175,7 +1175,9 @@ include_once( $path );
                         </div>
                       </div>
                     </div>
+					  <div class="text-right">
 					  <div class="small">BALANCE<br><a href="#/" @click="setValue('sellQuantity',balance)" >{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
+						  </div>
 					  </div>
                   </div>
                 </div>
