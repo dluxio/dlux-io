@@ -340,6 +340,15 @@
         }
       },
       methods: {
+        saveNodeSettings() {
+          let updates = {};
+          for (var i = 0; i < this.features.node.opts.length; i++) {
+            if (this.features.node.opts[i].val) {
+              updates[this.features.node.opts[i].json] = this.features.node.opts[i].val;
+            }
+          }
+          broadcastCJA(updates, `${this.prefix}${this.features.node.id}`, `Updating ${this.TOKEN} Node...`, lapi.split('://')[1])
+        },
         checkAccount(name) {
           fetch("https://anyx.io", {
               body: `{\"jsonrpc\":\"2.0\", \"method\":\"condenser_api.get_accounts\", \"params\":[[\"${this[name]}\"]], \"id\":1}`,
@@ -1119,6 +1128,7 @@
                   <div class="dropdown show d-flex align-items-center "><a class="text-info" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} GOVERNANCE</h6>
+                      <h4 class="dropdown-header text-center">Current Threshold: {{formatNumber(stats.gov_threshhold/1000,3,'.',',')}}</h4>
                       <form name="govlarynx" class="needs-validation" novalidate>
                         <div class="form-group text-center">
                           <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
