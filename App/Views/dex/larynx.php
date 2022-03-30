@@ -753,42 +753,39 @@ include_once( $path );
                 <div class="dropdown show d-flex align-items-center "><a class="text-warning dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
                   <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
                     <h6 class="dropdown-header text-center">SEND {{TOKEN}}</h6>
-					  
                     <form name="sendlarynx" class="needs-validation" novalidate>
-                      
-                        <div class="form-group">
-                          <label for="sendlarynxto">To:</label>
-                          <div class="input-group">
-                            <div class="input-group-prepend">
-                              <div class="input-group-text bg-dark border-dark text-white-50">@</div>
-                            </div>
-                            <input class="form-control bg-dark border-dark text-info" required id="sendlarynxto" type="text" placeholder="Recipient">
+                      <div class="form-group">
+                        <label for="sendlarynxto">To:</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text bg-dark border-dark text-white-50">@</div>
+                          </div>
+                          <input class="form-control bg-dark border-dark text-info" required id="sendlarynxto" type="text" placeholder="Recipient">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label id="sendlarynxamountlab" for="sendlarynxamount">Amount:</label>
+                        <div class="input-group">
+                          <input class="form-control bg-dark border-dark text-info" required id="sendlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="1.000">
+                          <div class="input-group-append">
+                            <div class="input-group-text bg-dark border-dark text-white-50" id="sendformunits"> {{TOKEN}} </div>
                           </div>
                         </div>
-                        <div class="form-group">
-                          <label id="sendlarynxamountlab" for="sendlarynxamount">Amount:</label>
-                          <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" required id="sendlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="1.000">
-                            <div class="input-group-append">
-                              <div class="input-group-text bg-dark border-dark text-white-50" id="sendformunits"> {{TOKEN}} </div>
-                            </div>
-                          </div>
-							<div class="small pt-2"><a href="#/" @click="setValue('sendlarynxamount',balance)" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
+                        <div class="small pt-2"><a href="#/" @click="setValue('sendlarynxamount',balance)" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
+                      </div>
+                      <div class="form-group" id="sendlarynxmemogroup">
+                        <label for="sendlarynxmemo">Memo:</label>
+                        <div class="input-group">
+                          <input class="form-control bg-dark border-dark text-info" id="sendlarynxmemo" type="text" placeholder="Include a memo (optional)">
                         </div>
-                        <div class="form-group" id="sendlarynxmemogroup">
-                          <label for="sendlarynxmemo">Memo:</label>
-                          <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" id="sendlarynxmemo" type="text" placeholder="Include a memo (optional)">
-                          </div>
-                        </div>
-                <div class="text-center">
+                      </div>
+                      <div class="text-center">
                         <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning" @click="dluxsend(sendlarynxto,sendlarnyxamount,sendlarnyxmemo,prefix)">Send</button>
-                        
-                </div>
+                      </div>
                     </form>
                   </div>
                 </div>
-               </div>
+              </div>
               <div id="userdpwr" class="mx-4" v-if="accountapi.poweredUp > 0"><a href="/me#spk"><span class="text-primary">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</span></a></div>
               <div id="userdgov" class="mx-4" v-if="accountapi.gov > 0"><a href="/me#spk"><span class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</span></a></div>
               <div id="userhive" class="mx-4"><a href="/me#hive"><span class="text-danger">{{formatNumber(barhive,3,'.',',')}} HIVE</span></a></div>
@@ -862,7 +859,7 @@ include_once( $path );
           </div>
         </div>
       </div>
-      <div class="container text-white" style="margin-top: 50px;"> 
+      <div class="container text-white" style="margin-top: 50px;">
         <!-- current token tick -->
         <div class="row">
           <div class="col-4">
