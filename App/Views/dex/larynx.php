@@ -218,23 +218,17 @@
             send_S: 'Send',
             send_B: true,
             send_json: 'send',
-            powup_id: 'powerup',
-            powup_S: 'PWR UP',
+            powup_id: 'power_up',
             powup_B: false,
-            powup_json: 'power_up',
             pow_val: '',
-            powdn_id: 'powerdn',
-            powdn_S: 'PWR DOWN',
+            powdn_id: 'power_down',
             powdn_B: true,
-            powdn_json: 'power_down',
             powsel_up: true,
             govup_id: 'gov_up',
-            govup_S: 'LOCK',
             govup_B: true,
             gov_val: '',
             govsel_up: true,
             govdn_id: 'gov_down',
-            govdn_S: 'UNLOCK',
             govdn_B: true,
             node: {
               id: 'node_add',
@@ -1266,15 +1260,15 @@
                           <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px"> <span v-if="filteraccount.value"> <a href="#" class="badge badge-secondary" @click="setValue('filteraccount.value','')"><i class="fas fa-times"></i></a> </span> </div>
                         </div>
                       </div>
-						</div>
-					  <div class="ml-3">
-						<a class="text-center" style="font-size: .7em;" :class="{'text-success':'behind < 30'}" :class="{'text-warning':'behind >= 30 && behind < 60'}" :class="{'text-danger':'behind >= 60'}" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
-                    <span class=" p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }} | </span>
-                    <span class=" p-0 m-0" v-show="behind < 30">ONLINE</span>
-                    <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span>
-                    <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span>
-                    <span class=" p-0 m-0"> | {{behind}} BBH | {{runners.length}} NODES</span>
-                  </a>
+                    </div>
+                    <div class="ml-3">
+                      <a class="text-center" style="font-size: .7em;" :class="{'text-success':'behind < 30'}" :class="{'text-warning':'behind >= 30 && behind < 60'}" :class="{'text-danger':'behind >= 60'}" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
+                        <span class=" p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }} | </span>
+                        <span class=" p-0 m-0" v-show="behind < 30">ONLINE</span>
+                        <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span>
+                        <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span>
+                        <span class=" p-0 m-0"> | {{behind}} BBH | {{runners.length}} NODES</span>
+                      </a>
                     </div>
                   </div>
                   <div class="table-responsive rounded border border-dark">
