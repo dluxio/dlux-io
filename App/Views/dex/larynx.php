@@ -1151,10 +1151,10 @@
                         <div class="form-group text-center">
                           <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
                             <label class="btn btn-outline-info active">
-                              <input type="radio" name="govpair" id="govlock" v-model:checked="features.govsel_up">
+                              <input type="radio" name="govpair" id="govlock" :checked="features.govsel_up" @click="setValue('features.govsel_up', true)">
                               LOCK </label>
                             <label class="btn btn-outline-info">
-                              <input type="radio" name="govpair" id="govunlock">
+                              <input type="radio" name="govpair" id="govunlock" :checked="!features.govsel_up" @click="setValue('features.govsel_up', false)">
                               UNLOCK </label>
                           </div>
                         </div>
