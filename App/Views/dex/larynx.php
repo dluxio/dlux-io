@@ -523,6 +523,7 @@
             rate = parseFloat((this.buyhive.checked ? this.buyHiveTotal : this.buyHBDTotal) / this.buyQuantity).toFixed(6)
             andthen = ` at ${rate} ${this.buyhive.checked ? 'HIVE' : 'HBD' } per ${this.TOKEN}`
           }
+          console.log(this.buyHiveTotal, this.buyHBDTotal, this.buyQuantity, rate)
           if (this.buyhive.checked) broadcastTransfer({
             to: this.multisig,
             hive: parseFloat(this.buyHiveTotal).toFixed(3) + ' HIVE',
