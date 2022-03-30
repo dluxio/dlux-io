@@ -773,7 +773,7 @@
         },
         minsell: {
           get() {
-            return parseFloat(parseFloat(parseFloat(this.sellPrice).toFixed(3)) + 0.001).toFixed(3)
+            return parseFloat(parseFloat(parseFloat(this.sellPrice / 0.001).toFixed(3)) + 0.001).toFixed(3)
           }
         },
         maxhbuy: {
@@ -1522,11 +1522,11 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hbd-total-label">Total</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input type="number" class="form-control bg-dark border-dark text-info" :readonly="sform.cl" id="sellHBDTotal" v-model="sellHBDTotal" required placeholder="0" min="0.004" step="0.001" aria-required="true">
+                          <input type="number" class="form-control bg-dark border-dark text-info" :readonly="sform.cl" id="sellHBDTotal" v-model="sellHBDTotal" required placeholder="0" :min="minsell" step="0.001" aria-required="true">
                           <div class="input-group-append">
                             <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD<a href="#/" class="ml-3 text-secondary" @click="slock('c')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.cl, 'fa-unlock-alt':!sform.cl}"></i></a></div>
                           </div>
-                          <div class="invalid-feedback"> Minimum total is 0.004 - increase the quantity or price </div>
+                          <div class="invalid-feedback"> Minimum total is {{minsell}} - increase the quantity or price </div>
                         </div>
                       </div>
                     </div>
@@ -1577,7 +1577,7 @@
                           <td aria-colindex="1" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
                           <td aria-colindex="2" role="cell" class="">{{formatNumber(item.hive/1000,3,'.',',')}}</td>
                           <td aria-colindex="3" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
-                          <td aria-colindex="4" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue('sellQuantity', item.at > balance ? balance : item.at/1000)">{{formatNumber(item.rate,6,'.',',')}}</a></td>
+                          <td aria-colindex="4" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue('sellQuantity', item.at > balance ? balance : item.at/1000);suggestValue(buyhive.checked ? 'sellHiveTotal' : 'sellHBDTotal', item.at > balance ? (balance/item.total)/1000 : item.total/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1601,7 +1601,7 @@
                       </thead>
                       <tbody role="rowgroup" class="tbody-scroll-orders">
                         <tr class="" role="row" v-for="item in hivesells">
-                          <td aria-colindex="1" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue(buyhive.checked ? 'buyHiveTotal' : 'buyHBDTotal', item.total/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
+                          <td aria-colindex="1" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue(buyhive.checked ? 'buyHiveTotal' : 'buyHBDTotal', item.total/1000 );suggestValue('buyQuantity', item.at/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
                           <td aria-colindex="2" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
                           <td aria-colindex="3" role="cell" class="">{{formatNumber(item.hive/1000,3,'.',',')}}</td>
                           <td aria-colindex="4" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
