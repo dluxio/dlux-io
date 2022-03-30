@@ -106,6 +106,7 @@
           nowtime: new Date().getTime(),
           agoTime: new Date().getTime() - 86400000,
           account: user,
+          isnode: false,
           balance: "0.000",
           bartoken: "",
           barhive: "",
@@ -719,6 +720,7 @@
           .then(response => response.json())
           .then(data => {
             this.nodes = data.markets.node
+            if (data.markets.node[user]) this.isnode = true
             this.stats = data.stats
           })
         fetch(this.lapi + '/api/protocol')
@@ -943,10 +945,11 @@
                   </div>
                 </div>
                 <!-- node settings form -->
-                <div id="usernode" class="mx-3">
+                <div id="usernode" class="mx-3" v-if="isnode">
                   <div class="dropdown show d-flex align-items-center "><a class="btn btn-sm btn-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-cog"></i></a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} NODE SETTINGS</h6>
+                      <h4 class="dropdown-header text-center">For @{{user}}</h4>
                       <form name="nodesettings" class="needs-validation" novalidate>
                         <div class="form-group" v-for="opt in features.node.opts">
                           <label :for="opt.json">{{opt.S}}:</label>
@@ -968,7 +971,7 @@
                             <label class="custom-control-label" for="mirrorCheck">Mirror Leader</label>
                           </div>
                         </div> -->
-						  <div class="text-center mt-3">
+                        <div class="text-center mt-3">
                           <button id="savenodesettings" type="submit" class="btn btn-secondary" @click="save()">Save<i class="far fa-save ml-2"></i></button>
                         </div>
                       </form>
