@@ -225,7 +225,7 @@
             pow_val: '',
             powdn_id: 'powerdn',
             powdn_S: 'PWR DOWN',
-            powdn_B: false,
+            powdn_B: true,
             powdn_json: 'power_down',
             powsel_up: true,
             govup_id: 'gov_up',
