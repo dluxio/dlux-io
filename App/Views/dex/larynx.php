@@ -844,7 +844,7 @@
             this.bargov = (data.gov / 1000).toFixed(3)
             this.accountapi = data
             console.log('claim logic', new Date().getMonth() + 1, data.drop?.last_claim, data.drop?.availible.amount)
-            if (new Date().getMonth() + 1 != data.drop?.last_claim && data.drop?.availible.amount > 0) {
+            if (new Date().getMonth() + 1 != parseInt(data.drop?.last_claim, 16) && data.drop?.availible.amount > 0) {
               this.hasDrop = true
               this.dropnai = `${parseFloat(data.drop.availible.amount / Math.pow(10, data.drop.availible.precision)).toFixed(data.drop.availible.precision)} ${data.drop.availible.token}`
             }
@@ -1007,7 +1007,7 @@
                         <div class="form-group">
                           <label>Airdrop:</label>
                           <div class="input-group">
-                            <div class="form-control bg-black border-rb text-white text-center">{{dropnai}} {{TOKEN}}</div>
+                            <div class="form-control bg-black border-rb text-white text-center">{{dropnai}}</div>
                           </div>
                         </div>
                         <div class="form-group">
@@ -1040,7 +1040,7 @@
               </div>
               <div class="d-flex align-items-center text-white-50">
                 <!-- send token form -->
-                <div id="userdlux" class="mx-4">
+                <div id="userdlux" class="mx-4" v-if="features.send_B">
                   <div class="dropdown show d-flex align-items-center "><a class="text-warning" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">SEND {{TOKEN}}</h6>
@@ -1078,7 +1078,7 @@
                   </div>
                 </div>
                 <!-- power form -->
-                <div id="userdpwr" class="mx-4">
+                <div id="userdpwr" class="mx-4" v-if="features.powup_B || features.powdn_B">
                   <div class="dropdown show d-flex align-items-center "><a class="text-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} POWER</h6>
@@ -1115,7 +1115,7 @@
                   </div>
                 </div>
                 <!-- gov form -->
-                <div id="userdgov" class="mx-4">
+                <div id="userdgov" class="mx-4" v-if="isnode && (features.govup_B || features.govdn_B)">
                   <div class="dropdown show d-flex align-items-center "><a class="text-info" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} GOVERNANCE</h6>
