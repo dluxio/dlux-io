@@ -881,7 +881,7 @@ include_once( $path );
 			<!-- send hive form -->
           <div id="userhive" class="mx-4">
             <div class="dropdown show d-flex align-items-center "><a class="text-danger dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhive,3,'.',',')}} HIVE</a>
-              <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
+              <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                 <h6 class="dropdown-header text-center">SEND HIVE</h6>
                 <form name="sendhive" class="needs-validation" novalidate>
                   <div class="form-group">
@@ -919,7 +919,7 @@ include_once( $path );
 			<!-- send hbd form -->
           <div id="userhbd" class="mx-4">
             <div class="dropdown show d-flex align-items-center "><a class="text-success dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhbd,3,'.',',')}} HBD</a>
-              <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
+              <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                 <h6 class="dropdown-header text-center">SEND HBD</h6>
                 <form name="sendhbd" class="needs-validation" novalidate>
                   <div class="form-group">
