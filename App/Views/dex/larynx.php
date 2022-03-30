@@ -396,6 +396,22 @@
             }, `${this.prefix}send`, `Trying to send ${this.TOKEN}...`, lapi.split('://')[1])
           }
         },
+        sendhive() {
+          if (this.sendHiveAllowed) broadcastTransfer({
+            to: this.sendHiveTo,
+            hive: this.sendHBDTotal * 1000,
+            memo: this.sendHiveMemo
+          })
+          else alert('Account Not Found')
+        },
+        sendhbd() {
+          if (this.sendHBDAllowed) broadcastTransfer({
+            to: this.sendHBDTo,
+            hbd: this.sendHBDAmount * 1000,
+            memo: this.sendHBDMemo
+          })
+          else alert('Account Not Found')
+        },
         bcalc(k) {
           switch (k) {
             case 't':
