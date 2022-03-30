@@ -49,9 +49,10 @@ thead, tbody tr {
     width: 100%;
     table-layout: fixed;
 }
-	.bg-black {
-		background-color: black;
-	}g
+.bg-black {
+    background-color: black;
+}
+g
 </style>
 <script type="module">
   import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
@@ -748,7 +749,46 @@ include_once( $path );
               </div>
             </div>
             <div class="d-flex align-items-center text-white-50">
-              <div id="userdlux" class="mx-4"><a href="/me#spk"><span class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</span></a></div>
+              <div id="userdlux" class="mx-4">
+                <div class="dropdown show d-flex align-items-center "><a class="text-warning dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
+                  <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
+                    <h6 class="dropdown-header text-center">SEND {{TOKEN}}</h6>
+					  
+                    <form name="sendlarynx" class="needs-validation" novalidate>
+                      
+                        <div class="form-group">
+                          <label for="sendlarynxto">To:</label>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text bg-dark border-dark text-white-50">@</div>
+                            </div>
+                            <input class="form-control bg-dark border-dark text-info" required id="sendlarynxto" type="text" placeholder="Recipient">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label id="sendlarynxamountlab" for="sendlarynxamount">Amount:</label>
+                          <div class="input-group">
+                            <input class="form-control bg-dark border-dark text-info" required id="sendlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="1.000">
+                            <div class="input-group-append">
+                              <div class="input-group-text bg-dark border-dark text-white-50" id="sendformunits"> {{TOKEN}} </div>
+                            </div>
+                          </div>
+							<div class="small pt-2"><a href="#" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
+                        </div>
+                        <div class="form-group" id="sendlarynxmemogroup">
+                          <label for="sendlarynxmemo">Memo:</label>
+                          <div class="input-group">
+                            <input class="form-control bg-dark border-dark text-info" id="sendlarynxmemo" type="text" placeholder="Include a memo (optional)">
+                          </div>
+                        </div>
+                <div class="text-center">
+                        <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning">Send</button>
+                        
+                </div>
+                    </form>
+                  </div>
+                </div>
+               </div>
               <div id="userdpwr" class="mx-4" v-if="accountapi.poweredUp > 0"><a href="/me#spk"><span class="text-primary">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</span></a></div>
               <div id="userdgov" class="mx-4" v-if="accountapi.gov > 0"><a href="/me#spk"><span class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</span></a></div>
               <div id="userhive" class="mx-4"><a href="/me#hive"><span class="text-danger">{{formatNumber(barhive,3,'.',',')}} HIVE</span></a></div>
@@ -822,9 +862,9 @@ include_once( $path );
           </div>
         </div>
       </div>
-      <div class="container text-white" style="margin-top: 50px;">
+      <div class="container text-white" style="margin-top: 50px;"> 
         <!-- current token tick -->
-		<div class="row">
+        <div class="row">
           <div class="col-4">
             <div class="jumbotron p-3 bg-dark">
               <div id="hivequote">
@@ -842,58 +882,60 @@ include_once( $path );
           <div class="col-4">
             <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
               <div class="d-flex align-items-center" id="dluxhivequote">
-                <div><h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</b></h2></div>
-			    <div class="ml-auto d-flex align-items-center">
-                	<div class="dropdown show d-flex align-items-center p-0 m-0"><a class="btn btn-sm btn-outline-primary dropdown-toggle py-0 px-2 m-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-info mx-2"></i></a>
-                    	<div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right">
-                      	<h6 class="dropdown-header">LARYNX STATS</h6>
-                      	<div class="dropdown-divider bg-light"></div>
-						<p class="mb-0">Supply:</p>
-						<p>{{formatNumber(stats.tokenSupply/1000,3,'.',',')}}</p>
-						<div class="dropdown-divider bg-light"></div>
-						<p class="mb-0">Market Cap:</p>
-						<p>${{formatNumber(marketCap,2,'.',',')}}</p>
-						<div class="dropdown-divider bg-light"></div>
-						<p class="mb-0">DEX Fee:</p>
-						<p>{{formatNumber(stats.dex_fee*100,3,'.',',')}}%</p>
-						<div class="dropdown-divider bg-light"></div>
-						<p class="mb-0">Clearing Time:</p>
-						<p class="mb-0">~10 Minutes</p>
-                	</div>
-				</div>
+                <div>
+                  <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</b></h2>
+                </div>
+                <div class="ml-auto d-flex align-items-center">
+                  <div class="dropdown show d-flex align-items-center p-0 m-0"><a class="btn btn-sm btn-outline-primary dropdown-toggle py-0 px-2 m-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-info mx-2"></i></a>
+                    <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right">
+                      <h6 class="dropdown-header">LARYNX STATS</h6>
+                      <div class="dropdown-divider bg-light"></div>
+                      <p class="mb-0">Supply:</p>
+                      <p>{{formatNumber(stats.tokenSupply/1000,3,'.',',')}}</p>
+                      <div class="dropdown-divider bg-light"></div>
+                      <p class="mb-0">Market Cap:</p>
+                      <p>${{formatNumber(marketCap,2,'.',',')}}</p>
+                      <div class="dropdown-divider bg-light"></div>
+                      <p class="mb-0">DEX Fee:</p>
+                      <p>{{formatNumber(stats.dex_fee*100,3,'.',',')}}%</p>
+                      <div class="dropdown-divider bg-light"></div>
+                      <p class="mb-0">Clearing Time:</p>
+                      <p class="mb-0">~10 Minutes</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-				</div>
             <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
               <div class="d-flex align-items-center" id="dluxhbdquote">
-                <div><h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd, 6)}}</b></h2></div>
-				<div class="ml-auto d-flex align-items-center">
-                	<div class="dropdown show d-flex align-items-center p-0 m-0"><a class="btn btn-sm btn-outline-primary dropdown-toggle py-0 px-2 m-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fas fa-info mx-2"></i></a>
-                    	<div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right">
-                      	<h6 class="dropdown-header">LARYNX STATS</h6>
-                      	<div class="dropdown-divider bg-light"></div>
-						<p class="mb-0">Supply:</p>
-						<p>{{formatNumber(stats.tokenSupply/1000,3,'.',',')}}</p>
-						<div class="dropdown-divider bg-light"></div>
-						<p class="mb-0">Market Cap:</p>
-						<p>${{formatNumber(marketCap,2,'.',',')}}</p>
-						<div class="dropdown-divider bg-light"></div>
-						<p class="mb-0">DEX Fee:</p>
-						<p>{{formatNumber(stats.dex_fee*100,3,'.',',')}}%</p>
-						<div class="dropdown-divider bg-light"></div>
-						<p class="mb-0">Clearing Time:</p>
-						<p class="mb-0">~10 Minutes</p>
-                	</div>
-				</div>
-              </div>
+                <div>
+                  <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd, 6)}}</b></h2>
+                </div>
+                <div class="ml-auto d-flex align-items-center">
+                  <div class="dropdown show d-flex align-items-center p-0 m-0"><a class="btn btn-sm btn-outline-primary dropdown-toggle py-0 px-2 m-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-info mx-2"></i></a>
+                    <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right">
+                      <h6 class="dropdown-header">LARYNX STATS</h6>
+                      <div class="dropdown-divider bg-light"></div>
+                      <p class="mb-0">Supply:</p>
+                      <p>{{formatNumber(stats.tokenSupply/1000,3,'.',',')}}</p>
+                      <div class="dropdown-divider bg-light"></div>
+                      <p class="mb-0">Market Cap:</p>
+                      <p>${{formatNumber(marketCap,2,'.',',')}}</p>
+                      <div class="dropdown-divider bg-light"></div>
+                      <p class="mb-0">DEX Fee:</p>
+                      <p>{{formatNumber(stats.dex_fee*100,3,'.',',')}}%</p>
+                      <div class="dropdown-divider bg-light"></div>
+                      <p class="mb-0">Clearing Time:</p>
+                      <p class="mb-0">~10 Minutes</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
         </div>
-			</div>
         <!-- market stats -->
-		<div id="market" class="row text-center">
+        <div id="market" class="row text-center">
           <div class="mt-2 col-lg-3">
             <h5>Market</h5>
             <div class="container-fluid mt-3">
@@ -949,7 +991,7 @@ include_once( $path );
           </div>
         </div>
         <!-- maret chart -->
-		<div class="marketChart mt-3 mb-3">
+        <div class="marketChart mt-3 mb-3">
           <div class="">
             <div class="chartjs-size-monitor">
               <div class="chartjs-size-monitor-expand">
@@ -1053,8 +1095,8 @@ include_once( $path );
             </div>
           </div>
         </div>
-		<!-- trade forms -->
-		<div id="tradeForms">
+        <!-- trade forms -->
+        <div id="tradeForms">
           <div class="row">
             <div class="mt-3 col-md-6">
               <h4>Buy {{TOKEN}}</h4>
@@ -1074,12 +1116,12 @@ include_once( $path );
                         </div>
                       </div>
                     </div>
-					  <div class="text-right">
-					  <div class="small text-muted" v-if="buyhive.checked">BALANCE<br><a href="#/" @click="setValue('buyHiveTotal',parseFloat(barhive) < maxhbuy? parseFloat(barhive) : maxhbuy)" >{{formatNumber(barhive,3,'.',',')}} HIVE</a>
-					  </div>
-					   <div class="small text-muted" v-if="buyhbd.checked">BALANCE<br><a href="#/" @click="setValue('buyHBDTotal',parseFloat(barhbd) < maxhbuy? parseFloat(barhbd) : maxhbuy)" >{{formatNumber(barhbd,3,'.',',')}} HBD</a>
-					  </div>
-						 </div>
+                    <div class="text-right">
+                      <div class="small text-muted" v-if="buyhive.checked">BALANCE<br>
+                        <a href="#/" @click="setValue('buyHiveTotal',parseFloat(barhive) < maxhbuy? parseFloat(barhive) : maxhbuy)" >{{formatNumber(barhive,3,'.',',')}} HIVE</a> </div>
+                      <div class="small text-muted" v-if="buyhbd.checked">BALANCE<br>
+                        <a href="#/" @click="setValue('buyHBDTotal',parseFloat(barhbd) < maxhbuy? parseFloat(barhbd) : maxhbuy)" >{{formatNumber(barhbd,3,'.',',')}} HBD</a> </div>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group"for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" v-if="buylimit.checked">
@@ -1175,10 +1217,10 @@ include_once( $path );
                         </div>
                       </div>
                     </div>
-					  <div class="text-right">
-					  <div class="small text-muted">BALANCE<br><a href="#/" @click="setValue('sellQuantity',balance)" >{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
-						  </div>
-					  </div>
+                    <div class="text-right">
+                      <div class="small text-muted">BALANCE<br>
+                        <a href="#/" @click="setValue('sellQuantity',balance)" >{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> </div>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group" for="sellQuantity" id="sell-qty" aria-labelledby="sell-qty-label">
@@ -1265,7 +1307,7 @@ include_once( $path );
           </div>
         </div>
         <!-- HIVE orders -->
-		<div id="hiveData"  v-if="buyhive.checked">
+        <div id="hiveData"  v-if="buyhive.checked">
           <div id="hiveMarketOrders">
             <div class="row">
               <div class="mt-3 col-md-6">
@@ -1343,7 +1385,7 @@ include_once( $path );
           </div>
         </div>
         <!-- HBD orders -->
-		<div id="hbdData"  v-if="buyhbd.checked">
+        <div id="hbdData"  v-if="buyhbd.checked">
           <div id="hbdMarketOrders">
             <div class="row">
               <div class="mt-3 col-md-6">
@@ -1429,8 +1471,8 @@ $path = $_SERVER[ 'DOCUMENT_ROOT' ];
 $path .= "/mod/footer.php";
 include_once( $path );
 ?>
-<script src="/dlux-io/js/jquery-3.4.1.min.js"></script>
-<script src="/dlux-io/js/popper.min.js"></script>
+<script src="/dlux-io/js/jquery-3.4.1.min.js"></script> 
+<script src="/dlux-io/js/popper.min.js"></script> 
 <script src="/dlux-io/js/bootstrap-4.4.1.js"></script>
 </body>
 <script>
