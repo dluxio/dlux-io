@@ -196,7 +196,13 @@ g
         sellmarket: {
           checked: false
         },
-		 govlock: {
+		pwrup: {
+          checked: true
+        },
+        pwrdown: {
+          checked: false
+        },
+		govlock: {
           checked: true
         },
         govunlock: {
@@ -761,6 +767,7 @@ include_once( $path );
           </div>
         </div>
         <div class="d-flex align-items-center text-white-50">
+			<!-- send token form -->
           <div id="userdlux" class="mx-4">
             <div class="dropdown show d-flex align-items-center "><a class="text-warning dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
               <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
@@ -791,14 +798,51 @@ include_once( $path );
                       <input class="form-control bg-dark border-dark text-info" id="sendlarynxmemo" type="text" placeholder="Include a memo (optional)">
                     </div>
                   </div>
-                  <div class="text-center">
+                  <div class="text-center mt-3">
                     <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning" @click="dluxsend(sendlarynxto,sendlarnyxamount,sendlarnyxmemo,prefix)">Send</button>
                   </div>
                 </form>
               </div>
             </div>
           </div>
-          <div id="userdpwr" class="mx-4" v-if="accountapi.poweredUp > 0"><a href="/me#spk"><span class="text-primary"></span></a></div>
+		<!-- power form -->
+          <div id="userdpwr" class="mx-4" >
+              <div class="dropdown show d-flex align-items-center "><a class="text-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a> 
+                <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
+                  <h6 class="dropdown-header text-center">{{TOKEN}} POWER</h6>
+                  
+					<form name="pwrlarynx" class="needs-validation" novalidate>
+					<div class="form-group text-center">
+						<div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
+              			<label class="btn btn-outline-primary active">
+                		<input type="radio" name="pwrpair" id="pwrup" checked> PWR UP </label>
+              			<label class="btn btn-outline-primary">
+               			<input type="radio" name="pwrpair" id="pwrdown"> PWR DOWN </label>
+            		</div>
+						</div>
+                    <div class="form-group">
+                    <label id="govuplarynxamountlab">Amount</label>
+                    <div class="input-group">
+                      <input class="form-control bg-dark border-dark text-primary" v-if="pwrup.checked" required id="pwruplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="1.000">
+					  <input class="form-control bg-dark border-dark text-primary" v-if="pwrdown.checked" required id="pwrdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(barpow)" placeholder="1.000">
+                      <div class="input-group-append">                            
+                        <div class="input-group-text bg-dark border-dark text-white-50" v-if="pwrup.checked" id="govupformunits"> {{TOKEN}} </div>
+						<div class="input-group-text bg-dark border-dark text-white-50" v-if="pwrdown.checked" id="govdownformunits"> {{TOKEN}}P </div>
+                      </div>
+                    </div>
+                    <div class="small py-2" v-if="pwrup.checked"><a href="#/" @click="setValue('pwruplarynxamount',balance)" class="text-primary">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
+					<div class="small pt-2" v-if="pwrdown.checked"><a href="#/" @click="setValue('pwrdownlarynxamount',balance)" class="text-primary">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a> Available</div>
+					
+                    </div>
+						<div class="text-center mt-3">
+                      <button id="pwruplarynxmodalsend" type="submit" class="btn btn-primary" v-if="pwrup.checked" @click="dluxgovup(pwruplarnyxamount,prefix)">Power Up</button>
+						<button id="pwrdownlarynxmodalsend" type="submit" class="btn btn-primary" v-if="pwrdown.checked" @click="govDown(pwrdownlarnyxamount,prefix)">Power Down</button>
+                      </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+			<!-- gov form -->
             <div id="userdgov" class="mx-4" >
               <div class="dropdown show d-flex align-items-center "><a class="text-info dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> 
                 <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
@@ -806,7 +850,7 @@ include_once( $path );
                   
 					<form name="govlarynx" class="needs-validation" novalidate>
 					<div class="form-group text-center">
-						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
               			<label class="btn btn-outline-info active">
                 		<input type="radio" name="govpair" id="govlock" checked> LOCK </label>
               			<label class="btn btn-outline-info">
@@ -825,17 +869,91 @@ include_once( $path );
                     </div>
                     <div class="small py-2" v-if="govlock.checked"><a href="#/" @click="setValue('govuplarynxamount',balance)" class="text-info">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
 					<div class="small pt-2" v-if="govunlock.checked"><a href="#/" @click="setValue('govdownlarynxamount',balance)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Available</div>
-					<div class="text-center">
-                      <button id="locklarynxmodalsend" type="submit" class="btn btn-info" v-if="govlock.checked" @click="dluxgovup(govuplarnyxamount,prefix)">Lock Gov</button>
-						<button id="unlocklarynxmodalsend" type="submit" class="btn btn-info" v-if="govunlock.checked" @click="govDown(govdownlarnyxamount,prefix)">Unock Gov</button>
-                      </div>
                     </div>
+						<div class="text-center mt-3">
+                      <button id="locklarynxmodalsend" type="submit" class="btn btn-info" v-if="govlock.checked" @click="dluxgovup(govuplarnyxamount,prefix)">Lock Gov</button>
+						<button id="unlocklarynxmodalsend" type="submit" class="btn btn-info" v-if="govunlock.checked" @click="govDown(govdownlarnyxamount,prefix)">Unlock Gov</button>
+                      </div>
                   </form>
                 </div>
               </div>
             </div>
-            <div id="userhive" class="mx-4"><a href="/me#hive"><span class="text-danger">{{formatNumber(barhive,3,'.',',')}} HIVE</span></a></div>
-            <div id="userhbd" class="mx-4"><a href="/me#hive"><span class="text-success">{{formatNumber(barhbd,3,'.',',')}} HBD</span></a></div>
+			<!-- send hive form -->
+          <div id="userhive" class="mx-4">
+            <div class="dropdown show d-flex align-items-center "><a class="text-danger dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhive,3,'.',',')}} HIVE</a>
+              <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
+                <h6 class="dropdown-header text-center">SEND HIVE</h6>
+                <form name="sendhive" class="needs-validation" novalidate>
+                  <div class="form-group">
+                    <label for="sendhiveto">To:</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text bg-dark border-dark text-white-50">@</div>
+                      </div>
+                      <input class="form-control bg-dark border-dark text-info" required id="sendhiveto" type="text" placeholder="Recipient">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label id="sendhiveamountlab" for="sendhiveamount">Amount:</label>
+                    <div class="input-group">
+                      <input class="form-control bg-dark border-dark text-info" required id="sendhiveamount" type="number" step="0.001" min="0.001" :max="parseFloat(barhive)" placeholder="1.000">
+                      <div class="input-group-append">
+                        <div class="input-group-text bg-dark border-dark text-white-50" id="sendhiveformunits"> HIVE </div>
+                      </div>
+                    </div>
+                    <div class="small pt-2"><a href="#/" @click="setValue('sendhiveamount',balance)" class="text-danger">{{formatNumber(barhive,3,'.',',')}} HIVE</a> Available</div>
+                  </div>
+                  <div class="form-group" id="sendhivememogroup">
+                    <label for="sendhivememo">Memo:</label>
+                    <div class="input-group">
+                      <input class="form-control bg-dark border-dark text-info" id="sendhivememo" type="text" placeholder="Include a memo (optional)">
+                    </div>
+                  </div>
+                  <div class="text-center mt-3">
+                    <button id="sendhivemodalsend" type="submit" class="btn btn-danger" @click="dluxsend(sendhiveto,sendhiveamount,sendhivememo,prefix)">Send</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+			<!-- send hbd form -->
+          <div id="userhbd" class="mx-4">
+            <div class="dropdown show d-flex align-items-center "><a class="text-success dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhbd,3,'.',',')}} hbd</a>
+              <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
+                <h6 class="dropdown-header text-center">SEND HBD</h6>
+                <form name="sendhbd" class="needs-validation" novalidate>
+                  <div class="form-group">
+                    <label for="sendhbdto">To:</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text bg-dark border-dark text-white-50">@</div>
+                      </div>
+                      <input class="form-control bg-dark border-dark text-info" required id="sendhbdto" type="text" placeholder="Recipient">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label id="sendhbdamountlab" for="sendhbdamount">Amount:</label>
+                    <div class="input-group">
+                      <input class="form-control bg-dark border-dark text-info" required id="sendhbdamount" type="number" step="0.001" min="0.001" :max="parseFloat(barhbd)" placeholder="1.000">
+                      <div class="input-group-append">
+                        <div class="input-group-text bg-dark border-dark text-white-50" id="sendhbdformunits"> HBD </div>
+                      </div>
+                    </div>
+                    <div class="small pt-2"><a href="#/" @click="setValue('sendhbdamount',balance)" class="text-success">{{formatNumber(barhbd,3,'.',',')}} HBD</a> Available</div>
+                  </div>
+                  <div class="form-group" id="sendhbdmemogroup">
+                    <label for="sendhbdmemo">Memo:</label>
+                    <div class="input-group">
+                      <input class="form-control bg-dark border-dark text-info" id="sendhbdmemo" type="text" placeholder="Include a memo (optional)">
+                    </div>
+                  </div>
+                  <div class="text-center mt-3">
+                    <button id="sendhbdmodalsend" type="submit" class="btn btn-success" @click="dluxsend(sendhbdto,sendhbdamount,sendhbdmemo,prefix)">Send</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
         <!-- node collapse region -->
