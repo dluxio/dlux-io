@@ -843,77 +843,78 @@
             this.barpow = ((data.poweredUp + data.granted - data.granting) / 1000).toFixed(3)
             this.bargov = (data.gov / 1000).toFixed(3)
             this.accountapi = data
+            console.log('claim logic',new Date().getMonth() + 1, data.drop?.last_claim, data.drop?.amount)
             if (new Date().getMonth() + 1 != data.drop?.last_claim && data.drop?.amount > 0) {
               this.hasDrop = true
               this.dropnai = `${parseFloat(data.drop.amount / Math.pow(10, data.drop.precision)).toFixed(data.drop.precision)} ${data.drop.token}`
             }
             this.openorders = data.contracts
-            .reduce((acc, cur) => {
-              cur.nai = `${cur.type.split(':')[0] == 'hive' ? parseFloat(cur.hive/1000).toFixed(3) : parseFloat(cur.hbd/1000).toFixed(3)} ${cur.type.split(':')[0] == 'hive' ? 'HIVE' : 'HBD'}`
-              if (cur.partials && cur.partials.length && cur.type.split(':')[1] == 'sell') {
-                const filled = cur.partials.reduce(function(a, c) {
-                  return a + c.coin
-                }, 0)
-                cur.percentFilled = parseFloat(100 * filled / (cur.hive ? cur.hive : cur.hbd + filled)).toFixed(2)
-                acc.push(cur)
-              } else if (cur.partials && cur.partials.length) {
-                const filled = cur.partials.reduce(function(a, c) {
-                  return a + c.token
-                }, 0)
-                cur.percentFilled = parseFloat(100 * filled / (cur.amount + filled)).toFixed(2)
-                acc.push(cur)
-              } else {
-                cur.percentFilled = "0.00"
-                acc.push(cur)
-              }
-              console.log({
-                acc
-              })
-              return acc
-            }, [])
+              .reduce((acc, cur) => {
+                cur.nai = `${cur.type.split(':')[0] == 'hive' ? parseFloat(cur.hive/1000).toFixed(3) : parseFloat(cur.hbd/1000).toFixed(3)} ${cur.type.split(':')[0] == 'hive' ? 'HIVE' : 'HBD'}`
+                if (cur.partials && cur.partials.length && cur.type.split(':')[1] == 'sell') {
+                  const filled = cur.partials.reduce(function(a, c) {
+                    return a + c.coin
+                  }, 0)
+                  cur.percentFilled = parseFloat(100 * filled / (cur.hive ? cur.hive : cur.hbd + filled)).toFixed(2)
+                  acc.push(cur)
+                } else if (cur.partials && cur.partials.length) {
+                  const filled = cur.partials.reduce(function(a, c) {
+                    return a + c.token
+                  }, 0)
+                  cur.percentFilled = parseFloat(100 * filled / (cur.amount + filled)).toFixed(2)
+                  acc.push(cur)
+                } else {
+                  cur.percentFilled = "0.00"
+                  acc.push(cur)
+                }
+                console.log({
+                  acc
+                })
+                return acc
+              }, [])
           })
-      if (user != 'GUEST') fetch(hapi, {
-          body: `{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["${user}"]], "id":1}`,
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          method: "POST"
-        })
-        .then(response => response.json())
-        .then(data => {
-          this.accountinfo = data.result[0]
-          this.barhive = this.accountinfo.balance
-          this.barhbd = this.accountinfo.hbd_balance
-        })
-    },
-    computed: {
-      minbuy: {
-        get() {
-          return parseFloat(parseFloat(parseFloat(this.buyPrice / 1000).toFixed(3)) + 0.001).toFixed(3)
-        }
+        if (user != 'GUEST') fetch(hapi, {
+            body: `{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["${user}"]], "id":1}`,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            method: "POST"
+          })
+          .then(response => response.json())
+          .then(data => {
+            this.accountinfo = data.result[0]
+            this.barhive = this.accountinfo.balance
+            this.barhbd = this.accountinfo.hbd_balance
+          })
       },
-      minsell: {
-        get() {
-          return parseFloat(parseFloat(parseFloat(this.sellPrice / 0.001).toFixed(3)) + 0.001).toFixed(3)
-        }
-      },
-      maxhbuy: {
-        get() {
-          return parseFloat((this.dexapi.markets.hive.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hive.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
-        }
-      },
-      maxdbuy: {
-        get() {
-          return parseFloat((this.dexapi.markets.hbd.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hbd.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
-        }
-      },
-      marketCap: {
-        get() {
-          if (this.buyhive.checked) return `${parseFloat((this.stats.tokenSupply/1000) * this.hiveprice.hive.usd * this.dexapi.markets.hive.tick).toFixed(2)}`
-          else return `${parseFloat((this.stats.tokenSupply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.markets.hbd.tick).toFixed(2)}`
+      computed: {
+        minbuy: {
+          get() {
+            return parseFloat(parseFloat(parseFloat(this.buyPrice / 1000).toFixed(3)) + 0.001).toFixed(3)
+          }
+        },
+        minsell: {
+          get() {
+            return parseFloat(parseFloat(parseFloat(this.sellPrice / 0.001).toFixed(3)) + 0.001).toFixed(3)
+          }
+        },
+        maxhbuy: {
+          get() {
+            return parseFloat((this.dexapi.markets.hive.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hive.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
+          }
+        },
+        maxdbuy: {
+          get() {
+            return parseFloat((this.dexapi.markets.hbd.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hbd.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
+          }
+        },
+        marketCap: {
+          get() {
+            if (this.buyhive.checked) return `${parseFloat((this.stats.tokenSupply/1000) * this.hiveprice.hive.usd * this.dexapi.markets.hive.tick).toFixed(2)}`
+            else return `${parseFloat((this.stats.tokenSupply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.markets.hbd.tick).toFixed(2)}`
+          }
         }
       }
-    }
     }).mount('#app')
   </script>
 </head>
