@@ -1025,7 +1025,7 @@
                           </div>
                         </div> -->
                         <div class="text-center mt-3">
-                          <button id="savenodesettings" class="btn btn-secondary"  type="submit" @click="saveNodeSettings()">Save<i class="far fa-save ml-2"></i></button>
+                          <button id="savenodesettings" class="btn btn-secondary" @click="saveNodeSettings()">Save<i class="far fa-save ml-2"></i></button>
                         </div>
                       </form>
                     </div>
