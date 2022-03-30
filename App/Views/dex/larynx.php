@@ -1025,7 +1025,7 @@
                           </div>
                         </div> -->
                         <div class="text-center mt-3">
-                          <button id="savenodesettings" class="btn btn-secondary" @click="saveNodeSettings()">Save<i class="far fa-save ml-2"></i></button>
+                          <button id="savenodesettings" class="btn btn-secondary"  type="submit" @click="saveNodeSettings()">Save<i class="far fa-save ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1148,8 +1148,8 @@
                           <div class="small pt-2" v-if="!features.powsel_up"><a href="#/" @click="setValue('features.pow_val',accountapi.poweredUp/1000)" class="text-primary">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a> Available</div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="pwruplarynxmodalsend" class="btn btn-primary" v-if="features.powsel_up" @click="power()">Power Up<i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
-                          <button id="pwrdownlarynxmodalsend" class="btn btn-primary" v-if="!features.powsel_up" @click="power()">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
+                          <button id="pwruplarynxmodalsend" type="submit" class="btn btn-primary" v-if="features.powsel_up" @click="power()">Power Up<i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
+                          <button id="pwrdownlarynxmodalsend"  type="submit" class="btn btn-primary" v-if="!features.powsel_up" @click="power()">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1186,8 +1186,8 @@
                           <div class="small pt-2" v-if="!features.govsel_up"><a href="#/" @click="setValue('features.gov_val',accountapi.gov/1000)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Locked</div>
                         </div>
                         <div class="text-center">
-                          <button id="locklarynxmodalsend" class="btn btn-info" v-if="features.govsel_up" @click="gov()">Lock Gov<i class="fas fa-lock ml-2"></i></button>
-                          <button id="unlocklarynxmodalsend" class="btn btn-info" v-if="!features.govsel_up" @click="gov()">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
+                          <button id="locklarynxmodalsend"  type="submit" class="btn btn-info" v-if="features.govsel_up" @click="gov()">Lock Gov<i class="fas fa-lock ml-2"></i></button>
+                          <button id="unlocklarynxmodalsend"  type="submit" class="btn btn-info" v-if="!features.govsel_up" @click="gov()">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
                         </div>
                       </form>
                     </div>
