@@ -222,7 +222,7 @@
             powup_B: false,
             pow_val: '',
             powdn_id: 'power_down',
-            powdn_B: true,
+            powdn_B: false,
             powsel_up: true,
             govup_id: 'gov_up',
             govup_B: true,
@@ -352,7 +352,7 @@
           }, `${this.prefix}${this.features.rewards_id}`, `Claiming ${this.TOKEN}...`, lapi.split('://')[1])
         },
         power() {
-          broadcastCJA({
+          if (this.features.pow_val) broadcastCJA({
             amount: parseInt(this.features.pow_val * 1000)
           }, `${this.prefix}${this.features.powsel_up ? this.features.powup_id : this.features.powdn_id}`, `${this.features.powsel_up ? '' : 'Down-'}Powering ${this.TOKEN}...`, lapi.split('://')[1])
         },
