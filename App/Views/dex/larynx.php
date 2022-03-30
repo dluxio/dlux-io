@@ -846,7 +846,7 @@ include_once( $path );
               </div>
               <!-- node settings form -->
               <div id="usernode" class="mx-3">
-                <div class="dropdown show d-flex align-items-center "><a class="btn btn-sm btn-secondary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-cog"></i></a>
+                <div class="dropdown show d-flex align-items-center "><a class="btn btn-sm btn-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-cog"></i></a>
                   <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
                     <h6 class="dropdown-header text-center">{{TOKEN}} NODE SETTINGS</h6>
                     <form name="nodesettings" class="needs-validation" novalidate>
@@ -892,10 +892,14 @@ include_once( $path );
                 </div>
               </div>
               <!-- node status btn -->
-              <div  :title="behindTitle">
-                <button class="text-center btn btn-sm align-items-center" :class="{'btn-outline-success':'behind < 30'}" :class="{'btn-outline-warning':'behind >= 30 && behind < 60'}" :class="{'btn-outline-danger':'behind >= 60'}" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
-                <span class="small p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }} | </span> <span class="small p-0 m-0" v-show="behind < 30">ONLINE</span> <span class="small p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span> <span class="small p-0 m-0" v-show="behind > 100">OFFLINE</span> <span class="small p-0 m-0"> | {{behind}} BBH | {{runners.length}} NODES</span>
-                </button>
+              <div  :title="behindTitle" class="d-flex align-items-center">
+                <a class="text-center" style="font-size: .7em;" :class="{'text-success':'behind < 30'}" :class="{'text-warning':'behind >= 30 && behind < 60'}" :class="{'text-danger':'behind >= 60'}" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
+                <span class=" p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }} | </span>
+				<span class=" p-0 m-0" v-show="behind < 30">ONLINE</span>
+				<span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span>
+				<span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span>
+				<span class=" p-0 m-0"> | {{behind}} BBH | {{runners.length}} NODES</span>
+                </a>
               </div>
             </div>
             <div class="d-flex align-items-center"> 
