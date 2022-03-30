@@ -949,7 +949,7 @@
                   <div class="dropdown show d-flex align-items-center "><a class="btn btn-sm btn-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-cog"></i></a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} NODE SETTINGS</h6>
-                      <h4 class="dropdown-header text-center">For @{{user}}</h4>
+                      <h4 class="dropdown-header text-center">For @{{account}}</h4>
                       <form name="nodesettings" class="needs-validation" novalidate>
                         <div class="form-group" v-for="opt in features.node.opts">
                           <label :for="opt.json">{{opt.S}}:</label>
