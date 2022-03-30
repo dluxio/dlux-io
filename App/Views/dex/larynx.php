@@ -1016,11 +1016,7 @@
                 <!-- node status btn -->
                 <div :title="behindTitle" class="d-flex align-items-center mx-3">
                   <a class="text-center" style="font-size: .7em;" :class="{'text-success':'behind < 30'}" :class="{'text-warning':'behind >= 30 && behind < 60'}" :class="{'text-danger':'behind >= 60'}" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
-                    <span class=" p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }} | </span>
-                    <span class=" p-0 m-0" v-show="behind < 30">ONLINE</span>
-                    <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span>
-                    <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span>
-                    <span class=" p-0 m-0"> | {{behind}} BBH | {{runners.length}} NODES</span>
+                    <span class=" p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }}</span>
                   </a>
                 </div>
               </div>
@@ -1171,7 +1167,7 @@
                           <div class="small py-2" v-if="features.govsel_up"><a href="#/" @click="setValue('features.gov_val',balance)" class="text-info">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
                           <div class="small pt-2" v-if="!features.govsel_up"><a href="#/" @click="setValue('features.gov_val',accountapi.gov/1000)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Locked</div>
                         </div>
-                        <div class="text-center mt-3">
+                        <div class="text-center">
                           <button id="locklarynxmodalsend" class="btn btn-info" v-if="features.govsel_up" @click="gov()">Lock Gov<i class="fas fa-lock ml-2"></i></button>
                           <button id="unlocklarynxmodalsend" class="btn btn-info" v-if="!features.govsel_up" @click="gov()">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
                         </div>
@@ -1262,7 +1258,7 @@
               <div class="py-5">
                 <div class="container">
                   <div class="d-flex align-items-center mb-3">
-                    <div class="">
+                    <div>
                       <div role="group" class="input-group">
                         <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="focus('filteraccount')"><i class="fas fa-search"></i></span></div>
                         <input type="text" v-on:keyup="searchRunners()" class="form-control bg-dark border-dark text-info" id="filteraccount" v-model="filteraccount.value" @ aria-required="true" placeholder="Search">
@@ -1270,6 +1266,15 @@
                           <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px"> <span v-if="filteraccount.value"> <a href="#" class="badge badge-secondary" @click="setValue('filteraccount.value','')"><i class="fas fa-times"></i></a> </span> </div>
                         </div>
                       </div>
+						</div>
+					  <div class="ml-3">
+						<a class="text-center" style="font-size: .7em;" :class="{'text-success':'behind < 30'}" :class="{'text-warning':'behind >= 30 && behind < 60'}" :class="{'text-danger':'behind >= 60'}" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
+                    <span class=" p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }} | </span>
+                    <span class=" p-0 m-0" v-show="behind < 30">ONLINE</span>
+                    <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span>
+                    <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span>
+                    <span class=" p-0 m-0"> | {{behind}} BBH | {{runners.length}} NODES</span>
+                  </a>
                     </div>
                   </div>
                   <div class="table-responsive rounded border border-dark">
