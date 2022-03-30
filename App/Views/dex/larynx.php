@@ -457,6 +457,21 @@
             this[key] = value
           }
         },
+        suggestValue(key, value) {
+          if (key.split('.').length > 1) {
+            let keys = key.split('.')
+            let obj = this[keys[0]]
+            for (let i = 1; i < keys.length; i++) {
+              if (i == keys.length - 1) {
+                if (!obj[keys[i]]) obj[keys[i]] = value
+              } else {
+                obj = obj[keys[i]]
+              }
+            }
+          } else {
+            if (!this[key]) this[key] = value
+          }
+        },
         atref(key) {
           return `/@${key}`
         },
@@ -643,11 +658,13 @@
             }).reduce((acc, cur) => {
               if (!acc.length || acc[acc.length - 1].rate != cur.rate) {
                 cur.total = cur.hive + (acc[acc.length - 1]?.total || 0)
+                cur.at = cur.amount + (acc[acc.length - 1]?.amount || 0)
                 acc.push(cur)
               } else {
                 acc[acc.length - 1].total = cur.hive + acc[acc.length - 1].total
                 acc[acc.length - 1].hive = cur.hive + acc[acc.length - 1].hive
                 acc[acc.length - 1].amount = cur.amount + acc[acc.length - 1].amount
+                acc[acc.length - 1].at = cur.amount + acc[acc.length - 1].at
               }
               return acc
             }, [])
@@ -656,11 +673,13 @@
             }).reduce((acc, cur) => {
               if (!acc.length || acc[acc.length - 1].rate != cur.rate) {
                 cur.total = cur.hive + (acc[acc.length - 1]?.total || 0)
+                cur.at = cur.amount + (acc[acc.length - 1]?.amount || 0)
                 acc.push(cur)
               } else {
                 acc[acc.length - 1].total = cur.hive + acc[acc.length - 1].total
                 acc[acc.length - 1].hive = cur.hive + acc[acc.length - 1].hive
                 acc[acc.length - 1].amount = cur.amount + acc[acc.length - 1].amount
+                acc[acc.length - 1].at = cur.amount + acc[acc.length - 1].at
               }
               return acc
             }, [])
@@ -669,11 +688,13 @@
             }).reduce((acc, cur) => {
               if (!acc.length || acc[acc.length - 1].rate != cur.rate) {
                 cur.total = cur.hbd + (acc[acc.length - 1]?.total || 0)
+                cur.at = cur.amount + (acc[acc.length - 1]?.amount || 0)
                 acc.push(cur)
               } else {
                 acc[acc.length - 1].total = cur.hbd + acc[acc.length - 1].total
                 acc[acc.length - 1].hbd = cur.hbd + acc[acc.length - 1].hbd
                 acc[acc.length - 1].amount = cur.amount + acc[acc.length - 1].amount
+                acc[acc.length - 1].at = cur.amount + acc[acc.length - 1].at
               }
               return acc
             }, [])
@@ -682,11 +703,13 @@
             }).reduce((acc, cur) => {
               if (!acc.length || acc[acc.length - 1].rate != cur.rate) {
                 cur.total = cur.hbd + (acc[acc.length - 1]?.total || 0)
+                cur.at = cur.amount + (acc[acc.length - 1]?.amount || 0)
                 acc.push(cur)
               } else {
                 acc[acc.length - 1].total = cur.hbd + acc[acc.length - 1].total
                 acc[acc.length - 1].hbd = cur.hbd + acc[acc.length - 1].hbd
                 acc[acc.length - 1].amount = cur.amount + acc[acc.length - 1].amount
+                acc[acc.length - 1].at = cur.amount + acc[acc.length - 1].at
               }
               return acc
             }, [])
@@ -1554,7 +1577,7 @@
                           <td aria-colindex="1" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
                           <td aria-colindex="2" role="cell" class="">{{formatNumber(item.hive/1000,3,'.',',')}}</td>
                           <td aria-colindex="3" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
-                          <td aria-colindex="4" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate)">{{formatNumber(item.rate,6,'.',',')}}</a></td>
+                          <td aria-colindex="4" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue('sellQuantity', item.at > balance ? balance : item.at/1000)">{{formatNumber(item.rate,6,'.',',')}}</a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1578,7 +1601,7 @@
                       </thead>
                       <tbody role="rowgroup" class="tbody-scroll-orders">
                         <tr class="" role="row" v-for="item in hivesells">
-                          <td aria-colindex="1" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate)">{{formatNumber(item.rate,6,'.',',')}}</a></td>
+                          <td aria-colindex="1" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue(buyhive.checked ? 'buyHiveTotal' : 'buyHBDTotal', item.total )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
                           <td aria-colindex="2" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
                           <td aria-colindex="3" role="cell" class="">{{formatNumber(item.hive/1000,3,'.',',')}}</td>
                           <td aria-colindex="4" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
