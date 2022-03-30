@@ -511,11 +511,11 @@
             this.filterusers.value = ''
           }
         },
-        buyDEX(hive, hbd, dlux, hours, prefix = 'dlux_', callback) {
-          if (document.getElementById('buyform').classList.contains('needs-validation')) {
-            console.log('needs validation')
-            return
-          }
+        buyDEX() {
+          // if (document.getElementById('buyform').classList.contains('needs-validation')) {
+          //   console.log('needs validation')
+          //   return
+          // }
           var andthen = ' at market rate',
             rate = undefined,
             hours = 720
