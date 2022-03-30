@@ -244,7 +244,8 @@
 
         },
         tokenSend() {
-          if (sendAllowed) {
+          console.log(this.sendAllowed, this.sendTo, this.sendAmount, this.sendMemo, this.prefix, this.TOKEN)
+          if (this.sendAllowed) {
             broadcastCJA({
               to: this.sendTo,
               amount: parseInt(this.sendAmount * 1000),
