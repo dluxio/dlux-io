@@ -250,7 +250,7 @@
               to: this.sendTo,
               amount: parseInt(this.sendAmount * 1000),
               memo: this.sendMemo
-            }, `${this.prefix}send`, `Trying to send ${this.TOKEN}...`, statusapi)
+            }, `${this.prefix}send`, `Trying to send ${this.TOKEN}...`, lapi.split('://')[1])
           }
         },
         bcalc(k) {
