@@ -944,8 +944,8 @@
                     </div>
                   </div>
                 </div>
-                <!-- node settings form v-if="isnode" -->
-                <div id="usernode" class="ml-3" >
+                <!-- node settings form -->
+                <div id="usernode" class="ml-3" v-if="isnode">
                   <div class="dropdown show d-flex align-items-center "><a class="btn btn-sm btn-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-cog"></i></a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} NODE SETTINGS</h6>
