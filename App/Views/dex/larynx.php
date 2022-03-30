@@ -186,6 +186,14 @@
           sendAmount: 0,
           sendMemo: '',
           sendAllowed: false,
+          sendHiveTo: '',
+          sendHiveAllowed: false,
+          sendHiveAmount: 0,
+          sendHiveMemo: '',
+          sendHBDTo: '',
+          sendHBDAllowed: false,
+          sendHBDAmount: 0,
+          sendHBDMemo: '',
           recenthive: {},
           recenthbd: {},
           openorders: [],
@@ -361,7 +369,7 @@
             amount: parseInt(this.features.gov_val * 1000)
           }, `${this.prefix}${this.features.govsel_up ? this.features.govup_id : this.features.govdn_id}`, `${this.features.govsel_up ? '' : 'Un-'}Locking ${this.TOKEN}...`, lapi.split('://')[1])
         },
-        checkAccount(name) {
+        checkAccount(name, key) {
           fetch("https://anyx.io", {
               body: `{\"jsonrpc\":\"2.0\", \"method\":\"condenser_api.get_accounts\", \"params\":[[\"${this[name]}\"]], \"id\":1}`,
               headers: {
@@ -373,8 +381,8 @@
               return r.json()
             })
             .then(re => {
-              if (re.result.length) this.sendAllowed = true
-              else this.sendAllowed = false
+              if (re.result.length) this[key] = true
+              else this[key] = false
             })
 
         },
@@ -1068,7 +1076,7 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text bg-dark border-dark text-white-50">@</div>
                             </div>
-                            <input class="form-control bg-dark border-dark text-info" v-model="sendTo" @blur="checkAccount('sendTo')" required id="sendlarynxto" type="text" placeholder="Recipient">
+                            <input class="form-control bg-dark border-dark text-info" v-model="sendTo" @blur="checkAccount('sendTo', 'sendAllowed')" required id="sendlarynxto" type="text" placeholder="Recipient">
                           </div>
                         </div>
                         <div class="form-group">
@@ -1181,27 +1189,27 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text bg-dark border-dark text-white-50">@</div>
                             </div>
-                            <input class="form-control bg-dark border-dark text-info" required id="sendhiveto" type="text" placeholder="Recipient">
+                            <input class="form-control bg-dark border-dark text-info" @blur="checkAccount('sendHiveTo', 'sendHiveAllowed')" required v-model="sendHiveTo" type="text" placeholder="Recipient">
                           </div>
                         </div>
                         <div class="form-group">
                           <label id="sendhiveamountlab" for="sendhiveamount">Amount:</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" required id="sendhiveamount" type="number" step="0.001" min="0.001" :max="parseFloat(barhive)" placeholder="0.000">
+                            <input class="form-control bg-dark border-dark text-info" required v-model="sendHiveAmount" type="number" step="0.001" min="0.001" :max="parseFloat(barhive)" placeholder="0.000">
                             <div class="input-group-append">
-                              <div class="input-group-text bg-dark border-dark text-white-50" id="sendhiveformunits"> HIVE </div>
+                              <div class="input-group-text bg-dark border-dark text-white-50"> HIVE </div>
                             </div>
                           </div>
-                          <div class="small pt-2"><a href="#/" @click="setValue('sendhiveamount',balance)" class="text-danger">{{formatNumber(barhive,3,'.',',')}} HIVE</a> Available</div>
+                          <div class="small pt-2"><a href="#/" @click="setValue('sendHiveAmount',parseFloat(barhive))" class="text-danger">{{formatNumber(barhive,3,'.',',')}} HIVE</a> Available</div>
                         </div>
                         <div class="form-group" id="sendhivememogroup">
                           <label for="sendhivememo">Memo:</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" id="sendhivememo" type="text" placeholder="Include a memo (optional)">
+                            <input class="form-control bg-dark border-dark text-info" id="sendhivememo" type="text" v-model="sendHiveMemo" placeholder="Include a memo (optional)">
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendhivemodalsend" type="submit" class="btn btn-danger" @click="dluxsend(sendhiveto,sendhiveamount,sendhivememo,prefix)">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhivemodalsend" class="btn btn-danger" @click="hiveSend()">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1219,27 +1227,27 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text bg-dark border-dark text-white-50">@</div>
                             </div>
-                            <input class="form-control bg-dark border-dark text-info" required id="sendhbdto" type="text" placeholder="Recipient">
+                            <input class="form-control bg-dark border-dark text-info" @blur="checkAccount('sendHBDTo', 'sendHBDAllowed')" required v-model="sendHBDTo" type="text" placeholder="Recipient">
                           </div>
                         </div>
                         <div class="form-group">
                           <label id="sendhbdamountlab" for="sendhbdamount">Amount:</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" required id="sendhbdamount" type="number" step="0.001" min="0.001" :max="parseFloat(barhbd)" placeholder="0.000">
+                            <input class="form-control bg-dark border-dark text-info" required v-model="sendHBDAmount" type="number" step="0.001" min="0.001" :max="parseFloat(barhbd)" placeholder="0.000">
                             <div class="input-group-append">
                               <div class="input-group-text bg-dark border-dark text-white-50" id="sendhbdformunits"> HBD </div>
                             </div>
                           </div>
-                          <div class="small pt-2"><a href="#/" @click="setValue('sendhbdamount',balance)" class="text-success">{{formatNumber(barhbd,3,'.',',')}} HBD</a> Available</div>
+                          <div class="small pt-2"><a href="#/" @click="setValue('sendHBDAmount',parseFloat(barhbd))" class="text-success">{{formatNumber(barhbd,3,'.',',')}} HBD</a> Available</div>
                         </div>
                         <div class="form-group" id="sendhbdmemogroup">
                           <label for="sendhbdmemo">Memo:</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" id="sendhbdmemo" type="text" placeholder="Include a memo (optional)">
+                            <input class="form-control bg-dark border-dark text-info" v-model="sendHBDMemo" type="text" placeholder="Include a memo (optional)">
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendhbdmodalsend" type="submit" class="btn btn-success" @click="dluxsend(sendhbdto,sendhbdamount,sendhbdmemo,prefix)">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhbdmodalsend" type="submit" class="btn btn-success" @click="hbdsend()">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
