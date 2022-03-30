@@ -291,6 +291,9 @@
             default:
           }
         },
+        localStoreSet(k, v) {
+          localStorage.setItem(k, v)
+        },
         scalc(k) {
           switch (k) {
             case 't':
@@ -821,7 +824,8 @@
                       function manualApi() {
                         let api = prompt("Please enter your API", "https://spkinstant.hivehoneycomb.com");
                         if (api != null) {
-
+                          localStorage.setItem('lapi', api)
+                          location.reload()
                         }
                       }
                     </script>
