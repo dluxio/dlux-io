@@ -196,6 +196,12 @@ g
         sellmarket: {
           checked: false
         },
+		 govlock: {
+          checked: true
+        },
+        govunlock: {
+          checked: false
+        },
       }
     },
     methods: {
@@ -797,33 +803,31 @@ include_once( $path );
               <div class="dropdown show d-flex align-items-center "><a class="text-info dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> 
                 <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
                   <h6 class="dropdown-header text-center">{{TOKEN}} GOVERNANCE</h6>
-                  <form name="govuplarynx" class="needs-validation" novalidate>
+                  
+					<form name="govlarynx" class="needs-validation" novalidate>
+					<div class="form-group text-center">
+						<div class="btn-group btn-group-toggle" data-toggle="buttons">
+              			<label class="btn btn-outline-info active">
+                		<input type="radio" name="govpair" id="govlock" checked> LOCK </label>
+              			<label class="btn btn-outline-info">
+               			<input type="radio" name="govpair" id="govunlock"> UNLOCK </label>
+            		</div>
+						</div>
                     <div class="form-group">
                     <label id="govuplarynxamountlab">Amount</label>
                     <div class="input-group">
-                      <input class="form-control bg-dark border-dark text-info" required id="govuplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="1.000">
+                      <input class="form-control bg-dark border-dark text-info" v-if="govlock.checked" required id="govuplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="1.000">
+					  <input class="form-control bg-dark border-dark text-info" v-if="govunlock.checked" required id="govdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bargov)" placeholder="1.000">
                       <div class="input-group-append">                            
-                        <div class="input-group-text bg-dark border-dark text-white-50" id="govupformunits"> {{TOKEN}} </div>
+                        <div class="input-group-text bg-dark border-dark text-white-50" v-if="govlock.checked" id="govupformunits"> {{TOKEN}} </div>
+						<div class="input-group-text bg-dark border-dark text-white-50" v-if="govunlock.checked" id="govdownformunits"> {{TOKEN}}G </div>
                       </div>
                     </div>
-                    <div class="small pt-2"><a href="#/" @click="setValue('govuplarynxamount',balance)" class="text-info">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
+                    <div class="small py-2" v-if="govlock.checked"><a href="#/" @click="setValue('govuplarynxamount',balance)" class="text-info">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
+					<div class="small pt-2" v-if="govunlock.checked"><a href="#/" @click="setValue('govdownlarynxamount',balance)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Available</div>
 					<div class="text-center">
-                      <button id="locklarynxmodalsend" type="submit" class="btn btn-info" @click="dluxgovup(govuplarnyxamount,prefix)">Lock Gov</button>
-                      </div>
-                    </div>
-                  </form>
-					<form name="govdownlarynx" class="needs-validation" novalidate>
-                    <div class="form-group">
-                    <label id="govdownlarynxamountlab">Amount</label>
-                    <div class="input-group">
-                      <input class="form-control bg-dark border-dark text-info" required id="govdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bargov)" placeholder="1.000">
-                      <div class="input-group-append">                            
-                        <div class="input-group-text bg-dark border-dark text-white-50" id="govdownformunits"> {{TOKEN}}G </div>
-                      </div>
-                    </div>
-                    <div class="small pt-2"><a href="#/" @click="setValue('govdownlarynxamount',balance)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Available</div>
-					<div class="text-center">
-                      <button id="locklarynxmodalsend" type="submit" class="btn btn-info" @click="govDown(govuplarnyxamount,prefix)">Unock Gov</button>
+                      <button id="locklarynxmodalsend" type="submit" class="btn btn-info" v-if="govlock.checked" @click="dluxgovup(govuplarnyxamount,prefix)">Lock Gov</button>
+						<button id="unlocklarynxmodalsend" type="submit" class="btn btn-info" v-if="govunlock.checked" @click="govDown(govdownlarnyxamount,prefix)">Unock Gov</button>
                       </div>
                     </div>
                   </form>
