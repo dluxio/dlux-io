@@ -773,7 +773,7 @@ include_once( $path );
                               <div class="input-group-text bg-dark border-dark text-white-50" id="sendformunits"> {{TOKEN}} </div>
                             </div>
                           </div>
-							<div class="small pt-2"><a href="#" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
+							<div class="small pt-2"><a href="#/" @click="setValue('sendlarynxamount',balance)" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
                         </div>
                         <div class="form-group" id="sendlarynxmemogroup">
                           <label for="sendlarynxmemo">Memo:</label>
@@ -782,7 +782,7 @@ include_once( $path );
                           </div>
                         </div>
                 <div class="text-center">
-                        <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning">Send</button>
+                        <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning" @click="dluxsend(sendlarynxto,sendlarnyxamount,sendlarnyxmemo,prefix)">Send</button>
                         
                 </div>
                     </form>
