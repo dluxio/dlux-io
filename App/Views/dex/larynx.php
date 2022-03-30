@@ -906,7 +906,7 @@ include_once( $path );
                       <div class="form-group">
                         <label id="sendlarynxamountlab" for="sendlarynxamount">Amount:</label>
                         <div class="input-group">
-                          <input class="form-control bg-dark border-dark text-info" v-model="sendAmount" required id="sendlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="1.000">
+                          <input class="form-control bg-dark border-dark text-info" v-model="sendAmount" required id="sendlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
                           <div class="input-group-append">
                             <div class="input-group-text bg-dark border-dark text-white-50" id="sendformunits"> {{TOKEN}} </div>
                           </div>
@@ -945,8 +945,8 @@ include_once( $path );
                       <div class="form-group">
                         <label id="govuplarynxamountlab">Amount</label>
                         <div class="input-group">
-                          <input class="form-control bg-dark border-dark text-primary" v-if="pwrup.checked" required id="pwruplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="1.000">
-                          <input class="form-control bg-dark border-dark text-primary" v-if="pwrdown.checked" required id="pwrdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(barpow)" placeholder="1.000">
+                          <input class="form-control bg-dark border-dark text-primary" v-if="pwrup.checked" required id="pwruplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
+                          <input class="form-control bg-dark border-dark text-primary" v-if="pwrdown.checked" required id="pwrdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(barpow)" placeholder="0.000">
                           <div class="input-group-append">
                             <div class="input-group-text bg-dark border-dark text-white-50" v-if="pwrup.checked" id="govupformunits"> {{TOKEN}} </div>
                             <div class="input-group-text bg-dark border-dark text-white-50" v-if="pwrdown.checked" id="govdownformunits"> {{TOKEN}}P </div>
@@ -982,8 +982,8 @@ include_once( $path );
                       <div class="form-group">
                         <label id="govuplarynxamountlab">Amount</label>
                         <div class="input-group">
-                          <input class="form-control bg-dark border-dark text-info" v-if="govlock.checked" required id="govuplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="1.000">
-                          <input class="form-control bg-dark border-dark text-info" v-if="govunlock.checked" required id="govdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bargov)" placeholder="1.000">
+                          <input class="form-control bg-dark border-dark text-info" v-if="govlock.checked" required id="govuplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
+                          <input class="form-control bg-dark border-dark text-info" v-if="govunlock.checked" required id="govdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bargov)" placeholder="0.000">
                           <div class="input-group-append">
                             <div class="input-group-text bg-dark border-dark text-white-50" v-if="govlock.checked" id="govupformunits"> {{TOKEN}} </div>
                             <div class="input-group-text bg-dark border-dark text-white-50" v-if="govunlock.checked" id="govdownformunits"> {{TOKEN}}G </div>
@@ -1018,7 +1018,7 @@ include_once( $path );
                       <div class="form-group">
                         <label id="sendhiveamountlab" for="sendhiveamount">Amount:</label>
                         <div class="input-group">
-                          <input class="form-control bg-dark border-dark text-info" required id="sendhiveamount" type="number" step="0.001" min="0.001" :max="parseFloat(barhive)" placeholder="1.000">
+                          <input class="form-control bg-dark border-dark text-info" required id="sendhiveamount" type="number" step="0.001" min="0.001" :max="parseFloat(barhive)" placeholder="0.000">
                           <div class="input-group-append">
                             <div class="input-group-text bg-dark border-dark text-white-50" id="sendhiveformunits"> HIVE </div>
                           </div>
@@ -1056,7 +1056,7 @@ include_once( $path );
                       <div class="form-group">
                         <label id="sendhbdamountlab" for="sendhbdamount">Amount:</label>
                         <div class="input-group">
-                          <input class="form-control bg-dark border-dark text-info" required id="sendhbdamount" type="number" step="0.001" min="0.001" :max="parseFloat(barhbd)" placeholder="1.000">
+                          <input class="form-control bg-dark border-dark text-info" required id="sendhbdamount" type="number" step="0.001" min="0.001" :max="parseFloat(barhbd)" placeholder="0.000">
                           <div class="input-group-append">
                             <div class="input-group-text bg-dark border-dark text-white-50" id="sendhbdformunits"> HBD </div>
                           </div>
