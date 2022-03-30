@@ -891,7 +891,7 @@ include_once( $path );
               <!-- send token form -->
               <div id="userdlux" class="mx-4">
                 <div class="dropdown show d-flex align-items-center "><a class="text-warning" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
-                  <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
+                  <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                     <h6 class="dropdown-header text-center">SEND {{TOKEN}}</h6>
                     <form name="sendlarynx" class="needs-validation" novalidate>
                       <div class="form-group">
@@ -929,7 +929,7 @@ include_once( $path );
               <!-- power form -->
               <div id="userdpwr" class="mx-4">
                 <div class="dropdown show d-flex align-items-center "><a class="text-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a>
-                  <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
+                  <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                     <h6 class="dropdown-header text-center">{{TOKEN}} POWER</h6>
                     <form name="pwrlarynx" class="needs-validation" novalidate>
                       <div class="form-group text-center">
@@ -966,7 +966,7 @@ include_once( $path );
               <!-- gov form -->
               <div id="userdgov" class="mx-4">
                 <div class="dropdown show d-flex align-items-center "><a class="text-info" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a>
-                  <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
+                  <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                     <h6 class="dropdown-header text-center">{{TOKEN}} GOVERNANCE</h6>
                     <form name="govlarynx" class="needs-validation" novalidate>
                       <div class="form-group text-center">
