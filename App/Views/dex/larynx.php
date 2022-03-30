@@ -1153,7 +1153,7 @@
                         <div class="form-group text-center">
                           <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
                             <label class="btn btn-outline-info active">
-                              <input type="radio" name="govpair" id="govlock" checked v-model="features.govsel_up">
+                              <input type="radio" name="govpair" id="govlock" checked v-model="features.govsel_up" :value="features.govsel_up">
                               LOCK </label>
                             <label class="btn btn-outline-info">
                               <input type="radio" name="govpair" id="govunlock">
