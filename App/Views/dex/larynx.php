@@ -1169,7 +1169,7 @@
                             </div>
                           </div>
                           <div class="small py-2" v-if="features.govsel_up"><a href="#/" @click="setValue('features.gov_val',balance)" class="text-info">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
-                          <div class="small pt-2" v-if="!features.govsel_up"><a href="#/" @click="setValue('features.gov_val',accountapi.gov)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Locked</div>
+                          <div class="small pt-2" v-if="!features.govsel_up"><a href="#/" @click="setValue('features.gov_val',accountapi.gov/1000)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Locked</div>
                         </div>
                         <div class="text-center mt-3">
                           <button id="locklarynxmodalsend" class="btn btn-info" v-if="features.govsel_up" @click="gov()">Lock Gov<i class="fas fa-lock ml-2"></i></button>
