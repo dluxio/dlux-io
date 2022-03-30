@@ -513,45 +513,32 @@
         },
         buyDEX(hive, hbd, dlux, hours, prefix = 'dlux_', callback) {
           if (document.getElementById('buyform').classList.contains('needs-validation')) {
+            console.log('needs validation')
             return
           }
-          var token, msaccount, statusapi
-          switch (prefix) {
-            case 'spkcc_':
-              token = 'LARYNX'
-              msaccount = 'spk-cc'
-              statusapi = 'spkinstant.hivehoneycomb.com'
-              break;
-            default:
-              token = 'DLUX'
-              msaccount = 'dlux-cc'
-          }
-          dlux = parseInt(parseFloat(dlux) * 1000)
-          hive = parseInt(parseFloat(hive) * 1000)
-          hbd = parseInt(parseFloat(hbd) * 1000)
           var andthen = ' at market rate',
             rate = undefined,
             hours = 720
-          if (dlux) {
-            rate = parseFloat((hive ? hive : hbd) / dlux).toFixed(6)
-            andthen = ` at ${rate} ${hive?'HIVE':'HBD'} per ${token}`
+          if (!buymarket.checked) {
+            rate = parseFloat((this.buyhive.checked ? this.buyHiveTotal : this.buyHBDTotal) / this.buyQuantity).toFixed(6)
+            andthen = ` at ${rate} ${this.buyhive.checked ? 'HIVE' : 'HBD' } per ${this.TOKEN}`
           }
-          if (this.buyhive.checked && hive) broadcastTransfer({
-            to: msaccount,
-            hive,
+          if (this.buyhive.checked) broadcastTransfer({
+            to: this.multisig,
+            hive: this.buyHiveTotal.toFixed(3) + ' HIVE',
             memo: JSON.stringify({
-              rate,
-              hours
+              rate: this.buyPrice,
+              hours: this.buyHours
             })
-          }, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
-          else if (!this.buyhive.checked && hbd) broadcastTransfer({
-            to: msaccount,
-            hbd,
+          }, `Buying ${this.TOKEN} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, lapi.split('://')[1])
+          else if (!this.buyhive.checked) broadcastTransfer({
+            to: this.multisig,
+            hbd: this.buyHBDTotal.toFixed(3) + ' HBD',
             memo: JSON.stringify({
-              rate,
-              hours
+              rate: this.buyPrice,
+              hours: this.buyHours
             })
-          }, `Buying ${token} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, statusapi)
+          }, `Buying ${this.TOKEN} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive ?'HIVE':'HBD'} ${andthen}`, lapi.split('://')[1])
         },
         sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback) {
           if (document.getElementById('sellform').classList.contains('needs-validation')) {
@@ -579,30 +566,17 @@
             [this.TOKEN.toLocaleLowerCase()]: dlux,
             hive,
             hours
-          }, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, statusapi)
+          }, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, lapi.split('://')[1])
           else if (!this.buyhive.checked && dlux) broadcastCJA({
             [this.TOKEN.toLocaleLowerCase()]: dlux,
             hbd,
             hours
-          }, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, statusapi)
+          }, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, lapi.split('://')[1])
         },
-        cancelDEX(txid, prefix = 'dlux_') {
-          var token, statusapi
-          switch (prefix) {
-            case 'spkcc_':
-              token = 'LARYNX'
-              statusapi = 'spkinstant.hivehoneycomb.com'
-              break;
-            default:
-              token = 'DLUX'
-          }
-          var txidstring = txid
-          if (typeof txid === 'array') {
-            txidstring = txid.join(',')
-          }
+        cancelDEX(txid) {
           if (txid) broadcastCJA({
             txid
-          }, `${prefix}dex_clear`, `Canceling: ${txidstring}`, statusapi)
+          }, `${this.prefix}dex_clear`, `Canceling: ${txid}`, lapi.split('://')[1])
         }
       },
       mounted() {
@@ -1458,7 +1432,7 @@
                     </div>
                   </div>
                   <div class="text-right">
-                    <button type="submit" class="btn btn-success" @click="buyDEX(buyHiveTotal,buyHBDTotal,buyQuantity,buyHours,prefix)">Buy</button>
+                    <button type="submit" class="btn btn-success" @click="buyDEX()">Buy</button>
                   </div>
                 </form>
               </div>
