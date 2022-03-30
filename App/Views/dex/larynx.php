@@ -525,7 +525,7 @@
           }
           if (this.buyhive.checked) broadcastTransfer({
             to: this.multisig,
-            hive: this.buyHiveTotal.toFixed(3) + ' HIVE',
+            hive: parseFloat(this.buyHiveTotal).toFixed(3) + ' HIVE',
             memo: JSON.stringify({
               rate: this.buyPrice,
               hours: this.buyHours
@@ -533,7 +533,7 @@
           }, `Buying ${this.TOKEN} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, lapi.split('://')[1])
           else if (!this.buyhive.checked) broadcastTransfer({
             to: this.multisig,
-            hbd: this.buyHBDTotal.toFixed(3) + ' HBD',
+            hbd: parseFloat(this.buyHBDTotal).toFixed(3) + ' HBD',
             memo: JSON.stringify({
               rate: this.buyPrice,
               hours: this.buyHours
