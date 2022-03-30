@@ -918,7 +918,7 @@ include_once( $path );
           </div>
 			<!-- send hbd form -->
           <div id="userhbd" class="mx-4">
-            <div class="dropdown show d-flex align-items-center "><a class="text-success dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhbd,3,'.',',')}} hbd</a>
+            <div class="dropdown show d-flex align-items-center "><a class="text-success dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhbd,3,'.',',')}} HBD</a>
               <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
                 <h6 class="dropdown-header text-center">SEND HBD</h6>
                 <form name="sendhbd" class="needs-validation" novalidate>
