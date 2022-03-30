@@ -968,6 +968,9 @@
                             <label class="custom-control-label" for="mirrorCheck">Mirror Leader</label>
                           </div>
                         </div> -->
+						  <div class="text-center mt-3">
+                          <button id="savenodesettings" type="submit" class="btn btn-secondary" @click="save()">Save<i class="far fa-save ml-2"></i></button>
+                        </div>
                       </form>
                     </div>
                   </div>
@@ -998,7 +1001,7 @@
                         </div>
                         <div class="form-group">
                           <div class="text-center mt-3">
-                            <button id="claimlarynxad" type="submit" class="btn background-rb" @click="adclaim()">Claim <i class="fas fa-coins ml-2"></i></button>
+                            <button id="claimlarynxad" type="submit" class="btn background-rb" @click="adclaim()">Claim<i class="fas fa-coins ml-2"></i></button>
                           </div>
                         </div>
                       </form>
@@ -1012,7 +1015,7 @@
                         </div>
                         <div class="form-group">
                           <div class="text-center mt-3">
-                            <button id="claimlarynxrewards" type="submit" class="btn background-rb" @click="rclaim()">Claim <i class="fas fa-tools ml-2"></i></button>
+                            <button id="claimlarynxrewards" type="submit" class="btn background-rb" @click="rclaim()">Claim<i class="fas fa-tools ml-2"></i></button>
                           </div>
                         </div>
                       </form>
@@ -1053,7 +1056,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning" @click="tokenSend()">Send <i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning" @click="tokenSend()">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1089,8 +1092,8 @@
                           <div class="small pt-2" v-if="pwrdown.checked"><a href="#/" @click="setValue('pwrdownlarynxamount',balance)" class="text-primary">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a> Available</div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="pwruplarynxmodalsend" type="submit" class="btn btn-primary" v-if="pwrup.checked" @click="dluxgovup(pwruplarnyxamount,prefix)">Power Up <i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
-                          <button id="pwrdownlarynxmodalsend" type="submit" class="btn btn-primary" v-if="pwrdown.checked" @click="govDown(pwrdownlarnyxamount,prefix)">Power Down <i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
+                          <button id="pwruplarynxmodalsend" type="submit" class="btn btn-primary" v-if="pwrup.checked" @click="dluxgovup(pwruplarnyxamount,prefix)">Power Up<i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
+                          <button id="pwrdownlarynxmodalsend" type="submit" class="btn btn-primary" v-if="pwrdown.checked" @click="govDown(pwrdownlarnyxamount,prefix)">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1126,8 +1129,8 @@
                           <div class="small pt-2" v-if="govunlock.checked"><a href="#/" @click="setValue('govdownlarynxamount',balance)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Available</div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="locklarynxmodalsend" type="submit" class="btn btn-info" v-if="govlock.checked" @click="dluxgovup(govuplarnyxamount,prefix)">Lock Gov <i class="fas fa-lock ml-2"></i></button>
-                          <button id="unlocklarynxmodalsend" type="submit" class="btn btn-info" v-if="govunlock.checked" @click="govDown(govdownlarnyxamount,prefix)">Unlock Gov <i class="fas fa-lock-open ml-2"></i></button>
+                          <button id="locklarynxmodalsend" type="submit" class="btn btn-info" v-if="govlock.checked" @click="dluxgovup(govuplarnyxamount,prefix)">Lock Gov<i class="fas fa-lock ml-2"></i></button>
+                          <button id="unlocklarynxmodalsend" type="submit" class="btn btn-info" v-if="govunlock.checked" @click="govDown(govdownlarnyxamount,prefix)">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1165,7 +1168,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendhivemodalsend" type="submit" class="btn btn-danger" @click="dluxsend(sendhiveto,sendhiveamount,sendhivememo,prefix)">Send <i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhivemodalsend" type="submit" class="btn btn-danger" @click="dluxsend(sendhiveto,sendhiveamount,sendhivememo,prefix)">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1203,7 +1206,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendhbdmodalsend" type="submit" class="btn btn-success" @click="dluxsend(sendhbdto,sendhbdamount,sendhbdmemo,prefix)">Send <i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhbdmodalsend" type="submit" class="btn btn-success" @click="dluxsend(sendhbdto,sendhbdamount,sendhbdmemo,prefix)">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
