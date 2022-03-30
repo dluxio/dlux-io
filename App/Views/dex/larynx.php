@@ -540,38 +540,29 @@
             })
           }, `Buying ${this.TOKEN} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive ?'HIVE':'HBD'} ${andthen}`, lapi.split('://')[1])
         },
-        sellDEX(dlux, hive, hbd, hours, prefix = 'dlux_', callback) {
-          if (document.getElementById('sellform').classList.contains('needs-validation')) {
-            return
-          }
-          var token, statusapi
-          switch (prefix) {
-            case 'spkcc_':
-              token = 'LARYNX'
-              statusapi = 'spkinstant.hivehoneycomb.com'
-              break;
-            default:
-              token = 'DLUX'
-          }
-          var andthen = ' at market rate'
-          dlux = parseInt(parseFloat(dlux) * 1000)
-          hive = parseInt(parseFloat(hive) * 1000)
-          hbd = parseInt(parseFloat(hbd) * 1000)
-          hours = parseInt(hours)
+        sellDEX() {
+          // if (document.getElementById('sellform').classList.contains('needs-validation')) {
+          //   return
+          // }
+          var andthen = ' at market rate',
+            dlux = parseInt(parseFloat(this.sellQuantity) * 1000),
+            hive = parseInt(parseFloat(this.sellHiveTotal) * 1000),
+            hbd = parseInt(parseFloat(this.sellHBDTotal) * 1000),
+            hours = parseInt(this.sellHours)
           if (hive || hbd) {
-            const price = parseFloat(dlux / (hive ? hive : hbd)).toFixed(6)
-            andthen = ` at ${price} ${hive?'HIVE':'HBD'} per ${token}`
+            const price = parseFloat(dlux / (this.buyhive.checked ? hive : hbd)).toFixed(6)
+            andthen = ` at ${price} ${this.buyhive.checked ?'HIVE':'HBD'} per ${this.TOKEN}`
           }
           if (this.buyhive.checked && dlux) broadcastCJA({
             [this.TOKEN.toLocaleLowerCase()]: dlux,
             hive,
             hours
-          }, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, lapi.split('://')[1])
+          }, `${this.prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${this.TOKEN}${andthen}`, lapi.split('://')[1])
           else if (!this.buyhive.checked && dlux) broadcastCJA({
             [this.TOKEN.toLocaleLowerCase()]: dlux,
             hbd,
             hours
-          }, `${prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${token}${andthen}`, lapi.split('://')[1])
+          }, `${this.prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${this.TOKEN}${andthen}`, lapi.split('://')[1])
         },
         cancelDEX(txid) {
           if (txid) broadcastCJA({
@@ -1532,7 +1523,7 @@
                     </div>
                   </div>
                   <div class="text-right">
-                    <button type="submit" class="btn btn-danger" @click="sellDEX(sellQuantity,sellHiveTotal,sellHBDTotal,sellHours,prefix)">Sell</button>
+                    <button type="submit" class="btn btn-danger" @click="sellDEX()">Sell</button>
                   </div>
                 </form>
               </div>
