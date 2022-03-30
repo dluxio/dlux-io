@@ -843,10 +843,10 @@
             this.barpow = ((data.poweredUp + data.granted - data.granting) / 1000).toFixed(3)
             this.bargov = (data.gov / 1000).toFixed(3)
             this.accountapi = data
-            console.log('claim logic',new Date().getMonth() + 1, data.drop?.last_claim, data.drop?.amount)
-            if (new Date().getMonth() + 1 != data.drop?.last_claim && data.drop?.amount > 0) {
+            console.log('claim logic', new Date().getMonth() + 1, data.drop?.last_claim, data.drop?.availible.amount)
+            if (new Date().getMonth() + 1 != data.drop?.last_claim && data.drop?.availible.amount > 0) {
               this.hasDrop = true
-              this.dropnai = `${parseFloat(data.drop.amount / Math.pow(10, data.drop.precision)).toFixed(data.drop.precision)} ${data.drop.token}`
+              this.dropnai = `${parseFloat(data.drop.availible.amount / Math.pow(10, data.drop.availible.precision)).toFixed(data.drop.availible.precision)} ${data.drop.availible.token}`
             }
             this.openorders = data.contracts
               .reduce((acc, cur) => {
