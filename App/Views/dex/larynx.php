@@ -151,6 +151,10 @@
             hive_usd: 0,
             hbd_usd: 0
           },
+          sendTo: '',
+          sendAmount: 0,
+          sendMemo: '',
+          sendAllowed: false,
           recenthive: {},
           recenthbd: {},
           openorders: [],
@@ -222,6 +226,32 @@
         }
       },
       methods: {
+        checkAccount(name) {
+          fetch("https://anyx.io", {
+              body: `{\"jsonrpc\":\"2.0\", \"method\":\"condenser_api.get_accounts\", \"params\":[[\"${this[name]}\"]], \"id\":1}`,
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+              },
+              method: "POST"
+            })
+            .then(r => {
+              return r.json()
+            })
+            .then(re => {
+              if (re.result.length) this.sendAllowed = true
+              else this.sendAllowed = false
+            })
+
+        },
+        tokenSend() {
+          if (sendAllowed) {
+            broadcastCJA({
+              to: this.sendTo,
+              amount: parseInt(this.sendAmount * 1000),
+              memo: this.sendMemo
+            }, `${this.prefix}send`, `Trying to send ${this.TOKEN}...`, statusapi)
+          }
+        },
         bcalc(k) {
           switch (k) {
             case 't':
@@ -827,27 +857,27 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text bg-dark border-dark text-white-50">@</div>
                             </div>
-                            <input class="form-control bg-dark border-dark text-info" required id="sendlarynxto" type="text" placeholder="Recipient">
+                            <input class="form-control bg-dark border-dark text-info" v-model="sendTo" @blur="checkAccount('sendTo')" required id="sendlarynxto" type="text" placeholder="Recipient">
                           </div>
                         </div>
                         <div class="form-group">
                           <label id="sendlarynxamountlab" for="sendlarynxamount">Amount:</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" required id="sendlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="1.000">
+                            <input class="form-control bg-dark border-dark text-info" v-model="sendAmount" required id="sendlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="1.000">
                             <div class="input-group-append">
                               <div class="input-group-text bg-dark border-dark text-white-50" id="sendformunits"> {{TOKEN}} </div>
                             </div>
                           </div>
-                          <div class="small pt-2"><a href="#/" @click="setValue('sendlarynxamount',balance)" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
+                          <div class="small pt-2"><a href="#/" @click="setValue('sendAmount', parseFloat(bartoken))" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
                         </div>
                         <div class="form-group" id="sendlarynxmemogroup">
                           <label for="sendlarynxmemo">Memo:</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" id="sendlarynxmemo" type="text" placeholder="Include a memo (optional)">
+                            <input class="form-control bg-dark border-dark text-info" v-model="sendMemo" id="sendlarynxmemo" type="text" placeholder="Include a memo (optional)">
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning" @click="dluxsend(sendlarynxto,sendlarnyxamount,sendlarnyxmemo,prefix)">Send</button>
+                          <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning" @click="tokenSend()">Send</button>
                         </div>
                       </form>
                     </div>
