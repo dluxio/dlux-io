@@ -59,21 +59,20 @@ thead, tbody tr {
     border-style: solid;
     border-width: 1px;
     border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
-
 }
-	.border-rb {
-		border-style: solid;
+.border-rb {
+    border-style: solid;
     border-width: 1px;
     border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
-	}
-	.background-rb {
-		    background: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-		color: #000;
-		border: none;
-	}
-	.dark-divider {
-		border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
-	}
+}
+.background-rb {
+    background: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    color: #000;
+    border: none;
+}
+.dark-divider {
+    border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
+}
 </style>
 <script type="module">
     import {
@@ -824,14 +823,16 @@ include_once( $path );
       <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
         <div class="d-flex flex-column justify-content-between align-items-center px-3 py-1" style="background-color: black;">
           <div class="d-flex align-itmes-center justify-content-between w-100">
-            <div class="d-flex align-itmes-center">
-              <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
-                <div class="dropdown-menu bg-black rounded">
-                  <h6 class="dropdown-header">HIVE / HBD</h6>
-                  <a class="dropdown-item text-white-50" href="/dex/dlux">DLUX</a> <a class="dropdown-item text-white-50" href="/dex/larynx">LARYNX</a>
-                  <div class="dropdown-divider bg-light"></div>
-                  <a class="dropdown-item text-white-50" href="#/" onclick="manualApi()">Manual</a> 
-                  <script>
+            <div class="d-flex align-items-center"> 
+              <!-- token select -->
+              <div id="userselectapi">
+                <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
+                  <div class="dropdown-menu bg-black rounded">
+                    <h6 class="dropdown-header">HIVE / HBD</h6>
+                    <a class="dropdown-item text-white-50" href="/dex/dlux">DLUX</a> <a class="dropdown-item text-white-50" href="/dex/larynx">LARYNX</a>
+                    <div class="dropdown-divider bg-light"></div>
+                    <a class="dropdown-item text-white-50" href="#/" onclick="manualApi()">Manual</a> 
+                    <script>
                       function manualApi() {
                         let api = prompt("Please enter your API", "https://spkinstant.hivehoneycomb.com");
                         if (api != null) {
@@ -840,10 +841,59 @@ include_once( $path );
                         }
                       }
                     </script> 
+                  </div>
                 </div>
               </div>
-              <div class="d-flex" :title="behindTitle">
-                <button class="text-center btn btn-sm align-items-center ml-4" :class="{'btn-outline-success':'behind < 30'}" :class="{'btn-outline-warning':'behind >= 30 && behind < 60'}" :class="{'btn-outline-danger':'behind >= 60'}" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
+              <!-- node settings form -->
+              <div id="usernode" class="mx-3">
+                <div class="dropdown show d-flex align-items-center "><a class="btn btn-sm btn-secondary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-cog"></i></a>
+                  <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
+                    <h6 class="dropdown-header text-center">{{TOKEN}} NODE SETTINGS</h6>
+                    <form name="nodesettings" class="needs-validation" novalidate>
+                      <div class="form-group">
+                        <label for="nodeDomain">Domain:</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text bg-dark border-dark text-white-50">https://</div>
+                          </div>
+                          <input type="text" class="form-control bg-dark border-dark text-info" id="nodeDomain" placeholder="yourname-dluxtoken.herokuapp.com" readonly>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="nodeBidRate">Node Inflation Vote:</label>
+                        <div class="input-group mb-2">
+                          <input type="number" class="form-control bg-dark border-dark text-info" id="nodeBidRate" placeholder="0.0 - 20.0" readonly>
+                          <div class="input-group-append">
+                            <div class="input-group-text bg-dark border-dark text-white-50">%</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="nodeDaoRate">DAO Inflation Vote:</label>
+                        <div class="input-group mb-2">
+                          <input type="number" class="form-control bg-dark border-dark text-info" id="nodeDaoRate" placeholder="0.0 - 20.0" readonly>
+                          <div class="input-group-append">
+                            <div class="input-group-text bg-dark border-dark text-white-50">%</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group"> <br>
+                        <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="escrowCheck" checked disabled>
+                          <label class="custom-control-label" for="escrowCheck">Escrow Agent</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="mirrorCheck" disabled>
+                          <label class="custom-control-label" for="mirrorCheck">Mirror Leader</label>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- node status btn -->
+              <div  :title="behindTitle">
+                <button class="text-center btn btn-sm align-items-center" :class="{'btn-outline-success':'behind < 30'}" :class="{'btn-outline-warning':'behind >= 30 && behind < 60'}" :class="{'btn-outline-danger':'behind >= 60'}" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
                 <span class="small p-0 m-0"><i class="fas fa-circle mr-2"></i>{{ TOKEN }} | </span> <span class="small p-0 m-0" v-show="behind < 30">ONLINE</span> <span class="small p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span> <span class="small p-0 m-0" v-show="behind > 100">OFFLINE</span> <span class="small p-0 m-0"> | {{behind}} BBH | {{runners.length}} NODES</span>
                 </button>
               </div>
@@ -859,7 +909,6 @@ include_once( $path );
                         <label>Airdrop:</label>
                         <div class="input-group">
                           <div class="form-control bg-black border-rb text-white text-center">1234 {{TOKEN}}</div>
-
                         </div>
                       </div>
                       <div class="form-group">
@@ -874,7 +923,6 @@ include_once( $path );
                         <label>Rewards:</label>
                         <div class="input-group">
                           <div class="form-control bg-black border-rb text-white text-center">1234 {{TOKEN}}</div>
-
                         </div>
                       </div>
                       <div class="form-group">
