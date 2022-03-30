@@ -1186,8 +1186,8 @@
                           <div class="small pt-2" v-if="!features.govsel_up"><a href="#/" @click="setValue('features.gov_val',accountapi.gov/1000)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Locked</div>
                         </div>
                         <div class="text-center">
-                          <button id="locklarynxmodalsend"  type="submit" class="btn btn-info" v-if="features.govsel_up" @click="gov()">Lock Gov<i class="fas fa-lock ml-2"></i></button>
-                          <button id="unlocklarynxmodalsend"  type="submit" class="btn btn-info" v-if="!features.govsel_up" @click="gov()">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
+                          <button id="locklarynxmodalsend" type="submit" class="btn btn-info" v-if="features.govsel_up" @click="gov()">Lock Gov<i class="fas fa-lock ml-2"></i></button>
+                          <button id="unlocklarynxmodalsend" type="submit" class="btn btn-info" v-if="!features.govsel_up" @click="gov()">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
                         </div>
                       </form>
                     </div>
