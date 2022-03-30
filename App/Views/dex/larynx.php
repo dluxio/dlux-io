@@ -107,6 +107,8 @@
           agoTime: new Date().getTime() - 86400000,
           account: user,
           isnode: false,
+          hasDrop: false,
+          dropnai: '',
           balance: "0.000",
           bartoken: "",
           barhive: "",
@@ -210,6 +212,8 @@
             rewards_S: 'Rewards',
             rewards_B: true,
             rewards_json: 'claim',
+            rewardSel: false,
+            reward2Gov: false,
             send_id: 'send',
             send_S: 'Send',
             send_B: true,
@@ -839,74 +843,77 @@
             this.barpow = ((data.poweredUp + data.granted - data.granting) / 1000).toFixed(3)
             this.bargov = (data.gov / 1000).toFixed(3)
             this.accountapi = data
-            console.log(data.contracts)
+            if (new Date().getMonth + 1 != data.drop?.last_claim && data.drop?.amount > 0) {
+              this.hasDrop = true
+              this.dropnai = `${parseFloat(data.drop.amount / Math.pow(10, data.drop.precision)).toFixed(data.drop.precision)} ${data.drop.token}`
+            }
             this.openorders = data.contracts
-              .reduce((acc, cur) => {
-                cur.nai = `${cur.type.split(':')[0] == 'hive' ? parseFloat(cur.hive/1000).toFixed(3) : parseFloat(cur.hbd/1000).toFixed(3)} ${cur.type.split(':')[0] == 'hive' ? 'HIVE' : 'HBD'}`
-                if (cur.partials && cur.partials.length && cur.type.split(':')[1] == 'sell') {
-                  const filled = cur.partials.reduce(function(a, c) {
-                    return a + c.coin
-                  }, 0)
-                  cur.percentFilled = parseFloat(100 * filled / (cur.hive ? cur.hive : cur.hbd + filled)).toFixed(2)
-                  acc.push(cur)
-                } else if (cur.partials && cur.partials.length) {
-                  const filled = cur.partials.reduce(function(a, c) {
-                    return a + c.token
-                  }, 0)
-                  cur.percentFilled = parseFloat(100 * filled / (cur.amount + filled)).toFixed(2)
-                  acc.push(cur)
-                } else {
-                  cur.percentFilled = "0.00"
-                  acc.push(cur)
-                }
-                console.log({
-                  acc
-                })
-                return acc
-              }, [])
+            .reduce((acc, cur) => {
+              cur.nai = `${cur.type.split(':')[0] == 'hive' ? parseFloat(cur.hive/1000).toFixed(3) : parseFloat(cur.hbd/1000).toFixed(3)} ${cur.type.split(':')[0] == 'hive' ? 'HIVE' : 'HBD'}`
+              if (cur.partials && cur.partials.length && cur.type.split(':')[1] == 'sell') {
+                const filled = cur.partials.reduce(function(a, c) {
+                  return a + c.coin
+                }, 0)
+                cur.percentFilled = parseFloat(100 * filled / (cur.hive ? cur.hive : cur.hbd + filled)).toFixed(2)
+                acc.push(cur)
+              } else if (cur.partials && cur.partials.length) {
+                const filled = cur.partials.reduce(function(a, c) {
+                  return a + c.token
+                }, 0)
+                cur.percentFilled = parseFloat(100 * filled / (cur.amount + filled)).toFixed(2)
+                acc.push(cur)
+              } else {
+                cur.percentFilled = "0.00"
+                acc.push(cur)
+              }
+              console.log({
+                acc
+              })
+              return acc
+            }, [])
           })
-        if (user != 'GUEST') fetch(hapi, {
-            body: `{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["${user}"]], "id":1}`,
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            method: "POST"
-          })
-          .then(response => response.json())
-          .then(data => {
-            this.accountinfo = data.result[0]
-            this.barhive = this.accountinfo.balance
-            this.barhbd = this.accountinfo.hbd_balance
-          })
+      if (user != 'GUEST') fetch(hapi, {
+          body: `{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["${user}"]], "id":1}`,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          method: "POST"
+        })
+        .then(response => response.json())
+        .then(data => {
+          this.accountinfo = data.result[0]
+          this.barhive = this.accountinfo.balance
+          this.barhbd = this.accountinfo.hbd_balance
+        })
+    },
+    computed: {
+      minbuy: {
+        get() {
+          return parseFloat(parseFloat(parseFloat(this.buyPrice / 1000).toFixed(3)) + 0.001).toFixed(3)
+        }
       },
-      computed: {
-        minbuy: {
-          get() {
-            return parseFloat(parseFloat(parseFloat(this.buyPrice / 1000).toFixed(3)) + 0.001).toFixed(3)
-          }
-        },
-        minsell: {
-          get() {
-            return parseFloat(parseFloat(parseFloat(this.sellPrice / 0.001).toFixed(3)) + 0.001).toFixed(3)
-          }
-        },
-        maxhbuy: {
-          get() {
-            return parseFloat((this.dexapi.markets.hive.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hive.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
-          }
-        },
-        maxdbuy: {
-          get() {
-            return parseFloat((this.dexapi.markets.hbd.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hbd.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
-          }
-        },
-        marketCap: {
-          get() {
-            if (this.buyhive.checked) return `${parseFloat((this.stats.tokenSupply/1000) * this.hiveprice.hive.usd * this.dexapi.markets.hive.tick).toFixed(2)}`
-            else return `${parseFloat((this.stats.tokenSupply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.markets.hbd.tick).toFixed(2)}`
-          }
+      minsell: {
+        get() {
+          return parseFloat(parseFloat(parseFloat(this.sellPrice / 0.001).toFixed(3)) + 0.001).toFixed(3)
+        }
+      },
+      maxhbuy: {
+        get() {
+          return parseFloat((this.dexapi.markets.hive.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hive.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
+        }
+      },
+      maxdbuy: {
+        get() {
+          return parseFloat((this.dexapi.markets.hbd.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hbd.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
+        }
+      },
+      marketCap: {
+        get() {
+          if (this.buyhive.checked) return `${parseFloat((this.stats.tokenSupply/1000) * this.hiveprice.hive.usd * this.dexapi.markets.hive.tick).toFixed(2)}`
+          else return `${parseFloat((this.stats.tokenSupply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.markets.hbd.tick).toFixed(2)}`
         }
       }
+    }
     }).mount('#app')
   </script>
 </head>
@@ -991,15 +998,15 @@
               </div>
               <div class="d-flex align-items-center">
                 <!-- claim tokens form -->
-                <div id="userdlux" class="mx-4">
+                <div v-if="hasDrop || accountapi.claim" id="userdlux" class="mx-4">
                   <div class="dropdown show d-flex align-items-center "> <a class="btn btn-sm btn-rb" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Claim <i class="fas fa-gift"></i></a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
                       <h6 class="dropdown-header text-center">CLAIM {{TOKEN}}</h6>
-                      <form name="claimlarynxad">
+                      <form v-if="hasDrop" name="claimlarynxad">
                         <div class="form-group">
                           <label>Airdrop:</label>
                           <div class="input-group">
-                            <div class="form-control bg-black border-rb text-white text-center">1234 {{TOKEN}}</div>
+                            <div class="form-control bg-black border-rb text-white text-center">{{dropnai}} {{TOKEN}}</div>
                           </div>
                         </div>
                         <div class="form-group">
@@ -1009,12 +1016,16 @@
                         </div>
                       </form>
                       <div class="d-none dropdown-divider dark-divider"></div>
-                      <form name="claimlarynxrewards">
+                      <form v-if="accountapi.claim" name="claimlarynxrewards">
                         <div class="form-group">
                           <label>Rewards:</label>
                           <div class="input-group">
-                            <div class="form-control bg-black border-rb text-white text-center">1234 {{TOKEN}}</div>
+                            <div class="form-control bg-black border-rb text-white text-center">{{toFixed(accountapi.claim/1000,3)}} {{TOKEN}}</div>
                           </div>
+                        </div>
+                        <div class="custom-control custom-switch" v-if="isnode && features.rewardSel">
+                          <input type="checkbox" class="custom-control-input" v-model="features.reward2Gov" id="claimToGov">
+                          <label class="custom-control-label" for="claimToGov">Claim 1/2 to Gov</label>
                         </div>
                         <div class="form-group">
                           <div class="text-center mt-3">
