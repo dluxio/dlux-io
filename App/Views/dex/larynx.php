@@ -769,7 +769,7 @@ include_once( $path );
         <div class="d-flex align-items-center text-white-50">
 			<!-- send token form -->
           <div id="userdlux" class="mx-4">
-            <div class="dropdown show d-flex align-items-center "><a class="text-warning dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
+            <div class="dropdown show d-flex align-items-center "><a class="text-warning" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
               <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
                 <h6 class="dropdown-header text-center">SEND {{TOKEN}}</h6>
                 <form name="sendlarynx" class="needs-validation" novalidate>
@@ -807,7 +807,7 @@ include_once( $path );
           </div>
 		<!-- power form -->
           <div id="userdpwr" class="mx-4" >
-              <div class="dropdown show d-flex align-items-center "><a class="text-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a> 
+              <div class="dropdown show d-flex align-items-center "><a class="text-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a> 
                 <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
                   <h6 class="dropdown-header text-center">{{TOKEN}} POWER</h6>
                   
@@ -844,7 +844,7 @@ include_once( $path );
             </div>
 			<!-- gov form -->
             <div id="userdgov" class="mx-4" >
-              <div class="dropdown show d-flex align-items-center "><a class="text-info dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> 
+              <div class="dropdown show d-flex align-items-center "><a class="text-info" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> 
                 <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
                   <h6 class="dropdown-header text-center">{{TOKEN}} GOVERNANCE</h6>
                   
@@ -880,7 +880,7 @@ include_once( $path );
             </div>
 			<!-- send hive form -->
           <div id="userhive" class="mx-4">
-            <div class="dropdown show d-flex align-items-center "><a class="text-danger dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhive,3,'.',',')}} HIVE</a>
+            <div class="dropdown show d-flex align-items-center "><a class="text-danger" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhive,3,'.',',')}} HIVE</a>
               <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                 <h6 class="dropdown-header text-center">SEND HIVE</h6>
                 <form name="sendhive" class="needs-validation" novalidate>
@@ -918,7 +918,7 @@ include_once( $path );
           </div>
 			<!-- send hbd form -->
           <div id="userhbd" class="mx-4">
-            <div class="dropdown show d-flex align-items-center "><a class="text-success dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhbd,3,'.',',')}} HBD</a>
+            <div class="dropdown show d-flex align-items-center "><a class="text-success" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhbd,3,'.',',')}} HBD</a>
               <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                 <h6 class="dropdown-header text-center">SEND HBD</h6>
                 <form name="sendhbd" class="needs-validation" novalidate>
@@ -1047,7 +1047,7 @@ include_once( $path );
                 <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</b></h2>
               </div>
               <div class="ml-auto d-flex align-items-center">
-                <div class="dropdown show d-flex align-items-center p-0 m-0"><a class="btn btn-sm btn-outline-primary dropdown-toggle py-0 px-2 m-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-info mx-2"></i></a>
+                <div class="dropdown show d-flex align-items-center p-0 m-0"><a class="text-white py-0 px-2 m-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-info-circle mx-2"></i></a>
                   <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right">
                     <h6 class="dropdown-header">LARYNX STATS</h6>
                     <div class="dropdown-divider bg-light"></div>
@@ -1073,7 +1073,7 @@ include_once( $path );
                 <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd, 6)}}</b></h2>
               </div>
               <div class="ml-auto d-flex align-items-center">
-                <div class="dropdown show d-flex align-items-center p-0 m-0"><a class="btn btn-sm btn-outline-primary dropdown-toggle py-0 px-2 m-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-info mx-2"></i></a>
+                <div class="dropdown show d-flex align-items-center p-0 m-0"><a class="text-white py-0 px-2 m-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-info-circle mx-2"></i></a>
                   <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right">
                     <h6 class="dropdown-header">LARYNX STATS</h6>
                     <div class="dropdown-divider bg-light"></div>
