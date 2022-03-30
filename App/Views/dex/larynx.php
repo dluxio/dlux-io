@@ -1042,15 +1042,15 @@
               </div>
               <div class="d-flex align-items-center">
                 <!-- claim tokens form -->
-                <div  id="userdlux" class="mx-4">
+                <div v-if="hasDrop || accountapi.claim" id="userdlux" class="mx-4">
                   <div class="dropdown show d-flex align-items-center "> <a class="btn btn-sm btn-rb" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Claim <i class="fas fa-gift"></i></a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
                       <h6 class="dropdown-header text-center">CLAIM {{TOKEN}}</h6>
-                      <form  name="claimlarynxad">
+                      <form v-if="hasDrop" name="claimlarynxad">
                         <div class="form-group">
                           <label>Airdrop:</label>
                           <div class="input-group">
-                            <div class="form-control bg-black border-rb text-white text-center">198.208 LARYNX</div>
+                            <div class="form-control bg-black border-rb text-white text-center">{{dropnai}}</div>
                           </div>
                         </div>
                         <div class="form-group">
