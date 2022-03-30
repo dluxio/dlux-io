@@ -843,7 +843,7 @@
             this.barpow = ((data.poweredUp + data.granted - data.granting) / 1000).toFixed(3)
             this.bargov = (data.gov / 1000).toFixed(3)
             this.accountapi = data
-            if (new Date().getMonth + 1 != data.drop?.last_claim && data.drop?.amount > 0) {
+            if (new Date().getMonth() + 1 != data.drop?.last_claim && data.drop?.amount > 0) {
               this.hasDrop = true
               this.dropnai = `${parseFloat(data.drop.amount / Math.pow(10, data.drop.precision)).toFixed(data.drop.precision)} ${data.drop.token}`
             }
