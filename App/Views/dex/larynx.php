@@ -222,12 +222,12 @@
             powup_S: 'PWR UP',
             powup_B: false,
             powup_json: 'power_up',
-            powup_val: '',
+            pow_val: '',
             powdn_id: 'powerdn',
             powdn_S: 'PWR DOWN',
             powdn_B: false,
             powdn_json: 'power_down',
-            powdn_val: '',
+            powsel_up: true,
             govup_id: 'govup',
             govup_S: 'LOCK',
             govup_B: true,
@@ -348,6 +348,26 @@
             }
           }
           broadcastCJA(updates, `${this.prefix}${this.features.node.id}`, `Updating ${this.TOKEN} Node...`, lapi.split('://')[1])
+        },
+        dropClaim() {
+          broadcastCJA({
+            claim: true
+          }, `${this.prefix}${this.features.claim_id}`, `Claiming ${this.TOKEN}...`, lapi.split('://')[1])
+        },
+        rewardClaim() {
+          broadcastCJA({
+            gov: this.features.reward2Gov
+          }, `${this.prefix}${this.features.rewards_id}`, `Claiming ${this.TOKEN}...`, lapi.split('://')[1])
+        },
+        power() {
+          broadcastCJA({
+            amount: parseInt(this.features.pow_val * 1000)
+          }, `${this.prefix}${this.features.powsel_up ? this.features.powup_id : this.features.powdn_id}`, `${this.features.powsel_up ? '' : 'Down-'}Powering ${this.TOKEN}...`, lapi.split('://')[1])
+        },
+        gov() {
+          broadcastCJA({
+            amount: parseInt(this.features.gov_val * 1000)
+          }, `${this.prefix}${this.features.govsel_up ? this.features.govup_id : this.features.govdn_id}`, `${this.features.govsel_up ? '' : 'Un-'}Locking ${this.TOKEN}...`, lapi.split('://')[1])
         },
         checkAccount(name) {
           fetch("https://anyx.io", {
@@ -1021,7 +1041,7 @@
                         </div>
                         <div class="form-group">
                           <div class="text-center mt-3">
-                            <button id="claimlarynxad" type="submit" class="btn background-rb" @click="adclaim()">Claim<i class="fas fa-coins ml-2"></i></button>
+                            <button id="claimlarynxad" class="btn background-rb" @click="dropClaim()">Claim<i class="fas fa-coins ml-2"></i></button>
                           </div>
                         </div>
                       </form>
@@ -1039,7 +1059,7 @@
                         </div>
                         <div class="form-group">
                           <div class="text-center mt-3">
-                            <button id="claimlarynxrewards" type="submit" class="btn background-rb" @click="rclaim()">Claim<i class="fas fa-tools ml-2"></i></button>
+                            <button id="claimlarynxrewards" class="btn background-rb" @click="rewardClaim()">Claim<i class="fas fa-tools ml-2"></i></button>
                           </div>
                         </div>
                       </form>
@@ -1116,8 +1136,8 @@
                           <div class="small pt-2" v-if="pwrdown.checked"><a href="#/" @click="setValue('pwrdownlarynxamount',balance)" class="text-primary">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a> Available</div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="pwruplarynxmodalsend" type="submit" class="btn btn-primary" v-if="pwrup.checked" @click="dluxgovup(pwruplarnyxamount,prefix)">Power Up<i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
-                          <button id="pwrdownlarynxmodalsend" type="submit" class="btn btn-primary" v-if="pwrdown.checked" @click="govDown(pwrdownlarnyxamount,prefix)">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
+                          <button id="pwruplarynxmodalsend" class="btn btn-primary" @click="gov()">Power Up<i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
+                          <button id="pwrdownlarynxmodalsend" class="btn btn-primary" v-if="pwrdown.checked" @click="gov()">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1133,7 +1153,7 @@
                         <div class="form-group text-center">
                           <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
                             <label class="btn btn-outline-info active">
-                              <input type="radio" name="govpair" id="govlock" checked>
+                              <input type="radio" name="govpair" id="govlock" checked v-model="features.govsel_up">
                               LOCK </label>
                             <label class="btn btn-outline-info">
                               <input type="radio" name="govpair" id="govunlock">
@@ -1143,19 +1163,19 @@
                         <div class="form-group">
                           <label id="govuplarynxamountlab">Amount</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" v-if="govlock.checked" required id="govuplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
-                            <input class="form-control bg-dark border-dark text-info" v-if="govunlock.checked" required id="govdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bargov)" placeholder="0.000">
+                            <input class="form-control bg-dark border-dark text-info" v-if="features.govsel_up" v-model="features.gov_val" required id="govuplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
+                            <input class="form-control bg-dark border-dark text-info" v-if="!features.govsel_up" v-model="features.gov_val" required id="govdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bargov)" placeholder="0.000">
                             <div class="input-group-append">
-                              <div class="input-group-text bg-dark border-dark text-white-50" v-if="govlock.checked" id="govupformunits"> {{TOKEN}} </div>
-                              <div class="input-group-text bg-dark border-dark text-white-50" v-if="govunlock.checked" id="govdownformunits"> {{TOKEN}}G </div>
+                              <div class="input-group-text bg-dark border-dark text-white-50" v-if="features.govsel_up" id="govupformunits"> {{TOKEN}} </div>
+                              <div class="input-group-text bg-dark border-dark text-white-50" v-if="!features.govsel_up" id="govdownformunits"> {{TOKEN}}G </div>
                             </div>
                           </div>
-                          <div class="small py-2" v-if="govlock.checked"><a href="#/" @click="setValue('govuplarynxamount',balance)" class="text-info">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
-                          <div class="small pt-2" v-if="govunlock.checked"><a href="#/" @click="setValue('govdownlarynxamount',balance)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Available</div>
+                          <div class="small py-2" v-if="features.govsel_up"><a href="#/" @click="setValue('features.gov_val',balance)" class="text-info">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
+                          <div class="small pt-2" v-if="!features.govsel_up"><a href="#/" @click="setValue('features.gov_val',accountapi.gov)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Locked</div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="locklarynxmodalsend" type="submit" class="btn btn-info" v-if="govlock.checked" @click="dluxgovup(govuplarnyxamount,prefix)">Lock Gov<i class="fas fa-lock ml-2"></i></button>
-                          <button id="unlocklarynxmodalsend" type="submit" class="btn btn-info" v-if="govunlock.checked" @click="govDown(govdownlarnyxamount,prefix)">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
+                          <button id="locklarynxmodalsend" class="btn btn-info" v-if="features.govsel_up" @click="gov()">Lock Gov<i class="fas fa-lock ml-2"></i></button>
+                          <button id="unlocklarynxmodalsend" class="btn btn-info" v-if="!features.govsel_up" @click="gov()">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
                         </div>
                       </form>
                     </div>
