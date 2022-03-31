@@ -383,8 +383,11 @@
           },
         }
       },
-      components: {
-        TradingVue,
+      created: function() {
+
+        Vue.component('TradingVue', {
+          TradingVue
+        });
       },
       methods: {
         saveNodeSettings() {
