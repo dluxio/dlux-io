@@ -1264,7 +1264,7 @@
                           </div>
                         </div> -->
                         <div class="text-center mt-3">
-                          <button id="savenodesettings" class="btn btn-secondary" @click="saveNodeSettings()">Save<i class="far fa-save ml-2"></i></button>
+                          <button id="savenodesettings" type="button" class="btn btn-secondary" @click="saveNodeSettings()">Save<i class="far fa-save ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1288,7 +1288,7 @@
                         </div>
                         <div class="form-group">
                           <div class="text-center mt-3">
-                            <button id="claimlarynxad" class="btn background-rb" @click="dropClaim()">Claim<i class="fas fa-coins ml-2"></i></button>
+                            <button id="claimlarynxad" type="button" class="btn background-rb" @click="dropClaim()">Claim<i class="fas fa-coins ml-2"></i></button>
                           </div>
                         </div>
                       </form>
@@ -1306,7 +1306,7 @@
                         </div>
                         <div class="form-group">
                           <div class="text-center mt-3">
-                            <button id="claimlarynxrewards" class="btn background-rb" @click="rewardClaim()">Claim<i class="fas fa-coins ml-2"></i></button>
+                            <button id="claimlarynxrewards" type="button" class="btn background-rb" @click="rewardClaim()">Claim<i class="fas fa-coins ml-2"></i></button>
                           </div>
                         </div>
                       </form>
@@ -1347,7 +1347,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning" @click="tokenSend()">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendlarynxmodalsend" type="button" class="btn btn-warning" @click="tokenSend()">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1383,8 +1383,8 @@
                           <div class="small py-2" v-if="!features.powsel_up"><a href="#/" @click="setValue('features.pow_val',accountapi.poweredUp/1000)" class="text-primary">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a> Available</div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="pwruplarynxmodalsend" type="submit" class="btn btn-primary" v-if="features.powsel_up" @click="power()">Power Up<i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
-                          <button id="pwrdownlarynxmodalsend" type="submit" class="btn btn-primary" v-if="!features.powsel_up" @click="power()">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
+                          <button id="pwruplarynxmodalsend" type="button" class="btn btn-primary" v-if="features.powsel_up" @click="power()">Power Up<i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
+                          <button id="pwrdownlarynxmodalsend" type="button" class="btn btn-primary" v-if="!features.powsel_up" @click="power()">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1421,8 +1421,8 @@
                           <div class="small py-2" v-if="!features.govsel_up"><a href="#/" @click="setValue('features.gov_val',accountapi.gov/1000)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Locked</div>
                         </div>
                         <div class="text-center">
-                          <button id="locklarynxmodalsend" type="submit" class="btn btn-info" v-if="features.govsel_up" @click="gov()">Lock Gov<i class="fas fa-lock ml-2"></i></button>
-                          <button id="unlocklarynxmodalsend" type="submit" class="btn btn-info" v-if="!features.govsel_up" @click="gov()">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
+                          <button id="locklarynxmodalsend" type="button" class="btn btn-info" v-if="features.govsel_up" @click="gov()">Lock Gov<i class="fas fa-lock ml-2"></i></button>
+                          <button id="unlocklarynxmodalsend" type="button" class="btn btn-info" v-if="!features.govsel_up" @click="gov()">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1460,7 +1460,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendhivemodalsend" class="btn btn-danger" @click="sendhive()">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhivemodalsend" type="button" class="btn btn-danger" @click="sendhive()">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1498,7 +1498,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendhbdmodalsend" type="submit" class="btn btn-success" @click="sendhbd()">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhbdmodalsend" type="button" class="btn btn-success" @click="sendhbd()">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
