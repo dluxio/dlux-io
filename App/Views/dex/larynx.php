@@ -1036,7 +1036,7 @@
                     <span class=" p-0 m-0"><i class="fas fa-circle mr-2"></i><span class=" p-0 m-0" v-show="behind < 30">ONLINE</span>
                       <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span>
                       <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span></span>
-                    <span class="p-0 m-0 ml-1">({{runners.length}} <i class="fas fa-user"></i>)</span>
+                    <span class="p-0 m-0 ml-1">({{runners.length}} <i class=" far fa-handshake"></i>)</span>
                   </a>
                 </div>
               </div>
