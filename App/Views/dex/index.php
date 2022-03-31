@@ -152,10 +152,7 @@
             "lower": 30,
             "backColor": "#9b9ba316",
             "bandColor": "#666",
-            titleTxt: {
-              type: String,
-              default: 'DEX'
-            }
+            titleTxt: 'DEX',
           },
           barcount: 480,
           barwidth: 3600000 * 6,
