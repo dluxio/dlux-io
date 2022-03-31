@@ -1036,9 +1036,9 @@
                 <div :title="behindTitle" class="d-flex align-items-center mx-3">
                   <a class="text-center" style="font-size: .7em;" :class="{'text-success':'behind < 30'}" :class="{'text-warning':'behind >= 30 && behind < 60'}" :class="{'text-danger':'behind >= 60'}" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
                     <span class=" p-0 m-0"><i class="fas fa-circle mr-2"></i><span class=" p-0 m-0" v-show="behind < 30">ONLINE</span>
-                        <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span>
-                        <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span></span>
-					  <span class="p-0 m-0 ml-1">({{runners.length}} <i class="fas fa-user"></i>)</span>
+                      <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span>
+                      <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span></span>
+                    <span class="p-0 m-0 ml-1">({{runners.length}} <i class="fas fa-user"></i>)</span>
                   </a>
                 </div>
               </div>
@@ -1153,7 +1153,7 @@
                         </div>
                         <div class="text-center mt-3">
                           <button id="pwruplarynxmodalsend" type="submit" class="btn btn-primary" v-if="features.powsel_up" @click="power()">Power Up<i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
-                          <button id="pwrdownlarynxmodalsend"  type="submit" class="btn btn-primary" v-if="!features.powsel_up" @click="power()">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
+                          <button id="pwrdownlarynxmodalsend" type="submit" class="btn btn-primary" v-if="!features.powsel_up" @click="power()">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1290,9 +1290,9 @@
                       </div>
                     </div>
                     <div class="ml-auto mr-auto">
-                      
-                        <span class=" p-0 m-0 text-muted">{{lapi}} - {{behind}} block(s) behind HIVE</span>
-                      
+
+                      <span class=" p-0 m-0 text-muted">{{lapi}} - {{behind}} block(s) behind HIVE</span>
+
                     </div>
                   </div>
                   <div class="table-responsive rounded border border-dark">
@@ -1833,7 +1833,7 @@
                           <td aria-colindex="1" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
                           <td aria-colindex="2" role="cell" class="">{{formatNumber(item.hive/1000,3,'.',',')}}</td>
                           <td aria-colindex="3" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
-                          <td aria-colindex="4" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue('sellQuantity', item.at > balance ? balance : item.at/1000);suggestValue(buyhive.checked ? 'sellHiveTotal' : 'sellHBDTotal', item.at > balance ? (balance/item.total)/1000 : item.total/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
+                          <td aria-colindex="4" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue('sellQuantity', item.at > balance ? balance : item.at/1000);suggestValue('sellHiveTotal', item.at > balance ? (balance/item.total)/1000 : item.total/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1857,7 +1857,7 @@
                       </thead>
                       <tbody role="rowgroup" class="tbody-scroll-orders">
                         <tr class="" role="row" v-for="item in hivesells">
-                          <td aria-colindex="1" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue(buyhive.checked ? 'buyHiveTotal' : 'buyHBDTotal', item.total/1000 );suggestValue('buyQuantity', item.at/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
+                          <td aria-colindex="1" role="cell" class="text-primary"><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue('buyHiveTotal', item.total/1000 );suggestValue('buyQuantity', item.at/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
                           <td aria-colindex="2" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
                           <td aria-colindex="3" role="cell" class="">{{formatNumber(item.hive/1000,3,'.',',')}}</td>
                           <td aria-colindex="4" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
@@ -1919,7 +1919,7 @@
                           <td aria-colindex="1" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
                           <td aria-colindex="2" role="cell" class="">{{formatNumber(item.hbd/1000,3,'.',',')}}</td>
                           <td aria-colindex="3" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
-                          <td aria-colindex="4" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate)">{{formatNumber(item.rate,6,'.',',')}}</a></td>
+                          <td aria-colindex="4" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue('sellQuantity', item.at > balance ? balance : item.at/1000);suggestValue('sellHBDTotal', item.at > balance ? (balance/item.total)/1000 : item.total/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1943,7 +1943,7 @@
                       </thead>
                       <tbody role="rowgroup" class="tbody-scroll-orders">
                         <tr class="" role="row" v-for="item in hbdsells">
-                          <td aria-colindex="1" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate)">{{formatNumber(item.rate,6,'.',',')}}</a></td>
+                          <td aria-colindex="1" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue('buyHBDTotal', item.total/1000 );suggestValue('buyQuantity', item.at/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
                           <td aria-colindex="2" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
                           <td aria-colindex="3" role="cell" class="">{{formatNumber(item.hbd/1000,3,'.',',')}}</td>
                           <td aria-colindex="4" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
