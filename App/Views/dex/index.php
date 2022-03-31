@@ -662,6 +662,7 @@
               location.hash = "";
             }
             localStorage.setItem('lapi', api)
+            location.search = '?api=' + api
           }
         },
         suggestValue(key, value) {
