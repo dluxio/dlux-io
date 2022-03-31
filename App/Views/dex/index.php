@@ -149,8 +149,8 @@
           ohlcv: [],
           chart: {
             id: 'honeycomb',
-            width: '100%',
-            height: '100%',
+            width: '600',
+            height: '400',
             toolbar: true,
             overlays: false,
             title: 'DEX',
