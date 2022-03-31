@@ -96,7 +96,7 @@
     }
   </style>
   <script src="/js/trading-vue.min.js"></script>
-  <script src="/js/veeno.min.js"></script>
+  <!-- <script src="/js/veeno.min.js"></script> -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/trading-vue-js@1.0.2/dist/trading-vue.min.js"></script> -->
   <script type="module">
     import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
@@ -107,6 +107,9 @@
       TradingVue
     } = TradingVueJs //vue 2 only
     console.log(veeno)
+    import {
+      Veeno
+    } from "/js/veeno.min.js"
 
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
@@ -155,6 +158,7 @@
             height: 400,
             toolbar: true,
             overlays: false,
+            bg:  `#000000`
           },
           barcount: 480,
           barwidth: 3600000 * 6,
@@ -1715,7 +1719,7 @@
           <!-- market chart -->
           <div class="marketChart mt-3 mb-3">
             <div id="chartContainer" ref="dumbo">
-              <trading-vue :data="this.$data" ref="tvjs" :id="chart.id" :width="chart.width" :height="chart.height" :title-txt="chartTitle" /><!-- Trading Vue 2 -->
+              <trading-vue :data="this.$data" ref="tvjs" :id="chart.id" :width="chart.width" :height="chart.height" :title-txt="chartTitle" :color-back="chart.bg"/><!-- Trading Vue 2 -->
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
               <div></div>
@@ -2189,7 +2193,7 @@
   $path .= "/mod/footer.php";
   include_once($path);
   ?>
-  <script>
+  <!-- <script>
     var slider = document.getElementById('scaleslider');
 
     noUiSlider.create(slider, {
@@ -2200,7 +2204,7 @@
         'max': 100
       }
     });
-  </script>
+  </script> -->
 </body>
 <script>
   // Example starter JavaScript for disabling form submissions if there are invalid fields
