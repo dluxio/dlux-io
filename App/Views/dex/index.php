@@ -1095,7 +1095,7 @@
               return acc
             }, [])
             this.dexapi = data
-            this.TradingVue.props.titleTxt = 'DEX'
+            TradingVue.props.titleTxt = 'DEX'
             this.getHistorical()
             if (this.hivesells[0]) this.buyPrice = this.hivesells[0].rate
             if (this.hivebuys[0]) this.sellPrice = this.hivebuys[0].rate
