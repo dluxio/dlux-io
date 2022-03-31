@@ -429,7 +429,7 @@
         sendhive() {
           if (this.sendHiveAllowed) broadcastTransfer({
             to: this.sendHiveTo,
-            hive: this.sendHBDTotal * 1000,
+            hive: this.sendHiveTotal * 1000,
             memo: this.sendHiveMemo
           })
           else alert('Account Not Found')
