@@ -403,8 +403,8 @@
       },
       methods: {
         onResize(event) {
-          this.chart.width = this.$refs.chartContainer.width
-          this.chart.height = this.$refs.chartContainer.height
+          this.chart.width = this.$refs.chartContainer.scrollWidth
+          this.chart.height = this.$refs.chartContainer.scrollHeight
         },
         saveNodeSettings() {
           let updates = {};
@@ -978,8 +978,8 @@
       },
       mounted() {
         console.log(this.$refs.chartContainer)
-        this.chart.width = this.$refs.chartContainer.width
-        this.chart.height = this.$refs.chartContainer.height
+        this.chart.width = this.$refs.chartContainer.scrollWidth
+        this.chart.height = this.$refs.chartContainer.scrollHeight
         window.addEventListener('resize', this.onResize)
         fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
           .then(response => response.json())
