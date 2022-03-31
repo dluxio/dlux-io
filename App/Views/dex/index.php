@@ -977,6 +977,7 @@
         }
       },
       mounted() {
+        console.log(this.$refs.chartContainer)
         this.chart.width = this.$refs.chartContainer.width
         this.chart.height = this.$refs.chartContainer.height
         window.addEventListener('resize', this.onResize)
