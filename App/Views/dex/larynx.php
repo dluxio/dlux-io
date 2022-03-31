@@ -1075,7 +1075,7 @@
                         </div>
                         <div class="form-group">
                           <div class="text-center mt-3">
-                            <button id="claimlarynxrewards" class="btn background-rb" @click="rewardClaim()">Claim<i class="fas fa-tools ml-2"></i></button>
+                            <button id="claimlarynxrewards" class="btn background-rb" @click="rewardClaim()">Claim<i class="fas fa-coins ml-2"></i></button>
                           </div>
                         </div>
                       </form>
