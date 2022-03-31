@@ -153,7 +153,6 @@
             height: 400,
             toolbar: true,
             overlays: false,
-            title: 'DEX',
           },
           barcount: 480,
           barwidth: 3600000 * 6,
@@ -967,7 +966,6 @@
           for (var i = 0; i < bars.length; i++) {
             newBars.push([bars[i].x, bars[i].o, bars[i].h, bars[i].l, bars[i].c, bars[i].v])
           }
-          console.log(newBars)
           this.ohlcv = newBars
         }
       },
@@ -1160,6 +1158,11 @@
           })
       },
       computed: {
+        chartTitle: {
+          get() {
+            return `${this.TOKEN}/${this.buyhive.checked ? 'HIVE' : 'HBD'}`
+          }
+        },
         minbuy: {
           get() {
             return parseFloat(parseFloat(parseFloat(this.buyPrice / 1000).toFixed(3)) + 0.001).toFixed(3)
@@ -1698,7 +1701,7 @@
           <!-- market chart -->
           <div class="marketChart mt-3 mb-3">
             <div id="chartContainer">
-              <trading-vue :data="this.$data" ref="tvjs" :id="chart.id" :width="chart.width" :height="chart.height" :title-txt="chart.title"/><!-- Trading Vue 2 -->
+              <trading-vue :data="this.$data" ref="tvjs" :id="chart.id" :width="chart.width" :height="chart.height" :title-txt="chartTitle"/><!-- Trading Vue 2 -->
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
               <div></div>
