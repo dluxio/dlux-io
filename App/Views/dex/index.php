@@ -129,7 +129,7 @@
     }
     let user = localStorage.getItem('user') || 'GUEST'
     let hapi = localStorage.getItem('hapi') || 'https://api.hive.blog'
-
+    console.log({lapi})
 
     createApp({
       data() {
