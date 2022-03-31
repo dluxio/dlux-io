@@ -96,7 +96,7 @@
   <script type="module">
     import {
       createApp
-    } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    } from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js'
     const {
       TradingVue
     } = TradingVueJs
