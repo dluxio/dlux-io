@@ -634,8 +634,6 @@
           if (api != null) {
             localStorage.setItem('lapi', api)
             if (location.hash && api) {
-              const hash = url.split("#");
-              //remove hash
               location.search = "?api=" + api;
               location.hash = "";
             }
