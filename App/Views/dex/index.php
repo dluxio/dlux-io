@@ -404,7 +404,8 @@
       methods: {
         onResize(event) {
           this.chart.width = this.$refs.chartContainer.scrollWidth
-          this.chart.height = `${parseInt(this.chart.width * 3 / 4)}px`
+          console.log(this.chart.width)
+          this.chart.height = this.chart.width * 3 / 4
         },
         saveNodeSettings() {
           let updates = {};
