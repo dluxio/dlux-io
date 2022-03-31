@@ -156,7 +156,7 @@
             height: 400,
             toolbar: true,
             overlays: false,
-            bg:  `#111215`
+            bg: `#111215`
           },
           barcount: 480,
           barwidth: 3600000 * 6,
@@ -404,6 +404,7 @@
       },
       components: {
         TradingVue,
+        Veeno
       },
       methods: {
         onResize(event) {
@@ -1717,12 +1718,12 @@
           <!-- market chart -->
           <div class="marketChart mt-3 mb-3">
             <div id="chartContainer" ref="dumbo">
-              <trading-vue :data="this.$data" ref="tvjs" :id="chart.id" :width="chart.width" :height="chart.height" :title-txt="chartTitle" :color-back="chart.bg"/><!-- Trading Vue 2 -->
+              <trading-vue :data="this.$data" ref="tvjs" :id="chart.id" :width="chart.width" :height="chart.height" :title-txt="chartTitle" :color-back="chart.bg" /><!-- Trading Vue 2 -->
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
               <div></div>
               <div style="width: 300px">
-                <div id="scaleslider"></div>
+                <veeno pipsy :handles="30" :range="{ 'min' : 5, 'max' : 288 }" />
               </div>
               <div>
                 <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.length}}) <i class="fas fa-book-reader ml-2"></i></button>
