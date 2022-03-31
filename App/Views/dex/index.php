@@ -961,6 +961,7 @@
           for (var i = 0; i < bars.length; i++) {
             newBars.push([bars[i].x, bars[i].o, bars[i].h, bars[i].l, bars[i].c, bars[i].v])
           }
+          console.log(newBars)
           this.ohlcv = newBars
         }
       },
