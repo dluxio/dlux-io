@@ -826,7 +826,7 @@
           var startdate = new Date(now - (period * numbars)).getTime()
           var currentBucket = startdate
           const dex = this.dexapi
-          if (!dexapi.markets.hive.his) return
+          if (!dex.markets.hive.his) return
           const current_block = this.stats.lastIBlock
           const buckets = Object.keys(dex.markets[pair].days)
           buckets.sort(function(a, b) {
