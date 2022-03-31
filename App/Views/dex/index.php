@@ -107,9 +107,7 @@
       TradingVue
     } = TradingVueJs //vue 2 only
     console.log(veeno)
-    import {
-      Veeno
-    } from "/js/veeno.min.js"
+    import Veeno from "/js/veeno.min.js"
 
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
