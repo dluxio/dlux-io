@@ -9,7 +9,7 @@
   include_once($path);
   ?>
   <template>
-    <TradingVue :data="this.$data" />
+    <trading-vue :data="this.$data" />
   </template>
   <!-- <script src="/js/trading-vue.min.js"></script>-->
   <style>
@@ -387,11 +387,11 @@
           },
         }
       },
-      compilerOptions: {
-        isCustomElement: tag => tag === 'TradingVue'
-      },
+      // compilerOptions: {
+      //   isCustomElement: tag => tag === 'TradingVue'
+      // },
       components: {
-        'TradingVue': TradingVue,
+        TradingVue,
       },
       methods: {
         saveNodeSettings() {
@@ -1694,7 +1694,7 @@
                   <div class=""></div>
                 </div>
               </div>
-              <TradingVue :data="ohlcv" />
+              <trading-vue :data="ohlcv" />
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
               <div>
