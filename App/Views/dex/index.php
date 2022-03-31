@@ -8,9 +8,9 @@
   $path .= "/mod/header.php";
   include_once($path);
   ?>
-  <!-- <template>
-    <trading-vue :data="this.$data"></trading-vue>
-  </template> -->
+  <template>
+    <trading-vue :data="ohlcv"></trading-vue>
+  </template>
   <!-- <script src="/js/trading-vue.min.js"></script> -->
   <style>
     .col-sort {
