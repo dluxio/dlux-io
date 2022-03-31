@@ -119,8 +119,10 @@
     if (!lapi) {
       lapi = localStorage.getItem('lapi') || 'https://token.dlux.io'
     }
+    console.log(lapi)
     if (lapi == 'https://token.dlux.io' || lapi == 'https://spkinstant.hivehoneycomb.com') {
-      window.history.replaceState(null, null, "");
+      console.log('using defaults')
+      window.history.replaceState(null, null, "dex");
     }
     let user = localStorage.getItem('user') || 'GUEST'
     let hapi = localStorage.getItem('hapi') || 'https://api.hive.blog'
