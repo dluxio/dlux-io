@@ -1685,38 +1685,8 @@
           </div>
           <!-- maret chart -->
           <div class="marketChart mt-3 mb-3">
-            <div class="">
-              <div class="chartjs-size-monitor">
-                <div class="chartjs-size-monitor-expand">
-                  <div class=""></div>
-                </div>
-                <div class="chartjs-size-monitor-shrink">
-                  <div class=""></div>
-                </div>
-              </div>
-              <trading-vue :data="this.$data" />
-            </div>
+            <trading-vue :data="this.$data" />
             <div class="mt-2 text-center d-flex justify-content-between">
-              <div>
-                <button id="refreshChart" class="btn btn-outline-secondary" onClick="updateChart()"><i class="fas fa-sync-alt mr-2"></i>REFRESH CHART</button>
-              </div>
-              <div id="settimescale" class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-info active">
-                  <input type="radio" name="timescale" id="hourbtn">
-                  1H </label>
-                <label class="btn btn-info">
-                  <input type="radio" name="timescale" id="daybtn">
-                  1D </label>
-                <label class="btn btn-info">
-                  <input type="radio" name="timescale" id="weekbtn">
-                  1W </label>
-                <label class="btn btn-info">
-                  <input type="radio" name="timescale" id="monthbtn">
-                  1M </label>
-                <label class="btn btn-info">
-                  <input type="radio" name="timescale" id="yearbtn">
-                  1Y </label>
-              </div>
               <div>
                 <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.length}}) <i class="fas fa-book-reader ml-2"></i></button>
               </div>
