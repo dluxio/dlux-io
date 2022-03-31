@@ -636,6 +636,7 @@
             if (location.hash) {
               const hash = url.split("#");
               //remove hash
+              location = location + "?api=" + api;
               location.hash = "";
             }
             location.reload()
@@ -801,6 +802,7 @@
             this.multisig = data.multisig
             this.jsontoken = data.jsontoken
             this.TOKEN = data.jsontoken.toUpperCase()
+            location.hash = data.jsontoken
             this.node = data.node
             this.features = data.features ? data.features : this.features
             this.behind = data.behind
