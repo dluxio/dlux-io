@@ -106,7 +106,7 @@
           lapi = param[1]
         }
       }
-      window.history.replaceState(null, null, "api=" + lapi);
+      window.history.replaceState(null, null, "dex?api=" + lapi);
     }
     if (location.hash && !lapi) {
       const hash = url.split("#");
@@ -648,6 +648,11 @@
           }
         },
         setApi(url) {
+          // remove trailing slash
+          url = url.replace(/\/$/, '')
+          if(url.indexOf('https://') == -1) {
+            url = ''
+          }
           let api = url || prompt("Please enter your API", "https://spkinstant.hivehoneycomb.com");
           if (api != null) {
             if (location.hash && api) {
@@ -1360,7 +1365,7 @@
                         <tr class="" role="row" v-for="node in runnersSearch" v-if="filteraccount.value">
                           <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
                           <td role="cell" class="" aria-colindex="2">{{formatNumber(node.g/1000,3,'.',',')}}</td>
-                          <td role="cell" class="" aria-colindex="3"><a href="#" @click="setMem('lapi',node.api, true)">{{node.api}}</a></td>
+                          <td role="cell" class="" aria-colindex="3"><a href="#" @click="setApi(node.api)">{{node.api}}</a></td>
                         </tr>
                       </tbody>
                     </table>
