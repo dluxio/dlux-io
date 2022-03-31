@@ -1319,11 +1319,12 @@
                             </div>
                           </th>
                         </tr>
+						</thead>
                       <tbody role="rowgroup" class="tbody-scroll-nodes">
                         <tr class="" role="row" v-for="node in runners" v-if="!filteraccount.value">
                           <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
                           <td role="cell" class="" aria-colindex="2">{{formatNumber(node.g/1000,3,'.',',')}}</td>
-                          <td role="cell" class="" aria-colindex="3" colspan="2"><a href="#" @click="setMem('lapi',node.api, true)">{{node.api}}</a></td>
+                          <td role="cell" class="" aria-colindex="3"><a href="#" @click="setMem('lapi',node.api, true)">{{node.api}}</a></td>
                         </tr>
                         <tr class="" role="row" v-for="node in runnersSearch" v-if="filteraccount.value">
                           <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
