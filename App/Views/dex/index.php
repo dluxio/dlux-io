@@ -148,9 +148,9 @@
         return {
           ohlcv: [],
           chart: {
-            id: 'honeycomb',
-            width: '600',
-            height: '400',
+            id: 'honeycomb_tv',
+            width: 600,
+            height: 400,
             toolbar: true,
             overlays: false,
             title: 'DEX',
