@@ -1686,7 +1686,7 @@
                   <div class=""></div>
                 </div>
               </div>
-              <trading-vue :data="this.$data"></trading-vue>
+              <trading-vue :data="ohlcv"></trading-vue>
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
               <div>
