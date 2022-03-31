@@ -14,6 +14,7 @@
     <trading-vue :data="this.$data" />
   </template>
   <!-- <script src="/js/trading-vue.min.js"></script>-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.css" integrity="sha512-DGB74Gyw93qON+V0QxSRs1er6sqoPyFoy23HBL5LN7MRJBcjeCU22zega+vOEGE0XQLoVrv4ExcaesSTwZQA2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     .col-sort {
       background-color: cornflowerblue;
@@ -2162,9 +2163,6 @@
   $path .= "/mod/footer.php";
   include_once($path);
   ?>
-  <script src="/dlux-io/js/jquery-3.4.1.min.js"></script>
-  <script src="/dlux-io/js/popper.min.js"></script>
-  <script src="/dlux-io/js/bootstrap-4.4.1.js"></script>
 	<script>
 var slider = document.getElementById('scaleslider');
 
@@ -2175,7 +2173,8 @@ noUiSlider.create(slider, {
         'min': 0,
         'max': 100
     }
-});</script>
+});
+</script>
 </body>
 <script>
   // Example starter JavaScript for disabling form submissions if there are invalid fields
