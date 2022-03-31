@@ -120,6 +120,9 @@
       }
       lapi = localStorage.getItem('lapi') || 'https://token.dlux.io'
     }
+    if(lapi == 'https://token.dlux.io' || lapi == 'https://spkinstant.hivehoneycomb.com'){
+      location.search = ''
+    }
     let user = localStorage.getItem('user') || 'GUEST'
     let hapi = localStorage.getItem('hapi') || 'https://api.hive.blog'
 
