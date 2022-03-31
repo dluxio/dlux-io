@@ -96,15 +96,29 @@
       createApp
     } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
     let url = location.href.replace(/\/$/, "");
-    let lapi = localStorage.getItem('lapi') || 'https://spkinstant.hivehoneycomb.com'
-
-    if (location.hash) {
+    let lapi = ''
+    if (location.search) {
+      string = location.search.replace('?', '')
+      let params = string.split('&')
+      for (let i = 0; i < params.length; i++) {
+        let param = params[i].split('=')
+        if (param[0] == 'api') {
+          lapi = param[1]
+        }
+      }
+    }
+    if (location.hash && !lapi) {
       const hash = url.split("#");
       if (hash[1].includes('dlux')) {
         lapi = 'https://token.dlux.io'
       } else if (hash[1].includes('larynx')) {
         lapi = 'https://spkinstant.hivehoneycomb.com'
       }
+    } else {
+      if (localStorage.getItem('lapi')){
+        location.search = '?api=' + localStorage.getItem('lapi')
+      }
+      lapi = localStorage.getItem('lapi') || 'https://token.dlux.io'
     }
     let user = localStorage.getItem('user') || 'GUEST'
     let hapi = localStorage.getItem('hapi') || 'https://api.hive.blog'
@@ -634,7 +648,6 @@
           if (api != null) {
             localStorage.setItem('lapi', api)
             if (location.hash && api) {
-              location.search = "?api=" + api;
               location.hash = "";
             }
             location.reload()
