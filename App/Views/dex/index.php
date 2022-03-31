@@ -1701,6 +1701,9 @@
                 </div>
               </div>
               <trading-vue :data="this.$data" />
+              <div v-for="item in ohlcv">
+                {{item[0]}}
+              </div>
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
               <div>
