@@ -116,13 +116,11 @@
       }
     }
     if (!lapi) {
-      if (localStorage.getItem('lapi')) {
-      }
+      if (localStorage.getItem('lapi')) {}
       lapi = localStorage.getItem('lapi') || 'https://token.dlux.io'
     }
     if (lapi == 'https://token.dlux.io' || lapi == 'https://spkinstant.hivehoneycomb.com') {
-    } else {
-      window.history.replaceState(null, null, "?api=" + lapi);
+      window.history.replaceState(null, null, "");
     }
     let user = localStorage.getItem('user') || 'GUEST'
     let hapi = localStorage.getItem('hapi') || 'https://api.hive.blog'
@@ -656,6 +654,7 @@
             if (location.hash && api) {
               location.hash = "";
             }
+            window.history.replaceState(null, null, "?api=" + api);
             location.reload()
           }
         },
