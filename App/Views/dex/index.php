@@ -9,7 +9,7 @@
   include_once($path);
   ?>
   <template>
-    <trading-vue :data="this.$data"></trading-vue>
+    <TradingVue :data="this.$data" />
   </template>
   <!-- <script src="/js/trading-vue.min.js"></script>-->
   <style>
@@ -383,9 +383,9 @@
           },
         }
       },
-      // components: {
-      //   TradingVue
-      // },
+      components: {
+        TradingVue,
+      },
       methods: {
         saveNodeSettings() {
           let updates = {};
@@ -1169,8 +1169,6 @@
         },
       }
     }).mount('#app')
-
-    // app.component('trading-vue', TradingVue)
   </script>
 </head>
 
