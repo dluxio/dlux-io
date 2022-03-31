@@ -1096,7 +1096,7 @@
               return acc
             }, [])
             this.dexapi = data
-            getHistorical()
+            this.getHistorical()
             if (this.hivesells[0]) this.buyPrice = this.hivesells[0].rate
             if (this.hivebuys[0]) this.sellPrice = this.hivebuys[0].rate
           })
