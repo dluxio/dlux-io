@@ -117,7 +117,7 @@
     } 
     if (!lapi) {
       if (localStorage.getItem('lapi')) {
-        location.search = '?api=' + localStorage.getItem('lapi')
+        //location.search = '?api=' + localStorage.getItem('lapi')
       }
       lapi = localStorage.getItem('lapi') || 'https://token.dlux.io'
     } 
@@ -126,7 +126,7 @@
     //   location.hash = 'dlux'
     // }
     if (lapi == 'https://token.dlux.io' || lapi == 'https://spkinstant.hivehoneycomb.com') {
-      location.search = ''
+      //location.search = ''
       //location.pathname = location.pathname.replace('?', '')
     }
     let user = localStorage.getItem('user') || 'GUEST'
