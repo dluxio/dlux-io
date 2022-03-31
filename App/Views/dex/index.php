@@ -95,9 +95,7 @@
     import {
       createApp
     } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-    import {
-      TradingVueJs
-    } from '/js/trading-vue.min.js'
+    import TradingVue from '/js/trading-vue.min.js'
 
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
