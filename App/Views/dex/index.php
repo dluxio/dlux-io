@@ -383,6 +383,9 @@
           },
         }
       },
+      compilerOptions: {
+        isCustomElement: tag => tag === 'TradingVue'
+      },
       components: {
         'TradingVue': TradingVue,
       },
