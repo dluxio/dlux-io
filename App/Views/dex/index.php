@@ -650,357 +650,355 @@
         setApi(url) {
           let api = url || prompt("Please enter your API", "https://spkinstant.hivehoneycomb.com");
           if (api != null) {
-            localStorage.setItem('lapi', api)
             if (location.hash && api) {
               location.hash = "";
             }
-            window.history.replaceState(null, null, "?api=" + api);
-            location.reload()
-          }
-        },
-        suggestValue(key, value) {
-          if (key.split('.').length > 1) {
-            let keys = key.split('.')
-            let obj = this[keys[0]]
-            for (let i = 1; i < keys.length; i++) {
-              if (i == keys.length - 1) {
-                if (!obj[keys[i]]) obj[keys[i]] = value
-              } else {
-                obj = obj[keys[i]]
-              }
-            }
-          } else {
-            if (!this[key]) this[key] = value
-          }
-        },
-        atref(key) {
-          return `/@${key}`
-        },
-        setMem(key, value, reload) {
-          if (value.indexOf('https://') == -1) {
-            alert('https:// is required for security reasons')
-            return
-          } else if (value[value.length - 1] == '/') {
-            value = value.substring(0, value.length - 1)
-          }
-          localStorage.setItem(key, value)
-          if (reload) {
-            location.reload()
-          }
-        },
-        sort(item, key, method) {
-          switch (method) {
-            case 'asc':
-              this[item].sort((a, b) => {
-                return a[key] < b[key] ? -1 : 1
-              })
-              break;
-            case 'desc':
-            default:
-              this[item].sort((a, b) => {
-                return a[key] > b[key] ? -1 : 1
-              })
-          }
-        },
-        focus(id) {
-          document.getElementById(id).focus()
-        },
-        searchRunners() {
-          const term = this.filteraccount.value
-          if (term) {
-            this.filteraccount.checked = true
-            this.filteraccount.value = term
-            this.filterusers.checked = false
-            this.filterusers.value = ''
-            this.runnersSearch = this.runners.reduce((acc, runner) => {
-              if (runner.account.toLowerCase().includes(term.toLowerCase())) {
-                acc.push(runner)
-              } else if (runner.api.toLowerCase().includes(term.toLowerCase())) {
-                acc.push(runner)
-              }
-              return acc
-            }, [])
-          } else {
-            this.filteraccount.checked = false
-            this.filteraccount.value = ''
-            this.filterusers.checked = true
-            this.filterusers.value = ''
-          }
-        },
-        buyDEX() {
-          // if (document.getElementById('buyform').classList.contains('needs-validation')) {
-          //   console.log('needs validation')
-          //   return
-          // }
-          var andthen = ' at market rate',
-            rate = undefined,
-            hours = 720
-          if (!buymarket.checked) {
-            rate = parseFloat((this.buyhive.checked ? this.buyHiveTotal : this.buyHBDTotal) / this.buyQuantity).toFixed(6)
-            andthen = ` at ${rate} ${this.buyhive.checked ? 'HIVE' : 'HBD' } per ${this.TOKEN}`
-          }
-          if (this.buyhive.checked) broadcastTransfer({
-            to: this.multisig,
-            hive: this.buyHiveTotal * 1000,
-            memo: JSON.stringify({
-              rate: this.buyPrice,
-              hours: this.buyHours
-            })
-          }, `Buying ${this.TOKEN} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, lapi.split('://')[1])
-          else if (!this.buyhive.checked) broadcastTransfer({
-            to: this.multisig,
-            hbd: this.buyHBDTotal * 1000,
-            memo: JSON.stringify({
-              rate: this.buyPrice,
-              hours: this.buyHours
-            })
-          }, `Buying ${this.TOKEN} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive ?'HIVE':'HBD'} ${andthen}`, lapi.split('://')[1])
-        },
-        sellDEX() {
-          // if (document.getElementById('sellform').classList.contains('needs-validation')) {
-          //   return
-          // }
-          var andthen = ' at market rate',
-            dlux = parseInt(parseFloat(this.sellQuantity) * 1000),
-            hive = parseInt(parseFloat(this.sellHiveTotal) * 1000),
-            hbd = parseInt(parseFloat(this.sellHBDTotal) * 1000),
-            hours = parseInt(this.sellHours)
-          if (hive || hbd) {
-            const price = parseFloat(dlux / (this.buyhive.checked ? hive : hbd)).toFixed(6)
-            andthen = ` at ${price} ${this.buyhive.checked ?'HIVE':'HBD'} per ${this.TOKEN}`
-          }
-          if (this.buyhive.checked && dlux) broadcastCJA({
-            [this.TOKEN.toLocaleLowerCase()]: dlux,
-            hive,
-            hours
-          }, `${this.prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${this.TOKEN}${andthen}`, lapi.split('://')[1])
-          else if (!this.buyhive.checked && dlux) broadcastCJA({
-            [this.TOKEN.toLocaleLowerCase()]: dlux,
-            hbd,
-            hours
-          }, `${this.prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${this.TOKEN}${andthen}`, lapi.split('://')[1])
-        },
-        cancelDEX(txid) {
-          if (txid) broadcastCJA({
-            txid
-          }, `${this.prefix}dex_clear`, `Canceling: ${txid}`, lapi.split('://')[1])
+            location.search =  "api=" + api
         }
       },
-      mounted() {
-        fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
-          .then(response => response.json())
-          .then(data => {
-            this.hiveprice = data
-          })
-        fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd')
-          .then(response => response.json())
-          .then(data => {
-            this.hbdprice = data
-          })
-        fetch(this.lapi + '/runners')
-          .then(response => response.json())
-          .then(data => {
-            this.runners = data.result.sort((a, b) => {
-              return b.g - a.g
-            })
-          })
-        fetch(this.lapi + '/markets')
-          .then(response => response.json())
-          .then(data => {
-            this.nodes = data.markets.node
-            if (data.markets.node[user]) this.isnode = true
-            this.stats = data.stats
-          })
-        fetch(this.lapi + '/api/protocol')
-          .then(response => response.json())
-          .then(data => {
-            this.prefix = data.prefix
-            this.multisig = data.multisig
-            this.jsontoken = data.jsontoken
-            this.TOKEN = data.jsontoken.toUpperCase()
-            location.hash = data.jsontoken
-            this.node = data.node
-            this.features = data.features ? data.features : this.features
-            this.behind = data.behind
-            this.behindTitle = data.behind + ' Blocks Behind Hive'
-            fetch(this.lapi + '/api/recent/HIVE_' + this.TOKEN + '?limit=1000')
-              .then(response => response.json())
-              .then(data => {
-                this.volume.hive = data.recent_trades.reduce((a, b) => {
-                  if (b.trade_timestamp > this.agoTime) return a + parseInt(parseFloat(b.target_volume) * 1000)
-                  else return a
-                }, 0) / 1000
-                this.volume.token_hive = data.recent_trades.reduce((a, b) => {
-                  if (b.trade_timestamp > this.agoTime) return a + parseInt(parseFloat(b.base_volume) * 1000)
-                  else return a
-                }, 0) / 1000
-                this.recenthive = data.recent_trades.sort((a, b) => {
-                  return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
-                })
-              })
-            fetch(this.lapi + '/api/recent/HBD_' + this.TOKEN + '?limit=1000')
-              .then(response => response.json())
-              .then(data => {
-                this.volume.hbd = data.recent_trades.reduce((a, b) => {
-                  if (b.trade_timestamp > this.agoTime) return a + parseInt(parseFloat(b.target_volume) * 1000)
-                  else return a
-                }, 0) / 1000
-                this.volume.token_hbd = data.recent_trades.reduce((a, b) => {
-                  if (b.trade_timestamp > this.agoTime) return a + parseInt(parseFloat(b.base_volume) * 1000)
-                  else return a
-                }, 0) / 1000
-                this.recenthbd = data.recent_trades.sort((a, b) => {
-                  return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
-                })
-              })
-          })
-        fetch(this.lapi + '/dex')
-          .then(response => response.json())
-          .then(data => {
-            this.hivebuys = data.markets.hive.buys.sort(function(a, b) {
-              return parseFloat(b.rate) - parseFloat(a.rate)
-            }).reduce((acc, cur) => {
-              if (!acc.length || acc[acc.length - 1].rate != cur.rate) {
-                cur.total = cur.hive + (acc[acc.length - 1]?.total || 0)
-                cur.at = cur.amount + (acc[acc.length - 1]?.amount || 0)
-                acc.push(cur)
-              } else {
-                acc[acc.length - 1].total = cur.hive + acc[acc.length - 1].total
-                acc[acc.length - 1].hive = cur.hive + acc[acc.length - 1].hive
-                acc[acc.length - 1].amount = cur.amount + acc[acc.length - 1].amount
-                acc[acc.length - 1].at = cur.amount + acc[acc.length - 1].at
-              }
-              return acc
-            }, [])
-            this.hivesells = data.markets.hive.sells.sort(function(a, b) {
-              return parseFloat(a.rate) - parseFloat(b.rate)
-            }).reduce((acc, cur) => {
-              if (!acc.length || acc[acc.length - 1].rate != cur.rate) {
-                cur.total = cur.hive + (acc[acc.length - 1]?.total || 0)
-                cur.at = cur.amount + (acc[acc.length - 1]?.amount || 0)
-                acc.push(cur)
-              } else {
-                acc[acc.length - 1].total = cur.hive + acc[acc.length - 1].total
-                acc[acc.length - 1].hive = cur.hive + acc[acc.length - 1].hive
-                acc[acc.length - 1].amount = cur.amount + acc[acc.length - 1].amount
-                acc[acc.length - 1].at = cur.amount + acc[acc.length - 1].at
-              }
-              return acc
-            }, [])
-            this.hbdbuys = data.markets.hbd.buys.sort(function(a, b) {
-              return parseFloat(b.rate) - parseFloat(a.rate)
-            }).reduce((acc, cur) => {
-              if (!acc.length || acc[acc.length - 1].rate != cur.rate) {
-                cur.total = cur.hbd + (acc[acc.length - 1]?.total || 0)
-                cur.at = cur.amount + (acc[acc.length - 1]?.amount || 0)
-                acc.push(cur)
-              } else {
-                acc[acc.length - 1].total = cur.hbd + acc[acc.length - 1].total
-                acc[acc.length - 1].hbd = cur.hbd + acc[acc.length - 1].hbd
-                acc[acc.length - 1].amount = cur.amount + acc[acc.length - 1].amount
-                acc[acc.length - 1].at = cur.amount + acc[acc.length - 1].at
-              }
-              return acc
-            }, [])
-            this.hbdsells = data.markets.hbd.sells.sort(function(a, b) {
-              return parseFloat(a.rate) - parseFloat(b.rate)
-            }).reduce((acc, cur) => {
-              if (!acc.length || acc[acc.length - 1].rate != cur.rate) {
-                cur.total = cur.hbd + (acc[acc.length - 1]?.total || 0)
-                cur.at = cur.amount + (acc[acc.length - 1]?.amount || 0)
-                acc.push(cur)
-              } else {
-                acc[acc.length - 1].total = cur.hbd + acc[acc.length - 1].total
-                acc[acc.length - 1].hbd = cur.hbd + acc[acc.length - 1].hbd
-                acc[acc.length - 1].amount = cur.amount + acc[acc.length - 1].amount
-                acc[acc.length - 1].at = cur.amount + acc[acc.length - 1].at
-              }
-              return acc
-            }, [])
-            this.dexapi = data
-            if (this.hivesells[0]) this.buyPrice = this.hivesells[0].rate
-            if (this.hivebuys[0]) this.sellPrice = this.hivebuys[0].rate
-          })
-        if (user != 'GUEST') fetch(this.lapi + '/@' + user)
-          .then(response => response.json())
-          .then(data => {
-            this.balance = (data.balance / 1000).toFixed(3)
-            this.bartoken = this.balance
-            this.barpow = ((data.poweredUp + data.granted - data.granting) / 1000).toFixed(3)
-            this.bargov = (data.gov / 1000).toFixed(3)
-            this.accountapi = data
-            console.log('claim logic', new Date().getMonth() + 1, data.drop?.last_claim, data.drop?.availible.amount)
-            if (new Date().getMonth() + 1 != parseInt(data.drop?.last_claim, 16) && data.drop?.availible.amount > 0) {
-              this.hasDrop = true
-              this.dropnai = `${parseFloat(data.drop.availible.amount / Math.pow(10, data.drop.availible.precision)).toFixed(data.drop.availible.precision)} ${data.drop.availible.token}`
+      suggestValue(key, value) {
+        if (key.split('.').length > 1) {
+          let keys = key.split('.')
+          let obj = this[keys[0]]
+          for (let i = 1; i < keys.length; i++) {
+            if (i == keys.length - 1) {
+              if (!obj[keys[i]]) obj[keys[i]] = value
+            } else {
+              obj = obj[keys[i]]
             }
-            this.openorders = data.contracts
-              .reduce((acc, cur) => {
-                cur.nai = `${cur.type.split(':')[0] == 'hive' ? parseFloat(cur.hive/1000).toFixed(3) : parseFloat(cur.hbd/1000).toFixed(3)} ${cur.type.split(':')[0] == 'hive' ? 'HIVE' : 'HBD'}`
-                if (cur.partials && cur.partials.length && cur.type.split(':')[1] == 'sell') {
-                  const filled = cur.partials.reduce(function(a, c) {
-                    return a + c.coin
-                  }, 0)
-                  cur.percentFilled = parseFloat(100 * filled / (cur.hive ? cur.hive : cur.hbd + filled)).toFixed(2)
-                  acc.push(cur)
-                } else if (cur.partials && cur.partials.length) {
-                  const filled = cur.partials.reduce(function(a, c) {
-                    return a + c.token
-                  }, 0)
-                  cur.percentFilled = parseFloat(100 * filled / (cur.amount + filled)).toFixed(2)
-                  acc.push(cur)
-                } else {
-                  cur.percentFilled = "0.00"
-                  acc.push(cur)
-                }
-                console.log({
-                  acc
-                })
-                return acc
-              }, [])
-          })
-        if (user != 'GUEST') fetch(hapi, {
-            body: `{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["${user}"]], "id":1}`,
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            method: "POST"
-          })
-          .then(response => response.json())
-          .then(data => {
-            this.accountinfo = data.result[0]
-            this.barhive = this.accountinfo.balance
-            this.barhbd = this.accountinfo.hbd_balance
-          })
+          }
+        } else {
+          if (!this[key]) this[key] = value
+        }
       },
-      computed: {
-        minbuy: {
-          get() {
-            return parseFloat(parseFloat(parseFloat(this.buyPrice / 1000).toFixed(3)) + 0.001).toFixed(3)
+      atref(key) {
+        return `/@${key}`
+      },
+      setMem(key, value, reload) {
+        if (value.indexOf('https://') == -1) {
+          alert('https:// is required for security reasons')
+          return
+        } else if (value[value.length - 1] == '/') {
+          value = value.substring(0, value.length - 1)
+        }
+        localStorage.setItem(key, value)
+        if (reload) {
+          location.reload()
+        }
+      },
+      sort(item, key, method) {
+        switch (method) {
+          case 'asc':
+            this[item].sort((a, b) => {
+              return a[key] < b[key] ? -1 : 1
+            })
+            break;
+          case 'desc':
+          default:
+            this[item].sort((a, b) => {
+              return a[key] > b[key] ? -1 : 1
+            })
+        }
+      },
+      focus(id) {
+        document.getElementById(id).focus()
+      },
+      searchRunners() {
+        const term = this.filteraccount.value
+        if (term) {
+          this.filteraccount.checked = true
+          this.filteraccount.value = term
+          this.filterusers.checked = false
+          this.filterusers.value = ''
+          this.runnersSearch = this.runners.reduce((acc, runner) => {
+            if (runner.account.toLowerCase().includes(term.toLowerCase())) {
+              acc.push(runner)
+            } else if (runner.api.toLowerCase().includes(term.toLowerCase())) {
+              acc.push(runner)
+            }
+            return acc
+          }, [])
+        } else {
+          this.filteraccount.checked = false
+          this.filteraccount.value = ''
+          this.filterusers.checked = true
+          this.filterusers.value = ''
+        }
+      },
+      buyDEX() {
+        // if (document.getElementById('buyform').classList.contains('needs-validation')) {
+        //   console.log('needs validation')
+        //   return
+        // }
+        var andthen = ' at market rate',
+          rate = undefined,
+          hours = 720
+        if (!buymarket.checked) {
+          rate = parseFloat((this.buyhive.checked ? this.buyHiveTotal : this.buyHBDTotal) / this.buyQuantity).toFixed(6)
+          andthen = ` at ${rate} ${this.buyhive.checked ? 'HIVE' : 'HBD' } per ${this.TOKEN}`
+        }
+        if (this.buyhive.checked) broadcastTransfer({
+          to: this.multisig,
+          hive: this.buyHiveTotal * 1000,
+          memo: JSON.stringify({
+            rate: this.buyPrice,
+            hours: this.buyHours
+          })
+        }, `Buying ${this.TOKEN} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, lapi.split('://')[1])
+        else if (!this.buyhive.checked) broadcastTransfer({
+          to: this.multisig,
+          hbd: this.buyHBDTotal * 1000,
+          memo: JSON.stringify({
+            rate: this.buyPrice,
+            hours: this.buyHours
+          })
+        }, `Buying ${this.TOKEN} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive ?'HIVE':'HBD'} ${andthen}`, lapi.split('://')[1])
+      },
+      sellDEX() {
+        // if (document.getElementById('sellform').classList.contains('needs-validation')) {
+        //   return
+        // }
+        var andthen = ' at market rate',
+          dlux = parseInt(parseFloat(this.sellQuantity) * 1000),
+          hive = parseInt(parseFloat(this.sellHiveTotal) * 1000),
+          hbd = parseInt(parseFloat(this.sellHBDTotal) * 1000),
+          hours = parseInt(this.sellHours)
+        if (hive || hbd) {
+          const price = parseFloat(dlux / (this.buyhive.checked ? hive : hbd)).toFixed(6)
+          andthen = ` at ${price} ${this.buyhive.checked ?'HIVE':'HBD'} per ${this.TOKEN}`
+        }
+        if (this.buyhive.checked && dlux) broadcastCJA({
+          [this.TOKEN.toLocaleLowerCase()]: dlux,
+          hive,
+          hours
+        }, `${this.prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${this.TOKEN}${andthen}`, lapi.split('://')[1])
+        else if (!this.buyhive.checked && dlux) broadcastCJA({
+          [this.TOKEN.toLocaleLowerCase()]: dlux,
+          hbd,
+          hours
+        }, `${this.prefix}dex_sell`, `Selling ${parseFloat(dlux/1000).toFixed(3)} ${this.TOKEN}${andthen}`, lapi.split('://')[1])
+      },
+      cancelDEX(txid) {
+        if (txid) broadcastCJA({
+          txid
+        }, `${this.prefix}dex_clear`, `Canceling: ${txid}`, lapi.split('://')[1])
+      }
+    },
+    mounted() {
+      fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
+        .then(response => response.json())
+        .then(data => {
+          this.hiveprice = data
+        })
+      fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive_dollar&amp;vs_currencies=usd')
+        .then(response => response.json())
+        .then(data => {
+          this.hbdprice = data
+        })
+      fetch(this.lapi + '/runners')
+        .then(response => response.json())
+        .then(data => {
+          this.runners = data.result.sort((a, b) => {
+            return b.g - a.g
+          })
+        })
+      fetch(this.lapi + '/markets')
+        .then(response => response.json())
+        .then(data => {
+          this.nodes = data.markets.node
+          if (data.markets.node[user]) this.isnode = true
+          this.stats = data.stats
+        })
+      fetch(this.lapi + '/api/protocol')
+        .then(response => response.json())
+        .then(data => {
+          this.prefix = data.prefix
+          this.multisig = data.multisig
+          this.jsontoken = data.jsontoken
+          this.TOKEN = data.jsontoken.toUpperCase()
+          location.hash = data.jsontoken
+          this.node = data.node
+          this.features = data.features ? data.features : this.features
+          this.behind = data.behind
+          this.behindTitle = data.behind + ' Blocks Behind Hive'
+          fetch(this.lapi + '/api/recent/HIVE_' + this.TOKEN + '?limit=1000')
+            .then(response => response.json())
+            .then(data => {
+              this.volume.hive = data.recent_trades.reduce((a, b) => {
+                if (b.trade_timestamp > this.agoTime) return a + parseInt(parseFloat(b.target_volume) * 1000)
+                else return a
+              }, 0) / 1000
+              this.volume.token_hive = data.recent_trades.reduce((a, b) => {
+                if (b.trade_timestamp > this.agoTime) return a + parseInt(parseFloat(b.base_volume) * 1000)
+                else return a
+              }, 0) / 1000
+              this.recenthive = data.recent_trades.sort((a, b) => {
+                return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
+              })
+            })
+          fetch(this.lapi + '/api/recent/HBD_' + this.TOKEN + '?limit=1000')
+            .then(response => response.json())
+            .then(data => {
+              this.volume.hbd = data.recent_trades.reduce((a, b) => {
+                if (b.trade_timestamp > this.agoTime) return a + parseInt(parseFloat(b.target_volume) * 1000)
+                else return a
+              }, 0) / 1000
+              this.volume.token_hbd = data.recent_trades.reduce((a, b) => {
+                if (b.trade_timestamp > this.agoTime) return a + parseInt(parseFloat(b.base_volume) * 1000)
+                else return a
+              }, 0) / 1000
+              this.recenthbd = data.recent_trades.sort((a, b) => {
+                return parseInt(b.trade_timestamp) - parseInt(a.trade_timestamp)
+              })
+            })
+        })
+      fetch(this.lapi + '/dex')
+        .then(response => response.json())
+        .then(data => {
+          this.hivebuys = data.markets.hive.buys.sort(function(a, b) {
+            return parseFloat(b.rate) - parseFloat(a.rate)
+          }).reduce((acc, cur) => {
+            if (!acc.length || acc[acc.length - 1].rate != cur.rate) {
+              cur.total = cur.hive + (acc[acc.length - 1]?.total || 0)
+              cur.at = cur.amount + (acc[acc.length - 1]?.amount || 0)
+              acc.push(cur)
+            } else {
+              acc[acc.length - 1].total = cur.hive + acc[acc.length - 1].total
+              acc[acc.length - 1].hive = cur.hive + acc[acc.length - 1].hive
+              acc[acc.length - 1].amount = cur.amount + acc[acc.length - 1].amount
+              acc[acc.length - 1].at = cur.amount + acc[acc.length - 1].at
+            }
+            return acc
+          }, [])
+          this.hivesells = data.markets.hive.sells.sort(function(a, b) {
+            return parseFloat(a.rate) - parseFloat(b.rate)
+          }).reduce((acc, cur) => {
+            if (!acc.length || acc[acc.length - 1].rate != cur.rate) {
+              cur.total = cur.hive + (acc[acc.length - 1]?.total || 0)
+              cur.at = cur.amount + (acc[acc.length - 1]?.amount || 0)
+              acc.push(cur)
+            } else {
+              acc[acc.length - 1].total = cur.hive + acc[acc.length - 1].total
+              acc[acc.length - 1].hive = cur.hive + acc[acc.length - 1].hive
+              acc[acc.length - 1].amount = cur.amount + acc[acc.length - 1].amount
+              acc[acc.length - 1].at = cur.amount + acc[acc.length - 1].at
+            }
+            return acc
+          }, [])
+          this.hbdbuys = data.markets.hbd.buys.sort(function(a, b) {
+            return parseFloat(b.rate) - parseFloat(a.rate)
+          }).reduce((acc, cur) => {
+            if (!acc.length || acc[acc.length - 1].rate != cur.rate) {
+              cur.total = cur.hbd + (acc[acc.length - 1]?.total || 0)
+              cur.at = cur.amount + (acc[acc.length - 1]?.amount || 0)
+              acc.push(cur)
+            } else {
+              acc[acc.length - 1].total = cur.hbd + acc[acc.length - 1].total
+              acc[acc.length - 1].hbd = cur.hbd + acc[acc.length - 1].hbd
+              acc[acc.length - 1].amount = cur.amount + acc[acc.length - 1].amount
+              acc[acc.length - 1].at = cur.amount + acc[acc.length - 1].at
+            }
+            return acc
+          }, [])
+          this.hbdsells = data.markets.hbd.sells.sort(function(a, b) {
+            return parseFloat(a.rate) - parseFloat(b.rate)
+          }).reduce((acc, cur) => {
+            if (!acc.length || acc[acc.length - 1].rate != cur.rate) {
+              cur.total = cur.hbd + (acc[acc.length - 1]?.total || 0)
+              cur.at = cur.amount + (acc[acc.length - 1]?.amount || 0)
+              acc.push(cur)
+            } else {
+              acc[acc.length - 1].total = cur.hbd + acc[acc.length - 1].total
+              acc[acc.length - 1].hbd = cur.hbd + acc[acc.length - 1].hbd
+              acc[acc.length - 1].amount = cur.amount + acc[acc.length - 1].amount
+              acc[acc.length - 1].at = cur.amount + acc[acc.length - 1].at
+            }
+            return acc
+          }, [])
+          this.dexapi = data
+          if (this.hivesells[0]) this.buyPrice = this.hivesells[0].rate
+          if (this.hivebuys[0]) this.sellPrice = this.hivebuys[0].rate
+        })
+      if (user != 'GUEST') fetch(this.lapi + '/@' + user)
+        .then(response => response.json())
+        .then(data => {
+          this.balance = (data.balance / 1000).toFixed(3)
+          this.bartoken = this.balance
+          this.barpow = ((data.poweredUp + data.granted - data.granting) / 1000).toFixed(3)
+          this.bargov = (data.gov / 1000).toFixed(3)
+          this.accountapi = data
+          console.log('claim logic', new Date().getMonth() + 1, data.drop?.last_claim, data.drop?.availible.amount)
+          if (new Date().getMonth() + 1 != parseInt(data.drop?.last_claim, 16) && data.drop?.availible.amount > 0) {
+            this.hasDrop = true
+            this.dropnai = `${parseFloat(data.drop.availible.amount / Math.pow(10, data.drop.availible.precision)).toFixed(data.drop.availible.precision)} ${data.drop.availible.token}`
           }
-        },
-        minsell: {
-          get() {
-            return parseFloat(parseFloat(parseFloat(this.sellPrice / 0.001).toFixed(3)) + 0.001).toFixed(3)
-          }
-        },
-        maxhbuy: {
-          get() {
-            return parseFloat((this.dexapi.markets.hive.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hive.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
-          }
-        },
-        maxdbuy: {
-          get() {
-            return parseFloat((this.dexapi.markets.hbd.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hbd.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
-          }
-        },
-        marketCap: {
-          get() {
-            if (this.buyhive.checked) return `${parseFloat((this.stats.tokenSupply/1000) * this.hiveprice.hive.usd * this.dexapi.markets.hive.tick).toFixed(2)}`
-            else return `${parseFloat((this.stats.tokenSupply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.markets.hbd.tick).toFixed(2)}`
-          }
+          this.openorders = data.contracts
+            .reduce((acc, cur) => {
+              cur.nai = `${cur.type.split(':')[0] == 'hive' ? parseFloat(cur.hive/1000).toFixed(3) : parseFloat(cur.hbd/1000).toFixed(3)} ${cur.type.split(':')[0] == 'hive' ? 'HIVE' : 'HBD'}`
+              if (cur.partials && cur.partials.length && cur.type.split(':')[1] == 'sell') {
+                const filled = cur.partials.reduce(function(a, c) {
+                  return a + c.coin
+                }, 0)
+                cur.percentFilled = parseFloat(100 * filled / (cur.hive ? cur.hive : cur.hbd + filled)).toFixed(2)
+                acc.push(cur)
+              } else if (cur.partials && cur.partials.length) {
+                const filled = cur.partials.reduce(function(a, c) {
+                  return a + c.token
+                }, 0)
+                cur.percentFilled = parseFloat(100 * filled / (cur.amount + filled)).toFixed(2)
+                acc.push(cur)
+              } else {
+                cur.percentFilled = "0.00"
+                acc.push(cur)
+              }
+              console.log({
+                acc
+              })
+              return acc
+            }, [])
+        })
+      if (user != 'GUEST') fetch(hapi, {
+          body: `{"jsonrpc":"2.0", "method":"condenser_api.get_accounts", "params":[["${user}"]], "id":1}`,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          method: "POST"
+        })
+        .then(response => response.json())
+        .then(data => {
+          this.accountinfo = data.result[0]
+          this.barhive = this.accountinfo.balance
+          this.barhbd = this.accountinfo.hbd_balance
+        })
+    },
+    computed: {
+      minbuy: {
+        get() {
+          return parseFloat(parseFloat(parseFloat(this.buyPrice / 1000).toFixed(3)) + 0.001).toFixed(3)
+        }
+      },
+      minsell: {
+        get() {
+          return parseFloat(parseFloat(parseFloat(this.sellPrice / 0.001).toFixed(3)) + 0.001).toFixed(3)
+        }
+      },
+      maxhbuy: {
+        get() {
+          return parseFloat((this.dexapi.markets.hive.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hive.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
+        }
+      },
+      maxdbuy: {
+        get() {
+          return parseFloat((this.dexapi.markets.hbd.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hbd.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
+        }
+      },
+      marketCap: {
+        get() {
+          if (this.buyhive.checked) return `${parseFloat((this.stats.tokenSupply/1000) * this.hiveprice.hive.usd * this.dexapi.markets.hive.tick).toFixed(2)}`
+          else return `${parseFloat((this.stats.tokenSupply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.markets.hbd.tick).toFixed(2)}`
         }
       }
+    }
     }).mount('#app')
   </script>
 </head>
