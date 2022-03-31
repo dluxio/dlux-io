@@ -96,7 +96,7 @@
     import {
       createApp
     } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-    //import TradingVueJs from 'trading-vue-js'
+    import { TradingVue } from TradingVueJs
 
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
@@ -375,9 +375,9 @@
           },
         }
       },
-      components: {
-        TradingVue: new TradingVueJs.DataCube(this.data.ohlcv)
-      },
+      // components: {
+      //   TradingVue: new TradingVueJs.DataCube(this.ohlcv)
+      // },
       methods: {
         saveNodeSettings() {
           let updates = {};
