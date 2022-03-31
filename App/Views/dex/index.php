@@ -395,10 +395,17 @@
       // compilerOptions: {
       //   isCustomElement: tag => tag === 'TradingVue'
       // },
+      beforeDestroy() {
+        window.removeEventListener('resize', this.onResize)
+      },
       components: {
         TradingVue,
       },
       methods: {
+        onResize(event) {
+          this.chart.width = this.$refs.chartContainer.width
+          this.chart.height = this.$refs.chartContainer.height
+        },
         saveNodeSettings() {
           let updates = {};
           for (var i = 0; i < this.features.node.opts.length; i++) {
@@ -970,6 +977,9 @@
         }
       },
       mounted() {
+        this.chart.width = this.$refs.chartContainer.width
+        this.chart.height = this.$refs.chartContainer.height
+        window.addEventListener('resize', this.onResize)
         fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
           .then(response => response.json())
           .then(data => {
@@ -1700,7 +1710,7 @@
           </div>
           <!-- market chart -->
           <div class="marketChart mt-3 mb-3">
-            <div id="chartContainer">
+            <div id="chartContainer" ref="chartContainer">
               <trading-vue :data="this.$data" ref="tvjs" :id="chart.id" :width="chart.width" :height="chart.height" :title-txt="chartTitle" /><!-- Trading Vue 2 -->
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
