@@ -134,9 +134,6 @@
     })
 
     createApp({
-      components: {
-        TradingVue: new TradingVueJs.DataCube(this.ohlcv)
-      },
       data() {
         return {
           ohlcv: [],
@@ -377,6 +374,9 @@
             checked: false
           },
         }
+      },
+      components: {
+        TradingVue: new TradingVueJs.DataCube(this.ohlcv)
       },
       methods: {
         saveNodeSettings() {
