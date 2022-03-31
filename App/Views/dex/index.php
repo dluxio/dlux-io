@@ -101,11 +101,11 @@
     import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
     // import {
     //   createApp
-    // } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-    var {
+    // } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js' // vue 3 Import
+    const {
       TradingVue
-    } = TradingVueJs
-    console.log(TradingVue)
+    } = TradingVueJs //vue 2 only
+
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
     if (location.search) {
@@ -141,12 +141,13 @@
       lapi
     })
 
-    // createApp({
-    var app = new Vue({
-      el: '#app',
+    // createApp({ // vue 3
+    var app = new Vue({ // vue 2
+      el: '#app', // vue 2
       data() {
         return {
           ohlcv: [],
+          titleText: 'DEX',
           barcount: 480,
           barwidth: 3600000 * 6,
           nowtime: new Date().getTime(),
@@ -1095,7 +1096,6 @@
               return acc
             }, [])
             this.dexapi = data
-            TradingVue.props.titleTxt = 'DEX'
             this.getHistorical()
             if (this.hivesells[0]) this.buyPrice = this.hivesells[0].rate
             if (this.hivebuys[0]) this.sellPrice = this.hivebuys[0].rate
@@ -1180,8 +1180,8 @@
           }
         },
       }
-    })
-    // }).mount('#app')
+    }) // vue 2
+    // }).mount('#app') // vue 3
   </script>
 </head>
 
@@ -1688,10 +1688,10 @@
               </div>
             </div>
           </div>
-          <!-- maret chart -->
+          <!-- market chart -->
           <div class="marketChart mt-3 mb-3">
             <div id="chartContainer">
-              <trading-vue :data="this.$data" />
+              <trading-vue :data="this.$data" /><!-- Trading Vue 2 -->
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
               <div></div>
