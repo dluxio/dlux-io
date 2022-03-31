@@ -780,6 +780,7 @@
             this.jsontoken = data.jsontoken
             this.TOKEN = data.jsontoken.toUpperCase()
             this.node = data.node
+            this.features = data.features ? data.features : this.features
             this.behind = data.behind
             this.behindTitle = data.behind + ' Blocks Behind Hive'
             fetch(this.lapi + '/api/recent/HIVE_' + this.TOKEN + '?limit=1000')
