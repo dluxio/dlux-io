@@ -114,24 +114,21 @@
       } else if (hash[1].includes('larynx')) {
         lapi = 'https://spkinstant.hivehoneycomb.com'
       }
-    } 
+    }
     if (!lapi) {
       if (localStorage.getItem('lapi')) {
-        //location.search = '?api=' + localStorage.getItem('lapi')
       }
       lapi = localStorage.getItem('lapi') || 'https://token.dlux.io'
-    } 
-    // else {
-    //   lapi = 'https://token.dlux.io'
-    //   location.hash = 'dlux'
-    // }
+    }
     if (lapi == 'https://token.dlux.io' || lapi == 'https://spkinstant.hivehoneycomb.com') {
-      //location.search = ''
-      //location.pathname = location.pathname.replace('?', '')
+    } else {
+      window.history.replaceState(null, null, "?api=" + lapi);
     }
     let user = localStorage.getItem('user') || 'GUEST'
     let hapi = localStorage.getItem('hapi') || 'https://api.hive.blog'
-    console.log({lapi})
+    console.log({
+      lapi
+    })
 
     createApp({
       data() {
