@@ -8,6 +8,8 @@
   $path .= "/mod/header.php";
   include_once($path);
   ?>
+	<!-- noUI slider -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.min.js" integrity="sha512-mZXUH8DAODwCHioWP3gltQwa953LbABMlzTYwYkKqv8eNxOk37B1HgNNuCMfFxgrpW5C34WJbxPDcM58+s1dJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <template>
     <trading-vue :data="this.$data" />
   </template>
@@ -1685,10 +1687,14 @@
           </div>
           <!-- maret chart -->
           <div class="marketChart mt-3 mb-3">
-            <div>
+            <div id="chartContainer">
               <trading-vue :data="this.$data" />
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
+				<div></div>
+				<div>
+					<div id="scaleslider"></div>
+				</div>
               <div>
                 <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.length}}) <i class="fas fa-book-reader ml-2"></i></button>
               </div>
@@ -2159,6 +2165,17 @@
   <script src="/dlux-io/js/jquery-3.4.1.min.js"></script>
   <script src="/dlux-io/js/popper.min.js"></script>
   <script src="/dlux-io/js/bootstrap-4.4.1.js"></script>
+	<script>
+var slider = document.getElementById('scaleslider');
+
+noUiSlider.create(slider, {
+    start: [0, 100],
+    connect: true,
+    range: {
+        'min': 0,
+        'max': 100
+    }
+});</script>
 </body>
 <script>
   // Example starter JavaScript for disabling form submissions if there are invalid fields
