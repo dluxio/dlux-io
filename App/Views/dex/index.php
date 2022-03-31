@@ -106,6 +106,7 @@
           lapi = param[1]
         }
       }
+      window.history.replaceState(null, null, "api=" + lapi);
     }
     if (location.hash && !lapi) {
       const hash = url.split("#");
@@ -116,7 +117,6 @@
       }
     }
     if (!lapi) {
-      if (localStorage.getItem('lapi')) {}
       lapi = localStorage.getItem('lapi') || 'https://token.dlux.io'
     }
     if (lapi == 'https://token.dlux.io' || lapi == 'https://spkinstant.hivehoneycomb.com') {
