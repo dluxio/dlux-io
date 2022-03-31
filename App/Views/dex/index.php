@@ -978,7 +978,7 @@
         }
       },
       mounted() {
-        this.chart.width = this.$refs.chartContainer.scrollWidth
+        this.chart.width = this.$refs.chartContainer.scrollWidth - 15
         this.chart.width / 2
         window.addEventListener('resize', this.onResize)
         fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
