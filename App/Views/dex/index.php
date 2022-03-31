@@ -121,6 +121,7 @@
       lapi = localStorage.getItem('lapi') || 'https://token.dlux.io'
     } else {
       lapi = 'https://token.dlux.io'
+      location.hash = 'dlux'
     }
     if (lapi == 'https://token.dlux.io' || lapi == 'https://spkinstant.hivehoneycomb.com') {
       location.search = ''
