@@ -102,10 +102,10 @@
     // import {
     //   createApp
     // } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-    const {
+    var {
       TradingVue
     } = TradingVueJs
-
+    console.log(TradingVue)
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
     if (location.search) {
@@ -147,13 +147,6 @@
       data() {
         return {
           ohlcv: [],
-          settings: {
-            "upper": 70,
-            "lower": 30,
-            "backColor": "#9b9ba316",
-            "bandColor": "#666",
-            titleTxt: 'DEX',
-          },
           barcount: 480,
           barwidth: 3600000 * 6,
           nowtime: new Date().getTime(),
