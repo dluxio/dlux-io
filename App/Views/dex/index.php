@@ -2197,6 +2197,6 @@
     disabletab[i].setAttribute('tabindex', '-1')
   }
 </script>
-<script type="text/javascript" src="/js/chart.js"></script>
+<!-- <script type="text/javascript" src="/js/chart.js"></script> -->
 
 </html>
