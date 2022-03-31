@@ -135,7 +135,7 @@
       lapi
     })
 
-    const app = Vue.createApp({
+    createApp({
       data() {
         return {
           ohlcv: [
