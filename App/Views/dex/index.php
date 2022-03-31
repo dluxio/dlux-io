@@ -649,11 +649,14 @@
         },
         setApi(url) {
           // remove trailing slash
-          url = url.replace(/\/$/, '')
-          if(url.indexOf('https://') == -1) {
-            url = ''
+          if (url.substr(-1) == '/') {
+            url = url.substr(0, url.length - 1)
           }
           let api = url || prompt("Please enter your API", "https://spkinstant.hivehoneycomb.com");
+          if (url.indexOf('https://') == -1) {
+            alert('https is required')
+            return
+          }
           if (api != null) {
             if (location.hash && api) {
               location.hash = "";
