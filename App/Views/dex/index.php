@@ -106,7 +106,7 @@
     const {
       TradingVue
     } = TradingVueJs //vue 2 only
-    import veeno from 'veeno'
+    const veeno = veeno
 
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
