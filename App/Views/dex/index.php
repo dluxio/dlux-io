@@ -91,11 +91,14 @@
       border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
     }
   </style>
+  <script src="/js/trading-vue.min.js"></script>
   <script type="module">
     import {
       createApp
     } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-    import { TradingVue } from '/js/trading-vue.min.js'
+    import {
+      TradingVue
+    } from 'trading-vue-js'
 
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
