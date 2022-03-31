@@ -8,10 +8,10 @@
   $path .= "/mod/header.php";
   include_once($path);
   ?>
-  <!-- <template>
+  <template>
     <trading-vue :data="ohlcv"></trading-vue>
-  </template> -->
-  <!-- <script src="/js/trading-vue.min.js"></script> -->
+  </template>
+  <!-- <script src="/js/trading-vue.min.js"></script>-->
   <style>
     .col-sort {
       background-color: cornflowerblue;
@@ -135,7 +135,7 @@
       lapi
     })
 
-    createApp({
+    const app = createApp({
       data() {
         return {
           ohlcv: [
@@ -383,9 +383,9 @@
           },
         }
       },
-      components: {
-        TradingVue
-      },
+      // components: {
+      //   TradingVue
+      // },
       methods: {
         saveNodeSettings() {
           let updates = {};
@@ -1169,6 +1169,8 @@
         },
       }
     }).mount('#app')
+
+    app.component('trading-vue', TradingVue)
   </script>
 </head>
 
