@@ -138,7 +138,7 @@
     })
 
     // createApp({
-      var app = new Vue({
+    var app = new Vue({
       el: '#app',
       data() {
         return {
@@ -958,7 +958,7 @@
             }
           }
           var newBars = []
-          for(var i = 0; i < bars.length; i++) {
+          for (var i = 0; i < bars.length; i++) {
             newBars.push([bars[i].x, bars[i].o, bars[i].h, bars[i].l, bars[i].c, bars[i].v])
           }
           this.ohlcv = newBars
@@ -1096,6 +1096,7 @@
               return acc
             }, [])
             this.dexapi = data
+            getHistorical()
             if (this.hivesells[0]) this.buyPrice = this.hivesells[0].rate
             if (this.hivebuys[0]) this.sellPrice = this.hivebuys[0].rate
           })
