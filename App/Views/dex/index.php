@@ -135,7 +135,7 @@
 
     createApp({
       components: {
-        TradingVue: new TradingVueJs.DataCube()
+        TradingVue: new TradingVueJs.DataCube(this.ohlcv)
       },
       data() {
         return {
