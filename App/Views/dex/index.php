@@ -978,9 +978,8 @@
         }
       },
       mounted() {
-        console.log(this.$refs.chartContainer)
         this.chart.width = this.$refs.chartContainer.scrollWidth
-        this.chart.height = this.$refs.chartContainer.scrollHeight
+        this.chart.width / 2
         window.addEventListener('resize', this.onResize)
         fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
           .then(response => response.json())
@@ -1712,7 +1711,7 @@
           </div>
           <!-- market chart -->
           <div class="marketChart mt-3 mb-3">
-            <div id="chartContainer" ref="chartContainer">
+            <div id="chartContainer">
               <trading-vue :data="this.$data" ref="tvjs" :id="chart.id" :width="chart.width" :height="chart.height" :title-txt="chartTitle" /><!-- Trading Vue 2 -->
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
@@ -2066,7 +2065,7 @@
                 </div>
               </div>
             </div>
-            <div id="hiveTradeHistory">
+            <div id="hiveTradeHistory" ref="chartContainer">
               <div class="row">
                 <div class="mt-3 col-12">
                   <h4>Trade History</h4>
