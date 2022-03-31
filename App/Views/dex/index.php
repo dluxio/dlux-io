@@ -653,7 +653,7 @@
             if (location.hash && api) {
               location.hash = "";
             }
-            location.search =  "api=" + api
+            location.search =  "?api=" + api
         }
       },
       suggestValue(key, value) {
