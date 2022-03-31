@@ -1685,7 +1685,9 @@
           </div>
           <!-- maret chart -->
           <div class="marketChart mt-3 mb-3">
-            <!-- <trading-vue :data="this.$data" /> -->
+            <div>
+              <trading-vue :data="this.$data" />
+            </div>
             <div class="mt-2 text-center d-flex justify-content-between">
               <div>
                 <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.length}}) <i class="fas fa-book-reader ml-2"></i></button>
