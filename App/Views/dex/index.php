@@ -8,10 +8,10 @@
   $path .= "/mod/header.php";
   include_once($path);
   ?>
-  <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
-  <script type="text/javascript" src="/js/chartf.js"></script>
+  <!-- <template>
+    <trading-vue :data="this.$data"></trading-vue>
+  </template> -->
+  <script src="/js/trading-vue.min.js"></script>
   <style>
     .col-sort {
       background-color: cornflowerblue;
@@ -95,6 +95,8 @@
     import {
       createApp
     } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    import TradingVue from 'trading-vue-js'
+
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
     if (location.search) {
@@ -131,8 +133,14 @@
     })
 
     createApp({
+      components: {
+        TradingVue
+      },
       data() {
         return {
+          ohlcv: [],
+          barcount: 100,
+          barwidth: 3600000 * 24,
           nowtime: new Date().getTime(),
           agoTime: new Date().getTime() - 86400000,
           account: user,
@@ -793,6 +801,147 @@
           if (txid) broadcastCJA({
             txid
           }, `${this.prefix}dex_clear`, `Canceling: ${txid}`, lapi.split('://')[1])
+        },
+        getHistorical() {
+          const pair = this.buyhive.checked ? 'hive' : 'hbd'
+          const numbars = this.barcount
+          const period = this.barwidth
+          const now = this.nowtime
+          var startdate = new Date(now - (period * numbars)).getTime()
+          var currentBucket = startdate
+          const dex = this.dexapi
+          if (!dexapi.markets.hive.his) return
+          const current_block = this.stats.lastIBlock
+          const buckets = Object.keys(dex.markets[pair].days)
+          buckets.sort(function(a, b) {
+            return parseInt(a) - parseInt(b)
+          })
+          var bars = [],
+            current = {
+              o: 0,
+              h: 0,
+              l: 0,
+              c: 0,
+              v: 0
+            }
+          for (var i = 0; i < buckets.length; i++) {
+            if (new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime() > currentBucket) {
+              if (!bars.length) {
+                while (new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime() > currentBucket + period) {
+                  bars.push({
+                    x: currentBucket,
+                    o: dex.markets[pair.toLowerCase()].days[buckets[i]].o,
+                    h: dex.markets[pair.toLowerCase()].days[buckets[i]].o,
+                    l: dex.markets[pair.toLowerCase()].days[buckets[i]].o,
+                    c: dex.markets[pair.toLowerCase()].days[buckets[i]].o,
+                    v: 0
+                  })
+                  currentBucket = new Date(currentBucket + period).getTime()
+                }
+              } else {
+                while (new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime() > currentBucket + period) {
+                  bars.push({
+                    x: currentBucket,
+                    o: bars[bars.length - 1].c,
+                    h: bars[bars.length - 1].c,
+                    l: bars[bars.length - 1].c,
+                    c: bars[bars.length - 1].c,
+                    v: 0
+                  })
+                  currentBucket = new Date(currentBucket + period).getTime()
+                }
+              }
+              if (dex.markets[pair.toLowerCase()].days[buckets[i]].t > current.h) current.h = dex.markets[pair.toLowerCase()].days[buckets[i]].t
+              if (dex.markets[pair.toLowerCase()].days[buckets[i]].b < current.l) current.l = dex.markets[pair.toLowerCase()].days[buckets[i]].b
+              current.c = dex.markets[pair.toLowerCase()].days[buckets[i]].c
+              current.v += dex.markets[pair.toLowerCase()].days[buckets[i]].v
+              if (buckets[i + 1] && new Date(now - (3000 * (current_block - parseInt(buckets[i + 1])))).getTime() > currentBucket + period) {
+                bars.push({
+                  x: currentBucket,
+                  o: current.o,
+                  h: current.h,
+                  l: current.l,
+                  c: current.c,
+                  v: current.v
+                })
+                currentBucket = new Date(currentBucket + period).getTime()
+                current.o = current.c
+                current.h = current.c
+                current.l = current.c
+                current.c = current.c
+                current.v = 0
+              } else if (!buckets[i + 1]) {
+                bars.push({
+                  x: currentBucket,
+                  o: current.o,
+                  h: current.h,
+                  l: current.l,
+                  c: current.c,
+                  v: current.v
+                })
+              }
+            }
+          }
+          let items = Object.keys(dex.markets[pair.toLowerCase()].his)
+          for (var i = 0; i < items.length; i++) {
+            if (new Date(now - (3000 * (current_block - parseInt(items[i].split(':')[0])))).getTime() > currentBucket) {
+              if (!bars.length) {
+                while (new Date(now - (3000 * (current_block - parseInt(items[i].split(':')[0])))).getTime() > currentBucket + period) {
+                  bars.push({
+                    x: currentBucket,
+                    o: parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price),
+                    h: parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price),
+                    l: parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price),
+                    c: parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price),
+                    v: 0
+                  })
+                  currentBucket = new Date(currentBucket + period).getTime()
+                }
+              } else {
+                while (new Date(now - (3000 * (current_block - parseInt(items[i].split(':')[0])))).getTime() > currentBucket + period) {
+                  bars.push({
+                    x: currentBucket,
+                    o: bars[bars.length - 1].c,
+                    h: bars[bars.length - 1].c,
+                    l: bars[bars.length - 1].c,
+                    c: bars[bars.length - 1].c,
+                    v: 0
+                  })
+                  currentBucket = new Date(currentBucket + period).getTime()
+                }
+              }
+              if (parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price) > current.h) current.h = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+              if (parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price) < current.l) current.l = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+              current.c = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+              current.v += parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].target_vol)
+              if (items[i + 1] && new Date(now - (3000 * (current_block - parseInt(items[i + 1].split(':')[0])))).getTime() > currentBucket + period) {
+                bars.push({
+                  x: currentBucket,
+                  o: current.o,
+                  h: current.h,
+                  l: current.l,
+                  c: current.c,
+                  v: current.v
+                })
+                currentBucket = new Date(currentBucket + period).getTime()
+                current.o = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                current.h = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                current.l = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                current.c = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                current.v = 0
+              } else if (!items[i + 1]) {
+                bars.push({
+                  x: currentBucket,
+                  o: current.o,
+                  h: current.h,
+                  l: current.l,
+                  c: current.c,
+                  v: current.v
+                })
+              }
+            }
+          }
+          this.ohlcv = bars
         }
       },
       mounted() {
@@ -1008,7 +1157,7 @@
             if (this.buyhive.checked) return `${parseFloat((this.stats.tokenSupply/1000) * this.hiveprice.hive.usd * this.dexapi.markets.hive.tick).toFixed(2)}`
             else return `${parseFloat((this.stats.tokenSupply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.markets.hbd.tick).toFixed(2)}`
           }
-        }
+        },
       }
     }).mount('#app')
   </script>
@@ -1269,7 +1418,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button href="#/" id="sendhivemodalsend" class="btn btn-danger" @click="sendhive()">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhivemodalsend" class="btn btn-danger" @click="sendhive()">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1528,7 +1677,7 @@
                   <div class=""></div>
                 </div>
               </div>
-              <canvas id="chart" width="2220" height="800" class="chartjs-render-monitor" style="display: block; height: 400px; width: 1110px;"></canvas>
+              <trading-vue :data="this.$data"></trading-vue>
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
               <div>
