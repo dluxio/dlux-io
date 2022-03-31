@@ -979,7 +979,7 @@
       },
       mounted() {
         this.chart.width = this.$refs.chartContainer.scrollWidth - 15
-        this.chart.width / 2
+        this.chart.height = this.chart.width / 2
         this.$refs.dumbo.style = `width: ${this.chart.width}px; height: ${this.chart.height + 30}px;`
         window.addEventListener('resize', this.onResize)
         fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
