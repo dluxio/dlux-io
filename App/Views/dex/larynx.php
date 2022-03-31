@@ -95,8 +95,18 @@
     import {
       createApp
     } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-    let user = localStorage.getItem('user') || 'GUEST'
+    let url = location.href.replace(/\/$/, "");
     let lapi = localStorage.getItem('lapi') || 'https://spkinstant.hivehoneycomb.com'
+
+    if (location.hash) {
+      const hash = url.split("#");
+      if (hash[1].includes('dlux')) {
+        lapi = 'https://token.dlux.io'
+      } else if (hash[1].includes('larynx')) {
+        lapi = 'https://spkinstant.hivehoneycomb.com'
+      }
+    }
+    let user = localStorage.getItem('user') || 'GUEST'
     let hapi = localStorage.getItem('hapi') || 'https://api.hive.blog'
 
 
@@ -1319,7 +1329,7 @@
                             </div>
                           </th>
                         </tr>
-						</thead>
+                      </thead>
                       <tbody role="rowgroup" class="tbody-scroll-nodes">
                         <tr class="" role="row" v-for="node in runners" v-if="!filteraccount.value">
                           <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
