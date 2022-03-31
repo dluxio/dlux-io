@@ -135,7 +135,7 @@
 
     createApp({
       components: {
-        TradingVue: new TradingVueJs.dataCube()
+        TradingVue: new TradingVueJs.DataCube()
       },
       data() {
         return {
