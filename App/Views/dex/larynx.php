@@ -1229,7 +1229,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendhivemodalsend" class="btn btn-danger" @click="hiveSend()">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhivemodalsend" class="btn btn-danger" @click="sendhive()">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1267,7 +1267,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendhbdmodalsend" type="submit" class="btn btn-success" @click="hbdsend()">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhbdmodalsend" type="submit" class="btn btn-success" @click="sendhbd()">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
