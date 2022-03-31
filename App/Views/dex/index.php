@@ -115,13 +115,16 @@
         lapi = 'https://spkinstant.hivehoneycomb.com'
       }
     } else if (!lapi) {
-      if (localStorage.getItem('lapi')){
+      if (localStorage.getItem('lapi')) {
         location.search = '?api=' + localStorage.getItem('lapi')
       }
       lapi = localStorage.getItem('lapi') || 'https://token.dlux.io'
+    } else {
+      lapi = 'https://token.dlux.io'
     }
-    if(lapi == 'https://token.dlux.io' || lapi == 'https://spkinstant.hivehoneycomb.com'){
+    if (lapi == 'https://token.dlux.io' || lapi == 'https://spkinstant.hivehoneycomb.com') {
       location.search = ''
+      location.href = location.href.replace('?', '')
     }
     let user = localStorage.getItem('user') || 'GUEST'
     let hapi = localStorage.getItem('hapi') || 'https://api.hive.blog'
