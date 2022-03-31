@@ -661,7 +661,7 @@
             if (location.hash && api) {
               location.hash = "";
             }
-            location.search += "api=" + api
+            localStorage.setItem('lapi', api)
           }
         },
         suggestValue(key, value) {
