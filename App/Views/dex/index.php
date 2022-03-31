@@ -1698,7 +1698,7 @@
           <!-- market chart -->
           <div class="marketChart mt-3 mb-3">
             <div id="chartContainer">
-              <trading-vue :data="this.$data" ref="tvjs" :id="chart.id" :width="chart.width" :height="chart.height" :toolbar="chart.toolbar" :overlays="chart.overlays" :title-txt="chart.title" :chart-config="chartConfig" :colors="colours" :legend-buttons="buttons" @range-changed="onRange" @tool-selected="onToolSelected" @close="onDialogueClose" /><!-- Trading Vue 2 -->
+              <trading-vue :data="this.$data" ref="tvjs" :id="chart.id" :width="chart.width" :height="chart.height" :title-txt="chart.title"/><!-- Trading Vue 2 -->
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
               <div></div>
