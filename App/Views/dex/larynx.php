@@ -633,6 +633,11 @@
           let api = url || prompt("Please enter your API", "https://spkinstant.hivehoneycomb.com");
           if (api != null) {
             localStorage.setItem('lapi', api)
+            if (location.hash) {
+              const hash = url.split("#");
+              //remove hash
+              location.hash = "";
+            }
             location.reload()
           }
         },
