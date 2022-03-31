@@ -98,7 +98,7 @@
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
     if (location.search) {
-      string = location.search.replace('?', '')
+      const string = location.search.replace('?', '')
       let params = string.split('&')
       for (let i = 0; i < params.length; i++) {
         let param = params[i].split('=')
