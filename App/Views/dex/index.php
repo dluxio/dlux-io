@@ -114,7 +114,7 @@
       } else if (hash[1].includes('larynx')) {
         lapi = 'https://spkinstant.hivehoneycomb.com'
       }
-    } else {
+    } else if (!lapi) {
       if (localStorage.getItem('lapi')){
         location.search = '?api=' + localStorage.getItem('lapi')
       }
