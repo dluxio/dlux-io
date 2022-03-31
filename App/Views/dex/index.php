@@ -147,7 +147,16 @@
       data() {
         return {
           ohlcv: [],
-          titleTxt: 'DEX',
+          settings: {
+            "upper": 70,
+            "lower": 30,
+            "backColor": "#9b9ba316",
+            "bandColor": "#666",
+            titleTxt: {
+              type: String,
+              default: 'DEX'
+            }
+          },
           barcount: 480,
           barwidth: 3600000 * 6,
           nowtime: new Date().getTime(),
