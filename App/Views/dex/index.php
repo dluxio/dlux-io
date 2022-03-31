@@ -375,9 +375,9 @@
           },
         }
       },
-      // components: {
-      //   TradingVue: new TradingVueJs.DataCube(this.ohlcv)
-      // },
+      components: {
+        TradingVue
+      },
       methods: {
         saveNodeSettings() {
           let updates = {};
