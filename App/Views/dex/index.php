@@ -8,9 +8,9 @@
   $path .= "/mod/header.php";
   include_once($path);
   ?>
-	<!-- noUI slider -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.min.js" integrity="sha512-mZXUH8DAODwCHioWP3gltQwa953LbABMlzTYwYkKqv8eNxOk37B1HgNNuCMfFxgrpW5C34WJbxPDcM58+s1dJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.css" integrity="sha512-DGB74Gyw93qON+V0QxSRs1er6sqoPyFoy23HBL5LN7MRJBcjeCU22zega+vOEGE0XQLoVrv4ExcaesSTwZQA2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- noUI slider -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.min.js" integrity="sha512-mZXUH8DAODwCHioWP3gltQwa953LbABMlzTYwYkKqv8eNxOk37B1HgNNuCMfFxgrpW5C34WJbxPDcM58+s1dJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.css" integrity="sha512-DGB74Gyw93qON+V0QxSRs1er6sqoPyFoy23HBL5LN7MRJBcjeCU22zega+vOEGE0XQLoVrv4ExcaesSTwZQA2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <template>
     <trading-vue :data="this.$data" />
   </template>
@@ -147,6 +147,7 @@
       data() {
         return {
           ohlcv: [],
+          titleTxt: 'DEX',
           barcount: 480,
           barwidth: 3600000 * 6,
           nowtime: new Date().getTime(),
@@ -1693,10 +1694,10 @@
               <trading-vue :data="this.$data" />
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
-				<div></div>
-				<div style="width: 300px">
-					<div id="scaleslider"></div>
-				</div>
+              <div></div>
+              <div style="width: 300px">
+                <div id="scaleslider"></div>
+              </div>
               <div>
                 <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.length}}) <i class="fas fa-book-reader ml-2"></i></button>
               </div>
@@ -2164,18 +2165,18 @@
   $path .= "/mod/footer.php";
   include_once($path);
   ?>
-	<script>
-var slider = document.getElementById('scaleslider');
+  <script>
+    var slider = document.getElementById('scaleslider');
 
-noUiSlider.create(slider, {
-    start: [0, 100],
-    connect: true,
-    range: {
+    noUiSlider.create(slider, {
+      start: [0, 100],
+      connect: true,
+      range: {
         'min': 0,
         'max': 100
-    }
-});
-</script>
+      }
+    });
+  </script>
 </body>
 <script>
   // Example starter JavaScript for disabling form submissions if there are invalid fields
