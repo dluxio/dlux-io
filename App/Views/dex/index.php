@@ -11,7 +11,7 @@
   <!-- <template>
     <trading-vue :data="this.$data"></trading-vue>
   </template> -->
-  <script src="/js/trading-vue.min.js"></script>
+  <!-- <script src="/js/trading-vue.min.js"></script> -->
   <style>
     .col-sort {
       background-color: cornflowerblue;
@@ -95,7 +95,7 @@
     import {
       createApp
     } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-    import TradingVue from 'trading-vue-js'
+    import TradingVue from '/js/trading-vue.min.js'
 
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
