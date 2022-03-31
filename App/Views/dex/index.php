@@ -107,7 +107,7 @@
       TradingVue
     } = TradingVueJs //vue 2 only
     console.log(veeno)
-    const Veeno = veeno
+    const Veeno = veeno.default
 
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
@@ -156,7 +156,7 @@
             height: 400,
             toolbar: true,
             overlays: false,
-            bg:  `#000000`
+            bg:  `#111215`
           },
           barcount: 480,
           barwidth: 3600000 * 6,
