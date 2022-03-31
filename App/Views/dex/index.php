@@ -143,8 +143,8 @@
       data() {
         return {
           ohlcv: [],
-          barcount: 100,
-          barwidth: 3600000 * 24,
+          barcount: 120,
+          barwidth: 3600000,
           nowtime: new Date().getTime(),
           agoTime: new Date().getTime() - 86400000,
           account: user,
