@@ -792,8 +792,8 @@
           console.log('bf', FORM)
           var allowed = true
           for (var i = 0; i < FORM.length; i++) {
-            console.log(getComputedStyle(FORM[i].id, ':invalid '))
-            if (getComputedStyle(FORM[i].id, ':invalid ')) {
+            console.log(getComputedStyle(FORM[i], ':invalid '))
+            if (getComputedStyle(FORM[i], ':invalid ')) {
               allowed = false
             }
           }
