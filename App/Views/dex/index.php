@@ -778,10 +778,11 @@
           }
         },
         buyDEX() {
-          if (!document.getElementById('buyform').classList.contains('was-validated')) {
-            alert('needs validation')
-            return
-          }
+          var allowed = false
+          const reqs = [
+            this.$refs.buyQty
+          ]
+          console.log(reqs[0])
           var andthen = ' at market rate',
             rate = undefined,
             hours = 720
@@ -1841,7 +1842,7 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input type="number" v-on:keyup="bcalc('t')" required class="form-control bg-dark border-dark text-info" v-model="buyQuantity" id="buyQuantity" placeholder="0" :min="minbuy" step="0.001" aria-required="true" :readonly="bform.tl">
+                          <input type="number" v-on:keyup="bcalc('t')" ref="buyQty" required class="form-control bg-dark border-dark text-info" v-model="buyQuantity" id="buyQuantity" placeholder="0" :min="minbuy" step="0.001" aria-required="true" :readonly="bform.tl">
                           <div class="input-group-append">
                             <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"> {{TOKEN}} <a href="#/" class="ml-3 text-secondary" @click="block('t')"><i class="fas" :class="{'fa-lock':bform.tl, 'fa-unlock-alt':!bform.tl}"></i></a> </div>
                           </div>
