@@ -402,8 +402,7 @@
       },
       components: {
         TradingVue,
-        Veeno,
-        'validation-provider': ValidationProvider
+        Veeno
       },
       methods: {
         onResize(event) {
