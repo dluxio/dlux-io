@@ -778,7 +778,7 @@
           }
         },
         buyDEX() {
-          if (document.getElementById('buyform').classList.contains('needs-validation')) {
+          if (!document.getElementById('buyform').classList.contains('was-validated')) {
             console.log('needs validation')
             return
           }
