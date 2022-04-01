@@ -467,6 +467,7 @@
               memo: this.sendMemo
             }, `${this.prefix}send`, `Trying to send ${this.TOKEN}...`, lapi.split('://')[1])
           }
+          return false
         },
         sendhive() {
           if (this.sendHiveAllowed) broadcastTransfer({
