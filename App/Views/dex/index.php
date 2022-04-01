@@ -786,7 +786,7 @@
         },
         validateForm(formKey, validKey) {
           console.log('vf', formKey, validKey)
-          var Container = document.querySelector(`#${formKey}`);
+          var Container = document.getElementById(formKey)
           console.log(Container)
           var badFeedback = Container.querySelector('.is-invalid');
           console.log('bf', badFeedback)
