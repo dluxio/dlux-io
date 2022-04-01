@@ -1399,16 +1399,7 @@
                       <h6 class="dropdown-header text-center">{{TOKEN}} GOVERNANCE</h6>
                       <h4 class="dropdown-header text-center">Current Threshold: {{formatNumber(stats.gov_threshhold/1000,3,'.',',')}}</h4>
                       <form name="govlarynx" @submit.prevent="gov()" class="needs-validation" novalidate>
-                        <div class="form-group text-center">
-                          <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
-                            <label class="btn btn-outline-info active">
-                              <input type="radio" name="govpair" id="govlock" :checked="features.govsel_up" @click="setValue('features.govsel_up', true)">
-                              LOCK </label>
-                            <label class="btn btn-outline-info">
-                              <input type="radio" name="govpair" id="govunlock" :checked="!features.govsel_up" @click="setValue('features.govsel_up', false)">
-                              UNLOCK </label>
-                          </div>
-                        </div>
+
                         <div class="form-group">
                           <label id="govuplarynxamountlab">Amount</label>
                           <div class="input-group">
