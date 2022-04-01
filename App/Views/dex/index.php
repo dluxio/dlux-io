@@ -102,7 +102,7 @@
   <script type="module">
     import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
     console.log(VeeValidate)
-    Vue.component('validation-provider', VeeValidate.ValidationProvider);
+    // Vue.component('validation-provider', VeeValidate.ValidationProvider);
     // import {
     //   createApp
     // } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js' // vue 3 Import
@@ -1344,9 +1344,9 @@
                           </div>
                           <div class="small pt-2"><a href="#/" @click="setValue('sendAmount', parseFloat(bartoken))" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
                         </div>
-                        <ValidationProvider v-slot="v">
+                        <!-- <ValidationProvider v-slot="v">
                           <input v-model="value" type="text">
-                        </ValidationProvider>
+                        </ValidationProvider> -->
                         <div class="form-group" id="sendlarynxmemogroup">
                           <label for="sendlarynxmemo">Memo:</label>
                           <div class="input-group">
