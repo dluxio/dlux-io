@@ -788,7 +788,7 @@
           console.log('vf', formKey, validKey)
           var Container = document.getElementById(formKey)
           console.log(Container)
-          var badFeedback = Container.querySelector('.is-invalid');
+          var badFeedback = Container.getElementsByClassName('is-invalid')
           console.log('bf', badFeedback)
           if (badFeedback.length) this[validKey] = false
           else this[validKey] = true
