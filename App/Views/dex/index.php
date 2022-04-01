@@ -1578,20 +1578,6 @@
           <!-- current token tick -->
           <div class="row">
             <div class="col-4">
-              <div class="jumbotron p-3 bg-dark">
-                <div id="hivequote">
-                  <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd}}</b></h2>
-                </div>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="jumbotron p-3 bg-dark">
-                <div id="hbdquote">
-                  <h2 class="lead my-0"><b>HBD: ${{hbdprice.hive_dollar.usd}}</b></h2>
-                </div>
-              </div>
-            </div>
-            <div class="col-4">
               <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
                 <div class="d-flex align-items-center" id="dluxhivequote">
                   <div>
@@ -1642,6 +1628,20 @@
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+				</div>
+			<div class="col-4">
+              <div class="jumbotron p-3 bg-dark">
+                <div id="hivequote">
+                  <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd}}</b></h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="jumbotron p-3 bg-dark">
+                <div id="hbdquote">
+                  <h2 class="lead my-0"><b>HBD: ${{hbdprice.hive_dollar.usd}}</b></h2>
                 </div>
               </div>
             </div>
