@@ -411,7 +411,7 @@
       components: {
         TradingVue,
         Veeno,
-        ValidationProvider
+        'validation-provider':ValidationProvider
       },
       methods: {
         onResize(event) {
@@ -1348,9 +1348,9 @@
                           </div>
                           <div class="small pt-2"><a href="#/" @click="setValue('sendAmount', parseFloat(bartoken))" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
                         </div>
-                        <ValidationProvider v-slot="v">
+                        <validation-provider v-slot="v">
                           <input v-model="value" type="text">
-                        </ValidationProvider>
+                        </validation-provider>
                         <div class="form-group" id="sendlarynxmemogroup">
                           <label for="sendlarynxmemo">Memo:</label>
                           <div class="input-group">
