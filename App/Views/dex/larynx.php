@@ -398,7 +398,7 @@
         },
         tokenSend() {
           console.log(this.sendAllowed, this.sendTo, this.sendAmount, this.sendMemo, this.prefix, this.TOKEN)
-          if (this.sendAllowed && this.sendAmount && this.sendAmount * 1000 <= this.balance) {
+          if (this.sendAllowed && this.sendAmount && this.sendAmount <= parseFloat(this.bartoken)) {
             broadcastCJA({
               to: this.sendTo,
               amount: parseInt(this.sendAmount * 1000),
