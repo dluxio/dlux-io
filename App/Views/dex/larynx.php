@@ -729,10 +729,6 @@
         },
         buyDEX() {
           if (!this.buyFormValid) return
-          if (!document.getElementById('buyform').classList.contains('was-validated')) {
-            console.log('needs validation')
-            return
-          }
           var andthen = ' at market rate',
             rate = undefined,
             hours = 720
