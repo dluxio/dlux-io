@@ -398,12 +398,14 @@
         },
         tokenSend() {
           console.log(this.sendAllowed, this.sendTo, this.sendAmount, this.sendMemo, this.prefix, this.TOKEN)
-          if (this.sendAllowed) {
+          if (this.sendAllowed && this.sendAmount && this.sendAmount * 1000 <= this.balance) {
             broadcastCJA({
               to: this.sendTo,
               amount: parseInt(this.sendAmount * 1000),
-              memo: this.sendMemo
+              memo: typeof this.sendMemo === 'string' ? this.sendMemo : ''
             }, `${this.prefix}send`, `Trying to send ${this.TOKEN}...`, lapi.split('://')[1])
+          } else if (!this.sendAllowed) {
+            alert('Please check the account name and try again.')
           }
         },
         sendhive() {
