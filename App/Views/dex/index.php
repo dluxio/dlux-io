@@ -97,12 +97,14 @@
   </style>
   <script src="/js/trading-vue.min.js"></script>
   <script src="/js/veeno.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/trading-vue-js@1.0.2/dist/trading-vue.min.js"></script> -->
   <script type="module">
     import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
     console.log(VeeValidate)
-    const VeeValidate = require('https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js')
+    const {
+      ValidationProvider
+    } = VeeValidate
     // Vue.component('validation-provider', VeeValidate.ValidationProvider);
     // import {
     //   createApp
@@ -409,7 +411,7 @@
       components: {
         TradingVue,
         Veeno,
-        ValidationProvider: VeeValidate
+        ValidationProvider
       },
       methods: {
         onResize(event) {
