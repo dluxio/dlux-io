@@ -728,6 +728,7 @@
           else this[validKey] = true
         },
         buyDEX() {
+          console.log('buyDEX', this.buyFormValid)
           if (!this.buyFormValid) return
           var andthen = ' at market rate',
             rate = undefined,
