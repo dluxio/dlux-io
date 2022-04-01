@@ -170,6 +170,13 @@
           barhbd: "",
           bargov: "",
           barpow: "",
+          buyFormValid: false,
+          sellFormValid: false,
+          govFormValid: false,
+          powFormValid: false,
+          sendFormValid: false,
+          hiveFormValid: false,
+          hbdFormValid: false,
           lapi: lapi,
           hapi: hapi,
           accountapi: {},
@@ -777,7 +784,15 @@
             this.filterusers.value = ''
           }
         },
+        validateForm(formKey, validKey) {
+          var Container = document.querySelector(`#${formKey}`);
+          var badFeedback = Container.querySelector('.invalid-feedback');
+          console.log(badFeedback)
+          if (badFeedback.length) this[validKey] = false
+          else this[validKey] = true
+        },
         buyDEX() {
+          if (!this.buyFormValid) return
           var allowed = false
           const reqs = [
             this.$refs.buyQty
@@ -1811,7 +1826,7 @@
             <div class="row">
               <div class="mt-3 col-md-6">
                 <h4>Buy {{TOKEN}}</h4>
-                <form name="buy" id="buyform" @submit.prevent="buyDEX()" class="form-horizontal needs-validation" novalidate>
+                <form name="buy" id="buyForm" @submit.prevent="buyDEX()" class="form-horizontal needs-validation" novalidate>
                   <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                     <div class="form-row">
                       <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
@@ -1908,7 +1923,7 @@
                     </div>
                   </div>
                   <div class="text-right">
-                    <button type="submit" class="btn btn-success">Buy</button>
+                    <button type="submit" @action="validateForm('buyForm', 'buyFormValid')" class="btn btn-success">Buy</button>
                   </div>
                 </form>
               </div>
