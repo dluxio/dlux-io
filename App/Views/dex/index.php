@@ -97,11 +97,12 @@
   </style>
   <script src="/js/trading-vue.min.js"></script>
   <script src="/js/veeno.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/trading-vue-js@1.0.2/dist/trading-vue.min.js"></script> -->
   <script type="module">
     import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
-	  Vue.component('validation-provider', VeeValidate.ValidationProvider);
+    console.log(VeeValidate)
+    Vue.component('validation-provider', VeeValidate.ValidationProvider);
     // import {
     //   createApp
     // } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js' // vue 3 Import
@@ -1323,7 +1324,7 @@
                   <div class="dropdown show d-flex align-items-center "><a class="text-warning" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">SEND {{TOKEN}}</h6>
-                      <form @submit.prevent="tokenSend()" class="needs-validation" >
+                      <form @submit.prevent="tokenSend()" class="needs-validation">
                         <div class="form-group">
                           <label for="sendlarynxto">To:</label>
                           <div class="input-group">
@@ -1343,9 +1344,9 @@
                           </div>
                           <div class="small pt-2"><a href="#/" @click="setValue('sendAmount', parseFloat(bartoken))" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
                         </div>
-						  <ValidationProvider v-slot="v">
- 							 <input v-model="value" type="text">
-						</ValidationProvider>
+                        <ValidationProvider v-slot="v">
+                          <input v-model="value" type="text">
+                        </ValidationProvider>
                         <div class="form-group" id="sendlarynxmemogroup">
                           <label for="sendlarynxmemo">Memo:</label>
                           <div class="input-group">
@@ -1630,8 +1631,8 @@
                   </div>
                 </div>
               </div>
-				</div>
-			<div class="col-4">
+            </div>
+            <div class="col-4">
               <div class="jumbotron p-3 bg-dark">
                 <div id="hivequote">
                   <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd}}</b></h2>
