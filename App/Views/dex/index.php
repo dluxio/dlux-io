@@ -1740,7 +1740,7 @@
                 <div v-if="openorders.length == 0" class="text-center text-white-50">
                   <h5>No open orders</h5>
                 </div>
-                <div class="table-responsive rounded border border-dark" v-if="openorders.length > 0">
+                <div class="table-responsive border border-dark" v-if="openorders.length > 0">
                   <table role="table" aria-busy="false" aria-colcount="7" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
                     <thead role="rowgroup" class="">
                       <tr role="row" class="">
