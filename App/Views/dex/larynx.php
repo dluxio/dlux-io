@@ -712,11 +712,12 @@
             this.filterusers.value = ''
           }
         },
+        validate(){},
         buyDEX() {
-          // if (document.getElementById('buyform').classList.contains('needs-validation')) {
-          //   console.log('needs validation')
-          //   return
-          // }
+          if (!document.getElementById('buyform').classList.contains('was-validated')) {
+            console.log('needs validation')
+            return
+          }
           var andthen = ' at market rate',
             rate = undefined,
             hours = 720
@@ -1706,7 +1707,7 @@
                     </div>
                   </div>
                   <div class="text-right">
-                    <button type="submit" class="btn btn-success" @click="buyDEX()">Buy</button>
+                    <button type="submit" class="btn btn-success" @click="validate()">Buy</button>
                   </div>
                 </form>
               </div>
