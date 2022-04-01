@@ -795,8 +795,10 @@
             console.log(getComputedStyle(FORM[i], ':invalid '))
             if (getComputedStyle(FORM[i], ':invalid ')) {
               allowed = false
+              console.log('invalid', i)
             }
           }
+          console.log(allowd)
           if (!allowed) this[validKey] = false
           else this[validKey] = true
         },
