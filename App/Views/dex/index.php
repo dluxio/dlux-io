@@ -1528,7 +1528,7 @@
                     </div>
                     <div class=""> <span class="text-muted">{{lapi}} - {{behind}} block(s) behind HIVE</span> </div>
                   </div>
-                  <div class="table-responsive border border-dark">
+                  <div class="table-responsive">
                     <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                       <thead role="rowgroup" class="">
                         <tr role="row" class="">
@@ -1740,7 +1740,7 @@
                 <div v-if="openorders.length == 0" class="text-center text-white-50">
                   <h5>No open orders</h5>
                 </div>
-                <div class="table-responsive border border-dark" v-if="openorders.length > 0">
+                <div class="table-responsive" v-if="openorders.length > 0">
                   <table role="table" aria-busy="false" aria-colcount="7" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
                     <thead role="rowgroup" class="">
                       <tr role="row" class="">
@@ -1767,7 +1767,7 @@
                         </th>
                         <th role="columnheader" class="" v-bind:class="{'col-sort':orders.filleda || orders.filledd}" aria-colindex="4">
                           <div class="d-flex align-items-center">
-                            <div class="mr-3">Filled</div>
+                            <div class="mr-3">FILLED</div>
                             <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','percentFilled','asc');toggleOrders('filleda')" v-bind:class="{'bg-primary':orders.filleda}"> <i class="fas fa-caret-up"></i></button>
                             <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','percentFilled','desc');toggleOrders('filledd')" v-bind:class="{'bg-primary':orders.filledd}"> <i class="fas fa-caret-down"></i></button>
                           </div>
