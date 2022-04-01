@@ -787,6 +787,7 @@
         validateForm(formKey, validKey) {
           console.log('vf', formKey, validKey)
           var Container = document.querySelector(`#${formKey}`);
+          console.log(Container)
           var badFeedback = Container.querySelector('.is-invalid');
           console.log('bf', badFeedback)
           if (badFeedback.length) this[validKey] = false
