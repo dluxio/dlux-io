@@ -104,7 +104,7 @@
     const {
       ValidationProvider
     } = VeeValidate
-    console.log(ValidationProvider)
+    console.log('VP',{VeeValidate, ValidationProvider})
     // Vue.component('validation-provider', VeeValidate.ValidationProvider);
     // import {
     //   createApp
