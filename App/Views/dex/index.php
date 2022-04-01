@@ -103,9 +103,9 @@
     import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
     // import { VeeValidate } from 'https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js'
     // Vue.component('validation-provider', VeeValidate.ValidationProvider);
-    // const {
-    //   ValidationProvider
-    // } = VeeValidate
+    const {
+      ValidationProvider
+    } = VeeValidate
     console.log('VP', {
       VeeValidate,
       ValidationProvider
