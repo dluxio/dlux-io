@@ -1320,7 +1320,7 @@
                   <div class="dropdown show d-flex align-items-center "><a class="text-warning" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">SEND {{TOKEN}}</h6>
-                      <form name="sendlarynx" class="needs-validation" novalidate>
+                      <form name="sendlarynx" @submit="tokenSend();return false" "class="needs-validation" novalidate>
                         <!-- @onsubmit="tokenSend();return false" -->
                         <div class="form-group">
                           <label for="sendlarynxto">To:</label>
@@ -1348,7 +1348,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendlarynxmodalsend" type="submit" @click="tokenSend();return false" class="btn btn-warning">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
