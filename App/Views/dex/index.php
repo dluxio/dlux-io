@@ -1398,7 +1398,7 @@
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} GOVERNANCE</h6>
                       <h4 class="dropdown-header text-center">Current Threshold: {{formatNumber(stats.gov_threshhold/1000,3,'.',',')}}</h4>
-                      <form name="govlarynx" class="needs-validation" novalidate>
+                      <form name="govlarynx" @submit.prevent="gov()" class="needs-validation" novalidate>
                         <div class="form-group text-center">
                           <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
                             <label class="btn btn-outline-info active">
@@ -1423,8 +1423,8 @@
                           <div class="small py-2" v-if="!features.govsel_up"><a href="#/" @click="setValue('features.gov_val',accountapi.gov/1000)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Locked</div>
                         </div>
                         <div class="text-center">
-                          <button id="locklarynxmodalsend" type="submit" class="btn btn-info" v-if="features.govsel_up" @click="gov()">Lock Gov<i class="fas fa-lock ml-2"></i></button>
-                          <button id="unlocklarynxmodalsend" type="submit" class="btn btn-info" v-if="!features.govsel_up" @click="gov()">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
+                          <button id="locklarynxmodalsend" type="submit" class="btn btn-info" v-if="features.govsel_up">Lock Gov<i class="fas fa-lock ml-2"></i></button>
+                          <button id="unlocklarynxmodalsend" type="submit" class="btn btn-info" v-if="!features.govsel_up">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
                         </div>
                       </form>
                     </div>
