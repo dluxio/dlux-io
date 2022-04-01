@@ -1516,8 +1516,8 @@
             <div id="nodedrawer" class="collapse">
               <div class="py-5">
                 <div class="container">
-                  <div class="d-flex align-items-center mb-3">
-                    <div>
+                  <div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
+                    <div class="mr-2">
                       <div role="group" class="input-group">
                         <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="focus('filteraccount')"><i class="fas fa-search"></i></span></div>
                         <input type="text" v-on:keyup="searchRunners()" class="form-control bg-dark border-dark text-info" id="filteraccount" v-model="filteraccount.value" @ aria-required="true" placeholder="Search">
@@ -1526,9 +1526,9 @@
                         </div>
                       </div>
                     </div>
-                    <div class="ml-auto mr-auto"> <span class=" p-0 m-0 text-muted">{{lapi}} - {{behind}} block(s) behind HIVE</span> </div>
+                    <div class=""> <span class="text-muted">{{lapi}} - {{behind}} block(s) behind HIVE</span> </div>
                   </div>
-                  <div class="table-responsive rounded border border-dark">
+                  <div class="table-responsive border border-dark">
                     <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                       <thead role="rowgroup" class="">
                         <tr role="row" class="">
