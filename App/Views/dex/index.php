@@ -788,9 +788,16 @@
           console.log('vf', formKey, validKey)
           var Container = document.getElementById(formKey)
           console.log(Container)
-          var badFeedback = Container.getElementsByClassName('is-invalid')
-          console.log('bf', badFeedback)
-          if (badFeedback.length) this[validKey] = false
+          var FORM = Container.getElementsByClassName('form-control')
+          console.log('bf', FORM)
+          var allowed = true
+          for (var i = 0; i < FORM.length; i++) {
+            console.log(getComputedStyle(FORM[i].id, ':invalid '))
+            if (getComputedStyle(FORM[i].id, ':invalid ')) {
+              allowed = false
+            }
+          }
+          if (!allowed) this[validKey] = false
           else this[validKey] = true
         },
         buyDEX() {
