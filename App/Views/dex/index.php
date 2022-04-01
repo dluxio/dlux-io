@@ -1346,9 +1346,9 @@
                           </div>
                           <div class="small pt-2"><a href="#/" @click="setValue('sendAmount', parseFloat(bartoken))" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
                         </div>
-                        <!-- <ValidationProvider v-slot="v">
+                        <ValidationProvider v-slot="v">
                           <input v-model="value" type="text">
-                        </ValidationProvider> -->
+                        </ValidationProvider>
                         <div class="form-group" id="sendlarynxmemogroup">
                           <label for="sendlarynxmemo">Memo:</label>
                           <div class="input-group">
