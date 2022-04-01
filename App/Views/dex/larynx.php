@@ -721,10 +721,10 @@
           }
         },
         validateForm(formKey, validKey) {
-          this.$refs[formKey]
           var Container = document.querySelector(`#${formKey}`);
           var badFeedback = Container.querySelector('.invalid-feedback');
-          if (badFeedbac.lengthk) this[validKey] = false
+          console.log(badFeedback)
+          if (badFeedback.length) this[validKey] = false
           else this[validKey] = true
         },
         buyDEX() {
