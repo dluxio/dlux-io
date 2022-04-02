@@ -88,7 +88,6 @@
 
   </style>
   <script src="/js/trading-vue.min.js"></script>
-  <script src="/js/veeno.min.js"></script>
   <script type="module">
     import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
     const {
@@ -398,8 +397,7 @@
         window.removeEventListener('resize', this.onResize)
       },
       components: {
-        TradingVue,
-        Veeno
+        TradingVue
       },
       methods: {
         onResize(event) {
