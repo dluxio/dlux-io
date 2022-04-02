@@ -93,8 +93,6 @@
     const {
       TradingVue
     } = TradingVueJs //vue 2 only
-    console.log(veeno)
-    const Veeno = veeno.default
 
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
@@ -390,9 +388,6 @@
           },
         }
       },
-      // compilerOptions: {
-      //   isCustomElement: tag => tag === 'TradingVue'
-      // },
       beforeDestroy() {
         window.removeEventListener('resize', this.onResize)
       },
