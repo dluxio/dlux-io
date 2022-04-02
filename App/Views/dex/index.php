@@ -788,9 +788,12 @@
           console.log('vf', formKey, validKey)
           var Container = document.getElementById(formKey)
           console.log(Container)
-          var FORM = Container.getElementsByClassName(':invalid')
-          var VFORM = Container.getElementsByClassName(':valid')
-          console.log('bf', {FORM, VFORM})
+          var FORM = Container.querySelector(':invalid')
+          var VFORM = Container.querySelector(':valid')
+          console.log('bf', {
+            FORM,
+            VFORM
+          })
           var allowed = true
           for (var i = 0; i < FORM.length; i++) {
             // const el = document.getElementById(FORM[i].id)
