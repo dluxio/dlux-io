@@ -27,16 +27,12 @@ import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js
     if (!lapi) {
       lapi = localStorage.getItem('lapi') || 'https://token.dlux.io'
     }
-    console.log(lapi)
+    console.warn('Using Token API:', lapi)
     if (lapi == 'https://token.dlux.io' || lapi == 'https://spkinstant.hivehoneycomb.com') {
-      console.log('using defaults')
       window.history.replaceState(null, null, "dex");
     }
     let user = localStorage.getItem('user') || 'GUEST'
     let hapi = localStorage.getItem('hapi') || 'https://api.hive.blog'
-    console.log({
-      lapi
-    })
 
     // createApp({ // vue 3
     var app = new Vue({ // vue 2
@@ -688,7 +684,6 @@ import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js
           const reqs = [
             this.$refs.buyQty
           ]
-          console.log(reqs[0])
           var andthen = ' at market rate',
             rate = undefined,
             hours = 720
@@ -1035,7 +1030,6 @@ import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js
             this.barpow = ((data.poweredUp + data.granted - data.granting) / 1000).toFixed(3)
             this.bargov = (data.gov / 1000).toFixed(3)
             this.accountapi = data
-            console.log('claim logic', new Date().getMonth() + 1, data.drop?.last_claim, data.drop?.availible.amount)
             if (new Date().getMonth() + 1 != parseInt(data.drop?.last_claim, 16) && data.drop?.availible.amount > 0) {
               this.hasDrop = true
               this.dropnai = `${parseFloat(data.drop.availible.amount / Math.pow(10, data.drop.availible.precision)).toFixed(data.drop.availible.precision)} ${data.drop.availible.token}`
@@ -1059,9 +1053,6 @@ import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js
                   cur.percentFilled = "0.00"
                   acc.push(cur)
                 }
-                console.log({
-                  acc
-                })
                 return acc
               }, [])
           })
