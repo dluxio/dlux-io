@@ -437,12 +437,12 @@
           }, `${this.prefix}${this.features.rewards_id}`, `Claiming ${this.TOKEN}...`, lapi.split('://')[1])
         },
         power() {
-          if (this.features.pow_val) broadcastCJA({
+          if (this.features.pow_val && this.powFormValid) broadcastCJA({
             amount: parseInt(this.features.pow_val * 1000)
           }, `${this.prefix}${this.features.powsel_up ? this.features.powup_id : this.features.powdn_id}`, `${this.features.powsel_up ? '' : 'Down-'}Powering ${this.TOKEN}...`, lapi.split('://')[1])
         },
         gov() {
-          if (this.features.gov_val) broadcastCJA({
+          if (this.features.gov_val && this.govFormValid) broadcastCJA({
             amount: parseInt(this.features.gov_val * 1000)
           }, `${this.prefix}${this.features.govsel_up ? this.features.govup_id : this.features.govdn_id}`, `${this.features.govsel_up ? '' : 'Un-'}Locking ${this.TOKEN}...`, lapi.split('://')[1])
         },
@@ -464,8 +464,7 @@
 
         },
         tokenSend() {
-          console.log(this.sendAllowed, this.sendTo, this.sendAmount, this.sendMemo, this.prefix, this.TOKEN)
-          if (this.sendAllowed) {
+          if (this.sendFormValid) {
             broadcastCJA({
               to: this.sendTo,
               amount: parseInt(this.sendAmount * 1000),
@@ -475,7 +474,7 @@
           return false
         },
         sendhive() {
-          if (this.sendHiveAllowed) broadcastTransfer({
+          if (this.hiveFormValid) broadcastTransfer({
             to: this.sendHiveTo,
             hive: this.sendHiveAmount * 1000,
             memo: this.sendHiveMemo
@@ -483,7 +482,7 @@
           else alert('Account Not Found')
         },
         sendhbd() {
-          if (this.sendHBDAllowed) broadcastTransfer({
+          if (this.hbdFormValid) broadcastTransfer({
             to: this.sendHBDTo,
             hbd: this.sendHBDAmount * 1000,
             memo: this.sendHBDMemo
@@ -785,7 +784,6 @@
           }
         },
         validateForm(formKey, validKey) {
-          console.log('vf', formKey, validKey)
           var Container = document.getElementById(formKey)
           if (Container.querySelector('input:invalid')) this[validKey] = false
           else this[validKey] = true
@@ -822,9 +820,7 @@
           }, `Buying ${this.TOKEN} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive ?'HIVE':'HBD'} ${andthen}`, lapi.split('://')[1])
         },
         sellDEX() {
-          // if (document.getElementById('sellform').classList.contains('needs-validation')) {
-          //   return
-          // }
+          if (!this.sellFormValid) return
           var andthen = ' at market rate',
             dlux = parseInt(parseFloat(this.sellQuantity) * 1000),
             hive = parseInt(parseFloat(this.sellHiveTotal) * 1000),
@@ -1334,7 +1330,7 @@
                   <div class="dropdown show d-flex align-items-center "><a class="text-warning" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">SEND {{TOKEN}}</h6>
-                      <form @submit.prevent="tokenSend()" class="needs-validation">
+                      <form id="tokenSendForm" @submit.prevent="tokenSend()" class="needs-validation">
                         <div class="form-group">
                           <label for="sendlarynxto">To:</label>
                           <div class="input-group">
@@ -1375,7 +1371,7 @@
                   <div class="dropdown show d-flex align-items-center "><a class="text-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} POWER</h6>
-                      <form name="pwrlarynx" class="needs-validation" novalidate>
+                      <form name="pwrlarynx" id="powForm" @submit.prevent="validateForm('powForm', 'powFormValid');power()" class=" needs-validation" novalidate>
                         <div class="form-group text-center">
                           <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
                             <label class="btn btn-outline-primary active">
@@ -1400,8 +1396,8 @@
                           <div class="small py-2" v-if="!features.powsel_up"><a href="#/" @click="setValue('features.pow_val',accountapi.poweredUp/1000)" class="text-primary">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a> Available</div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="pwruplarynxmodalsend" type="submit" class="btn btn-primary" v-if="features.powsel_up" @click="power()">Power Up<i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
-                          <button id="pwrdownlarynxmodalsend" type="submit" class="btn btn-primary" v-if="!features.powsel_up" @click="power()">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
+                          <button id="pwruplarynxmodalsend" type="submit" class="btn btn-primary" v-if="features.powsel_up">Power Up<i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
+                          <button id="pwrdownlarynxmodalsend" type="submit" class="btn btn-primary" v-if="!features.powsel_up">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1413,7 +1409,7 @@
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} GOVERNANCE</h6>
                       <h4 class="dropdown-header text-center">Current Threshold: {{formatNumber(stats.gov_threshhold/1000,3,'.',',')}}</h4>
-                      <form name="govlarynx" @submit.prevent="gov()" class="needs-validation" novalidate>
+                      <form name="govlarynx" id="govForm" @submit.prevent="validateForm('govForm', 'govFormValid');gov()" class="needs-validation" novalidate>
                         <div class="form-group text-center">
                           <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
                             <label class="btn btn-outline-info active">
@@ -1450,7 +1446,7 @@
                   <div class="dropdown show d-flex align-items-center "><a class="text-danger" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhive,3,'.',',')}} HIVE</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">SEND HIVE</h6>
-                      <form name="sendhive" class="needs-validation" novalidate>
+                      <form name="sendhive" id="hiveForm" @submit.prevent="validateForm('hiveForm', 'hiveFormValid');sendhive()" class=" needs-validation" novalidate>
                         <div class="form-group">
                           <label for="sendhiveto">To:</label>
                           <div class="input-group">
@@ -1477,7 +1473,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendhivemodalsend" type="submit" class="btn btn-danger" @click="sendhive()">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhivemodalsend" type="submit" class="btn btn-danger">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1488,7 +1484,7 @@
                   <div class="dropdown show d-flex align-items-center "><a class="text-success" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhbd,3,'.',',')}} HBD</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">SEND HBD</h6>
-                      <form name="sendhbd" class="needs-validation" novalidate>
+                      <form name="sendhbd" id="hbdForm" @submit.prevent="validateForm('hbdForm', 'hbdFormValid');sendhbd()" class="needs-validation" novalidate>
                         <div class="form-group">
                           <label for="sendhbdto">To:</label>
                           <div class="input-group">
@@ -1515,7 +1511,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendhbdmodalsend" type="submit" class="btn btn-success" @click="sendhbd()">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhbdmodalsend" type="submit" class="btn btn-success">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1928,7 +1924,7 @@
               </div>
               <div class="mt-3 col-md-6">
                 <h4>Sell {{TOKEN}}</h4>
-                <form id="sellform" name="sell" class="form-horizontal needs-validation" novalidate>
+                <form id="sellForm" @submit.prevent="validateForm('sellForm', 'sellFormValid');sellDEX()" name="sell" class="form-horizontal needs-validation" novalidate>
                   <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                     <div class="form-row">
                       <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
@@ -2022,7 +2018,7 @@
                     </div>
                   </div>
                   <div class="text-right">
-                    <button type="submit" class="btn btn-danger" @click="sellDEX()">Sell</button>
+                    <button type="submit" class="btn btn-danger">Sell</button>
                   </div>
                 </form>
               </div>
