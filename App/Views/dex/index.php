@@ -17,6 +17,7 @@
   <!-- <script src="/js/trading-vue.min.js"></script>-->
 
   <style>
+	  
     .col-sort {
       background-color: cornflowerblue;
       color: #282828;
@@ -94,6 +95,7 @@
     .dark-divider {
       border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
     }
+
   </style>
   <script src="/js/trading-vue.min.js"></script>
   <script src="/js/veeno.min.js"></script>
@@ -1243,11 +1245,11 @@
                 <!-- token select -->
                 <div id="userselectapi">
                   <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
-                    <div class="dropdown-menu bg-black rounded">
+                    <div class="dropdown-menu bg-darker rounded">
                       <h6 class="dropdown-header">HIVE / HBD</h6>
                       <a class="dropdown-item text-white-50" href="#/" @click="setApi('https://token.dlux.io')">DLUX</a> <a class="dropdown-item text-white-50" href="#/" @click="setApi('https://spkinstant.hivehoneycomb.com')">LARYNX</a>
-                      <div class="dropdown-divider bg-light"></div>
-                      <a class="dropdown-item text-white-50" href="#/" @click="setApi()">Manual</a>
+                      <div class="dropdown-divider bg-light d-none"></div>
+                      <a class="dropdown-item text-white-50 d-none" href="#/" @click="setApi()">Manual</a>
                     </div>
                   </div>
                 </div>
