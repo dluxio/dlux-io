@@ -793,9 +793,9 @@
           var allowed = true
           for (var i = 0; i < FORM.length; i++) {
             const el = document.getElementById(FORM[i].id)
-            console.log('2x',getComputedStyle(el, '::invalid '))
-            console.log('1x',getComputedStyle(el, ':invalid '))
-            console.log('0x',getComputedStyle(el, 'invalid '))
+            console.log('2x', getComputedStyle(el, '::invalid '))
+            console.log('v', el.style.valid)
+            console.log('i', el.style.invalid)
             // if (getComputedStyle(el, ':invalid ')) {
             //   allowed = false
             //   console.log('invalid', i)
