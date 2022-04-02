@@ -792,13 +792,13 @@
           console.log('bf', FORM)
           var allowed = true
           for (var i = 0; i < FORM.length; i++) {
-            console.log(getComputedStyle(FORM[i], ':invalid '))
-            if (getComputedStyle(FORM[i], ':invalid ')) {
+            const el = document.getElementById(FORM[i].id)
+            if (getComputedStyle(el, ':invalid ')) {
               allowed = false
               console.log('invalid', i)
             }
           }
-          console.log(allowd)
+          console.log(allowed)
           if (!allowed) this[validKey] = false
           else this[validKey] = true
         },
