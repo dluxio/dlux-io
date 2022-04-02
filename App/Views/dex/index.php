@@ -788,8 +788,8 @@
           console.log('vf', formKey, validKey)
           var Container = document.getElementById(formKey)
           console.log(Container)
-          var FORM = Container.getElementsByClassName('.input:invalid')
-          var VFORM = Container.getElementsByClassName('.input:valid')
+          var FORM = Container.querySelector('input:invalid')
+          var VFORM = Container.querySelector('input:valid')
           console.log('bf', {
             FORM,
             VFORM
