@@ -793,11 +793,13 @@
           var allowed = true
           for (var i = 0; i < FORM.length; i++) {
             const el = document.getElementById(FORM[i].id)
-            console.log(getComputedStyle(el, '::invalid '))
-            if (getComputedStyle(el, ':invalid ')) {
-              allowed = false
-              console.log('invalid', i)
-            }
+            console.log('2x',getComputedStyle(el, '::invalid '))
+            console.log('1x',getComputedStyle(el, ':invalid '))
+            console.log('0x',getComputedStyle(el, 'invalid '))
+            // if (getComputedStyle(el, ':invalid ')) {
+            //   allowed = false
+            //   console.log('invalid', i)
+            // }
           }
           console.log(allowed)
           if (!allowed) this[validKey] = false
