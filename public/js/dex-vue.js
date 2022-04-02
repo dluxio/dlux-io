@@ -923,6 +923,7 @@ import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js
             this.jsontoken = data.jsontoken
             this.TOKEN = data.jsontoken.toUpperCase()
             location.hash = data.jsontoken
+            window.document.title = `${data.jsontoken.toUpperCase()}:${this.buyhive.checked ? 'HIVE' : 'HBD'} DEX | DLUX`
             this.node = data.node
             this.features = data.features ? data.features : this.features
             this.behind = data.behind
