@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en" class="h-100">
-
 <head>
   <title>DLUX - DEX</title>
   <?php
@@ -8,16 +7,7 @@
   $path .= "/mod/header.php";
   include_once($path);
   ?>
-  <!-- noUI slider -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.min.js" integrity="sha512-mZXUH8DAODwCHioWP3gltQwa953LbABMlzTYwYkKqv8eNxOk37B1HgNNuCMfFxgrpW5C34WJbxPDcM58+s1dJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.css" integrity="sha512-DGB74Gyw93qON+V0QxSRs1er6sqoPyFoy23HBL5LN7MRJBcjeCU22zega+vOEGE0XQLoVrv4ExcaesSTwZQA2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <template>
-    <trading-vue :data="this.$data" />
-  </template>
-  <!-- <script src="/js/trading-vue.min.js"></script>-->
-
   <style>
-	  
     .col-sort {
       background-color: cornflowerblue;
       color: #282828;
@@ -99,8 +89,6 @@
   </style>
   <script src="/js/trading-vue.min.js"></script>
   <script src="/js/veeno.min.js"></script>
-  <!-- <script src="https://unpkg.com/vee-validate"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/trading-vue-js@1.0.2/dist/trading-vue.min.js"></script> -->
   <script type="module">
     import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
     const {
@@ -1357,9 +1345,6 @@
                           </div>
                           <div class="small pt-2"><a href="#/" @click="setValue('sendAmount', parseFloat(bartoken))" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
                         </div>
-                        <validation-provider v-slot="v">
-                          <input v-model="value" type="text">
-                        </validation-provider>
                         <div class="form-group" id="sendlarynxmemogroup">
                           <label for="sendlarynxmemo">Memo:</label>
                           <div class="input-group">
@@ -2212,19 +2197,6 @@
   $path .= "/mod/footer.php";
   include_once($path);
   ?>
-
-  <!-- <script>
-    var slider = document.getElementById('scaleslider');
-
-    noUiSlider.create(slider, {
-      start: [0, 100],
-      connect: true,
-      range: {
-        'min': 0,
-        'max': 100
-      }
-    });
-  </script> -->
 </body>
 <script>
   // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -2252,6 +2224,4 @@
     disabletab[i].setAttribute('tabindex', '-1')
   }
 </script>
-<!-- <script type="text/javascript" src="/js/chart.js"></script> -->
-
 </html>
