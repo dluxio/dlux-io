@@ -464,17 +464,18 @@
 
         },
         tokenSend() {
-          if (this.sendFormValid) {
+          if (!this.sendFormValid) return
+          if (this.sendAllowed) {
             broadcastCJA({
               to: this.sendTo,
               amount: parseInt(this.sendAmount * 1000),
               memo: this.sendMemo
             }, `${this.prefix}send`, `Trying to send ${this.TOKEN}...`, lapi.split('://')[1])
-          }
-          return false
+          } else alert('Username not found')
         },
         sendhive() {
-          if (this.hiveFormValid) broadcastTransfer({
+          if (!this.hiveFormValid) return
+          if (this.sendHiveAllowed) broadcastTransfer({
             to: this.sendHiveTo,
             hive: this.sendHiveAmount * 1000,
             memo: this.sendHiveMemo
@@ -482,7 +483,8 @@
           else alert('Account Not Found')
         },
         sendhbd() {
-          if (this.hbdFormValid) broadcastTransfer({
+          if (!this.hbdFormValid) return
+          if (this.sendHBDAllowed) broadcastTransfer({
             to: this.sendHBDTo,
             hbd: this.sendHBDAmount * 1000,
             memo: this.sendHBDMemo
