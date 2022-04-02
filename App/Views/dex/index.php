@@ -1199,7 +1199,10 @@
         },
         minsell: {
           get() {
-            return parseFloat(parseFloat(parseFloat(this.sellPrice / 0.001).toFixed(3)) + 0.001).toFixed(3)
+            var a
+            if (this.buyhive.checked) a = (0.001 / this.sellPrice).toFixed(3)
+            else a = (0.001 / this.sellPrice).toFixed(3)
+            return a
           }
         },
         maxhbuy: {
