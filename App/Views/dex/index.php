@@ -1937,10 +1937,10 @@
                         <div role="group" class="input-group">
                           <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-outline-warning active">
-                              <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit('limit');setValue('sellHours', 720);slock()">
+                              <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit('limit');setValue('sellHours', 720);setValue('sellPrice', buyhive.checked ? hivebuys[0]?.rate || 0 : hbdbuys[0]?.rate || 0 );slock()">
                               LIMIT </label>
                             <label class="btn btn-outline-warning">
-                              <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellHours', 0);setValue('sellHiveTotal', 0);setValue('sellHBDTotal', 0);slock()">
+                              <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellHours', 0);setValue('sellPrice', 0);setValue('sellHiveTotal', 0);setValue('sellHBDTotal', 0);slock()">
                               MARKET </label>
                           </div>
                         </div>
