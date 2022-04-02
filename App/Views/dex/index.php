@@ -787,26 +787,7 @@
         validateForm(formKey, validKey) {
           console.log('vf', formKey, validKey)
           var Container = document.getElementById(formKey)
-          console.log(Container)
-          var FORM = Container.querySelector('input:invalid')
-          var VFORM = Container.querySelector('input:valid')
-          console.log('bf', {
-            FORM,
-            VFORM
-          })
-          var allowed = true
-          for (var i = 0; i < FORM.length; i++) {
-            // const el = document.getElementById(FORM[i].id)
-            // console.log('2x', getComputedStyle(el, '::invalid '))
-            // console.log('v', el.style.valid)
-            // console.log('i', el.style.invalid)
-            // if (getComputedStyle(el, ':invalid ')) {
-            //   allowed = false
-            //   console.log('invalid', i)
-            // }
-          }
-          console.log(allowed)
-          if (!allowed) this[validKey] = false
+          if (Container.querySelector('input:invalid')) this[validKey] = false
           else this[validKey] = true
         },
         buyDEX() {
