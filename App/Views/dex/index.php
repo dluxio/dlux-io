@@ -2,17 +2,22 @@
 <html lang="en" class="h-100">
 
 <head>
-  <title>DLUX - LARYNX DEX</title>
+  <title>DLUX - DEX</title>
   <?php
   $path = $_SERVER['DOCUMENT_ROOT'];
   $path .= "/mod/header.php";
   include_once($path);
   ?>
-  <script src="https://cdn.jsdelivr.net/npm/luxon@1.26.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.1/dist/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
-  <script type="text/javascript" src="/js/chartf.js"></script>
+  <!-- noUI slider -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.min.js" integrity="sha512-mZXUH8DAODwCHioWP3gltQwa953LbABMlzTYwYkKqv8eNxOk37B1HgNNuCMfFxgrpW5C34WJbxPDcM58+s1dJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.css" integrity="sha512-DGB74Gyw93qON+V0QxSRs1er6sqoPyFoy23HBL5LN7MRJBcjeCU22zega+vOEGE0XQLoVrv4ExcaesSTwZQA2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <template>
+    <trading-vue :data="this.$data" />
+  </template>
+  <!-- <script src="/js/trading-vue.min.js"></script>-->
+
   <style>
+	  
     .col-sort {
       background-color: cornflowerblue;
       color: #282828;
@@ -90,15 +95,34 @@
     .dark-divider {
       border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
     }
-  </style>
-  <script type="module">
-    import {
-      createApp
-    } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-    let url = location.href.replace(/\/$/, "");
-    let lapi = localStorage.getItem('lapi') || 'https://spkinstant.hivehoneycomb.com'
 
-    if (location.hash) {
+  </style>
+  <script src="/js/trading-vue.min.js"></script>
+  <script src="/js/veeno.min.js"></script>
+  <!-- <script src="https://unpkg.com/vee-validate"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/trading-vue-js@1.0.2/dist/trading-vue.min.js"></script> -->
+  <script type="module">
+    import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
+    const {
+      TradingVue
+    } = TradingVueJs //vue 2 only
+    console.log(veeno)
+    const Veeno = veeno.default
+
+    let url = location.href.replace(/\/$/, "");
+    let lapi = ''
+    if (location.search) {
+      const string = location.search.replace('?', '')
+      let params = string.split('&')
+      for (let i = 0; i < params.length; i++) {
+        let param = params[i].split('=')
+        if (param[0] == 'api') {
+          lapi = param[1]
+        }
+      }
+      window.history.replaceState(null, null, "dex?api=" + lapi);
+    }
+    if (location.hash && !lapi) {
       const hash = url.split("#");
       if (hash[1].includes('dlux')) {
         lapi = 'https://token.dlux.io'
@@ -106,13 +130,36 @@
         lapi = 'https://spkinstant.hivehoneycomb.com'
       }
     }
+    if (!lapi) {
+      lapi = localStorage.getItem('lapi') || 'https://token.dlux.io'
+    }
+    console.log(lapi)
+    if (lapi == 'https://token.dlux.io' || lapi == 'https://spkinstant.hivehoneycomb.com') {
+      console.log('using defaults')
+      window.history.replaceState(null, null, "dex");
+    }
     let user = localStorage.getItem('user') || 'GUEST'
     let hapi = localStorage.getItem('hapi') || 'https://api.hive.blog'
+    console.log({
+      lapi
+    })
 
-
-    createApp({
+    // createApp({ // vue 3
+    var app = new Vue({ // vue 2
+      el: '#app', // vue 2
       data() {
         return {
+          ohlcv: [],
+          chart: {
+            id: 'honeycomb_tv',
+            width: 600,
+            height: 400,
+            toolbar: true,
+            overlays: false,
+            bg: `#111215`
+          },
+          barcount: 500,
+          barwidth: 3600000 * 6,
           nowtime: new Date().getTime(),
           agoTime: new Date().getTime() - 86400000,
           account: user,
@@ -132,7 +179,6 @@
           sendFormValid: false,
           hiveFormValid: false,
           hbdFormValid: false,
-          settingsFormValid: false,
           lapi: lapi,
           hapi: hapi,
           accountapi: {},
@@ -357,7 +403,22 @@
           },
         }
       },
+      // compilerOptions: {
+      //   isCustomElement: tag => tag === 'TradingVue'
+      // },
+      beforeDestroy() {
+        window.removeEventListener('resize', this.onResize)
+      },
+      components: {
+        TradingVue,
+        Veeno
+      },
       methods: {
+        onResize(event) {
+          this.chart.width = this.$refs.chartContainer.scrollWidth - 15
+          this.chart.height = this.chart.width / 2.5
+          this.$refs.dumbo.style = `width: ${this.chart.width}px; height: ${this.chart.height + 30}px;`
+        },
         saveNodeSettings() {
           let updates = {};
           for (var i = 0; i < this.features.node.opts.length; i++) {
@@ -378,12 +439,12 @@
           }, `${this.prefix}${this.features.rewards_id}`, `Claiming ${this.TOKEN}...`, lapi.split('://')[1])
         },
         power() {
-          if (this.features.pow_val) broadcastCJA({
+          if (this.features.pow_val && this.powFormValid) broadcastCJA({
             amount: parseInt(this.features.pow_val * 1000)
           }, `${this.prefix}${this.features.powsel_up ? this.features.powup_id : this.features.powdn_id}`, `${this.features.powsel_up ? '' : 'Down-'}Powering ${this.TOKEN}...`, lapi.split('://')[1])
         },
         gov() {
-          if (this.features.gov_val) broadcastCJA({
+          if (this.features.gov_val && this.govFormValid) broadcastCJA({
             amount: parseInt(this.features.gov_val * 1000)
           }, `${this.prefix}${this.features.govsel_up ? this.features.govup_id : this.features.govdn_id}`, `${this.features.govsel_up ? '' : 'Un-'}Locking ${this.TOKEN}...`, lapi.split('://')[1])
         },
@@ -405,26 +466,26 @@
 
         },
         tokenSend() {
-          console.log(this.sendAllowed, this.sendTo, this.sendAmount, this.sendMemo, this.bartoken)
-          if (this.sendAllowed && this.sendAmount && this.sendAmount <= parseFloat(this.bartoken)) {
+          if (!this.sendFormValid) return
+          if (this.sendAllowed) {
             broadcastCJA({
               to: this.sendTo,
               amount: parseInt(this.sendAmount * 1000),
-              memo: typeof this.sendMemo === 'string' ? this.sendMemo : ''
+              memo: this.sendMemo
             }, `${this.prefix}send`, `Trying to send ${this.TOKEN}...`, lapi.split('://')[1])
-          } else if (!this.sendAllowed) {
-            alert('Please check the account name and try again.')
-          }
+          } else alert('Username not found')
         },
         sendhive() {
+          if (!this.hiveFormValid) return
           if (this.sendHiveAllowed) broadcastTransfer({
             to: this.sendHiveTo,
-            hive: this.sendHBDTotal * 1000,
+            hive: this.sendHiveAmount * 1000,
             memo: this.sendHiveMemo
           })
           else alert('Account Not Found')
         },
         sendhbd() {
+          if (!this.hbdFormValid) return
           if (this.sendHBDAllowed) broadcastTransfer({
             to: this.sendHBDTo,
             hbd: this.sendHBDAmount * 1000,
@@ -640,15 +701,21 @@
           }
         },
         setApi(url) {
+          // remove trailing slash
+          if (url.substr(-1) == '/') {
+            url = url.substr(0, url.length - 1)
+          }
           let api = url || prompt("Please enter your API", "https://spkinstant.hivehoneycomb.com");
+          if (url.indexOf('https://') == -1) {
+            alert('https is required')
+            return
+          }
           if (api != null) {
-            localStorage.setItem('lapi', api)
-            if (location.hash) {
-              const hash = url.split("#");
-              //remove hash
+            if (location.hash && api) {
               location.hash = "";
             }
-            location.reload()
+            localStorage.setItem('lapi', api)
+            location.search = '?api=' + api
           }
         },
         suggestValue(key, value) {
@@ -721,15 +788,17 @@
           }
         },
         validateForm(formKey, validKey) {
-          var Container = document.querySelector(`#${formKey}`);
-          var badFeedback = Container.querySelector('.invalid-feedback');
-          console.log(badFeedback)
-          if (badFeedback.length) this[validKey] = false
+          var Container = document.getElementById(formKey)
+          if (Container.querySelector('input:invalid')) this[validKey] = false
           else this[validKey] = true
         },
         buyDEX() {
-          console.log('buyDEX', this.buyFormValid)
           if (!this.buyFormValid) return
+          var allowed = false
+          const reqs = [
+            this.$refs.buyQty
+          ]
+          console.log(reqs[0])
           var andthen = ' at market rate',
             rate = undefined,
             hours = 720
@@ -755,9 +824,7 @@
           }, `Buying ${this.TOKEN} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive ?'HIVE':'HBD'} ${andthen}`, lapi.split('://')[1])
         },
         sellDEX() {
-          // if (document.getElementById('sellform').classList.contains('needs-validation')) {
-          //   return
-          // }
+          if (!this.sellFormValid) return
           var andthen = ' at market rate',
             dlux = parseInt(parseFloat(this.sellQuantity) * 1000),
             hive = parseInt(parseFloat(this.sellHiveTotal) * 1000),
@@ -782,9 +849,158 @@
           if (txid) broadcastCJA({
             txid
           }, `${this.prefix}dex_clear`, `Canceling: ${txid}`, lapi.split('://')[1])
+        },
+        getHistorical() {
+          const pair = this.buyhive.checked ? 'hive' : 'hbd'
+          const numbars = this.barcount
+          const period = parseInt(this.barwidth)
+          const now = this.nowtime
+          var startdate = new Date(now - (period * numbars)).getTime()
+          var currentBucket = startdate
+          const dex = this.dexapi
+          if (!dex.markets.hive.his) return
+          const current_block = this.stats.lastIBlock
+          const buckets = Object.keys(dex.markets[pair].days)
+          buckets.sort(function(a, b) {
+            return parseInt(a) - parseInt(b)
+          })
+          var bars = [],
+            current = {
+              o: 0,
+              h: 0,
+              l: 0,
+              c: 0,
+              v: 0
+            }
+          for (var i = 0; i < buckets.length; i++) {
+            if (new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime() > currentBucket) {
+              if (!bars.length) {
+                while (new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime() > currentBucket + period) {
+                  bars.push({
+                    x: currentBucket,
+                    o: dex.markets[pair.toLowerCase()].days[buckets[i]].o,
+                    h: dex.markets[pair.toLowerCase()].days[buckets[i]].o,
+                    l: dex.markets[pair.toLowerCase()].days[buckets[i]].o,
+                    c: dex.markets[pair.toLowerCase()].days[buckets[i]].o,
+                    v: 0
+                  })
+                  currentBucket = new Date(currentBucket + period).getTime()
+                }
+              } else {
+                while (new Date(now - (3000 * (current_block - parseInt(buckets[i])))).getTime() > currentBucket + period) {
+                  bars.push({
+                    x: currentBucket,
+                    o: bars[bars.length - 1].c,
+                    h: bars[bars.length - 1].c,
+                    l: bars[bars.length - 1].c,
+                    c: bars[bars.length - 1].c,
+                    v: 0
+                  })
+                  currentBucket = new Date(currentBucket + period).getTime()
+                }
+              }
+              if (dex.markets[pair.toLowerCase()].days[buckets[i]].t > current.h) current.h = dex.markets[pair.toLowerCase()].days[buckets[i]].t
+              if (dex.markets[pair.toLowerCase()].days[buckets[i]].b < current.l) current.l = dex.markets[pair.toLowerCase()].days[buckets[i]].b
+              current.c = dex.markets[pair.toLowerCase()].days[buckets[i]].c
+              current.v += dex.markets[pair.toLowerCase()].days[buckets[i]].v
+              if (buckets[i + 1] && new Date(now - (3000 * (current_block - parseInt(buckets[i + 1])))).getTime() > currentBucket + period) {
+                bars.push({
+                  x: currentBucket,
+                  o: current.o,
+                  h: current.h,
+                  l: current.l,
+                  c: current.c,
+                  v: current.v
+                })
+                currentBucket = new Date(currentBucket + period).getTime()
+                current.o = current.c
+                current.h = current.c
+                current.l = current.c
+                current.c = current.c
+                current.v = 0
+              } else if (!buckets[i + 1]) {
+                bars.push({
+                  x: currentBucket,
+                  o: current.o,
+                  h: current.h,
+                  l: current.l,
+                  c: current.c,
+                  v: current.v
+                })
+              }
+            }
+          }
+          let items = Object.keys(dex.markets[pair.toLowerCase()].his)
+          for (var i = 0; i < items.length; i++) {
+            if (new Date(now - (3000 * (current_block - parseInt(items[i].split(':')[0])))).getTime() > currentBucket) {
+              if (!bars.length) {
+                while (new Date(now - (3000 * (current_block - parseInt(items[i].split(':')[0])))).getTime() > currentBucket + period) {
+                  bars.push({
+                    x: currentBucket,
+                    o: parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price),
+                    h: parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price),
+                    l: parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price),
+                    c: parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price),
+                    v: 0
+                  })
+                  currentBucket = new Date(currentBucket + period).getTime()
+                }
+              } else {
+                while (new Date(now - (3000 * (current_block - parseInt(items[i].split(':')[0])))).getTime() > currentBucket + period) {
+                  bars.push({
+                    x: currentBucket,
+                    o: bars[bars.length - 1].c,
+                    h: bars[bars.length - 1].c,
+                    l: bars[bars.length - 1].c,
+                    c: bars[bars.length - 1].c,
+                    v: 0
+                  })
+                  currentBucket = new Date(currentBucket + period).getTime()
+                }
+              }
+              if (parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price) > current.h) current.h = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+              if (parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price) < current.l) current.l = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+              current.c = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+              current.v += parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].target_vol)
+              if (items[i + 1] && new Date(now - (3000 * (current_block - parseInt(items[i + 1].split(':')[0])))).getTime() > currentBucket + period) {
+                bars.push({
+                  x: currentBucket,
+                  o: current.o,
+                  h: current.h,
+                  l: current.l,
+                  c: current.c,
+                  v: current.v
+                })
+                currentBucket = new Date(currentBucket + period).getTime()
+                current.o = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                current.h = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                current.l = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                current.c = parseFloat(dex.markets[pair.toLowerCase()].his[items[i]].price)
+                current.v = 0
+              } else if (!items[i + 1]) {
+                bars.push({
+                  x: currentBucket,
+                  o: current.o,
+                  h: current.h,
+                  l: current.l,
+                  c: current.c,
+                  v: current.v
+                })
+              }
+            }
+          }
+          var newBars = []
+          for (var i = 0; i < bars.length; i++) {
+            newBars.push([bars[i].x, bars[i].o, bars[i].h, bars[i].l, bars[i].c, bars[i].v])
+          }
+          this.ohlcv = newBars
         }
       },
       mounted() {
+        this.chart.width = this.$refs.chartContainer.scrollWidth - 15
+        this.chart.height = this.chart.width / 2.5
+        this.$refs.dumbo.style = `width: ${this.chart.width}px; height: ${this.chart.height + 30}px;`
+        window.addEventListener('resize', this.onResize)
         fetch('https://api.coingecko.com/api/v3/simple/price?ids=hive&amp;vs_currencies=usd')
           .then(response => response.json())
           .then(data => {
@@ -816,6 +1032,7 @@
             this.multisig = data.multisig
             this.jsontoken = data.jsontoken
             this.TOKEN = data.jsontoken.toUpperCase()
+            location.hash = data.jsontoken
             this.node = data.node
             this.features = data.features ? data.features : this.features
             this.behind = data.behind
@@ -915,6 +1132,7 @@
               return acc
             }, [])
             this.dexapi = data
+            this.getHistorical()
             if (this.hivesells[0]) this.buyPrice = this.hivesells[0].rate
             if (this.hivebuys[0]) this.sellPrice = this.hivebuys[0].rate
           })
@@ -971,6 +1189,11 @@
           })
       },
       computed: {
+        chartTitle: {
+          get() {
+            return `${this.TOKEN}:${this.buyhive.checked ? 'HIVE' : 'HBD'}`
+          }
+        },
         minbuy: {
           get() {
             return parseFloat(parseFloat(parseFloat(this.buyPrice / 1000).toFixed(3)) + 0.001).toFixed(3)
@@ -978,17 +1201,20 @@
         },
         minsell: {
           get() {
-            return parseFloat(parseFloat(parseFloat(this.sellPrice / 0.001).toFixed(3)) + 0.001).toFixed(3)
+            var a
+            if (this.buyhive.checked) a = (0.001 / this.sellPrice).toFixed(3)
+            else a = (0.001 / this.sellPrice).toFixed(3)
+            return a
           }
         },
         maxhbuy: {
           get() {
-            return parseFloat((this.dexapi.markets.hive.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hive.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
+            return this.buymarket.checked ? "100000.000" : parseFloat((this.dexapi.markets.hive.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hive.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
           }
         },
         maxdbuy: {
           get() {
-            return parseFloat((this.dexapi.markets.hbd.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hbd.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
+            return this.buymarket.checked ? "100000.000" : parseFloat((this.dexapi.markets.hbd.tick * (this.stats.dex_max / 100) * (1 - ((this.buyPrice / this.dexapi.markets.hbd.tick) * (this.stats.dex_slope / 100))) * this.stats.safetyLimit) / 1000).toFixed(3)
           }
         },
         marketCap: {
@@ -996,9 +1222,10 @@
             if (this.buyhive.checked) return `${parseFloat((this.stats.tokenSupply/1000) * this.hiveprice.hive.usd * this.dexapi.markets.hive.tick).toFixed(2)}`
             else return `${parseFloat((this.stats.tokenSupply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.markets.hbd.tick).toFixed(2)}`
           }
-        }
+        },
       }
-    }).mount('#app')
+    }) // vue 2
+    // }).mount('#app') // vue 3
   </script>
 </head>
 
@@ -1021,8 +1248,8 @@
                     <div class="dropdown-menu bg-black rounded">
                       <h6 class="dropdown-header">HIVE / HBD</h6>
                       <a class="dropdown-item text-white-50" href="#/" @click="setApi('https://token.dlux.io')">DLUX</a> <a class="dropdown-item text-white-50" href="#/" @click="setApi('https://spkinstant.hivehoneycomb.com')">LARYNX</a>
-                      <div class="dropdown-divider bg-light"></div>
-                      <a class="dropdown-item text-white-50" href="#/" @click="setApi()">Manual</a>
+                      <div class="dropdown-divider bg-light d-none"></div>
+                      <a class="dropdown-item text-white-50 d-none" href="#/" @click="setApi()">Manual</a>
                     </div>
                   </div>
                 </div>
@@ -1054,21 +1281,14 @@
                           </div>
                         </div> -->
                         <div class="text-center mt-3">
-                          <button id="savenodesettings" class="btn btn-secondary" @click="saveNodeSettings()">Save<i class="far fa-save ml-2"></i></button>
+                          <button id="savenodesettings" type="button" class="btn btn-secondary" @click="saveNodeSettings()">Save<i class="far fa-save ml-2"></i></button>
                         </div>
                       </form>
                     </div>
                   </div>
                 </div>
                 <!-- node status btn -->
-                <div :title="behindTitle" class="d-flex align-items-center mx-3">
-                  <a class="text-center" style="font-size: .7em;" :class="{'text-success':'behind < 30'}" :class="{'text-warning':'behind >= 30 && behind < 60'}" :class="{'text-danger':'behind >= 60'}" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer">
-                    <span class=" p-0 m-0"><i class="fas fa-circle mr-2"></i><span class=" p-0 m-0" v-show="behind < 30">ONLINE</span>
-                      <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span>
-                      <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span></span>
-                    <span class="p-0 m-0 ml-1">({{runners.length}} <i class="fas fa-user-lock"></i>)</span>
-                  </a>
-                </div>
+                <div :title="behindTitle" class="d-flex align-items-center mx-3"> <a class="text-center" style="font-size: .7em;" :class="{'text-success':'behind < 30'}" :class="{'text-warning':'behind >= 30 && behind < 60'}" :class="{'text-danger':'behind >= 60'}" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer"> <span class=" p-0 m-0"><i class="fas fa-circle mr-2"></i><span class=" p-0 m-0" v-show="behind < 30">ONLINE</span> <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span> <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span></span> <span class="p-0 m-0 ml-1">({{runners.length}} <i class="fas fa-user-lock"></i>)</span> </a> </div>
               </div>
               <div class="d-flex align-items-center">
                 <!-- claim tokens form -->
@@ -1085,7 +1305,7 @@
                         </div>
                         <div class="form-group">
                           <div class="text-center mt-3">
-                            <button id="claimlarynxad" class="btn background-rb" @click="dropClaim()">Claim<i class="fas fa-coins ml-2"></i></button>
+                            <button id="claimlarynxad" type="button" class="btn background-rb" @click="dropClaim()">Claim<i class="fas fa-coins ml-2"></i></button>
                           </div>
                         </div>
                       </form>
@@ -1103,7 +1323,7 @@
                         </div>
                         <div class="form-group">
                           <div class="text-center mt-3">
-                            <button id="claimlarynxrewards" class="btn background-rb" @click="rewardClaim()">Claim<i class="fas fa-coins ml-2"></i></button>
+                            <button id="claimlarynxrewards" type="button" class="btn background-rb" @click="rewardClaim()">Claim<i class="fas fa-coins ml-2"></i></button>
                           </div>
                         </div>
                       </form>
@@ -1117,7 +1337,7 @@
                   <div class="dropdown show d-flex align-items-center "><a class="text-warning" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">SEND {{TOKEN}}</h6>
-                      <form name="sendlarynx" class="needs-validation" novalidate>
+                      <form id="sendForm" @submit.prevent="validateForm('sendForm', 'sendFormValid');tokenSend()" class="needs-validation" novalidate>
                         <div class="form-group">
                           <label for="sendlarynxto">To:</label>
                           <div class="input-group">
@@ -1137,6 +1357,9 @@
                           </div>
                           <div class="small pt-2"><a href="#/" @click="setValue('sendAmount', parseFloat(bartoken))" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
                         </div>
+                        <validation-provider v-slot="v">
+                          <input v-model="value" type="text">
+                        </validation-provider>
                         <div class="form-group" id="sendlarynxmemogroup">
                           <label for="sendlarynxmemo">Memo:</label>
                           <div class="input-group">
@@ -1144,7 +1367,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning" @click="tokenSend()">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendlarynxmodalsend" type="submit" class="btn btn-warning">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1155,7 +1378,7 @@
                   <div class="dropdown show d-flex align-items-center "><a class="text-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} POWER</h6>
-                      <form name="pwrlarynx" class="needs-validation" novalidate>
+                      <form name="pwrlarynx" id="powForm" @submit.prevent="validateForm('powForm', 'powFormValid');power()" class=" needs-validation" novalidate>
                         <div class="form-group text-center">
                           <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
                             <label class="btn btn-outline-primary active">
@@ -1180,8 +1403,8 @@
                           <div class="small py-2" v-if="!features.powsel_up"><a href="#/" @click="setValue('features.pow_val',accountapi.poweredUp/1000)" class="text-primary">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a> Available</div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="pwruplarynxmodalsend" type="submit" class="btn btn-primary" v-if="features.powsel_up" @click="power()">Power Up<i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
-                          <button id="pwrdownlarynxmodalsend" type="submit" class="btn btn-primary" v-if="!features.powsel_up" @click="power()">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
+                          <button id="pwruplarynxmodalsend" type="submit" class="btn btn-primary" v-if="features.powsel_up">Power Up<i class="fas fa-arrow-alt-circle-up ml-2"></i></button>
+                          <button id="pwrdownlarynxmodalsend" type="submit" class="btn btn-primary" v-if="!features.powsel_up">Power Down<i class="fas fa-arrow-alt-circle-down ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1193,7 +1416,7 @@
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} GOVERNANCE</h6>
                       <h4 class="dropdown-header text-center">Current Threshold: {{formatNumber(stats.gov_threshhold/1000,3,'.',',')}}</h4>
-                      <form name="govlarynx" class="needs-validation" novalidate>
+                      <form name="govlarynx" id="govForm" @submit.prevent="validateForm('govForm', 'govFormValid');gov()" class="needs-validation" novalidate>
                         <div class="form-group text-center">
                           <div class="btn-group btn-group-toggle my-2" data-toggle="buttons">
                             <label class="btn btn-outline-info active">
@@ -1218,8 +1441,8 @@
                           <div class="small py-2" v-if="!features.govsel_up"><a href="#/" @click="setValue('features.gov_val',accountapi.gov/1000)" class="text-info">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a> Locked</div>
                         </div>
                         <div class="text-center">
-                          <button id="locklarynxmodalsend" type="submit" class="btn btn-info" v-if="features.govsel_up" @click="gov()">Lock Gov<i class="fas fa-lock ml-2"></i></button>
-                          <button id="unlocklarynxmodalsend" type="submit" class="btn btn-info" v-if="!features.govsel_up" @click="gov()">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
+                          <button id="locklarynxmodalsend" type="submit" class="btn btn-info" v-if="features.govsel_up">Lock Gov<i class="fas fa-lock ml-2"></i></button>
+                          <button id="unlocklarynxmodalsend" type="submit" class="btn btn-info" v-if="!features.govsel_up">Unlock Gov<i class="fas fa-lock-open ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1230,7 +1453,7 @@
                   <div class="dropdown show d-flex align-items-center "><a class="text-danger" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhive,3,'.',',')}} HIVE</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">SEND HIVE</h6>
-                      <form name="sendhive" class="needs-validation" novalidate>
+                      <form name="sendhive" id="hiveForm" @submit.prevent="validateForm('hiveForm', 'hiveFormValid');sendhive()" class=" needs-validation" novalidate>
                         <div class="form-group">
                           <label for="sendhiveto">To:</label>
                           <div class="input-group">
@@ -1257,7 +1480,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendhivemodalsend" class="btn btn-danger" @click="sendhive()">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhivemodalsend" type="submit" class="btn btn-danger">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1268,7 +1491,7 @@
                   <div class="dropdown show d-flex align-items-center "><a class="text-success" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhbd,3,'.',',')}} HBD</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">SEND HBD</h6>
-                      <form name="sendhbd" class="needs-validation" novalidate>
+                      <form name="sendhbd" id="hbdForm" @submit.prevent="validateForm('hbdForm', 'hbdFormValid');sendhbd()" class="needs-validation" novalidate>
                         <div class="form-group">
                           <label for="sendhbdto">To:</label>
                           <div class="input-group">
@@ -1295,7 +1518,7 @@
                           </div>
                         </div>
                         <div class="text-center mt-3">
-                          <button id="sendhbdmodalsend" type="submit" class="btn btn-success" @click="sendhbd()">Send<i class="fas fa-paper-plane ml-2"></i></button>
+                          <button id="sendhbdmodalsend" type="submit" class="btn btn-success">Send<i class="fas fa-paper-plane ml-2"></i></button>
                         </div>
                       </form>
                     </div>
@@ -1307,8 +1530,8 @@
             <div id="nodedrawer" class="collapse">
               <div class="py-5">
                 <div class="container">
-                  <div class="d-flex align-items-center mb-3">
-                    <div>
+                  <div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
+                    <div class="mr-2">
                       <div role="group" class="input-group">
                         <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="focus('filteraccount')"><i class="fas fa-search"></i></span></div>
                         <input type="text" v-on:keyup="searchRunners()" class="form-control bg-dark border-dark text-info" id="filteraccount" v-model="filteraccount.value" @ aria-required="true" placeholder="Search">
@@ -1317,13 +1540,9 @@
                         </div>
                       </div>
                     </div>
-                    <div class="ml-auto mr-auto">
-
-                      <span class=" p-0 m-0 text-muted">{{lapi}} - {{behind}} block(s) behind HIVE</span>
-
-                    </div>
+                    <div class=""> <span class="text-muted">{{lapi}} - {{behind}} block(s) behind HIVE</span> </div>
                   </div>
-                  <div class="table-responsive rounded border border-dark">
+                  <div class="table-responsive">
                     <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                       <thead role="rowgroup" class="">
                         <tr role="row" class="">
@@ -1354,12 +1573,12 @@
                         <tr class="" role="row" v-for="node in runners" v-if="!filteraccount.value">
                           <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
                           <td role="cell" class="" aria-colindex="2">{{formatNumber(node.g/1000,3,'.',',')}}</td>
-                          <td role="cell" class="" aria-colindex="3"><a href="#" @click="setMem('lapi',node.api, true)">{{node.api}}</a></td>
+                          <td role="cell" class="" aria-colindex="3"><a href="#" @click="setApi(node.api)">{{node.api}}</a></td>
                         </tr>
                         <tr class="" role="row" v-for="node in runnersSearch" v-if="filteraccount.value">
                           <td role="cell" class="" aria-colindex="1"><a :href="atref(node.account)">@{{node.account}}</a></td>
                           <td role="cell" class="" aria-colindex="2">{{formatNumber(node.g/1000,3,'.',',')}}</td>
-                          <td role="cell" class="" aria-colindex="3"><a href="#" @click="setMem('lapi',node.api, true)">{{node.api}}</a></td>
+                          <td role="cell" class="" aria-colindex="3"><a href="#" @click="setApi(node.api)">{{node.api}}</a></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1372,20 +1591,6 @@
         <div class="container text-white" style="margin-top: 50px;">
           <!-- current token tick -->
           <div class="row">
-            <div class="col-4">
-              <div class="jumbotron p-3 bg-dark">
-                <div id="hivequote">
-                  <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd}}</b></h2>
-                </div>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="jumbotron p-3 bg-dark">
-                <div id="hbdquote">
-                  <h2 class="lead my-0"><b>HBD: ${{hbdprice.hive_dollar.usd}}</b></h2>
-                </div>
-              </div>
-            </div>
             <div class="col-4">
               <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
                 <div class="d-flex align-items-center" id="dluxhivequote">
@@ -1440,6 +1645,20 @@
                 </div>
               </div>
             </div>
+            <div class="col-4">
+              <div class="jumbotron p-3 bg-dark">
+                <div id="hivequote">
+                  <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd}}</b></h2>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="jumbotron p-3 bg-dark">
+                <div id="hbdquote">
+                  <h2 class="lead my-0"><b>HBD: ${{hbdprice.hive_dollar.usd}}</b></h2>
+                </div>
+              </div>
+            </div>
           </div>
           <!-- market stats -->
           <div id="market" class="row text-center">
@@ -1448,10 +1667,10 @@
               <div class="container-fluid mt-3">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                   <label class="btn btn-outline-warning active">
-                    <input name="buypair" type="radio" id="buyhive" checked @click="togglecoin('hive');setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);setValue('buyHBDTotal', 0);setValue('sellHBDTotal', 0)">
+                    <input name="buypair" type="radio" id="buyhive" checked @click="togglecoin('hive');setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);setValue('buyHBDTotal', 0);setValue('sellHBDTotal', 0);getHistorical()">
                     HIVE </label>
                   <label class="btn btn-outline-warning">
-                    <input type="radio" name="buypair" id="buyhbd" @click="togglecoin('hbd');setValue('buyHBDTotal', 0);setValue('sellHBDTotal', 0);setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0)">
+                    <input type="radio" name="buypair" id="buyhbd" @click="togglecoin('hbd');setValue('buyHBDTotal', 0);setValue('sellHBDTotal', 0);setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);getHistorical()">
                     HBD </label>
                 </div>
               </div>
@@ -1505,40 +1724,27 @@
               </div>
             </div>
           </div>
-          <!-- maret chart -->
+          <!-- market chart -->
           <div class="marketChart mt-3 mb-3">
-            <div class="">
-              <div class="chartjs-size-monitor">
-                <div class="chartjs-size-monitor-expand">
-                  <div class=""></div>
-                </div>
-                <div class="chartjs-size-monitor-shrink">
-                  <div class=""></div>
-                </div>
-              </div>
-              <canvas id="chart" width="2220" height="800" class="chartjs-render-monitor" style="display: block; height: 400px; width: 1110px;"></canvas>
+            <div id="chartContainer" ref="dumbo">
+              <trading-vue :data="this.$data" ref="tvjs" :id="chart.id" :width="chart.width" :height="chart.height" :title-txt="chartTitle" :color-back="chart.bg" />
+              <!-- Trading Vue 2 -->
             </div>
             <div class="mt-2 text-center d-flex justify-content-between">
               <div>
-                <button id="refreshChart" class="btn btn-outline-secondary" onClick="updateChart()"><i class="fas fa-sync-alt mr-2"></i>REFRESH CHART</button>
+                <!-- <script type="text/javascript">
+    $('#time-scale').multiselect();
+</script>  -->
+                <select id="time-scale" class="custom-select bg-darker border-dark text-muted" v-model="barwidth" @change="getHistorical()">
+                  <option value="60000">1m</option>
+                  <option value="300000">5m</option>
+                  <option value="900000">15m</option>
+                  <option value="3600000">1h</option>
+                  <option value="21600000" selected>6h</option>
+                  <option value="86400000">1d</option>
+                </select>
               </div>
-              <div id="settimescale" class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-info active">
-                  <input type="radio" name="timescale" id="hourbtn">
-                  1H </label>
-                <label class="btn btn-info">
-                  <input type="radio" name="timescale" id="daybtn">
-                  1D </label>
-                <label class="btn btn-info">
-                  <input type="radio" name="timescale" id="weekbtn">
-                  1W </label>
-                <label class="btn btn-info">
-                  <input type="radio" name="timescale" id="monthbtn">
-                  1M </label>
-                <label class="btn btn-info">
-                  <input type="radio" name="timescale" id="yearbtn">
-                  1Y </label>
-              </div>
+              <div></div>
               <div>
                 <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.length}}) <i class="fas fa-book-reader ml-2"></i></button>
               </div>
@@ -1548,7 +1754,7 @@
                 <div v-if="openorders.length == 0" class="text-center text-white-50">
                   <h5>No open orders</h5>
                 </div>
-                <div class="table-responsive rounded border border-dark" v-if="openorders.length > 0">
+                <div class="table-responsive" v-if="openorders.length > 0">
                   <table role="table" aria-busy="false" aria-colcount="7" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="useropenorders">
                     <thead role="rowgroup" class="">
                       <tr role="row" class="">
@@ -1575,7 +1781,7 @@
                         </th>
                         <th role="columnheader" class="" v-bind:class="{'col-sort':orders.filleda || orders.filledd}" aria-colindex="4">
                           <div class="d-flex align-items-center">
-                            <div class="mr-3">Filled</div>
+                            <div class="mr-3">FILLED</div>
                             <button title="Sort Ascending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','percentFilled','asc');toggleOrders('filleda')" v-bind:class="{'bg-primary':orders.filleda}"> <i class="fas fa-caret-up"></i></button>
                             <button title="Sort Descending" type="button" class="mx-1 btn btn-sm btn-dark" @click="sort('openorders','percentFilled','desc');toggleOrders('filledd')" v-bind:class="{'bg-primary':orders.filledd}"> <i class="fas fa-caret-down"></i></button>
                           </div>
@@ -1622,7 +1828,7 @@
             <div class="row">
               <div class="mt-3 col-md-6">
                 <h4>Buy {{TOKEN}}</h4>
-                <form name="buy" id="buyForm" @action.prevent="buyDEX()" class="form-horizontal needs-validation" novalidate>
+                <form name="buy" id="buyForm" @submit.prevent="validateForm('buyForm', 'buyFormValid');buyDEX()" class="form-horizontal needs-validation" novalidate>
                   <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                     <div class="form-row">
                       <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
@@ -1630,10 +1836,10 @@
                         <div role="group" class="input-group">
                           <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-outline-warning active">
-                              <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit('limit');setValue('buyQuantity', 0);setValue('buyHours','720');block()">
+                              <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit('limit');setValue('buyQuantity', 0);setValue('buyHours','720');setValue('buyPrice', buyhive.checked ? hivesells[0]?.rate || '0' : hbdsells[0]?.rate || '0');block()">
                               LIMIT </label>
                             <label class="btn btn-outline-warning">
-                              <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHiveTotal',0);setValue('buyHBDTotal',0);block()">
+                              <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHours','0');setValue('buyHiveTotal',0);setValue('buyPrice', 0);setValue('buyHBDTotal',0);block()">
                               MARKET </label>
                           </div>
                         </div>
@@ -1653,7 +1859,7 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input type="number" v-on:keyup="bcalc('t')" required class="form-control bg-dark border-dark text-info" v-model="buyQuantity" id="buyQuantity" placeholder="0" :min="minbuy" step="0.001" aria-required="true" :readonly="bform.tl">
+                          <input type="number" v-on:keyup="bcalc('t')" ref="buyQty" required class="form-control bg-dark border-dark text-info" v-model="buyQuantity" id="buyQuantity" placeholder="0" :min="minbuy" step="0.001" aria-required="true" :readonly="bform.tl">
                           <div class="input-group-append">
                             <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"> {{TOKEN}} <a href="#/" class="ml-3 text-secondary" @click="block('t')"><i class="fas" :class="{'fa-lock':bform.tl, 'fa-unlock-alt':!bform.tl}"></i></a> </div>
                           </div>
@@ -1719,13 +1925,13 @@
                     </div>
                   </div>
                   <div class="text-right">
-                    <button type="submit" class="btn btn-success" @click="validateForm('buyForm', 'buyFormValid')">Buy</button>
+                    <button type="submit" class="btn btn-success">Buy</button>
                   </div>
                 </form>
               </div>
               <div class="mt-3 col-md-6">
                 <h4>Sell {{TOKEN}}</h4>
-                <form id="sellform" name="sell" class="form-horizontal needs-validation" novalidate>
+                <form id="sellForm" @submit.prevent="validateForm('sellForm', 'sellFormValid');sellDEX()" name="sell" class="form-horizontal needs-validation" novalidate>
                   <div class="form-group" id="sell-type" aria-labelledby="sell-type-label">
                     <div class="form-row">
                       <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
@@ -1733,10 +1939,10 @@
                         <div role="group" class="input-group">
                           <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-outline-warning active">
-                              <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit('limit');setValue('sellHours', 720);slock()">
+                              <input type="radio" name="sellType" id="selllimit" checked @click="toggleselllimit('limit');setValue('sellHours', 720);setValue('sellPrice', buyhive.checked ? hivebuys[0]?.rate || 0 : hbdbuys[0]?.rate || 0 );slock()">
                               LIMIT </label>
                             <label class="btn btn-outline-warning">
-                              <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellHours', 0);setValue('sellHiveTotal', 0);setValue('sellHBDTotal', 0);slock()">
+                              <input type="radio" name="sellType" id="sellmarket" @click="toggleselllimit('market');setValue('sellHours', 0);setValue('sellPrice', 0);setValue('sellHiveTotal', 0);setValue('sellHBDTotal', 0);slock()">
                               MARKET </label>
                           </div>
                         </div>
@@ -1819,7 +2025,7 @@
                     </div>
                   </div>
                   <div class="text-right">
-                    <button type="submit" class="btn btn-danger" @click="sellDEX()">Sell</button>
+                    <button type="submit" class="btn btn-danger">Sell</button>
                   </div>
                 </form>
               </div>
@@ -1885,7 +2091,7 @@
                 </div>
               </div>
             </div>
-            <div id="hiveTradeHistory">
+            <div id="hiveTradeHistory" ref="chartContainer">
               <div class="row">
                 <div class="mt-3 col-12">
                   <h4>Trade History</h4>
@@ -2006,9 +2212,19 @@
   $path .= "/mod/footer.php";
   include_once($path);
   ?>
-  <script src="/dlux-io/js/jquery-3.4.1.min.js"></script>
-  <script src="/dlux-io/js/popper.min.js"></script>
-  <script src="/dlux-io/js/bootstrap-4.4.1.js"></script>
+
+  <!-- <script>
+    var slider = document.getElementById('scaleslider');
+
+    noUiSlider.create(slider, {
+      start: [0, 100],
+      connect: true,
+      range: {
+        'min': 0,
+        'max': 100
+      }
+    });
+  </script> -->
 </body>
 <script>
   // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -2036,6 +2252,6 @@
     disabletab[i].setAttribute('tabindex', '-1')
   }
 </script>
-<script type="text/javascript" src="/js/chart.js"></script>
+<!-- <script type="text/javascript" src="/js/chart.js"></script> -->
 
 </html>

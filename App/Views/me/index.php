@@ -455,29 +455,22 @@ if ( isset( $author ) ) {
                     </div>
                   </div>
                 </div>
-                <div class="clearfix d-none">
-                  <hr class="my-4 bg-light">
-                  <div class="float-left">
-                    <h4>LARYNX Power</h4>
-                    <p class="text-white-50">Not yet available</p>
-                    <p class="text-white-50">Benefits of LARYNX Power:</p>
-                    <ul class="text-white-50">
-                      <li>Similar to running mining hardware</li>
-                      <li>Instant Power Up</li>
-                      <li>Cannot be Powered Down, sold, or traded</li>
-                    </ul>
-                  </div>
-                  <div id="larynxpactions" class="float-right text-right">
-                    <h5 id="larynxpwrbalance">{{((larynxtoken.data.poweredUp)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
-                    <a data-toggle="collapse" id="delegationsbtn" href="#delegations" role="button" aria-expanded="false" aria-controls="Show delegations" class="text-white d-none" style="text-decoration: none">
-                      <h6 id="delegatebal">(-0 DG)<i class="fas fa-search ml-2"></i></h6>
-                    </a>
-                    <div class="btn-group" role="group" aria-label="DLUX Actions">
-                      <button type="button" class="btn btn-info mr-half disabled" data-toggle="modal" title="Delegate DLUX" id="delegatedluxbtn" data-target="#sendDluxModal" style="pointer-events: none"><i class="fas fa-user-friends fa-fw mr-2"></i>Delegate</button>
-                      <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ></button>
-                        <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled" href="#" data-toggle="modal" id="dluxpowerdownModalButton" data-target="#powerdownDluxModal"><i class="fas fa-angle-double-down fa-fw mr-2"></i>Power Down</a> <a class="dropdown-item disabled" href="#" data-toggle="modal" id="powertogovbutton" data-target="#sendDluxModal"><i class="fas fa-random fa-fw mr-2"></i>Convert to GOV</a></div>
-                      </div>
+              <hr class="my-4 bg-light">
+              <div class="clearfix">
+                <div class="float-left">
+                  <h4>LARYNX Token</h4>
+                  <p class="text-white-50">The utility token for the spk network.</p>
+                </div>
+                <div id="larynxactions" class="float-right text-right">
+                  <h5 id="larynxbalance">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
+                  <div class="btn-group" role="group" aria-label="LARYNX Actions">
+                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendlarynxmodalbutton" data-target="#sendLarynxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                    <div class="btn-group" role="group">
+                      <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled d-none" href="#" id="poweruplarynxbutton" data-toggle="modal" data-target="#powerupLarynxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item" href="#" id="locklarynxbutton" data-toggle="modal" data-target="#lockgovLarynxModal"><i class="fas fa-lock fa-fw mr-2"></i>Lock GOV</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/dex#larynx" id="buylink"><i class="fas fa-cart-arrow-down fa-fw mr-2"></i>Buy LARYNX</a> <a class="dropdown-item" href="/dex#larynx" id="selllink"><i class="fas fa-coins fa-fw mr-2"></i>Sell LARYNX</a></div>
+
                     </div>
                   </div>
                 </div>
@@ -539,28 +532,28 @@ if ( isset( $author ) ) {
 				</div>
             </div>
           </div>
-          <!-- hive wallet tab-->
-          <div role="tabpanel" class="tab-pane fade show" id="hive" aria-labelledby="hivetab">
-            <div class="container">
-              <div class="jumbotron pt-4 bg-darker">
-                <h1 class="display-5">HIVE</h1>
-                <p class="lead ">A proof-of-stake blockchain built for censorship resistant content and apps</p>
-                <hr class="my-4 bg-light">
-                <div class="clearfix">
-                  <div class="float-left">
-                    <h4>HIVE Token</h4>
-                    <p class="text-white-50">The main token of the chain, often rewarded for content.</p>
-                  </div>
-                  <div id="hiveactions" class="float-right text-right">
-                    <h5 id="hivebalance">{{accountapi.data.result[0].balance}}</h5>
-                    <div class="btn-group" role="group" aria-label="DLUX Actions">
-                      <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhivemodalbutton" data-target="#sendHiveModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                      <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                        <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled" href="#"  id="poweruphivebutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item disabled" href="#"><i class="fas fa-random fa-fw mr-2"></i>Convert to HBD</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="/dex/"><i class="fas fa-store fa-fw mr-2"></i>Trade</a></div>
-                      </div>
+		  </div>
+		  <!-- hive wallet tab-->
+        <div role="tabpanel" class="tab-pane fade show" id="hive" aria-labelledby="hivetab">
+          <div class="container">
+            <div class="jumbotron pt-4 bg-darker">
+              <h1 class="display-5">HIVE</h1>
+              <p class="lead ">A proof-of-stake blockchain built for censorship resistant content and apps</p>
+              <hr class="my-4 bg-light">
+              <div class="clearfix">
+                <div class="float-left">
+                  <h4>HIVE Token</h4>
+                  <p class="text-white-50">The main token of the chain, often rewarded for content.</p>
+                </div>
+                <div id="hiveactions" class="float-right text-right">
+                  <h5 id="hivebalance">{{accountapi.data.result[0].balance}}</h5>
+                  <div class="btn-group" role="group" aria-label="DLUX Actions">
+                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhivemodalbutton" data-target="#sendHiveModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                    <div class="btn-group" role="group">
+                      <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled" href="#"  id="poweruphivebutton" data-toggle="modal" data-target="#powerupDluxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item disabled" href="#"><i class="fas fa-random fa-fw mr-2"></i>Convert to HBD</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/dex#dlux"><i class="fas fa-store fa-fw mr-2"></i>Trade</a></div>
                     </div>
                   </div>
                 </div>
@@ -589,22 +582,22 @@ if ( isset( $author ) ) {
                     </div>
                   </div>
                 </div>
-                <hr class="my-4 bg-light">
-                <div class="clearfix">
-                  <div class="float-left">
-                    <h4>HIVE Backed Dollar</h4>
-                    <p class="text-white-50">Also a reward for content, this token is pegged to the US Dollar</p>
-                  </div>
-                  <div id="hbdactions" class="float-right text-right">
-                    <h5 id="hbdbalance">{{accountapi.data.result[0].hbd_balance}}</h5>
-                    <div class="btn-group" role="group" aria-label="DLUX Actions">
-                      <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhbdmodalbutton" data-target="#sendHbdModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                      <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                        <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled" href="#"><i class="fas fa-random fa-fw mr-2"></i>Convert to HIVE</a> <a class="dropdown-item disabled" href="#"><i class="fas fa-piggy-bank fa-fw mr-2"></i>Transfer to Savings</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="/dex/"><i class="fas fa-store fa-fw mr-2"></i>Trade</a></div>
-                      </div>
+              </div>
+              <hr class="my-4 bg-light">
+              <div class="clearfix">
+                <div class="float-left">
+                  <h4>HIVE Backed Dollar</h4>
+                  <p class="text-white-50">Also a reward for content, this token is pegged to the US Dollar</p>
+                </div>
+                <div id="hbdactions" class="float-right text-right">
+                  <h5 id="hbdbalance">{{accountapi.data.result[0].hbd_balance}}</h5>
+                  <div class="btn-group" role="group" aria-label="DLUX Actions">
+                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendhbdmodalbutton" data-target="#sendHbdModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                    <div class="btn-group" role="group">
+                      <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled" href="#"><i class="fas fa-random fa-fw mr-2"></i>Convert to HIVE</a> <a class="dropdown-item disabled" href="#"><i class="fas fa-piggy-bank fa-fw mr-2"></i>Transfer to Savings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/dex#dlux"><i class="fas fa-store fa-fw mr-2"></i>Trade</a></div>
                     </div>
                   </div>
                 </div>

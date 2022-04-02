@@ -184,7 +184,7 @@
 			<div class="dlux-header"><h1><span class="text-white">dlux is:</span> <span class="dlux-is">DeFi</span></h1></div>
 			<div class="mt-2"><h5 class="text-white">DECENTRALIZED TOKEN EXCHANGE</h5></div>
 			<div>
-				<a class="btn btn-dlux btn-lg btn-tang mt-2" href="/dex/">Trade Tokens<i class="fas fa-store fa-fw ml-2"></i></a>
+				<a class="btn btn-dlux btn-lg btn-tang mt-2" href="/dex#dlux">Trade Tokens<i class="fas fa-store fa-fw ml-2"></i></a>
 				<a class="btn btn-dlux btn-lg btn-outline-tang mt-2" href="/new/node">Run A Node<i class="fas fa-robot fa-fw ml-2"></i></a>
 			</div>
 		</div>
