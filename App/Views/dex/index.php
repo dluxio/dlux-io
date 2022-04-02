@@ -1834,7 +1834,7 @@
                         <div role="group" class="input-group">
                           <div class="btn-group btn-group-toggle" data-toggle="buttons">
                             <label class="btn btn-outline-warning active">
-                              <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit('limit');setValue('buyQuantity', 0);setValue('buyHours','720');setValue('buyPrice', 0);block()">
+                              <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit('limit');setValue('buyQuantity', 0);setValue('buyHours','720');setValue('buyPrice', buyhive.checked ? hivesells[0]?.rate || 0 : hbdsells[0]?.rate || 0);block()">
                               LIMIT </label>
                             <label class="btn btn-outline-warning">
                               <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHiveTotal',0);setValue('buyPrice', 0);setValue('buyHBDTotal',0);block()">
