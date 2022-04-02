@@ -788,14 +788,15 @@
           console.log('vf', formKey, validKey)
           var Container = document.getElementById(formKey)
           console.log(Container)
-          var FORM = Container.getElementsByClassName('form-control')
-          console.log('bf', FORM)
+          var FORM = Container.getElementsByClassName('.is-invalid ')
+          var VFORM = Container.getElementsByClassName('.is-valid ')
+          console.log('bf', {FORM, VFORM})
           var allowed = true
           for (var i = 0; i < FORM.length; i++) {
-            const el = document.getElementById(FORM[i].id)
-            console.log('2x', getComputedStyle(el, '::invalid '))
-            console.log('v', el.style.valid)
-            console.log('i', el.style.invalid)
+            // const el = document.getElementById(FORM[i].id)
+            // console.log('2x', getComputedStyle(el, '::invalid '))
+            // console.log('v', el.style.valid)
+            // console.log('i', el.style.invalid)
             // if (getComputedStyle(el, ':invalid ')) {
             //   allowed = false
             //   console.log('invalid', i)
