@@ -455,36 +455,6 @@ if ( isset( $author ) ) {
                     </div>
                   </div>
                 </div>
-              <hr class="my-4 bg-light">
-              <div class="clearfix">
-                <div class="float-left">
-                  <h4>LARYNX Token</h4>
-                  <p class="text-white-50">The utility token for the spk network.</p>
-                </div>
-                <div id="larynxactions" class="float-right text-right">
-                  <h5 id="larynxbalance">{{((larynxtoken.data.balance)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
-                  <div class="btn-group" role="group" aria-label="LARYNX Actions">
-                    <button type="button" class="btn btn-info mr-half" data-toggle="modal" id="sendlarynxmodalbutton" data-target="#sendLarynxModal"><i class="fas fa-paper-plane mr-2"></i>Send</button>
-                    <div class="btn-group" role="group">
-                      <button id="btnGroupDrop1" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                      <div class="dropdown-menu dropdown-menu-right text-white" aria-labelledby="btnGroupDrop1"> <a class="dropdown-item disabled d-none" href="#" id="poweruplarynxbutton" data-toggle="modal" data-target="#powerupLarynxModal"><i class="fas fa-angle-double-up fa-fw mr-2"></i>Power Up</a> <a class="dropdown-item" href="#" id="locklarynxbutton" data-toggle="modal" data-target="#lockgovLarynxModal"><i class="fas fa-lock fa-fw mr-2"></i>Lock GOV</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/dex#larynx" id="buylink"><i class="fas fa-cart-arrow-down fa-fw mr-2"></i>Buy LARYNX</a> <a class="dropdown-item" href="/dex#larynx" id="selllink"><i class="fas fa-coins fa-fw mr-2"></i>Sell LARYNX</a></div>
-
-                    </div>
-                  </div>
-                </div>
-                <div class="collapse" id="delegations">
-                  <hr class="my-2 bg-light">
-                  <div class="clearfix">
-                    <p class="float-left pt-2">@username was delegated 1000 DP 5 Days Ago</p>
-                    <div class="float-right">
-                      <button class="btn btn-secondary"><i class="fas fa-fw fa-user-edit"></i></button>
-                      <button class="btn btn-danger ml-1"><i class="fas fa-fw fa-trash-alt"></i></button>
-                    </div>
-                  </div>
-                </div>
-             </div>
                 <hr class="my-4 bg-light">
                 <div class="clearfix">
                   <div class="float-left">
@@ -500,9 +470,6 @@ if ( isset( $author ) ) {
                   </div>
                   <div id="larynxgactions" class="float-right text-right">
                     <h5 id="govbalance">{{((larynxtoken.data.gov)/1000).formatNumber(3,'.',',')}} LARYNX</h5>
-                    <a data-toggle="collapse" id="larynxescrowtxbutton" href="#larynxescrowtx" role="button" aria-expanded="false" aria-controls="Show escrow transactions" class="text-white" style="text-decoration: none">
-                      <h6 id="escrowbal">(-0 G)<i class="fas fa-search ml-2"></i></h6>
-                    </a>
                     <div class="btn-group" role="group" aria-label="LARYNX Actions">
                       <button type="button" class="btn btn-info mr-half" disabled title="Coming soon!" style="pointer-events: none;"><i class="fas fa-balance-scale fa-fw mr-2"></i>Measures</button>
                       <div class="btn-group" role="group">
@@ -512,9 +479,7 @@ if ( isset( $author ) ) {
                     </div>
                   </div>
                 </div>
-                <div class="collapse" id="larynxescrowtx">
-                  <hr class="my-2 bg-light">
-                </div>
+
                 <hr class="my-4 bg-light">
                 <div class="clearfix">
                   <div class="float-left">
@@ -533,7 +498,6 @@ if ( isset( $author ) ) {
 				</div>
             </div>
           </div>
-		  </div>
 		  <!-- hive wallet tab-->
         <div role="tabpanel" class="tab-pane fade show" id="hive" aria-labelledby="hivetab">
           <div class="container">
@@ -558,6 +522,7 @@ if ( isset( $author ) ) {
                     </div>
                   </div>
                 </div>
+				</div>
                 <hr class="my-4 bg-light">
                 <div class="clearfix">
                   <div class="float-left">
@@ -583,7 +548,7 @@ if ( isset( $author ) ) {
                     </div>
                   </div>
                 </div>
-              </div>
+			  
               <hr class="my-4 bg-light">
               <div class="clearfix">
                 <div class="float-left">
@@ -602,6 +567,7 @@ if ( isset( $author ) ) {
                     </div>
                   </div>
                 </div>
+				</div>
                 <hr class="my-4 bg-light">
                 <div class="clearfix">
                   <div class="float-left">
@@ -628,6 +594,7 @@ if ( isset( $author ) ) {
           </div>
         </div>
       </div>
+		
       <!-- inventory tab -->
       <div role="tabpanel" class="tab-pane fade show" id="inventory" aria-labelledby="inventorytab">
         <div class="container">
