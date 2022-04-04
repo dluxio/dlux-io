@@ -1,54 +1,145 @@
-/*
-Error: File to import not found or unreadable: bootstrap.scss.
-       Load paths:
-         /Applications/Adobe Dreamweaver 2020/Configuration/SassFrameworks/bourbon
-         /Applications/Adobe Dreamweaver 2020/Configuration/SassFrameworks/neat
-         /Applications/Adobe Dreamweaver 2020/Configuration/SassFrameworks/base
-        on line 1 of /Applications/MAMP/htdocs/dlux-io/css/dlux.scss
+body {
+    background-color: #222222
+}
 
-1: @import "bootstrap.scss";
-2: 
-3: body {background-color: #222222}
-4: 
-5: .fill {object-fit: fill;}
-6: 
 
-Backtrace:
-/Applications/MAMP/htdocs/dlux-io/css/dlux.scss:1
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/import_node.rb:67:in `rescue in import'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/import_node.rb:44:in `import'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/import_node.rb:28:in `imported_file'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/import_node.rb:37:in `css_import?'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:314:in `visit_import'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/stack.rb:79:in `block in with_base'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/stack.rb:135:in `with_frame'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/stack.rb:79:in `with_base'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:162:in `visit'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:52:in `map'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/base.rb:36:in `visit'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:161:in `visit'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/visitors/perform.rb:10:in `visit'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/root_node.rb:36:in `css_tree'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/tree/root_node.rb:20:in `render'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/engine.rb:290:in `render'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/exec/sass_scss.rb:400:in `run'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/exec/sass_scss.rb:63:in `process_result'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/exec/base.rb:52:in `parse'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/lib/sass/exec/base.rb:19:in `parse!'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/rubygems/gems/sass-3.5.3/bin/sass:13:in `<top (required)>'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/bin/sass:34:in `load'
-/Applications/Adobe Dreamweaver 2020/Adobe Dreamweaver 2020.app/Contents/Resources/gems/bin/sass:34:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: File to import not found or unreadable: bootstrap.scss.\A        Load paths:\A          /Applications/Adobe Dreamweaver 2020/Configuration/SassFrameworks/bourbon\A          /Applications/Adobe Dreamweaver 2020/Configuration/SassFrameworks/neat\A          /Applications/Adobe Dreamweaver 2020/Configuration/SassFrameworks/base\A         on line 1 of /Applications/MAMP/htdocs/dlux-io/css/dlux.scss\A \A 1: @import \"bootstrap.scss\";\A 2: \A 3: body {background-color: #222222}\A 4: \A 5: .fill {object-fit: fill;}\A 6: "; }
+.bg-color {background-color: #222222}
+
+.bg-none {background-color: transparent !important;}
+
+.fill {object-fit: fill;}
+
+.contain {object-fit: contain;}
+
+.cover {object-fit: cover;}
+
+.scale-down {object-fit: scale-down;}
+
+.none {object-fit: none;}
+
+.pos-fixed {position: fixed;}
+
+.btn-launch {border-radius: 20px 20px 20px 20px;}
+
+.author-img {width: 38px; height: 38px; border: 2px solid #B1B1B1;}
+
+.profile-img {width: 96px; height: 96px; border: 2px solid #B1B1B1;}
+
+.a-1, .a-1:hover {text-decoration: none; color: aliceblue;}
+
+.btn-1 {width: 125px;}
+
+.btn-75 {width: 75px;}
+
+.ml-100 {margin-left: 100px;}
+
+.padme-t70 {padding-top: 70px;}
+
+.acct-link {color: cornflowerblue; text-decoration: underline}
+
+.bg-darker {background-color: #212529}
+
+.mr-half {margin-right: 0.15rem !important; }
+
+.input-75 {width: 75px;}
+
+.select {text-align-last: center;}
+ 
+.append-radius {
+	border-radius: 0px 5px 5px 0px !important;
+}
+
+.no-radius {border-radius: 0px !important;}
+
+.drop-no-arrow::after {
+    display:none;
+}
+.theme-icon-holder {
+  display: inline-block;
+  background: #f4fcf6;
+  color: #FB00FF;
+  width: 32px;
+  height: 32px;
+  padding-top: 4px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 50%;
+}
+.col-sort {
+      background-color: cornflowerblue;
+      color: #282828;
+    }
+
+    input.disabled-input {
+      pointer-events: none;
+      background-color: #e9ecef;
+      opacity: 1;
+    }
+
+    .r-radius-hotfix {
+      border-top-right-radius: 0.25rem !important;
+      border-bottom-right-radius: 0.25rem !important;
+    }
+
+    .l-radius-hotfix {
+      border-top-left-radius: 0.25rem !important;
+      border-bottom-left-radius: 0.25rem !important;
+    }
+
+    .tbody-scroll-orders {
+      display: block;
+      height: 400px;
+      overflow: auto;
+    }
+
+    .tbody-scroll-history {
+      display: block;
+      max-height: 600px;
+      overflow: auto;
+    }
+
+    .tbody-scroll-nodes {
+      display: block;
+      max-height: 600px;
+      overflow: auto;
+    }
+
+    thead,
+    tbody tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    .bg-black {
+      background-color: black;
+    }
+
+    .btn-rb,
+    .btn-rb:hover,
+    .btn-rb:active,
+    .btn-rb:visited {
+      background: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      border-style: solid;
+      border-width: 1px;
+      border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
+    }
+
+    .border-rb {
+      border-style: solid;
+      border-width: 1px;
+      border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
+    }
+
+    .background-rb {
+      background: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+      color: #000;
+      border: none;
+    }
+
+    .dark-divider {
+      border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
+    }
+

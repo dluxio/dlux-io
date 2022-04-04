@@ -1,113 +1,38 @@
 <!doctype html>
 <html lang="en" class="h-100">
-
+<!-- head -->
 <head>
-  <title>DLUX - DEX</title>
-  <?php
-  $path = $_SERVER['DOCUMENT_ROOT'];
-  $path .= "/mod/header.php";
-  include_once($path);
-  ?>
-  <!-- noUI slider -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.min.js" integrity="sha512-mZXUH8DAODwCHioWP3gltQwa953LbABMlzTYwYkKqv8eNxOk37B1HgNNuCMfFxgrpW5C34WJbxPDcM58+s1dJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.4.0/nouislider.css" integrity="sha512-DGB74Gyw93qON+V0QxSRs1er6sqoPyFoy23HBL5LN7MRJBcjeCU22zega+vOEGE0XQLoVrv4ExcaesSTwZQA2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- HEADER MOD -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/css/custom.css" rel="stylesheet">
+<!-- Icons -->
+<script src="https://kit.fontawesome.com/0f693ffc58.js" crossorigin="anonymous"></script>
+<!-- HIVE -->
+<script src="https://cdn.jsdelivr.net/npm/@hiveio/hive-js/dist/hive.min.js"></script>
+<!-- Initialization -->
+<script>
+hive.api.setOptions({url:"https://anyx.io"})
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+<!-- END HEADER MOD -->
   <template>
     <trading-vue :data="this.$data" />
   </template>
-  <!-- <script src="/js/trading-vue.min.js"></script>-->
-
-  <style>
-	  
-    .col-sort {
-      background-color: cornflowerblue;
-      color: #282828;
-    }
-
-    input.disabled-input {
-      pointer-events: none;
-      background-color: #e9ecef;
-      opacity: 1;
-    }
-
-    .r-radius-hotfix {
-      border-top-right-radius: 0.25rem !important;
-      border-bottom-right-radius: 0.25rem !important;
-    }
-
-    .l-radius-hotfix {
-      border-top-left-radius: 0.25rem !important;
-      border-bottom-left-radius: 0.25rem !important;
-    }
-
-    .tbody-scroll-orders {
-      display: block;
-      height: 400px;
-      overflow: auto;
-    }
-
-    .tbody-scroll-history {
-      display: block;
-      max-height: 600px;
-      overflow: auto;
-    }
-
-    .tbody-scroll-nodes {
-      display: block;
-      max-height: 600px;
-      overflow: auto;
-    }
-
-    thead,
-    tbody tr {
-      display: table;
-      width: 100%;
-      table-layout: fixed;
-    }
-
-    .bg-black {
-      background-color: black;
-    }
-
-    .btn-rb,
-    .btn-rb:hover,
-    .btn-rb:active,
-    .btn-rb:visited {
-      background: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      border-style: solid;
-      border-width: 1px;
-      border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
-    }
-
-    .border-rb {
-      border-style: solid;
-      border-width: 1px;
-      border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
-    }
-
-    .background-rb {
-      background: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-      color: #000;
-      border: none;
-    }
-
-    .dark-divider {
-      border-image: linear-gradient(45deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82) 1;
-    }
-
-  </style>
   <script src="/js/trading-vue.min.js"></script>
-  <script src="/js/veeno.min.js"></script>
-  <!-- <script src="https://unpkg.com/vee-validate"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/trading-vue-js@1.0.2/dist/trading-vue.min.js"></script> -->
+
   <script type="module">
     import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
     const {
       TradingVue
     } = TradingVueJs //vue 2 only
-    console.log(veeno)
-    const Veeno = veeno.default
+
 
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
@@ -411,7 +336,7 @@
       },
       components: {
         TradingVue,
-        Veeno
+        
       },
       methods: {
         onResize(event) {
@@ -1229,34 +1154,127 @@
   </script>
 </head>
 
-<body class="d-flex flex-column bg-darker text-white h-100 padme-t70" id="index">
-  <?php
-  $path = $_SERVER['DOCUMENT_ROOT'];
-  $path .= "/mod/nav.php";
-  include_once($path);
-  ?>
+<body class="d-flex flex-column text-white h-100 padme-t70" id="index">
+	<!-- NAV MOD -->
+<script>function showTab(str) {
+    $('#usertabs a[href="#'+str+'"]').tab("show");
+  }</script>
+<header class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:rgba(42, 48, 54, 0.8); -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);">
+  <div class="container-fluid">
+	<a class="navbar-brand" href="/"><img src="/img/dlux-hive-logo-alpha.svg" alt="dlux-logo" width="40" height="40"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+		<div>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"> <a class="nav-link" href="/apps/">APPS</a></li>
+        <li class="nav-item"> <a class="nav-link" href="/nfts/">NFTS</a></li>
+        <li class="nav-item"> <a class="nav-link" href="/dex#dlux">DEX</a></li>
+        <li class="nav-item"> <a class="nav-link" href="/docs/">DOCS</a></li>
+      </ul>
+			</div>
+		<div class="d-flex">
+	<ul class="navbar-nav mr-5 no-session" id="loginMenu">
+	<li class="nav-item"><a class="nav-link acct-link" href="/about/">About</a></li>
+	<li class="nav-item"><a class="nav-link acct-link" href="https://signup.hive.io/">Get Account</a></li>
+	<li class="nav-item"><a class="nav-link acct-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
+	</ul>
+			
+    <div class="mr-5 active-session" id="userMenu">
+		<input id="userCookie" value="null" type="text" class="d-none">
+		<input id="userPFP" value="null" type="text" class="d-none">
+	  <ul class="nav navbar-nav">
+		<li class="nav-item my-auto">
+			<a class="nav-link" href="/new/" data-toggle="tooltip"  title="Create a new app">
+				<i class="fas fa-fw fa-lg fa-plus mr-2"></i></a></li>
+		<li class="nav-item dropdown">
+		  <a class="nav-link dropdown-toggle text-white-50" id="userDropdown" data-toggle="dropdown" href="#">
+			  <img src="" id="userImage" alt="" width="30" height="30" class="img-fluid rounded-circle bg-light mr-1 cover">
+			  <span id="userName">username</span></a>
+          <div class="dropdown-menu pt-0" aria-labelledby="userDropdown">
+			 <a class="dropdown-item" href="/me#blog/" onClick="showTab('blog')"><i class="fas fa-user fa-fw mr-2"></i>Profile</a>
+			 <a class="dropdown-item" href="/me#wallet/" onClick="showTab('wallet')"><i class="fas fa-wallet fa-fw mr-2"></i>Wallet</a>
+			 <a class="dropdown-item" href="/me#inventory/" onClick="showTab('inventory')"><i class="fas fa-boxes fa-fw mr-2"></i>Inventory</a>
+			 <a class="dropdown-item" href="/me#node/" onClick="showTab('node')"><i class="fas fa-robot fa-fw mr-2"></i>Node</a>
+			 <a class="dropdown-item" href="/me#settings/" onClick="showTab('settings')"><i class="fas fa-cog fa-fw mr-2"></i>Settings</a>
+             <div class="dropdown-divider"></div>
+			 <a class="dropdown-item" href="/about/"><i class="fas fa-info-circle fa-fw mr-2"></i>About</a>
+             <div class="dropdown-divider"></div>
+             <a class="dropdown-item" href="#" onclick="logout()" data-toggle="modal" data-target="#loginModal"><i class="fas fa-user-friends mr-2"></i>Switch User</a>
+			 <a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-power-off fa-fw mr-2"></i>Logout</a></div>
+        </li>
+      </ul>
+	</div>
+    </div>
+    </div>
+</header>
+<container id="propVotePlead" >
+</container>
+<!-- Login Modal -->       
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content text-white bg-darker">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalTitle">Login to DLUX</h5>
+        <button type="button" class="close" style="color: #fff !important;" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div id="hiveKeychain">
+              <p class="text-center">Using Hive Keychain</p>
+              <div class="input-group mb-3 ">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="text" autocorrect="off" autocapitalize="none" class="form-control" id="hk-username" placeholder="username" aria-label="Username" aria-describedby="addon">
+                  <div class="input-group-append">
+                      <button class="btn btn-form btn-danger" onclick="hiveKeychain()">Login<i class="fas fa-key mx-2"></i></button>
+                  </div>
+              </div>
+          </div>
+          <div id="getKeychain">
+              <p class="text-center">Get Hive Keychain<i class="fas fa-key mx-2"></i></p>
+              <div class="d-flex justify-content-center">
+                  <a href="https://chrome.google.com/webstore/detail/hive-keychain/jcacnejopjdphbnjgfaaobbfafkihpep" target="_blank" class="btn btn-outline-danger mx-2"><i class="fab fa-chrome mr-2"></i>Chrome Extension</a>
+                  <a href="https://addons.mozilla.org/firefox/addon/hive-keychain/" target="_blank" class="btn btn-outline-danger mx-2"><i class="fab fa-firefox mr-2"></i>Firefox Extension</a>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <p class="small">By logging in you agree to our <a href="/about/">Terms of Service</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="notificationholder" class="fixed-bottom">
+</div>
+	<!-- END NAV MOD -->
   <div id="app">
     <main role="main" class="flex-shrink-0 text-white">
       <div class="container-fluid px-0 ">
-        <div class="container-fluid fixed-top bg-dark px-0" style="margin-top: 66px; z-index: 900;">
+        <div class="container-fluid fixed-top bg-darkg px-0" style="margin-top: 66px; z-index: 900;">
           <div class="d-flex flex-column justify-content-between align-items-center px-3 py-1" style="background-color: black;">
             <div class="d-flex align-itmes-center justify-content-between w-100">
               <div class="d-flex align-items-center">
                 <!-- token select -->
                 <div id="userselectapi">
-                  <div class="dropdown show"> <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Token </a>
-                    <div class="dropdown-menu bg-black rounded">
-                      <h6 class="dropdown-header">HIVE / HBD</h6>
-                      <a class="dropdown-item text-white-50" href="#/" @click="setApi('https://token.dlux.io')">DLUX</a> <a class="dropdown-item text-white-50" href="#/" @click="setApi('https://spkinstant.hivehoneycomb.com')">LARYNX</a>
-                      <div class="dropdown-divider bg-light d-none"></div>
-                      <a class="dropdown-item text-white-50 d-none" href="#/" @click="setApi()">Manual</a>
-                    </div>
+                  <div class="dropdown"> 
+					  <a class="btn btn-sm btn-dark dropdown-toggle" href="#" role="button" id="tokenDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false"> Token </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="tokenDropdownBtn">
+                      <li><h6 class="dropdown-header">HIVE / HBD</h6></li>
+                      <li><a class="dropdown-item" href="#/" @click="setApi('https://token.dlux.io')">DLUX</a></li>
+					<li><a class="dropdown-item" href="#/" @click="setApi('https://spkinstant.hivehoneycomb.com')">LARYNX</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#/" @click="setApi()">Other...</a></li>
+                    </ul>
                   </div>
                 </div>
-                <!-- node settings form -->
+                <!-- node settings -->
                 <div id="usernode" class="ml-3" v-if="isnode">
-                  <div class="dropdown show d-flex align-items-center "><a class="btn btn-sm btn-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-cog"></i></a>
-                    <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
+                  <div class="dropdown d-flex align-items-center ">
+					  <a class="btn btn-sm btn-dark" href="#" role="button" id="settingsDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fas fa-cog"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-dark p-4 text-white-50 text-left bg-black dropdown-menu-left" aria-labelledby="settingsDropdownBtn" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} NODE SETTINGS</h6>
                       <h4 class="text-center text-white-50">@{{account}}</h4>
                       <form name="nodesettings" class="needs-validation" novalidate>
@@ -1264,10 +1282,10 @@
                           <label :for="opt.json">{{opt.S}}:</label>
                           <div class="input-group">
                             <!-- <div class="input-group-prepend">
-                              <div class="input-group-text bg-dark border-dark text-white-50">https://</div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50">https://</div>
                             </div> -->
-                            <input v-if="opt.type == 'text'" :type="opt.type" v-model="opt.val" class="form-control bg-dark border-dark text-info" :id="opt.json" :placeholder="opt.info">
-                            <input v-if="opt.type == 'number'" :type="opt.type" v-model="opt.val" class="form-control bg-dark border-dark text-info" :id="opt.json" :placeholder="opt.info" :max="opt.max" :min="opt.min">
+                            <input v-if="opt.type == 'text'" :type="opt.type" v-model="opt.val" class="form-control bg-darkg border-dark text-info" :id="opt.json" :placeholder="opt.info">
+                            <input v-if="opt.type == 'number'" :type="opt.type" v-model="opt.val" class="form-control bg-darkg border-dark text-info" :id="opt.json" :placeholder="opt.info" :max="opt.max" :min="opt.min">
                           </div>
                         </div>
                         <!-- <div class="form-group"> <br>
@@ -1284,17 +1302,19 @@
                           <button id="savenodesettings" type="button" class="btn btn-secondary" @click="saveNodeSettings()">Save<i class="far fa-save ml-2"></i></button>
                         </div>
                       </form>
-                    </div>
+                    </ul>
                   </div>
                 </div>
-                <!-- node status btn -->
-                <div :title="behindTitle" class="d-flex align-items-center mx-3"> <a class="text-center" style="font-size: .7em;" :class="{'text-success':'behind < 30'}" :class="{'text-warning':'behind >= 30 && behind < 60'}" :class="{'text-danger':'behind >= 60'}" type="button" data-toggle="collapse" data-target="#nodedrawer" aria-expanded="false" aria-controls="nodedrawer"> <span class=" p-0 m-0"><i class="fas fa-circle mr-2"></i><span class=" p-0 m-0" v-show="behind < 30">ONLINE</span> <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span> <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span></span> <span class="p-0 m-0 ml-1">({{runners.length}} <i class="fas fa-user-lock"></i>)</span> </a> </div>
+                <!-- runner status  -->
+                <div :title="behindTitle" class="d-flex align-items-center mx-3"> 
+					<a class="text-center" style="font-size: .7em;" :class="{'text-success':'behind < 30'}" :class="{'text-warning':'behind >= 30 && behind < 60'}" :class="{'text-danger':'behind >= 60'}" data-bs-toggle="collapse" href="#nodeDrawer" role="button" aria-expanded="false" aria-controls="nodeDrawer">
+						<span class=" p-0 m-0"><i class="fas fa-circle mr-2"></i><span class=" p-0 m-0" v-show="behind < 30">ONLINE</span> <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span> <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span></span> <span class="p-0 m-0 ml-1">({{runners.length}} <i class="fas fa-user-lock"></i>)</span> </a> </div>
               </div>
               <div class="d-flex align-items-center">
                 <!-- claim tokens form -->
                 <div v-if="hasDrop || accountapi.claim" id="userdlux" class="mx-4">
-                  <div class="dropdown show d-flex align-items-center "> <a class="btn btn-sm btn-rb" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Claim <i class="fas fa-gift"></i></a>
-                    <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" style="width: 300px">
+                  <div class="dropdown d-flex align-items-center "> <a class="btn btn-sm btn-rb" href="#" role="button" id="claimDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">Claim <i class="fas fa-gift"></i></a>
+                    <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-left" aria-labelledby="claimDropdownBtn" style="width: 300px">
                       <h6 class="dropdown-header text-center">CLAIM {{TOKEN}}</h6>
                       <form v-if="hasDrop" name="claimlarynxad">
                         <div class="form-group">
@@ -1334,25 +1354,25 @@
               <div class="d-flex align-items-center text-white-50">
                 <!-- send token form -->
                 <div id="userdlux" class="mx-4" v-if="features.send_B">
-                  <div class="dropdown show d-flex align-items-center "><a class="text-warning" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
-                    <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
+                  <div class="dropdown show d-flex align-items-center "><a class="text-warning" href="#" role="button" id="sendDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
+                    <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px" aria-labelledby="sendDropdownBtn">
                       <h6 class="dropdown-header text-center">SEND {{TOKEN}}</h6>
                       <form id="sendForm" @submit.prevent="validateForm('sendForm', 'sendFormValid');tokenSend()" class="needs-validation" novalidate>
                         <div class="form-group">
                           <label for="sendlarynxto">To:</label>
                           <div class="input-group">
                             <div class="input-group-prepend">
-                              <div class="input-group-text bg-dark border-dark text-white-50">@</div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50">@</div>
                             </div>
-                            <input class="form-control bg-dark border-dark text-info" v-model="sendTo" @blur="checkAccount('sendTo', 'sendAllowed')" required id="sendlarynxto" type="text" placeholder="Recipient">
+                            <input class="form-control bg-darkg border-dark text-info" v-model="sendTo" @blur="checkAccount('sendTo', 'sendAllowed')" required id="sendlarynxto" type="text" placeholder="Recipient">
                           </div>
                         </div>
                         <div class="form-group">
                           <label id="sendlarynxamountlab" for="sendlarynxamount">Amount:</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" v-model="sendAmount" required id="sendlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
+                            <input class="form-control bg-darkg border-dark text-info" v-model="sendAmount" required id="sendlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
                             <div class="input-group-append">
-                              <div class="input-group-text bg-dark border-dark text-white-50" id="sendformunits"> {{TOKEN}} </div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50" id="sendformunits"> {{TOKEN}} </div>
                             </div>
                           </div>
                           <div class="small pt-2"><a href="#/" @click="setValue('sendAmount', parseFloat(bartoken))" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
@@ -1363,7 +1383,7 @@
                         <div class="form-group" id="sendlarynxmemogroup">
                           <label for="sendlarynxmemo">Memo:</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" v-model="sendMemo" id="sendlarynxmemo" type="text" placeholder="Include a memo (optional)">
+                            <input class="form-control bg-darkg border-dark text-info" v-model="sendMemo" id="sendlarynxmemo" type="text" placeholder="Include a memo (optional)">
                           </div>
                         </div>
                         <div class="text-center mt-3">
@@ -1392,11 +1412,11 @@
                         <div class="form-group">
                           <label id="govuplarynxamountlab">Amount</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-primary" v-if="features.powsel_up" v-model="features.pow_val" required id="pwruplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
-                            <input class="form-control bg-dark border-dark text-primary" v-if="!features.powsel_up" v-model="features.pow_val" required id="pwrdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(barpow)" placeholder="0.000">
+                            <input class="form-control bg-darkg border-dark text-primary" v-if="features.powsel_up" v-model="features.pow_val" required id="pwruplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
+                            <input class="form-control bg-darkg border-dark text-primary" v-if="!features.powsel_up" v-model="features.pow_val" required id="pwrdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(barpow)" placeholder="0.000">
                             <div class="input-group-append">
-                              <div class="input-group-text bg-dark border-dark text-white-50" v-if="features.powsel_up" id="govupformunits"> {{TOKEN}} </div>
-                              <div class="input-group-text bg-dark border-dark text-white-50" v-if="!features.powsel_up" id="govdownformunits"> {{TOKEN}}P </div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50" v-if="features.powsel_up" id="govupformunits"> {{TOKEN}} </div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50" v-if="!features.powsel_up" id="govdownformunits"> {{TOKEN}}P </div>
                             </div>
                           </div>
                           <div class="small py-2" v-if="features.powsel_up"><a href="#/" @click="setValue('features.pow_val',balance)" class="text-primary">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
@@ -1430,11 +1450,11 @@
                         <div class="form-group">
                           <label id="govuplarynxamountlab">Amount</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" v-if="features.govsel_up" v-model="features.gov_val" required id="govuplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
-                            <input class="form-control bg-dark border-dark text-info" v-if="!features.govsel_up" v-model="features.gov_val" required id="govdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bargov)" placeholder="0.000">
+                            <input class="form-control bg-darkg border-dark text-info" v-if="features.govsel_up" v-model="features.gov_val" required id="govuplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
+                            <input class="form-control bg-darkg border-dark text-info" v-if="!features.govsel_up" v-model="features.gov_val" required id="govdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bargov)" placeholder="0.000">
                             <div class="input-group-append">
-                              <div class="input-group-text bg-dark border-dark text-white-50" v-if="features.govsel_up" id="govupformunits"> {{TOKEN}} </div>
-                              <div class="input-group-text bg-dark border-dark text-white-50" v-if="!features.govsel_up" id="govdownformunits"> {{TOKEN}}G </div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50" v-if="features.govsel_up" id="govupformunits"> {{TOKEN}} </div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50" v-if="!features.govsel_up" id="govdownformunits"> {{TOKEN}}G </div>
                             </div>
                           </div>
                           <div class="small py-2" v-if="features.govsel_up"><a href="#/" @click="setValue('features.gov_val',balance)" class="text-info">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
@@ -1458,17 +1478,17 @@
                           <label for="sendhiveto">To:</label>
                           <div class="input-group">
                             <div class="input-group-prepend">
-                              <div class="input-group-text bg-dark border-dark text-white-50">@</div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50">@</div>
                             </div>
-                            <input class="form-control bg-dark border-dark text-info" @blur="checkAccount('sendHiveTo', 'sendHiveAllowed')" required v-model="sendHiveTo" type="text" placeholder="Recipient">
+                            <input class="form-control bg-darkg border-dark text-info" @blur="checkAccount('sendHiveTo', 'sendHiveAllowed')" required v-model="sendHiveTo" type="text" placeholder="Recipient">
                           </div>
                         </div>
                         <div class="form-group">
                           <label id="sendhiveamountlab" for="sendhiveamount">Amount:</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" required v-model="sendHiveAmount" type="number" step="0.001" min="0.001" :max="parseFloat(barhive)" placeholder="0.000">
+                            <input class="form-control bg-darkg border-dark text-info" required v-model="sendHiveAmount" type="number" step="0.001" min="0.001" :max="parseFloat(barhive)" placeholder="0.000">
                             <div class="input-group-append">
-                              <div class="input-group-text bg-dark border-dark text-white-50"> HIVE </div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50"> HIVE </div>
                             </div>
                           </div>
                           <div class="small pt-2"><a href="#/" @click="setValue('sendHiveAmount',parseFloat(barhive))" class="text-danger">{{formatNumber(barhive,3,'.',',')}} HIVE</a> Available</div>
@@ -1476,7 +1496,7 @@
                         <div class="form-group" id="sendhivememogroup">
                           <label for="sendhivememo">Memo:</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" id="sendhivememo" type="text" v-model="sendHiveMemo" placeholder="Include a memo (optional)">
+                            <input class="form-control bg-darkg border-dark text-info" id="sendhivememo" type="text" v-model="sendHiveMemo" placeholder="Include a memo (optional)">
                           </div>
                         </div>
                         <div class="text-center mt-3">
@@ -1496,17 +1516,17 @@
                           <label for="sendhbdto">To:</label>
                           <div class="input-group">
                             <div class="input-group-prepend">
-                              <div class="input-group-text bg-dark border-dark text-white-50">@</div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50">@</div>
                             </div>
-                            <input class="form-control bg-dark border-dark text-info" @blur="checkAccount('sendHBDTo', 'sendHBDAllowed')" required v-model="sendHBDTo" type="text" placeholder="Recipient">
+                            <input class="form-control bg-darkg border-dark text-info" @blur="checkAccount('sendHBDTo', 'sendHBDAllowed')" required v-model="sendHBDTo" type="text" placeholder="Recipient">
                           </div>
                         </div>
                         <div class="form-group">
                           <label id="sendhbdamountlab" for="sendhbdamount">Amount:</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" required v-model="sendHBDAmount" type="number" step="0.001" min="0.001" :max="parseFloat(barhbd)" placeholder="0.000">
+                            <input class="form-control bg-darkg border-dark text-info" required v-model="sendHBDAmount" type="number" step="0.001" min="0.001" :max="parseFloat(barhbd)" placeholder="0.000">
                             <div class="input-group-append">
-                              <div class="input-group-text bg-dark border-dark text-white-50" id="sendhbdformunits"> HBD </div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50" id="sendhbdformunits"> HBD </div>
                             </div>
                           </div>
                           <div class="small pt-2"><a href="#/" @click="setValue('sendHBDAmount',parseFloat(barhbd))" class="text-success">{{formatNumber(barhbd,3,'.',',')}} HBD</a> Available</div>
@@ -1514,7 +1534,7 @@
                         <div class="form-group" id="sendhbdmemogroup">
                           <label for="sendhbdmemo">Memo:</label>
                           <div class="input-group">
-                            <input class="form-control bg-dark border-dark text-info" v-model="sendHBDMemo" type="text" placeholder="Include a memo (optional)">
+                            <input class="form-control bg-darkg border-dark text-info" v-model="sendHBDMemo" type="text" placeholder="Include a memo (optional)">
                           </div>
                         </div>
                         <div class="text-center mt-3">
@@ -1527,23 +1547,23 @@
               </div>
             </div>
             <!-- node collapse region -->
-            <div id="nodedrawer" class="collapse">
+            <div id="nodeDrawer" class="collapse">
               <div class="py-5">
                 <div class="container">
                   <div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
                     <div class="mr-2">
                       <div role="group" class="input-group">
-                        <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-dark border-dark text-secondary" @click="focus('filteraccount')"><i class="fas fa-search"></i></span></div>
-                        <input type="text" v-on:keyup="searchRunners()" class="form-control bg-dark border-dark text-info" id="filteraccount" v-model="filteraccount.value" @ aria-required="true" placeholder="Search">
+                        <div class="input-group-prepend l-radius-hotfix"><span class="input-group-text bg-darkg border-dark text-secondary" @click="focus('filteraccount')"><i class="fas fa-search"></i></span></div>
+                        <input type="text" v-on:keyup="searchRunners()" class="form-control bg-darkg border-dark text-info" id="filteraccount" v-model="filteraccount.value" @ aria-required="true" placeholder="Search">
                         <div class="input-group-append p-0 m-0">
-                          <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix" style="width: 42px"> <span v-if="filteraccount.value"> <a href="#" class="badge badge-secondary" @click="setValue('filteraccount.value','')"><i class="fas fa-times"></i></a> </span> </div>
+                          <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix" style="width: 42px"> <span v-if="filteraccount.value"> <a href="#" class="badge badge-secondary" @click="setValue('filteraccount.value','')"><i class="fas fa-times"></i></a> </span> </div>
                         </div>
                       </div>
                     </div>
                     <div class=""> <span class="text-muted">{{lapi}} - {{behind}} block(s) behind HIVE</span> </div>
                   </div>
                   <div class="table-responsive">
-                    <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darker text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
+                    <table role="table" aria-busy="false" aria-colcount="3" class="table table-dark bg-darkger text-white-50 table-striped table-hover table-borderless mb-0" id="larynxnodes">
                       <thead role="rowgroup" class="">
                         <tr role="row" class="">
                           <th role="columnheader" v-bind:class="{'col-sort':filteraccount.usera || filteraccount.userd}" class="" aria-colindex="1">
@@ -1592,7 +1612,7 @@
           <!-- current token tick -->
           <div class="row">
             <div class="col-4">
-              <div class="jumbotron p-3 bg-dark" v-if="buyhive.checked">
+              <div class="jumbotron p-3 bg-darkg" v-if="buyhive.checked">
                 <div class="d-flex align-items-center" id="dluxhivequote">
                   <div>
                     <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</b></h2>
@@ -1618,7 +1638,7 @@
                   </div>
                 </div>
               </div>
-              <div class="jumbotron p-3 bg-dark" v-if="buyhbd.checked">
+              <div class="jumbotron p-3 bg-darkg" v-if="buyhbd.checked">
                 <div class="d-flex align-items-center" id="dluxhbdquote">
                   <div>
                     <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd, 6)}}</b></h2>
@@ -1646,14 +1666,14 @@
               </div>
             </div>
             <div class="col-4">
-              <div class="jumbotron p-3 bg-dark">
+              <div class="jumbotron p-3 bg-darkg">
                 <div id="hivequote">
                   <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd}}</b></h2>
                 </div>
               </div>
             </div>
             <div class="col-4">
-              <div class="jumbotron p-3 bg-dark">
+              <div class="jumbotron p-3 bg-darkg">
                 <div id="hbdquote">
                   <h2 class="lead my-0"><b>HBD: ${{hbdprice.hive_dollar.usd}}</b></h2>
                 </div>
@@ -1665,14 +1685,18 @@
             <div class="mt-2 col-lg-3">
               <h5>Market</h5>
               <div class="container-fluid mt-3">
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                  <label class="btn btn-outline-warning active">
-                    <input name="buypair" type="radio" id="buyhive" checked @click="togglecoin('hive');setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);setValue('buyHBDTotal', 0);setValue('sellHBDTotal', 0);getHistorical()">
-                    HIVE </label>
-                  <label class="btn btn-outline-warning">
-                    <input type="radio" name="buypair" id="buyhbd" @click="togglecoin('hbd');setValue('buyHBDTotal', 0);setValue('sellHBDTotal', 0);setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);getHistorical()">
-                    HBD </label>
-                </div>
+                
+
+				 
+				  <div>
+					  <div class="btn-group">
+					  <input type="radio" class="btn-check" name="buyPair" id="setHive" autocomplete="off" checked @click="togglecoin('hive');setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);setValue('buyHBDTotal', 0);setValue('sellHBDTotal', 0);getHistorical()">
+						<label class="btn btn-outline-warning" for="setHive">HIVE</label>
+
+						<input type="radio" class="btn-check" name="buyPair" id="setHbd" autocomplete="off" @click="togglecoin('hbd');setValue('buyHBDTotal', 0);setValue('sellHBDTotal', 0);setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);getHistorical()">
+						<label class="btn btn-outline-warning" for="setHbd">HBD</label>
+					</div>
+					</div>
               </div>
             </div>
             <div class="col-lg-9" v-if="buyhive.checked">
@@ -1746,10 +1770,10 @@
               </div>
               <div></div>
               <div>
-                <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#openordersdrawer" aria-expanded="false" aria-controls="openordersdrawer">OPEN ORDERS ({{openorders.length}}) <i class="fas fa-book-reader ml-2"></i></button>
+                <button class="btn btn-outline-primary" role="button" data-bs-toggle="collapse" href="#openOrdersDrawer" aria-expanded="false" aria-controls="openOrdersDrawer">OPEN ORDERS ({{openorders.length}}) <i class="fas fa-book-reader ml-2"></i></button>
               </div>
             </div>
-            <div id="openordersdrawer" class="collapse ">
+            <div id="openOrdersDrawer" class="collapse ">
               <div class="py-5">
                 <div v-if="openorders.length == 0" class="text-center text-white-50">
                   <h5>No open orders</h5>
@@ -1859,9 +1883,9 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input type="number" v-on:keyup="bcalc('t')" ref="buyQty" required class="form-control bg-dark border-dark text-info" v-model="buyQuantity" id="buyQuantity" placeholder="0" :min="minbuy" step="0.001" aria-required="true" :readonly="bform.tl">
+                          <input type="number" v-on:keyup="bcalc('t')" ref="buyQty" required class="form-control bg-darkg border-dark text-info" v-model="buyQuantity" id="buyQuantity" placeholder="0" :min="minbuy" step="0.001" aria-required="true" :readonly="bform.tl">
                           <div class="input-group-append">
-                            <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"> {{TOKEN}} <a href="#/" class="ml-3 text-secondary" @click="block('t')"><i class="fas" :class="{'fa-lock':bform.tl, 'fa-unlock-alt':!bform.tl}"></i></a> </div>
+                            <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix"> {{TOKEN}} <a href="#/" class="ml-3 text-secondary" @click="block('t')"><i class="fas" :class="{'fa-lock':bform.tl, 'fa-unlock-alt':!bform.tl}"></i></a> </div>
                           </div>
                           <div class="invalid-feedback"> Minimum quantity is {{minbuy}} </div>
                         </div>
@@ -1873,9 +1897,9 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input id="buyPrice" type="number" v-on:keyup="bcalc('p')" v-model="buyPrice" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-dark border-dark text-info" :readonly="bform.pl">
+                          <input id="buyPrice" type="number" v-on:keyup="bcalc('p')" v-model="buyPrice" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-darkg border-dark text-info" :readonly="bform.pl">
                           <div class="input-group-append">
-                            <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"> <span v-if="buyhive.checked">HIVE</span> <span v-if="buyhbd.checked">HBD</span> /{{TOKEN}} <a href="#/" class="ml-3 text-secondary" @click="block('p')"><i class="fas" :class="{'fa-lock':bform.pl, 'fa-unlock-alt':!bform.pl}"></i></a> </div>
+                            <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix"> <span v-if="buyhive.checked">HIVE</span> <span v-if="buyhbd.checked">HBD</span> /{{TOKEN}} <a href="#/" class="ml-3 text-secondary" @click="block('p')"><i class="fas" :class="{'fa-lock':bform.pl, 'fa-unlock-alt':!bform.pl}"></i></a> </div>
                           </div>
                           <div class="invalid-feedback"> Minimum price is 0.000001 </div>
                         </div>
@@ -1887,9 +1911,9 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input type="number" class="form-control bg-dark text-info border-dark" :readonly="bform.cl" v-model="buyHiveTotal" id="buyHiveTotal" required v-on:keyup="bcalc('c')" placeholder="0" :min="minbuy" step="0.001" :max="parseFloat(barhive) < parseFloat(maxhbuy) ? toFixed(parseFloat(barhive),3) : maxhbuy" aria-required="true">
+                          <input type="number" class="form-control bg-darkg text-info border-dark" :readonly="bform.cl" v-model="buyHiveTotal" id="buyHiveTotal" required v-on:keyup="bcalc('c')" placeholder="0" :min="minbuy" step="0.001" :max="parseFloat(barhive) < parseFloat(maxhbuy) ? toFixed(parseFloat(barhive),3) : maxhbuy" aria-required="true">
                           <div class="input-group-append">
-                            <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE <a href="#/" class="ml-3 text-secondary" @click="block('c')" v-if="buylimit.checked"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a> </div>
+                            <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix">HIVE <a href="#/" class="ml-3 text-secondary" @click="block('c')" v-if="buylimit.checked"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a> </div>
                           </div>
                           <div class="invalid-feedback"> Your balance is {{barhive}} - minimum: {{minbuy}} - max: {{parseFloat(barhive) < parseFloat(maxhbuy) ? toFixed(parseFloat(barhive),3) : maxhbuy}}{{parseFloat(barhive) < parseFloat(maxhbuy) ? '' : '(Liquidity)'}}</div>
                         </div>
@@ -1901,9 +1925,9 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input type="number" class="form-control bg-dark text-info border-dark" :readonly="bform.cl" v-model="buyHBDTotal" id="buyHBDTotal" required v-on:keyup="bcalc('c')" placeholder="0" :min="minbuy" step="0.001" :max="parseFloat(barhbd) < parseFloat(maxdbuy) ? toFixed(parseFloat(barhbd),3) : maxdbuy" aria-required="true">
+                          <input type="number" class="form-control bg-darkg text-info border-dark" :readonly="bform.cl" v-model="buyHBDTotal" id="buyHBDTotal" required v-on:keyup="bcalc('c')" placeholder="0" :min="minbuy" step="0.001" :max="parseFloat(barhbd) < parseFloat(maxdbuy) ? toFixed(parseFloat(barhbd),3) : maxdbuy" aria-required="true">
                           <div class="input-group-append">
-                            <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD <a href="#/" class="ml-3 text-secondary" @click="block('c')" v-if="buylimit.checked"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a> </div>
+                            <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix">HBD <a href="#/" class="ml-3 text-secondary" @click="block('c')" v-if="buylimit.checked"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a> </div>
                           </div>
                           <div class="invalid-feedback"> Your balance is {{barhbd}} - minimum: {{minbuy}} - max: {{parseFloat(barhbd) < parseFloat(maxdbuy) ? toFixed(parseFloat(barhbd),3) : maxdbuy}}{{parseFloat(barhbd) < parseFloat(maxdbuy) ? '' : '(Liquidity)'}}</div>
                         </div>
@@ -1915,9 +1939,9 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input id="buyHours" v-model="buyHours" type="number" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-info" :readonly="buymarket.checked">
+                          <input id="buyHours" v-model="buyHours" type="number" required step="1" min="1" max="720" aria-required="true" class="form-control bg-darkg border-dark text-info" :readonly="buymarket.checked">
                           <div class="input-group-append">
-                            <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HOURS</div>
+                            <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix">HOURS</div>
                           </div>
                           <div class="invalid-feedback"> Expiration must be between 1 and 720 hours </div>
                         </div>
@@ -1959,9 +1983,9 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-qty-label">Quantity</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input type="number" v-on:keyup="scalc('t')" required class="form-control bg-dark border-dark text-info" v-model="sellQuantity" id="sellQuantity" placeholder="0" :min="minsell" step="0.001" :readonly="sform.tl" aria-required="true" :max="parseFloat(bartoken)">
+                          <input type="number" v-on:keyup="scalc('t')" required class="form-control bg-darkg border-dark text-info" v-model="sellQuantity" id="sellQuantity" placeholder="0" :min="minsell" step="0.001" :readonly="sform.tl" aria-required="true" :max="parseFloat(bartoken)">
                           <div class="input-group-append">
-                            <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">{{TOKEN}}<a href="#/" class="ml-3 text-secondary" @click="slock('t')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.tl, 'fa-unlock-alt':!sform.tl}"></i></a></div>
+                            <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix">{{TOKEN}}<a href="#/" class="ml-3 text-secondary" @click="slock('t')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.tl, 'fa-unlock-alt':!sform.tl}"></i></a></div>
                           </div>
                           <div class="invalid-feedback"> Your balance is {{(accountapi.balance/1000)}} - minimum quantity is {{minsell}} </div>
                         </div>
@@ -1973,9 +1997,9 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Price</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input id="sellPrice" v-on:keyup="scalc('p')" v-model="sellPrice" type="number" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-dark border-dark text-info" :readonly="sform.pl">
+                          <input id="sellPrice" v-on:keyup="scalc('p')" v-model="sellPrice" type="number" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-darkg border-dark text-info" :readonly="sform.pl">
                           <div class="input-group-append">
-                            <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix"><span v-if="buyhive.checked">HIVE</span><span v-if="buyhbd.checked">HBD</span>/{{TOKEN}}<a href="#/" class="ml-3 text-secondary" @click="slock('p')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.pl, 'fa-unlock-alt':!sform.pl}"></i></a></div>
+                            <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix"><span v-if="buyhive.checked">HIVE</span><span v-if="buyhbd.checked">HBD</span>/{{TOKEN}}<a href="#/" class="ml-3 text-secondary" @click="slock('p')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.pl, 'fa-unlock-alt':!sform.pl}"></i></a></div>
                           </div>
                           <div class="invalid-feedback"> Minimum price is 0.000001 </div>
                         </div>
@@ -1987,9 +2011,9 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input type="number" class="form-control bg-dark border-dark text-info" :readonly="sform.cl" id="sellHiveTotal" required v-model="sellHiveTotal" v-on:keyup="scalc('c')" placeholder="0" min="0.001" step="0.001" aria-required="true">
+                          <input type="number" class="form-control bg-darkg border-dark text-info" :readonly="sform.cl" id="sellHiveTotal" required v-model="sellHiveTotal" v-on:keyup="scalc('c')" placeholder="0" min="0.001" step="0.001" aria-required="true">
                           <div class="input-group-append">
-                            <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HIVE<a href="#/" class="ml-3 text-secondary" @click="slock('c')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.cl, 'fa-unlock-alt':!sform.cl}"></i></a></div>
+                            <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix">HIVE<a href="#/" class="ml-3 text-secondary" @click="slock('c')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.cl, 'fa-unlock-alt':!sform.cl}"></i></a></div>
                           </div>
                           <div class="invalid-feedback"> Minimum total is 0.001 - increase the Price or use Market Type. </div>
                         </div>
@@ -2001,9 +2025,9 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hbd-total-label">Total</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input type="number" class="form-control bg-dark border-dark text-info" :readonly="sform.cl" id="sellHBDTotal" v-model="sellHBDTotal" required placeholder="0" min="0.001" step="0.001" aria-required="true">
+                          <input type="number" class="form-control bg-darkg border-dark text-info" :readonly="sform.cl" id="sellHBDTotal" v-model="sellHBDTotal" required placeholder="0" min="0.001" step="0.001" aria-required="true">
                           <div class="input-group-append">
-                            <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HBD<a href="#/" class="ml-3 text-secondary" @click="slock('c')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.cl, 'fa-unlock-alt':!sform.cl}"></i></a></div>
+                            <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix">HBD<a href="#/" class="ml-3 text-secondary" @click="slock('c')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.cl, 'fa-unlock-alt':!sform.cl}"></i></a></div>
                           </div>
                           <div class="invalid-feedback"> Minimum total is 0.001 - increase the Price or use Market Type. </div>
                         </div>
@@ -2015,9 +2039,9 @@
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Expiration</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input id="sellHours" v-on:keyup="scalc('c')" v-model="sellHours" type="number" required step="1" min="1" max="720" aria-required="true" class="form-control bg-dark border-dark text-info" :readonly="sellmarket.checked">
+                          <input id="sellHours" v-on:keyup="scalc('c')" v-model="sellHours" type="number" required step="1" min="1" max="720" aria-required="true" class="form-control bg-darkg border-dark text-info" :readonly="sellmarket.checked">
                           <div class="input-group-append">
-                            <div class="input-group-text bg-dark border-dark text-white-50 r-radius-hotfix">HOURS</div>
+                            <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix">HOURS</div>
                           </div>
                           <div class="invalid-feedback"> Expiration must be between 1 and 720 hours </div>
                         </div>
@@ -2038,7 +2062,7 @@
                 <div class="mt-3 col-md-6">
                   <h4>Buy Orders</h4>
                   <div class="table-responsive">
-                    <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darker text-white table-striped table-hover table-borderless" id="hivebuyordertable">
+                    <table role="table" aria-busy="false" aria-colcount="4" class="table table-dark bg-darkger text-white table-striped table-hover table-borderless" id="hivebuyordertable">
                       <thead role="rowgroup">
                         <tr role="row">
                           <th role="columnheader" scope="col" aria-colindex="1" class="">TOTAL HIVE</th>
@@ -2207,24 +2231,72 @@
       </div>
     </main>
   </div>
-  <?php
-  $path = $_SERVER['DOCUMENT_ROOT'];
-  $path .= "/mod/footer.php";
-  include_once($path);
-  ?>
+	<!-- FOOTER MOD -->
+<!-- Footer -->
+<footer class="footer mt-auto bg-darkg pt-5">
 
-  <!-- <script>
-    var slider = document.getElementById('scaleslider');
+  <!-- Footer Elements -->
+  <div class="container text-center">
 
-    noUiSlider.create(slider, {
-      start: [0, 100],
-      connect: true,
-      range: {
-        'min': 0,
-        'max': 100
+        <div class="mb-5 ">
+		
+          <!-- Github -->
+          <a href="https://github.com/dluxio" target="_blank">
+            <i class="fab fa-github fa-lg mx-md-3 mx-2 fa-2x"></i>
+          </a>
+          <!-- Discord -->
+          <a href="https://discord.gg/Beeb38j" target="_blank">
+            <i class="fab fa-discord fa-lg mx-md-3 mx-2 fa-2x"></i>
+          </a>
+          <!-- Hive -->
+          <a href="https://peakd.com/@dlux-io" target="_blank">
+            <img src="/img/peakd_logo.svg" class="responsive pb-3" width="40px">
+          </a>
+          <!--Twitter -->
+          <a href="https://twitter.com/dluxxr" target="_blank">
+            <i class="fab fa-twitter fa-lg mx-md-3 mx-2 fa-2x"></i>
+          </a>
+        </div>
+
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright bg-darker text-center text-white py-3">© 2020 Copyright: 
+    <a href="https://www.dlux.io/about/" class="">dlux.io</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="/js/session.js"></script>
+<script>
+function hiveKeychain () {
+    let username = document.getElementById('hk-username').value
+    console.log('value: ' + username)
+    localStorage.setItem("user", username);
+    let session = new Dluxsession(hive, {hiveidip:username})
+} 
+   window.addEventListener('load', function () {
+    let use = document.getElementById("hiveKeychain");
+    let get = document.getElementById("getKeychain");
+    let count = 0;
+    let kc_interval = setInterval(function() {
+      count++
+      if(window.hive_keychain) {
+          get.style.display = "none";
+      } else {
+          use.style.display = "none";
       }
-    });
-  </script> -->
+      if (count >= 8) clearInterval(kc_interval)
+    }, 250);
+  checkCookie()
+}) 
+
+</script>
+	<!-- END FOOTER MOD -->
 </body>
 <script>
   // Example starter JavaScript for disabling form submissions if there are invalid fields
