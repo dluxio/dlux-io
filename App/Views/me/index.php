@@ -484,6 +484,7 @@ if ( isset( $author ) ) {
                     </div>
                   </div>
                 </div>
+             </div>
                 <hr class="my-4 bg-light">
                 <div class="clearfix">
                   <div class="float-left">
