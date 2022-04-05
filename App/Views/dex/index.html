@@ -158,7 +158,7 @@ $(function () {
           sellPrice: 0,
           buyHbdTotal: 0,
           sellHiveTotal: 0,
-          sellHBDTotal: 0,
+          sellHbdTotal: 0,
           buyQuantity: 0,
           sellQuantity: 0,
           buyHours: 720,
@@ -465,32 +465,32 @@ $(function () {
               this.sellQuantity = parseFloat(this.sellQuantity)
               if (this.sform.cl) {
                 if (this.buyhive.checked) this.sellPrice = (this.sellHiveTotal / this.sellQuantity).toFixed(6)
-                else this.sellPrice = (this.sellHBDTotal / this.sellQuantity).toFixed(6)
+                else this.sellPrice = (this.sellHbdTotal / this.sellQuantity).toFixed(6)
               } else {
                 if (this.buyhive.checked) this.sellHiveTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
-                else this.sellHBDTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
+                else this.sellHbdTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
               }
               break;
             case 'p':
               this.sellPrice = parseFloat(this.sellPrice)
               if (this.sform.cl) {
                 if (this.buyhive.checked) this.sellQuantity = (this.sellHiveTotal / this.sellPrice).toFixed(3)
-                else this.sellQuantity = (this.sellHBDTotal / this.sellPrice).toFixed(3)
+                else this.sellQuantity = (this.sellHbdTotal / this.sellPrice).toFixed(3)
               } else {
                 if (this.buyhive.checked) this.sellHiveTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
-                else this.sellHBDTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
+                else this.sellHbdTotal = (this.sellPrice * this.sellQuantity).toFixed(3)
               }
               break;
             case 'c':
               if (this.buyhive.checked) this.sellHiveTotal = parseFloat(this.sellHiveTotal)
-              else this.sellHBDTotal = parseFloat(this.sellHBDTotal)
+              else this.sellHbdTotal = parseFloat(this.sellHbdTotal)
               if (this.selllimit.checked) {
                 if (this.sform.pl) {
                   if (this.buyhive.checked) this.sellQuantity = (this.sellHiveTotal / this.sellPrice).toFixed(3)
-                  else this.sellQuantity = (this.sellHBDTotal / this.sellPrice).toFixed(3)
+                  else this.sellQuantity = (this.sellHbdTotal / this.sellPrice).toFixed(3)
                 } else {
                   if (this.buyhive.checked) this.sellPrice = (this.sellHiveTotal / this.sellQuantity).toFixed(6)
-                  else this.sellPrice = (this.sellHBDTotal / this.sellQuantity).toFixed(6)
+                  else this.sellPrice = (this.sellHbdTotal / this.sellQuantity).toFixed(6)
                 }
               }
               break;
@@ -753,7 +753,7 @@ $(function () {
           var andthen = ' at market rate',
             dlux = parseInt(parseFloat(this.sellQuantity) * 1000),
             hive = parseInt(parseFloat(this.sellHiveTotal) * 1000),
-            hbd = parseInt(parseFloat(this.sellHBDTotal) * 1000),
+            hbd = parseInt(parseFloat(this.sellHbdTotal) * 1000),
             hours = parseInt(this.sellHours)
           if (hive || hbd) {
             const price = parseFloat(dlux / (this.buyhive.checked ? hive : hbd)).toFixed(6)
@@ -1688,10 +1688,10 @@ $(function () {
               <div class="container-fluid mt-3">
 				  <div>
 					  <div class="btn-group">
-					  <input type="radio" class="btn-check" name="buyPair" id="setHive" autocomplete="off" checked @click="togglecoin('hive');setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);setValue('buyHbdTotal', 0);setValue('sellHBDTotal', 0);getHistorical()">
+					  <input type="radio" class="btn-check" name="buyPair" id="setHive" autocomplete="off" checked @click="togglecoin('hive');setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);setValue('buyHbdTotal', 0);setValue('sellHbdTotal', 0);getHistorical()">
 						<label class="btn btn-outline-warning" for="setHive">HIVE</label>
 
-						<input type="radio" class="btn-check" name="buyPair" id="setHbd" autocomplete="off" @click="togglecoin('hbd');setValue('buyHbdTotal', 0);setValue('sellHBDTotal', 0);setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);getHistorical()">
+						<input type="radio" class="btn-check" name="buyPair" id="setHbd" autocomplete="off" @click="togglecoin('hbd');setValue('buyHbdTotal', 0);setValue('sellHbdTotal', 0);setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);getHistorical()">
 						<label class="btn btn-outline-warning" for="setHbd">HBD</label>
 					</div>
 					</div>
@@ -1963,17 +1963,17 @@ $(function () {
                       <div tabindex="-1" role="group" class="col">
                         
                           <div class="btn-group">
-                            <label class="btn btn-outline-warning">
-                              <input type="radio" name="sellType" id="sellLimit" checked @click="toggleselllimit('limit');setValue('sellHours', 720);setValue('sellPrice', buyhive.checked ? hivebuys[0]?.rate || 0 : hbdbuys[0]?.rate || 0 );slock()">
-                              LIMIT </label>
-                            <label class="btn btn-outline-warning">
-                              <input type="radio" name="sellType" id="sellMarket" @click="toggleselllimit('market');setValue('sellHours', 0);setValue('sellPrice', 0);setValue('sellHiveTotal', 0);setValue('sellHBDTotal', 0);slock()">
-                              MARKET </label>
+                            
+                              <input type="radio" class="btn-check" name="sellType" id="sellLimit" checked autocomplete="off" @click="toggleselllimit('limit');setValue('sellHours', 720);setValue('sellPrice', buyhive.checked ? hivebuys[0]?.rate || 0 : hbdbuys[0]?.rate || 0 );slock()">
+                              <label class="btn btn-outline-warning" for="sellLimit"> LIMIT </label>
+                            
+                              <input type="radio" class="btn-check" name="sellType" id="sellMarket" autocomplete="off" @click="toggleselllimit('market');setValue('sellHours', 0);setValue('sellPrice', 0);setValue('sellHiveTotal', 0);setValue('sellHbdTotal', 0);slock()">
+                              <label class="btn btn-outline-warning" for="sellMarket"> MARKET </label>
                           </div>
                     
                       </div>
 						
-                      <div class="text-end">
+                      <div class="col text-end">
                         <div class="small text-muted">BALANCE<br>
                           <a href="#/" @click="setValue('sellQuantity',balance)">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
                         </div>
@@ -2008,9 +2008,9 @@ $(function () {
                       </div>
                     </div>
                   
-                  <div class="form-group" for="sellHiveTotal" id="sell-hive-total" aria-labelledby="sell-hive-total-label" v-if="buyhive.checked && selllimit.checked">
-                    <div class="form-row">
-                      <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hive-total-label">Total</legend>
+                 
+                    <div class="row" v-if="buyhive.checked && selllimit.checked">
+                      <legend tabindex="-1" class="col-sm-4 col-form-label" for="sellHiveTotal">Total</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
                           <input type="number" class="form-control bg-darkg border-dark text-info" :readonly="sform.cl" id="sellHiveTotal" required v-model="sellHiveTotal" v-on:keyup="scalc('c')" placeholder="0" min="0.001" step="0.001" aria-required="true">
@@ -2021,13 +2021,13 @@ $(function () {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group" for="sellHBDTotal" id="sell-hbd-total" aria-labelledby="sell-hbd-total-label" v-if="buyhbd.checked && selllimit.checked">
-                    <div class="form-row">
-                      <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-hbd-total-label">Total</legend>
+               
+      
+                    <div class="row" v-if="buyhbd.checked && selllimit.checked">
+                      <legend tabindex="-1" class="col-sm-4 col-form-label" for="sellHbdTotal">Total</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input type="number" class="form-control bg-darkg border-dark text-info" :readonly="sform.cl" id="sellHBDTotal" v-model="sellHBDTotal" required placeholder="0" min="0.001" step="0.001" aria-required="true">
+                          <input type="number" class="form-control bg-darkg border-dark text-info" :readonly="sform.cl" id="sellHbdTotal" v-model="sellHbdTotal" required placeholder="0" min="0.001" step="0.001" aria-required="true">
                           <div class="input-group-append">
                             <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix">HBD<a href="#/" class="ms-3 text-secondary" @click="slock('c')" v-if="selllimit.checked"><i class="fas" :class="{'fa-lock':sform.cl, 'fa-unlock-alt':!sform.cl}"></i></a></div>
                           </div>
@@ -2035,7 +2035,7 @@ $(function () {
                         </div>
                       </div>
                     </div>
-                  </div>
+             
           
                     <div class="row" v-if="!sellmarket.checked">
                       <legend tabindex="-1" class="col-sm-4 col-form-label" for="sellHours">Expiration</legend>
@@ -2170,7 +2170,7 @@ $(function () {
                           <td aria-colindex="1" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
                           <td aria-colindex="2" role="cell" class="">{{formatNumber(item.hbd/1000,3,'.',',')}}</td>
                           <td aria-colindex="3" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
-                          <td aria-colindex="4" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue('sellQuantity', item.at > balance ? balance : item.at/1000);suggestValue('sellHBDTotal', item.at > balance ? (balance/item.total)/1000 : item.total/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
+                          <td aria-colindex="4" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);suggestValue('sellQuantity', item.at > balance ? balance : item.at/1000);suggestValue('sellHbdTotal', item.at > balance ? (balance/item.total)/1000 : item.total/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
                         </tr>
                       </tbody>
                     </table>
