@@ -1174,13 +1174,13 @@ $(function () {
       </ul>
 			</div>
 		<div class="d-flex">
-	<ul class="navbar-nav me-5 no-session d-flex align-items-center" id="loginMenu">
+	<ul class="navbar-nav no-session d-flex align-items-center" id="loginMenu">
 	<li class="nav-item"><a class="nav-link acct-link" href="/about/">About</a></li>
 	<li class="nav-item"><a class="nav-link acct-link" href="https://signup.hive.io/">Get Account</a></li>
 	<li class="nav-item"><a class="nav-link acct-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
 	</ul>
 			
-    <div class="me-5 active-session" id="userMenu">
+    <div class="active-session" id="userMenu">
 		<input id="userCookie" value="null" type="text" class="d-none">
 		<input id="userPFP" value="null" type="text" class="d-none">
 	  <ul class="nav navbar-nav">
@@ -1189,7 +1189,7 @@ $(function () {
 				<i class="fas fa-fw fa-lg fa-plus me-2"></i></a></li>
 		<li class="nav-item dropdown">
 		  <a class="nav-link dropdown-toggle text-white-50" id="userDropdown" data-toggle="dropdown" href="#">
-			  <img src="" id="userImage" alt="" width="30" height="30" class="img-fluid rounded-circle bg-light me-1 cover">
+			  <img src="#" id="userImage" alt="" width="30" height="30" class="img-fluid rounded-circle bg-light me-1 cover">
 			  <span id="userName">username</span></a>
           <div class="dropdown-menu pt-0" aria-labelledby="userDropdown">
 			 <a class="dropdown-item" href="/me#blog/" onClick="showTab('blog')"><i class="fas fa-user fa-fw me-2"></i>Profile</a>
@@ -1207,6 +1207,7 @@ $(function () {
 	</div>
     </div>
     </div>
+	</div>
 </header>
 <container id="propVotePlead" >
 </container>
@@ -1307,7 +1308,7 @@ $(function () {
                 </div>
                 <!-- runner status  -->
                 <div :title="behindTitle" class="d-flex align-items-center mx-3"> 
-					<a class="text-center" style="font-size: .7em;" :class="{'text-success':'behind < 30'}" :class="{'text-warning':'behind >= 30 && behind < 60'}" :class="{'text-danger':'behind >= 60'}" data-bs-toggle="collapse" href="#nodeDrawer" role="button" aria-expanded="false" aria-controls="nodeDrawer">
+					<a class="text-center" style="font-size: .7em;" :class="[{'text-success':'behind < 30'},{'text-warning':'behind >= 30 && behind < 60'},{'text-danger':'behind >= 60'}]" data-bs-toggle="collapse" href="#nodeDrawer" role="button" aria-expanded="false" aria-controls="nodeDrawer">
 						<span class=" p-0 m-0"><i class="fas fa-circle me-2"></i><span class=" p-0 m-0" v-show="behind < 30">ONLINE</span> <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span> <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span></span> <span class="p-0 m-0 ms-1">({{runners.length}} <i class="fas fa-user-lock"></i>)</span> </a> </div>
               </div>
               <div class="d-flex align-items-center">
@@ -1685,9 +1686,6 @@ $(function () {
             <div class="mt-2 col-lg-3">
               <h5>Market</h5>
               <div class="container-fluid mt-3">
-                
-
-				 
 				  <div>
 					  <div class="btn-group">
 					  <input type="radio" class="btn-check" name="buyPair" id="setHive" autocomplete="off" checked @click="togglecoin('hive');setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);setValue('buyHBDTotal', 0);setValue('sellHBDTotal', 0);getHistorical()">
@@ -1856,17 +1854,17 @@ $(function () {
                   <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
                     <div class="form-row">
                       <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
-                      <div tabindex="-1" role="group" class="col">
-                        <div role="group" class="input-group">
-                          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                            <label class="btn btn-outline-warning active">
-                              <input type="radio" name="buyType" id="buylimit" checked @click="togglebuylimit('limit');setValue('buyQuantity', 0);setValue('buyHours','720');setValue('buyPrice', buyhive.checked ? hivesells[0]?.rate || '0' : hbdsells[0]?.rate || '0');block()">
-                              LIMIT </label>
-                            <label class="btn btn-outline-warning">
-                              <input type="radio" name="buyType" id="buymarket" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHours','0');setValue('buyHiveTotal',0);setValue('buyPrice', 0);setValue('buyHBDTotal',0);block()">
-                              MARKET </label>
+                      <div tabindex="-1" class="col">
+
+                          <div class="btn-group">
+                            
+                              <input type="radio" class="btn-check" name="buyType" id="buyLimit" autocomplete="off" checked @click="togglebuylimit('limit');setValue('buyQuantity', 0);setValue('buyHours','720');setValue('buyPrice', buyhive.checked ? hivesells[0]?.rate || '0' : hbdsells[0]?.rate || '0');block()">
+                             <label class="btn btn-outline-warning active" for="buyLimit"> LIMIT </label>
+                            
+                              <input type="radio" class="btn-check" name="buyType" id="buyMarket" autocomplete="off" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHours','0');setValue('buyHiveTotal',0);setValue('buyPrice', 0);setValue('buyHBDTotal',0);block()">
+                             <label class="btn btn-outline-warning" for="buyMarket"> MARKET </label>
                           </div>
-                        </div>
+                        
                       </div>
                       <div class="text-right">
                         <div class="small text-muted" v-if="buyhive.checked">BALANCE<br>
