@@ -1616,7 +1616,7 @@ $(function () {
               <div class="jumbotron p-3 bg-darkg" v-if="buyhive.checked">
                 <div class="d-flex align-items-center" id="dluxhivequote">
                   <div>
-                    <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</b></h2>
+                    <b><h2 class="lead my-0" v-cloak>{{TOKEN}}: ${{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0) * hiveprice.hive.usd, 6)}}</h2></b>
                   </div>
                   <div class="ms-auto d-flex align-items-center">
                     <div class="dropdown show d-flex align-items-center p-0 m-0"><a class="text-white py-0 px-2 m-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-info-circle mx-2"></i></a>
@@ -1642,7 +1642,7 @@ $(function () {
               <div class="jumbotron p-3 bg-darkg" v-if="buyhbd.checked">
                 <div class="d-flex align-items-center" id="dluxhbdquote">
                   <div>
-                    <h2 class="lead my-0"><b>{{TOKEN}}: ${{toFixed((dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd, 6)}}</b></h2>
+                    <b><h2 class="lead my-0" v-cloak>{{TOKEN}}: ${{toFixed((dexapi ? dexapi.markets.hbd.tick : 0 )* hbdprice.hive_dollar.usd, 6)}}</h2></b>
                   </div>
                   <div class="ms-auto d-flex align-items-center">
                     <div class="dropdown show d-flex align-items-center p-0 m-0"><a class="text-white py-0 px-2 m-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-info-circle mx-2"></i></a>
@@ -1669,14 +1669,14 @@ $(function () {
             <div class="col-4">
               <div class="jumbotron p-3 bg-darkg">
                 <div id="hivequote">
-                  <h2 class="lead my-0"><b>HIVE: ${{hiveprice.hive.usd}}</b></h2>
+                  <b><h2 class="lead my-0" v-cloak>HIVE: ${{hiveprice.hive.usd}}</h2></b>
                 </div>
               </div>
             </div>
             <div class="col-4">
               <div class="jumbotron p-3 bg-darkg">
                 <div id="hbdquote">
-                  <h2 class="lead my-0"><b>HBD: ${{hbdprice.hive_dollar.usd}}</b></h2>
+                  <b><h2 class="lead my-0" v-cloak>HBD: ${{hbdprice.hive_dollar.usd}}</h2></b>
                 </div>
               </div>
             </div>
@@ -1701,23 +1701,23 @@ $(function () {
               <div class="row">
                 <div class="mt-2 col">
                   <h5>Bid</h5>
-                  <i class="fab fa-hive me-1"></i>{{hivebuys[0] ? hivebuys[0].rate : 0}}<br>
-                  <i class="fas fa-dollar-sign mx-1"></i>{{toFixed((hivebuys[0] ? hivebuys[0].rate : 0 ) * hiveprice.hive.usd, 6)}}
+                  <i class="fab fa-hive me-1"></i><span v-cloak>{{hivebuys[0] ? hivebuys[0].rate : 0}}</span><br>
+                  <i class="fas fa-dollar-sign mx-1"></i><span v-cloak>{{toFixed((hivebuys[0] ? hivebuys[0].rate : 0 ) * hiveprice.hive.usd, 6)}}</span>
                 </div>
                 <div class="mt-2 col">
                   <h5>Ask</h5>
-                  <i class="fab fa-hive me-1"></i>{{hivesells[0] ? hivesells[0].rate : 0}}<br>
-                  <i class="fas fa-dollar-sign mx-1"></i>{{toFixed((hivesells[0] ? hivesells[0].rate : 0 ) * hiveprice.hive.usd, 6)}}
+                  <i class="fab fa-hive me-1"></i><span v-cloak>{{hivesells[0] ? hivesells[0].rate : 0}}</span><br>
+                  <i class="fas fa-dollar-sign mx-1"></i><span v-cloak>{{toFixed((hivesells[0] ? hivesells[0].rate : 0 ) * hiveprice.hive.usd, 6)}}</span>
                 </div>
                 <div class="mt-2 col">
                   <h5>Last</h5>
-                  <i class="fab fa-hive me-1"></i>{{dexapi.markets ? dexapi.markets.hive.tick : 0}} <br>
-                  <i class="fas fa-dollar-sign mx-1"></i>{{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0 ) * hiveprice.hive.usd, 6)}}
+                  <i class="fab fa-hive me-1"></i><span v-cloak>{{dexapi.markets ? dexapi.markets.hive.tick : 0}}</span><br>
+                  <i class="fas fa-dollar-sign mx-1"></i><span v-cloak>{{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0 ) * hiveprice.hive.usd, 6)}}</span>
                 </div>
                 <div class="mt-2 col">
                   <h5>24h Volume</h5>
-                  <i class="fab fa-hive me-1"></i>{{volume.hive}}<br>
-                  <i class="fas fa-dollar-sign mx-1"></i>{{toFixed(volume.hive * hiveprice.hive.usd, 2)}}
+                  <i class="fab fa-hive me-1"></i><span v-cloak>{{volume.hive}}</span><br>
+                  <i class="fas fa-dollar-sign mx-1"></i><span v-cloak>{{toFixed(volume.hive * hiveprice.hive.usd, 2)}}</span>
                 </div>
               </div>
             </div>
@@ -1725,23 +1725,23 @@ $(function () {
               <div class="row">
                 <div class="mt-2 col">
                   <h5>Bid</h5>
-                  <i class="fab fa-hive me-1"></i>{{hbdbuys[0] ? hbdbuys[0].rate : 0}}<br>
-                  <i class="fas fa-dollar-sign mx-1"></i>{{toFixed((hbdbuys[0] ? hbdbuys[0].rate : 0 ) * hbdprice.hive_dollar.usd, 6)}}
+                  <i class="fab fa-hive me-1"></i><span v-cloak>{{hbdbuys[0] ? hbdbuys[0].rate : 0}}</span><br>
+                  <i class="fas fa-dollar-sign mx-1"></i><span v-cloak>{{toFixed((hbdbuys[0] ? hbdbuys[0].rate : 0 ) * hbdprice.hive_dollar.usd, 6)}}</span>
                 </div>
                 <div class="mt-2 col">
                   <h5>Ask</h5>
-                  <i class="fab fa-hive me-1"></i>{{hbdsells[0] ? hbdsells[0].rate : 0}}<br>
-                  <i class="fas fa-dollar-sign mx-1"></i>{{toFixed((hbdsells[0] ? hbdsells[0].rate : 0 ) * hbdprice.hive_dollar.usd, 6)}}
+                  <i class="fab fa-hive me-1"></i><span v-cloak>{{hbdsells[0] ? hbdsells[0].rate : 0}}</span><br>
+                  <i class="fas fa-dollar-sign mx-1"></i><span v-cloak>{{toFixed((hbdsells[0] ? hbdsells[0].rate : 0 ) * hbdprice.hive_dollar.usd, 6)}}</span>
                 </div>
                 <div class="mt-2 col">
                   <h5>Last</h5>
-                  <i class="fab fa-hive me-1"></i>{{dexapi.markets ? dexapi.markets.hive.tick : 0}} <br>
-                  <i class="fas fa-dollar-sign mx-1"></i>{{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0 ) * hbdprice.hive_dollar.usd, 6)}}
+                  <i class="fab fa-hive me-1"></i><span v-cloak>{{dexapi.markets ? dexapi.markets.hive.tick : 0}}</span><br>
+                  <i class="fas fa-dollar-sign mx-1"></i><span v-cloak>{{toFixed((dexapi.markets ? dexapi.markets.hive.tick : 0 ) * hbdprice.hive_dollar.usd, 6)}}</span>
                 </div>
                 <div class="mt-2 col">
                   <h5>24h Volume</h5>
-                  <i class="fab fa-hive me-1"></i>{{volume.hbd}}<br>
-                  <i class="fas fa-dollar-sign mx-1"></i>{{toFixed(volume.hbd * hbdprice.hive_dollar.usd, 2)}}
+                  <i class="fab fa-hive me-1"></i><span v-cloak>{{volume.hbd}}</span><br>
+                  <i class="fas fa-dollar-sign mx-1"></i><span v-cloak>{{toFixed(volume.hbd * hbdprice.hive_dollar.usd, 2)}}</span>
                 </div>
               </div>
             </div>
