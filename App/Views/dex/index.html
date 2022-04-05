@@ -156,7 +156,7 @@ $(function () {
           buyHiveTotal: 0,
           buyPrice: 0,
           sellPrice: 0,
-          buyHBDTotal: 0,
+          buyHbdTotal: 0,
           sellHiveTotal: 0,
           sellHBDTotal: 0,
           buyQuantity: 0,
@@ -424,32 +424,32 @@ $(function () {
               this.buyQuantity = parseFloat(this.buyQuantity)
               if (this.bform.cl) {
                 if (this.buyhive.checked) this.buyPrice = (this.buyHiveTotal / this.buyQuantity).toFixed(6)
-                else this.buyPrice = (this.buyHBDTotal / this.buyQuantity).toFixed(6)
+                else this.buyPrice = (this.buyHbdTotal / this.buyQuantity).toFixed(6)
               } else {
                 if (this.buyhive.checked) this.buyHiveTotal = (this.buyPrice * this.buyQuantity).toFixed(3)
-                else this.buyHBDTotal = (this.buyPrice * this.buyQuantity).toFixed(3)
+                else this.buyHbdTotal = (this.buyPrice * this.buyQuantity).toFixed(3)
               }
               break;
             case 'p':
               this.buyPrice = parseFloat(this.buyPrice)
               if (this.bform.cl) {
                 if (this.buyhive.checked) this.buyQuantity = (this.buyHiveTotal / this.buyPrice).toFixed(3)
-                else this.buyQuantity = (this.buyHBDTotal / this.buyPrice).toFixed(3)
+                else this.buyQuantity = (this.buyHbdTotal / this.buyPrice).toFixed(3)
               } else {
                 if (this.buyhive.checked) this.buyHiveTotal = (this.buyPrice * this.buyQuantity).toFixed(3)
-                else this.buyHBDTotal = (this.buyPrice * this.buyQuantity).toFixed(3)
+                else this.buyHbdTotal = (this.buyPrice * this.buyQuantity).toFixed(3)
               }
               break;
             case 'c':
               if (this.buyhive.checked) this.buyHiveTotal = parseFloat(this.buyHiveTotal)
-              else this.buyHBDTotal = parseFloat(this.buyHBDTotal)
+              else this.buyHbdTotal = parseFloat(this.buyHbdTotal)
               if (this.buylimit.checked) {
                 if (this.bform.pl) {
                   if (this.buyhive.checked) this.buyQuantity = (this.buyHiveTotal / this.buyPrice).toFixed(3)
-                  else this.buyQuantity = (this.buyHBDTotal / this.buyPrice).toFixed(3)
+                  else this.buyQuantity = (this.buyHbdTotal / this.buyPrice).toFixed(3)
                 } else {
                   if (this.buyhive.checked) this.buyPrice = (this.buyHiveTotal / this.buyQuantity).toFixed(6)
-                  else this.buyPrice = (this.buyHBDTotal / this.buyQuantity).toFixed(6)
+                  else this.buyPrice = (this.buyHbdTotal / this.buyQuantity).toFixed(6)
                 }
               }
               break;
@@ -728,7 +728,7 @@ $(function () {
             rate = undefined,
             hours = 720
           if (!buymarket.checked) {
-            rate = parseFloat((this.buyhive.checked ? this.buyHiveTotal : this.buyHBDTotal) / this.buyQuantity).toFixed(6)
+            rate = parseFloat((this.buyhive.checked ? this.buyHiveTotal : this.buyHbdTotal) / this.buyQuantity).toFixed(6)
             andthen = ` at ${rate} ${this.buyhive.checked ? 'HIVE' : 'HBD' } per ${this.TOKEN}`
           }
           if (this.buyhive.checked) broadcastTransfer({
@@ -741,7 +741,7 @@ $(function () {
           }, `Buying ${this.TOKEN} with ${parseFloat((hive||hbd)/1000).toFixed(3)} ${hive?'HIVE':'HBD'} ${andthen}`, lapi.split('://')[1])
           else if (!this.buyhive.checked) broadcastTransfer({
             to: this.multisig,
-            hbd: this.buyHBDTotal * 1000,
+            hbd: this.buyHbdTotal * 1000,
             memo: JSON.stringify({
               rate: this.buyPrice,
               hours: this.buyHours
@@ -1354,7 +1354,7 @@ $(function () {
               </div>
               <div class="d-flex align-items-center text-white-50">
                 <!-- send token form -->
-                <div id="userdlux" class="mx-4" v-if="features.send_B">
+                <div id="userSendToken" class="mx-4" v-if="features.send_B">
                   <div class="dropdown show d-flex align-items-center "><a class="text-warning" href="#" role="button" id="sendDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px" aria-labelledby="sendDropdownBtn">
                       <h6 class="dropdown-header text-center">SEND {{TOKEN}}</h6>
@@ -1449,13 +1449,13 @@ $(function () {
                           </div>
                         </div>
                         <div class="form-group">
-                          <label id="govuplarynxamountlab">Amount</label>
+                          <label for="govUpAmount">Amount</label>
                           <div class="input-group">
-                            <input class="form-control bg-darkg border-dark text-info" v-if="features.govsel_up" v-model="features.gov_val" required id="govuplarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
-                            <input class="form-control bg-darkg border-dark text-info" v-if="!features.govsel_up" v-model="features.gov_val" required id="govdownlarynxamount" type="number" step="0.001" min="0.001" :max="parseFloat(bargov)" placeholder="0.000">
+                            <input class="form-control bg-darkg border-dark text-info" v-if="features.govsel_up" v-model="features.gov_val" required id="govUpAmount" type="number" step="0.001" min="0.001" :max="parseFloat(bartoken)" placeholder="0.000">
+                            <input class="form-control bg-darkg border-dark text-info" v-if="!features.govsel_up" v-model="features.gov_val" required id="govDownAmount" type="number" step="0.001" min="0.001" :max="parseFloat(bargov)" placeholder="0.000">
                             <div class="input-group-append">
-                              <div class="input-group-text bg-darkg border-dark text-white-50" v-if="features.govsel_up" id="govupformunits"> {{TOKEN}} </div>
-                              <div class="input-group-text bg-darkg border-dark text-white-50" v-if="!features.govsel_up" id="govdownformunits"> {{TOKEN}}G </div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50" v-if="features.govsel_up"> {{TOKEN}} </div>
+                              <div class="input-group-text bg-darkg border-dark text-white-50" v-if="!features.govsel_up"> {{TOKEN}}G </div>
                             </div>
                           </div>
                           <div class="small py-2" v-if="features.govsel_up"><a href="#/" @click="setValue('features.gov_val',balance)" class="text-info">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
@@ -1688,10 +1688,10 @@ $(function () {
               <div class="container-fluid mt-3">
 				  <div>
 					  <div class="btn-group">
-					  <input type="radio" class="btn-check" name="buyPair" id="setHive" autocomplete="off" checked @click="togglecoin('hive');setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);setValue('buyHBDTotal', 0);setValue('sellHBDTotal', 0);getHistorical()">
+					  <input type="radio" class="btn-check" name="buyPair" id="setHive" autocomplete="off" checked @click="togglecoin('hive');setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);setValue('buyHbdTotal', 0);setValue('sellHBDTotal', 0);getHistorical()">
 						<label class="btn btn-outline-warning" for="setHive">HIVE</label>
 
-						<input type="radio" class="btn-check" name="buyPair" id="setHbd" autocomplete="off" @click="togglecoin('hbd');setValue('buyHBDTotal', 0);setValue('sellHBDTotal', 0);setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);getHistorical()">
+						<input type="radio" class="btn-check" name="buyPair" id="setHbd" autocomplete="off" @click="togglecoin('hbd');setValue('buyHbdTotal', 0);setValue('sellHBDTotal', 0);setValue('buyHiveTotal', 0);setValue('sellHiveTotal', 0);getHistorical()">
 						<label class="btn btn-outline-warning" for="setHbd">HBD</label>
 					</div>
 					</div>
@@ -1851,8 +1851,9 @@ $(function () {
               <div class="mt-3 col-md-6">
                 <h4>Buy {{TOKEN}}</h4>
                 <form name="buy" id="buyForm" @submit.prevent="validateForm('buyForm', 'buyFormValid');buyDEX()" class="form-horizontal needs-validation" novalidate>
-                  <div class="form-group" id="buy-type" aria-labelledby="buy-type-label">
-                    <div class="form-row">
+   
+                   
+					  <div class="row mb-3">
                       <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="buy-type-label">Order Type</legend>
                       <div tabindex="-1" class="col">
 
@@ -1861,24 +1862,24 @@ $(function () {
                               <input type="radio" class="btn-check" name="buyType" id="buyLimit" autocomplete="off" checked @click="togglebuylimit('limit');setValue('buyQuantity', 0);setValue('buyHours','720');setValue('buyPrice', buyhive.checked ? hivesells[0]?.rate || '0' : hbdsells[0]?.rate || '0');block()">
                              <label class="btn btn-outline-warning active" for="buyLimit"> LIMIT </label>
                             
-                              <input type="radio" class="btn-check" name="buyType" id="buyMarket" autocomplete="off" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHours','0');setValue('buyHiveTotal',0);setValue('buyPrice', 0);setValue('buyHBDTotal',0);block()">
+                              <input type="radio" class="btn-check" name="buyType" id="buyMarket" autocomplete="off" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHours','0');setValue('buyHiveTotal',0);setValue('buyPrice', 0);setValue('buyHbdTotal',0);block()">
                              <label class="btn btn-outline-warning" for="buyMarket"> MARKET </label>
                           </div>
                         
                       </div>
-                      <div class="text-right">
+                      <div class="col text-end">
                         <div class="small text-muted" v-if="buyhive.checked">BALANCE<br>
                           <a href="#/" @click="setValue('buyHiveTotal',parseFloat(barhive) < maxhbuy? parseFloat(barhive) : maxhbuy)">{{formatNumber(barhive,3,'.',',')}} HIVE</a>
                         </div>
                         <div class="small text-muted" v-if="buyhbd.checked">BALANCE<br>
-                          <a href="#/" @click="setValue('buyHBDTotal',parseFloat(barhbd) < maxhbuy? parseFloat(barhbd) : maxhbuy)">{{formatNumber(barhbd,3,'.',',')}} HBD</a>
+                          <a href="#/" @click="setValue('buyHbdTotal',parseFloat(barhbd) < maxhbuy? parseFloat(barhbd) : maxhbuy)">{{formatNumber(barhbd,3,'.',',')}} HBD</a>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group" for="buyQuantity" id="buy-qty" aria-labelledby="buy-qty-label" v-if="buylimit.checked">
-                    <div class="form-row">
-                      <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-qty-label">Quantity</legend>
+					  
+         
+                    <div class="row mb-3" v-if="buylimit.checked">
+                      <legend tabindex="-1" class="col-sm-4 col-form-label" for="buyQuantity">Quantity</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
                           <input type="number" v-on:keyup="bcalc('t')" ref="buyQty" required class="form-control bg-darkg border-dark text-info" v-model="buyQuantity" id="buyQuantity" placeholder="0" :min="minbuy" step="0.001" aria-required="true" :readonly="bform.tl">
@@ -1889,10 +1890,10 @@ $(function () {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group" for="buyPrice" id="buy-price" aria-labelledby="buy-price-label" v-if="buylimit.checked">
-                    <div class="form-row">
-                      <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Price</legend>
+                 
+
+                    <div class="row mb-3" v-if="buylimit.checked">
+                      <legend tabindex="-1" class="col-sm-4 col-form-label" for="buyPrice">Price</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
                           <input id="buyPrice" type="number" v-on:keyup="bcalc('p')" v-model="buyPrice" placeholder="0" required step="0.000001" min="0.000001" aria-required="true" class="form-control bg-darkg border-dark text-info" :readonly="bform.pl">
@@ -1903,9 +1904,9 @@ $(function () {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group" for="buyHiveTotal" id="buy-hive-total" aria-labelledby="buy-hive-total-label" v-if="buyhive.checked">
-                    <div class="form-row">
+               
+              
+                    <div class="row mb-3" v-if="buyhive.checked">
                       <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hive-total-label">Total</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
@@ -1917,13 +1918,13 @@ $(function () {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group" for="buyHBDTotal" id="buy-hbd-total" aria-labelledby="buy-hbd-total-label" v-if="buyhbd.checked">
-                    <div class="form-row">
-                      <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-hbd-total-label">Total</legend>
+          
+
+                    <div class="row mb-3" v-if="buyhbd.checked">
+                      <legend tabindex="-1" class="col-sm-4 col-form-label" for="buyHbdTotal">Total</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
-                          <input type="number" class="form-control bg-darkg text-info border-dark" :readonly="bform.cl" v-model="buyHBDTotal" id="buyHBDTotal" required v-on:keyup="bcalc('c')" placeholder="0" :min="minbuy" step="0.001" :max="parseFloat(barhbd) < parseFloat(maxdbuy) ? toFixed(parseFloat(barhbd),3) : maxdbuy" aria-required="true">
+                          <input type="number" class="form-control bg-darkg text-info border-dark" :readonly="bform.cl" v-model="buyHbdTotal" id="buyHbdTotal" required v-on:keyup="bcalc('c')" placeholder="0" :min="minbuy" step="0.001" :max="parseFloat(barhbd) < parseFloat(maxdbuy) ? toFixed(parseFloat(barhbd),3) : maxdbuy" aria-required="true">
                           <div class="input-group-append">
                             <div class="input-group-text bg-darkg border-dark text-white-50 r-radius-hotfix">HBD <a href="#/" class="ms-3 text-secondary" @click="block('c')" v-if="buylimit.checked"><i class="fas" :class="{'fa-lock':bform.cl, 'fa-unlock-alt':!bform.cl}"></i></a> </div>
                           </div>
@@ -1931,10 +1932,10 @@ $(function () {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group" for="buyHours" id="buy-hours" aria-labelledby="buy-hours-label" v-if="buylimit.checked">
-                    <div class="form-row">
-                      <legend tabindex="-1" class="col-sm-4 col-form-label" id="buy-total-label">Expiration</legend>
+                  
+            
+                    <div class="row mb-3" v-if="buylimit.checked">
+                      <legend tabindex="-1" class="col-sm-4 col-form-label" for="buyHours">Expiration</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
                           <input id="buyHours" v-model="buyHours" type="number" required step="1" min="1" max="720" aria-required="true" class="form-control bg-darkg border-dark text-info" :readonly="buymarket.checked">
@@ -1945,10 +1946,12 @@ $(function () {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="text-right">
+               
+					<div class="row mb-3">
+                  <div class="text-end">
                     <button type="submit" class="btn btn-success">Buy</button>
                   </div>
+						</div>
                 </form>
               </div>
               <div class="mt-3 col-md-6">
@@ -2034,7 +2037,7 @@ $(function () {
                   </div>
                   <div class="form-group" for="sellHours" id="sell-hours" aria-labelledby="sell-hours-label" v-if="!sellmarket.checked">
                     <div class="form-row">
-                      <legend tabindex="-1" class="col-sm-4 col-form-label" id="sell-total-label">Expiration</legend>
+                      <legend tabindex="-1" class="col-sm-4 col-form-label" >Expiration</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
                           <input id="sellHours" v-on:keyup="scalc('c')" v-model="sellHours" type="number" required step="1" min="1" max="720" aria-required="true" class="form-control bg-darkg border-dark text-info" :readonly="sellmarket.checked">
@@ -2188,7 +2191,7 @@ $(function () {
                       </thead>
                       <tbody role="rowgroup" class="tbody-scroll-orders">
                         <tr class="" role="row" v-for="item in hbdsells">
-                          <td aria-colindex="1" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);;suggestValue('buyHBDTotal', item.total/1000 );suggestValue('buyQuantity', item.at/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
+                          <td aria-colindex="1" role="cell" class=""><a href="#/" @click="setValue('buyPrice', item.rate);setValue('sellPrice', item.rate);;suggestValue('buyHbdTotal', item.total/1000 );suggestValue('buyQuantity', item.at/1000 )">{{formatNumber(item.rate,6,'.',',')}}</a></td>
                           <td aria-colindex="2" role="cell" class="">{{formatNumber(item.amount/1000,3,'.',',')}}</td>
                           <td aria-colindex="3" role="cell" class="">{{formatNumber(item.hbd/1000,3,'.',',')}}</td>
                           <td aria-colindex="4" role="cell" class="">{{formatNumber(item.total/1000,3,'.',',')}}</td>
@@ -2248,7 +2251,7 @@ $(function () {
           </a>
           <!-- Hive -->
           <a href="https://peakd.com/@dlux-io" target="_blank">
-            <img src="/img/peakd_logo.svg" class="responsive pb-3" width="40px">
+            <img src="/img/peakd_logo.svg" class="responsive pb-3" width="40px" alt="PeakD">
           </a>
           <!--Twitter -->
           <a href="https://twitter.com/dluxxr" target="_blank">
