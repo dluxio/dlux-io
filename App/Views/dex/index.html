@@ -1309,7 +1309,7 @@ $(function () {
                 <!-- runner status  -->
                 <div :title="behindTitle" class="d-flex align-items-center mx-3"> 
 					<a class="text-center" style="font-size: .7em;" :class="[{'text-success':behind < 30},{'text-warning':behind >= 30 && behind < 60},{'text-danger':behind >= 60}]" data-bs-toggle="collapse" href="#nodeDrawer" role="button" aria-expanded="false" aria-controls="nodeDrawer">
-						<span class=" p-0 m-0"><i class="fas fa-circle me-2"></i><span class=" p-0 m-0" v-show="behind < 30">ONLINE</span> <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span> <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span></span> <span class="p-0 m-0 ms-1">({{runners.length}} <i class="fas fa-user-lock"></i>)</span> </a> </div>
+						<span class=" p-0 m-0"><i class="fas fa-circle me-2"></i><span class=" p-0 m-0" v-show="behind < 30">ONLINE</span> <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span> <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span></span> <span class="p-0 m-0 ms-1" v-cloak>({{runners.length}} <i class="fas fa-user-lock"></i>)</span> </a> </div>
               </div>
               <div class="d-flex align-items-center">
                 <!-- claim tokens form -->
@@ -1355,7 +1355,7 @@ $(function () {
               <div class="d-flex align-items-center text-white-50">
                 <!-- send token form -->
                 <div id="userSendToken" class="mx-4" v-if="features.send_B">
-                  <div class="dropdown show d-flex align-items-center "><a class="text-warning" href="#" role="button" id="sendDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false"> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
+                  <div class="dropdown show d-flex align-items-center "><a class="text-warning" href="#" role="button" id="sendDropdownBtn" data-bs-toggle="dropdown" aria-expanded="false" v-cloak> {{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px" aria-labelledby="sendDropdownBtn">
                       <h6 class="dropdown-header text-center">SEND {{TOKEN}}</h6>
                       <form id="sendForm" @submit.prevent="validateForm('sendForm', 'sendFormValid');tokenSend()" class="needs-validation" novalidate>
@@ -1396,7 +1396,7 @@ $(function () {
                 </div>
                 <!-- power form -->
                 <div id="userdpwr" class="mx-4" v-if="features.powup_B || features.powdn_B">
-                  <div class="dropdown show d-flex align-items-center "><a class="text-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a>
+                  <div class="dropdown show d-flex align-items-center "><a class="text-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-cloak>{{formatNumber(barpow,3,'.',',')}} {{TOKEN}}P</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} POWER</h6>
                       <form name="pwrlarynx" id="powForm" @submit.prevent="validateForm('powForm', 'powFormValid');power()" class=" needs-validation" novalidate>
@@ -1433,7 +1433,7 @@ $(function () {
                 </div>
                 <!-- gov form -->
                 <div id="userdgov" class="mx-4" v-if="isnode && (features.govup_B || features.govdn_B)">
-                  <div class="dropdown show d-flex align-items-center "><a class="text-info" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a>
+                  <div class="dropdown show d-flex align-items-center "><a class="text-info" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-cloak>{{formatNumber(bargov,3,'.',',')}} {{TOKEN}}G</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">{{TOKEN}} GOVERNANCE</h6>
                       <h4 class="dropdown-header text-center">Current Threshold: {{formatNumber(stats.gov_threshhold/1000,3,'.',',')}}</h4>
@@ -1471,7 +1471,7 @@ $(function () {
                 </div>
                 <!-- send hive form -->
                 <div id="userhive" class="mx-4">
-                  <div class="dropdown show d-flex align-items-center "><a class="text-danger" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhive,3,'.',',')}} HIVE</a>
+                  <div class="dropdown show d-flex align-items-center "><a class="text-danger" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-cloak> {{formatNumber(barhive,3,'.',',')}} HIVE</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">SEND HIVE</h6>
                       <form name="sendhive" id="hiveForm" @submit.prevent="validateForm('hiveForm', 'hiveFormValid');sendhive()" class=" needs-validation" novalidate>
@@ -1509,7 +1509,7 @@ $(function () {
                 </div>
                 <!-- send hbd form -->
                 <div id="userhbd" class="mx-4">
-                  <div class="dropdown show d-flex align-items-center "><a class="text-success" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{formatNumber(barhbd,3,'.',',')}} HBD</a>
+                  <div class="dropdown show d-flex align-items-center "><a class="text-success" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-cloak> {{formatNumber(barhbd,3,'.',',')}} HBD</a>
                     <div class="dropdown-menu p-4 text-white-50 text-left bg-black dropdown-menu-right" style="width: 300px">
                       <h6 class="dropdown-header text-center">SEND HBD</h6>
                       <form name="sendhbd" id="hbdForm" @submit.prevent="validateForm('hbdForm', 'hbdFormValid');sendhbd()" class="needs-validation" novalidate>
