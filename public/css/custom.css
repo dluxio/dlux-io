@@ -6,7 +6,7 @@ a {
 	text-decoration: none;
 }
 [v-cloak] { 
-visibility: hidden !important;
+display: none;
 }
 .padme-t70 {
   padding-top: 70px;
