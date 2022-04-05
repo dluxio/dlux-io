@@ -1308,7 +1308,7 @@ $(function () {
                 </div>
                 <!-- runner status  -->
                 <div :title="behindTitle" class="d-flex align-items-center mx-3"> 
-					<a class="text-center" style="font-size: .7em;" :class="[{'text-success':'behind < 30'},{'text-warning':'behind >= 30 && behind < 60'},{'text-danger':'behind >= 60'}]" data-bs-toggle="collapse" href="#nodeDrawer" role="button" aria-expanded="false" aria-controls="nodeDrawer">
+					<a class="text-center" style="font-size: .7em;" :class="[{'text-success':behind < 30},{'text-warning':behind >= 30 && behind < 60},{'text-danger':behind >= 60}]" data-bs-toggle="collapse" href="#nodeDrawer" role="button" aria-expanded="false" aria-controls="nodeDrawer">
 						<span class=" p-0 m-0"><i class="fas fa-circle me-2"></i><span class=" p-0 m-0" v-show="behind < 30">ONLINE</span> <span class=" p-0 m-0" v-show="behind >= 30 && behind <=100">LAGGING</span> <span class=" p-0 m-0" v-show="behind > 100">OFFLINE</span></span> <span class="p-0 m-0 ms-1">({{runners.length}} <i class="fas fa-user-lock"></i>)</span> </a> </div>
               </div>
               <div class="d-flex align-items-center">
