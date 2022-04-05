@@ -1860,7 +1860,7 @@ $(function () {
                           <div class="btn-group">
                             
                               <input type="radio" class="btn-check" name="buyType" id="buyLimit" autocomplete="off" checked @click="togglebuylimit('limit');setValue('buyQuantity', 0);setValue('buyHours','720');setValue('buyPrice', buyhive.checked ? hivesells[0]?.rate || '0' : hbdsells[0]?.rate || '0');block()">
-                             <label class="btn btn-outline-warning active" for="buyLimit"> LIMIT </label>
+                             <label class="btn btn-outline-warning" for="buyLimit"> LIMIT </label>
                             
                               <input type="radio" class="btn-check" name="buyType" id="buyMarket" autocomplete="off" @click="togglebuylimit('market');setValue('buyQuantity','0');setValue('buyHours','0');setValue('buyHiveTotal',0);setValue('buyPrice', 0);setValue('buyHbdTotal',0);block()">
                              <label class="btn btn-outline-warning" for="buyMarket"> MARKET </label>
