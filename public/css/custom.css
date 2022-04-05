@@ -44,6 +44,9 @@ body {
       width: 100%;
       table-layout: fixed;
     }
+td {
+	padding: 0.75em;
+}
     .btn-rb,
     .btn-rb:hover,
     .btn-rb:active,
