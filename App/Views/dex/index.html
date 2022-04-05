@@ -1958,7 +1958,7 @@ $(function () {
                 <h4>Sell {{TOKEN}}</h4>
                 <form id="sellForm" @submit.prevent="validateForm('sellForm', 'sellFormValid');sellDEX()" name="sell" class="form-horizontal needs-validation" novalidate>
                   
-                    <div class="row">
+                    <div class="row mb-3">
                       <legend tabindex="-1" class="col-sm-4 bv-no-focus-ring col-form-label" id="sell-type-label">Order Type</legend>
                       <div tabindex="-1" role="group" class="col">
                         
@@ -1981,7 +1981,7 @@ $(function () {
                     </div>
                  
                  
-                    <div class="row">
+                    <div class="row mb-3">
                       <legend tabindex="-1" class="col-sm-4 col-form-label" for="sellQuantity">Quantity</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
@@ -1995,7 +1995,7 @@ $(function () {
                     </div>
                   
                
-                    <div class="row" v-if="!sellmarket.checked">
+                    <div class="row mb-3" v-if="!sellmarket.checked">
                       <legend tabindex="-1" class="col-sm-4 col-form-label" for="sellPrice">Price</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
@@ -2009,7 +2009,7 @@ $(function () {
                     </div>
                   
                  
-                    <div class="row" v-if="buyhive.checked && selllimit.checked">
+                    <div class="row mb-3" v-if="buyhive.checked && selllimit.checked">
                       <legend tabindex="-1" class="col-sm-4 col-form-label" for="sellHiveTotal">Total</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
@@ -2023,7 +2023,7 @@ $(function () {
                     </div>
                
       
-                    <div class="row" v-if="buyhbd.checked && selllimit.checked">
+                    <div class="row mb-3" v-if="buyhbd.checked && selllimit.checked">
                       <legend tabindex="-1" class="col-sm-4 col-form-label" for="sellHbdTotal">Total</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
@@ -2037,7 +2037,7 @@ $(function () {
                     </div>
              
           
-                    <div class="row" v-if="!sellmarket.checked">
+                    <div class="row mb-3" v-if="!sellmarket.checked">
                       <legend tabindex="-1" class="col-sm-4 col-form-label" for="sellHours">Expiration</legend>
                       <div tabindex="-1" role="group" class="col">
                         <div role="group" class="input-group">
@@ -2050,7 +2050,7 @@ $(function () {
                       </div>
                     </div>
                
-					<div class="row">
+					<div class="row mb-3">
                   <div class="text-end">
                     <button type="submit" class="btn btn-danger">Sell</button>
                   </div>
