@@ -19,7 +19,7 @@ class Dex extends \Core\Controller
      */
     public function index($request, $response, $service)
     {
-        View::render('dex/index.php');
+        View::render('dex/index.html');
     }
 	public function dlux($request, $response, $service)
     {
