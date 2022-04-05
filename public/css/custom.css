@@ -2,6 +2,9 @@
 body {
   background-color: #212529
 }
+a {
+	text-decoration: none;
+}
 .padme-t70 {
   padding-top: 70px;
 }
@@ -45,7 +48,7 @@ body {
       table-layout: fixed;
     }
 td {
-	padding: 0.75em;
+	padding: 0.75em !important;
 }
     .btn-rb,
     .btn-rb:hover,
