@@ -19,6 +19,6 @@ class Hub extends \Core\Controller
      */
     public function index($request, $response, $service)
     {
-        View::render('hub/index.php');
+        View::render('hub/index.html');
     }
 }
