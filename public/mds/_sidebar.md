@@ -1,4 +1,4 @@
-- [HONEYCOMB](README.md)
+- [HONEYCOMB](/)
     
     - [DEX Guide](dex.md)
     - [New Token](new-token.md)
