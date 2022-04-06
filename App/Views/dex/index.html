@@ -1768,7 +1768,7 @@ $(function () {
               </div>
               <div></div>
               <div>
-                <button class="btn btn-outline-primary" role="button" data-bs-toggle="collapse" href="#openOrdersDrawer" aria-expanded="false" aria-controls="openOrdersDrawer">OPEN ORDERS ({{openorders.length}}) <i class="fas fa-book-reader ms-2"></i></button>
+                <button class="btn btn-outline-primary" role="button" data-bs-toggle="collapse" href="#openOrdersDrawer" aria-expanded="false" aria-controls="openOrdersDrawer">OPEN ORDERS (<span v-cloak>{{openorders.length}}</span>) <i class="fas fa-book-reader ms-2"></i></button>
               </div>
             </div>
             <div id="openOrdersDrawer" class="collapse ">
@@ -1869,10 +1869,10 @@ $(function () {
                       </div>
                       <div class="col text-end">
                         <div class="small text-muted" v-if="buyhive.checked">BALANCE<br>
-                          <a href="#/" @click="setValue('buyHiveTotal',parseFloat(barhive) < maxhbuy? parseFloat(barhive) : maxhbuy)">{{formatNumber(barhive,3,'.',',')}} HIVE</a>
+                          <a href="#/" @click="setValue('buyHiveTotal',parseFloat(barhive) < maxhbuy? parseFloat(barhive) : maxhbuy)" v-cloak>{{formatNumber(barhive,3,'.',',')}} HIVE</a>
                         </div>
                         <div class="small text-muted" v-if="buyhbd.checked">BALANCE<br>
-                          <a href="#/" @click="setValue('buyHbdTotal',parseFloat(barhbd) < maxhbuy? parseFloat(barhbd) : maxhbuy)">{{formatNumber(barhbd,3,'.',',')}} HBD</a>
+                          <a href="#/" @click="setValue('buyHbdTotal',parseFloat(barhbd) < maxhbuy? parseFloat(barhbd) : maxhbuy)" v-cloak>{{formatNumber(barhbd,3,'.',',')}} HBD</a>
                         </div>
                       </div>
                     </div>
