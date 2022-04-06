@@ -9,7 +9,7 @@ use \Core\View;
  *
  * PHP version 7.0
  */
-class Docs extends \Core\Controller
+class Docu extends \Core\Controller
 {
 
     /**
