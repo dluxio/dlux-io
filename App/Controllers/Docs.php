@@ -19,6 +19,6 @@ class Docs extends \Core\Controller
      */
     public function index($request, $response, $service)
     {
-        View::render('docs/index.html');
+        View::render('docs/index.php');
     }
 }
