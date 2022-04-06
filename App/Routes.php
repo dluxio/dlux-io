@@ -12,6 +12,8 @@ $router->respondWithController('GET', '/vr/', 'Vr@index');
 $router->respondWithController('GET', '/vr', 'Vr@index');
 $router->respondWithController('GET', '/me/', 'Me@index');
 $router->respondWithController('GET', '/me', 'Me@index');
+$router->respondWithController('GET', '/hub/', 'Hub@index');
+$router->respondWithController('GET', '/hub', 'Hub@index');
 $router->respondWithController('GET', '/dex/', 'Dex@index');
 $router->respondWithController('GET', '/dex', 'Dex@index');
 $router->respondWithController('GET', '/dex/dlux/', 'Dex@dlux');
