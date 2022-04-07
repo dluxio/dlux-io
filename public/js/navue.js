@@ -60,7 +60,7 @@ export default {
 			 <li><a class="dropdown-item" href="/about/"><i class="fas fa-info-circle fa-fw mr-2"></i>About</a></li>
              <li><hr class="dropdown-divider"></li>
              <li><a class="dropdown-item" href="#" onclick="logout()" data-toggle="modal" data-target="#loginModal"><i class="fas fa-user-friends mr-2"></li>
-			 <li></i>Switch User</a>
+			 <li></i>Switch User</a></li>
 			 <li><a class="dropdown-item" href="#" onclick="logout()"><i class="fas fa-power-off fa-fw mr-2"></i>Logout</a></li>
 		</ul>
         </li>
