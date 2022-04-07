@@ -25,7 +25,7 @@ export default {
   computed:{
       avatar:{
           get(){
-              return 'https://images.hive.blog/u/' + this.user + '/avatar'
+              return this.user ? 'https://images.hive.blog/u/' + this.user + '/avatar' : ''
           }
       },
       loggedIn:{
