@@ -4,61 +4,63 @@ export default {
       HAS: false,
       HKC: true,
       HSR: false,
-      user: '',
-      userField: '',
+      user: "",
+      userField: "",
       recentUsers: [],
-    }
+    };
   },
-  emits: ['login', 'logout'],
-  methods:{
-    getUser(){
-        this.user = localStorage.getItem('user');
-        this.$emit('login', this.user);
+  emits: ["login", "logout"],
+  methods: {
+    getUser() {
+      this.user = localStorage.getItem("user");
+      this.$emit("login", this.user);
     },
-    logout(){
-        localStorage.removeItem('user');
-        this.user = ''
-        this.$emit('logout', '')
+    logout() {
+      localStorage.removeItem("user");
+      this.user = "";
+      this.$emit("logout", "");
     },
-    setUser(){
-        this.user = this.userField
-        localStorage.setItem('user', this.user)
-        this.$emit('login', this.user)
-        this.addRecentUser(this.user)
+    setUser(id) {
+      this.user = id ? id : this.userField;
+      localStorage.setItem("user", this.user);
+      this.$emit("login", this.user);
+      this.addRecentUser(this.user);
     },
-    addRecentUser(user){
-        if(this.recentUsers.indexOf(user)== -1)this.recentUsers.push(user)
-        localStorage.setItem('recentUsers', JSON.stringify(this.recentUsers))
+    addRecentUser(user) {
+      if (this.recentUsers.indexOf(user) == -1) this.recentUsers.push(user);
+      localStorage.setItem("recentUsers", JSON.stringify(this.recentUsers));
     },
-    getRecentUsers(){
-        const r = localStorage.getItem("recentUsers");
-        if(r)this.recentUsers = JSON.parse(r)
+    getRecentUsers() {
+      const r = localStorage.getItem("recentUsers");
+      if (r) this.recentUsers = JSON.parse(r);
     },
-    deleteRecentUser(user){
-        this.recentUsers.splice(this.recentUsers.indexOf(user), 1)
-        localStorage.setItem('recentUsers', JSON.stringify(this.recentUsers))
+    deleteRecentUser(user) {
+      this.recentUsers.splice(this.recentUsers.indexOf(user), 1);
+      localStorage.setItem("recentUsers", JSON.stringify(this.recentUsers));
     },
     isEnter(e) {
-        if (e.key === 'Enter' || e.keyCode === 13) {
-            this.setUser()
-        }
-    }
+      if (e.key === "Enter" || e.keyCode === 13) {
+        this.setUser();
+      }
+    },
   },
   mounted() {
     this.getUser();
     this.getRecentUsers();
   },
-  computed:{
-      avatar:{
-          get(){
-              return this.user ? 'https://images.hive.blog/u/' + this.user + '/avatar' : ''
-          }
+  computed: {
+    avatar: {
+      get() {
+        return this.user
+          ? "https://images.hive.blog/u/" + this.user + "/avatar"
+          : "";
       },
-      loggedIn:{
-          get(){
-              return this.user ? true : false;
-          }
-      }
+    },
+    loggedIn: {
+      get() {
+        return this.user ? true : false;
+      },
+    },
   },
   template: `
 <header class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:rgba(42, 48, 54, 0.8); -webkit-backdrop-filter: blur(10px);
@@ -77,6 +79,10 @@ export default {
 	<li class="nav-item"><a class="nav-link acct-link" href="/about/">About</a></li>
 	<li class="nav-item"><a class="nav-link acct-link" href="https://signup.hive.io/">Get Account</a></li>
 	<li class="nav-item"><input id="userLogin" v-model="userField" placeholder="username" @blur="setUser()" @keyup.enter="setUser()" class="bg-darkg border-dark text-info"></li>
+    <li class="nav-item"><button class="btn btn-submit" @click="setUser()">Login</button></li>
+    <li class="nav-item"><button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+  <i class="fal fa-address-book"></i>
+</button></li>
 	</ul>
     <div class="mr-5" v-show="loggedIn" id="userMenu">
 	  <ul class="nav navbar-nav">
@@ -104,5 +110,27 @@ export default {
 	</div>
     </div>
     </div>
-</header>`
-}
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Your Accounts</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      Stored locally, these are the accounts you've logged in with.
+    </div>
+    <div class="dropdown mt-3">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li v-for="name in recentUsers">
+            <a class="dropdown-item" href="#" role="button" @click="setUser(name)">@{{name}}</a> | 
+            <a class="dropdown-item" href="#/" role="button" @click="deleteRecentUser(name)">X</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</header>`,
+};
