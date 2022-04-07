@@ -1164,7 +1164,10 @@
 <body class="d-flex flex-column text-white h-100 padme-t70" id="index">
   <div id="app">
     <div>
-      <nav-vue :user="account" />
+      <nav-vue 
+        :user="account" 
+        @login="setValue('account', $event)"
+        />
     </div>
     <div>
       <log-vue />
@@ -2209,6 +2212,10 @@ function hiveKeychain () {
   var toastElList = [].slice.call(document.querySelectorAll('.toast'))
     var toastList = toastElList.map(function (toastEl) {
       return new bootstrap.Toast(toastEl, option)
+    })
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
     })
 </script>
 <!-- <script type="text/javascript" src="/js/chart.js"></script> -->
