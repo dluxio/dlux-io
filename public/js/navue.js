@@ -1,8 +1,11 @@
 export default {
   data() {
     return {
-      count: 0
+      user: ''
     }
+  },
+  methods:{
+
   },
   template: `
 <header class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:rgba(42, 48, 54, 0.8); -webkit-backdrop-filter: blur(10px);
@@ -17,14 +20,12 @@ export default {
         <li class="nav-item"> <a class="nav-link" href="/dex#dlux">DEX</a></li>
         <li class="nav-item"> <a class="nav-link" href="/docs/">DOCS</a></li>
       </ul>
-	<ul class="navbar-nav mr-5 no-session" id="loginMenu">
+	<ul class="navbar-nav mr-5" id="loginMenu" v-show="!user">
 	<li class="nav-item"><a class="nav-link acct-link" href="/about/">About</a></li>
 	<li class="nav-item"><a class="nav-link acct-link" href="https://signup.hive.io/">Get Account</a></li>
 	<li class="nav-item"><a class="nav-link acct-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
 	</ul>
-    <div class="mr-5 active-session" id="userMenu">
-		<input id="userCookie" value="null" type="text" class="d-none">
-		<input id="userPFP" value="null" type="text" class="d-none">
+    <div class="mr-5" v-show="user" id="userMenu">
 	  <ul class="nav navbar-nav">
 		<li class="nav-item my-auto">
 			<a class="nav-link" href="/new/" data-toggle="tooltip"  title="Create a new app">
