@@ -1216,6 +1216,18 @@ var app = new Vue({
             });
         });
     },
+    removeUser(){
+        this.balance = 0;
+        this.bartoken = ''
+        this.barpow = ''
+        this.bargov = ''
+        this.accountapi = ''
+        this.hasDrop = false
+        this.openorders = []
+        this.accountinfo = {}
+        this.barhive = ''
+        this.barhbd = ''
+    },
     getTokenUser(user) {
       fetch(this.lapi + "/@" + user)
         .then((response) => response.json())
