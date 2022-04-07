@@ -120,7 +120,7 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
              User.stats.HiveVWMA = jsons[2].hiveVWMA
              User.stats.HbdVWMA = jsons[2].hbdVWMA
              User.price = jsons[3].hive.usd
-             document.getElementById('userPFP').value = jsons[4].result[0].pfp;
+            //  document.getElementById('userPFP').value = jsons[4].result[0].pfp;
              //console.log(jsons[4].result[0].pfp)
              User.hstats = jsons[5].result
              User.hive = jsons[6].result[0]
