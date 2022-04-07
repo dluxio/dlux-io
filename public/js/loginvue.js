@@ -39,7 +39,7 @@ export default {
       </div>
     </div>
   </div>
-</div>
-<div id="notificationholder" class="fixed-bottom">
 </div>`
 }
+
+//<div id="notificationholder" class="fixed-bottom"></div>
