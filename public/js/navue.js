@@ -23,7 +23,7 @@ export default {
       userField: "",
       accountMenu: false,
       recentUsers: [],
-      notifications: [],
+      notifications: ['Here I am!'],
     };
   },
   emits: ["login", "logout"],
