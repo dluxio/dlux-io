@@ -1,17 +1,17 @@
-const { Toast } = bootstrap;
+// const { Toast } = bootstrap;
 
-const toast = Vue.component("bsToast", {
-  template: `
-        <div ref="el" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-              <strong class="me-auto">Completed</strong>
-              <small class="text-muted">just now</small>
-              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body"><slot/></div>
-        </div>
-    `
-});
+// const toast = Vue.component("bsToast", {
+//   template: `
+//         <div ref="el" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+//             <div class="toast-header">
+//               <strong class="me-auto">Completed</strong>
+//               <small class="text-muted">just now</small>
+//               <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+//             </div>
+//             <div class="toast-body"><slot/></div>
+//         </div>
+//     `
+// });
 
 export default {
   data() {
@@ -111,9 +111,9 @@ export default {
 </button></li>
 	</ul>
     <div>
-    <bs-toast v-for="item in notifications">
+    <!--<bs-toast v-for="item in notifications">
         {{ item }}
-    </bs-toast>
+    </bs-toast>-->
     </div>
     <div class="mr-5" v-show="loggedIn" id="userMenu">
 	  <ul class="nav navbar-nav">
