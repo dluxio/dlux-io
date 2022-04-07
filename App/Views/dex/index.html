@@ -25,7 +25,7 @@
     <div>
       <nav-vue
         @login="setValue('account', $event);getTokenUser($event);getHiveUser($event)"
-        @logout="setValue('account', '')"
+        @logout="setValue('account', '');removeUser()"
         />
     </div>
     <div>
