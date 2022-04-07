@@ -23,6 +23,11 @@ export default {
         this.user = this.userField
         localStorage.setItem('user', this.user)
         this.$emit('login', this.user)
+    },
+    isEnter(e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            this.setUser()
+        }
     }
   },
   mounted() {
