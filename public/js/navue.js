@@ -13,7 +13,7 @@ export default {
   <div class="container-fluid">
 	<a class="navbar-brand" href="/"><img src="/img/dlux-hive-logo-alpha.svg" alt="dlux-logo" width="40" height="40"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"> <a class="nav-link" href="/apps/">APPS</a></li>
         <li class="nav-item"> <a class="nav-link" href="/nfts/">NFTS</a></li>
