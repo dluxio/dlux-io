@@ -11,12 +11,12 @@ export default {
   methods:{
     getUser(){
         this.user = localStorage.getItem('user');
-        this.login.emit(this.user);
+        this.$emit('login', this.user);
     },
     logout(){
         localStorage.removeItem('user');
         this.user = ''
-        this.logout.emit();
+        this.$emit('logout', '')
     }
   },
   mounted() {
