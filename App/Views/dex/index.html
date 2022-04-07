@@ -30,10 +30,15 @@ $(function () {
   <script type="module">
     import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
     import Navue from '/js/navue.js'
+
     const {
       TradingVue
     } = TradingVueJs //vue 2 only
-
+    export default {
+        components: {
+          Navue
+        }
+      }
 
     let url = location.href.replace(/\/$/, "");
     let lapi = ''
