@@ -1,3 +1,18 @@
+const { Toast } = bootstrap;
+
+const toast = Vue.component("bsToast", {
+  template: `
+        <div ref="el" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+              <strong class="me-auto">Completed</strong>
+              <small class="text-muted">just now</small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body"><slot/></div>
+        </div>
+    `
+});
+
 export default {
   data() {
     return {
@@ -8,6 +23,7 @@ export default {
       userField: "",
       accountMenu: false,
       recentUsers: [],
+      notifications: [],
     };
   },
   emits: ["login", "logout"],
@@ -35,10 +51,10 @@ export default {
       const r = localStorage.getItem("recentUsers");
       if (r) this.recentUsers = JSON.parse(r);
       for (var i = 0; i < this.recentUsers.length; i++) {
-          if(this.recentUsers[i].length < 3) {
-              this.recentUsers.splice(i, 1);
-              break;
-          }
+        if (this.recentUsers[i].length < 3) {
+          this.recentUsers.splice(i, 1);
+          break;
+        }
       }
     },
     deleteRecentUser(user) {
@@ -94,6 +110,11 @@ export default {
   <i class="fal fa-address-book"></i>
 </button></li>
 	</ul>
+    <div>
+    <bs-toast v-for="item in notifications">
+        {{ item }}
+    </bs-toast>
+    </div>
     <div class="mr-5" v-show="loggedIn" id="userMenu">
 	  <ul class="nav navbar-nav">
 		<li class="nav-item my-auto">

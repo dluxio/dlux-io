@@ -165,6 +165,7 @@ var app = new Vue({
       recenthive: {},
       recenthbd: {},
       openorders: [],
+      toasts: [],
       orders: {
         filleda: false,
         filledd: false,
