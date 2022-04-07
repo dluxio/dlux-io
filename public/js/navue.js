@@ -61,7 +61,7 @@ export default {
 	<ul class="navbar-nav mr-5" id="loginMenu" v-show="!loggedIn">
 	<li class="nav-item"><a class="nav-link acct-link" href="/about/">About</a></li>
 	<li class="nav-item"><a class="nav-link acct-link" href="https://signup.hive.io/">Get Account</a></li>
-	<li class="nav-item"><input id="userLogin" v-model="userField" placeholder="username" @blur="setUser()" class="bg-darkg border-dark text-info"></li>
+	<li class="nav-item"><input id="userLogin" v-model="userField" placeholder="username" @blur="setUser()" @keyup="isEnter()" class="bg-darkg border-dark text-info"></li>
 	</ul>
     <div class="mr-5" v-show="loggedIn" id="userMenu">
 	  <ul class="nav navbar-nav">
