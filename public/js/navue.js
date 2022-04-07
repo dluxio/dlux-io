@@ -36,7 +36,7 @@ export default {
         <li class="nav-item"> <a class="nav-link" href="/dex#dlux">DEX</a></li>
         <li class="nav-item"> <a class="nav-link" href="/docs/">DOCS</a></li>
       </ul>
-	<ul class="navbar-nav mr-5" id="loginMenu" v-show="!user">
+	<ul class="navbar-nav mr-5" id="loginMenu" v-show="user == 'GUEST'">
 	<li class="nav-item"><a class="nav-link acct-link" href="/about/">About</a></li>
 	<li class="nav-item"><a class="nav-link acct-link" href="https://signup.hive.io/">Get Account</a></li>
 	<li class="nav-item"><input id="userLogin" placeholder="username" class="bg-darkg border-dark text-info"></li>
