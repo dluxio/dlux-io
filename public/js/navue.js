@@ -44,7 +44,7 @@ export default {
       this.addRecentUser(this.user);
     },
     addRecentUser(user) {
-      if (this.recentUsers.indexOf(user) == -1) this.recentUsers.push(user);
+      if (user && this.recentUsers.indexOf(user) == -1) this.recentUsers.push(user);
       localStorage.setItem("recentUsers", JSON.stringify(this.recentUsers));
     },
     getRecentUsers() {
