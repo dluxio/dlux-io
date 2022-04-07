@@ -6,6 +6,7 @@ export default {
       HSR: false,
       user: "",
       userField: "",
+      accountMenu: false,
       recentUsers: [],
     };
   },
@@ -37,6 +38,9 @@ export default {
     deleteRecentUser(user) {
       this.recentUsers.splice(this.recentUsers.indexOf(user), 1);
       localStorage.setItem("recentUsers", JSON.stringify(this.recentUsers));
+    },
+    toggleAccountMenu() {
+      this.accountMenu = !this.accountMenu;
     },
     isEnter(e) {
       if (e.key === "Enter" || e.keyCode === 13) {
@@ -80,7 +84,7 @@ export default {
 	<li class="nav-item"><a class="nav-link acct-link" href="https://signup.hive.io/">Get Account</a></li>
 	<li class="nav-item"><input id="userLogin" v-model="userField" placeholder="username" @blur="setUser()" @keyup.enter="setUser()" class="bg-darkg border-dark text-info"></li>
     <li class="nav-item"><button class="btn btn-submit" @click="setUser()">Login</button></li>
-    <li class="nav-item"><button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <li class="nav-item"><button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" @click="toggleAccountMenu()" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
   <i class="fal fa-address-book"></i>
 </button></li>
 	</ul>
@@ -110,10 +114,10 @@ export default {
 	</div>
     </div>
     </div>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div v-show="accountMenu" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Your Accounts</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" @click="toggleAccountMenu()"></button>
   </div>
   <div class="offcanvas-body">
     <div>
