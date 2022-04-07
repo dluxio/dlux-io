@@ -342,7 +342,7 @@ $(function () {
       },
       components: {
         TradingVue,
-        Navue: 'nav-vue'
+        'nav-vue': Navue, 
       },
       methods: {
         onResize(event) {
@@ -1289,9 +1289,6 @@ $(function () {
                           </div>
                           <div class="small pt-2"><a href="#/" @click="setValue('sendAmount', parseFloat(bartoken))" class="text-warning">{{formatNumber(bartoken,3,'.',',')}} {{TOKEN}}</a> Available</div>
                         </div>
-                        <validation-provider v-slot="v">
-                          <input v-model="value" type="text">
-                        </validation-provider>
                         <div class="form-group" id="sendlarynxmemogroup">
                           <label for="sendlarynxmemo">Memo:</label>
                           <div class="input-group">
