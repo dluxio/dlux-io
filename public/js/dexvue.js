@@ -66,7 +66,6 @@ import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js
           nowtime: new Date().getTime(),
           agoTime: new Date().getTime() - 86400000,
           account: user,
-          isnode: false,
           hasDrop: false,
           dropnai: '',
           balance: "0.000",
@@ -921,7 +920,6 @@ import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js
             .then(response => response.json())
             .then(data => {
               this.nodes = data.markets.node
-              if (data.markets.node[user]) this.isnode = true
               this.stats = data.stats
             })
         },
@@ -1143,6 +1141,11 @@ import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js
             else return `${parseFloat((this.stats.tokenSupply/1000) * this.hbdprice.hive_dollar.usd * this.dexapi.markets.hbd.tick).toFixed(2)}`
           }
         },
+        isnode:{
+            get(){
+                return this.nodes[this.user] ? true : false
+            }
+        }
       }
     }) // vue 2
     // }).mount('#app') // vue 3
