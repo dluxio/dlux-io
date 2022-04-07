@@ -89,7 +89,6 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
          } else {
              dlux = new Dluxsession({ hiveidip: user });
          }
-         $('.no-session').addClass('d-none');
          document.getElementById('userImage').src = 'https://images.hive.blog/u/' + user + '/avatar'
          document.getElementById('userName').innerText = '@' + user;
          document.getElementById('userCookie').value = user;
@@ -159,8 +158,6 @@ document.getElementById('propVotePlead').innerHTML = `<div class="alert alert-da
                     }
               } catch (e) {}
          })
-     } else {
-         $('.active-session').addClass('d-none');
      }
  }
 
@@ -533,18 +530,18 @@ function setAPI (name, api){
 }
 
  function logout() {
-     localStorage.clear()
-     $('.active-session').addClass('d-none');
-     $('.no-session').removeClass('d-none');
-     user = ''
-     User = ''
+    //  localStorage.clear()
+    //  $('.active-session').addClass('d-none');
+    //  $('.no-session').removeClass('d-none');
+    //  user = ''
+    //  User = ''
  }
 
  function loginDismiss() {
-     $('.active-session').removeClass('d-none');
-     $('.no-session').addClass('d-none');
-     $('#loginModal').modal('hide');
-     checkCookie();
+    //  $('.active-session').removeClass('d-none');
+    //  $('.no-session').addClass('d-none');
+    //  $('#loginModal').modal('hide');
+    //  checkCookie();
  }
 
  function showProfileImage(responseAsBlob) {
