@@ -34,6 +34,12 @@ export default {
     getRecentUsers() {
       const r = localStorage.getItem("recentUsers");
       if (r) this.recentUsers = JSON.parse(r);
+      for (var i = 0; i < this.recentUsers.length; i++) {
+          if(this.recentUsers[i].length < 3) {
+              this.recentUsers.splice(i, 1);
+              break;
+          }
+      }
     },
     deleteRecentUser(user) {
       this.recentUsers.splice(this.recentUsers.indexOf(user), 1);
