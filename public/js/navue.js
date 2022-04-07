@@ -4,8 +4,22 @@ export default {
       user: ''
     }
   },
+  emits: ['login', 'logout'],
+  props: ['user'],
   methods:{
-
+    getUser(){
+        this.user = localStorage.getItem('user');
+    }
+  },
+  mounted() {
+    this.getUser();
+  },
+  computed:{
+      avatar:{
+          get(){
+              return 'https://images.hive.blog/u/' + this.user + '/avatar'
+          }
+      }
   },
   template: `
 <header class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:rgba(42, 48, 54, 0.8); -webkit-backdrop-filter: blur(10px);
