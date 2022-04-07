@@ -31,7 +31,8 @@ export default {
         localStorage.setItem('recentUsers', JSON.stringify(this.recentUsers))
     },
     getRecentUsers(){
-        this.recentUsers = JSON.parse(localStorage.getItem('recentUsers'))
+        const r = localStorage.getItem("recentUsers");
+        if(r)this.recentUsers = JSON.parse(r)
     },
     deleteRecentUser(user){
         this.recentUsers.splice(this.recentUsers.indexOf(user), 1)
