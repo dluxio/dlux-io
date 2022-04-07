@@ -1466,7 +1466,8 @@ var app = new Vue({
     },
     isnode: {
       get() {
-        return this.nodes[this.user] ? true : false;
+        
+        return this.nodes[this.account] ? true : false;
       },
     },
   },
