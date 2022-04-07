@@ -1258,9 +1258,9 @@
                             <div class="form-control bg-black border-rb text-white text-center">{{toFixed(accountapi.claim/1000,3)}} {{TOKEN}}</div>
                           </div>
                         </div>
-                        <div class="custom-control custom-switch" v-if="isnode && features.rewardSel">
-                          <input type="checkbox" class="custom-control-input" v-model="features.reward2Gov" id="claimToGov">
-                          <label class="custom-control-label" for="claimToGov">Claim 1/2 to Gov</label>
+                        <div class="form-check form-switch" v-if="isnode && features.rewardSel">
+                          <input type="checkbox" class="form-check-input" v-model="features.reward2Gov" role="switch" id="claimToGov">
+                          <label class="form-check-label" for="claimToGov">Claim 1/2 to Gov</label>
                         </div>
                         <div class="form-group">
                           <div class="text-center mt-3">
