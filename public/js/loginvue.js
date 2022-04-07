@@ -1,10 +1,7 @@
 export default {
-  data() {
-    return {
-      count: 0
-    }
-  },
-  template: `<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
+  props: ['user'],
+  template: `
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content text-white bg-darker">
       <div class="modal-header">
