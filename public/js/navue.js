@@ -21,6 +21,8 @@ export default {
     },
     setUser(){
         this.user = this.userField
+        localStorage.setItem('user', this.user)
+        this.$emit('login', this.user)
     }
   },
   mounted() {
