@@ -30,6 +30,7 @@
   <script type="module">
     import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js'
     import Navue from '/js/navue.js'
+    import LogVue from '/js/loginvue.js'
 
     const {
       TradingVue
@@ -342,7 +343,8 @@
       },
       components: {
         TradingVue,
-        'nav-vue': Navue, 
+        'nav-vue': Navue,
+        'log-vue': LogVue,
       },
       methods: {
         onResize(event) {
@@ -1163,6 +1165,7 @@
 <body class="d-flex flex-column text-white h-100 padme-t70" id="index">
   <div id="app">
     <nav-vue/>
+    <log-vue/>
     <main role="main" class="flex-shrink-0 text-white">
       <div class="container-fluid px-0 ">
         <div class="container-fluid fixed-top bg-darkg px-0" style="margin-top: 66px; z-index: 900;">
