@@ -30,7 +30,7 @@ export default {
       },
       loggedIn:{
           get(){
-              return this.user !== 'GUEST' ? true : false;
+              return this.user ? true : false;
           }
       }
   },
