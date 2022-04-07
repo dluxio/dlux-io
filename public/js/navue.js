@@ -1,7 +1,9 @@
 export default {
   data() {
     return {
-      user: ''
+      HAS: false,
+      HKC: true,
+      HSR: false,
     }
   },
   emits: ['login', 'logout'],
@@ -47,7 +49,7 @@ export default {
 		<li class="nav-item dropdown">
 		  <a class="nav-link dropdown-toggle text-white-50" id="userDropdown" data-toggle="dropdown" href="#">
 			  <img src="" id="userImage" alt="" width="30" height="30" class="img-fluid rounded-circle bg-light mr-1 cover">
-			  <span id="userName">username</span></a>
+			  <span id="userName">{{user}}</span></a>
           <div class="dropdown-menu pt-0" aria-labelledby="userDropdown">
 			 <a class="dropdown-item" href="/me#blog/" onClick="showTab('blog')"><i class="fas fa-user fa-fw mr-2"></i>Profile</a>
 			 <a class="dropdown-item" href="/me#wallet/" onClick="showTab('wallet')"><i class="fas fa-wallet fa-fw mr-2"></i>Wallet</a>
