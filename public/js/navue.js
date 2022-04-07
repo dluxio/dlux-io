@@ -5,7 +5,8 @@ export default {
       HKC: true,
       HSR: false,
       user: '',
-      userField: ''
+      userField: '',
+      recentUsers: [],
     }
   },
   emits: ['login', 'logout'],
@@ -23,6 +24,18 @@ export default {
         this.user = this.userField
         localStorage.setItem('user', this.user)
         this.$emit('login', this.user)
+        this.addRecentUser(this.user)
+    },
+    addRecentUser(user){
+        if(this.recentUsers.indexOf(user)== -1)this.recentUsers.push(user)
+        localStorage.setItem('recentUsers', JSON.stringify(this.recentUsers))
+    },
+    getRecentUsers(){
+        this.recentUsers = JSON.parse(localStorage.getItem('recentUsers'))
+    },
+    deleteRecentUser(user){
+        this.recentUsers.splice(this.recentUsers.indexOf(user), 1)
+        localStorage.setItem('recentUsers', JSON.stringify(this.recentUsers))
     },
     isEnter(e) {
         if (e.key === 'Enter' || e.keyCode === 13) {
@@ -32,6 +45,7 @@ export default {
   },
   mounted() {
     this.getUser();
+    this.getRecentUsers();
   },
   computed:{
       avatar:{
