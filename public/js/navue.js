@@ -129,7 +129,7 @@ export default {
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li v-for="name in recentUsers">
-            <a class="dropdown-item" href="#" role="button" @click="setUser(name)">@{{name}}</a> | 
+            <a class="dropdown-item" href="#" role="button" @click="setUser(name);toggleAccountMenu())">@{{name}}</a> | 
             <a class="dropdown-item" href="#/" role="button" @click="deleteRecentUser(name)">X</a>
         </li>
       </ul>
