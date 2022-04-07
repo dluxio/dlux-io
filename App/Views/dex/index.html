@@ -23,9 +23,9 @@
 <body class="d-flex flex-column text-white h-100 padme-t70" id="index">
   <div id="app">
     <div>
-      <nav-vue 
-        :user="account" 
-        @login="setValue('account', $event)"
+      <nav-vue
+        @login="setValue('account', $event);getTokenUser($event);getHiveUser($event)"
+        @logout="setValue('account', '')"
         />
     </div>
     <div>
